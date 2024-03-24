@@ -34,8 +34,8 @@ sudo apt install elasticsearch
 If the installation proceeds without issues, Elasticsearch will be successfully installed on the host machine.
 To ensure that the Elasticsearch service persists across server restarts, the following commands will be employed.
 ```
-systemctl enable elasticsearch.service
-systemctl start elasticsearch.service
+systemctl enable elasticsearch
+systemctl start elasticsearch
 ```
 >### You can verify that status of Elastic search with the following command
 ```
@@ -59,73 +59,55 @@ sudo systemctl restart elasticsearch
 ```
 curl -X GET "localhost:9200"
 ```
+# Install Logstash
+```
+sudo apt install logstash
+```
+>### Add persistence
+```
+systemctl daemon-reload
+systemctl enable logstash
+systemctl start logstash
+```
+
+After successfully installing Logstash, let's verify its status to ensure that it has been installed and is running correctly.
+```
+systemctl status logstash
+```
+## Logstash Configuration
+
+By default, essential configuration files in a standard Logstash installation are located in the /etc/logstash directory.
+
+```
+nano /etc/logstash/logstash.yml
+```
+>### We need to make two updates. Uncomment the following variables and set the value of config.reload.automatic to true, as illustrated below:
+```
+config.reload.automatic: true
+config.reload.interval: 3s
+```
+These adjustments will enable Logstash to check the configuration files every 3 seconds for any changes in the ingested log sources. Next, we wil move to installing Kibana.
+
+# Install Kibana
+```
 sudo apt install kibana
+```
+>### To add persistence
+```
 sudo systemctl enable kibana
 sudo systemctl start kibana
-
-echo "elastic:`openssl passwd -apr1`" | sudo tee -a /etc/nginx/htpasswd.users
-#U:elastic P:$N34i67f3!
-
-sudo nano /etc/nginx/sites-available/172.16.10.50
-
-server {
-    listen 80;
-
-    server_name 172.16.10.50;
-
-    auth_basic "Restricted Access";
-    auth_basic_user_file /etc/nginx/htpasswd.users;
-
-    location / {
-        proxy_pass http://localhost:5601;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection 'upgrade';
-        proxy_set_header Host $host;
-        proxy_cache_bypass $http_upgrade;
-    }
-}
-
-
-**************
-
-sudo ln -s /etc/nginx/sites-available/172.16.10.50 /etc/nginx/sites-enabled/172.16.10.50
-sudo nginx -t
-
-
-sudo apt install logstash
-sudo nano /etc/logstash/conf.d/02-beats-input.conf
-
-input {
-  beats {
-    port => 5044
-  }
-}
-
-*************
-
-sudo nano /etc/logstash/conf.d/30-elasticsearch-output.conf
-output {
-  if [@metadata][pipeline] {
-	elasticsearch {
-  	hosts => ["localhost:9200"]
-  	manage_template => false
-  	index => "%{[@metadata][beat]}-%{[@metadata][version]}-%{+YYYY.MM.dd}"
-  	pipeline => "%{[@metadata][pipeline]}"
-	}
-  } else {
-	elasticsearch {
-  	hosts => ["localhost:9200"]
-  	manage_template => false
-  	index => "%{[@metadata][beat]}-%{[@metadata][version]}-%{+YYYY.MM.dd}"
-	}
-  }
-}
-
-
-*************
-
-sudo -u logstash /usr/share/logstash/bin/logstash --path.settings /etc/logstash -t
-sudo systemctl start logstash
-sudo systemctl enable logstash
-
+```
+The usual location for the configuration files of Kibana, an open-source tool for data visualization and exploration, is within the /etc/kibana directory.
+```
+sudo nano /etc/kibana/kibana.yml
+```
+Uncomment the following two variables and make the changes to server.host as shown below:
+```
+server.port: 5601
+server.host: "0.0.0.0"
+```
+Once the changes are made, and the config file is saved, restart Kibana.
+```
+systemctl restart kibana
+```
+Next, open your web browser and navigate to YOUR_IP:5601. This will bring up the Kibana interface. Next, we will generate an enrollment token for the Kibana instance using the command /usr/share/elasticsearch/bin/elasticsearch-create-enrollment-token -s kibana. This command will display a randomly generated token. Enter this token in the provided space and press Enter. You will then be prompted to enter the elastic credentials, which are the same credentials that were created during the Elasticsearch installation process.
