@@ -110,4 +110,8 @@ Once the changes are made, and the config file is saved, restart Kibana.
 ```
 systemctl restart kibana
 ```
-Next, open your web browser and navigate to YOUR_IP:5601. This will bring up the Kibana interface. Next, we will generate an enrollment token for the Kibana instance using the command /usr/share/elasticsearch/bin/elasticsearch-create-enrollment-token -s kibana. This command will display a randomly generated token. Enter this token in the provided space and press Enter. You will then be prompted to enter the elastic credentials, which are the same credentials that were created during the Elasticsearch installation process.
+Next, open your web browser and navigate to YOUR_IP:5601. This will bring up the Kibana interface. Next, we will generate an enrollment token for the Kibana instance using the following command:
+```
+/usr/share/elasticsearch/bin/elasticsearch-create-enrollment-token -s kibana
+```
+This command will display a randomly generated token. Enter this token in the provided space and press Enter. You will then be prompted to enter the elastic credentials, which are the same credentials that were created during the Elasticsearch installation process.
