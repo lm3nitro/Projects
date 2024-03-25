@@ -15,6 +15,7 @@ capinfos threat_actor.pcap
 ![Pasted image 20240324111115](https://github.com/lm3nitro/Projects/assets/55665256/3afe59b6-d7e7-4868-adb2-571ba9d15d53)
 
 Step 2:
+
 In this Packet Capture (PCAP) file, we can see that there are 544 packets captured. We will need to filter those packets in order to identify if there is any abnormal activity. 
 
 Filter for the number of ICMP packets:
@@ -62,19 +63,37 @@ The combination of an ICMP tunnel and encrypted SSH communication suggests a sop
 To mitigate the risk of ICMP tunneling, consider disabling ICMP echo requests (ping) at the network perimeter to prevent external probing. Additionally, configure firewall rules to block ICMP traffic that is not essential for network operations. Regularly monitor and analyze ICMP activity to detect any unauthorized or suspicious usage.
 Identifying ICMP scanning:
 
-In this scenario we want to detect for any sings of reconesence  from the threat actor over ICMP to our network 192.168.11.0/24
+## Second scenario
+
+The network monitoring system has flagged a series of ICMP packets due to a significant increase in ICMP traffic originating from a specific IP address. You have been provided with a Packet Capture (PCAP) file containing the captured network traffic for analysis.
+
+Step 1: 
+
+In this scenario, our objective is to identify any indications of reconnaissance activity by the threat actor using ICMP on our network 192.168.11.0/24
+
+```
+tcpdump -ttttnr threat_actor.pcap icmp and net 192.168.11.0/24
+```
 
 ![Pasted image 20240324134231](https://github.com/lm3nitro/Projects/assets/55665256/3068949f-c8ac-4078-924f-411d35e0b45a)
 
-Payload inspection:
+From the output, it's evident that the IP address 92.242.140.21 is actively sending ICMP echo requests to multiple hosts within our network within a very short time period. This rapid succession of requests is indicative of potential scanning or probing activities aimed at identifying vulnerabilities or mapping network topology.
+
+Step 2:
+
+Next, we will proceed to inspecting the payload to check for any further insights or malicious content.
+
+```
+tcpdump -ttttnr threat_actor.pcap icmp and net 192.168.11.0/24 -c 1 X
+```
 
 ![Pasted image 20240324135225](https://github.com/lm3nitro/Projects/assets/55665256/10aa77d8-a801-4330-ad75-1c17a866d233)
 
+When taking a look at the payload of one of the ICMP packets, we see a pattern. Patterns such as sequential or incrementing data, which are common in scanning tools. Key indicators, as previously mentioned include a high volume of ICMP echo (ping) requests sent from a single source IP address to multiple destination IP addresses within a short time frame. 
 
-Note:  The indicator  or sings of  scanning are:
+ICMP echo request (ping) scans, serve the purpose of gathering reconnaissance information about a target network or host. Malicious actors use ICMP scans to identify live hosts by sending ICMP echo requests to various IP addresses. This allows them to map the network topology, detect the presence of firewalls or filtering devices, measure round-trip times (RTT), and potentially identify vulnerable systems based on ICMP responses. Ultimately, ICMP scans provide attackers with crucial insights into the network's structure, active hosts, and potential weaknesses, enabling them to plan and execute targeted attacks more effectively.
 
-Even though the payload looks like a leyement one  the key factor are order of  sequeial proving [1,2,3,4,10] . The IP identification is the same, also the speed of each request is lighting fast
-
+## Third Scenario
 
 In this scenario we're to looking for any sings of ICMP estrange behaviour to network 172.16.1.0/24:  
 
