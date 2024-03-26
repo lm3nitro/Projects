@@ -55,7 +55,7 @@ tcpdump --number -ttttnr threat_actor.pcap icmp and greater 100 -c 1 -X
 Anlaysis: Upon investigation of the network traffic in the Packet Capture (PCAP) file, we discovered an ICMP tunnel. This indicates that the threat actor is utilizing an encrypted SSH tunnel and leveraging the ICMP protocol to conceal their communication. This technique is commonly employed for purposes such as data exfiltration or command and control operations. An ICMP tunnel involves encapsulating data within ICMP packets, allowing the attacker to bypass traditional network security measures that may not inspect ICMP traffic thoroughly. By using an encrypted SSH tunnel, the attacker adds an additional layer of security to obfuscate the contents of the communication, making it more challenging to detect and analyze.
 
 
-## Second scenario
+## Second Scenario
 
 The network monitoring system has flagged a series of ICMP packets due to a significant increase in ICMP traffic originating from a specific IP address. You have been provided with a Packet Capture (PCAP) file containing the captured network traffic for analysis.
 
