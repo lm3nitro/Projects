@@ -18,18 +18,18 @@ Additionally, understanding the types of ICMP messages is essential, as there ar
 
 Error Reporting:
 
-Destination Unreachable (Type 3) 
-Source Quench (Type 4)
-Time Exceeded (Type 11)
-Parameter Problem (Type 12)
+1. Destination Unreachable (Type 3) 
+2. Source Quench (Type 4)
+3. Time Exceeded (Type 11)
+4. Parameter Problem (Type 12)
 
 Query:
 
-Echo (Request/Reply) (Type 8/0)
-Timestamp (Request/Reply) (Type 13/14)
-Address Mask (Request/Reply) (Type 18/18)
-Router Advertisement (Type 10/9)
-Redirection (Type 5)
+1. Echo (Request/Reply) (Type 8/0)
+2. Timestamp (Request/Reply) (Type 13/14)
+3. Address Mask (Request/Reply) (Type 18/18)
+4. Router Advertisement (Type 10/9)
+5. Redirection (Type 5)
 
 Lets take a look at the scenarios below. 
 
