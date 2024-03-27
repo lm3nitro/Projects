@@ -9,27 +9,27 @@ Outgoing Traffic Source IP Validation:
 
 Attackers may employ packet crafting techniques targeting source and destination IP addresses for various purposes. Some common attack scenarios to watch for include: 
 
-1. Decoy Scanning
-2. Random Source Attack DDoS 
-3. SMURF Attacks
-4. Duplicate Fragments
++ Decoy Scanning
++ Random Source Attack DDoS 
++ SMURF Attacks
++ Duplicate Fragments
 
 Additionally, understanding the types of ICMP messages is essential, as there are 15 distinct types categorized into error reporting and query functions. Among the notable ICMP messages are:
 
 Error Reporting:
 
-1. Destination Unreachable (Type 3) 
-2. Source Quench (Type 4)
-3. Time Exceeded (Type 11)
-4. Parameter Problem (Type 12)
++ Destination Unreachable (Type 3)
++ Source Quench (Type 4)
++ Time Exceeded (Type 11)
++ Parameter Problem (Type 12)
 
 Query:
 
-1. Echo (Request/Reply) (Type 8/0)
-2. Timestamp (Request/Reply) (Type 13/14)
-3. Address Mask (Request/Reply) (Type 18/18)
-4. Router Advertisement (Type 10/9)
-5. Redirection (Type 5)
++ Echo (Request/Reply) (Type 8/0)
++ Timestamp (Request/Reply) (Type 13/14)
++ Address Mask (Request/Reply) (Type 18/18)
++ Router Advertisement (Type 10/9)
++ Redirection (Type 5)
 
 Lets take a look at the scenarios below. 
 
