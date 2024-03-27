@@ -141,3 +141,42 @@ ICMP  spoof  same source and destination with incremental fragmentation
 
 ![Pasted image 20240326155509](https://github.com/lm3nitro/Projects/assets/55665256/b1912aaf-1906-4f18-8ab0-4d4a6ec36e75)
 
+--------------
+
+SMURF Attacks are a notable distributed denial-of-service attack, in the nature that they operate through causing random hosts to ping the victim host back. Simply put, an attacker conducts these like the following:
+
+1- The attacker will send an ICMP request to live hosts with a spoofed address of the victim host
+
+2- The live hosts will respond to the legitimate victim host with an ICMP reply
+
+3- This may cause resource exhaustion on the victim host 
+
+
+
+We might notice many different hosts pinging our single host, and in this case it represents the basic nature of SMURF attacks.
+
+
+![Pasted image 20240327115444](https://github.com/lm3nitro/Projects/assets/55665256/86e31a76-665f-4a77-99a4-4185194e1e37)
+
+
+One of the things we can look for in our traffic behaviour is an excessive amount of ICMP replies from a single host to our affected host. Sometimes attackers will include fragmentation and data on these ICMP requests to make the traffic volume larger.
+
+A Smurf Attack is a type of DDoS attack that exploits Internet Protocol (IP) broadcast addresses to broadcast a large number of requests to a target IP address from multiple sources. The attacker sends a large number of Internet Control Message Protocol (ICMP) echo requests (ping) to the broadcast address of a network, making it appear as if the requests are coming from the target's IP address. The requests are then transmitted to every device on the network, creating a massive amount of traffic that can overload the target's resources and cause it to crash.
+
+
+
+Identify Ping of death attacks.  
+
+
+
+![Pasted image 20240327133805](https://github.com/lm3nitro/Projects/assets/55665256/1cc06421-1df9-421e-aa47-fcd0218ef913)
+
+
+![Pasted image 20240327140433](https://github.com/lm3nitro/Projects/assets/55665256/6c46c6a6-d39c-4f4f-b237-f7b87d0ab818)
+
+
+
+Inspecting payload:
+
+![Pasted image 20240327140656](https://github.com/lm3nitro/Projects/assets/55665256/5d7fc950-bf1e-42ea-ae7d-6ba90d8e03e7)
+
