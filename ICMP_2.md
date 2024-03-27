@@ -9,7 +9,7 @@ Outgoing Traffic Source IP Validation:
 
 Attackers may employ packet crafting techniques targeting source and destination IP addresses for various purposes. Some common attack scenarios to watch for include: 
 
-Decoy Scanning:
+Decoy Scanning
 Random Source Attack DDoS 
 SMURF Attacks
 Duplicate Fragments
