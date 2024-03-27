@@ -103,27 +103,43 @@ Smurf Attacks are a significant form of distributed denial-of-service attack, ch
 Identify overlapping / duplicate fragments
 **Teardrop**: 
 
+## Scenario 4
 
+In a cybersecurity monitoring center, we noticed a sudden surge in network anomalies during a routine traffic analysis. Upon closer inspection, we identified a pattern of fragmented IP packets with overlapping payloads arriving at a critical server.
+
+The unusual traffic behavior raised suspicions of a potential Tear Drop attack, known for its technique of sending malformed packets designed to confuse and disrupt systems. The attack was targeting a web server hosting a high-traffic e-commerce platform, posing a significant risk to customer data security and service availability. Lets take a look at that traffic observed. 
+
+```
+tcpdump -nr icmp_threat_actor.pcap '((ip[6:2] > 0) and (not ip [6] = 64))' -vvvvXXA
+```
 
 ![Pasted image 20240326134730](https://github.com/lm3nitro/Projects/assets/55665256/6744eff6-3ab6-4a42-bc39-259cd6a5a86b)
 
+The initial indication of this behavior is the fragmentation of ICMP data, split into three chunks of 40 bytes each, with an overlapping fragment noted on the third packet, possibly suggesting an attempt to evade an Intrusion Detection System (IDS). An effective method for identifying overlapping fragments is to examine the last ICMP fragment packet with an offset of 80 and flags set to [none]. This indicates that host 192.168.11.13 sent three fragmented packets of 40 bytes each, while host 192.168.11.61 only received two, totaling 80 bytes.
 
-The first indicator of this behaviour is the fragmentation of the data on the ICMP that are split in 3 chunks of 40 bytes each, also the overlaying fragment on the third packet, that could indicate some on the network is train to bypass an IDS. One way to identify  overlapping fragments is to see the last ICMP fragment packet that has offset 80, flags [none] This mean that the host 192.168.11.13 has sent 3 fragmented packets  of 40 bytes and host 192.168.11.61 only received 2 with has 80 bytes total. 
+A Fragment Overlap Attack, also referred to as an IP Fragmentation Attack, exploits the way Internet Protocol (IP) handles data transmission and processing. These attacks, categorized as Denial of Service (DoS) attacks, involve the attacker overloading a network by exploiting datagram fragmentation mechanisms.
+ 
 
-A Fragment Overlap Attack, also known as an IP Fragmentation Attack, is an attack that is based on how the Internet Protocol (IP) requires data to be transmitted and processed. These attacks are a form of Denial of Service (DoS) attack where the attacker overloads a network by exploiting datagram fragmentation mechanisms. 
+## Scenario 5
 
+In this scenario, we will take a look to see how we can identiry a suspicious host using tcproute in our network.
 
-Identify  suspicions host using traceroute on the network:
-
-
+```
+tcpdump -nr icmp_threat_actor.pcap 'ip[8] < 5' -vv
+```
 ![Pasted image 20240326151132](https://github.com/lm3nitro/Projects/assets/55665256/2f5bb032-63fb-41d4-b800-38a5f9e4ec0c)
 
+Here we can see that the TTL is 1 and the length is 8. Very unusual for ICMP traffic. Lets keep looking and see what else we can find. 
+
+```
+tcpdump -nr icmp_threat_actor.pcap host 192.168.194.149 and icmp -vv
+```
 
 ![Pasted image 20240326151607](https://github.com/lm3nitro/Projects/assets/55665256/6ec1ea9b-efd1-414e-b241-52ed9bb85332)
 
+Threat actors often attempt to map out a network using tools like traceroute. One indicator to watch for includes a low Time-to-Live (TTL) value from the source, coupled with a small packet size and a significant increase in ICMP usage. Notably, the victim host maintains its actual TTL value during this probing.
 
-
-Threat actor usually try to map the network by using tools like traceroute.  Something to look for is the low TTL from  the source, low packet size and the high amount the ICMP use.  The victim host that is being is sending it's real TTL.
+## Scenario 6
 
 Identify: 
 ICMP  spoof  same source and destination with incremental fragmentation
