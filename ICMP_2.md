@@ -43,7 +43,7 @@ capinfos icmp_threat_actor.pcap
 ```
 ![Pasted image 20240325233711](https://github.com/lm3nitro/Projects/assets/55665256/f74024b1-c25b-4779-b500-6b5f929b5332)
 
-In this pcap we have 8330 packets. We will need to filter further in order get more information and see if there is nay abnormal activity. Below we see the host 192.168.10.5 is responding to a group of random source addresse. We can also see that the payload is larger than the normal ICMP traffic (64 bytes). 
+In this pcap we have 8330 packets. We will need to filter further in order get more information and see if there is any abnormal activity. Below we see the host 192.168.10.5 is responding to a group of random source addresses. We can also see that the payload is larger than the normal ICMP traffic (64 bytes). 
 
 ```
 tcpdump -nnr icmp_threat_actor.pcap "icmp[0]==0" and ! not src net 192.168.10.0/24 -c 10
@@ -68,7 +68,7 @@ tcpdump -nnr icmp_threat_actor.pcap 'ip[6:2] > 0' and host 192.168.10.5 | wc -l
 
 ![Pasted image 20240325230140](https://github.com/lm3nitro/Projects/assets/55665256/2a53c996-5fa4-448f-b89b-c21b2cb9e8a5)
 
-Let's select one conversation to further analyzee it and see what is really going on:
+Let's select one conversation to further analyze it and see what is really going on:
 ```
 tcpdump -nnr icmp_threat_actor.pcap host 111.43.91.100 -vv
 ```
