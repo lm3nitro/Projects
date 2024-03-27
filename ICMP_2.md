@@ -39,22 +39,22 @@ Type Message Type Message
 12 Parameter problem 10-Sep Router advertisement
 5 Redirection
 
-#####Scenario we notice high amount of ICMP traffic from our network going to ****
+## Scenario 2
 
+As a security analyst, I was tasked with investigating a peculiar Packet Capture (PCAP) file that had been flagged due to unusual ICMP traffic patterns. The PCAP had been captured from a network segment that was typically quiet, used mainly for administrative purposes and internal communications.
 
-Here is another example where the host from network 192.168.10.5 is responding to random source addresses but this time the payload is larger  it seems strange because ICMP it is usually 64 bytes payload. 
+Upon starting our investifgation, we see the host 192.168.10.5 responding to a random source addresses, and notice that the payload is larger than the normal ICMP traffic (64 bytes). 
 
-We should also consider that attackers might fragment these random hosts communications in order to draw out more resource exhaustion.
+>#### One factor to bear in mind is that attackers might attempt to fragment their traffic to avoid detection and to impose greater resource strain on the victim host.
 
 ![Pasted image 20240325215127](https://github.com/lm3nitro/Projects/assets/55665256/2a1a793e-7a85-4578-b9b4-e0d8ca9c7dd1)
 
-
-Lets verify the traffic little be deeper to what we can see.
+Let's dig a little deeper to see what we can find...
 
 ![Pasted image 20240325224130](https://github.com/lm3nitro/Projects/assets/55665256/b6036d71-520f-4cc4-a977-716d985c61cb)
 
 
-The threat actor is abusing the protocol by fragmenting ICMP to send a large volume of data to this node, it could to overwhelm the server with bous traffic.  We can see also that the TTL seems to be coming from a internal node. 
+Here we see that the threat actor is abusing the ICMP protocol by increasing the paylooad and fragmenting the traffic in order to send a large volume of data to this node. This could be used to overwhelm the server with bogus traffic.  Also, based on the TTL, this traffic presents itself as if it is coming from an internal node. 
 
 
 Counting the amount of framagment  going to and from 192.168.10.5 ICMP 
