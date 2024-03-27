@@ -80,7 +80,7 @@ Based on the output, we see that the receiving node is being bombarded with a si
 
 ## Scenario 2
 
-Let's take a look at a pcap and see how we can identify a ICMP Smurf Attack. An ICMP Smurf attack floods a target network with ICMP Echo Request packets, using spoofed source addresses to amplify the volume of traffic and overwhelm the victim's resources.
+Let's take a look at a pcap and see how we can identify an ICMP Smurf Attack. An ICMP Smurf attack floods a target network with ICMP Echo Request packets, using spoofed source addresses to amplify the volume of traffic and overwhelm the victim's resources.
 ```
 tcpdump -nnr icmp_threat_actor.pcap 'ip[0]==0' or 'ip[0]==8' and ! not dst net 192.168.10.0/24 -vvv -c 30
 ```
