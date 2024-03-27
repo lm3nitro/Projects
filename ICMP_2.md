@@ -3,7 +3,6 @@
 Here we will cover a series of different scenarios sorrounding ICMP attacks. Let's consider the following when analyzing these fields for our traffic analysis efforts.
 
 1. Source IP Address Validation: Incoming packets should originate from our subnet. An IP source from outside our local area network could indicate packet crafting.
-Outgoing Traffic Source IP Validation:
 
 2. Outgoing Traffic Source IP Validation: The source IP for outgoing traffic should align with our subnet. Any deviation may signal malicious traffic originating from within our network.
 
