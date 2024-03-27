@@ -77,22 +77,26 @@ tcpdump -nnr icmp_threat_actor.pcap host 111.43.91.100 -vv
 
 The receiving node is being bombarded with a significant volume of fragmented ICMP random spoof requests from an internal source. This activity has the potential to cause a denial of service (DoS) on node 192.168.10.5.
 
-Identify Smurf Attacks:
+## Scenario 3
 
+Let's take a look at a pcap and see how we can identify a ICMP Smurf Attack. An ICMP Smurf attack floods a target network with ICMP Echo Request packets, using spoofed source addresses to amplify the volume of traffic and overwhelm the victim's resources.
+```
+tcpdump -nnr icmp_threat_actor.pcap 'ip[0]==0' or 'ip[0]==8' and ! not dst net 192.168.10.0/24 -vvv -c 30
+```
 ![Pasted image 20240325233000](https://github.com/lm3nitro/Projects/assets/55665256/57e3dd74-2036-4885-a751-6671d0e5a669)
 
-One of the things we can look for in our traffic behavior is an excessive amount of ICMP replies from a single host to our affected host. Sometimes attackers will include fragmentation and data on these ICMP requests to make the traffic volume larger.
+One key indicator to monitor in our network traffic is an unusually high number of ICMP replies originating from a single host directed towards our affected host, as attackers may utilize fragmentation and payload data in these ICMP requests to inflate the traffic volume.
+```
+tcpdump -nnr icmp_threat_actor.pcap 'ip[0]==0' or 'ip[0]==8' and ! not dst net 192.168.10.0/24 |wc -l
+```
 
 ![Pasted image 20240325233127](https://github.com/lm3nitro/Projects/assets/55665256/a9623975-6891-495c-80e2-86931112cc38)
 
-SMURF Attacks are a notable distributed denial-of-service attack, in the nature that they operate through causing random hosts to ping the victim host back. Simply put, an attacker conducts these like the following:
+Smurf Attacks are a significant form of distributed denial-of-service attack, characterized by their method of leveraging random hosts to ping the victim host. Essentially, an attacker executes these attacks as follows:
 
-1- The attacker will send an ICMP request to live hosts with a spoofed address of the victim host
-
-2- The live hosts will respond to the legitimate victim host with an ICMP reply
-
-3- This may cause resource exhaustion on the victim host
-
+1. The attacker sends an ICMP request to active hosts, using a spoofed address that appears to be the victim host.
+2. The active hosts, believing the request is from the legitimate victim host, respond with ICMP replies.
+3. This activity can lead to resource exhaustion on the victim host, impacting its ability to function normally.
 
 
 ################
