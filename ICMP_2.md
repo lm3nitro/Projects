@@ -98,11 +98,6 @@ Smurf Attacks are a significant form of distributed denial-of-service attack, ch
 2. The active hosts, believing the request is from the legitimate victim host, respond with ICMP replies.
 3. This activity can lead to resource exhaustion on the victim host, impacting its ability to function normally.
 
-
-################
-Identify overlapping / duplicate fragments
-**Teardrop**: 
-
 ## Scenario 4
 
 In a cybersecurity monitoring center, we noticed a sudden surge in network anomalies during a routine traffic analysis. Upon closer inspection, we identified a pattern of fragmented IP packets with overlapping payloads arriving at a critical server.
