@@ -1,6 +1,6 @@
 # Identifying IP Source & Destination Spoofing Attacks
 
-Here we will cover a series of different scenarios. Let's consider the following when analyzing these fields for our traffic analysis efforts.
+Here we will cover a series of different scenarios sorrounding ICMP attacks. Let's consider the following when analyzing these fields for our traffic analysis efforts.
 
 1. Source IP Address Validation: Incoming packets should originate from our subnet. An IP source from outside our local area network could indicate packet crafting.
 Outgoing Traffic Source IP Validation:
