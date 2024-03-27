@@ -1,51 +1,52 @@
+# Identifying IP Source & Destination Spoofing Attacks
 
+Here we will cover a series of different scenarios. Let's consider the following when analyzing these fields for our traffic analysis efforts.
 
-![Pasted image 20240325233711](https://github.com/lm3nitro/Projects/assets/55665256/f74024b1-c25b-4779-b500-6b5f929b5332)
+1. Source IP Address Validation: Incoming packets should originate from our subnet. An IP source from outside our local area network could indicate packet crafting.
+Outgoing Traffic Source IP Validation:
 
+2. Outgoing Traffic Source IP Validation: The source IP for outgoing traffic should align with our subnet. Any deviation may signal malicious traffic originating from within our network.
 
-Step 1:
-Note: In this pcap we have 8330 packets we will need to filter to find out the abnormal packets. 
- 
- Filter for ICMP number of  packets :
-
-
-
-Identifying  IP Source & Destination Spoofing Attacks:
-
-Let's consider the following when analyzing these fields for our traffic analysis efforts.
-
-The Source IP Address should always be from our subnet - If we notice that an incoming packet has an IP source from outside of our local area network, this can be an indicator of packet crafting.
-
-The Source IP for outgoing traffic should always be from our subnet - If the source IP is from a different IP range than our own local area network, this can be an indicator of malicious traffic that is originating from inside our network.
-
-An attacker might conduct these packet crafting attacks towards the source and destination IP addresses for many different reasons or desired outcomes. Here are a few that we can look for:
+Attackers may employ packet crafting techniques targeting source and destination IP addresses for various purposes. Some common attack scenarios to watch for include: 
 
 Decoy Scanning:
 Random Source Attack DDoS 
 SMURF Attacks
 Duplicate Fragments
 
+Additionally, understanding the types of ICMP messages is essential, as there are 15 distinct types categorized into error reporting and query functions. Among the notable ICMP messages are:
 
+Error Reporting:
 
-There are 15 different types of ICMP messages and some are categorized as error reporting and query.
+Destination Unreachable (Type 3) 
+Source Quench (Type 4)
+Time Exceeded (Type 11)
+Parameter Problem (Type 12)
 
-A few popular ICMP messages:
+Query:
 
-Error Reporting Query
-Type Message Type Message
-3 Destination Unreachable 8/0 Echo(request/reply)
-4 Source quench 13/14 Timestamp(req/Reply)
-11 Time exceeded 18/18 Address mask(req/rep)
-12 Parameter problem 10-Sep Router advertisement
-5 Redirection
+Echo (Request/Reply) (Type 8/0)
+Timestamp (Request/Reply) (Type 13/14)
+Address Mask (Request/Reply) (Type 18/18)
+Router Advertisement (Type 10/9)
+Redirection (Type 5)
 
-## Scenario 2
+Lets take a look at the scenarios below. 
+
+## Scenario 1
 
 As a security analyst, I was tasked with investigating a peculiar Packet Capture (PCAP) file that had been flagged due to unusual ICMP traffic patterns. The PCAP had been captured from a network segment that was typically quiet, used mainly for administrative purposes and internal communications.
 
 Upon starting our investifgation, we see the host 192.168.10.5 responding to a random source addresses, and notice that the payload is larger than the normal ICMP traffic (64 bytes). 
 
->#### One factor to bear in mind is that attackers might attempt to fragment their traffic to avoid detection and to impose greater resource strain on the victim host.
+>#### One factor to bear in mind is that attackers might attempt to fragment their traffic to avoid detection and to impose greater resource strain on the victim host. 
+
+```
+capinfos icmp_threat_actor.pcap
+```
+![Pasted image 20240325233711](https://github.com/lm3nitro/Projects/assets/55665256/f74024b1-c25b-4779-b500-6b5f929b5332)
+
+In this pcap we have 8330 packets. We will need to filter further get more information and see if there is nay abnormal activity.
 
 ```
 tcpdump -nnr icmp_threat_actor.pcap "icmp[0]==0" and ! not src net 192.168.10.0/24 -c 10
@@ -77,7 +78,7 @@ tcpdump -nnr icmp_threat_actor.pcap host 111.43.91.100 -vv
 
 The receiving node is being bombarded with a significant volume of fragmented ICMP random spoof requests from an internal source. This activity has the potential to cause a denial of service (DoS) on node 192.168.10.5.
 
-## Scenario 3
+## Scenario 2
 
 Let's take a look at a pcap and see how we can identify a ICMP Smurf Attack. An ICMP Smurf attack floods a target network with ICMP Echo Request packets, using spoofed source addresses to amplify the volume of traffic and overwhelm the victim's resources.
 ```
@@ -98,7 +99,7 @@ Smurf Attacks are a significant form of distributed denial-of-service attack, ch
 2. The active hosts, believing the request is from the legitimate victim host, respond with ICMP replies.
 3. This activity can lead to resource exhaustion on the victim host, impacting its ability to function normally.
 
-## Scenario 4
+## Scenario 3
 
 In a cybersecurity monitoring center, we noticed a sudden surge in network anomalies during a routine traffic analysis. Upon closer inspection, we identified a pattern of fragmented IP packets with overlapping payloads arriving at a critical server.
 
@@ -115,7 +116,7 @@ The initial indication of this behavior is the fragmentation of ICMP data, split
 A Fragment Overlap Attack, also referred to as an IP Fragmentation Attack, exploits the way Internet Protocol (IP) handles data transmission and processing. These attacks, categorized as Denial of Service (DoS) attacks, involve the attacker overloading a network by exploiting datagram fragmentation mechanisms.
  
 
-## Scenario 5
+## Scenario 4
 
 In this scenario, we will take a look to see how we can identiry a suspicious host using tcproute in our network.
 
@@ -134,7 +135,7 @@ tcpdump -nr icmp_threat_actor.pcap host 192.168.194.149 and icmp -vv
 
 Threat actors often attempt to map out a network using tools like traceroute. One indicator to watch for includes a low Time-to-Live (TTL) value from the source, coupled with a small packet size and a significant increase in ICMP usage. Notably, the victim host maintains its actual TTL value during this probing.
 
-## Scenario 6
+## Scenario 5
 
 Identify: 
 ICMP  spoof  same source and destination with incremental fragmentation
