@@ -79,24 +79,25 @@ Based on the output, we see that the receiving node is being bombarded with a si
 
 ## Scenario 2
 
-Let's take a look at a pcap and see how we can identify an ICMP Smurf Attack. An ICMP Smurf attack floods a target network with ICMP Echo Request packets, using spoofed source addresses to amplify the volume of traffic and overwhelm the victim's resources.
+A Smurf Attack is a type of DDoS attack that capitalizes on Internet Protocol (IP) broadcast addresses for broadcasting numerous requests to a target IP address, originating from various sources. In this attack, the assailant dispatches a substantial quantity of Internet Control Message Protocol (ICMP) echo requests (commonly known as "pings") to the broadcast address of a network. This action is orchestrated to give the impression that these requests stem from the target's IP address. Subsequently, these requests are disseminated to every device within the network, generating a substantial volume of traffic that has the potential to overwhelm the target's resources, leading to system overload and potential crashes.
+
+Let's take a look at a pcap and see how we can identify an ICMP Smurf Attack. 
 ```
 tcpdump -nnr icmp_threat_actor.pcap 'ip[0]==0' or 'ip[0]==8' and ! not dst net 192.168.10.0/24 -vvv -c 30
 ```
 ![Pasted image 20240325233000](https://github.com/lm3nitro/Projects/assets/55665256/57e3dd74-2036-4885-a751-6671d0e5a669)
 
-One key indicator to monitor in our network traffic is an unusually high number of ICMP replies originating from a single host directed towards our affected host, as attackers may utilize fragmentation and payload data in these ICMP requests to inflate the traffic volume.
+We need to monitor our network traffic for an unusually high number of ICMP replies originating from a single host directed towards our affected host, as attackers may utilize fragmentation and payload data in these ICMP requests to inflate the traffic volume.
 ```
 tcpdump -nnr icmp_threat_actor.pcap 'ip[0]==0' or 'ip[0]==8' and ! not dst net 192.168.10.0/24 |wc -l
 ```
 
 ![Pasted image 20240325233127](https://github.com/lm3nitro/Projects/assets/55665256/a9623975-6891-495c-80e2-86931112cc38)
 
-Smurf Attacks are a significant form of distributed denial-of-service attack, characterized by their method of leveraging random hosts to ping the victim host. Essentially, an attacker executes these attacks as follows:
+We may also  observe numerous hosts sending ping requests to our single host, which exemplifies the fundamental characteristic of Smurf attacks.
 
-1. The attacker sends an ICMP request to active hosts, using a spoofed address that appears to be the victim host.
-2. The active hosts, believing the request is from the legitimate victim host, respond with ICMP replies.
-3. This activity can lead to resource exhaustion on the victim host, impacting its ability to function normally.
+![Pasted image 20240327115444](https://github.com/lm3nitro/Projects/assets/55665256/86e31a76-665f-4a77-99a4-4185194e1e37)
+
 
 ## Scenario 3
 
@@ -141,47 +142,41 @@ ICMP  spoof  same source and destination with incremental fragmentation
 
 ![Pasted image 20240326155509](https://github.com/lm3nitro/Projects/assets/55665256/b1912aaf-1906-4f18-8ab0-4d4a6ec36e75)
 
---------------
+## Scenario 6: Ping of Death
 
-SMURF Attacks are a notable distributed denial-of-service attack, in the nature that they operate through causing random hosts to ping the victim host back. Simply put, an attacker conducts these like the following:
+Recently, there have been reports of intermittent network disruptions and system crashes in one of your data centers. Suspecting a potential cyber attack, your team is tasked with investigating and identifying the source of these disruptions. Lets take a look at the pcap that we were provided with.
 
-1- The attacker will send an ICMP request to live hosts with a spoofed address of the victim host
-
-2- The live hosts will respond to the legitimate victim host with an ICMP reply
-
-3- This may cause resource exhaustion on the victim host 
-
-
-
-We might notice many different hosts pinging our single host, and in this case it represents the basic nature of SMURF attacks.
-
-
-![Pasted image 20240327115444](https://github.com/lm3nitro/Projects/assets/55665256/86e31a76-665f-4a77-99a4-4185194e1e37)
-
-
-One of the things we can look for in our traffic behaviour is an excessive amount of ICMP replies from a single host to our affected host. Sometimes attackers will include fragmentation and data on these ICMP requests to make the traffic volume larger.
-
-A Smurf Attack is a type of DDoS attack that exploits Internet Protocol (IP) broadcast addresses to broadcast a large number of requests to a target IP address from multiple sources. The attacker sends a large number of Internet Control Message Protocol (ICMP) echo requests (ping) to the broadcast address of a network, making it appear as if the requests are coming from the target's IP address. The requests are then transmitted to every device on the network, creating a massive amount of traffic that can overload the target's resources and cause it to crash.
-
-
-
-Identify Ping of death attacks.  
-
-
+```
+tcpdump -nr ping_threat_actor.pcap ip -vvvv -c 10
+```
 
 ![Pasted image 20240327133805](https://github.com/lm3nitro/Projects/assets/55665256/1cc06421-1df9-421e-aa47-fcd0218ef913)
 
+Here we can see ICMP Echo Request packets (pings) that are deliberately crafted to exceed the maximum size allowed by the IP protocol (MTU).
+These oversized ICMP packets may be fragmented into smaller fragments for transmission. Lets take a nother look at this behavior.
+
+```
+tcpdump -nr ping_threat_actor.pcap ip and net 192.168.11.0/24
+```
 
 ![Pasted image 20240327140433](https://github.com/lm3nitro/Projects/assets/55665256/6c46c6a6-d39c-4f4f-b237-f7b87d0ab818)
 
+Now, lets take a look at the payload of one of these larger ICMP packets.
 
-
-Inspecting payload:
+```
+tcpdump -nr ping_threat_actor.pcap ip and net 192.168.11.0/24 -vvXX -c 1
+```
 
 ![Pasted image 20240327140656](https://github.com/lm3nitro/Projects/assets/55665256/5d7fc950-bf1e-42ea-ae7d-6ba90d8e03e7)
 
-Another example tunnelling ICMP:
 
+## Scenario 7: ICMP Tunelling
+
+Threat actors may utilize ICMP tunneling for information extraction in sophisticated cyber attacks targeting organizations with valuable data assets. Vigilant monitoring, robust detection mechanisms, and proactive response strategies are essential in mitigating the risks posed by such covert communication channels. Here we can see an example of this in our pcap.
+
+```
+tcpdump -nr icmp_threat_actor.pcap icmp and not src net 192.168.0.0/16 -c1 -vvvA
+```
 
 ![Pasted image 20240327152345](https://github.com/lm3nitro/Projects/assets/55665256/c675b055-d525-423d-b2f0-5abea3fe6f6d)
 
