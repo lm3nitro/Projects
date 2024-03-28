@@ -32,7 +32,7 @@ Query:
 
 Lets take a look at the scenarios below. 
 
-## Scenario 1
+## Scenario 1: ICMP DDOS Attack
 
 As a security analyst, I was tasked with investigating a peculiar Packet Capture (PCAP) file that had been flagged due to unusual ICMP traffic patterns. The PCAP had been captured from a network segment that was typically quiet, used mainly for administrative purposes and internal communications.
 
@@ -77,7 +77,7 @@ tcpdump -nnr icmp_threat_actor.pcap host 111.43.91.100 -vv
 
 Based on the output, we see that the receiving node is being bombarded with a significant volume of fragmented ICMP random spoof requests from an internal source. This activity has the potential to cause a denial of service (DoS) on node 192.168.10.5.
 
-## Scenario 2
+## Scenario 2: Smurf Attack
 
 A Smurf Attack is a type of DDoS attack that capitalizes on Internet Protocol (IP) broadcast addresses for broadcasting numerous requests to a target IP address, originating from various sources. In this attack, the assailant dispatches a substantial quantity of Internet Control Message Protocol (ICMP) echo requests (commonly known as "pings") to the broadcast address of a network. This action is orchestrated to give the impression that these requests stem from the target's IP address. Subsequently, these requests are disseminated to every device within the network, generating a substantial volume of traffic that has the potential to overwhelm the target's resources, leading to system overload and potential crashes.
 
@@ -99,7 +99,7 @@ We may also  observe numerous hosts sending ping requests to our single host, wh
 ![Pasted image 20240327115444](https://github.com/lm3nitro/Projects/assets/55665256/86e31a76-665f-4a77-99a4-4185194e1e37)
 
 
-## Scenario 3
+## Scenario 3: Fragment Overlap Attack
 
 In a cybersecurity monitoring center, we noticed a sudden surge in network anomalies during a routine traffic analysis. Upon closer inspection, we identified a pattern of fragmented IP packets with overlapping payloads arriving at a critical server.
 
@@ -116,7 +116,7 @@ The initial indication of this behavior is the fragmentation of ICMP data, split
 A Fragment Overlap Attack, also referred to as an IP Fragmentation Attack, exploits the way Internet Protocol (IP) handles data transmission and processing. These attacks, categorized as Denial of Service (DoS) attacks, involve the attacker overloading a network by exploiting datagram fragmentation mechanisms.
  
 
-## Scenario 4
+## Scenario 4: Traceroute Anomoly
 
 In this scenario, we will take a look to see how we can identiry a suspicious host using tcproute in our network.
 
@@ -135,10 +135,10 @@ tcpdump -nr icmp_threat_actor.pcap host 192.168.194.149 and icmp -vv
 
 Threat actors often attempt to map out a network using tools like traceroute. One indicator to watch for includes a low Time-to-Live (TTL) value from the source, coupled with a small packet size and a significant increase in ICMP usage. Notably, the victim host maintains its actual TTL value during this probing.
 
-## Scenario 5
+## Scenario 5: ICMP Spoof Attack
 
 Identify: 
-ICMP  spoof  same source and destination with incremental fragmentation
+ICMP spoof same source and destination with incremental fragmentation
 
 ![Pasted image 20240326155509](https://github.com/lm3nitro/Projects/assets/55665256/b1912aaf-1906-4f18-8ab0-4d4a6ec36e75)
 
