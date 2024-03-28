@@ -180,3 +180,8 @@ Inspecting payload:
 
 ![Pasted image 20240327140656](https://github.com/lm3nitro/Projects/assets/55665256/5d7fc950-bf1e-42ea-ae7d-6ba90d8e03e7)
 
+Another example tunnelling ICMP:
+
+
+![Pasted image 20240327152345](https://github.com/lm3nitro/Projects/assets/55665256/c675b055-d525-423d-b2f0-5abea3fe6f6d)
+
