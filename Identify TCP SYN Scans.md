@@ -108,20 +108,20 @@ In a TCP fragmentation scan, it's crucial to consider the Flags field in the TCP
 
 ## Scenario 7: TCP Reset Scans
 
+If an adversary aims to disrupt our network with a denial-of-service attack, they might use a TCP RST Packet injection attack, also known as TCP connection termination. This attack involves spoofing the source address to the affected machine's IP, modifying TCP packets with the RST flag to terminate connections, and targeting ports currently in use by our machines.
+
+```
+tcpdump -nr 'tcp[13] & 4!=0' && ! net 10.0.0.0/8
+```
 ![Pasted image 20240327161657](https://github.com/lm3nitro/Projects/assets/55665256/404ceed5-b5a4-4de2-8c07-833817cddf31)
 
-Suppose an adversary wanted to cause denial-of-service conditions within our network. They might employ a simple TCP RST Packet injection attack, or TCP connection termination in simple terms.
+This attack involves several components:
 
-This attack is a combination of a few conditions:
++ The attacker spoofs the source address to match the affected machine's.
++ The attacker alters the TCP packet to include the RST flag, ending the connection.
++ The attacker designates the destination port to match one currently utilized by one of our machines.
 
-1-The attacker will spoof the source address to be the affected machine's
-2-The attacker will modify the TCP packet to contain the RST flag to terminate the connection
-3-The attacker will specify the destination port to be the same as one currently in use by one of our machines. 
-
-One way we can verify that this is indeed a TCP RST attack is through the physical address of the transmitter of these TCP RST packets. Suppose, the IP address 192.168.10.4 is registered to aa:aa:aa:aa:aa: in our network device list, and we notice an entirely different MAC sending these resets. 
-
-This would indicate malicious activity within our network, and we could conclude that this is likely a TCP RST Attack. However, it is worth noting that an attacker might spoof their MAC address in order to further evade detection. In this case, we could notice retransmissions and other issues as we saw in the ARP poisoning section.
-
+One way to identify a TCP RST attack is by comparing the physical address of the transmitter with our network device list; a mismatch, such as a different MAC address, indicates potential malicious activity. However, attackers can spoof MAC addresses to evade detection, leading to retransmissions and other anomalies similar to those seen in ARP poisoning incidents.
 
 ## Scenario 8: LAN-DoS Attack
 
