@@ -1,58 +1,112 @@
+# TCP Attacks and Anomoly Behavior
 
+TCP (Transmission Control Protocol) is a fundamental protocol used for reliable data transmission between devices. However, TCP is also a common target for various attacks aimed at disrupting communication, exploiting vulnerabilities, or gaining unauthorized access. When analyzing network anomalies, starting with the IP layer is crucial as it facilitates packet transfer using source and destination IP addresses. While the IP layer doesn't manage packet loss or tampering, higher layers like transport and application layers handle these issues.
 
-Filtering for tcp syn flags and port range to identify transport protocol abnormal behaviour
+Here we take a look at the most common TCP attacks, highlighting the importance of effective network security practices. Implementing firewalls, intrusion detection systems (IDS), access control lists (ACLs), and regular security audits are crucial in mitigating the risks associated with TCP attacks and maintaining a secure network environment.
+## Scenario 1: TCP SYN Scan
+
+Let's take a look at the folowing pcap and the abnormal TCP behavior. To start, we will Filter for tcp syn flags and ports (1-1024):
+
+```
+tcpdump -nr threat_actor.pcap tcp[tcpflags] == tcp-syn and portrange 1-1024
+```
 
 ![Pasted image 20240325120655](https://github.com/lm3nitro/Projects/assets/55665256/5faa423d-3c40-4433-b7e0-9b5b151f057c)
 
+It appears that the threat actor located at 192.168.11.62 is actively scanning the node 192.168.11.46 in search of open ports. We have observed a significant number of SYN (synchronize) requests being sent to 192.168.11.46 across multiple ports within a fraction of a second.
 
-Note: It seems like the threat actor on 192.168.11.62 is scanning the node 192.168.11.46 looking for open ports.  We can see the amount sync request going to 192.168.11.46 in many ports in fraction of a second.
+To pinpoint the extent of the synchronization requests sent by the threat actor, we need to narrow down our analysis to determine the exact number of SYN requests received by 192.168.11.46.
 
-Narrow down the host to identify how many synchronization request was send by the threat actor:
+```
+tcpdump -nr threat_actor.pcap src host 192.168.11.62 and dst host 192.168.11.62 and dst host 192.168.11.46 and tcp[tcpflags] == tcp-syn | wc -l
+```
 
 ![Pasted image 20240325122547](https://github.com/lm3nitro/Projects/assets/55665256/0454d367-56d4-49c1-bd12-5f51240e92fa)
 
+## Scenario 2: TCP ACK Scan
 
-Identify TCP ACK Scans:
+In the following pcap, we see the host 192.168.10.5 sending a large amount of ACK packets to our host 192.168.10.1. These packets have some unusual traffic as they are all originating from the same source port and going to the same IP address but in different ports. We can also see the the sequence number remains the same throughout all of the packets. 
+
+```
+tcpdump -nr threat_actor.pcap tcp[tcpflags] == tcp-ack and portrange 1-65365
+```
 
 ![Pasted image 20240327153755](https://github.com/lm3nitro/Projects/assets/55665256/443bb5d8-effc-44b1-9ced-dbbe2fc9ab57)
 
+When analyzing a TCP ACK scan using tcpdump, look for packets with the ACK flag set, targeting specific port ranges commonly used by the scanning device, and observe timing patterns, and response behaviors.
 
-Identify TCP Fin Scans:
+## Scenario 3: TCP FIN Scan
+
+A TCP FIN scan is a port scanning technique where the attacker sends TCP packets with the FIN (finish) flag set to closed ports on a target system. The goal of a FIN scan is to determine whether a port is open, closed, or filtered by examining the responses received from the target.
+
+Threat actors might use a TCP FIN scan for several reasons:
+
++ Stealthy Scanning
++ Port State Identification
++ Firewall Evasion
++ Operating System Fingerprinting
++ Anomaly Detection Testing
+
+Lets look at an example of this type of scan in the pcap below:
+
+```
+tcpdump -nr threat_actor.pcap tcp[tcpflags] == tcp-fin -c 20
+```
 
 ![Pasted image 20240327154309](https://github.com/lm3nitro/Projects/assets/55665256/1895a7b0-0a00-432a-badb-3eae4205eecf)
 
+Overall, TCP FIN scans are a reconnaissance tool used by threat actors to gather information about a target system's port states, network configuration, and potential vulnerabilities while attempting to remain undetected and evade security measures.
 
-Identify tcp Xmas scans: 
+## Scenario 4: TCP Xmas Scan
+
+A TCP Xmas scan is a port scanning technique where the attacker sends TCP packets with specific flags set to closed ports on a target system. The flags typically include the FIN (finish), PSH (push), and URG (urgent) flags, creating a packet with all flags "lit up" like a Christmas tree. 
+
+In the example below, we can take a look and see the behavior described above.
+
+```
+tcpdump -nr threat_actor.pcap 'tcp[13] & 32!=0' or tcp[13] & 1!=0' -c 20
+```
 
 ![Pasted image 20240327155225](https://github.com/lm3nitro/Projects/assets/55665256/a6434005-6b76-438c-b3a1-a6c7435cf034)
 
 
-Identify tcp Null Scans:
+## Scenario 5: TCP Null Scan
+
+Null scans with flags set to none are often used by attackers for reconnaissance purposes to gather information about a target system's port states and network configuration. They are considered stealthy because they do not initiate a full TCP connection or include any specific flag information that may trigger detection by intrusion detection systems (IDS) or firewall rules.
+
+Lets take a look to see what this looks like in a pcap and how we can identify it. 
+
+```
+tcpdump -nr threat_actor.pcap ! 'tcp[13] & 32!=0' or 'tcp[13] & 1!=0' -c 10
+```
 
 ![Pasted image 20240327155836](https://github.com/lm3nitro/Projects/assets/55665256/87b22a4a-5311-48c2-b4ce-18f3005eba0c)
 
+Unlike other port scanning techniques that may set specific flags to elicit responses from the target system, a null scan with flags set to none deliberately omits any flag information, creating a "null" or empty TCP packet.
 
-Identify TCP Fragmentation scans:
+## Scenario 6: TCP Fragmentation Scan
+
+A TCP fragmentation scan is a port scanning technique that exploits vulnerabilities in the TCP/IP packet fragmentation and reassembly process. In this type of scan, the attacker sends specially crafted fragmented packets to a target system, aiming to bypass firewall rules, evade intrusion detection systems (IDS), or identify open ports.
+
+Below is an example of this type of scan.
+
+```
+tcpdump -nr threat_actor.pcap and 'ip[6] = 32' -c 20
+```
 
 ![Pasted image 20240327160923](https://github.com/lm3nitro/Projects/assets/55665256/289bd943-eaba-4d52-8982-b7a1c1e31ffa)
 
+Now lets take a look at the following fields: Flags, TTL, and Length
+
+```
+tcpdump -nr threat_actor.pcap and 'ip[6] = 32' -c 3 -vvvA
+```
 
 ![Pasted image 20240327161124](https://github.com/lm3nitro/Projects/assets/55665256/82fa873b-031b-4f54-bfca-64be7e1a99fa)
 
-When we begin to look for network anomalies, we should always consider the IP layer. Simply put, the IP layer functions in its ability to transfer packets from one hop to another. This layer uses source and destination IP addresses for inter-host communications. When we examine this traffic, we can identify the IP addresses as they exist within the IP header of the packet.
+In a TCP fragmentation scan, it's crucial to consider the Flags field in the TCP header for identifying packet purpose and nature. Analyzing the TTL (Time to Live) field in the IP header provides insights into network path anomalies, while monitoring packet Length helps detect manipulation attempts and potential vulnerabilities in packet reassembly. These three aspects—Flags, TTL, and Length—are key factors to consider for effective analysis and mitigation of TCP fragmentation scan attacks.
 
-However, it is essential to note that this layer has no mechanisms to identify when packets are lost, dropped, or otherwise tampered with. Instead, we need to recognize that these mishaps are handled by the transport or application layers for this data. To dissect these packets, we can explore some of their fields:
-
-
-Length - IP header length: This field contains the overall length of the IP header.
-Total Length - IP Datagram/Packet Length: This field specifies the entire length of the IP packet, including 
-
-Fragment Offset: In many cases when a packet is large enough to be divided, the fragmentation offset will be set to provide instructions to reassemble the packet upon delivery to the destination host. 
-
-Source and Destination IP Addresses: These fields contain the origination (source) and destination IP addresses for the two communicating hosts. 
-
-
-Identify TCP Reset SCANs
+## Scenario 7: TCP Reset Scans
 
 ![Pasted image 20240327161657](https://github.com/lm3nitro/Projects/assets/55665256/404ceed5-b5a4-4de2-8c07-833817cddf31)
 
@@ -69,7 +123,8 @@ One way we can verify that this is indeed a TCP RST attack is through the physic
 This would indicate malicious activity within our network, and we could conclude that this is likely a TCP RST Attack. However, it is worth noting that an attacker might spoof their MAC address in order to further evade detection. In this case, we could notice retransmissions and other issues as we saw in the ARP poisoning section.
 
 
-Identify LAN-DoS attacks:
+## Scenario 8: LAN-DoS Attack
+
 ![Pasted image 20240327163548](https://github.com/lm3nitro/Projects/assets/55665256/7bbb6ac9-69b5-4084-b351-0b4c04b54a0d)
 
 
@@ -86,7 +141,7 @@ The attacker is scanning an internal  web sever on port 80 by spoofing the sourc
 ![Pasted image 20240327165516](https://github.com/lm3nitro/Projects/assets/55665256/32ba57a4-79de-4b4c-8b3d-09a13ee98f7f)
 
 
-Identity TCP hijacking:
+## Scenario 9: TCP Hijacking:
 
 ![Pasted image 20240327175000](https://github.com/lm3nitro/Projects/assets/55665256/e783d2df-687b-4e13-bab9-23239141d63e)
 
