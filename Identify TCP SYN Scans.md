@@ -125,21 +125,34 @@ One way to identify a TCP RST attack is by comparing the physical address of the
 
 ## Scenario 8: LAN-DoS Attack
 
+In a LAND attack, the attacker sends specially crafted packets with the same source and destination IP addresses as well as the same source and destination port numbers. This can confuse the target device's TCP/IP stack, causing it to enter a loop where it keeps processing the malicious packets, consuming CPU resources and potentially leading to a denial of service.
+
+Lets see an example below:
+```
+tcpdump -nr threat_actor.pcap 'tcp[13] $ 2!=0' and net 192.168.10.0/24 -c 20
+```
+
 ![Pasted image 20240327163548](https://github.com/lm3nitro/Projects/assets/55665256/7bbb6ac9-69b5-4084-b351-0b4c04b54a0d)
 
 
+Here we see traffic originating from the same ip address as the destination with incremental source ports. This makes it seem like the attack is coming from the target itself. Overall, timely identification of LAND attacks and other DoS attacks is crucial for maintaining network security, service availability, and business continuity.
 
-Identify TCP SYN SCAN with a  Random spoof source:
+## Scenario 9: TCP SYN flood with Port Sweep
+
+If the source ports in a TCP SYN flood attack with random spoofed addresses are incremented in value, it adds another layer of complexity to the attack and is often referred to as a "port sweep" or "port scan" within the context of the SYN flood. In this scenario, the attacker not only floods the target with a large number of TCP SYN packets but also varies the source ports in an incremental manner.
+```
+tcpdump -nr threat_actor.pcap 'tcp[13] $ 2!=0' and ! src net 192.168.10.0/24 -c 20
+```
 
 ![Pasted image 20240327164544](https://github.com/lm3nitro/Projects/assets/55665256/30414810-fef8-43bc-8f34-6f853194ad9d)
 
-
-
-
-The attacker is scanning an internal  web sever on port 80 by spoofing the source with ramdom IPs  to hide the source of the attack, Also it seens like the attacker inside the network since all the ramdom IPs have a TTL of 64
-
+The attacker is conducting a port scan on an internal web server, specifically targeting port 80, by employing source IP address spoofing to conceal the origin of the attack. Furthermore, the use of random source IP addresses makes it challenging to trace the attacker's actual location. Interestingly, all the randomly generated IP addresses used in the attack have a Time-To-Live (TTL) value of 64, indicating that the attacker might be operating from within the network. You can see the TTL in the output below.
+```
+tcpdump -nr threat_actor.pcap 'tcp[13] $ 2!=0' or tcp[13] & 16!=0' -vvvA -c 1
+```
 ![Pasted image 20240327165516](https://github.com/lm3nitro/Projects/assets/55665256/32ba57a4-79de-4b4c-8b3d-09a13ee98f7f)
 
+In summary, the combination of a TCP SYN flood with a port sweep and incoming packets having a TTL value of 64 suggests a sophisticated and potentially internal attack strategy. Understanding these behaviors is crucial for devising effective defense mechanisms and mitigating the impact of such attacks on network infrastructure and services.
 
 ## Scenario 9: TCP Hijacking:
 
