@@ -1,4 +1,4 @@
-# TCP Attacks and Anomoly Behavior
+# TCP Attacks and Anomalous Behavior
 
 TCP (Transmission Control Protocol) is a fundamental protocol used for reliable data transmission between devices. However, TCP is also a common target for various attacks aimed at disrupting communication, exploiting vulnerabilities, or gaining unauthorized access. When analyzing network anomalies, starting with the IP layer is crucial as it facilitates packet transfer using source and destination IP addresses. While the IP layer doesn't manage packet loss or tampering, higher layers like transport and application layers handle these issues.
 
