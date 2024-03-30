@@ -154,44 +154,38 @@ tcpdump -nr threat_actor.pcap 'tcp[13] $ 2!=0' or tcp[13] & 16!=0' -vvvA -c 1
 
 In summary, the combination of a TCP SYN flood with a port sweep and incoming packets having a TTL value of 64 suggests a sophisticated and potentially internal attack strategy. Understanding these behaviors is crucial for devising effective defense mechanisms and mitigating the impact of such attacks on network infrastructure and services.
 
-## Scenario 9: TCP Hijacking:
+## Scenario 10: TCP Hijacking
+
+TCP hijacking involves an attacker intercepting and manipulating TCP sessions to gain unauthorized access to sensitive information. The attacker exploits vulnerabilities such as predictable sequence numbers or weak authentication to impersonate legitimate parties and control the hijacked sessions, allowing for data theft or manipulation. 
 
 ![Pasted image 20240327175000](https://github.com/lm3nitro/Projects/assets/55665256/e783d2df-687b-4e13-bab9-23239141d63e)
 
+To maintain the hijacked session, the attacker must prevent ACKs from reaching the compromised machine, achieved by either delaying or blocking the ACK packets. This tactic is often used alongside ARP poisoning, leading to observable patterns in our traffic analysis.
 
-The attacker will need to block ACKs from reaching the affected machine in order to continue the hijacking. They do this either through delaying or blocking the ACK packets. As such, this attack is very commonly employed with ARP poisoning, and we might notice the following in our traffic analysis.
-
-Identify a large number of ARP requests coming from one node by monitoring ARP protocol.
+When looking at the pcap, we can identify a large number of ARP requests coming from one particular node when monitoring the ARP protocol.
 
 ![Pasted image 20240327200915](https://github.com/lm3nitro/Projects/assets/55665256/de3f64f9-2f34-4363-8d51-ca27913bd238)
 
-
-In this screenshot show all the ARP request send by  08:00:27:53:0c:ba to  ff:ff:ff:ff:ff:ff :
+In the screenshot below it shows all of the ARP requests send by  08:00:27:53:0c:ba to ff:ff:ff:ff:ff:ff:
 
 ![Pasted image 20240327202326](https://github.com/lm3nitro/Projects/assets/55665256/b380cb11-5a73-4c7e-b21a-a2ab71516b6b)
 
-
-The node is flooding the network with ARP request asking where every IP node is at :
-
+The node is flooding the network with ARP requests, seeking the MAC addresses corresponding to each IP node in the network.
 
 ![Pasted image 20240327202448](https://github.com/lm3nitro/Projects/assets/55665256/657d58ba-7fc6-4b7d-85eb-3dcd3d08c4c3)
 
-
- In this case we see that 192.168.10.5 is sending a large amount of request to all the nodes on the network with the MAC ending in 0c:ba , later the same node impersonate the node with the IP 192.168.10.1 with the MAC ending in b9:4f. At this point the attacker can impersonate any node on the network or create MIT attack to make every request to go trough the attacker.
-
+In this scenario, we observe that IP address 192.168.10.5 is generating a significant number of requests to all network nodes with MAC addresses ending in 0c:ba. Subsequently, the same IP address masquerades as 192.168.10.1 with a MAC address ending in b9:4f. This allows the attacker to impersonate any node on the network or conduct a Man-in-the-Middle (MITM) attack, directing all traffic through the attacker's system.
 
 ![Pasted image 20240327181139](https://github.com/lm3nitro/Projects/assets/55665256/59bdf099-e010-4eb0-a54c-a5ec4bbff16d)
 
-
-By actively monitor the target connection they want to hijack the attacker will then conduct sequence number prediction in order to inject their malicious packets in the correct order. During this injection they will spoof the source address to be the same as our affected machine.  
+By actively monitoring the target connection they intend to hijack, the attacker conducts sequence number prediction to inject malicious packets in the correct order. During this injection, they spoof the source address to appear identical to our affected machine.
 
 ![Pasted image 20240327174332](https://github.com/lm3nitro/Projects/assets/55665256/43ccec86-983b-4465-aa93-2b2263860f25)
 
+To detect TCP session hijacking via TCP header flags, it's crucial to actively monitor and analyze TCP traffic between hosts for any irregularities in the flags. For instance, unexpected or repetitive SYN, ACK, FIN, or RST flags may indicate an abnormal attempt to start, acknowledge, terminate, or reset a TCP connection without following the normal protocol. Similarly, discrepancies like mismatched or out-of-sequence sequence numbers could suggest packet injection or modification, while inconsistent or absent PSH or URG flags may signal attempts to tamper with data or packet priority. By vigilantly monitoring these TCP header flag anomalies, detecting potential malicious activities related to TCP session hijacking becomes feasible, allowing for effective protection against such attacks.
 
-To detect TCP session hijacking using TCP header flags, it is necessary to monitor and analyse the TCP traffic between the hosts for any anomalies or discrepancies in the TCP header flags. An example of this would be unexpected or repeated SYN, ACK, FIN, or RST flags, which can indicate an attempt to initiate, acknowledge, end, or reset a TCP connection without following the normal protocol. Additionally, mismatched or out-of-order sequence numbers may suggest an attempt to inject or modify the TCP packets. Inconsistent or missing PSH or URG flags may also point to an attempt to alter the data or priority of the TCP packets. By monitoring for these signs of TCP session hijacking using TCP header flags, it is possible to detect malicious activity and protect against potential attacks.
+To safeguard against TCP/IP hijacking, consider implementing various protective measures. Start by utilizing reputable antivirus software capable of detecting and preventing packet sniffing and injection. Additionally, employ encryption technologies like VPNs or SSL/TLS to encrypt your network traffic, enhancing its security. Lastly, maintain good security practices such as regularly updating software and using strong, unique passwords to fortify your defense against potential threats.
 
-Protect against TCP/IP hijacking:
+## Metigation
 
-To protect yourself against TCP/IP hijacking, you can take several measures. First, use a reliable antivirus software that can detect and prevent packet sniffing and injection. Second, use encryption technologies such as VPNs or SSL/TLS to encrypt your network traffic. Finally, practice good security hygiene, such as regularly updating your software and using strong passwords.
-
-
+To prevent TCP scanning and hijacking, implement a robust security strategy comprising firewall configurations that block unauthorized TCP traffic, intrusion detection/prevention systems for detecting and blocking malicious attempts, network segmentation with strong access controls, and strong authentication mechanisms such as multi-factor authentication and secure password policies. Additionally, employ encryption protocols like SSL/TLS for securing TCP communications, conduct regular security audits and vulnerability assessments, keep network devices and software up to date with patches, and continuously monitor network traffic and logs for anomalies. 
