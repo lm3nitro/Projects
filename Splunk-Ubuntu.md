@@ -26,6 +26,7 @@ Ubuntu
 
 ![Pasted image 20240331163727](https://github.com/lm3nitro/Projects/assets/55665256/c00077b2-1112-4d8c-bd2e-20150db8941d)
 
+![Pasted image 20240328164200](https://github.com/lm3nitro/Projects/assets/55665256/31fd05ba-429a-41b3-94af-28016d1585a7)
 
 
 
