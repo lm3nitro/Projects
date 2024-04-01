@@ -69,6 +69,7 @@ Now that we have our Splunk up and running, we will then need to install some ad
 
 ## Zeek Install
 
+The next part is the installation of Zeek. Before we can install Zeek, we need to ensure that we have the required dependencies.
 ![Pasted image 20240328175144](https://github.com/lm3nitro/Projects/assets/55665256/a26b5a58-04a7-457a-8a49-3de6d9e06ab6)
 
 >### Install Zeek Dependencies 
@@ -93,12 +94,14 @@ git clone --recurse-submodules https://github.com/zeek/zeek
 ./configure
 ```
 ![Pasted image 20240328180338](https://github.com/lm3nitro/Projects/assets/55665256/9907fe4a-dee7-4bf5-979f-59399e95430a)
+
+After configuring, run the make command to build Zeek:
 ```
 make
 ```
 ![Pasted image 20240328180401](https://github.com/lm3nitro/Projects/assets/55665256/cbadbe06-10d0-4b3f-9858-84f79194f12a)
 
->### Last command: 
+Lastly, we use the 'make install' to install Zeek to the specified prefix directory (in this case, /usr/local/zeek):
 ```
 make install
 ```
@@ -106,45 +109,48 @@ Output:
 
 ![Pasted image 20240328193130](https://github.com/lm3nitro/Projects/assets/55665256/823c800a-a775-40ac-9f39-c62c2933639e)
 
+Once that is complete, we can use the the following command to verify the version of Zeek that is installed:
+```
+./zeek -h
+```
 ![Pasted image 20240328193023](https://github.com/lm3nitro/Projects/assets/55665256/16d2314f-a2a5-45fd-b823-8ed79f36d6e6)
 
->### Change format to Json
+The following modifications to Zeek's configuration are optional:
 
-Json format: 
-option persistance jsoin format 
+>### Change Zeek logs to output in JSON format persistently, you can use Zeek's built-in functionality to output logs in JSON format directly.
 
+Edit zeekctl.cfg and add the following:
+```
 @load frameworks/files/extract-all-files  
 redef ignore_checksums=T;  
 redef LogAscii::use_json=T;
-
->### Offloading:
+```
+For offloading:
 >
 for i in rx tx sg tso ufo gso gro lro; do ethtool -K enp0s8 $i off; done 
 
->### After zeek is installed, which is by default to the target directory /usr/local/zeek/bin. Execute the following command to add the _/opt/zeek/bin_ directory to the system **PATH** via _~/.bashrc_ file.
+After zeek is installed, which is by default to the target directory /usr/local/zeek/bin. Execute the following command to add the _/opt/zeek/bin_ directory to the system **PATH** via _~/.bashrc_ file.
 ```
 echo "export PATH=$PATH:/usr/local/zeek/bin" >> ~/.bashrc
 ```
->### Next, reload the _~/.bashrc_ file and check the system **PATH** variable using the following command. You should see the _/opt/zeek/bin_ directory within the system PATH.
+Next, reload the _~/.bashrc_ file and check the system **PATH** variable using the following command. You should see the _/opt/zeek/bin_ directory within the system PATH.
 ```
 source ~/.bashrc  
 echo $PATH
 ```
 
->### Read pcaps files  in zeek output in json format:
+To read pcaps files with zeek and have the output in json format:
 
 ```
 zeek -C -r ../tm1t.pcap LogAscii::use_json=T
 ```
-no include:
-
-More information about Zeek log formats: 
+More information about Zeek log formats can be found in the link below:
 
 https://github.com/zeek/zeek-docs/blob/master/log-formats.rst
 
-include: 
+Setting the correct time zone in Zeek is important for accurate log timestamps and facilitating correlation with other logs.
 
-Configuration of time zone:
+>### Configuration of time zone:
 ```
 timedatectl list-timezones
 ```
