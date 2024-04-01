@@ -158,17 +158,15 @@ timedatectl list-timezones
 timedatectl set-timezone UTC
 ```
 
->### Sending zeek logs to splunk 
-
-zeek conn log json format:
+We can now see how the zeek conn.log in json format in Splunk:
 
 ![Pasted image 20240328212902](https://github.com/lm3nitro/Projects/assets/55665256/0584be89-ba59-4aec-ae76-69e872eed795)
 
-zeek ja3 hash json format: 
+Here we can also see the ja3 hashes json format: 
 
 ![Pasted image 20240331164157](https://github.com/lm3nitro/Projects/assets/55665256/8188f8e7-9a8e-4814-8225-ccffaa01d00d)
 
-## Install Suricata:
+## Install Suricata
 
 Setup to install the latest stable Suricata from Personal Package Archives (PPA)
 ```
