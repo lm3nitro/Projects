@@ -1,6 +1,8 @@
 ## Install Suricata
 
-Next, I will install the latest stable version of Suricata from Personal Package Archives (PPA)
+Suricate is an open source IDS/IPS. Suricata currently supports a wide range of network protocols and file types. This provides a comprehensive visibility into network traffic for effective threat hunting and analysis. I also like that the rules can be fine tuned to fit your environment and needs.
+
+Here I installed the latest stable version of Suricata from Personal Package Archives (PPA)
 ```
 sudo apt-get install software-properties-common
 sudo add-apt-repository ppa:oisf/suricata-stable
