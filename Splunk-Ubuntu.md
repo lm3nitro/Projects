@@ -72,7 +72,7 @@ Now that we have our Splunk up and running, we will then need to install some ad
 The next part is the installation of Zeek. Before we can install Zeek, we need to ensure that we have the required dependencies.
 ![Pasted image 20240328175144](https://github.com/lm3nitro/Projects/assets/55665256/a26b5a58-04a7-457a-8a49-3de6d9e06ab6)
 
->### Install Zeek Dependencies 
+>##### Install Zeek Dependencies 
 ```
 sudo apt-get install python3-git python3-semantic-version
 ```
@@ -83,13 +83,13 @@ sudo apt-get install cmake make gcc g++ flex libfl-dev bison libpcap-dev libssl-
 ```
 ![Pasted image 20240328175953](https://github.com/lm3nitro/Projects/assets/55665256/f8e9ca90-36a5-488a-9448-b089fb0f5651)
 
->### Retrieving the Sources
+>##### Retrieving the Sources
 ```
 git clone --recurse-submodules https://github.com/zeek/zeek
 ```
 ![Pasted image 20240328175850](https://github.com/lm3nitro/Projects/assets/55665256/4b3770f6-f7f7-4315-815c-30f530353c1f)
 
->### Configuring and Building
+>##### Configuring and Building
 ```
 ./configure
 ```
@@ -117,7 +117,7 @@ Once that is complete, we can use the the following command to verify the versio
 
 The following modifications to Zeek's configuration are optional:
 
->### Change Zeek logs to output in JSON format persistently, you can use Zeek's built-in functionality to output logs in JSON format directly.
+>##### Change Zeek logs to output in JSON format persistently, you can use Zeek's built-in functionality to output logs in JSON format directly.
 
 Edit zeekctl.cfg and add the following:
 ```
@@ -126,9 +126,11 @@ redef ignore_checksums=T;
 redef LogAscii::use_json=T;
 ```
 For offloading:
->
-for i in rx tx sg tso ufo gso gro lro; do ethtool -K enp0s8 $i off; done 
-
+```
+for i in rx tx sg tso ufo gso gro lro; do
+    ethtool -K enp0s8 $i off
+done
+```
 After zeek is installed, which is by default to the target directory /usr/local/zeek/bin. Execute the following command to add the _/opt/zeek/bin_ directory to the system **PATH** via _~/.bashrc_ file.
 ```
 echo "export PATH=$PATH:/usr/local/zeek/bin" >> ~/.bashrc
@@ -150,7 +152,7 @@ https://github.com/zeek/zeek-docs/blob/master/log-formats.rst
 
 Setting the correct time zone in Zeek is important for accurate log timestamps and facilitating correlation with other logs.
 
->### Configuration of time zone:
+>##### Configuration of time zone:
 ```
 timedatectl list-timezones
 ```
@@ -168,7 +170,7 @@ Here we can also see the ja3 hashes json format:
 
 ## Install Suricata
 
-Setup to install the latest stable Suricata from Personal Package Archives (PPA)
+Next, I will install the latest stable version of Suricata from Personal Package Archives (PPA)
 ```
 sudo apt-get install software-properties-common
 sudo add-apt-repository ppa:oisf/suricata-stable
@@ -176,34 +178,37 @@ sudo apt-get update
 sudo apt-get install suricata
 ```
 
->### Upgrading Suricata:
+>##### Upgrade Suricata:
 ```
 sudo apt-get update
 sudo apt-get upgrade suricata
 ```
->### Sending logs to splunk:
+Once I installed and upgraded suricata, I then began to send logs to Splunk.
 
 Flow:
 
 ![Pasted image 20240331164810](https://github.com/lm3nitro/Projects/assets/55665256/0d0d8eba-1f96-4317-9f92-fd9af9c9248b)
 
-Alert :
+Alerts:
+
 ![Pasted image 20240331164627](https://github.com/lm3nitro/Projects/assets/55665256/62b89c67-a98e-43e0-8c26-eed13331cfd9)
 
-Flow in detail json format: 
+Flow in detailed json format: 
 
 ![Pasted image 20240331164454](https://github.com/lm3nitro/Projects/assets/55665256/c5f548c7-b219-4d84-b1a7-b0c95382bc78)
 
 
 ## Palo Alto
 
+Now that I have Splunk installed and it is receiving traffic from Zeek and Suricata, I now want to also send my Firewall logs to Splunk as well. Here is the initial login page:
+
 ![Pasted image 20240331161322](https://github.com/lm3nitro/Projects/assets/55665256/d60a2e2a-7304-4c27-bee4-da7bba51e82d)
 
-Traffic:
+Here I can see the traffic form my network:
 
 ![Pasted image 20240331161734](https://github.com/lm3nitro/Projects/assets/55665256/70b88005-1b92-4e9d-b659-7e9c53a27d98)
 
-Dashboard:
+The dashboard:
 
 ![Pasted image 20240331161015](https://github.com/lm3nitro/Projects/assets/55665256/4fe525ae-cd0a-4017-8acb-92a0499e98f9)
 
@@ -211,39 +216,43 @@ General Info:
 
 ![Pasted image 20240331160743](https://github.com/lm3nitro/Projects/assets/55665256/de9cb3dd-bcb1-4778-b1cc-307d3fb2bb69)
 
-Set up indexes for Palo Alto and pfesense in Splunk
+I Splunk I set up 2 seperate indexes for each of my Firewalls (Palo Alto and PfSense)
 
 ![Pasted image 20240331153812](https://github.com/lm3nitro/Projects/assets/55665256/c9c3ffb1-dadd-4f56-831e-0e5b5587d0f0)
 
-Verify Logs:
+I also verified that I was indeed getting logs to Splunk:
 
 ![Pasted image 20240331152753](https://github.com/lm3nitro/Projects/assets/55665256/6d141fe7-4724-467a-bb56-93caa4ae97e2)
 
 ![Pasted image 20240331152325](https://github.com/lm3nitro/Projects/assets/55665256/8d1dcac5-1bd7-4564-af18-df9313c08093)
 
-Verify Index is receiving information:
+Also, I can see that my indexes are getting information:
 
 ![Pasted image 20240331150634](https://github.com/lm3nitro/Projects/assets/55665256/508547e7-7cac-4a42-9b3b-155c43669283)
 
-Search:
+Here I can see that I am getting application detection form the NGFW. 
 
 ![Pasted image 20240331151611](https://github.com/lm3nitro/Projects/assets/55665256/cf3ac96f-6633-40fa-89f3-0df88350a48e)
 
-Events:
+Application detection information from a Next-Generation Firewall (NGFW) is crucial for several reasons:
+
+- Granular Control
+- Security Policy Enforcement
+- Threat Detection
+- Visibility and Analytics
+- Compliance and Reporting
+  
+I can also see the amount of events that have been generated in Splunk:
 
 ![Pasted image 20240331153221](https://github.com/lm3nitro/Projects/assets/55665256/6f5a0928-7471-4ca2-840b-f3ed33af272f)
 
-Check CPU:
+I checked and verified the CPU as well to ensure efficient system performance:
 
 ![Pasted image 20240331153652](https://github.com/lm3nitro/Projects/assets/55665256/b77b171b-9ad3-47f0-8d9f-abdaf75ce3dc)
 
 ![Pasted image 20240331153506](https://github.com/lm3nitro/Projects/assets/55665256/93382723-6afa-4c29-96bb-6881d1b768b1)
 
 ![Pasted image 20240331153549](https://github.com/lm3nitro/Projects/assets/55665256/f516253e-725a-4fab-839f-0fd8fccfb12c)
-
-Logs:
-
-![Pasted image 20240331152232](https://github.com/lm3nitro/Projects/assets/55665256/674cf9fa-0ec1-4c2c-a9ce-08425280f80a)
 
 
 ###pfsense:
