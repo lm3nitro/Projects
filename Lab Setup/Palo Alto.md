@@ -42,8 +42,4 @@ Application detection information from a Next-Generation Firewall (NGFW) is cruc
 - Visibility and Analytics
 - Compliance and Reporting
   
-I also checked to see the amount of events that had been generated in Splunk:
-
-![Pasted image 20240331153221](https://github.com/lm3nitro/Projects/assets/55665256/6f5a0928-7471-4ca2-840b-f3ed33af272f)
-
 
