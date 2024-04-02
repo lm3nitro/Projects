@@ -50,13 +50,14 @@ Once that is complete, we can use the the following command to verify the versio
 The following modifications to Zeek's configuration are optional:
 
 >##### Change Zeek Cut logs to output in JSON format persistently, you can use Zeek's built-in functionality to output logs in JSON format directly.
-
-Edit zeekctl.cfg and add the following:
+I personally like to output the logs in json format, I feel that it improves the readability and accessibility of the logs when seen in Splunk. To do so, I edited the zeekctl.cfg and added the following:
 ```
 @load frameworks/files/extract-all-files  
 redef ignore_checksums=T;  
 redef LogAscii::use_json=T;
 ```
+Offloading in Zeek means shifting some of its work, like heavy calculations or storage tasks, to other systems or specialized hardware. This helps Zeek run more efficiently by letting it focus on important security monitoring and analysis.
+
 For offloading:
 ```
 for i in rx tx sg tso ufo gso gro lro; do
@@ -72,7 +73,6 @@ Next, reload the _~/.bashrc_ file and check the system **PATH** variable usi
 source ~/.bashrc  
 echo $PATH
 ```
-
 To read pcaps files with zeek and have the output in json format:
 
 ```
@@ -100,3 +100,4 @@ Here we can also see the ja3 hashes json format:
 
 ![Pasted image 20240331164157](https://github.com/lm3nitro/Projects/assets/55665256/8188f8e7-9a8e-4814-8225-ccffaa01d00d)
 
+JA3 hashes are very important in threat hunting because they provide a way to fingerprint TLS connections. This allows security analysts to detect and analyze potential threats such as malicious traffic, anomalous behavior, or suspicious SSL/TLS configurations. 
