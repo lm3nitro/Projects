@@ -1,6 +1,6 @@
 ## Install Ubuntu 22.04
 
-For my lab, I decided to use Ubuntu 22.04 to install Splunk, Zeek, and Suricata. To begin, I used VMWare Workstation and set to following perameters:
+For my lab, I decided to use Ubuntu 22.04 to install Splunk, Zeek, and Suricata. To begin, I am using VMWare Workstation 16 Pro and set the VM to the following perameters:
 
 ![Pasted image 20240328164129](https://github.com/lm3nitro/Projects/assets/55665256/774bffde-b410-41df-9cd9-b49beb1a3fc1)
 
@@ -13,13 +13,13 @@ Here is the set-up for the hostname and configuring SSH during the initial insta
 ![Pasted image 20240328170651](https://github.com/lm3nitro/Projects/assets/55665256/fb8ccf56-4dea-4e21-8d67-56af9ac31421)
 
 ## SSH via SecureCRT
-Now that my VM is up and Ubuntu is set-up, I then used SecureCRT to SSH into the server:
+Now that my Ubuntu VM is up and running, I then used SecureCRT to SSH into the server:
 
 ![Pasted image 20240328172017](https://github.com/lm3nitro/Projects/assets/55665256/4180bddb-898c-4a31-99f3-b20c3791a5ac)
 
 ## Install Splunk
 
-Now I need to install Splunk. To begin with the install, I went to splunk to download the latest version:
+To start of with my lab, I will install Splunk To begin the install, I went to verify the latest version:
 
 ![Pasted image 20240328164010](https://github.com/lm3nitro/Projects/assets/55665256/cfb65c66-c85c-4bb1-a35a-85b11e02bd5f)
 
@@ -43,22 +43,23 @@ I also verified that all the logs were generated for Splunk:
 
 ![Pasted image 20240328172334](https://github.com/lm3nitro/Projects/assets/55665256/4de4e42a-517e-467b-bbf4-2fc6821a3f0d)
 
-I then navigated to my Splunk via web browser on port 8000 and was presented with the login screen:
+I then navigated to my Splunk via the web browser on port 8000 and was presented with the login screen:
 
 ![Pasted image 20240331163727](https://github.com/lm3nitro/Projects/assets/55665256/c00077b2-1112-4d8c-bd2e-20150db8941d)
 
-Now that Splunk is installed, I wanted to login and check the CPU and verify that everything is working properly.
+I will go ahead and check the CPU and verify that everything is working properly.
 
 ## Splunk CPU
 
-Here is the the CPU whe I initially installed Splunk. Everything looks good.
+Here is the the CPU when I initially installed Splunk. Everything is good.
 ![Pasted image 20240331163921](https://github.com/lm3nitro/Projects/assets/55665256/6336f681-7a6f-4847-b96d-f29559a28753)
 
 ![Pasted image 20240331163943](https://github.com/lm3nitro/Projects/assets/55665256/d9db6d4d-e406-4534-806c-873a7ca71f57)
 
 ## Download and Install Add-Ons for Splunk
 
-Now that we have our Splunk up and running, we will then need to install some add-ons. Add-ons extend Splunk's functionality and allows for integration with various data sources and technologies. In my lab, I will be collecting data from Zeek, Palo Alto, Suricata, and Squid Proxy.
+Now that I have my Splunk instance up and running, I then proceeded to install some add-ons. Add-ons extend Splunk's functionality and allows for integration with various data sources and technologies. In my lab, I will be collecting data from Zeek, Palo Alto, Suricata, and Squid Proxy.
+
 ![Pasted image 20240328174901](https://github.com/lm3nitro/Projects/assets/55665256/f6998ff3-8dd6-4997-835e-dd9bccba8cd9)
 
 ![Pasted image 20240328175008](https://github.com/lm3nitro/Projects/assets/55665256/b9655edc-a64f-4878-aaaa-86258f723959)
@@ -67,12 +68,13 @@ Now that we have our Splunk up and running, we will then need to install some ad
 
 ![Pasted image 20240328174937](https://github.com/lm3nitro/Projects/assets/55665256/d8b13770-5550-406b-853b-3e73f2fda0bd)
 
-## Zeek Install
+## Zeek Cut Install
 
-The next part is the installation of Zeek. Before we can install Zeek, we need to ensure that we have the required dependencies.
+The next part is the installation of Zeek Cut. Zeek Cut is a command-line tool that extracts specific fields or data from Zeek logs, allowing for precise data extraction and analysis. Before I can install Zeek Cut, I need to ensure that I have the required dependencies.
+
 ![Pasted image 20240328175144](https://github.com/lm3nitro/Projects/assets/55665256/a26b5a58-04a7-457a-8a49-3de6d9e06ab6)
 
->##### Install Zeek Dependencies 
+>##### Install Zeek Cut Dependencies 
 ```
 sudo apt-get install python3-git python3-semantic-version
 ```
@@ -117,7 +119,7 @@ Once that is complete, we can use the the following command to verify the versio
 
 The following modifications to Zeek's configuration are optional:
 
->##### Change Zeek logs to output in JSON format persistently, you can use Zeek's built-in functionality to output logs in JSON format directly.
+>##### Change Zeek Cut logs to output in JSON format persistently, you can use Zeek's built-in functionality to output logs in JSON format directly.
 
 Edit zeekctl.cfg and add the following:
 ```
@@ -131,7 +133,7 @@ for i in rx tx sg tso ufo gso gro lro; do
     ethtool -K enp0s8 $i off
 done
 ```
-After zeek is installed, which is by default to the target directory /usr/local/zeek/bin. Execute the following command to add the _/opt/zeek/bin_ directory to the system **PATH** via _~/.bashrc_ file.
+After Zeek Cut is installed, which is by default to the target directory /usr/local/zeek/bin. Execute the following command to add the _/opt/zeek/bin_ directory to the system **PATH** via _~/.bashrc_ file.
 ```
 echo "export PATH=$PATH:/usr/local/zeek/bin" >> ~/.bashrc
 ```
@@ -150,7 +152,7 @@ More information about Zeek log formats can be found in the link below:
 
 https://github.com/zeek/zeek-docs/blob/master/log-formats.rst
 
-Setting the correct time zone in Zeek is important for accurate log timestamps and facilitating correlation with other logs.
+Setting the correct time zone in Zeek Cut is important for accurate log timestamps and facilitating correlation with other logs.
 
 >##### Configuration of time zone:
 ```
@@ -200,11 +202,11 @@ Flow in detailed json format:
 
 ## Palo Alto
 
-Now that I have Splunk installed and it is receiving traffic from Zeek and Suricata, I now want to also send my Firewall logs to Splunk as well. Here is the initial login page:
+Now that I have Splunk installed and it is receiving traffic from Zeek and Suricata, I now want to also send my Firewall logs to Splunk as well. Here is the initial login page for my Palo Alto 220:
 
 ![Pasted image 20240331161322](https://github.com/lm3nitro/Projects/assets/55665256/d60a2e2a-7304-4c27-bee4-da7bba51e82d)
 
-Here I can see the traffic form my network:
+Here I can see the traffic from my network:
 
 ![Pasted image 20240331161734](https://github.com/lm3nitro/Projects/assets/55665256/70b88005-1b92-4e9d-b659-7e9c53a27d98)
 
@@ -216,7 +218,7 @@ General Info:
 
 ![Pasted image 20240331160743](https://github.com/lm3nitro/Projects/assets/55665256/de9cb3dd-bcb1-4778-b1cc-307d3fb2bb69)
 
-I Splunk I set up 2 seperate indexes for each of my Firewalls (Palo Alto and pfSense)
+In Splunk I set up 2 seperate indexes for each of my Firewalls (Palo Alto and pfSense).
 
 ![Pasted image 20240331153812](https://github.com/lm3nitro/Projects/assets/55665256/c9c3ffb1-dadd-4f56-831e-0e5b5587d0f0)
 
@@ -230,7 +232,7 @@ Also, I can see that my indexes are getting information:
 
 ![Pasted image 20240331150634](https://github.com/lm3nitro/Projects/assets/55665256/508547e7-7cac-4a42-9b3b-155c43669283)
 
-Here I can see that I am getting application detection form the NGFW. 
+Here I can see that I am getting application detection from the NGFW. 
 
 ![Pasted image 20240331151611](https://github.com/lm3nitro/Projects/assets/55665256/cf3ac96f-6633-40fa-89f3-0df88350a48e)
 
@@ -242,7 +244,7 @@ Application detection information from a Next-Generation Firewall (NGFW) is cruc
 - Visibility and Analytics
 - Compliance and Reporting
   
-I can also see the amount of events that have been generated in Splunk:
+I also checked to see the amount of events that had been generated in Splunk:
 
 ![Pasted image 20240331153221](https://github.com/lm3nitro/Projects/assets/55665256/6f5a0928-7471-4ca2-840b-f3ed33af272f)
 
@@ -257,39 +259,51 @@ I checked and verified the CPU as well to ensure efficient system performance:
 
 ## pfSense:
 
-I also have a pfSense Firewall in my home network.
+As previously mentioned, I also have a pfSense Firewall in my home network.
 
 ![Pasted image 20240331162214](https://github.com/lm3nitro/Projects/assets/55665256/8a3abddc-3d87-4557-aa06-f43a30f10a11)
 
-Here we can see the system information:
+Here we can see the system information. I installed this firewall back in December and it is currently running version 23.09.1:
 
 ![Pasted image 20240331161939](https://github.com/lm3nitro/Projects/assets/55665256/649aa069-e0a3-4928-a6d2-353c5a7da1d6)
 
-Here is the Dashboard:
+Here is the initial dashboard upon logging into the firewall:
 
 ![Pasted image 20240331155455](https://github.com/lm3nitro/Projects/assets/55665256/0b322e24-055c-46f1-8913-2bd2b0501425)
 
 Here are the Rules that I currently have in place:
 
 ![Pasted image 20240331155547](https://github.com/lm3nitro/Projects/assets/55665256/6dd0ad15-9d96-4eb0-bf3a-7c06fc1c92d8)
+![Pasted image 20240331155659](https://github.com/lm3nitro/Projects/assets/55665256/eb3dcda9-6d21-481d-b57a-4f0172e526c0)
 
-NAT is also configured:
+I also have NAT configured:
 
 ![Pasted image 20240331155824](https://github.com/lm3nitro/Projects/assets/55665256/401e6649-223e-464b-a678-b680ff1e98b3)
 
-Another view of the set of rules:
-
-![Pasted image 20240331155659](https://github.com/lm3nitro/Projects/assets/55665256/eb3dcda9-6d21-481d-b57a-4f0172e526c0)
-
-Here are the pfSense logs that I am sending to Splunk:
+Here's a view of the pfSense logs that I am sending to Splunk. This is how they look in the firewall:
 
 ![Pasted image 20240331155954](https://github.com/lm3nitro/Projects/assets/55665256/65d7fd56-6185-4f66-9799-38f1c10866c1)
 
-Splunk info:
+And this is the view form Splunk:
 
 ![Pasted image 20240331151819](https://github.com/lm3nitro/Projects/assets/55665256/61aa89c4-c610-440c-b96b-f3a5e98483b6)
 
 PfSense fields in Splunk:
 
 ![Pasted image 20240331151902](https://github.com/lm3nitro/Projects/assets/55665256/a5ef5870-0fa3-4bbd-8bf5-4d215f358144)
+
+- Source IP and Destination IP
+- Port Numbers
+- Protocol
+- Action
+- Time and Date
+- Interface
+- TTL and more...
+
+
+
+
+
+
+
 
