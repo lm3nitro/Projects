@@ -216,7 +216,7 @@ General Info:
 
 ![Pasted image 20240331160743](https://github.com/lm3nitro/Projects/assets/55665256/de9cb3dd-bcb1-4778-b1cc-307d3fb2bb69)
 
-I Splunk I set up 2 seperate indexes for each of my Firewalls (Palo Alto and PfSense)
+I Splunk I set up 2 seperate indexes for each of my Firewalls (Palo Alto and pfSense)
 
 ![Pasted image 20240331153812](https://github.com/lm3nitro/Projects/assets/55665256/c9c3ffb1-dadd-4f56-831e-0e5b5587d0f0)
 
@@ -255,33 +255,33 @@ I checked and verified the CPU as well to ensure efficient system performance:
 ![Pasted image 20240331153549](https://github.com/lm3nitro/Projects/assets/55665256/f516253e-725a-4fab-839f-0fd8fccfb12c)
 
 
-###pfsense:
+## pfSense:
 
-Login:
+I also have a pfSense Firewall in my home network.
 
 ![Pasted image 20240331162214](https://github.com/lm3nitro/Projects/assets/55665256/8a3abddc-3d87-4557-aa06-f43a30f10a11)
 
-System information:
+Here we can see the system information:
 
 ![Pasted image 20240331161939](https://github.com/lm3nitro/Projects/assets/55665256/649aa069-e0a3-4928-a6d2-353c5a7da1d6)
 
-Dashboard:
+Here is the Dashboard:
 
 ![Pasted image 20240331155455](https://github.com/lm3nitro/Projects/assets/55665256/0b322e24-055c-46f1-8913-2bd2b0501425)
 
-Rules:
+Here are the Rules that I currently have in place:
 
 ![Pasted image 20240331155547](https://github.com/lm3nitro/Projects/assets/55665256/6dd0ad15-9d96-4eb0-bf3a-7c06fc1c92d8)
 
-Nat:
+NAT is also configured:
 
 ![Pasted image 20240331155824](https://github.com/lm3nitro/Projects/assets/55665256/401e6649-223e-464b-a678-b680ff1e98b3)
 
-Rules:
+Another view of the set of rules:
 
 ![Pasted image 20240331155659](https://github.com/lm3nitro/Projects/assets/55665256/eb3dcda9-6d21-481d-b57a-4f0172e526c0)
 
-Logs:
+Here are the pfSense logs that I am sending to Splunk:
 
 ![Pasted image 20240331155954](https://github.com/lm3nitro/Projects/assets/55665256/65d7fd56-6185-4f66-9799-38f1c10866c1)
 
