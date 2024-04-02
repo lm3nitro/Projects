@@ -77,9 +77,7 @@ I checked and verified the CPU as well to ensure efficient system performance:
 
 ![Pasted image 20240331153549](https://github.com/lm3nitro/Projects/assets/55665256/f516253e-725a-4fab-839f-0fd8fccfb12c)
 
-I also checked to see the amount of events that had been generated in Splunk:
+I can also see the amount of events that had been sent to Splunk from the various sources:
 
 ![Pasted image 20240331153221](https://github.com/lm3nitro/Projects/assets/55665256/6f5a0928-7471-4ca2-840b-f3ed33af272f)
-
-
 
