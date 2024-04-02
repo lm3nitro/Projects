@@ -1,6 +1,6 @@
 ## Install Ubuntu 22.04
 
-For my lab, I decided to use Ubuntu 22.04 to install Splunk, Zeek, and Suricata. To begin, I am using VMWare Workstation 16 Pro and set the VM to the following perameters:
+For my lab, I decided to use Ubuntu 22.04 to install Splunk, Zeek, and Suricata. To begin, I will set-up my VM and install Splunk. I am using VMWare Workstation 16 Pro and set the VM to the following perameters:
 
 ![Pasted image 20240328164129](https://github.com/lm3nitro/Projects/assets/55665256/774bffde-b410-41df-9cd9-b49beb1a3fc1)
 
@@ -76,5 +76,10 @@ I checked and verified the CPU as well to ensure efficient system performance:
 ![Pasted image 20240331153506](https://github.com/lm3nitro/Projects/assets/55665256/93382723-6afa-4c29-96bb-6881d1b768b1)
 
 ![Pasted image 20240331153549](https://github.com/lm3nitro/Projects/assets/55665256/f516253e-725a-4fab-839f-0fd8fccfb12c)
+
+I also checked to see the amount of events that had been generated in Splunk:
+
+![Pasted image 20240331153221](https://github.com/lm3nitro/Projects/assets/55665256/6f5a0928-7471-4ca2-840b-f3ed33af272f)
+
 
 
