@@ -67,3 +67,14 @@ Now that I have my Splunk instance up and running, I then proceeded to install s
 ![Pasted image 20240328175040](https://github.com/lm3nitro/Projects/assets/55665256/9e119adc-8730-44e1-b744-5baddc674865)
 
 ![Pasted image 20240328174937](https://github.com/lm3nitro/Projects/assets/55665256/d8b13770-5550-406b-853b-3e73f2fda0bd)
+
+
+I checked and verified the CPU as well to ensure efficient system performance:
+
+![Pasted image 20240331153652](https://github.com/lm3nitro/Projects/assets/55665256/b77b171b-9ad3-47f0-8d9f-abdaf75ce3dc)
+
+![Pasted image 20240331153506](https://github.com/lm3nitro/Projects/assets/55665256/93382723-6afa-4c29-96bb-6881d1b768b1)
+
+![Pasted image 20240331153549](https://github.com/lm3nitro/Projects/assets/55665256/f516253e-725a-4fab-839f-0fd8fccfb12c)
+
+
