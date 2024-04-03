@@ -1,6 +1,6 @@
 ## Zeek Cut Install
 
-The next part is the installation of Zeek Cut. Zeek Cut is a command-line tool that extracts specific fields or data from Zeek logs, allowing for precise data extraction and analysis. Before I can install Zeek Cut, I need to ensure that I have the required dependencies.
+The next part is the installation of Zeek as a command line tool. The zeek tool  extracts specific fields or data from Zeek logs, allowing for precise data extraction and analysis. Before I can install Zeek Cut, I need to ensure that I have the required dependencies.
 
 ![Pasted image 20240328175144](https://github.com/lm3nitro/Projects/assets/55665256/a26b5a58-04a7-457a-8a49-3de6d9e06ab6)
 
