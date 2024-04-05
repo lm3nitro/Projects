@@ -47,4 +47,4 @@ Application detection information from a Next-Generation Firewall (NGFW) is cruc
 - Visibility and Analytics
 - Compliance and Reporting
 
-Overall, I highly recommend having a firewall 
+Overall, I highly recommend having a firewall in your home network. It not only provides controlled access to the internet, allowing you to manage which applications and services can communicate externally, most modern firewalls often include features like parental controls, further adding to the overall safety and control of your home network.
