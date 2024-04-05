@@ -1,4 +1,4 @@
-## Zeek Cut Install
+## Zeek (CLI) Install
 
 This is when I decided to install Zeek as a command line tool. The zeek tool  extracts specific fields or data from Zeek logs, allowing for precise data extraction and analysis. Before I can install Zeek, I need to ensure that I have the required dependencies.
 
