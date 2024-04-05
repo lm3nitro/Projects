@@ -1,6 +1,11 @@
 ## Palo Alto
 
-The Palo Alto Networks PA-220 is a next-generation firewall designed for small to medium-sized businesses, this is the version that I currently have in my home. What I like the most about this firewall is its URL filtering, application visibility, and user-based policies. Here is the initial login page for my Palo Alto 220:
+The Palo Alto Networks PA-220 is a next-generation firewall designed for small to medium-sized businesses, this is the version that I currently have in my home. What I like the most about this firewall is its URL filtering, application visibility, and user-based policies. 
+This is when I purchased the firewall and it was delivered. Very excited to incorporate this into my home network.
+
+![image](https://github.com/lm3nitro/Projects/assets/55665256/cf1fd83b-ca7d-4838-92dd-b2556d4c29bc)
+
+Here is the initial login page for my Palo Alto 220:
 
 ![Pasted image 20240331161322](https://github.com/lm3nitro/Projects/assets/55665256/d60a2e2a-7304-4c27-bee4-da7bba51e82d)
 
@@ -41,4 +46,5 @@ Application detection information from a Next-Generation Firewall (NGFW) is cruc
 - Threat Detection
 - Visibility and Analytics
 - Compliance and Reporting
-  
+
+Overall, I highly recommend having a firewall 
