@@ -1,10 +1,10 @@
 ## Zeek Cut Install
 
-The next part is the installation of Zeek as a command line tool. The zeek tool  extracts specific fields or data from Zeek logs, allowing for precise data extraction and analysis. Before I can install Zeek Cut, I need to ensure that I have the required dependencies.
+This is when I decided to install Zeek as a command line tool. The zeek tool  extracts specific fields or data from Zeek logs, allowing for precise data extraction and analysis. Before I can install Zeek, I need to ensure that I have the required dependencies.
 
 ![Pasted image 20240328175144](https://github.com/lm3nitro/Projects/assets/55665256/a26b5a58-04a7-457a-8a49-3de6d9e06ab6)
 
->##### Install Zeek Cut Dependencies 
+>##### Install Zeek Dependencies 
 ```
 sudo apt-get install python3-git python3-semantic-version
 ```
@@ -27,13 +27,13 @@ git clone --recurse-submodules https://github.com/zeek/zeek
 ```
 ![Pasted image 20240328180338](https://github.com/lm3nitro/Projects/assets/55665256/9907fe4a-dee7-4bf5-979f-59399e95430a)
 
-After configuring, run the make command to build Zeek:
+After configuring, I ran the make command to build Zeek:
 ```
 make
 ```
 ![Pasted image 20240328180401](https://github.com/lm3nitro/Projects/assets/55665256/cbadbe06-10d0-4b3f-9858-84f79194f12a)
 
-Lastly, we use the 'make install' to install Zeek to the specified prefix directory (in this case, /usr/local/zeek):
+Lastly, I used the 'make install' to install Zeek to the specified prefix directory (in this case, /usr/local/zeek):
 ```
 make install
 ```
@@ -41,7 +41,7 @@ Output:
 
 ![Pasted image 20240328193130](https://github.com/lm3nitro/Projects/assets/55665256/823c800a-a775-40ac-9f39-c62c2933639e)
 
-Once that is complete, we can use the the following command to verify the version of Zeek that is installed:
+Once that is complete, I used the following command to verify the version of Zeek that is installed:
 ```
 ./zeek -h
 ```
@@ -82,7 +82,7 @@ More information about Zeek log formats can be found in the link below:
 
 https://github.com/zeek/zeek-docs/blob/master/log-formats.rst
 
-Setting the correct time zone in Zeek Cut is important for accurate log timestamps and facilitating correlation with other logs.
+Setting the correct time zone in Zeek is important for accurate log timestamps and facilitating correlation with other logs.
 
 >##### Configuration of time zone:
 ```
