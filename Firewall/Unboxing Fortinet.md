@@ -17,7 +17,7 @@ Once I logged in, I then proceeded to register the device using the FortiCloud K
 
 Now that the device was registered, I needed to make sure that everything was activated on the actual firewall. 
 
-<img width="520" alt="Screenshot 2024-04-06 at 9 21 03 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/08973429-d885-4243-aae4-c7cf795281d3">
+<img width="953" alt="Screenshot 2024-04-06 at 9 54 15 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/66574006-5062-4840-8a90-682cd4671421">
 
 Upon logging in, I navigated to System > FortiGuard, there I can see that my firewall was not showing as registered:
 
