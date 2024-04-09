@@ -2,7 +2,14 @@
 
 Since integrating the new 60F Fortigate Firewall into my network, I wanted to ensure that I was also sending all my traffic logs to Splunk. Here are the steps taken and a look at the logs. 
 
-First, I went to my Splunk instance and created a new Data Input:
+Before starting, I went to Splunk and downloaded the following:
++ Fortinet FortiGate App for Splunk
++ Fortinet FortiGate Add-On for Splunk
+
+<img width="996" alt="Screenshot 2024-04-08 at 10 11 49 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/e013af7c-c028-486c-a0cc-611a8e823715">
+<img width="1186" alt="Screenshot 2024-04-08 at 10 12 14 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/dbc7a8e3-f0c6-4562-9a68-2d2e74c3ed04">
+
+I then logged into my Splunk instance and uploaded both files. Once they were uploaded, I created a new Data Input:
 
 <img width="1392" alt="Screenshot 2024-04-08 at 9 47 42 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/d1db6a81-cb53-49fd-94fe-7800e1ca11bd">
 
@@ -27,3 +34,8 @@ Everything on the Splunk end is now complete:
 Now, I headed over to my firewall. Once i logged in, I headed to 'Log & Report > Log Settings', set the Syslog logging to 'Enabled', Logging to 'All' and wrote the address to my Splunk instance:
 
 <img width="996" alt="Screenshot 2024-04-07 at 11 05 55 AM" src="https://github.com/lm3nitro/Projects/assets/55665256/d9b956b2-d53a-425c-8c39-c96066013dda">
+
+I then went back to Splunk to verify thst I was getting the logs, and the logs were coming in:
+
+<img width="1393" alt="Screenshot 2024-04-08 at 10 08 02 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/e0dcb6be-4860-4e15-a2b3-a3d99d11d3e6">
+
