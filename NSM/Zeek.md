@@ -49,7 +49,7 @@ SET SNIFFING NETWORK INTERFACES TO PROMISCUOUS MODE
     ```
 3. Verify that PROMISC is listed in the network interface status.
     ```
-    ip a show ens192 | grep -i promisc
+    ip address show ens192 | grep -i promisc
     ```
 INSTALL ZEEK DEPENDENCIEs
 
