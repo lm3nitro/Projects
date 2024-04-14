@@ -8,6 +8,7 @@
     ```
 2. As root/sudo, create a new file in /etc/networkd-dispatcher/routable.d/10-set-max-ring and add the following lines for each sniffing interface.
     ```
+    #!/bin/sh
     # Set ring rx parameters for all sniffing interfaces
     ethtool -G ens192 rx 4096
     ```
@@ -19,6 +20,7 @@
  
 1. As root/sudo, create a new file in /etc/networkd-dispatcher/routable.d/20-disable-checksum-offload and add the following lines for each sniffing interface.
    ```
+   #!/bin/sh
    # Disable checksum offloading for all sniffing interfaces
    ethtool -K ens192 rx off tx off sg off tso off ufo off gso off gro off lro off
     ```
@@ -30,6 +32,7 @@ SET SNIFFING NETWORK INTERFACES TO PROMISCUOUS MODE
 
 1. As root/sudo, create a new file in /etc/networkd-dispatcher/routable.d/30-enable-promisc-mode and add the following lines for each sniffing interface.
    ```
+   #!/bin/sh
    # Enable promiscuous mode for all sniffing interfaces
    ip link set ens192 arp off multicast off allmulticast off promisc on
     ```
