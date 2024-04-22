@@ -301,6 +301,90 @@ I then went on to configure the insputs.conf file. This file does not exit by de
 ```
 nano /opt/splunkforwarder/etc/system/local/inputs.conf
 ```
+Since I am using the corelight app, I replaceed the “zeek” sourcetype prefix with “corelight” as this is what the app is expecting (e.g. replace “zeek_conn” with “corelight_conn”). See the example below:
+```
+[default]
+host = sensor
+[monitor:///opt/zeek/logs/current/conn.log]
+_TCP_ROUTING = *
+index = zeek
+sourcetype = corelight_conn
+[monitor:///opt/zeek/logs/current/dns.log]
+_TCP_ROUTING = *
+index = zeek
+sourcetype = corelight_dns
+[monitor:///opt/zeek/logs/current/software.log]
+_TCP_ROUTING = *
+index = zeek
+sourcetype = corelight_software
+[monitor:///opt/zeek/logs/current/smtp.log]
+_TCP_ROUTING = *
+index = zeek
+sourcetype = corelight_smtp
+[monitor:///opt/zeek/logs/current/ssl.log]
+_TCP_ROUTING = *
+index = zeek
+sourcetype = corelight_ssl
+[monitor:///opt/zeek/logs/current/ssh.log]
+_TCP_ROUTING = *
+index = zeek
+sourcetype = corelight_ssh
+[monitor:///opt/zeek/logs/current/x509.log]
+_TCP_ROUTING = *
+index = zeek
+sourcetype = corelight_x509
+[monitor:///opt/zeek/logs/current/ftp.log]
+_TCP_ROUTING = *
+index = zeek
+sourcetype = corelight_ftp
+[monitor:///opt/zeek/logs/current/http.log]
+_TCP_ROUTING = *
+index = zeek
+sourcetype = corelight_http
+[monitor:///opt/zeek/logs/current/rdp.log]
+_TCP_ROUTING = *
+index = zeek
+sourcetype = corelight_rdp
+[monitor:///opt/zeek/logs/current/smb_files.log]
+_TCP_ROUTING = *
+index = zeek
+sourcetype = corelight_smb_files
+[monitor:///opt/zeek/logs/current/smb_mapping.log]
+_TCP_ROUTING = *
+index = zeek
+sourcetype = corelight_smb_mapping
+[monitor:///opt/zeek/logs/current/snmp.log]
+_TCP_ROUTING = *
+index = zeek
+sourcetype = corelight_snmp
+[monitor:///opt/zeek/logs/current/sip.log]
+_TCP_ROUTING = *
+index = zeek
+sourcetype = corelight_sip
+[monitor:///opt/zeek/logs/current/files.log]
+_TCP_ROUTING = *
+index = zeek
+sourcetype = corelight_files
+```
+I also needed to create the outputs.conf to send data to my Splunk server. In the sample file below, I replaced each instance of splunkserver:9997 with your own server name/IP and port number.
+```
+[tcpout]
+defaultGroup = default-autolb-group
+[tcpout:default-autolb-group]
+server = splunkserver:9997
+[tcpout-server://splunkserver:9997]
+```
+We then started the fowarder and confirmed that it was running and that I was receiving the data in Splunk:
+```
+cd /opt/splunkforwarder/bin
+./splunk start
+```
+<img width="1419" alt="Screenshot 2024-04-21 at 11 40 58 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/b1aa3999-a7f4-4a4c-b02f-e299dc6ef2d7">
+
+Verification:
+
+<img width="1429" alt="Screenshot 2024-04-21 at 11 46 25 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/d792abee-0155-4060-8635-875b07322157">
+<img width="1422" alt="Screenshot 2024-04-21 at 11 50 34 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/48e8efe0-456d-4803-aab5-1aef5c6715e2">
 
 
 
