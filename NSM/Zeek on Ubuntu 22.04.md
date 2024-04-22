@@ -175,6 +175,134 @@ This will create a configuration file in /opt/zeek/etc/zkg/config. You can navig
 
 I then went back to edit my original workers I had set up previously in  /opt/zeek/etc/node.cfg to configure Zeek to use AF_PACKET.  In the example configuration below we are configuring one worker, load balanced across two cores, analyzing one sniffing interface.
 
+```
+# Example ZeekControl node configuration.
+# Below is an example clustered configuration on a single host.
+[logger]
+type=logger
+host=localhost
+[manager]
+type=manager
+host=localhost
+[proxy-1]
+type=proxy
+host=localhost
+[worker-1]
+type=worker
+host=localhost
+interface=af_packet::enp2s0f0
+lb_method=custom
+lb_procs=2
+pin_cpus=0,1
+[worker-2]
+type=worker
+host=localhost
+interface=af_packet::enp2s0f0
+lb_method=custom
+lb_procs=2
+pin_cpus=0,1
+[worker-3]
+type=worker
+host=localhost
+interface=af_packet::enp2s0f0
+lb_method=custom
+lb_procs=2
+pin_cpus=0,1
+[worker-4]
+type=worker
+host=localhost
+interface=af_packet::enp2s0f0
+lb_method=custom
+lb_procs=2
+pin_cpus=0,1
+```
+Since the configuration was changed to add AF_PACKET, I ran zeekctl deploy to apply the new configuration changes and run Zeek.
+```
+zeekctl deploy
+```
+
+#### Send Zeek logs to Splunk
+
+As part of my lab, I then wanted to configure Zeek to send the logs to my Splunk. For this particular lab, I went ahead and used the Corelight App. To do this, I did the following:
+
++ Configured Zeek to output logs in JSON format for consumption by Splunk.
++ Created an index in Splunk for Zeek data.
++ Installed and configured the Corelight For Splunk app to index and parse Zeek logs in Splunk.
++ Created a splunk user to run the Splunk Universal Forwarder.
++ Installed and configured a Splunk Universal Forwarder to send Zeek logs to a Splunk instance.
+
+#### Output Zeek logs to JSON
+Stop Zeek if it is currently running
+```
+zeekctl stop
+```
+Edit the /opt/zeek/share/zeek/site/local.zeek and add the following:
+```
+# Output to JSON
+@load policy/tuning/json-logs.zeek
+```
+<img width="629" alt="Screenshot 2024-04-21 at 10 52 27 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/bd20b775-89d5-403c-9cba-ec504a01d0a9">
+
+Restarted Zeek and view the logs in /opt/zeek/logs/current to confirm they are now in JSON format:
+```
+zeekctl deploy
+cd /opt/zeek/logs/current
+less conn.log
+```
+#### Create an index in Splunk for Zeek data
+
+To do this, I went to my Splunk instance and navigated to Settings > Data > Indexes, and created a new index for Zeek:
+
+<img width="1121" alt="Screenshot 2024-04-21 at 10 54 32 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/a99911d6-fc17-4b68-93cf-dd24a32774b8">
+
+#### Install and configure the Corelight For Splunk app
+To do this I first went to the Splunk Apps and downloaded the Corelight App for Zeek:
+
+<img width="1090" alt="Screenshot 2024-04-21 at 8 03 24 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/715f0184-352e-4ff8-a50e-23babb0adda3">
+
+Once I had it downloaded, I then uploaded it to Splunk via the file method:
+<img width="1429" alt="Screenshot 2024-04-21 at 10 59 41 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/57fa9e8a-7789-499c-b37b-b03ffe624d50">
+
+Once the Application was installed, I needed to ensure that it was configured to the correct index, the zeek index I previosly created. I went to Settings > Knowledge > Event types:
+
+<img width="1420" alt="Screenshot 2024-04-21 at 11 09 27 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/7e015ab4-3916-4f85-b81a-8acd04f09d08">
+
+I then configured the corelight_idx to point to my zeek index:
+
+<img width="1292" alt="Screenshot 2024-04-21 at 11 12 54 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/354636b4-9c34-4484-94c2-c1e5c8292156">
+
+Now thatI have that setup in splunk, I then moved on to install the Splunk Fowarder in the Ubuntu Server where I installed Zeek.
+
+#### Install and configure a Splunk Universal Forwarder
+
+I navigated to Splunk and went to download the latest Splunk Fowarders, at this time it is 9.2.1. I did this by getting the wget command provided:
+
+<img width="1421" alt="Screenshot 2024-04-21 at 11 17 08 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/14102a80-077c-4d93-90af-99c94d498637">
+
+Once I had the wget command copied, I then navigated back to my /opt/ directory and pasted it:
+```
+wget -O splunkforwarder-9.2.1-78803f08aabb-linux-2.6-amd64.deb "https://download.splunk.com/products/universalforwarder/releases/9.2.1/linux/splunkforwarder-9.2.1-78803f08aabb-linux-2.6-amd64.deb"
+```
+Unpackaged it:
+```
+dpkg -i splunkforwarder-9.2.1-78803f08aabb-linux-2.6-amd64.deb
+```
+Once that completed, I accepted the license agreement and created an administrative username and password:
+```
+cd /opt/splunkforwarder/bin
+./splunk start --accept-license
+```
+
+Once that was completed, I needed to make some configuration changes to the fowarder and needed to stop it:
+```
+./splunk stop
+```
+I then went on to configure the insputs.conf file. This file does not exit by default, so I needed to create it:
+```
+nano /opt/splunkforwarder/etc/system/local/inputs.conf
+```
+
+
 
 
 
