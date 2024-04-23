@@ -104,9 +104,3 @@ Uploading Linux iso to Datastore:
 ![Pasted image 20240422195220](https://github.com/lm3nitro/Projects/assets/55665256/8be826bb-71b9-4efe-9668-4efd8fba59be)
 
 
-
-# NO INCLUDE : UNDER CONSTRUTION 
-Info Nmap:
-
-
-![[Attachments/Pasted image 20240422144610.png]]
