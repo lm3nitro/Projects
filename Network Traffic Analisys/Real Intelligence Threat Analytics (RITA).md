@@ -264,7 +264,8 @@ echo "deb http://http.debian.net/debian buster-backports main" > \
 apt-get update
 apt-get install suricata -t buster-backports
 
-![Pasted image 20240417132225](https://github.com/lm3nitro/Projects/assets/55665256/46c7a75b-62b6-4831-bbdf-a3193574e5a8)
+![Pasted image 20240417132255](https://github.com/lm3nitro/Projects/assets/55665256/a4d3f3dc-b957-4f6f-ba13-4cbacae4feff)
+
 
 
 ![Pasted image 20240417132225](https://github.com/lm3nitro/Projects/assets/55665256/274ee7b1-fadd-460e-92bb-3e8c02179e4a)
