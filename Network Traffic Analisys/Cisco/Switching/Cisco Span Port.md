@@ -16,6 +16,5 @@
 monitor session 1 source interface Gi2/0/1
 monitor session 1 destination interface Gi2/0/3
 
-Verify the monitor port:
-
+Verify Monitor port:
 
