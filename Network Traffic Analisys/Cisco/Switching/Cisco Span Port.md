@@ -13,8 +13,9 @@
 ![Pasted image 20240416134151](https://github.com/lm3nitro/Projects/assets/55665256/3b007c12-044d-48db-adca-6a234f8181fc)
 
 
+
 monitor session 1 source interface Gi2/0/1
 monitor session 1 destination interface Gi2/0/3
 
-Verify Monitor port:
+Verify the monitor port:
 
