@@ -1,4 +1,6 @@
-Hello! Welcome to my Portfolio. My name is Erick and I am a dedicated network engineer with a strong passion for cybersecurity, seeking to leverage my expertise in networking and expand into the dynamic field of cybersecurity. My journey encompasses a diverse range of projects and experiences, where I have honed my skills in areas such as virtualization, proxy technologies, firewall configuration, IDS/IPS implementations, SIEM integration, and more.
+Hello! Welcome to my Portfolio. 
+
+My name is Erick and I am a dedicated network engineer with a strong passion for cybersecurity, seeking to leverage my expertise in networking and expand into the dynamic field of cybersecurity. My journey encompasses a diverse range of projects and experiences, where I have honed my skills in areas such as virtualization, proxy technologies, firewall configuration, IDS/IPS implementations, SIEM integration, and more.
 
 I am fueled by a deep passion for cybersecurity, driven by the ever-evolving landscape of digital threats and the imperative to safeguard critical assets and data. My enthusiasm extends beyond professional obligations, as I am constantly exploring new techniques, tools, and methodologies to enhance security posture and stay ahead of emerging threats.
 
