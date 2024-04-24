@@ -1,13 +1,11 @@
 
 # Sending Suricata Logs to Splunk
 
-After deploying Suricata, I wanted to integrate its logs to my Splunk Instance. In order to do this, I needed to install the Splunk Fowarder in 
-A receiver is a Splunk software instance that is configured to listen on a specific port for incoming communications from a forwarder.
+After deploying Suricata, I wanted to integrate its logs to my Splunk Instance. In order to do this, I needed to install the Splunk Fowarder in my server where Suricata was instralled. By default the listening port for the Splunk Fowarder is port 9997. I decided to use this port on my Splunk instance to listen for incoming communications from the forwarder. First I will set this listening port in Splunk and will then move to the Uuntu Server where the fowarder will be installed. 
 
-Configuring the receiver settings directly on Splunk software instances is only recommended for a single instance deployment.
-## Configure a receiver using Splunk Web
+## Configure a Receiving Port in Splunk
 
-Use Splunk Web to configure a receiver:
+I used the Splunk Web GUI to configure a receiver:
 
 1. Log into Splunk Web as a user with the admin role.
     
@@ -17,27 +15,28 @@ Use Splunk Web to configure a receiver:
     
 4. Verify if there are existing receiver ports open. You cannot create a duplicate receiver port. The conventional receiver port configured on indexers is port `9997`.
     
+![Pasted image 20240415160852](https://github.com/lm3nitro/Projects/assets/55665256/54b9d825-c267-4a82-9793-2358273f544c)
+
 5. Select "New Receiving Port."
     
 6. Add a port number and save.
 
-![Pasted image 20240415160852](https://github.com/lm3nitro/Projects/assets/55665256/54b9d825-c267-4a82-9793-2358273f544c)
 
 ![Pasted image 20240415161035](https://github.com/lm3nitro/Projects/assets/55665256/b90bd2a7-d637-4f2d-b972-8a1707a5bbef)
 
-Creating a index:
+Next, I created an index where my Suricata Logs will be stored:
 
 ![Pasted image 20240415163113](https://github.com/lm3nitro/Projects/assets/55665256/40c755e4-5815-4d9f-b85e-104190985ac2)
 
-Verify the Index creation:
+Verifed that the Index had been created:
 
 ![Pasted image 20240415163154](https://github.com/lm3nitro/Projects/assets/55665256/0e05f7ec-ebb6-4677-911a-2b5b69718d5f)
 
-On Suricata Server:
+## Splunk Fowarder installation on server running Suricata
 
 Suricata App:
 
-Download the Suricata and the forwarder from the Splunk website:
+I downloaded both the Suricata and the Splunk Forwarder from the Splunk website:
 
 ![Pasted image 20240415162408](https://github.com/lm3nitro/Projects/assets/55665256/9d372ee0-23b9-4831-9be8-5239bf487227)
 
@@ -46,24 +45,27 @@ Untar the file:
 ![Pasted image 20240415161641](https://github.com/lm3nitro/Projects/assets/55665256/5a9e210a-0861-4d09-93f9-4a672ba00092)
 
 Installing the deb file:
-
+```
 dpkg -i splunkforwarder-9.2.1-78803f08aabb-linux-2.6-amd64.deb 
-
-Note: The binary is locate under the /opt directory 
+```
+Note: The binary is located under the /opt/ directory 
 
 ![Pasted image 20240415162653](https://github.com/lm3nitro/Projects/assets/55665256/f504275d-fe65-45fb-9a75-eb9e963e4cfd)
 
-Moving the TA-suricata-4 app to /opt/splunkforwarder/etc/apps/ 
+I then moved the TA-suricata-4 app to /opt/splunkforwarder/etc/apps/ 
 
 ![Pasted image 20240415162843](https://github.com/lm3nitro/Projects/assets/55665256/a86b67fa-58c7-4cc8-be37-810d3b9ed930)
 
 Running Splunk forwarder: 
+```
+./splunk start
+```
 
 ![Pasted image 20240415161839](https://github.com/lm3nitro/Projects/assets/55665256/580a8d4d-74b0-4dcc-ad82-28af2168970e)
 
 ![Pasted image 20240415162242](https://github.com/lm3nitro/Projects/assets/55665256/681629c7-fbdd-4b77-8250-21585727f07d)
 
-Then we have to create an input file under the TA-suricata-4/default/
+Next I needed to create an input file under the TA-suricata-4/default/
 
 ![Pasted image 20240415161232](https://github.com/lm3nitro/Projects/assets/55665256/a0f36578-aeb8-4ad3-879c-ca0327f3f2d7)
 
