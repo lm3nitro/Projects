@@ -32,7 +32,7 @@ Verifed that the Index had been created:
 
 ![Pasted image 20240415163154](https://github.com/lm3nitro/Projects/assets/55665256/0e05f7ec-ebb6-4677-911a-2b5b69718d5f)
 
-## Splunk Fowarder installation on server running Suricata
+## Splunk Fowarder and Suricata TA APP installation on server running Suricata
 
 Suricata App:
 
@@ -72,36 +72,33 @@ Next I needed to create an input file under the TA-suricata-4/default/
 Input creation:
 
 ![Pasted image 20240415161332](https://github.com/lm3nitro/Projects/assets/55665256/18a4a425-8474-400e-bf04-feebcb926045)
-
-
+```
 [monitor:///var/log/suricata/eve.json]
 host = lm3nitro 
 sourcetype = suricata 
 index = suricata
+```
+I also needed to create an output file to tell it where to send the logs and the listening port I previously configured in Splunk (9997).
 
-
-Output creation:
-
-Creating or editing the outputs.conf file under /opt/splunkforwarder/etc/system/local
+Output creation: Creating or editing the outputs.conf file under /opt/splunkforwarder/etc/system/local
 
 ![Pasted image 20240415163527](https://github.com/lm3nitro/Projects/assets/55665256/c7eda844-8deb-459c-b339-aab3f3f71fb5)
 
 ![Pasted image 20240415163852](https://github.com/lm3nitro/Projects/assets/55665256/82ddb40d-1aae-410a-bdaf-bd144a52342d)
-
-
+```
 [tcpout]
 defaultGroup=suricata
-
 [tcpout:suricata]
 server=192.168.242.10:9997
+```
 
-Verify the logs in Splunk:
+Nexd, I went back to Splunk to verify the logs:
 
-Looking at some random http traffic:
+Here I can see some random http traffic:
 
 ![Pasted image 20240415165302](https://github.com/lm3nitro/Projects/assets/55665256/7ffaf300-07f5-4359-afd8-af7a97086edf)
 
-Looking at the amount of app traffic:
+I can see the amount of app traffic:
 
 ![Pasted image 20240415165056](https://github.com/lm3nitro/Projects/assets/55665256/1c1723b3-505c-460a-b2b4-bb6268d91cc0)
 
