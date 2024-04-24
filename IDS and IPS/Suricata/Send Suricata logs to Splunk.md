@@ -1,6 +1,7 @@
 
-# Enable a receiver
+# Sending Suricata Logs to Splunk
 
+After deploying Suricata, I wanted to integrate its logs to my Splunk Instance. In order to do this, I needed to install the Splunk Fowarder in 
 A receiver is a Splunk software instance that is configured to listen on a specific port for incoming communications from a forwarder.
 
 Configuring the receiver settings directly on Splunk software instances is only recommended for a single instance deployment.
