@@ -101,3 +101,5 @@ Here we can also see the ja3 hashes json format:
 ![Pasted image 20240331164157](https://github.com/lm3nitro/Projects/assets/55665256/8188f8e7-9a8e-4814-8225-ccffaa01d00d)
 
 JA3 hashes are very important in threat hunting because they provide a way to fingerprint TLS connections. This allows security analysts to detect and analyze potential threats such as malicious traffic, anomalous behavior, or suspicious SSL/TLS configurations. 
+
+In summary, I truly think that Zeek-cut is a valuable CLI tool that simplifies the analysis of Zeek logs by extracting specific fields or data of interest, making it easier to parse and analyze network activity. Its ability to filter and format Zeek logs streamlines the process of extracting actionable insights from large datasets, enhancing overall network monitoring and security analysis workflows for administrators and security teams.
