@@ -37,8 +37,8 @@ argus -w output-file - ip and not icmp
 ```
 argus -R dir -w output-file "echo" - icmp
 ```
-
 4. To import flow data from pcap file containing Cisco flow data packets. Write output to stdout, to a ra.1 instance.
 ```
 argus -r paloalto:pcap-file -w - | ra 
 ```
+I can definitely see how the data that I am able to get from Argus is crucial for network forensics, anomaly detection, and performance monitoring. 
