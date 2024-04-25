@@ -19,8 +19,7 @@ I used the Splunk Web GUI to configure a receiver:
 
 5. Select "New Receiving Port."
     
-6. Add a port number and save.
-
+6. Add a port number and save. I went with the default 9997.
 
 ![Pasted image 20240415161035](https://github.com/lm3nitro/Projects/assets/55665256/b90bd2a7-d637-4f2d-b972-8a1707a5bbef)
 
@@ -28,7 +27,7 @@ Next, I created an index where my Suricata Logs will be stored:
 
 ![Pasted image 20240415163113](https://github.com/lm3nitro/Projects/assets/55665256/40c755e4-5815-4d9f-b85e-104190985ac2)
 
-Verifed that the Index had been created:
+Finally, verifed that the Index had been created:
 
 ![Pasted image 20240415163154](https://github.com/lm3nitro/Projects/assets/55665256/0e05f7ec-ebb6-4677-911a-2b5b69718d5f)
 
@@ -60,12 +59,11 @@ Running Splunk forwarder:
 ```
 ./splunk start
 ```
-
 ![Pasted image 20240415161839](https://github.com/lm3nitro/Projects/assets/55665256/580a8d4d-74b0-4dcc-ad82-28af2168970e)
 
 ![Pasted image 20240415162242](https://github.com/lm3nitro/Projects/assets/55665256/681629c7-fbdd-4b77-8250-21585727f07d)
 
-Next I needed to create an input file under the TA-suricata-4/default/
+Next, I needed to create an input file under the TA-suricata-4/default/
 
 ![Pasted image 20240415161232](https://github.com/lm3nitro/Projects/assets/55665256/a0f36578-aeb8-4ad3-879c-ca0327f3f2d7)
 
@@ -78,7 +76,7 @@ host = lm3nitro
 sourcetype = suricata 
 index = suricata
 ```
-I also needed to create an output file to tell it where to send the logs and the listening port I previously configured in Splunk (9997).
+I also needed to create an output file to tell Suricata where to send the logs and the listening port I previously configured in Splunk (9997).
 
 Output creation: Creating or editing the outputs.conf file under /opt/splunkforwarder/etc/system/local
 
@@ -91,32 +89,33 @@ defaultGroup=suricata
 [tcpout:suricata]
 server=192.168.242.10:9997
 ```
-
-Nexd, I went back to Splunk to verify the logs:
+After, I went back to Splunk to verify the logs:
 
 Here I can see some random http traffic:
 
 ![Pasted image 20240415165302](https://github.com/lm3nitro/Projects/assets/55665256/7ffaf300-07f5-4359-afd8-af7a97086edf)
 
-I can see the amount of app traffic:
+I can also see the amount of application traffic:
 
 ![Pasted image 20240415165056](https://github.com/lm3nitro/Projects/assets/55665256/1c1723b3-505c-460a-b2b4-bb6268d91cc0)
 
-Logical topology:
+To give a higeher overview, this is a logical topology of what I have setup:
 
 ![Pasted image 20240416140904](https://github.com/lm3nitro/Projects/assets/55665256/abfd7bf9-0561-421b-b3bb-aa515b3daca6)
 
-Analysing some DNs traffic going to chess.com
+## Analyzing Suricata Splunk Logs
+
+I wanted to take a look at some DNS traffic. To do this, I went to chess.com, and was able to see my traffic being logged:
 
 ![Pasted image 20240415164717](https://github.com/lm3nitro/Projects/assets/55665256/d1b85481-7a60-4619-9540-870294139528)
 
-Testing IDS alerts:
+## IDS Alert
 
-Creating a simple custom bi=directional  rule for detecting ICMP traffic: 
+Next, I wanted to test and IDS alert. To do this, I created a very simple bi-directional rule to that detects ICMP traffic:
  
 ![Pasted image 20240415170636](https://github.com/lm3nitro/Projects/assets/55665256/fe04c431-7560-47e3-ac62-3a974fad42ac)
 
-Looking alert in Splunk:
+Now that I have created the rule, I went to Splunk to verify the alert after I purposely triggered it.
 
 From server 1.1.1.1 to client:
 
@@ -130,4 +129,4 @@ Filtering for Alerts in Splunk:
 
 ![Pasted image 20240415171225](https://github.com/lm3nitro/Projects/assets/55665256/92ff1539-2289-468e-bc4e-cce9eee21123)
 
-
+Having Suricata in my home network has added another layer of security to my network. I enjoy the features that that it has and the information contained in the fields as I filter through them in Spplunk. I also like that it allows for customization to suit your network's specific security needs, ultimately helping you proactively protect your devices and data. 
