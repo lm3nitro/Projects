@@ -1,4 +1,3 @@
-
 # Threat Hunting 
 
 Scenario:
@@ -15,11 +14,12 @@ I start off by analyzing the pcap with Suricata. Suricata will inspect the traff
 
 ![Pasted image 20240417141729](https://github.com/lm3nitro/Projects/assets/55665256/39e3b253-c90f-45a1-93f5-a6fbc2003e61)
 
-Upon the analysis with Suricata we see the following alerts from the IP 67.207.93.135. Generic Protocol Command Decode means that Suricata decoded and interpreted a command within the generic protocol. This could include commands related to various network protocols like HTTP, FTP, DNS, or other application-layer protocols.
+Upon the analysis with Suricata we see the following alerts from the IP 67.207.93.135. The :Generic Protocol Command Decode"  means that Suricata decoded and interpreted a command within the generic protocol. This could include commands related to various network protocols like HTTP, FTP, DNS, or other application-layer protocols.
 
 ![Pasted image 20240417142306](https://github.com/lm3nitro/Projects/assets/55665256/cd6548be-378f-4999-91ed-4f9ccaa49975)
 
-Although this alert doesn't look to be bad, there is an abnormal amount of alerts which warrants for further analysis. Lets filter for this IP only and see how many hits we get in the fast.log:
+Although Suricata doesn't look to have a specific rule or signature for this type of traffic, there is an abnormal amount of alerts which warrants for further analysis. Lets filter for this IP only and see how many hits we get in the fast.log:
+
 ```
 cat fast.log | grep 67.207.93.135 | WC -l
 ```
