@@ -47,11 +47,11 @@ This will allow me to see more information about the traffic and conversation, t
 
 ### Wireshark
 
-Now that I have more information on what we are looking for, we can take a look at the pcap with Wireshark. Specifically we want to narrow in on that specific IP address we saw above (67.207.93.135) and see the traffic, bytes transferred, etc. 
+Now that I have more information on what we are looking for, we can take a look at the pcap with Wireshark. Here I took a look at the protocol hierachy to get a high level overview of the traffic and protocols seen in our pcap. 
 
 ![Pasted image 20240417160509](https://github.com/lm3nitro/Projects/assets/55665256/7c80cc70-611a-477f-bab0-94e94a7345c3)
 
-Here I can see that there was 686MB sent from our internal host to this IP address (67.207.93.135):
+I then wanted to narrow in on that specific IP address we saw above (67.207.93.135) and see the traffic, bytes transferred, etc. Here I can see that there was 686MB sent from our internal host to this IP address:
 
 ![Pasted image 20240417174216](https://github.com/lm3nitro/Projects/assets/55665256/fbb15dda-8ca0-45c6-8b52-c6aa66907fab)
 
