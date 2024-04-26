@@ -15,11 +15,11 @@ I start off by analyzing the pcap with Suricata. Suricata will inspect the traff
 
 ![Pasted image 20240417141729](https://github.com/lm3nitro/Projects/assets/55665256/39e3b253-c90f-45a1-93f5-a6fbc2003e61)
 
-Upon the analysis with Suricata we see the following alerts from the IP 67.207.93.135:
+Upon the analysis with Suricata we see the following alerts from the IP 67.207.93.135. Generic Protocol Command Decode means that Suricata decoded and interpreted a command within the generic protocol. This could include commands related to various network protocols like HTTP, FTP, DNS, or other application-layer protocols.
 
 ![Pasted image 20240417142306](https://github.com/lm3nitro/Projects/assets/55665256/cd6548be-378f-4999-91ed-4f9ccaa49975)
 
-Lets filter for this IP only and see how many hits we get in the fast.log:
+Although this alert doesn't look to be bad, there is an abnormal amount of alerts which warrants for further analysis. Lets filter for this IP only and see how many hits we get in the fast.log:
 ```
 cat fast.log | grep 67.207.93.135 | WC -l
 ```
@@ -63,11 +63,11 @@ Now that I have information about the user agent, I went to look it up.
 
 ### User Agent Lookup
 
-When I looked up the user agent, I was provided with the following information:
+When I looked up the user agent, I was provided with the following information. I can see that this user agent is referencing a platform that is not used in the environment, in this case Windows XP. 
 
 ![Pasted image 20240417161921](https://github.com/lm3nitro/Projects/assets/55665256/e640ad7a-a63f-452e-bc0a-6a8ed86aa04e)
 
-With this information I went to take another look at wireshark and the pcap. Here I am seeing a reference to the Windows 10 user agent:
+With this information I went to take another look at the pcap. Here I am seeing a reference to the Windows 10 user agent:
 
 ![Pasted image 20240417162733](https://github.com/lm3nitro/Projects/assets/55665256/e30511fc-6381-4503-bc7a-b722417cbec2)
 
