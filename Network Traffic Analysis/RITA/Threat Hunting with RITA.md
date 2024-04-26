@@ -59,11 +59,11 @@ Next I filtered in on the conversation between our internal host and this IP add
 
 ![Pasted image 20240417155611](https://github.com/lm3nitro/Projects/assets/55665256/0e4b9d13-9539-4176-8e53-a80900e7f733)
 
-Now that I have information about the user agent, I went to look it up. 
+Now that I have information about the user agent, I went to look it up and see what information I could find. 
 
 ### User Agent Lookup
 
-When I looked up the user agent, I was provided with the following information. I can see that this user agent is referencing a platform that is not used in the environment, in this case Windows XP. 
+When I looked up the user agent, I was provided with the following information. I can see that this user agent is referencing a platform that is not used within the environment, in this case Windows XP. 
 
 ![Pasted image 20240417161921](https://github.com/lm3nitro/Projects/assets/55665256/e640ad7a-a63f-452e-bc0a-6a8ed86aa04e)
 
