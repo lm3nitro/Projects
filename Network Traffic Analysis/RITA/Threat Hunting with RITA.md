@@ -14,7 +14,7 @@ I start off by analyzing the pcap with Suricata. Suricata will inspect the traff
 
 ![Pasted image 20240417141729](https://github.com/lm3nitro/Projects/assets/55665256/39e3b253-c90f-45a1-93f5-a6fbc2003e61)
 
-Upon the analysis with Suricata we see the following alerts from the IP 67.207.93.135. The :Generic Protocol Command Decode"  means that Suricata decoded and interpreted a command within the generic protocol. This could include commands related to various network protocols like HTTP, FTP, DNS, or other application-layer protocols.
+Upon the analysis with Suricata we see the following alerts from the IP 67.207.93.135. The "Generic Protocol Command Decode" normally means that Suricata decoded and interpreted a command within the generic protocol. This could include commands related to various network protocols like HTTP, FTP, DNS, or other application-layer protocols.
 
 ![Pasted image 20240417142306](https://github.com/lm3nitro/Projects/assets/55665256/cd6548be-378f-4999-91ed-4f9ccaa49975)
 
