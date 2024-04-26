@@ -67,11 +67,11 @@ When I looked up the user agent, I was provided with the following information. 
 
 ![Pasted image 20240417161921](https://github.com/lm3nitro/Projects/assets/55665256/e640ad7a-a63f-452e-bc0a-6a8ed86aa04e)
 
-With this information I went to take another look at the pcap. Here I am seeing a reference to the Windows 10 user agent:
+With this information I went to take another look at the pcap. Here I am seeing traffic from the same internal host regarding Microsofts Delivery Optimation.
 
 ![Pasted image 20240417162733](https://github.com/lm3nitro/Projects/assets/55665256/e30511fc-6381-4503-bc7a-b722417cbec2)
 
-I also wanted to look a bit into Microsofts Delivery Optimation and the client it utilizes:
+I wanted to take a closer look into Microsofts Delivery Optimation and the client it utilizes. Based in this information, we can see that it only references Windows 10 and Windows 11. This further emphasizes that we should not be seeing any XP windows agents. 
 
 ![Pasted image 20240417175130](https://github.com/lm3nitro/Projects/assets/55665256/21e399cd-5653-43d3-8011-f46bf11475c6)
 
