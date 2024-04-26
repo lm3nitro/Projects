@@ -258,4 +258,8 @@ sudo suricata-update
 ```
 ![Pasted image 20240417141602](https://github.com/lm3nitro/Projects/assets/55665256/c53225e8-834b-4244-8077-d230b0471336)
 
+Now that I have RITA, ZEEK, and Suricata all running, I can start to do some threat hunting. Combining RITA, Zeek, and Suricata on a single server creates a robust threat hunting platform where Suricata acts as an IDS/IPS, Zeek conducts in-depth packet analysis and generates comprehensive network logs, and RITA correlates and analyzes network flow data to detect patterns indicative of malicious behavior. 
+
+In the next section titled "Threat Hunting with RITA" I provide an example of this.  
+
 
