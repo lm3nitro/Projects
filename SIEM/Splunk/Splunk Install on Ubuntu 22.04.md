@@ -1,3 +1,8 @@
+# Splunk
+
+<img width="486" alt="Screenshot 2024-04-27 at 2 10 57 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/962f67af-e61d-4ee9-98e2-cad078e3debb">
+
+Splunk is utilized for conducting business and web analytics, managing applications, ensuring compliance, and enhancing security measures. It gathers data from logs, sensors, applications, and more, and organizes it so that users can perform searches to uncover insights, trends, and potential problems. It allows you to investigate and solve issues, monitor performance, and improve security across your IT infrastructure. 
 
 ## Install Ubuntu 22.04
 
