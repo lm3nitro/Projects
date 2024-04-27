@@ -1,4 +1,4 @@
-# Insralling VMWare ESXi:
+# Installing VMWare ESXi:
 
 VMware ESXi is a powerful hypervisor. It serves as the foundation for virtualization in data centers, allowing multiple virtual machines to run on a single physical server. It offers features such as live migration of VMs, high availability, resource allocation controls, and centralized management through tools like VMware vCenter Server.
 
