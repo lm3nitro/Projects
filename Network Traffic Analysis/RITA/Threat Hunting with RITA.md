@@ -1,6 +1,6 @@
 # Threat Hunting 
 
-Scenario:
+## Scenario:
 
 You are a cybersecurity analyst working for a multinational corporation that has recently experienced a series of suspicious network activities, including unusual data transfers. You are tasked with conducting a comprehensive threat hunt using a 24-hour PCAP file captured from a critical netowrk segment. Your goal is to leverage the combined capabilities of RITA, Zeek, and Suricata on a dedicated server to analyze the PCAP data, identify potential threats or indicators of compromise (IOCs), and strengthen the organization's overall cybersecurity posture.
 
