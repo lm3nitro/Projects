@@ -2,7 +2,7 @@
 
 VMware ESXi is a powerful hypervisor. It serves as the foundation for virtualization in data centers, allowing multiple virtual machines to run on a single physical server. It offers features such as live migration of VMs, high availability, resource allocation controls, and centralized management through tools like VMware vCenter Server.
 
-I currently have a R720 server racked in my home networK. There are several VMs that I want to create for several mprojects that I have in mind, and will be installing VMWare ESXi on this server in order to get my virtual enviornmen tset-up. 
+I currently have a PowerEdge R720 server racked in my home networK. There are several VMs that I want to create for several mprojects that I have in mind, and will be installing VMWare ESXi on this server in order to get my virtual enviornmen tset-up. 
 
 First thing I needed to do is go to VMWare to download ESXi:
 
@@ -19,15 +19,27 @@ Select **Download**
 
 ![Pasted image 20240422100135](https://github.com/lm3nitro/Projects/assets/55665256/afafe41d-f82d-44ab-bd74-174094ca2483)
 
-![Pasted image 20240422113823](https://github.com/lm3nitro/Projects/assets/55665256/4a1dee28-5214-40bf-b77d-a9e120e8d8b4)
+This is the server that I have in my home and where I will be installing VMWare ESXI:
 
 ![Pasted image 20240422113930](https://github.com/lm3nitro/Projects/assets/55665256/0b043b5b-69f4-4512-ae1f-3c3cfc5b9811)
 
+I saved the downloaded ISO to a USB and plugged it in my server, turned the server on, and went into the UEFI Boot Manager:
+
+![Pasted image 20240422113823](https://github.com/lm3nitro/Projects/assets/55665256/4a1dee28-5214-40bf-b77d-a9e120e8d8b4)
+
+Once there, go to the UEFI Boot Menu
+
 ![Pasted image 20240422113957](https://github.com/lm3nitro/Projects/assets/55665256/6a5fa65f-03c4-4944-9483-d288fc9fa784)
+
+From there, select the USB that has the ISO:
 
 ![Pasted image 20240422114022](https://github.com/lm3nitro/Projects/assets/55665256/ad357273-a8da-4d88-b14b-acd96428b888)
 
+Here we can see that it is loading the ESXi installer:
+
 ![Pasted image 20240422114108](https://github.com/lm3nitro/Projects/assets/55665256/a834f7c1-c387-44e4-b499-619db212e9b2)
+
+Once that compeltes, I can see that the version we have is version 7 update 2:
 
 ![Pasted image 20240422114140](https://github.com/lm3nitro/Projects/assets/55665256/8b40b0d1-8487-4b04-ad1d-e56b89f3420f)
 
