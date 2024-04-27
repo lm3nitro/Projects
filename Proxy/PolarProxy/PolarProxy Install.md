@@ -2,7 +2,6 @@
 
 PolarProxy is a tool that captures and replays network traffic for analysis and testing. It can monitor different types of network communication like web browsing, email, and file transfers, and more. It's customizable, works with many protocols, and integrates well with other tools, making it a valuable resource for network analysis and testing.
 
-
 ### Installing PolarProxy
 
 1. Create a system user for the PolarProxy daemon:
