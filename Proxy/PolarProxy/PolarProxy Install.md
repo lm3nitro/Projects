@@ -61,8 +61,7 @@ sudo dpkg-reconfigure ca-certificates
 
 ![Pasted image 20240409205056](https://github.com/lm3nitro/Projects/assets/55665256/97ed41dd-3f34-4a30-b26b-4566c8e16fe1)
 
-Select the "extra/PolarProxy-root-CA.crt" Certificate Authority
-click OK
+*Select the "extra/PolarProxy-root-CA.crt" Certificate Authority then, Click OK*
 
 Checking the status of the service:
 
@@ -83,33 +82,33 @@ Checking the logs with journalctl to look for errors:
 
 ### Redirecting traffic to the proxy:
 
-PolarProxy is installed directly on client used for generating HTTPS traffic PolarProxy is listening on the TCP port 10443 for incoming https traffic, decrypt TLS and and save decrypted traffic to PCAP file. Encrypted traffic to port 443 is then send to a real web server. To do so, clients must be configured to redirect outgoing HTTPS traffic destined for the port TCP 443 to the port 10443, PolarProxy service is listening on.
+By default, PolarProxy listens on TCP port 10443 for incoming HTTPS traffic. When it receives this traffic, it decrypts the TLS and saves the decrypted data to a pcap file. Encrypted traffic intended for port 443 is then forwarded to a genuine web server. To enable this functionality, clients need to be configured to redirect outgoing HTTPS traffic meant for TCP port 443 to PolarProxy's listening port, which is 10443.
 
+In order to do this, these are the steps I followed:
+```
 sudo iptables -I INPUT -p tcp --dport 10443 -j ACCEPT  
 sudo iptables -t nat -A OUTPUT -m owner --uid 1000 -p tcp --dport 443 -j REDIRECT --to 10443
+```
 
-
-Test run the proxy service with curl:
-
+Tested run the proxy service with curl:
+```
 curl --insecure --connect-to www.netresec.com:443:127.0.0.1:10443 https://www.netresec.com/
-
+```
 
 Sniffing live traffic on the lookback interface to see if the packets are going to the proxy on 10443.
-
 
 ![Pasted image 20240409184100](https://github.com/lm3nitro/Projects/assets/55665256/eb18e7e0-78d7-47d4-92f1-1dda6600028b)
 
 
-On the other hand the proxy is saving the encrypted packets for fruther analysis: 
-
+PolarProxy is also saving the encrypted packets for fruther analysis: 
 
 I copied the pcap from the default directory: /var/log/PolarProxy/ to my home directory temporarily
 
 ![Pasted image 20240409184908](https://github.com/lm3nitro/Projects/assets/55665256/68b084e2-6038-4871-8419-a5c10998b0fc)
 
-Un encrypted  packet capture after TLS headers have been removed: 
+Unencrypted  pcap after TLS headers have been removed: 
  
-The traffic is coming from 127.0.0.1  loopback interface to www.netresec.com
+The traffic is coming from 127.0.0.1 loopback interface to www.netresec.com
 
 ![Pasted image 20240409184751](https://github.com/lm3nitro/Projects/assets/55665256/534ef2bd-ce5b-4ca3-8a27-f4e702a468ad)
 
