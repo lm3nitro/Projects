@@ -1,9 +1,21 @@
+# Insralling VMWare ESXi:
+
+VMware ESXi is a powerful hypervisor. It serves as the foundation for virtualization in data centers, allowing multiple virtual machines to run on a single physical server. It offers features such as live migration of VMs, high availability, resource allocation controls, and centralized management through tools like VMware vCenter Server.
+
+I currently have a R720 server racked in my home networK. There are several VMs that I want to create for several mprojects that I have in mind, and will be installing VMWare ESXi on this server in order to get my virtual enviornmen tset-up. 
+
+First thing I needed to do is go to VMWare to download ESXi:
 
 ![Pasted image 20240422100434](https://github.com/lm3nitro/Projects/assets/55665256/a5d6212b-56ef-49f8-b3da-e7d3dbbe34a8)
 
+Once you login, go to **Downloads** 
 ![Pasted image 20240422100529](https://github.com/lm3nitro/Projects/assets/55665256/3926921c-c91a-478e-8394-5d9a2f051407)
 
+Locate and select the product you are looking for, in my case it ESXi:
+
 ![Pasted image 20240422100714](https://github.com/lm3nitro/Projects/assets/55665256/12bc15ec-9b17-415d-a6f9-32b9dbf69b12)
+
+Select **Download**
 
 ![Pasted image 20240422100135](https://github.com/lm3nitro/Projects/assets/55665256/afafe41d-f82d-44ab-bd74-174094ca2483)
 
