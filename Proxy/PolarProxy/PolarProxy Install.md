@@ -1,93 +1,87 @@
-## Installing PolarProxy
+# PolarProxy
 
-Create a system user for the PolarProxy daemon:  
-Ubuntu:
+PolarProxy is a tool that captures and replays network traffic for analysis and testing. It can monitor different types of network communication like web browsing, email, and file transfers, and more. It's customizable, works with many protocols, and integrates well with other tools, making it a valuable resource for network analysis and testing.
 
+
+### Installing PolarProxy
+
+1. Create a system user for the PolarProxy daemon:
+
+```
 sudo adduser --system --shell /bin/bash proxyuser
-
-Create log directory for proxyuser:
-
-
+```
+2. Create log directory for proxyuser:
+```
 sudo mkdir /var/log/PolarProxy  
 sudo chown proxyuser:root /var/log/PolarProxy/  
 sudo chmod 0775 /var/log/PolarProxy/
-
-Download and install PolarProxy
-
-
+```
+3. Download and install PolarProxy
+```
 sudo su - proxyuser
 mkdir ~/PolarProxy
 cd ~/PolarProxy/
 curl https://www.netresec.com/?download=PolarProxy | tar -xzf -
 exit
+```
 
-Install the systemd script for PolarProxy:
-
-
+4. Install the systemd script for PolarProxy:
+```
 sudo cp /home/proxyuser/PolarProxy/PolarProxy.service /etc/systemd/system/PolarProxy.service
+```
 
-Enable and start PolarProxy service:
-
-
+5. Enable and start PolarProxy service:
+```
 sudo systemctl enable PolarProxy.service  
 sudo systemctl start PolarProxy.service
+```
 
-Check the status of PolarProxy service:
-
-
+6. Check the status of PolarProxy service:
+```
 systemctl status PolarProxy.service  
 journalctl -t PolarProxy
-
-
+```
 
 ### Ubuntu certificate installation
 
-**Import Root CA certificate to both OS and Browser**
+>#### Import Root CA certificate to both OS and Browser
 
-The root CA certificate used by PolarProxy must be trusted by all clients that will have their TLS traffic routed through the proxy. Your PolarProxy root CA must be trusted by both the operating system and any browsers or applications that have their own list of trusted root certificates in order to get a seamless integration of the proxy.
+To use PolarProxy effectively, the root CA certificate it uses must be trusted by all clients whose TLS traffic goes through the proxy. This means your PolarProxy root CA needs to be trusted by both the operating system and any browsers or applications that have their own list of trusted root certificates. This ensures a smooth integration of the proxy with your system and applications.
 
-In the last command we have used the switch --certhttp 10080, which will make the public root CA cert available on a web server running at the port 10080. Simply start a browser on the client and enter the IP address of PolarProxy, such as http://127.0.0.1:10080/polarproxy.cer (if started with --certhttp 10080), to access the certificate.
+In the command below, you will see I have used the switch --certhttp 10080, this will make the public root CA cert available on a web server running at the port 10080. Simply start a browser on the client and enter the IP address of PolarProxy, such as http://127.0.0.1:10080/polarproxy.cer (if started with --certhttp 10080), to access the certificate.
 
 _Replace "192.168.242.132" below with the IP of PolarProxy._
 
-1. wget http://192.168.242.132:10080/polarproxy.cer
-2. sudo mkdir /usr/share/ca-certificates/extra
-3. sudo openssl x509 -inform DER -in polarproxy.cer -out /usr/share/ca-certificates/extra/PolarProxy-root-CA.crt
-4. sudo dpkg-reconfigure ca-certificates
-
-
+```
+wget http://192.168.242.132:10080/polarproxy.cer
+sudo mkdir /usr/share/ca-certificates/extra
+sudo openssl x509 -inform DER -in polarproxy.cer -out /usr/share/ca-certificates/extra/PolarProxy-root-CA.crt
+sudo dpkg-reconfigure ca-certificates
+```
 
 ![Pasted image 20240409205056](https://github.com/lm3nitro/Projects/assets/55665256/97ed41dd-3f34-4a30-b26b-4566c8e16fe1)
 
-1. Select the "extra/PolarProxy-root-CA.crt" Certificate Authority
-2. click OK
-
-
+Select the "extra/PolarProxy-root-CA.crt" Certificate Authority
+click OK
 
 Checking the status of the service:
 
 ![Pasted image 20240409183458](https://github.com/lm3nitro/Projects/assets/55665256/37c9bf8f-5688-46eb-a692-d6877587e061)
 
-
-
 Checking the listening ports:
 
 ![Pasted image 20240409183705](https://github.com/lm3nitro/Projects/assets/55665256/ee4582c3-d38c-437e-bd15-8da3487ec356)
 
-
-
 Testing the proxy server:
 
-
 ![Pasted image 20240409183817](https://github.com/lm3nitro/Projects/assets/55665256/c081370f-bb71-4d05-a6c4-5bb7ee672635)
-
 
 Checking the logs with journalctl to look for errors:
 
 ![Pasted image 20240409185046](https://github.com/lm3nitro/Projects/assets/55665256/aa88535e-1941-4f5f-bc4f-d3d325e12dd8)
 
-# Redirecting traffic to the proxy:
 
+### Redirecting traffic to the proxy:
 
 PolarProxy is installed directly on client used for generating HTTPS traffic PolarProxy is listening on the TCP port 10443 for incoming https traffic, decrypt TLS and and save decrypted traffic to PCAP file. Encrypted traffic to port 443 is then send to a real web server. To do so, clients must be configured to redirect outgoing HTTPS traffic destined for the port TCP 443 to the port 10443, PolarProxy service is listening on.
 
