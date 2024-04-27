@@ -1,30 +1,32 @@
-# Further Testing the Proxy:
+# PolarProxy and NetworkMiner
 
-In this scenario I went to google looking for a random tree image.
+While using polarProxy, I wanted to continue to view the traffic and better see the capabilities that it offers. In this scenario I went to Google and searched for a random picture of a tree.
 
 ![Pasted image 20240409185436](https://github.com/lm3nitro/Projects/assets/55665256/b1b90bba-7f8f-4892-860a-9efd4e0bc0bd)
 
-The proxy has saved the traffic:
+I do have the PolarProxy running from when I previosly installed it and the proxy has saved the traffic:
 
 ![Pasted image 20240409185821](https://github.com/lm3nitro/Projects/assets/55665256/ee85f1a8-5e2f-4d05-859b-35374609ddcc)
 
+Here I am going to look at the pcap saved by PolarProxy using NetworkMiner:
+
 ![Pasted image 20240409185850](https://github.com/lm3nitro/Projects/assets/55665256/66506397-cafd-4f5d-970d-8cf1a96920ab)
 
-Analysis of the Pcap in Network minor:
+Analysis of the Pcap in NetworkMiner:
 
 ![Pasted image 20240409190734](https://github.com/lm3nitro/Projects/assets/55665256/605ce843-c733-4143-ada0-64c0b2020a7c)
 
 ![Pasted image 20240409190418](https://github.com/lm3nitro/Projects/assets/55665256/9d5621d4-b84c-4c0e-999d-7daccc4fadec)
 
-I found the image:
+In NetworkMinor I was able to locate the image that was previosly searched for in Google:
 
 ![Pasted image 20240409190032](https://github.com/lm3nitro/Projects/assets/55665256/5fcd7dbe-45c6-426d-90ef-a0c95a3f0bf3)
 
-Using  Wireshark to find the image:
+Next I used Wireshark to find the image:
 
 ![Pasted image 20240409191112](https://github.com/lm3nitro/Projects/assets/55665256/c1eb5238-a47e-440a-b122-33a851a5a63b)
 
-Exporting the image from HTTP2 trace:
+Once the image was found, I tried exporting the image from the HTTP2 trace:
 
 ![Pasted image 20240409191503](https://github.com/lm3nitro/Projects/assets/55665256/5684fe95-a684-4da0-85e7-0532ab403ccc)
 
