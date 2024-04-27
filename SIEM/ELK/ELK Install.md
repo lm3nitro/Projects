@@ -1,4 +1,9 @@
-# Installing Elasticsearch
+# ELK
+
+<img width="419" alt="Screenshot 2024-04-27 at 2 05 30 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/7c35c537-0af4-45e2-be18-e6ea7998d194">
+
+ELK stands for Elasticsearch, Logstash, and Kibana. Elasticsearch quickly searches through logs and data. Logstash collects and organizes this data. Kibana then presents it in easy-to-understand visuals, like graphs and charts. This the the process i followed when installing ELK in my network.
+
 
 ## Installing Dependencies and Nginx
 >### Install Dependencies
