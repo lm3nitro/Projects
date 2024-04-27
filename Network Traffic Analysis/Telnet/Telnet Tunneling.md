@@ -1,28 +1,20 @@
 # Identifying Telnet Tunneling
 
-Scenario:
+Telnet tunneling refes to the encapsulating or tunneling of other protocols/data through a Telnet session. Here are some ways to identify this type of traffic in a network.
 
-We notice High amount of TCP PSH flag send to a host in the network... continue scenario....
-
+1. For this first example/scenario, we will be looking at a pcap where we notice a high amount of TCP PSH flags sent to a host in the network:
 
 ![Pasted image 20240408134727](https://github.com/lm3nitro/Projects/assets/55665256/d1b27475-19a2-4462-91ed-06838fdc7d08)
 
-
-
-# PSH flag detection:
-
+PSH flag detection:
 
 To detect and prevent the misuse of the PSH flag in network security, it is important to monitor and analyze the TCP traffic and flags in the network. There are various tools and techniques that can help to capture, filter, and inspect the TCP packets and flags, such as Wireshark, Tcpdump, Suricata, Snort, Zeek.. Iptables etc. 
 
-For example, to capture and display only the TCP packets with the PSH flag set, using tcpdump, one can use the following command:
-
-Identify abnormal TCP PSH flag with tcpdump:
-
+For example, to capture and display only the TCP packets with the PSH flag set, using tcpdump, you can use the following command:
+```
 tcpdump -i eth0 'tcp[13] & 8 != 0' -nntttvvw Abnormal_TCP_PSH.pcap
-
+```
 ![Pasted image 20240408130203](https://github.com/lm3nitro/Projects/assets/55665256/2216d114-faaf-4a99-9a3f-22f6378989f9)
-
-
 
 
 # Using Host base Firewall:
