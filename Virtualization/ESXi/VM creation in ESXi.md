@@ -29,9 +29,7 @@ Here we can see that the VM is up and running. I also wanted to highligh the har
 
 ![Pasted image 20240422195542](https://github.com/lm3nitro/Projects/assets/55665256/8c78e5ce-4e1f-4924-a9e1-6af07253a874)
 
-
-
-Uploading Linux iso to Datastore: 
+I also wanted to create a VM running Ubuntu so I followed the same steps as above, only this time using the Ubuntu files:
 
 ![Pasted image 20240422195220](https://github.com/lm3nitro/Projects/assets/55665256/8be826bb-71b9-4efe-9668-4efd8fba59be)
 
