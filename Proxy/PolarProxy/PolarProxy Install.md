@@ -89,33 +89,34 @@ sudo iptables -I INPUT -p tcp --dport 10443 -j ACCEPT
 sudo iptables -t nat -A OUTPUT -m owner --uid 1000 -p tcp --dport 443 -j REDIRECT --to 10443
 ```
 
-Tested run the proxy service with curl:
+Testing the proxy with curl:
 ```
 curl --insecure --connect-to www.netresec.com:443:127.0.0.1:10443 https://www.netresec.com/
 ```
 
-Sniffing live traffic on the lookback interface to see if the packets are going to the proxy on 10443.
+I wantd to sniff live traffic on the lookback interface to see if the packets are going to the proxy on port 10443.
 
 ![Pasted image 20240409184100](https://github.com/lm3nitro/Projects/assets/55665256/eb18e7e0-78d7-47d4-92f1-1dda6600028b)
 
 
-PolarProxy is also saving the encrypted packets for fruther analysis: 
-
-I copied the pcap from the default directory: /var/log/PolarProxy/ to my home directory temporarily
+At the same time, PolarProxy is also saving the encrypted packets for fruther analysis. I copied the pcap from the default directory: /var/log/PolarProxy/ to my home directory temporarily.
 
 ![Pasted image 20240409184908](https://github.com/lm3nitro/Projects/assets/55665256/68b084e2-6038-4871-8419-a5c10998b0fc)
 
-Unencrypted  pcap after TLS headers have been removed: 
- 
-The traffic is coming from 127.0.0.1 loopback interface to www.netresec.com
+After, I wanted to take a look at the unencrypted pcap after the TLS headers had been removed. Here we see the traffic is coming from the 127.0.0.1 loopback interface to www.netresec.com:
 
 ![Pasted image 20240409184751](https://github.com/lm3nitro/Projects/assets/55665256/534ef2bd-ce5b-4ca3-8a27-f4e702a468ad)
 
-Checking the Polar proxy Root certificate in firefox:
+Lets verify that the Polar proxy Root certificate is indeed in our Firefox browser:
 
 ![Pasted image 20240409185332](https://github.com/lm3nitro/Projects/assets/55665256/bc313936-e861-48a6-bdb4-41f450120831)
 
 ![Pasted image 20240409185307](https://github.com/lm3nitro/Projects/assets/55665256/8bdfb19f-ff61-4009-bc19-64fd6af7a092)
+
+
+Once the PolarProxy was installed, I thoroughly enjoyed doing different scenarios to do different types of traffic analysis and really concentrating on the behavior and the features that PolarProxy offers. This is an excellent tool to have deployed in your network that I highly recommend. 
+
+
 
 # Further Testing the Proxy:
 
