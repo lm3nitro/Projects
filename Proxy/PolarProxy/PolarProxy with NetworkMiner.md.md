@@ -34,8 +34,12 @@ Once the image was found, I tried exporting the image from the HTTP2 trace:
 
 ![Pasted image 20240409191342](https://github.com/lm3nitro/Projects/assets/55665256/7bd08c85-8358-41ae-807a-72d30e8beaf9)
 
-Another test", going to instagram to check headers:
+As another quick test, I went to Instagram to check the headers:
 
 ![Pasted image 20240409192913](https://github.com/lm3nitro/Projects/assets/55665256/f64ea7be-1e67-45bb-9f6e-c297502152b5)
 
+Here I used Wireshark to view the pcap that PolarProxy captured from this traffic:
+
 ![Pasted image 20240409195637](https://github.com/lm3nitro/Projects/assets/55665256/d3ceb9a4-8ffb-4d4f-98dc-2ce545aa426f)
+
+By reviewing the network traffic that was captured while using PolarProxy was very beneficial and I was able to see the decrypted traffic which allowed me to better understand the data exchanged between my system and external servers. 
