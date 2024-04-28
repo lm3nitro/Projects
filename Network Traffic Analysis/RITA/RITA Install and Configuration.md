@@ -17,6 +17,9 @@ sudo apt-get install gnupg
 
 2. Import the MongoDB public GPG Key:
 
+![Screenshot 2024-04-27 at 10 48 38 PM](https://github.com/lm3nitro/Projects/assets/55665256/79b87724-8cb9-40cd-96e9-e32bf9255240)
+
+
 ```
 curl -fsSL https://pgp.mongodb.com/server-4.2.asc | \
    sudo gpg -o /usr/share/keyrings/mongodb-server-4.2.gpg \
@@ -144,6 +147,9 @@ Replace the binary located `/usr/local/bin/rita`  with the new binary.
 ![Pasted image 20240419110545](https://github.com/lm3nitro/Projects/assets/55665256/1aefe3e4-495b-4209-83a4-1f9af926ec46)
 
 # Zeek  
+
+![Screenshot 2024-04-27 at 10 49 02 PM](https://github.com/lm3nitro/Projects/assets/55665256/4fd56441-9ada-4689-a946-7e3d9117d70e)
+
 Next, I also wanted to install Zeek on the same server as RITA, and these are the steps needed to do that:
 
 ### Building from Source:
@@ -209,6 +215,9 @@ Adding the path:
 
 
 # Installing Suricata:
+
+![Screenshot 2024-04-27 at 10 49 33 PM](https://github.com/lm3nitro/Projects/assets/55665256/3b15223d-47be-4482-9eca-244aaf1aa396)
+
 Next, I also wanted to install Suricata in my Ubuntu Server. These are the steps I used to get it install. 
 Note:
 On the "stable" version of Debian, Suricata is usually not available in the latest version. A more recent version is often available from Debian backports, if it can be built there.
