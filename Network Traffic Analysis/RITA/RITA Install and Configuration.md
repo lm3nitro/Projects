@@ -1,4 +1,4 @@
-# Database Installation
+# RITA
 
 ![Screenshot 2024-04-27 at 10 46 35 PM](https://github.com/lm3nitro/Projects/assets/55665256/db334ca5-ffa9-44bc-a9b0-28cc1ac98b1d)
 
