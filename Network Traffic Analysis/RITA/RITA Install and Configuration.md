@@ -1,5 +1,6 @@
-
 # Database Installation
+
+![Screenshot 2024-04-27 at 10 46 35 PM](https://github.com/lm3nitro/Projects/assets/55665256/db334ca5-ffa9-44bc-a9b0-28cc1ac98b1d)
 
 Real Intelligence Threat Analytics (RITA) is an open-source framework designed for network traffic analysis and threat hunting. I will be installing RITA in my home network and will be using it to detect and respond to threats. I am hoping to get insights into my network traffic and see more of RITA's capabilities.
 
