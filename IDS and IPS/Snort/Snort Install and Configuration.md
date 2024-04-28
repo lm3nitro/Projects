@@ -1,5 +1,8 @@
 # Snort 3
 
+<img width="489" alt="Screenshot 2024-04-27 at 10 54 06 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/31607c9b-9639-470a-8998-d78b77631d4f">
+
+
 Snort is a powerful open-source tool used for network security. It works like a digital watchdog, constantly monitoring network traffic for signs of suspicious or malicious activity. When it detects something fishy, it creates an alert. This is the initial installation of Snort. 
 
 Before I install Snort, I need to ensure that I had the needed prerequisites. There are several that are essential prior to installing Snort.
