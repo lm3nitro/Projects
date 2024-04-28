@@ -1,5 +1,7 @@
 # Installing Zeek on Ubuntu 22.04 
 
+![Screenshot 2024-04-27 at 10 49 02 PM](https://github.com/lm3nitro/Projects/assets/55665256/e0facd98-1e90-4ba0-ac2e-6cdf16decd24)
+
 I decided to install the latest Zeek 6.2.0 on Ubuntu 22.04. These are the steps that I used to get it installed and configured. In my case, the sniffing inferface on my Ubuntu Server is enp2s0f0. 
 
 I wanted to ensure that Zeek is able to see the full packet data and minimize packet loss. To do this, I applied network sniffing optimizations: settings max ring parameters, disabling NIC offloading, and enabling promiscuous mode.
