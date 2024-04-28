@@ -1,4 +1,5 @@
-Cisco 3750G
+# Cisco Password Recovery
+3750G
 
 The **Cisco password recovery procedure** involves interrupting the switch’s normal boot procedure, renaming the **flash:config.text** (that’s the startup-config file for switches) to something else e.g **flash:config.text.old** so that the configuration file is skipped during bootup.
 
