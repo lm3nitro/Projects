@@ -1,5 +1,7 @@
 # PolarProxy
 
+![Screenshot 2024-04-27 at 10 42 13 PM](https://github.com/lm3nitro/Projects/assets/55665256/4ad37b63-2784-4fea-99bd-b3c9bf577b82)
+
 PolarProxy is a tool that captures and replays network traffic for analysis and testing. It can monitor different types of network communication like web browsing, email, and file transfers, and more. It's customizable, works with many protocols, and integrates well with other tools, making it a valuable resource for network analysis and testing.
 
 ### Installing PolarProxy
