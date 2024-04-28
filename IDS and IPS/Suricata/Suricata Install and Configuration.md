@@ -1,5 +1,7 @@
 ## Install Suricata
 
+![Screenshot 2024-04-27 at 10 49 33 PM](https://github.com/lm3nitro/Projects/assets/55665256/81e5ce5a-d88b-4b70-af3c-fe31ada77827)
+
 Suricata is an open source IDS/IPS. Suricata currently supports a wide range of network protocols and file types. This provides a comprehensive visibility into network traffic for effective threat hunting and analysis. I also like that the rules can be fine tuned to fit your environment and needs.
 
 Here I installed the latest stable version of Suricata from Personal Package Archives (PPA)
