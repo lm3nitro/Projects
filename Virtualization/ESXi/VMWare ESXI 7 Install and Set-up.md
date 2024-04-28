@@ -39,7 +39,7 @@ Here we can see that it is loading the ESXi installer:
 
 ![Pasted image 20240422114108](https://github.com/lm3nitro/Projects/assets/55665256/a834f7c1-c387-44e4-b499-619db212e9b2)
 
-Once that compeltes, I can see that the version we have is version 7 update 2:
+Once that completes, I can see that the version we have is version 7 update 2:
 
 ![Pasted image 20240422114140](https://github.com/lm3nitro/Projects/assets/55665256/8b40b0d1-8487-4b04-ad1d-e56b89f3420f)
 
