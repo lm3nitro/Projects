@@ -1,25 +1,24 @@
 # Cisco Password Recovery
-3750G
 
-The **Cisco password recovery procedure** involves interrupting the switch’s normal boot procedure, renaming the **flash:config.text** (that’s the startup-config file for switches) to something else e.g **flash:config.text.old** so that the configuration file is skipped during bootup.
+I will be perfomring a password reset on the Cisco 3750G switch. The **Cisco password recovery procedure** involves interrupting the switch’s normal boot procedure, renaming the **flash:config.text** (that’s the startup-config file for switches) to something else e.g **flash:config.text.old**, this way the configuration file is skipped during bootup.
 
 Once the switch has loaded its operating system we can enter **privileged-exec mode**, rename back the **flash:config.text.old** to **flash:config.text** (**startup-config**), copy the **startup-config** file to memory (DRAM), make the necessary password changes and save the configuration.
 
+Here are is the process I followed:
 
 ## Password Recovery – Reset Procedure
 
 The procedure described below assumes the **password recovery mechanism is enabled** (by default, it is) and there is physical access to the switch or stack (3750-X only).
 
-**Note**: If this procedure is being performed on a 3750-X stack, it is important to understand that all switches participating in the stack should be **powered off** and **only the Master switch is powered on** when initiating the password recovery procedure. The **Master switch** can be easily identified by searching for the switch with the green “Master” LED on.
+>#### Note: If this procedure is being performed on a 3750-X stack, it is important to understand that all switches participating in the stack should be **powered off** and **only the Master switch is powered on** when initiating the password recovery procedure. The **Master switch** can be easily identified by searching for the switch with the green “Master” LED on.
 
 **Step 1**
 
-On a 3750-X switch, **Power off** the entire stack or standalone switch. On a Catalyst 3560-X switch, power off the switch. Connect your console cable to the switch – 3750-X Master or the standalone switch.
+I am using a 3750-X switch, in this case I can **Power off** the entire stack or standalone switch. I then connected my console cable to the switch.
 
 **Step 2**
 
-Reconnect the power to the switch (standalone 3750-X or 3750-X) or stack master (3750-X stack only). Within 10 seconds, **press and hold** the **Mode button** while the **System LED** is **flashing green**. After the **System LED** turns **amber** and then **solid green**, **release** the **Mode button**.
-
+Reconnect the power to the switch. Within 10 seconds, **press and hold** the **Mode button** while the **System LED** is **flashing green**. After the **System LED** turns **amber** and then **solid green**, **release** the **Mode button**.
 
 If the process has been followed correctly, the following message should be displayed:
 
@@ -48,19 +47,16 @@ At this point, the switch has booted bypassing its configuration file. At the pr
 
 
 Finally, load the **startup configuration** of the master or standalone switch to memory and make the necessary changes to the **enable secret / password** or **user account** in question:
-
+```
 3750 (config) # **enable secret "password-here"
-
+```
 If you require to change the password to an account e.g admin, use the following command:
-
+```
 3750 (config) # **username admin privilege 15 secret "password-here"
 3750 (config) # exit
-
-
-
+```
 Factory Reset :
 
 ![Pasted image 20240415211405](https://github.com/lm3nitro/Projects/assets/55665256/18218cab-edff-4562-9be4-a2a303f2149e)
 
-
-
+Now that this has been completed, you can rsume to re-configure the switch to meet your needs. 
