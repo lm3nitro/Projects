@@ -1,17 +1,18 @@
-Configurating Interface to sniff traffic in Windows 11
+# Configurating Windows 11 NIC for traffic sniffing
 
-Hardware:
+This is the hardware information for the device I will be configuring:
 
 ![Pasted image 20240416122451](https://github.com/lm3nitro/Projects/assets/55665256/fa3772e5-ae40-4631-b5f3-049edb89c591)
 
-Intel Ethernet Server Adapter I350
+This is the NIC that the device has, it is an Intel Ethernet Server Adapter I350
 
 ![Pasted image 20240416120704](https://github.com/lm3nitro/Projects/assets/55665256/f09093dd-75d3-4a08-8b44-057d1aea4036)
 
+To get started, we will need to navigate to the ethernet interface we will be configuring. In my case it is ethernet 3:
+
 ![Pasted image 20240416113418](https://github.com/lm3nitro/Projects/assets/55665256/2085cecb-b86a-4b3d-9ebf-3bc21a58bf44)
 
-
-**Disabling Checksum Offload**
+### Disabling Checksum Offload
 
 1. Open the Network Connections page of the Windows Control Panel.
 2. Open the "Properties" dialog of the NIC.
@@ -34,22 +35,21 @@ TCP offloading **sends some network packets directly to the NIC for processing*
 
 ![Pasted image 20240416112747](https://github.com/lm3nitro/Projects/assets/55665256/6eab40c1-e808-4c88-8083-dc946253fa41)
 
-Note: Only Npcap Packet Driver  (NPCAP) should be enable on the interface because  it will be use for Wireshark or dumpcap to sniff traffic on the wired
+>#### Note: Only Npcap Packet Driver  (NPCAP) should be enable on the interface because  it will be use for Wireshark or dumpcap to sniff traffic on the wired
 
 ![Pasted image 20240416112832](https://github.com/lm3nitro/Projects/assets/55665256/f12f209c-c51b-480d-b6c0-b246a0df1721)
 
-
 Npcap is an architecture for **packet capture and network analysis for Windows operating systems**, consisting of a software library and a network driver.
 
-Enable promiscuous mode in Wireshark:
+### Enable promiscuous mode in Wireshark:
 
 ![Pasted image 20240416121653](https://github.com/lm3nitro/Projects/assets/55665256/08f23dca-6854-41a2-b0ff-50bdc71c08d3)
 
+To test, I capturing some traffic going to chess.com:
 
-
-Capturing some traffic going to chess.com:
-
-Display filter for chess.com
+```
+frame contains "chess.com"
+```
 
 ![Pasted image 20240416122239](https://github.com/lm3nitro/Projects/assets/55665256/43deb300-4bcb-41b3-8788-fe975d6aeb56)
 
