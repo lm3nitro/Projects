@@ -1,4 +1,4 @@
-Atomic Red Team Install
+Atomic Red Team Install on Win OS
 
 1. Open PowerShell as Admin
 
@@ -15,7 +15,7 @@ Install-AtomicRedTeam -getAtomics
 ```
 <img width="837" alt="Screenshot 2024-04-28 at 8 44 08 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/5961c236-6412-4aaa-b580-4b432a7c3fa2">
 
-Don't mind the security warnings:
+Here we see some security warnings:
 
 <img width="1348" alt="Screenshot 2024-04-28 at 8 44 45 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/35a9cb27-61e4-4927-87c2-9889224a09d8">
 
@@ -27,7 +27,7 @@ We can also verify the everything was installed. By default, this gets stored in
 
 <img width="782" alt="Screenshot 2024-04-28 at 8 50 11 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/8c81dc14-e246-45aa-a154-2d0b19464bbd">
 
-4.  import the module using the following command.
+4. Import the module using the following command.
 Import-Module "C:\AtomicRedTeam\invoke-atomicredteam\Invoke-AtomicRedTeam.psd1" -Force
 
 update the PSDefaultParameterValues var
@@ -44,9 +44,10 @@ $PSDefaultParameterValues = @{"Invoke-AtomicTest:PathToAtomicsFolder"="C:\Atomic
 Invoke-AtomicTest T1055 -ShowDetailsBrief
 
 Here we see all the tests that matches the t1055
+
 <img width="601" alt="Screenshot 2024-04-28 at 9 16 33 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/ab6ea997-e442-4d11-bb69-0ec9bd44fe29">
 
-We will want to specify a test to see the exact details. in this case I chose T1055-5:
+We will want to specify a test to see the exact details. In this case I chose T1055-5:
 ```
 Invoke-AtomicTest T1055-5 -ShowDetails
 ```
@@ -63,10 +64,18 @@ In this case, all the prereqs are met. If they are not met, you can use the foll
 Invoke-AtomicTest T1055-5 -GetPrereqs
 ```
 
-8. Run the test
+8. I decided to run the test 
 ```
-Invoke-AtomicTest T1055-5
+Invoke-AtomicTest T1564.002-3
 ```
+This test created a hidden user in registry:
+
+<img width="611" alt="Screenshot 2024-04-28 at 9 36 24 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/1cba1d7a-d1eb-4761-af99-d9daf02ffc11">
+
+We can see that the test completed successfully.
+
+9. Lets verify our registry key to ensure that the test did create the hidden user:
+
 
 
 
