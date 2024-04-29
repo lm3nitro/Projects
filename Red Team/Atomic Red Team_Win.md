@@ -76,6 +76,17 @@ We can see that the test completed successfully.
 
 9. Lets verify our registry key to ensure that the test did create the hidden user:
 
+<img width="1034" alt="Screenshot 2024-04-28 at 6 11 57 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/cf42886c-1484-4b96-b9b7-1629c53656c6">
+
+I also have a wazuh agent installed on this host. Lets take a look and see if the details:
+
+<img width="1427" alt="Screenshot 2024-04-28 at 9 38 41 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/b31f6cea-d459-4788-a468-3b2d52802f05">
+
+When we expand and see the details, we can see that this event was generated from our test:
+
+<img width="1396" alt="Screenshot 2024-04-28 at 9 39 14 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/c20b8d6e-c688-4581-95db-b723dcbc43a2">
+
+
 
 
 
