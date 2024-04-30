@@ -57,11 +57,15 @@ Installation is finished, complete the install and select *Finish*
 
 Now that the Splunk Fowarder is installed on the host, we will need to configure our Splunk instance so that it can receive the logs being sent. 
 
+First, we will need to install 2 applications on our instance. These are both Splunk add-ons for Windows and Linux. For now the Windows is the only one needed, however, I will be using the Linux one later. Once you have the add on downloaded, navigate to your Splunk instance, and go to *Upload from File*
+
 <img width="1414" alt="Screenshot 2024-04-29 at 11 00 24 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/b095b1e2-36a2-49f2-81f5-4f38b2ba23e5">
 
-First, we will need to install 2 applications on our instance. These are both Splunk add-ons for Windows and Linux. For now the Windows is the only one needed, however, I will be using the Linux one later:
+Choose the downloaded app/add-on:
 
 <img width="1124" alt="Screenshot 2024-04-29 at 11 01 27 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/8901557d-efb3-4a70-b1f9-14a499246cf3">
+
+*Upload*
 
 <img width="1046" alt="Screenshot 2024-04-29 at 11 02 18 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/021bf677-9a96-43fb-918f-ee107c836dd5">
 
