@@ -51,62 +51,69 @@ Anti DDoS:
 
 ![Pasted image 20240505170626](https://github.com/lm3nitro/Projects/assets/55665256/2a10b2bf-8ff9-407e-aec7-6800d7a62040)
 
-70702
+![Pasted image 20240505170702](https://github.com/lm3nitro/Projects/assets/55665256/f240ca59-4f1e-499b-938c-a1057088424b)
 
-20240505170726
+![Pasted image 20240505170726](https://github.com/lm3nitro/Projects/assets/55665256/8aa072b7-f8a2-40d8-bcca-a06957e32d8e)
 
-![[Attachments/Pasted image 20240505170747.png]]
-
-![[Attachments/Pasted image 20240505170813.png]]
-
-![[Attachments/Pasted image 20240505170839.png]]
-
-![[Attachments/Pasted image 20240505170906.png]]
-
-![[Attachments/Pasted image 20240505170933.png]]
-
-![[Attachments/Pasted image 20240505170955.png]]
+![Pasted image 20240505170747](https://github.com/lm3nitro/Projects/assets/55665256/14a43935-2df2-4620-820e-449287067a67)
 
 
+![Pasted image 20240505170813](https://github.com/lm3nitro/Projects/assets/55665256/5ec5349b-b54e-4d16-9892-18651c7bf206)
 
-![[Attachments/Pasted image 20240505171142.png]]
+![Pasted image 20240505170839](https://github.com/lm3nitro/Projects/assets/55665256/bb1b8026-e1bc-441e-bfba-025a9dfcf0da)
 
-![[Attachments/Pasted image 20240505171335.png]]
 
-![[Attachments/Pasted image 20240505171408.png]]
+![Pasted image 20240505170906](https://github.com/lm3nitro/Projects/assets/55665256/2a0ede17-4cc8-4db5-8b22-0208869051d7)
 
-![[Attachments/Pasted image 20240505171433.png]]
-![[Attachments/Pasted image 20240505171503.png]]
-![[Attachments/Pasted image 20240505171522.png]]
+![Pasted image 20240505170933](https://github.com/lm3nitro/Projects/assets/55665256/47bce11b-95b8-4922-9247-163230086e65)
 
+
+![Pasted image 20240505170955](https://github.com/lm3nitro/Projects/assets/55665256/2a565ada-a63e-48e3-a251-f3af275e1e45)
+
+
+![Pasted image 20240505171142](https://github.com/lm3nitro/Projects/assets/55665256/7ff95fea-f927-4184-85fe-550b2c274497)
+
+
+![Pasted image 20240505171335](https://github.com/lm3nitro/Projects/assets/55665256/7f12ac10-7c15-4cc7-b8af-34fccf777e18)
+
+
+![Pasted image 20240505171408](https://github.com/lm3nitro/Projects/assets/55665256/6e95892c-e215-4a88-9c37-7424179e8b1c)
+
+![Pasted image 20240505171433](https://github.com/lm3nitro/Projects/assets/55665256/02c44957-ed0c-44a2-95b8-bdfe05d9cd48)
+
+![Pasted image 20240505171503](https://github.com/lm3nitro/Projects/assets/55665256/70952cc9-bd3e-4ab5-976d-6240720b8623)
+
+
+![Pasted image 20240505171522](https://github.com/lm3nitro/Projects/assets/55665256/02e9c72e-4173-4171-abe9-fbb800a8289f)
 
 DoS attack to WINDOWS 10
 
 
-![[Attachments/Pasted image 20240505173923.png]]
+![Pasted image 20240505173923](https://github.com/lm3nitro/Projects/assets/55665256/20774dfe-0fbf-4212-bce7-792c0c49222e)
 
-![[Attachments/Pasted image 20240505173859.png]]
 
-![[Attachments/Pasted image 20240505174217.png]]
+![Pasted image 20240505173859](https://github.com/lm3nitro/Projects/assets/55665256/bc21365c-a951-42f6-8a17-067060a1c70e)
+
+
+![Pasted image 20240505174217](https://github.com/lm3nitro/Projects/assets/55665256/cf774d4a-4cea-4e85-b649-1a4b2a512994)
+
 
 POD attack
 
 
-![[Attachments/Pasted image 20240505175619.png]]
+![Pasted image 20240505175619](https://github.com/lm3nitro/Projects/assets/55665256/40c232e9-f3df-4478-b544-ff4923067f01)
 
 
+![Pasted image 20240505175527](https://github.com/lm3nitro/Projects/assets/55665256/9344f369-bd9b-47a4-bcd9-c41e7323c157)
 
-![[Attachments/Pasted image 20240505175527.png]]
 
 More details
 
 
-![[Attachments/Pasted image 20240505180225.png]]
-
-
+![Pasted image 20240505180225](https://github.com/lm3nitro/Projects/assets/55665256/633a290f-5cfa-4733-ac44-303738b62ec0)
 
 
 Much better:
+![Pasted image 20240505175809](https://github.com/lm3nitro/Projects/assets/55665256/ec12c831-57d8-4839-a27a-7f5f741f3036)
 
-![[Attachments/Pasted image 20240505175809.png]]
 
