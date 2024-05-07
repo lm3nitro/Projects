@@ -158,5 +158,44 @@ sudo systemctl daemon-reload
 ![Pasted image 20240428161502](https://github.com/lm3nitro/Projects/assets/55665256/a1fb98e0-4eb0-437c-b1f2-3ea66fc2a4c4)
 
 
+========================
+
+
+
+
+# activating vulnerability module
+
+text files that allows s to tweak wazuh
+
+navigating to /var/ossec/ 
+
+![Pasted image 20240428162723](https://github.com/lm3nitro/Projects/assets/55665256/56e4cb7b-8f30-472a-8ed5-284010d3eb99)
+
+![Pasted image 20240428163614](https://github.com/lm3nitro/Projects/assets/55665256/9013a186-9fa9-4ab3-9bde-17ba234cf29c)
+
+![Pasted image 20240428163608](https://github.com/lm3nitro/Projects/assets/55665256/32b37077-6198-4855-a79f-a49f91084802)
+
+
+Restarting Wazuh manager:
+
+![Pasted image 20240428163922](https://github.com/lm3nitro/Projects/assets/55665256/ee09ff7b-f199-4e5b-9fdd-9991344b2602)
+
+Restarting Agents:
+
+Note:
+
+ It needs admin privileges to restart the services both on linux and windows.
+
+
+Ubuntu 22.04
+
+![Pasted image 20240428164237](https://github.com/lm3nitro/Projects/assets/55665256/44234f6d-5d71-49b0-b82c-19b6c7a80f1e)
+
+
+
+Windows 10
+![Pasted image 20240428164428](https://github.com/lm3nitro/Projects/assets/55665256/4b5258a1-8f51-43b2-8e27-cf2c5ada3bca)
+
+
 
 
