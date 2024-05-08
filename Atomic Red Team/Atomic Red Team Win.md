@@ -1,10 +1,12 @@
-Atomic Red Team on Win OS
+# Atomic Red Team on Win OS
 
 Scope: The Atomic Red Team is a framework that is used to perform secruity testing and threat emulation. For this, I will be using a Windows 10 OS that has a Wazuh agent installed on it. I will be performing a series of test and anlyzing the detection in Wazuh.   
 
 Tools: Atomic Red Team, Win OS, PowerShell, Wazuh
 
 <img width="487" alt="Screenshot 2024-04-28 at 9 53 43 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/4abf46bc-28ec-4d72-b209-a0975ed26350">
+
+### Install/Import Atomic Red Team
 
 1. To get started, I opened PowerShell as Admin on the Win host. 
 
@@ -51,6 +53,8 @@ help Invoke-AtomicTest
 ```
 <img width="833" alt="Screenshot 2024-04-28 at 9 07 19 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/b9483a44-f1cf-45da-897d-3bae94deb60b">
 
+### Testing 
+
 6. There are a series of tests that are available. To see the details of a test we can use the following command. Here I am taking a look at the test T1055:
 ```
 Invoke-AtomicTest T1055 -ShowDetailsBrief
@@ -84,6 +88,8 @@ Invoke-AtomicTest T1564.002-3
 
 We can see that the test completed successfully.
 
+### Analysis
+
 9. I then verified the registry key to ensure that the test did create the hidden user:
 
 <img width="1034" alt="Screenshot 2024-04-28 at 6 11 57 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/cf42886c-1484-4b96-b9b7-1629c53656c6">
@@ -96,7 +102,9 @@ When we expand and see the details, we can see that this event was generated fro
 
 <img width="1396" alt="Screenshot 2024-04-28 at 9 39 14 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/c20b8d6e-c688-4581-95db-b723dcbc43a2">
 
-Summary and Analysis: I continued to run a series of other test and analyzed the logs provided by Wazuh. Although it is always best practice to have a series of security measures and not just one, I could see that Wazuh was able to capture all the security events I tested again the host. For being an Open Source Tool, I beleive that Wazuh provided great insight and details about the test and the triggers. 
+### Summary and Analysis: 
+
+I continued to run a series of other test and analyzed the logs provided by Wazuh. Although it is always best practice to have a series of security measures and not just one, I could see that Wazuh was able to capture all the security events I tested again the host. For being an Open Source Tool, I beleive that Wazuh provided great insight and details about the test and the triggers. 
 
 
 
