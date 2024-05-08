@@ -1,8 +1,13 @@
-Atomic Red Team Install on Win OS
+Atomic Red Team on Win OS
+
+Scope: The Atomic Red Team is a framework that is used to perform secruity testing and threat emulation. For this, I will be using a Windows 10 OS that has a Wazuh agent installed on it. I will be performing a series of test and anlyzing the detection in Wazuh.   
+
+Tools: Atomic Red Team, Win OS, PowerShell, Wazuh
 
 <img width="487" alt="Screenshot 2024-04-28 at 9 53 43 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/4abf46bc-28ec-4d72-b209-a0975ed26350">
 
-1. Open PowerShell as Admin
+1. To get started, I opened PowerShell as Admin. 
+
 
 2. To ignore the security warning prompts for the module:
 ```
