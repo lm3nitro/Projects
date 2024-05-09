@@ -9,6 +9,7 @@ Here I will be installing MySQL on a Windows 10 host. Once installed I will run 
 ### Tools: 
 Windows 10, MySQL
 
+### Installation:
 
 To start, navigate to dev.mysql.com/downloads/installer/
 
