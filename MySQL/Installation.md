@@ -3,9 +3,12 @@
 
 MySQL is an open source relational database management system. It allows us to store, manage, query and retrieve data stored in a relational database. 
 
-Scope: Here I will be installing MySQL on a Windows 10 host. Once installed I will run simple queries, intermediate queries, and will export findings. The queries are and exports will be done seperately. These are the steps I used to get MySQL installed. 
+### Scope: 
+Here I will be installing MySQL on a Windows 10 host. Once installed I will run simple queries, intermediate queries, and will export findings. The queries are and exports will be done seperately. These are the steps I used to get MySQL installed. 
 
-Tools: Windows 10, MySQL
+### Tools: 
+Windows 10, MySQL
+
 
 To start, navigate to dev.mysql.com/downloads/installer/
 
