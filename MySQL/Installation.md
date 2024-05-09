@@ -7,8 +7,8 @@ Scope: Here I will be installing MySQL on a Windows 10 host. Once installed I wi
 
 Tools: Windows 10, MySQL
 
-Step 1: Navigate to dev.mysql.com/downloads/installer/
-Here we want to select the latest version. A the time of this writing it is 8.0.37. I also selected to download the MSI Installer that does not include the web as seen in the screenshot below:
+Navigate to dev.mysql.com/downloads/installer/
+We want to select the latest version. A the time of this writing it is 8.0.37. I also selected to download the MSI Installer that does not include the web as seen in the screenshot below:
 
 ![Pasted image 20240504111155](https://github.com/lm3nitro/Projects/assets/55665256/c5265906-9b8a-4858-ac15-81ebc876719c)
 
