@@ -92,8 +92,12 @@ Select to start *MySQL Workbench* and *MySQL Shell* and select *Finish*
 
 Once we select *Finish* above, MySQL Workbench and Shell will be opened. Now we can double-click and enter our password when prompted. 
 
-I have created the following pages:
-
-
 ![Pasted image 20240504120228](https://github.com/lm3nitro/Projects/assets/55665256/4dbad673-fb9b-4ffa-a3ac-0a0b4d8ade0b)
+
+In continuation, I have created the following pages:
+
++ Import Databases.md
++ MySQL Queries.md
++ Connecting Remotely.md
+
 
