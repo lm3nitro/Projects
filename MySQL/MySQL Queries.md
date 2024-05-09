@@ -1,4 +1,9 @@
-Simple Query
+# Simple Queries
+
+Summary: This is a continuation to the MySQL project. I have already installed MySQL, created a schema, and imported a data set. These are some simple queries.
+
+### Queries
+
 SELECT * FROM statistics_lm3nitro;
 Make sure to double-click the scheme and that it is in bold to ensure that it is selected before running the query.
 
