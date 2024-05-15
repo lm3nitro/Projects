@@ -1,49 +1,75 @@
 # Connecting Remotely via Linux host
 
-This is a continuation of *MySQL Queries*. 
-Can't connect via remote linux host 
+Objective: This is a continuation of *MySQL Queries*. I will be attempting to connect to the MySQL server to run some queries, and also add a new schema and table via the command line. 
 
-![Pasted image 20240504160434](https://github.com/lm3nitro/Projects/assets/55665256/e0cc0c8d-6a66-49b6-a10a-276c959bcc63)
+### Connnecting to MySQL server
 
-![Pasted image 20240504160547](https://github.com/lm3nitro/Projects/assets/55665256/831445a0-1ae8-4067-909a-e43bf5f4f664)
-
-![Pasted image 20240504154823](https://github.com/lm3nitro/Projects/assets/55665256/a68c155a-2c04-4b40-aada-ac84eb5f57b6)
+When I initially tried to remote into the server, I was getting the error below:
 
 ![Pasted image 20240504154914](https://github.com/lm3nitro/Projects/assets/55665256/32d1db03-7a26-4367-bb98-b5fd2e158750)
 
-Create user for remote access
+I ran a packet capture while attempting to see if I could get more information. I was able to capture the following:
+
+![Pasted image 20240504154823](https://github.com/lm3nitro/Projects/assets/55665256/a68c155a-2c04-4b40-aada-ac84eb5f57b6)
+
+I also wanted to see the error in MySQL regarding the remote attempt. To see the logs, go to *Server > Server Logs*
+
+![Pasted image 20240504160434](https://github.com/lm3nitro/Projects/assets/55665256/e0cc0c8d-6a66-49b6-a10a-276c959bcc63)
+
+Here we can see the error related to our remote host:
+
+![Pasted image 20240504160547](https://github.com/lm3nitro/Projects/assets/55665256/831445a0-1ae8-4067-909a-e43bf5f4f664)
+
+In order to resolve this issue and connect to MySQL remotly, we will need to create/add a user and set-up a new connection.
+
+### New User and Connection Set-up
+
+To get started, navigate to *Server > Users and Privileges*
 
 ![Pasted image 20240504155126](https://github.com/lm3nitro/Projects/assets/55665256/cfadcc8f-8d55-4c19-a91c-b0839c3a9f45)
 
-![Pasted image 20240504153135](https://github.com/lm3nitro/Projects/assets/55665256/eec5424f-b357-4df2-8a2a-48d5d6872271)
+In the new dialog, select *Add Account* towards the bottom, and enter the needed information regarding the new user. When complete, click *Apply*
 
 ![Pasted image 20240504153412](https://github.com/lm3nitro/Projects/assets/55665256/5f52aeab-a5b0-46f2-b940-957df22216a2)
 
+You will then need to select the role/privileges the new user will have. To do this, navigate to *Adminitrative Roles*. I chose to give my user complete access. Once complete, click *Apply* to save the changes. It is always recommended to apply the principle of least privilege when possible.
+
 ![Pasted image 20240504153628](https://github.com/lm3nitro/Projects/assets/55665256/c80e7c92-b9e2-46d5-85ea-0b48247540b5)
+
+Next, we will need to select which schema our user will have access to. Then select *OK*.
 
 ![Pasted image 20240504153938](https://github.com/lm3nitro/Projects/assets/55665256/7f5ba7a2-eea3-4998-bbdb-1d89e1b1b001)
 
+Once we clicked OK, we can now select what the user will be able to do within the schema (add, delete, etc.). Click *Apply*
+
 ![Pasted image 20240504154139](https://github.com/lm3nitro/Projects/assets/55665256/11597da1-56b8-454d-bb96-e0473a2afed7)
+
+Now that our user has been created, we can set up the connection. To do this, go to the main window for MySQL Workbench, and select *+* icon to add a new connection. Enter the neede information for the remote host and click *OK*
 
 ![Pasted image 20240504154437](https://github.com/lm3nitro/Projects/assets/55665256/1dffb7f1-c140-4d0e-a0fb-3ce646f201d8)
 
 
-Testing connection
+### Testing connection
+
+Our user has been created, and our connection is set up. We can now resume and attempt to connect remotely again. Here we can see that it was successful and that our user can see the databases:
 
 ![Pasted image 20240504155622](https://github.com/lm3nitro/Projects/assets/55665256/b3aa5d07-8006-4b04-92bf-cfd89e003aee)
 
+On the MySQL server, we can also verify and see the remote connection:
+
 ![Pasted image 20240504161258](https://github.com/lm3nitro/Projects/assets/55665256/7c68edb3-6ff5-45ab-8387-915549347aab)
+
+We can also see the successful connection via Wireshark:
 
 ![Pasted image 20240504161516](https://github.com/lm3nitro/Projects/assets/55665256/632ad97a-1ee3-41e1-a93f-e59a668d3687)
 
+### Connecting to database
 
+To see database options, use the following command
 
-connecting to database remotely
-
-current databases:
-
+```
 show databases;
-
+```
 ![Pasted image 20240505142318](https://github.com/lm3nitro/Projects/assets/55665256/1655bb03-c800-4ec0-b041-e0e7509bb802)
 
 
