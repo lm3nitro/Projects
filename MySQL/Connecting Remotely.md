@@ -1,3 +1,6 @@
+# Connecting Remotely via Linux host
+
+This is a continuation of *MySQL Queries*. 
 Can't connect via remote linux host 
 
 ![Pasted image 20240504160434](https://github.com/lm3nitro/Projects/assets/55665256/e0cc0c8d-6a66-49b6-a10a-276c959bcc63)
