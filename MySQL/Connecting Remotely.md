@@ -63,7 +63,7 @@ We can also see the successful connection via Wireshark:
 
 ![Pasted image 20240504161516](https://github.com/lm3nitro/Projects/assets/55665256/632ad97a-1ee3-41e1-a93f-e59a668d3687)
 
-### Connecting to database
+### Creating New Database
 
 To see database options, use the following command
 
@@ -72,15 +72,17 @@ show databases;
 ```
 ![Pasted image 20240505142318](https://github.com/lm3nitro/Projects/assets/55665256/1655bb03-c800-4ec0-b041-e0e7509bb802)
 
+I do not want to change anything in the existing databases. I will add a new database and change into it in order to use it:
 
-Adding database and changing into it to use it:
-
+```
 create database lm3nitro_food;
 use lm3nitro_food;
-
+```
 ![Pasted image 20240505143256](https://github.com/lm3nitro/Projects/assets/55665256/a7f663bc-9d11-4320-bfe3-04b8634ded9a)
 
+Now that we have our new database, lets create a table. The table I created is food_table and the collumns are (ID, Name, Color, and Type):
 
+```
 Add table to database:
 
  create table food_table (
@@ -89,20 +91,17 @@ Add table to database:
     -> color varchar(300),
     -> type varchar(300)
     -> );
-
+```
 
 ![Pasted image 20240505143843](https://github.com/lm3nitro/Projects/assets/55665256/88a53fb1-43fc-4c07-b7e7-4c4e549fe067)
 
-
-Verify columns:
-
+To verify our collumns:
+```
 describe food_table;
-
+```
 ![Pasted image 20240505144043](https://github.com/lm3nitro/Projects/assets/55665256/a42a82c5-29d3-4247-9af3-59fa08b7e6c2)
 
-
-Adding 1 line to table and verifying:
-
+Now we need to add 
 insert into food_table values (1, "apple", "red", "fruit"),
     -> (2, "banana", "yellow", "fruit"),
     -> (3, "carrot", "orange", "vegetble"),
