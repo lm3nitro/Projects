@@ -1,6 +1,7 @@
 # Connecting Remotely via Linux host
 
-Scope: This is a continuation of *MySQL Queries*. I will be attempting to connect to the MySQL server to run some queries from a linux host, and also add a new schemas and tables remotely via the command line. 
+### Scope: 
+This is a continuation of *MySQL Queries*. I will be attempting to connect to the MySQL server to run some queries from a linux host, and also add a new schemas and tables remotely via the command line. 
 
 ### Connnecting to MySQL server
 
