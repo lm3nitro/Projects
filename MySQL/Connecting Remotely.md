@@ -1,6 +1,6 @@
 # Connecting Remotely via Linux host
 
-Scope: This is a continuation of *MySQL Queries*. I will be attempting to connect to the MySQL server to run some queries, and also add a new schemas and tables remotely via the command line . 
+Scope: This is a continuation of *MySQL Queries*. I will be attempting to connect to the MySQL server to run some queries from a linux host, and also add a new schemas and tables remotely via the command line. 
 
 ### Connnecting to MySQL server
 
@@ -224,10 +224,4 @@ update customer_table set age = 21 where first_name = "clare";
 
 Summary:
 
-In conclusion, being able to modify, view, and query a database is important becuase direct access is not always possible. MySQL servers are crucial for data management and anlysis. 
-
-
-
-
-
-
+In conclusion, being able to modify, view, and query a database is important becuase direct access is not always possible, this provides flexibility and convenience. MySQL servers are crucial for data management and anlysis. Because MySQL is open-source, it makes it so that it can be freely used and modified. MySQL also supports user authentication as seen above, SSL for secure connections, and data encryption. 
