@@ -1,8 +1,14 @@
 # Atomic Red Team on Win OS
 
-Scope: The Atomic Red Team is a framework that is used to perform secruity testing and threat emulation. For this, I will be using a Windows 10 OS that has a Wazuh agent installed on it. I will be performing a series of test and anlyzing the detection in Wazuh.   
+The Atomic Red Team is a framework that is used to perform secruity testing and threat emulation. This allows organizations the ability to test their ability to detect and respond to real world threats. Each test offered within the Atmoic Red Team is use to simulate a specific technique. 
 
-Tools: Atomic Red Team, Win OS, PowerShell, Wazuh
+### Scope: 
+
+I will be using a Windows 10 OS that has a Wazuh agent installed on it. I will be installing the Atomic Red Team on the host and performing a series of test and anlyzing the detection in Wazuh.   
+
+### Tools: 
+
+Atomic Red Team, Win OS, PowerShell, Wazuh
 
 <img width="487" alt="Screenshot 2024-04-28 at 9 53 43 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/4abf46bc-28ec-4d72-b209-a0975ed26350">
 
