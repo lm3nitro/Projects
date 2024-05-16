@@ -1,6 +1,6 @@
 # Connecting Remotely via Linux host
 
-Objective: This is a continuation of *MySQL Queries*. I will be attempting to connect to the MySQL server to run some queries, and also add a new schema and table via the command line. 
+Scope: This is a continuation of *MySQL Queries*. I will be attempting to connect to the MySQL server to run some queries, and also add a new schemas and tables remotely via the command line . 
 
 ### Connnecting to MySQL server
 
@@ -12,7 +12,7 @@ I ran a packet capture while attempting to see if I could get more information. 
 
 ![Pasted image 20240504154823](https://github.com/lm3nitro/Projects/assets/55665256/a68c155a-2c04-4b40-aada-ac84eb5f57b6)
 
-I also wanted to see the error in MySQL regarding the remote attempt. To see the logs, go to *Server > Server Logs*
+I also wanted to see the error in MySQL regarding the remote attempt. You can biew logs by going to *Server > Server Logs*
 
 ![Pasted image 20240504160434](https://github.com/lm3nitro/Projects/assets/55665256/e0cc0c8d-6a66-49b6-a10a-276c959bcc63)
 
@@ -155,6 +155,11 @@ Lets verify:
 describe customer_table;
 ```
 
+We can also verify on the MySQL Workbench:
+
+![Pasted image 20240505165528](https://github.com/lm3nitro/Projects/assets/55665256/2518842a-b7dc-4a7f-8f12-d662ad352749)
+
+linux
 ![Pasted image 20240505162951](https://github.com/lm3nitro/Projects/assets/55665256/86e72c7e-c664-4e50-8bd8-fb37af405148)
 
 
@@ -188,30 +193,41 @@ select * from customer_table where store= "target";
 #### Query #2
 
 See all customers who went to target or kroger:
+
+```
 select * from customer_table where store= "target" or store= "kroger";
+```
 
 ![Pasted image 20240505164405](https://github.com/lm3nitro/Projects/assets/55665256/1ec27297-b21a-4d50-af0b-052a1ecb6c2a)
 
 
-
 #### Query #3
 
-see customer under the age of 30:
+See customers under the age of 30:
+
+```
 select * from customer_table where age< "30";
+```
 
 ![Pasted image 20240505164703](https://github.com/lm3nitro/Projects/assets/55665256/df8da6e9-f41f-46f2-9300-75b2deb7d2da)
 
 
-
 #### Query #4
 
-Update entry in our table:
+To update information in a table we use the *update* command
+
+```
+update customer_table set age = 21 where first_name = "clare";
+```
 
 ![Pasted image 20240505165221](https://github.com/lm3nitro/Projects/assets/55665256/eb899b7d-12a3-48b9-946e-ebc4cb217675)
 
+Summary:
+
+In conclusion, being able to modify, view, and query a database is important becuase direct access is not always possible. MySQL servers are crucial for data management and anlysis. 
 
 
-![Pasted image 20240505165528](https://github.com/lm3nitro/Projects/assets/55665256/2518842a-b7dc-4a7f-8f12-d662ad352749)
+
 
 
 
