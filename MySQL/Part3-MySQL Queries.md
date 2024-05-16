@@ -1,6 +1,7 @@
 # Queries
 
-#### Scope: This is a continuation to the MySQL project. I have already installed MySQL, created a schema, and imported a data set. These are some simple queries. I will be using the dataset that was previously imported in *Import Database.md*. This is a dataset is a list of billionaires and their statistics (age, name, birthday. networth, etc.) The following queries are a simple set of queries using a mix of functions to see the data we have represented in different ways.
+### Scope: 
+This is a continuation to the MySQL project. I have already installed MySQL, created a schema, and imported a data set. These are some simple queries. I will be using the dataset that was previously imported in *Import Database.md*. This is a dataset is a list of billionaires and their statistics (age, name, birthday. networth, etc.) The following queries are a simple set of queries using a mix of functions to see the data we have represented in different ways.
 
 Before starting to create queries, we will need to ensure that we have selected our schema. You can do this by double-clicking the scheme and ensureing that it is in **bold** before running the query. As you can see in the image below, our schema is in **bold** and we can select everything in our dataset in a simple query to ensure everything is running:
 
@@ -9,7 +10,6 @@ SELECT * FROM statistics_lm3nitro;
 ```
 ![Pasted image 20240504130423](https://github.com/lm3nitro/Projects/assets/55665256/c669a29f-3f0c-4c22-95d3-9c0808f12970)
 
-### Queries
 
 #### Query #1
 
