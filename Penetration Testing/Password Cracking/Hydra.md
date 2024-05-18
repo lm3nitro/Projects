@@ -1,4 +1,4 @@
-# Hydra
+# $${\color{lightgreen}Hydra}$$
 
 Hydra is a brute-forcing tool that helps penetration testers and ethical hackers crack passwords of different network services. Hydra can perform rapid dictionary attacks against more than 50 protocols. This includes telnet, FTP, HTTP, HTTPS, SMB, databases, and other services.
 
@@ -6,26 +6,33 @@ Hydra is a brute-forcing tool that helps penetration testers and ethical hackers
 
 A brute force attack is a hacking method that uses trial and error u crack passwords, login credentials, and encryption keys. It is a simple yet reliable tactic for gaining unauthorized access to individual accounts and organizations’ systems and networks. When using the brute force method, the adversary tries multiple usernames and passwords, often using a computer to test a wide range of combinations, until they find the correct login information. 
 
-###
-# Installation:
+### Scope:
 
-Install Hydra  through Default Repository:
+Install Hydra and use it in combination with a wordlist to brute force into a FTP server. Analyze the behavior from both the victim and attacker perspective. 
 
+### Tools/Technology:
+
+Hydra, Linux OS, and Wireshark
+
+## Installation:
+
+Toget started, we will need to install Hydra. This can be done through Default Repository:
+
+```
 sudo apt install hydra-gtk
+```
 
 ![Pasted image 20240425102740](https://github.com/lm3nitro/Projects/assets/55665256/571afd57-9b44-46e3-a298-935b7d6aadd7)
 
+You can also install Hydra through GitHub:
 
-Installing Hydra through GitHub:
+>#### Note: This method allows you to install the latest update of Hydra directly from the source code. 
 
-
-Note:
-This method allows you to install the latest update of Hydra directly from the source code. 
-
+```
 git clone https://github.com/vanhauser-thc/thc-hydra.git
+```
 
 ![Pasted image 20240425103054](https://github.com/lm3nitro/Projects/assets/55665256/f06aec44-a7fc-429d-881c-40e23fe5b9ed)
-
 
 navigate from the current directory to the cloned directory and once you are there, we need to configure the cloned directory.
 
