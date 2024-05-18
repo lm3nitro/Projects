@@ -1,5 +1,7 @@
 # Queries
 
+Please note: This is a continuation of *Import Dabase.md*.
+
 ### Scope: 
 This is a continuation to the MySQL project. I have already installed MySQL, created a schema, and imported a data set. These are some simple queries. I will be using the dataset that was previously imported in *Import Database.md*. This is a dataset is a list of billionaires and their statistics (age, name, birthday. networth, etc.) The following queries are a simple set of queries using a mix of functions to see the data we have represented in different ways.
 
