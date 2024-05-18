@@ -1,11 +1,12 @@
-Hydra is a brute-forcing tool that helps penetration testers and ethical hackers crack the passwords of network services.
+# Hydra
 
-Hydra can perform rapid dictionary attacks against more than 50 protocols. This includes telnet, FTP, HTTP, HTTPS, SMB, databases, and several other services.
+Hydra is a brute-forcing tool that helps penetration testers and ethical hackers crack passwords of different network services. Hydra can perform rapid dictionary attacks against more than 50 protocols. This includes telnet, FTP, HTTP, HTTPS, SMB, databases, and other services.
 
 ![Pasted image 20240425102445](https://github.com/lm3nitro/Projects/assets/55665256/09f19037-82c2-4b5f-902f-7f006f8bac69)
 
-A brute force attack is a hacking method that uses trial and error to crack passwords, login credentials, and encryption keys. It is a simple yet reliable tactic for gaining unauthorized access to individual accounts and organizations’ systems and networks. The hacker tries multiple usernames and passwords, often using a computer to test a wide range of combinations, until they find the correct login information.
+A brute force attack is a hacking method that uses trial and error u crack passwords, login credentials, and encryption keys. It is a simple yet reliable tactic for gaining unauthorized access to individual accounts and organizations’ systems and networks. When using the brute force method, the adversary tries multiple usernames and passwords, often using a computer to test a wide range of combinations, until they find the correct login information. 
 
+###
 # Installation:
 
 Install Hydra  through Default Repository:
