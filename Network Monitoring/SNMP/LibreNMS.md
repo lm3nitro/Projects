@@ -165,25 +165,24 @@ Heath information:
 
 interfaces information: 
 
-20240515145434
+![Pasted image 20240515145434](https://github.com/lm3nitro/Projects/assets/55665256/5a0cef59-39a7-4d08-9e00-c8cf942dedf1)
 
 Event logs information:
 
-![[Attachments/Pasted image 20240515145837.png]]
+![Pasted image 20240515145837](https://github.com/lm3nitro/Projects/assets/55665256/9156c386-163a-4fce-9b2c-ad1a9a90ee65)
+
 
 looking at all the ARP information from the Fortinet:
 
 
-![[Attachments/Pasted image 20240515150818.png]]
+![Pasted image 20240515150818](https://github.com/lm3nitro/Projects/assets/55665256/b11229ec-e60f-41c1-bcca-8743c3e1d784)
+
 
 
 
 Monitoring real time interface:
 
-![[Attachments/Pasted image 20240515154612.png]]
-
-
-
+![Pasted image 20240515154612](https://github.com/lm3nitro/Projects/assets/55665256/5eb68f9d-1bab-49bf-a28d-63ae7091c43a)
 
 # Configuring pulling to 60s:
 
@@ -213,12 +212,14 @@ Heartbeat is how long to wait for data before registering a null value, i.e 120 
 
 
 
-![[Attachments/Pasted image 20240515152539.png]]
+![Pasted image 20240515152539](https://github.com/lm3nitro/Projects/assets/55665256/5bad41c5-e3ad-4aa1-bb11-1c79fa40fedd)
+
 
 The reset of the configuration:
 
 
-![[Attachments/Pasted image 20240515152651.png]]
+![Pasted image 20240515152651](https://github.com/lm3nitro/Projects/assets/55665256/491f5acd-ca19-4c24-9ff3-27aafc6b4910)
+
 
 
 
@@ -227,29 +228,32 @@ Restarting LibreNMS service:
 sudo systemctl restart librenms.service
 
 
-![[Attachments/Pasted image 20240515152921.png]]
+![Pasted image 20240515152921](https://github.com/lm3nitro/Projects/assets/55665256/d4a34a26-29ed-4562-b2ac-9e1291c972c0)
+
 
 verify the last polled:
 
-![[Attachments/Pasted image 20240515153216.png]]
+![Pasted image 20240515153216](https://github.com/lm3nitro/Projects/assets/55665256/84f8da29-e3f3-47be-b791-02c6bf3a8775)
+
 
 
 Listing all the scripts:
 
 
 
-![[Attachments/Pasted image 20240515155515.png]]
+![Pasted image 20240515155515](https://github.com/lm3nitro/Projects/assets/55665256/6dd90532-1a05-433b-abb6-30a6a6f853ac)
+
 
 Converting existing RRD files:
 
-![[Attachments/Pasted image 20240515160017.png]]
-
+![Pasted image 20240515160017](https://github.com/lm3nitro/Projects/assets/55665256/4297dce0-ef60-4f18-a58d-4eefe781bd9b)
 
 Poller information:
 
-![[Attachments/Pasted image 20240515160130.png]]
+![Pasted image 20240515160130](https://github.com/lm3nitro/Projects/assets/55665256/c9181006-2175-4c71-aa45-31437cefa450)
+
 
 Performance:
 
+![Pasted image 20240515160206](https://github.com/lm3nitro/Projects/assets/55665256/9f704c2c-d923-412d-8e30-d5e410d4a2a0)
 
-20240515160206
