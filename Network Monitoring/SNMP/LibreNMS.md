@@ -1,7 +1,5 @@
 
-
 ![Pasted image 20240515124908](https://github.com/lm3nitro/Projects/assets/55665256/239da2d4-1d5a-4920-90af-17c6acf92a3e)
-
 
 LibreNMS is an open-source network monitoring and management platform used to monitor the health, performance, and availability of various network devices, services, and infrastructure components within an organization's network
 
@@ -24,43 +22,33 @@ Two Factor Authentication
 API
 Auto Updating
 
-
-
 Network Diagram:
 
 ![Pasted image 20240515163239](https://github.com/lm3nitro/Projects/assets/55665256/f7d28476-0aa1-47d4-9055-bbebbb3afe20)
-
 
 Downloading LibreNMS
 
 ![Pasted image 20240515125207](https://github.com/lm3nitro/Projects/assets/55665256/a2313ac2-d67e-49e6-981e-33b6dbaaf71d)
 
-
 Selecting OVA Images:
 
-
 ![Pasted image 20240515125331](https://github.com/lm3nitro/Projects/assets/55665256/3d369bc5-45fe-4923-bd69-cc4bc2decbf5)
-
 
 Selecting the VMware ova:
 
 ![Pasted image 20240515125628](https://github.com/lm3nitro/Projects/assets/55665256/abed0708-629c-45cf-aaee-5d7d72f08a00)
 
-
 Importing the ova file with VMware workstation:
 
 ![Pasted image 20240515125928](https://github.com/lm3nitro/Projects/assets/55665256/b5da1078-0293-4731-8d62-a922a338b2ba)
-
 
 ![Pasted image 20240515130022](https://github.com/lm3nitro/Projects/assets/55665256/4447c319-aae0-4447-8457-8bf3fa747b6c)
 
 Adding more resources if needed to the LibreNMS vm:
 
-
 ![Pasted image 20240515130236](https://github.com/lm3nitro/Projects/assets/55665256/d0c7dddc-ec6c-4c92-b2ec-82acc0d6ddd1)
 
 Access/Credentials:
-
 
 If you are using the VirtualBox image then to access your newly imported VM, these ports are forwarded from your machine to the VM: 8080 for WebUI and 2023 for SSH. Remember to edit/remove them if you change (and you should) the VM network configuration.
 
@@ -83,66 +71,45 @@ MySQL/MariaDB
 username: librenms
 password: D42nf23rewD
 
-
 Login in via SSH:
 
 ![Pasted image 20240515131644](https://github.com/lm3nitro/Projects/assets/55665256/838339ed-98f2-4485-8bbe-605254004953)
-
 
 Looking at the LibreNMS  status service:
 
 ![Pasted image 20240515151928](https://github.com/lm3nitro/Projects/assets/55665256/8a3b8112-580b-44a9-8ef8-140b9cf7adb6)
 
-
 Login into the webUI:
-
-
 
 lm3nitro.librenms.local
 
 ![Pasted image 20240515131844](https://github.com/lm3nitro/Projects/assets/55665256/49e00601-c53f-4688-98e8-c8a4f6fb78bf)
 
-
-
 looking at the ngnix logs:
 
 ![Pasted image 20240515152113](https://github.com/lm3nitro/Projects/assets/55665256/4731dd9c-1878-4ee2-ad8e-c2828e2a72b9)
-
 
 Let's look some system  information about the LibreNMS server:
 
 ![Pasted image 20240515132257](https://github.com/lm3nitro/Projects/assets/55665256/1cb0bf2d-a702-4742-aa27-03168dc7e9cd)
 
-
 ![Pasted image 20240515132829](https://github.com/lm3nitro/Projects/assets/55665256/be74e20e-3a81-4117-9ffb-9cce97db7ccd)
-
 
 ![Pasted image 20240515133017](https://github.com/lm3nitro/Projects/assets/55665256/b61d079c-ddee-4c31-badd-0059e2ef22e5)
 
-
-
-
 Graphs Tab:
-
 
 ![Pasted image 20240515133143](https://github.com/lm3nitro/Projects/assets/55665256/0c8fc4be-2c42-4bbf-be69-d68dd01bff52)
 
-
-
 Health Tab:
 
-
 ![Pasted image 20240515133205](https://github.com/lm3nitro/Projects/assets/55665256/e434893d-9955-41af-b1e2-a93c11d49fbe)
-
 
 Interfaces information:
 
 ![Pasted image 20240515133242](https://github.com/lm3nitro/Projects/assets/55665256/f881f272-b33a-43ff-b5c6-cdc1e017cdb6)
 
-
 Adding Fortinet Firewall:
-
-
 
 Configure SNMP fortinet:
 
