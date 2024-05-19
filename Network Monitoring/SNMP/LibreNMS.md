@@ -117,96 +117,61 @@ Adding SNMP to the management  interface:
 
 ![Pasted image 20240515142002](https://github.com/lm3nitro/Projects/assets/55665256/9f6d2fa2-9d67-419a-ad49-38dc7c15b55f)
 
-
 Checking the SNMP box:
 
-
 ![Pasted image 20240515142218](https://github.com/lm3nitro/Projects/assets/55665256/33d84a05-e790-4e01-a6ac-f11dce0d7d4c)
-
 
 Configuration SNMP agent:
 
 ![Pasted image 20240515142643](https://github.com/lm3nitro/Projects/assets/55665256/3e6d1f92-9808-4cb9-b959-9e4a49edfc77)
 
-
-
-
 Setting up a packet capture:
-
-
 
 ![Pasted image 20240515141744](https://github.com/lm3nitro/Projects/assets/55665256/f632b758-0d4d-4bff-9029-6b6a3042f1a2)
 
-
 ![Pasted image 20240515141152](https://github.com/lm3nitro/Projects/assets/55665256/19843376-3968-4ff5-99e8-678e87c336ea)
-
-
- 
 
 Adding a Fortinet firewall in LibreNMS:
 
-
 ![Pasted image 20240515140841](https://github.com/lm3nitro/Projects/assets/55665256/739c3f3a-40af-4060-8293-a2c4dd6b2c38)
-
 
 ![Pasted image 20240515140948](https://github.com/lm3nitro/Projects/assets/55665256/b7a59f8d-c7ac-4500-b987-910704aaa643)
 
-
 ![Pasted image 20240515141026](https://github.com/lm3nitro/Projects/assets/55665256/b20fd542-45d0-4a3a-9890-9eab339e0f19)
-
-
-
 
 Stopping the capture:
 
-
 ![Pasted image 20240515141623](https://github.com/lm3nitro/Projects/assets/55665256/cee7c5d0-406a-4827-bcd5-5f432be6a38b)
-
-
-
 
 Opening the SNMP traffic in traffic:
 
 ![Pasted image 20240515141357](https://github.com/lm3nitro/Projects/assets/55665256/a274d505-ba87-4428-8552-687f6546f19f)
 
-
-
 Looking at the firewall added:
 
-
-
 ![Pasted image 20240515142952](https://github.com/lm3nitro/Projects/assets/55665256/d8b48a0c-76e3-4653-a42b-17ca8f536754)
-
-
 
 looking at the Overview tab:
 
 ![Pasted image 20240515145024](https://github.com/lm3nitro/Projects/assets/55665256/5194f601-3d5b-4101-bdf3-28fc17e3cc1b)
 
-
-
 Graphs TAB:
-
 
 ![Pasted image 20240515145153](https://github.com/lm3nitro/Projects/assets/55665256/cb87adbf-2c06-44cc-b2c0-d54e65add53c)
 
-
 Heath information:
-
 
 ![Pasted image 20240515145259](https://github.com/lm3nitro/Projects/assets/55665256/7b17c465-aaa0-472e-9f83-45f14ae1ac1b)
 
+interfaces information: 
 
-
-interfaces information:   
-
+20240515145434
 
 Event logs information:
 
 ![[Attachments/Pasted image 20240515145837.png]]
 
 looking at all the ARP information from the Fortinet:
-
 
 
 ![[Attachments/Pasted image 20240515150818.png]]
@@ -287,6 +252,4 @@ Poller information:
 Performance:
 
 
-![[Attachments/Pasted image 20240515160206.png]]
-
-
+20240515160206
