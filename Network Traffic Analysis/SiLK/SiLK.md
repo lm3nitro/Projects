@@ -211,8 +211,8 @@ Typically an entry for /usr/local/lib will already exist in the /etc/ld.so.conf.
  
  grep local /etc/ld.so.conf.d/*
 
+![Pasted image 20240509162541](https://github.com/lm3nitro/Projects/assets/55665256/e6393627-8562-4ffa-8f7c-e9dfddab527c)
 
-20240509162541
 
 To update the cache in this case, run the ldconfig program. 
 
@@ -234,7 +234,8 @@ ldconfig
 
 All installed tools are in /usr/local/bin
 
-![[Attachments/Pasted image 20240509183609.png]]
+![Pasted image 20240509183609](https://github.com/lm3nitro/Projects/assets/55665256/cd259460-063b-4cd7-a713-58c302a0059f)
+
 
 
 
@@ -248,12 +249,14 @@ All installed tools are in /usr/local/bin
 
 Taking  packet capture:
 
-![[Attachments/Pasted image 20240510133659.png]]
+![Pasted image 20240510133659](https://github.com/lm3nitro/Projects/assets/55665256/5d35fc99-aaa7-431e-83ff-5b7c1d3ee98b)
+
 
 rwp2yaf2silk - Convert PCAP data to SiLK Flow Records with YAF
 
 
-![[Attachments/Pasted image 20240510160856.png]]
+![Pasted image 20240510160856](https://github.com/lm3nitro/Projects/assets/55665256/432ec0d7-5aa7-4d66-894d-fb4a9938b31f)
+
 
 
 rwp2yaf2silk is a script to convert a pcap file, such as that produced by tcpdump , to a single file of SiLK Flow records.
@@ -272,14 +275,16 @@ First step is to convert pcap file intro network flows. We will use the rwp2yaf2
 
 rwp2yaf2silk --in=lm3nitro_flow_to_silk.cap --out=lm3nitro_flow_to_silk.silk
 
-![[Attachments/Pasted image 20240510133957.png]]
+![Pasted image 20240510133957](https://github.com/lm3nitro/Projects/assets/55665256/3af1d7f8-7e34-4ce7-ac04-eb53e7034648)
+
 
 
 rwfilter lm3nitro_flow_to_silk.silk --proto=0-255 --pass=stdout --max-pass=2 | rwcut -f 1-10
 
 
 
-![[Attachments/Pasted image 20240510134411.png]]
+![Pasted image 20240510134411](https://github.com/lm3nitro/Projects/assets/55665256/ad2318f0-06c1-468c-8a83-5469c92dcb86)
+
 
 
 One of the most useful criteria to always look for are the top talkers in the network. Let's search based on the number of flow records with rwstats command:
@@ -287,21 +292,24 @@ One of the most useful criteria to always look for are the top talkers in the ne
 
 rwstats --fields=sip --count=20 lm3nitro_flow_to_silk.silk
 
-![[Attachments/Pasted image 20240510134607.png]]
+![Pasted image 20240510134607](https://github.com/lm3nitro/Projects/assets/55665256/aea77a81-6891-445b-b022-64acf3171107)
+
 
 Filtering all the connections for a single IP:
 
 rwfilter --dcidr=151.101.1.140 --pass=stdout lm3nitro_flow_to_silk.silk | rwcut --fields=sip,sport,dip,dport
 
 
-![[Attachments/Pasted image 20240510135651.png]]
+![Pasted image 20240510135651](https://github.com/lm3nitro/Projects/assets/55665256/8052ff31-8a82-441e-ab2f-476551dc01e0)
+
 
 Too many records were returned. Let's count how many are there:
 
 Adding | wc -l 
 
 
-![[Attachments/Pasted image 20240510135820.png]]
+![Pasted image 20240510135820](https://github.com/lm3nitro/Projects/assets/55665256/22f37ba6-3511-46cb-b95d-0fabd8c21c94)
+
 
 
 Total of  unique communication with 151.101.1.140 including ports, byte and packets transfer:
@@ -309,15 +317,16 @@ Total of  unique communication with 151.101.1.140 including ports, byte and pack
 
 rwfilter --dcidr=151.101.1.140 --pass=stdout lm3nitro_flow_to_silk.silk | rwuniq --fields=dport --values=records,bytes,packets --sort-output
 
-![[Attachments/Pasted image 20240510140129.png]]
+![Pasted image 20240510140129](https://github.com/lm3nitro/Projects/assets/55665256/311c6869-8e41-4fe7-a97c-ff671d1d531a)
+
 
 
 Extract all TCP flows and display top 5 destination ports by number of flows:
 
  rwfilter lm3nitro_flow_to_silk.silk  --proto=6 --pass=stdout | rwstats --fields dport --count=5 --flows
 
+![Pasted image 20240510141124](https://github.com/lm3nitro/Projects/assets/55665256/fe1df959-30c8-4457-99b2-0845240449c8)
 
-![[Attachments/Pasted image 20240510141124.png]]
 
 
 
@@ -328,13 +337,15 @@ Extract all TCP flows and display top 5 destination ports by number of flows:
 
 Silk Flow Fields:
 
-![[Attachments/Pasted image 20240510155349.png]]
+![Pasted image 20240510155349](https://github.com/lm3nitro/Projects/assets/55665256/e8b085dd-d681-4aba-96d4-8617f0cd2694)
+
 
 # rwfilter format:
 
 
 
-![[Attachments/Pasted image 20240510155652.png]]
+![Pasted image 20240510155652](https://github.com/lm3nitro/Projects/assets/55665256/96dc9bfb-fb2d-4add-9f8b-fab8145624cf)
+
 
 
 
@@ -346,7 +357,8 @@ At least one partitioning parameter required for every rwfilter:
 
 
 
-![[Attachments/Pasted image 20240510155814.png]]
+![Pasted image 20240510155814](https://github.com/lm3nitro/Projects/assets/55665256/a470d466-e1b3-4106-9f92-5a2533a2a061)
+
 
 
 
@@ -355,7 +367,8 @@ At least one partitioning parameter required for every rwfilter:
 
 
 
-![[Attachments/Pasted image 20240510160034.png]]
+![Pasted image 20240510160034](https://github.com/lm3nitro/Projects/assets/55665256/93017d46-78e8-4264-b586-249613d8a1ed)
+
 
 
 
@@ -363,171 +376,13 @@ At least one partitioning parameter required for every rwfilter:
 
 
 
-![[Attachments/Pasted image 20240510161140.png]]
+![Pasted image 20240510161140](https://github.com/lm3nitro/Projects/assets/55665256/8a828cf4-44b4-4db9-8651-47c0c3e35a1f)
 
 
 
 
 
 
-Linux Firewall:
-
-
-
-![[Attachments/Pasted image 20240510212020.png]]
-
-
-Uncomplicated Firewall (UFW) is a program for managing a netfilter firewall designed to be easy to use.
-
-
-Search for UFW:
-
-
-![[Attachments/Pasted image 20240510205540.png]]
-
-
-Installing UFW:
-
-![[Attachments/Pasted image 20240510205658.png]]
-
-To view status of ufw, type:
-
-ufw status
-
-![[Attachments/Pasted image 20240510205739.png]]
-
-Note:
-
-The default policy firewall works out great for both the servers and desktop. It is always a good policy to closes all ports on the server and open only required ports one by one.
-
-
-Block all incoming connection and only allow outgoing connections:
-
-ufw default allow outgoing
-
-ufw default deny incoming
-
-![[Attachments/Pasted image 20240510205947.png]]
-
-Open SSH TCP port 22 connections:
-
-![[Attachments/Pasted image 20240510210023.png]]
-
-Open any random TCP port example:
-
-ufw allow 12345/tcp
-
-![[Attachments/Pasted image 20240510210331.png]]
-
-Only allow ssh access from the static IP address such as 10.10.100.1 to our server 10.10.100.105:
-
-
-ufw allow proto tcp from 10.10.100.1 to 10.10.100.105 port 22
-
-![[Attachments/Pasted image 20240510210411.png]]
-
-
-
-Turn on firewall:
-
-ufw enable
-
-![[Attachments/Pasted image 20240510210523.png]]
-
-Cnce UFW enabled, it runs across system reboots too. We can verify that easily as follows using the systemctl command:
-
-![[Attachments/Pasted image 20240510210600.png]]
-
-Disable the UFW based firewall:
-
-![[Attachments/Pasted image 20240510210635.png]]
-
-Open specific incoming connections/ports with description:
-
-
-ufw allow 80/tcp comment 'lm3nitro Ngnix'
-
-![[Attachments/Pasted image 20240510210727.png]]
-ufw allow 443/tcp comment 'HTTPS lm3nitro traffic'
-
-![[Attachments/Pasted image 20240510210816.png]]
-
-Listing all the firewall rules:
-
-ufw status
-
-
-![[Attachments/Pasted image 20240510210928.png]]
-
-
-Allow port ranges:
-
-We can allow port ranges too say, tcp and udp 100 to 500:
-
-ufw allow 100:500/tcp
-ufw allow 100:500/udp
-
-![[Attachments/Pasted image 20240510211128.png]]
-
-
-Allow all connections from 10.10.100.10
-
-ufw allow from 10.10.100.10
-
-
-![[Attachments/Pasted image 20240510211225.png]]
-
-UFW delete rules:
-
-
-ufw status numbered
-![[Attachments/Pasted image 20240510211337.png]]
-
-To delete 7th rule type the command:
-
-ufw delete 7
-
-ufw status numbered
-
-![[Attachments/Pasted image 20240510211515.png]]
-
-Reset the ufw:
-
-
-ufw reset
-
-
-Reload the ufw:
-
-ufw reload
-
-![[Attachments/Pasted image 20240510211640.png]]
-
-View the firewall logs:
-
-
-
-more /var/log/ufw.log
-![[Attachments/Pasted image 20240510211804.png]]
-
-tail -f /var/log/ufw.log
-
-![[Attachments/Pasted image 20240510211827.png]]
-
-
-Show the list of rules:
-
-ufw show listening
-
-
-![[Attachments/Pasted image 20240510211855.png]]
-
-
-
-ufw show added
-
-
-![[Attachments/Pasted image 20240510211927.png]]
 
 
 
