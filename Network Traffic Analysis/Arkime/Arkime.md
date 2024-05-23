@@ -5,23 +5,23 @@
 Arkime (formerly known as Moloch) is an open-source large-scale network traffic analysis tool that is designed to capture, index, and analyze network packets. It enables security analysts to conduct real-time, high-speed searches and data visualizations, aiding in the detection, diagnosis, and response to cybersecurity threats and anomalies within network environments.
 
 ### Scope:
-
+I will be installing and configuring Arkime and will be analyizng traffic.  
 
 ### Tools and Technology:
-
+Arkime, Elasticsearch, and Linux OS
 
 ## Installation
+To get started, I navigated to the official Arkime website and then navigated to *Downloads*
 
-Officinal website:
 https://arkime.com/
-
 
 ![Pasted image 20240512190635](https://github.com/lm3nitro/Projects/assets/55665256/01d8f984-7f02-4103-a7a3-72e62e53d726)
 
+Behore downloading, I needed to verify the Ubuntu version I was running:
 
-
-Verify the ubuntu version:
-
+```
+lsb_release -a
+```
 
 ![Pasted image 20240512190658](https://github.com/lm3nitro/Projects/assets/55665256/6a9ebfeb-6345-43f8-87af-ae2169c4e9e7)
 
