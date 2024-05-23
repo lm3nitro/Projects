@@ -1,14 +1,18 @@
+# $${\color{aqua}Arkime}$$
 
 ![Pasted image 20240512213410](https://github.com/lm3nitro/Projects/assets/55665256/9a463061-5b9b-4bc7-84e2-c088b15a83ad)
 
+Arkime (formerly known as Moloch) is an open-source large-scale network traffic analysis tool that is designed to capture, index, and analyze network packets. It enables security analysts to conduct real-time, high-speed searches and data visualizations, aiding in the detection, diagnosis, and response to cybersecurity threats and anomalies within network environments.
+
+### Scope:
 
 
-Arkime (formerly known as Moloch) is a powerful, open-source, large-scale network traffic analysis tool that is designed to capture, index, and analyze network packets. It enables security analysts to conduct real-time, high-speed searches and data visualizations, aiding in the detection, diagnosis, and response to cybersecurity threats and anomalies within network environments.
+### Tools and Technology:
 
+
+## Installation
 
 Officinal website:
-
-
 https://arkime.com/
 
 
