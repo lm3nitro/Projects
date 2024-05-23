@@ -5,10 +5,16 @@
 Arkime (formerly known as Moloch) is an open-source large-scale network traffic analysis tool that is designed to capture, index, and analyze network packets. It enables security analysts to conduct real-time, high-speed searches and data visualizations, aiding in the detection, diagnosis, and response to cybersecurity threats and anomalies within network environments.
 
 ### Scope:
-I will be installing and configuring Arkime and will be analyizng traffic.  
+I will be installing and configuring Arkime and will be analyizng coming and going traffic from my internal servers.  
 
 ### Tools and Technology:
-Arkime, Elasticsearch, and Linux OS
+Arkime, Elasticsearch, Wireshark and Linux OS
+
+### Network Diagram:
+
+Here is a diagram of how I have everything set-up for the this project:
+
+![Pasted image 20240513172414](https://github.com/lm3nitro/Projects/assets/55665256/b661ef4f-0544-421b-b12f-fb9864816fda)
 
 ## Installation
 To get started, I navigated to the official Arkime website and then navigated to *Downloads*
@@ -25,34 +31,17 @@ lsb_release -a
 
 ![Pasted image 20240512190658](https://github.com/lm3nitro/Projects/assets/55665256/6a9ebfeb-6345-43f8-87af-ae2169c4e9e7)
 
-
-Basic Arkime Installation steps:
-
-
+Included are the basic Arkime Installation steps:
 
 ![Pasted image 20240512214155](https://github.com/lm3nitro/Projects/assets/55665256/809f6be2-af83-4978-b289-e4c3bab9ddd6)
 
-
-
-looking at the operating system compatible version:
-
+Next, I needed to locate the version that is compatible with my OS/Kernel:
 
 ![Pasted image 20240512190821](https://github.com/lm3nitro/Projects/assets/55665256/e6fa1377-dacc-46b6-8a1a-e0b288a5c816)
-
 
 Downloading the package: 
 
 ![Pasted image 20240512190944](https://github.com/lm3nitro/Projects/assets/55665256/b2da40bb-61e2-46c5-85ca-6f6ba1b33c2a)
-
-
-
-
-Network Diagram:
-
-![Pasted image 20240513172414](https://github.com/lm3nitro/Projects/assets/55665256/b661ef4f-0544-421b-b12f-fb9864816fda)
-
-
-
 
 
 
