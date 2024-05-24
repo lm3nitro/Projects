@@ -39,125 +39,111 @@ Next, I needed to locate the version that is compatible with my OS/Kernel:
 
 ![Pasted image 20240512190821](https://github.com/lm3nitro/Projects/assets/55665256/e6fa1377-dacc-46b6-8a1a-e0b288a5c816)
 
-Downloading the package: 
+Right-click on the package and select *Copy Link*
 
 ![Pasted image 20240512190944](https://github.com/lm3nitro/Projects/assets/55665256/b2da40bb-61e2-46c5-85ca-6f6ba1b33c2a)
 
-
+Once you have the link, you can usse wget and paste it into the command as seen below:
 
 ![Pasted image 20240512191029](https://github.com/lm3nitro/Projects/assets/55665256/7cb1236d-8ac0-42fd-b166-03b9e135c622)
 
-
-
-Installing dependencies:
-
+Now that we have the package, we will then need to install the dependencies:
 
 ![Pasted image 20240512191135](https://github.com/lm3nitro/Projects/assets/55665256/59245fe6-1554-45f8-80e6-a6ba7ad5fe06)
 
-
-Installing the deb package:
+Once we have the dependencies installed, lets depackage Arkime:
 
 ![Pasted image 20240512191409](https://github.com/lm3nitro/Projects/assets/55665256/f4736183-4b8a-47b1-9c85-90cfaa87ac69)
 
-
-
-verify the name of the eth interface:
+Next, I need to verify the name of the ethernet interface I will be using:
 
 ![Pasted image 20240512191600](https://github.com/lm3nitro/Projects/assets/55665256/425053d5-e17e-4c69-9046-af915baeb725)
 
-
-
 Setting up the sniffing interface and installing elasticsearch:
-
 
 ![Pasted image 20240512192000](https://github.com/lm3nitro/Projects/assets/55665256/7846e62d-e2de-4428-ab64-c19244c4aeb8)
 
-
-
 Starting Elasticsearch:
-
 
 ![Pasted image 20240512192439](https://github.com/lm3nitro/Projects/assets/55665256/a08f7572-4599-434f-b569-ee0666047cc6)
 
+We can also very the listening ports:
 
-Verify the listening ports:
+```
+sudo ss -tnlp
+```
 
 ![Pasted image 20240512192535](https://github.com/lm3nitro/Projects/assets/55665256/70c464b6-fd5d-4608-a257-76784ade98b1)
 
 
 Initialization of Elasticsearch one more time:
 
+```
 sudo /opt/arkime/db/db.pl http://lm3nitro.arkime.local:9200 init
+```
 
 ![Pasted image 20240512192700](https://github.com/lm3nitro/Projects/assets/55665256/4604de42-f2b6-48e9-b7c9-7e341232c5c6)
 
+Now that we have it installed, we will need to create a user. I created the user lm3nitro:
 
-
-
-
-Adding user:
+```
 sudo /opt/arkime/bin/arkime_add_user.sh admin "Admin User" lm3nitro --admin
+```
 
 ![Pasted image 20240512192848](https://github.com/lm3nitro/Projects/assets/55665256/3cdb38b7-84eb-4ab2-a49a-b72bfd7ccd41)
 
 
+After creating the users, lets starts the services:
 
-Starting the services:
-
+```
+sudo systemctl start arkimecapture.service
+sudo systemctl start arkimeviewer.service
+```
 ![Pasted image 20240512193932](https://github.com/lm3nitro/Projects/assets/55665256/562ebd03-7257-4743-a4ea-55d0f3384bcf)
-
-
-
-
 
 Verify the status of the services:
 
-Note:
-
- All logs are located in /opt/arkime/logs/
- 
-![Pasted image 20240512213310](https://github.com/lm3nitro/Projects/assets/55665256/42b99320-6c23-435a-836a-c0de8774f31c)
-
-
-
+```
 systemctl status arkimeviewer.service
+```
 
 ![Pasted image 20240512193838](https://github.com/lm3nitro/Projects/assets/55665256/542e4030-c575-44bb-afb3-4bf0bc968ea9)
 
-
-
-logs from viewer.log
-
-![Pasted image 20240512213207](https://github.com/lm3nitro/Projects/assets/55665256/e3954332-1972-4028-b9fd-7abee832ea31)
-
-
-
+```
 systemctl status arkimecapture.service
+```
 
 ![Pasted image 20240512194344](https://github.com/lm3nitro/Projects/assets/55665256/31017185-dfa6-49cb-a99e-85b3708b8e2b)
 
+Having the service started will generate logs. We can take a look at them below:
 
+>#### Note: All logs are located in /opt/arkime/logs/
+![Pasted image 20240512213310](https://github.com/lm3nitro/Projects/assets/55665256/42b99320-6c23-435a-836a-c0de8774f31c)
+
+logs from viewer.log
+
+```
+sudo tail /opt/arkime/logs/viewer.log
+```
+![Pasted image 20240512213207](https://github.com/lm3nitro/Projects/assets/55665256/e3954332-1972-4028-b9fd-7abee832ea31)
 
 logs from capture.log
 
+```
+sudo tail /optarkime/logs/capture.log
+```
 
 ![Pasted image 20240512213034](https://github.com/lm3nitro/Projects/assets/55665256/a458b52c-e4e6-47d5-a665-1ff38227eacd)
 
 
-
-Some troubleshooting commands:
-
+## Troubleshooting
+The following are some troubleshooting commands:
 
 ![Pasted image 20240512201217](https://github.com/lm3nitro/Projects/assets/55665256/7e716bdc-73a3-447a-9316-90b1e889ce17)
 
-
 ![Pasted image 20240512201452](https://github.com/lm3nitro/Projects/assets/55665256/aeb91167-4116-4baf-a40d-cc37d7f9cfc0)
 
-
-
 ![Pasted image 20240512201539](https://github.com/lm3nitro/Projects/assets/55665256/409f2c8e-8507-4da9-9fd4-9b6a4887f024)
-
-
 
 ![Pasted image 20240512212835](https://github.com/lm3nitro/Projects/assets/55665256/aaf726fc-bba2-41ca-92b0-4152bf9f2c65)
 
