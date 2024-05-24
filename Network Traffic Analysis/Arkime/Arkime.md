@@ -139,23 +139,36 @@ sudo tail /optarkime/logs/capture.log
 ## Troubleshooting
 The following are some troubleshooting commands:
 
+```
+curl http://localhost:9200/_cat/health
+```
+
 ![Pasted image 20240512201217](https://github.com/lm3nitro/Projects/assets/55665256/7e716bdc-73a3-447a-9316-90b1e889ce17)
+
+```
+curl http://localhost:9200/_refresh
+```
 
 ![Pasted image 20240512201452](https://github.com/lm3nitro/Projects/assets/55665256/aeb91167-4116-4baf-a40d-cc37d7f9cfc0)
 
+```
+opt/arkime/db/db.pl http://127.0.0.1:9200 info
+```
+
 ![Pasted image 20240512201539](https://github.com/lm3nitro/Projects/assets/55665256/409f2c8e-8507-4da9-9fd4-9b6a4887f024)
+
+```
+sudo /opt/arkime/bin/arkime_update_geo.sh
+```
 
 ![Pasted image 20240512212835](https://github.com/lm3nitro/Projects/assets/55665256/aaf726fc-bba2-41ca-92b0-4152bf9f2c65)
 
 
+## Logging into Arkime
 
-Login into the arkimeviewer
+Once everything is installed and running, we can login:
 
 ![Pasted image 20240512211851](https://github.com/lm3nitro/Projects/assets/55665256/47c65a4e-1e8f-4e34-8e92-31cfd75135ea)
-
-
-
-
 
 
 ![Pasted image 20240512203128](https://github.com/lm3nitro/Projects/assets/55665256/985be448-9787-43ac-a9a0-4d2495c65818)
