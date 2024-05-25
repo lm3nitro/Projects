@@ -170,56 +170,42 @@ Once everything is installed and running, we can login:
 
 ![Pasted image 20240512211851](https://github.com/lm3nitro/Projects/assets/55665256/47c65a4e-1e8f-4e34-8e92-31cfd75135ea)
 
+We can take a look around and see what Arkime offers. 
 
-![Pasted image 20240512203128](https://github.com/lm3nitro/Projects/assets/55665256/985be448-9787-43ac-a9a0-4d2495c65818)
-
-
-connections tab
+This is the connections tab:
 
 ![Pasted image 20240512203419](https://github.com/lm3nitro/Projects/assets/55665256/84073b51-446f-4a49-b42e-777d40079e3b)
 
+SPIView
+![Pasted image 20240512203128](https://github.com/lm3nitro/Projects/assets/55665256/985be448-9787-43ac-a9a0-4d2495c65818)
 
-Looking at the Sessions  tab:
-
-Let's go to chess.com to see if we can capture the traffic and view it:
-
+On my internal host I navigated to chess.com to see if I could capture the traffic and view it:
 
 ![Pasted image 20240512204654](https://github.com/lm3nitro/Projects/assets/55665256/7714e9af-0281-4ae2-a7f9-e45519a0dcb3)
 
-
-
-
-Downloading the pcap file:
+Arkime also allows you to download pcap files:
 
 ![Pasted image 20240512204055](https://github.com/lm3nitro/Projects/assets/55665256/21c3881c-04b6-4839-81d0-4b98b9a5753e)
 
-
-Openning the pcap with Wireshark:
-
+Lets open the pcap with Wireshark:
 
 ![Pasted image 20240512204851](https://github.com/lm3nitro/Projects/assets/55665256/a080dc0c-28e1-4042-9b84-169143447daa)
-
 
 Looking at some DNS traffic:
 
 ![Pasted image 20240512205707](https://github.com/lm3nitro/Projects/assets/55665256/ba405fe3-9eb4-4d00-98ac-620d2320126e)
 
-
-
-Arkime stats:
+Arkime statistics:
 
 ![Pasted image 20240512210029](https://github.com/lm3nitro/Projects/assets/55665256/17838492-8ec9-4eed-b370-24396a5d4d20)
-
-
 
 Looking at 1 hour worth of traffic: 
 
 ![Pasted image 20240512214512](https://github.com/lm3nitro/Projects/assets/55665256/1dd922b3-ed6e-4ace-8808-420b333fc1cd)
 
 
-
-
 Summary:
+
 
 installation
 configuration
