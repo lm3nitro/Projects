@@ -204,13 +204,8 @@ Looking at 1 hour worth of traffic:
 ![Pasted image 20240512214512](https://github.com/lm3nitro/Projects/assets/55665256/1dd922b3-ed6e-4ace-8808-420b333fc1cd)
 
 
-Summary:
+## Summary:
 
-
-installation
-configuration
-troubleshooting
-network traffic analysis
-
+WI installed and configured Arkime and tested its functionality of capturing network traffic. Arkime is especially valuable becauase it gives you a searchable database of neteork traffic that makes it easy to search, investigate, and analyze network events. As seen in the screenshots above, its web interface offers an excellent way to filter for traffic, see connections, and explore network connections which is crucial for troubleshooting network issues and threat hunting. 
 
 
