@@ -1,6 +1,6 @@
 # $${\color{red}Atomic \space Red \space Team \space on \space Win \space OS}$$ 
 
-The Atomic Red Team is a framework that is used to perform secruity testing and threat emulation. This allows organizations the ability to test their ability to detect and respond to real world threats. Each test offered within the Atmoic Red Team is use to simulate a specific technique. 
+The Atomic Red Team is a framework that is used to perform secruity testing and threat emulation. This allows organizations the ability to test their cability to detect and respond to real world threats. Each test offered within the Atmoic Red Team is use to simulate a specific technique. 
 
 ### Scope: 
 
