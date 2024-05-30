@@ -6,9 +6,9 @@ The System for internet-Level Knowledge1 (SiLK) tool suite is a highly scalable 
 These tools provide network security analysts with a relatively complete high-level view of traffic across an enterprise network, subject to placement of sensors.
 
 Network Topology:
+![Pasted image 20240529215556](https://github.com/lm3nitro/Projects/assets/55665256/68d5c662-b838-48f1-b950-066d406b246b)
 
 
-![Pasted image 20240514160825](https://github.com/lm3nitro/Projects/assets/55665256/d28ef60a-2ef7-41aa-bcfa-c7376331de4b)
 
 
 
