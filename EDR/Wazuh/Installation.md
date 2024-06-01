@@ -2,19 +2,22 @@
 
 ![Pasted image 20240428133059](https://github.com/lm3nitro/Projects/assets/55665256/2b36c7a2-1c9d-480a-a9d5-0c51620aa2fb)
 
-Wazuh is a free and open source security platform that unifies XDR and SIEM protection for endpoints and cloud workloads. It provides real-time correlation, context, and response for security events and incidents, as well as cloud environments and management.
+Wazuh is a free and open source security monitoring platform. Wazuh collects, normalizes, and analyzes log data from various sources such as Operating System, applications, and network devices. It provides real-time correlation, context, and response for security events and incidents, as well as cloud environments and management.
 
 Listed below are some core functionalities of Wazuh: 
 
-Intrusion Detection
-Log Data Analysis
-File Integrity Monitoring
-Vulnerability Detection
-Incident Response
-Regulatory Compliance
-Cloud & Container Security Monitoring
++ Intrusion Detection
++ Log Management
++ File Integrity Monitoring
++ Vulnerability Detection
++ Security Compliance
+
+### Objective:
+
+Install and configure Wazuh in a test environment and evaluate its effectiveness in detecting and responding to security threats. 
 
 ### Scope:
+
 
 ### Tools ans Technology:
 
