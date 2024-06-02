@@ -1,5 +1,7 @@
 # Fail2Ban
 
+<img width="418" alt="Screenshot 2024-06-02 at 1 34 19 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/4c6f7e45-9357-48e8-8df8-655b426de5cf">
+
 Fail2Ban is an open source intrusion prevention software that monitors server log files for intrusion attempts and other suspicious activities. 
 The fail2ban application monitors server log files for intrusion attempts and other suspicious activity. Fail2ban, also helps to secure your server against unauthorized access attempts. It is particularly effective in reducing the risk from scripted attacks and botnets.
 
