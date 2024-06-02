@@ -134,10 +134,11 @@ Lets verify connectivity:
 
 ![Pasted image 20240428160441](https://github.com/lm3nitro/Projects/assets/55665256/2e4c7fac-cb35-4875-b678-e9e1444339d5)
 
-W can go back to the Wazug management server and see the newly installed agent: 
+We can go back to the Wazuh management server and see the newly installed agent: 
+
 ![Pasted image 20240428160544](https://github.com/lm3nitro/Projects/assets/55665256/b6106dc5-49fa-40ff-9d53-b41a4147a2e5)
 
-I also verified that security events were getting generated from the linuxx agent:
+I also verified that security events were getting generated from the linux agent:
 
 ![Pasted image 20240428160701](https://github.com/lm3nitro/Projects/assets/55665256/b4afb69f-5eff-4de7-b0c2-847ff2dc42f3)
 
@@ -147,37 +148,47 @@ A look at the raw logs:
 
 ## Activating Vulnerability Module
 
-text files that allows s to tweak wazuh
+The Vulnerability Module is a component of the Wazuh security platform designed to identify and manage vulenrabilities within a network. By leveraging the Wazuh vulnerability module, we can gain deeper insights into the security state of our agents and enhance our threat detection and response. 
 
-navigating to /var/ossec/ 
+The files that are needed to modify Wazuh are located in /var/ossec/
+
+Lets navigate there:
+
+```
+cd /var/ossec/
+```
 
 ![Pasted image 20240428162723](https://github.com/lm3nitro/Projects/assets/55665256/56e4cb7b-8f30-472a-8ed5-284010d3eb99)
 
+I then used nano to modify the ossec.conf file:
+
+```
+nano ossec.conf
+```
+
 ![Pasted image 20240428163614](https://github.com/lm3nitro/Projects/assets/55665256/9013a186-9fa9-4ab3-9bde-17ba234cf29c)
+
+Set the Vulnerability-detector to *Enabled*
 
 ![Pasted image 20240428163608](https://github.com/lm3nitro/Projects/assets/55665256/32b37077-6198-4855-a79f-a49f91084802)
 
-
-Restarting Wazuh manager:
+I then saved the file and changes made and restarted the Wazuh manager:
 
 ![Pasted image 20240428163922](https://github.com/lm3nitro/Projects/assets/55665256/ee09ff7b-f199-4e5b-9fdd-9991344b2602)
 
 Restarting Agents:
 
-Note:
-
- It needs admin privileges to restart the services both on linux and windows.
-
+>#### Note: It needs admin privileges to restart the services both on linux and windows.
 
 Ubuntu 22.04
 
 ![Pasted image 20240428164237](https://github.com/lm3nitro/Projects/assets/55665256/44234f6d-5d71-49b0-b82c-19b6c7a80f1e)
 
-
-
 Windows 10
+
 ![Pasted image 20240428164428](https://github.com/lm3nitro/Projects/assets/55665256/4b5258a1-8f51-43b2-8e27-cf2c5ada3bca)
 
 
+### Summary:
 
-
+I installed and configured Wazuh management server and added 2 agents (Win 10 and Ubuntu 22.04). I also enabled the vulnerability detection module on the Wazuh server which will provide more information and a comprehensive visbility. By completing these initial steps, I can now begin the attack simulation phase, where the effectiveness of the Wazuh set-up will be tested and analyzed. 
