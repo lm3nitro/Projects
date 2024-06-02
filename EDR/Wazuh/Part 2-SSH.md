@@ -1,3 +1,5 @@
+This is part 2 of the project. In the first part I installed and configured the Wazuh management server and agents. I will be 
+
 # Brute force or Passsowrd attack:
 
 ![Pasted image 20240428154447](https://github.com/lm3nitro/Projects/assets/55665256/2c173ea3-5f37-4b07-8c7c-fd13f984acd5)
