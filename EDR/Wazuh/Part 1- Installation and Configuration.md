@@ -1,4 +1,4 @@
-# Wazuh
+# $${\color{white}Wazuh}$$
 
 ![Pasted image 20240428133059](https://github.com/lm3nitro/Projects/assets/55665256/2b36c7a2-1c9d-480a-a9d5-0c51620aa2fb)
 
