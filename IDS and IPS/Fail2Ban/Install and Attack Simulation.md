@@ -3,7 +3,7 @@
 <img width="418" alt="Screenshot 2024-06-02 at 1 34 19 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/4c6f7e45-9357-48e8-8df8-655b426de5cf">
 
 Fail2Ban is an open source intrusion prevention software that monitors server log files for intrusion attempts and other suspicious activities. 
-The fail2ban application monitors server log files for intrusion attempts and other suspicious activity. Fail2ban, also helps to secure your server against unauthorized access attempts. It is particularly effective in reducing the risk from scripted attacks and botnets.
+Fail2ban, also helps to secure your server against unauthorized access attempts. It is particularly effective in reducing the risk from scripted attacks and botnets.
 
 Here are some of the key features:
 + Log Monitoring
@@ -14,7 +14,7 @@ Here are some of the key features:
 
 ### Scope:
 
-I will install Fail2Ban on a target host and will simulate an attack using Hydra to perform a brute force attack against the target host and will evaluate the effectivness of Fail2Ban. 
+I will install Fail2Ban on a target host and will simulate an attack using Hydra to perform a SSH brute force attack against the target host and will evaluate the effectivness of Fail2Ban. 
 
 ### Objective:
 
@@ -62,7 +62,7 @@ service fail2ban restart
 
 ## Attacking host
 
-I then jumped over to the attacking host and used Hydra and the rockyou wordlist to simulate an attack on the target host where Fail2Ban was just installed. As we can see in the screenshot below, the connection was refused:
+I then jumped over to the attacking host and used Hydra and the rockyou wordlist to simulate a SSH Brute Force aatck on the target host where Fail2Ban was just installed. As we can see in the screenshot below, the connection was refused:
 
 ![Pasted image 20240428183041](https://github.com/lm3nitro/Projects/assets/55665256/bbe6d98e-a10f-4b43-9715-425813b4eca4)
 
@@ -79,7 +79,7 @@ I also check iptables and can see that an entry was added by Fail2Ban to reject/
 
 ### Summary:
 
-Doing this projecct allowed me to test the effectiveness that Fail2Ban has in detecting and preventing a brute force atttack by using Hydra for a simulated attack on the target host. I was able to get experience in configuring Fail2Ban, montioring logs, and analyzing its automated responses to malicious activities. The findings offer valuable insights into enhancing server security. 
+Doing this projecct allowed me to test the effectiveness that Fail2Ban has in detecting and preventing a SSH brute force atttack by using Hydra for a simulated attack on the target host. I was able to get experience in configuring Fail2Ban, montioring logs, and analyzing its automated responses to malicious activities. The findings offer valuable insights into enhancing server security. 
 
 
 
