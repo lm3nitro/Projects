@@ -1,10 +1,19 @@
-This is part 2 of the project. In the first part I installed and configured the Wazuh management server and agents. I will be 
+# Part 2- SSH Brute Force Simulation Attack
 
-# Brute force or Passsowrd attack:
+This is part 2 of the project. In Part 1 I installed and configured the Wazuh management server and agents. I will be simulating a SSH brute force attack against the Linux host that has the Wazuh agent installed. After the simulation attack has been performed, I will be analyzing the traffic pertaining to the attack in both Wireshark and in the Wazuh management server. 
+
+
+## Installing OpenSSH
+
+I will first begin by installing openssh on the target host with the Wazuh agent.
+
+```
+sudo apt install openssh-server
+```
 
 ![Pasted image 20240428154447](https://github.com/lm3nitro/Projects/assets/55665256/2c173ea3-5f37-4b07-8c7c-fd13f984acd5)
 
-# Checking the status SSH
+Lets verify that SSH is running:
 
 ![Pasted image 20240428154650](https://github.com/lm3nitro/Projects/assets/55665256/7a0bc0f5-1b2d-4a3f-b4d6-59e25d19367e)
 
