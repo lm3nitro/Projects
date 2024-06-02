@@ -23,6 +23,10 @@ Evaluate the effectiveness and detection capabilities of Wazuh by installing it 
 
 This is Part 1 and will focus on installing Wazuh and the deployment of agents. 
 
+### Tools and Technology:
+
+Ubuntu 22.04, Win 10, Wazuh, and Powershell
+
 ## Installation:
 
 To get started, I used the curl command to install Wazuh 4.7.3:
