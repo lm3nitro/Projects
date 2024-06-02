@@ -1,6 +1,16 @@
-The fail2ban application monitors server log files for intrusion attempts and other suspicious activity. After a predefined number of failures from a host, fail2ban blocks its IP address automatically for a specific duration.
+# Fail2Ban
 
-Fail2ban,  also helps to secure your server against unauthorized access attempts. It is particularly effective in reducing the risk from scripted attacks and botnets.
+Fail2Ban is an open source intrusion prevention software that monitors server log files for intrusion attempts and other suspicious activities. 
+The fail2ban application monitors server log files for intrusion attempts and other suspicious activity. Fail2ban, also helps to secure your server against unauthorized access attempts. It is particularly effective in reducing the risk from scripted attacks and botnets.
+
+Here are some of the key features:
++ Log Monitoring
++ Automatic Banning
++ Configurable Filters and Actions
++ Multi-Serve Protection
++ Email Notification
+
+
 
 ![Pasted image 20240428180638](https://github.com/lm3nitro/Projects/assets/55665256/4e8c7012-cae1-4479-94db-b8cf35b6187c)
 
