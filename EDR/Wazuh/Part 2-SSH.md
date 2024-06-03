@@ -1,6 +1,6 @@
 # Part 2- SSH Brute Force Simulation Attack
 
-This is part 2 of the project. In Part 1, I installed and configured the Wazuh management server and agents. I will be simulating a SSH brute force attack against the Linux host that has the Wazuh agent installed. After the simulation attack has been performed, I will be analyzing the traffic pertaining to the attack in both Wireshark and in the Wazuh management server. 
+This is part 2 of the project. In Part 1, I installed and configured the Wazuh management server and agents. I will be simulating a SSH brute force attack against the Linux host that has the Wazuh agent installed. While the simulation attack has been performed, I will be analyzing the traffic pertaining to the attack in the target server logs, Wireshark and in the Wazuh management server. 
 
 ## Installing OpenSSH
 
