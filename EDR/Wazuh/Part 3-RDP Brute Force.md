@@ -1,4 +1,4 @@
-# Testing WAZUH:
+# Part 3- RDP Brute Force 
 
 ![Pasted image 20240428142640](https://github.com/lm3nitro/Projects/assets/55665256/756b303f-258b-4839-9d0d-7560158c79f1)
 
