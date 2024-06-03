@@ -4,6 +4,8 @@ This is part 2 of the project. In Part 1, I installed and configured the Wazuh m
 
 ## Installing OpenSSH
 
+<img width="343" alt="Screenshot 2024-06-02 at 11 08 28 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/f2be9b40-0394-4fbf-8b0e-c6d86f3b7743">
+
 I will first begin by installing openssh on the target host with the Wazuh agent.
 
 ```
