@@ -2,23 +2,27 @@
 
 <img width="355" alt="Screenshot 2024-06-02 at 11 10 18 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/d62ed72b-d3dd-4a6f-a8e8-e35d60e06867">
 
+This is part 3 of the project. In Part 1, I installed and configured the Wazuh management server and agents. In Part 2 I performed a simuated SSH brute force attack on the Linux server with the Wazuh agent installed. Here, I will be simulating a RDP brute force attack against the Win 10 host that has the Wazuh agent installed. I will be analyzing the traffic pertaining to the attack in both Wireshark and in the Wazuh management server.
+
+## Normal Traffic
+
+To start, I went ahead and tried to login to the target host 3 times, purposefully typing in the wrong password in order to see what a failed login attempt would look like from a user that mistakenly forgot or mistyped their password. 
 
 ![Pasted image 20240428142640](https://github.com/lm3nitro/Projects/assets/55665256/756b303f-258b-4839-9d0d-7560158c79f1)
 
-# Security events:
+When checking the Wazuh management server, I can see that there are only 3 attempts which can be seen as normal if this was coming from a user. Seeing only 3 login attempts is not too alarming:
 
 ![Pasted image 20240428142840](https://github.com/lm3nitro/Projects/assets/55665256/7e849890-8afe-4a05-8615-a7e379fab602)
 
-More security events related to the failed attempts :
+Taking a deeper look at the security events related to the failed attempts, we can see the details:
 
 ![Pasted image 20240428143019](https://github.com/lm3nitro/Projects/assets/55665256/549276f5-6095-46da-9194-f2e9d878c1c6)
 
+Now that I know what a failed login attempt would look like under normal circumstances, I will start with the RDP simulation attack to see the difference in logging. Understanding what normal traffic looks like is crucial becuase it helps to establish a baseline for detecting anomolies, reduces false positives, and it enhances the accuracy of security tools. This is also very important becuase it helps to quickly identify and respond to malicious activity and distinguishing it from legitimate behavior. 
 
-# RDP password attack:
+## RDP password attack:
 
-
-Enable RDP
-
+To get started, I enabled RDP on the Win 10 host.
 
 ![Pasted image 20240428144107](https://github.com/lm3nitro/Projects/assets/55665256/e315122f-f920-49e1-926e-e052acbca0a0)
 
