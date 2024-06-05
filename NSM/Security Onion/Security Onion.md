@@ -10,11 +10,13 @@ Security Onion is a free and open source Linux distribution for intrusion detect
 
 ### Scope: 
 
-I will be installing the Security Onion ISO in VMWare workstation. This will be connected to the SPAN port of the switch that is mirroring all the traffic comining and going to and from the network. Once configured, I will be analyzing some of traffic on the network. Below is a view at the architecture: 
+I will be installing the Security Onion ISO in VMWare workstation. This will be connected to the SPAN port of the switch that is mirroring all the traffic comining and going to and from the network. I purposefully have a Metasploitabel VM in my network. I will perform a scan against the targeted Metaspolitable VM and will be analyzing the scan in Security Onion. Below is a view at the architecture: 
 
 ![Pasted image 20240513165051](https://github.com/lm3nitro/Projects/assets/55665256/965552da-376a-447c-ac66-59a9b4a57e03)
 
+### Tools and Technology:
 
+Linux OS, Security Onion, VMWare Workstation, InfluxDB, Elastic, and Metasploitable
 ## Installation
 
 To begin, I navigated to the main website and went to *Download*
@@ -63,6 +65,7 @@ After the installation completes, reboot the VM. After rebooting, I logged in:
 
 ![Pasted image 20240513120008](https://github.com/lm3nitro/Projects/assets/55665256/7341a588-51ee-4f27-84b5-347c562363fb)
 
+## Security Onion Setup 
 Upon logging in the installation set up will begin:
 
 ![Pasted image 20240513120133](https://github.com/lm3nitro/Projects/assets/55665256/9e23ddd2-66b5-48a3-9ed3-c323d168f494)
@@ -72,6 +75,7 @@ Proceeded with the standard Security Onion installation:
 ![Pasted image 20240513120201](https://github.com/lm3nitro/Projects/assets/55665256/0c477838-97a8-41c6-9369-490d8d0b6b7e)
 
 Chose the standalone option: 
+
 ![Pasted image 20240513120242](https://github.com/lm3nitro/Projects/assets/55665256/9de0b989-0665-412f-89e0-68597bc0f2b6)
 
 Agreed to the terms:
@@ -84,7 +88,7 @@ Agreed to the terms:
 
 ![Pasted image 20240513120624](https://github.com/lm3nitro/Projects/assets/55665256/ffcd4057-9200-412b-b596-37cf019c5240)
 
-Selecting the management interface:
+Selected the management interface:
 
 ![Pasted image 20240513121208](https://github.com/lm3nitro/Projects/assets/55665256/7370130e-52eb-45ad-831c-2fdc3731b3f6)
 
@@ -100,19 +104,23 @@ Network configuration:
 
 ![Pasted image 20240513121510](https://github.com/lm3nitro/Projects/assets/55665256/6bd10ccb-e389-4798-986c-4bd41f2694cd)
 
+My connection will be direct as I will not be using a proxy:
+
 ![Pasted image 20240513121536](https://github.com/lm3nitro/Projects/assets/55665256/f44c34b7-3f48-4c96-b367-50c678e6073b)
 
 ![Pasted image 20240513121558](https://github.com/lm3nitro/Projects/assets/55665256/a1231246-0389-4eea-ae91-39d6b2f72e2f)
 
-Selecting the sniffing interface:
+Selected the sniffing interface:
 
 ![Pasted image 20240513121640](https://github.com/lm3nitro/Projects/assets/55665256/0c56dc5e-521d-4365-8b9b-ac6bd9b374c2)
 
-When selecting the email, be aware that it can be any email address. 
+When selecting the email, it can be any email address:
 
 ![Pasted image 20240513121735](https://github.com/lm3nitro/Projects/assets/55665256/afa4ecff-3b25-43f7-92fd-116e4b476ef9)
 
 ![Pasted image 20240513121756](https://github.com/lm3nitro/Projects/assets/55665256/2a704d3c-1ffa-4937-840f-26b301f39a7e)
+
+I decided to go with using the IP address, in my case it is the 10.10.100.70:
 
 ![Pasted image 20240513121832](https://github.com/lm3nitro/Projects/assets/55665256/140c3bfd-1883-4134-9381-5c9a405afd94)
 
@@ -120,41 +128,48 @@ When selecting the email, be aware that it can be any email address.
 
 ![Pasted image 20240513121944](https://github.com/lm3nitro/Projects/assets/55665256/6e609108-5855-4a72-b6c8-95bd6c31141f)
 
+After making all the selections, you are presented with a summary of all the options you have chosen and the input from above. After reviewing, selected *Yes* to proceed:
+
 ![Pasted image 20240513122011](https://github.com/lm3nitro/Projects/assets/55665256/ce8cd339-c7e4-4bce-8fa9-56f3fc7944f1)
 
-Once the installation has finished, you will be prompted with the information down below :
+Once the installation has finished, you will be prompted with the information down below for access:
 
 ![Pasted image 20240513132823](https://github.com/lm3nitro/Projects/assets/55665256/4b7ee7b9-4b16-449b-b47b-26b21bba4c07)
 
-lm3nitro.securityonion.local
+## Accessing Security Onion Web Interface
+
+As previously stated, I chose to access the web interface with the IP. Here I used the same email and password that I entered during the setup:
 
 ![Pasted image 20240513133158](https://github.com/lm3nitro/Projects/assets/55665256/988a99ad-fcb5-4fa9-a839-f859bd6b245d)
 
-Dashboards:
+I first looked at the dashboards and was able to see that it was already receivinvg data:
 
 ![Pasted image 20240513133454](https://github.com/lm3nitro/Projects/assets/55665256/12989a5b-d617-44b6-8d84-a35eda97afa6)
 
-Grind information:
+I also took a look at the grid information. This provided me with information about the system itself, the CPU, version that is installed, etc:
 
 ![Pasted image 20240513133551](https://github.com/lm3nitro/Projects/assets/55665256/717496ec-f995-441c-a2c2-f180b8735a04)
 
-Login into Kibana:
+As stated in the introduction, Security Onion combines several tools, one of them being the Elastic Stack. The Elastic Stack plays a critical role in the storage, processing, and the visualization of security data. Now that I had everything installed, I can login into Elastic:
 
 ![Pasted image 20240513134131](https://github.com/lm3nitro/Projects/assets/55665256/bda54d76-65dd-4f30-87e6-bcf10c916797)
 
+I can see that it is also receiving data:
+
 ![Pasted image 20240513134205](https://github.com/lm3nitro/Projects/assets/55665256/9ae918ff-6b60-4172-b30c-33d726e0941d)
 
-Login into  InfluxDB :
+InfluxDB is part of Security Onion as well. It is used to store and manage data collected. The data stored in InfluxDB can be visualized and queried through Security Onion's dashboards. I logged into InfluxDB:
 
 ![Pasted image 20240513133846](https://github.com/lm3nitro/Projects/assets/55665256/9d92578f-5d99-4659-a2b5-eeda1af49e59)
 
+After logging in, I was able to take a deeper look into the different components:
+
 ![Pasted image 20240513133958](https://github.com/lm3nitro/Projects/assets/55665256/f2326f7d-e543-466d-9231-5c4eb8355980)
 
-User: lm3nitro@securityonion.com
 
-# Preforming recon to trigger some alerts:
+## Analysis
 
-Nmap scan:
+After exploring the different web interfaces, I wanted to take a deeper look into the traffic and see the capability of Security Onion. To start, I performed some reconaissance to trigger some alerts using Nmap:
 
 ![Pasted image 20240513145414](https://github.com/lm3nitro/Projects/assets/55665256/1ce13b7e-ef96-4f55-af7b-8e4ab958853c)
 
@@ -162,25 +177,34 @@ Output from the scan:
 
 ![Pasted image 20240513145501](https://github.com/lm3nitro/Projects/assets/55665256/1d3499fd-55b2-4b3a-a517-5877b7606691)
 
-Some services and port opened:
+These are the services and ports opened. Here I see FTP and SSH:
 
 ![Pasted image 20240513145528](https://github.com/lm3nitro/Projects/assets/55665256/b6e520d1-d1a9-4939-b0b9-1cf9f26888ce)
 
-RDP, RPC and SMB  information:
+Scrolling down, I was also able to see RDP, RPC and SMB also running:
 
 ![Pasted image 20240513145605](https://github.com/lm3nitro/Projects/assets/55665256/93aaf04b-d95f-4ccb-bbb3-87a4fd6a8f26)
 
-Let's look at some alerts that has been generated on the security onion console:
+After the scan had completed, I went back to Security Onion and took a look at some alerts that had been generated on the console. When looking at the alerts, I could see information about the Nmap scan, the services, count, and the severity of the alert:
 
 ![Pasted image 20240513142749](https://github.com/lm3nitro/Projects/assets/55665256/c1cd6d2a-2fb8-4e74-96d1-fb3408188b5b)
 
-Hunting for this alert:
+Security Onion also offers the option to Hunt for within the securoty alerts. I went with the first alert that references Nmap and is also categorized as critical. Simply right-click and select *Hunt*
 
 ![Pasted image 20240513144834](https://github.com/lm3nitro/Projects/assets/55665256/13565a54-5492-4d46-b222-15db54ecee6c)
 
+The **Hunt** option provides more insight into the alert. Here we can see information on the IPs involved in the alert (attacker and target system). It also provides the count, in this case 165, and all the ports that it scanned:
+
 ![Pasted image 20240513145035](https://github.com/lm3nitro/Projects/assets/55665256/346a444e-242d-4a34-a00a-7fed4d1533af)
 
-Query some alerts in Kibana:
+I also queried the alerts in Elastic. Elastic provides a different view into the traffic generated. These are some of the fields that it provides:
++ Type
++ Severity
++ Offset
++ UID and more
 
 ![Pasted image 20240513144714](https://github.com/lm3nitro/Projects/assets/55665256/871b0db5-8c4e-4c11-8b26-9dcd1367991d)
+
+### Summary:
+
 
