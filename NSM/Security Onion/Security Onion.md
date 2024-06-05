@@ -1,43 +1,59 @@
+# Security Onion
 
+<img width="504" alt="Screenshot 2024-06-04 at 9 45 41 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/4d38d1d3-f457-4f9c-9303-4b7303d10de2">
 
-![Pasted image 20240513113441](https://github.com/lm3nitro/Projects/assets/55665256/df90d188-9307-4d38-b75e-5664b5be3f8e)
+Security Onion is a free and open source Linux distribution for intrusion detection, network security monitoring, and log management. It combines various powerful tools such as Zeek, Suricata, and the Elastic Stack, all into a single platform. It also offers other features:
 
-Security Onion is a free and open source Linux distribution for intrusion detection, security monitoring, and log management. It includes CyberChef, NetworkMiner, and many other security tools.
++ Pre-configured dashboards
++ Automated data collection
++ Streamlined analysis workflows
 
-Main website :
+### Scope: 
 
-https://securityonionsolutions.com/software
-
-![Pasted image 20240513113542](https://github.com/lm3nitro/Projects/assets/55665256/499fb80b-ebb5-4de9-8c7d-ad15eb82652c)
-
-Downloading the iso:
-
-![Pasted image 20240513113729](https://github.com/lm3nitro/Projects/assets/55665256/6fb23544-e3f9-4736-9869-bd5e3d4f9f9b)
-
-Network Topology:
+I will be installing the Security Onion ISO in VMWare workstation. This will be connected to the SPAN port of the switch that is mirroring all the traffic comining and going to and from the network. Once configured, I will be analyzing some of traffic on the network. Below is a view at the architecture: 
 
 ![Pasted image 20240513165051](https://github.com/lm3nitro/Projects/assets/55665256/965552da-376a-447c-ac66-59a9b4a57e03)
 
-Creating the virtual 
+
+## Installation
+
+To begin, I navigated to the main website and went to *Download*
+
+https://securityonionsolutions.com/software
+
+
+![Pasted image 20240513113542](https://github.com/lm3nitro/Projects/assets/55665256/499fb80b-ebb5-4de9-8c7d-ad15eb82652c)
+
+Downloaded the ISO:
+
+![Pasted image 20240513113729](https://github.com/lm3nitro/Projects/assets/55665256/6fb23544-e3f9-4736-9869-bd5e3d4f9f9b)
+
+
+Once downloaded, I went to VMWare Workstation and selected *Create a New Virtual Machine* and selected the newly downloaded ISO:
 
 ![Pasted image 20240513112325](https://github.com/lm3nitro/Projects/assets/55665256/b8b662b6-ee28-4183-b3c7-5271762c6373)
 
+After the ISO is selected, a new diagram box comes up to configure the VM. The first step is choosing a name:
+
 ![Pasted image 20240513112536](https://github.com/lm3nitro/Projects/assets/55665256/77b0f708-4d23-41d8-95ec-ab2774c364d3)
 
-Selecting the virtual drive size:
+Then prompted to select the virtual drive size:
 
 ![Pasted image 20240513112617](https://github.com/lm3nitro/Projects/assets/55665256/1c4c4e10-58b5-43f2-a2e5-666b79e7d8cf)
 
-Creating a custom hardware:
+For this VM I chose to create custom hardware with the following:
 
-I selected 16 virtual cores, 32 GB of ram and 2 NICs cards. One of the network card for administration and the other one for sniffing.
++ 16 virtual cores
++ 32 GB of ram
++ 2 NICs card (One of the network card for administration and the other one for sniffing)
 
 ![Pasted image 20240513112852](https://github.com/lm3nitro/Projects/assets/55665256/f0c7f6f7-e02c-4415-bf54-5673187c576f)
 
-Turning on the virtual machine
+Now that the VM specs have been selects, its time to turn on the VM:
 
 ![Pasted image 20240513113012](https://github.com/lm3nitro/Projects/assets/55665256/71cd5e03-ca3c-4a01-a62d-9a484c023a76)
 
+The first thing we are presented with is 
 ![Pasted image 20240513113840](https://github.com/lm3nitro/Projects/assets/55665256/99b94cb9-a841-4e9f-bbfb-4e5958b5e0b7)
 
 It'll prompted you to create  a username and the password. After that the installation begins:
