@@ -207,4 +207,6 @@ I also queried the alerts in Elastic. Elastic provides a different view into the
 
 ### Summary:
 
+In conclusion, this project I installed and configured Security Onion. I then simulated reconaissance traffic with Nmap against a Metasploitable VM. This was used to test Security Onions detection and loggin capabilities. This was primarily aimed to assess Security Onion's effectiveness in identifying security incidents, the ease of use, and the seamless integration with the various tools. I was able to see that Security Onion offers a robust and effective platform for network security monitoring.  It is also effective in detecting and logging various range of security incidents, helping to quickly identify and respond to potential threats and attacks. I was able to hain real hands on experience in installing and configuring a network security platform. I was also able to manage, monitor, and respond to the security alerts generated within the platform.  
+
 
