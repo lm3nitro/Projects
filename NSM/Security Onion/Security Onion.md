@@ -21,13 +21,11 @@ To begin, I navigated to the main website and went to *Download*
 
 https://securityonionsolutions.com/software
 
-
 ![Pasted image 20240513113542](https://github.com/lm3nitro/Projects/assets/55665256/499fb80b-ebb5-4de9-8c7d-ad15eb82652c)
 
 Downloaded the ISO:
 
 ![Pasted image 20240513113729](https://github.com/lm3nitro/Projects/assets/55665256/6fb23544-e3f9-4736-9869-bd5e3d4f9f9b)
-
 
 Once downloaded, I went to VMWare Workstation and selected *Create a New Virtual Machine* and selected the newly downloaded ISO:
 
@@ -37,7 +35,7 @@ After the ISO is selected, a new diagram box comes up to configure the VM. The f
 
 ![Pasted image 20240513112536](https://github.com/lm3nitro/Projects/assets/55665256/77b0f708-4d23-41d8-95ec-ab2774c364d3)
 
-Then prompted to select the virtual drive size:
+Then was prompted to select the virtual drive size:
 
 ![Pasted image 20240513112617](https://github.com/lm3nitro/Projects/assets/55665256/1c4c4e10-58b5-43f2-a2e5-666b79e7d8cf)
 
@@ -49,30 +47,34 @@ For this VM I chose to create custom hardware with the following:
 
 ![Pasted image 20240513112852](https://github.com/lm3nitro/Projects/assets/55665256/f0c7f6f7-e02c-4415-bf54-5673187c576f)
 
-Now that the VM specs have been selects, its time to turn on the VM:
+Now that the VM specs have been selected, its time to turn on the VM:
 
 ![Pasted image 20240513113012](https://github.com/lm3nitro/Projects/assets/55665256/71cd5e03-ca3c-4a01-a62d-9a484c023a76)
 
-The first thing we are presented with is 
+When the VM first boots up I was presented with a wanrning. I selected *yes* to proceed
+
 ![Pasted image 20240513113840](https://github.com/lm3nitro/Projects/assets/55665256/99b94cb9-a841-4e9f-bbfb-4e5958b5e0b7)
 
-It'll prompted you to create  a username and the password. After that the installation begins:
+I was then prompted to create a username/password. Once enetered the installation begins:
 
 ![Pasted image 20240513114033](https://github.com/lm3nitro/Projects/assets/55665256/ed1b8bef-a43b-4ea2-be0d-8120a61e8e35)
 
-After the installation comples, reboot the system:
-
-Login in:
+After the installation completes, reboot the VM. After rebooting, I logged in:
 
 ![Pasted image 20240513120008](https://github.com/lm3nitro/Projects/assets/55665256/7341a588-51ee-4f27-84b5-347c562363fb)
 
-Once you loged in , the installation set up will start:
+Upon logging in the installation set up will begin:
 
 ![Pasted image 20240513120133](https://github.com/lm3nitro/Projects/assets/55665256/9e23ddd2-66b5-48a3-9ed3-c323d168f494)
 
+Proceeded with the standard Security Onion installation:
+
 ![Pasted image 20240513120201](https://github.com/lm3nitro/Projects/assets/55665256/0c477838-97a8-41c6-9369-490d8d0b6b7e)
 
+Chose the standalone option: 
 ![Pasted image 20240513120242](https://github.com/lm3nitro/Projects/assets/55665256/9de0b989-0665-412f-89e0-68597bc0f2b6)
+
+Agreed to the terms:
 
 ![Pasted image 20240513120320](https://github.com/lm3nitro/Projects/assets/55665256/edea39d4-0903-490f-8820-6ea4bc9a355b)
 
