@@ -386,15 +386,15 @@ It matches:
 ### Exporting HTTP objects from lichess.org traffic for further analysis :
 
 
-
-==============20240606005510
+![Pasted image 20240606005510](https://github.com/lm3nitro/Projects/assets/55665256/28c0e1b6-de2e-420d-aedb-d9721ca42503)
 
 
 
 ### Exported objects:
 
 
-![[Attachments/Pasted image 20240606005706.png]]
+![Pasted image 20240606005706](https://github.com/lm3nitro/Projects/assets/55665256/643368fd-51c4-488c-be1b-b71137b681f3)
+
 
 
 # Downloading Firefox:
@@ -403,20 +403,22 @@ Traffic logs:
 
 We can see the installer.exe
 
-![[Attachments/Pasted image 20240606011922.png]]
+![Pasted image 20240606011922](https://github.com/lm3nitro/Projects/assets/55665256/cd8cb294-8863-411f-8182-e8eb960e4c6c)
+
 
 Proxy logs:
 
 We can see the installer.exe at the proxy:
 
-![[Attachments/Pasted image 20240606011518.png]]
+![Pasted image 20240606011518](https://github.com/lm3nitro/Projects/assets/55665256/5bb9cee9-91f8-4d9e-8601-183c444df57c)
+
 
 Logs at the SIEM:
 
 All the squid traffic have been sent to Splunk. We can see the installer.exe. 
 
+![Pasted image 20240606093227](https://github.com/lm3nitro/Projects/assets/55665256/2e395fc1-a746-48cc-8113-5385d378d529)
 
-![[Attachments/Pasted image 20240606093227.png]]
 
 
 
@@ -426,12 +428,13 @@ All the squid traffic have been sent to Splunk. We can see the installer.exe.
 
 In the squid.conf under /usr/local/squid/etc/ I create a cache rule to cache any of the files listed  there 
 
-![[Attachments/Pasted image 20240607174629.png]]
+![Pasted image 20240607174629](https://github.com/lm3nitro/Projects/assets/55665256/f8f6266d-ff4b-47bd-86ff-14dc429a7005)
+
 
 
 The squid cache is under /usr/local/squid/var/cache/
 
-![[Attachments/Pasted image 20240607172049.png]]
+![Pasted image 20240607172049](https://github.com/lm3nitro/Projects/assets/55665256/a26372fa-0cfa-4dd5-b50d-75e63ccbc194)
 
 
 searching all the directories and files search recursively:
@@ -441,7 +444,8 @@ searching all the directories and files search recursively:
 find . -type f | xargs grep -E  installer
 
 
-![[Attachments/Pasted image 20240607172542.png]]
+![Pasted image 20240607172542](https://github.com/lm3nitro/Projects/assets/55665256/10638eb1-7c2a-4c80-8866-f80b866dbfb3)
+
 
 Another way to search:
 
@@ -449,11 +453,12 @@ Another way to search:
 find .  -type f -print0 | xargs -0 grep -l "installer"
 
 
-![[Attachments/Pasted image 20240607172414.png]]
+![Pasted image 20240607172414](https://github.com/lm3nitro/Projects/assets/55665256/007e2a88-77c0-4d1f-a1ef-98f1ffc32e75)
+
 
 Opening the last file  with nano ./squid/00/0E/00000EE4
 
-![[Attachments/Pasted image 20240607172837.png]]
+![Pasted image 20240607172837](https://github.com/lm3nitro/Projects/assets/55665256/e9a211a1-349a-4c7e-9566-1efa26a28160)
 
 
 
@@ -461,26 +466,29 @@ Opening another file on the list nano squid/00/09/0000097A
 
 We got the actual installer.exe file binary!
 
-![[Attachments/Pasted image 20240607173631.png]]
+![Pasted image 20240607173631](https://github.com/lm3nitro/Projects/assets/55665256/a840a659-2332-4f55-a45a-34ac9cac4b8a)
+
 
 
 
 xxd squid/00/09/0000097A | grep -iE  'installer|exe|dos'
 
-![[Attachments/Pasted image 20240607180003.png]]
+![Pasted image 20240607180003](https://github.com/lm3nitro/Projects/assets/55665256/1c0667c7-1b2d-4b02-b2c2-c8abb97611d6)
+
 
 ### Logs colorized with CCZE:
 
 
 cat  /usr/local/squid/var/logs/access.log | ccze -A -C -o noscroll | grep -iE "installer.exe"
 
-![[Attachments/Pasted image 20240606094234.png]]
+![Pasted image 20240606094234](https://github.com/lm3nitro/Projects/assets/55665256/b647bff2-dabf-431e-bffd-e62fe03997a3)
+
 
 
 
 ## Disabling proxy in system settings in Windows 10 client :
+![Pasted image 20240606100136](https://github.com/lm3nitro/Projects/assets/55665256/e9570f58-8652-47cf-93aa-3c2b2a342903)
 
-![[Attachments/Pasted image 20240606100136.png]]
 
 
 
@@ -488,7 +496,8 @@ Note the WinAPI will allow traffic to the whole operating system "proxy capable 
 
 As you can on the logs, we are getting traffic going to Microsoft even though I didn't browse Microsoft website:
 
-![[Attachments/Pasted image 20240606110825.png]]
+![Pasted image 20240606110825](https://github.com/lm3nitro/Projects/assets/55665256/b742a48e-48a9-422d-9550-5513d79f3ce6)
+
 
 
 In order to fix that we will need install a Browser that doesn't use the WinAPI, and block all the traffic at the firewall level from this Win host. Firefox in this case a separate API for the application and does not use WinAPI
@@ -498,7 +507,8 @@ In order to fix that we will need install a Browser that doesn't use the WinAPI,
 # Configuring proxy in Firefox:
 
 
-![[Attachments/Pasted image 20240606095903.png]]
+![Pasted image 20240606095903](https://github.com/lm3nitro/Projects/assets/55665256/7524db31-3b81-4c62-99c0-0c06e6863a93)
+
 
 
 
@@ -508,28 +518,33 @@ In order to fix that we will need install a Browser that doesn't use the WinAPI,
 
 Creating a firewall rule to allow only Squid proxy traffic to internet. In this situation the proxy is already allow "ALL outbound" The only we need is to create a new entry to block the Windows Client PC on 10.10.100.101
 
-![[Attachments/Pasted image 20240606105235.png]]
+![Pasted image 20240606105235](https://github.com/lm3nitro/Projects/assets/55665256/b232cfac-ea1a-40d1-aef6-c42d7c496f27)
+
 
 
 ### Looking at the hit count:
 
 
-![[Attachments/Pasted image 20240606104922.png]]
+![Pasted image 20240606104922](https://github.com/lm3nitro/Projects/assets/55665256/8502c873-3214-42ce-819f-cd006d43bdbd)
+
 
 
 ### Traffic that is being block a the Windows Client:
 
-![[Attachments/Pasted image 20240606105941.png]]
+![Pasted image 20240606105941](https://github.com/lm3nitro/Projects/assets/55665256/408cd0d7-5a54-4df2-a013-c2985fcdaea9)
+
 
 
 
 # Proxy IP information:
 
-![[Attachments/Pasted image 20240606110515.png]]
+![Pasted image 20240606110515](https://github.com/lm3nitro/Projects/assets/55665256/d18409a9-8580-441b-9434-443206c6cf84)
+
 Firewall logs allowing the proxy:
 
 
-![[Attachments/Pasted image 20240606110439.png]]
+![Pasted image 20240606110439](https://github.com/lm3nitro/Projects/assets/55665256/c70d19a4-99a4-49e6-8cb8-727af352b520)
+
 
 
 Now the firewall is blocking all the traffic from Clien using WinAPI with IP 10.10.100.101 going outbound that is no passing for the proxy. We're enforcing our proxy policy to use only Firefox app to the internet.
@@ -548,7 +563,8 @@ cache_dir ufs /usr/local/squid/var/cache/squid 32000 16 256
 
 squid.conf 
 
-![[Attachments/Pasted image 20240606162914.png]]
+![Pasted image 20240606162914](https://github.com/lm3nitro/Projects/assets/55665256/79a1786d-5844-440a-a4a7-c14f2c715ae8)
+
 
 Note: You can use the cache access list to make Squid never cache any response.
 #### cache deny all
@@ -565,7 +581,8 @@ acl domain_blacklist dstdomain "/usr/local/squid/etc/domain_blacklist.txt"
 http_access deny all domain_blacklist
 
 
-![[Attachments/Pasted image 20240606170758.png]]
+![Pasted image 20240606170758](https://github.com/lm3nitro/Projects/assets/55665256/ceb80d25-8294-41a2-bc2e-925996c4b2e2)
+
 
 
 
@@ -577,10 +594,11 @@ lm3nitro.squid.lab.example.com
 
 In my case, I will be blocking lichess and chess.com
 
-![[Attachments/Pasted image 20240606171228.png]]
-Kill the squid process:
+![Pasted image 20240606171228](https://github.com/lm3nitro/Projects/assets/55665256/63017f46-1347-4dae-b765-11fa9eaa6ae3)
 
-![[Attachments/Pasted image 20240606171520.png]]
+Kill the squid process:
+![Pasted image 20240606171520](https://github.com/lm3nitro/Projects/assets/55665256/6ff49ebd-bc72-4174-ac81-70adfc1203ea)
+
 
 
 Starting the squid service by typing:
@@ -593,21 +611,26 @@ sudo -u proxy -- /usr/local/squid/sbin/squid -d 10
 Verify the service again, we can see that we got new pid numbers:
 
 
-![[Attachments/Pasted image 20240606171819.png]]
+
+![Pasted image 20240606171819](https://github.com/lm3nitro/Projects/assets/55665256/b40861f5-0c49-4ab8-be42-bf2adf24c885)
+
 
 
 Let's go to lichess.org and chess.com
 
-![[Attachments/Pasted image 20240606170337.png]]
+![Pasted image 20240606170337](https://github.com/lm3nitro/Projects/assets/55665256/b903cb39-4f50-4442-9f84-93b6ff164062)
 
-![[Attachments/Pasted image 20240606171917.png]]
+
+![Pasted image 20240606171917](https://github.com/lm3nitro/Projects/assets/55665256/626a8545-21e8-4039-a369-e93967a5186c)
+
 
 
 ### Squid has blocked the traffic:
 
 tail  -f /usr/local/squid/var/logs/access.log | grep -E  "lichess|chess"
 
-![[Attachments/Pasted image 20240606172048.png]]
+![Pasted image 20240606172048](https://github.com/lm3nitro/Projects/assets/55665256/f3839693-4594-47fc-8442-2302562672d5)
+
 
 
 
@@ -615,7 +638,8 @@ tail  -f /usr/local/squid/var/logs/access.log | grep -E  "lichess|chess"
 
 cat /usr/local/squid/var/logs/access.log | grep -E  ' eicar|zip'
 
-![[Attachments/Pasted image 20240607182009.png]]
+![Pasted image 20240607182009](https://github.com/lm3nitro/Projects/assets/55665256/28439e70-540e-4562-9768-8c12f69b0afb)
+
 
 
 
@@ -623,27 +647,28 @@ cat /usr/local/squid/var/logs/access.log | grep -E  ' eicar|zip'
 # Monitor process and network traffic:
 
 Installing nload
-
-![[Attachments/Pasted image 20240607184651.png]]
+![Pasted image 20240607184651](https://github.com/lm3nitro/Projects/assets/55665256/115c0a34-8e95-4a4a-8c75-87c244f6652f)
 
 
 Installing htop
 
-![[Attachments/Pasted image 20240607213149.png]]
+![Pasted image 20240607213149](https://github.com/lm3nitro/Projects/assets/55665256/1c01293f-c817-49b8-b96a-acd0655bea92)
+
 
 Installing tcptrack
 
-![[Attachments/Pasted image 20240607213409.png]]
+![Pasted image 20240607213409](https://github.com/lm3nitro/Projects/assets/55665256/501d1ac9-fc76-4969-9ed2-e9f85a2a4b04)
 
 
-![[Attachments/Pasted image 20240607213757.png]]
+
+![Pasted image 20240607213757](https://github.com/lm3nitro/Projects/assets/55665256/db541c0a-7765-4ea5-a04a-90536adeb053)
+
 
 # Securing the Squid Proxy :
 
 
+![Pasted image 20240607211638](https://github.com/lm3nitro/Projects/assets/55665256/b4a52da8-1258-439a-84ff-a502296058b6)
 
-
-![[Attachments/Pasted image 20240607211638.png]]
 
 
 ClamAV is a popular open source anti-virus tool to detect malicious software or malware. While it calls itself an antivirus engine, used in a variety of situations including email scanning, web scanning, and end point security.
@@ -652,37 +677,42 @@ ClamAV is a popular open source anti-virus tool to detect malicious software or 
 
 apt install clamav clamav-daemon
 
-![[Attachments/Pasted image 20240607203552.png]]
+![Pasted image 20240607203552](https://github.com/lm3nitro/Projects/assets/55665256/cfbb49d9-b4d3-4102-a6da-83481032b366)
+
 
 # Verify version:
 
 clamscan --version
 
-![[Attachments/Pasted image 20240607203705.png]]
+![Pasted image 20240607203705](https://github.com/lm3nitro/Projects/assets/55665256/dda2a059-ce15-4596-b8fd-f6699e50b1b1)
+
 
 # Checking status
 
 systemctl status clamav-freshclam
 
-![[Attachments/Pasted image 20240607203900.png]]
+![Pasted image 20240607203900](https://github.com/lm3nitro/Projects/assets/55665256/301a05de-fdc7-4154-b904-5f328ca43ce5)
+
 
 ### We need to stop to update DB:
 
 systemctl stop clamav-freshclam
 
-![[Attachments/Pasted image 20240607204043.png]]
+![Pasted image 20240607204043](https://github.com/lm3nitro/Projects/assets/55665256/e7fdc4dc-8d18-42cf-ad9a-fe499791faf3)
+
 
 ### Updating DB
 
 freshclam
+![Pasted image 20240607204139](https://github.com/lm3nitro/Projects/assets/55665256/7b6184b2-84a8-47e6-a896-99665682e1c4)
 
-![[Attachments/Pasted image 20240607204139.png]]
 
 Start clamav now that DB was updated, use enable for persistence
 
 systemctl enable clamav-freshclam --now
 
-![[Attachments/Pasted image 20240607204328.png]]
+![Pasted image 20240607204328](https://github.com/lm3nitro/Projects/assets/55665256/dc8e349f-7be4-46a8-9cdc-ee1913c444d6)
+
 
 Note to disable: systemctl disable clamav-freshclam --now
 
@@ -691,7 +721,8 @@ Note to disable: systemctl disable clamav-freshclam --now
 
 ls -l /var/lib/clamav/
 
-![[Attachments/Pasted image 20240607204513.png]]
+![Pasted image 20240607204513](https://github.com/lm3nitro/Projects/assets/55665256/f8d8d330-2b28-48ae-99d6-63dc1411b2df)
+
 
 
 # Tesing ClamAV:
@@ -702,18 +733,20 @@ ls -l /var/lib/clamav/
 It probably won't encounter many viruses, as they have become rare. It is more likely to find other forms of malware like worms, backdoors, and ransomware.
 
 
-![[Attachments/Pasted image 20240607210556.png]]
+![Pasted image 20240607210556](https://github.com/lm3nitro/Projects/assets/55665256/d6d4c558-fc6e-419e-8067-62cb15537baa)
 
 
 
-![[Attachments/Pasted image 20240607210724.png]]
+
+![Pasted image 20240607210724](https://github.com/lm3nitro/Projects/assets/55665256/d265fb03-f72f-41f2-aa1a-9148c775f943)
+
 
 ### Scanning current directory .
 
 clamscan .
 
 
-![[Attachments/Pasted image 20240607210918.png]]
+![Pasted image 20240607210918](https://github.com/lm3nitro/Projects/assets/55665256/a113e7d0-37ae-4961-9279-0716b3e932a3)
 
 
 
