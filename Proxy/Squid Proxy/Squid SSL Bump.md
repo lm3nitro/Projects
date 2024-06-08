@@ -180,7 +180,7 @@ update-ca-certificates
 
 
 # Edit Squid.conf file 
-
+````
 Adding the follwing lines:
 
 
@@ -209,7 +209,7 @@ coredump_dir /usr/local/squid/var/cache/squid
 
 cache allow all
 
-
+````
 ### then  save the file and apply permissions :
 
 
