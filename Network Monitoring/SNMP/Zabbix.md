@@ -18,7 +18,7 @@ I will installing Zabbix in a VM on WMWare Workstation. I will then install the 
 
 
 ### Tools and Technology:
-VMWare Workstation, Linux OS, pfSense, and Zabbix
+VMWare Workstation, Linux OS, pfSense, Wireshark and Zabbix
 
 ## Installation
 
@@ -69,7 +69,7 @@ Once I logged in, I went to the main dashboard. Here I could see that it had the
 ![Pasted image 20240515165627](https://github.com/lm3nitro/Projects/assets/55665256/52be766c-7ac6-4cd7-9d96-9ce0585d15f5)
 
 
-## Installing Zabbix agent in Pfsense:
+## Installing and Configuring Zabbix Agent:
 
 Now that I have Zabbix installed and running, I will need to install the agent on my pfSense. To get started, I navigated to *System > Packet Manager*:
 
@@ -103,65 +103,54 @@ Verified rule was created:
 
 ![Pasted image 20240515221257](https://github.com/lm3nitro/Projects/assets/55665256/02b428dc-277c-447a-9514-e0e947d4695f)
 
-
-
-
-Adding Pfsense firewall:
+After adding the agent on the pfSense firewall, I went back to Zabbix to add the Pfsense firewall as a host. I navigated to *Data Collection > Hosts*, I then selected *Create Host*, entered the needed details for the pfSense firwall. I the selected *Add*:
 
 ![Pasted image 20240515214938](https://github.com/lm3nitro/Projects/assets/55665256/b87d1773-fcf9-4511-ac45-8ec10a26c2c5)
 
-
+I can see that it was successfully added:
 
 ![Pasted image 20240515215235](https://github.com/lm3nitro/Projects/assets/55665256/5e85c6c8-d30b-49a0-8c65-9be5bef1758a)
 
-
-
-Let's look at the firewall logs:
+Looking at the pfSense firewall, I can see traffic on port 10050 from our pfSense firewall to Zabbix:
 
 ![Pasted image 20240515221525](https://github.com/lm3nitro/Projects/assets/55665256/bb1e103c-a747-47d6-bb34-1603d0774369)
 
-
-Taking a packet caputure to analsys the traffic:
+I also took a packet caputure directly on the pfSense firewall to analyze the traffic:
 
 ![Pasted image 20240515221840](https://github.com/lm3nitro/Projects/assets/55665256/90b8975c-6b10-439e-8f33-47366bfc674a)
 
-
-
-Traffic information about the communication:
+Here I am able to see information about the communication:
 
 ![Pasted image 20240515222257](https://github.com/lm3nitro/Projects/assets/55665256/dfac540b-d5d4-422f-948e-f35bbae1a146)
 
+## Analysis
 
-Let's monitor our Pfsense firewall:
-
+So far I installed Zabbix, installed and configured the agent on pfSense, added the pfSense host in Zabbix, and confirmed that traffic was being sent and it was communicating properly. Now I can monitor the Pfsense firewall:
 
 ![Pasted image 20240515220000](https://github.com/lm3nitro/Projects/assets/55665256/01810ed9-9a02-4405-9a40-21197e751cc2)
 
-
-
-All the graphs listed:
+One of the features that I liked about Zabbix is the graphs that it offers. This is essential because it provides a visual representation over time which makes it easier tro identify performance issues. Heres a look atthe graphs for the pfSense firewall:
 
 ![Pasted image 20240515220042](https://github.com/lm3nitro/Projects/assets/55665256/b26b24d2-b2ae-4adf-bc25-f5479d1d7969)
 
-
-
-
-Graphs configuration tab:
+There are more graphs, you can see the list of available graphs in the graphs configuration tab:
 
 ![Pasted image 20240515220151](https://github.com/lm3nitro/Projects/assets/55665256/2a9c9cd6-bd39-43c5-93ec-562bb07b4b88)
 
-
-
-Going back and selecting a Dashboard of the Pfsense firewall:
+Iwent back to check the dashboard for the Pfsense firewall:
 
 ![Pasted image 20240515215749](https://github.com/lm3nitro/Projects/assets/55665256/4a5cbfa7-45ce-4389-a2e0-c581e71928c7)
 
+This provides a view at the CPU load, CPU utilization, and memory:
 
 ![Pasted image 20240515215837](https://github.com/lm3nitro/Projects/assets/55665256/ee3b11f2-952b-465b-9628-65769f0ca54e)
 
+###Summary:
 
+This project allowed me to get hands on experience in installing Zabbix, its agent, and allowed me to have visibility into the performance of the pfSense firewall. Zabbix enhanced my ability to maintain optimal system performance and enure network reliability. This project reinforced the principles of the CIA triad:
 
++ Confidentiality: Monitoring pfSense access logs to identify unauthorized access attempts.
++ Integrity: Monitoring for unauthorized changes in configurations and data. 
++ Availability: Monitoring system performance in order to avoid any potential issues that can cause downtime.
 
-
-
-
+Ovrerall, having comprehensive monitoring is crucial for maintaing a secure and reliable infrastructure. 
