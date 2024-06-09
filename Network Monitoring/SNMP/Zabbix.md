@@ -12,72 +12,50 @@ Features:
 
 ### Scope:
 
-
-### Tools and Technology:
-
-
-## Installation
-
-Main page:
-
-![Pasted image 20240515164420](https://github.com/lm3nitro/Projects/assets/55665256/7de60618-caf5-44a3-bcfb-f52581d018fa)
-
-
-
-downloading:
-
-
-![Pasted image 20240515163648](https://github.com/lm3nitro/Projects/assets/55665256/56bf527d-dd53-451d-a523-d16db0dd7f1d)
-
-
-Untar the file:
-
-
-![Pasted image 20240515164107](https://github.com/lm3nitro/Projects/assets/55665256/577778b4-727b-409b-a474-701c850cfb25)
-
-
-Importing the appliance to VMware:
-
-
-![Pasted image 20240515164607](https://github.com/lm3nitro/Projects/assets/55665256/32f308cb-a2d3-4241-bb42-e4d33603884e)
-
-Editing the Vm and adding the resources needed: 
-
-
-
-![Pasted image 20240515164743](https://github.com/lm3nitro/Projects/assets/55665256/4d809fc7-7a1b-4561-a2d4-f7432dee32ab)
-
-
-
-
-Network Diagram: 
-
-
-
+I will installing Zabbix in a VM on WMWare Workstation. I will then install the agent on my pfSense firewall. By doing so I aim to monitor the performance and health of the pfSense firewall, including network traffic, CPU usage, memory utilization, and other metrics. This is a diagram to show the infrastructure of this project:
 
 ![Pasted image 20240519155020](https://github.com/lm3nitro/Projects/assets/55665256/6bc83c4a-6735-4a8a-905c-289c6c35e694)
 
 
-Console Credentials :
+### Tools and Technology:
+VMWare Workstation, Linux OS, pfSense, and Zabbix
 
-System:
+## Installation
+
+To get started I navigated to the main page and selected *Download*:
+
+![Pasted image 20240515164420](https://github.com/lm3nitro/Projects/assets/55665256/7de60618-caf5-44a3-bcfb-f52581d018fa)
+
+I will be creating a VM where i will be installing Zabbix on VMWare Workstation, so I chose the VMWareplatform to download:
+
+![Pasted image 20240515163648](https://github.com/lm3nitro/Projects/assets/55665256/56bf527d-dd53-451d-a523-d16db0dd7f1d)
+
+Once I downlaoded it, I extracted the files:
+
+![Pasted image 20240515164107](https://github.com/lm3nitro/Projects/assets/55665256/577778b4-727b-409b-a474-701c850cfb25)
+
+I then selected to create a New VM in VMWare workstation and selected the file:
+
+![Pasted image 20240515164607](https://github.com/lm3nitro/Projects/assets/55665256/32f308cb-a2d3-4241-bb42-e4d33603884e)
+
+After selecting to create the vm, I added the resources needed: 
+
+![Pasted image 20240515164743](https://github.com/lm3nitro/Projects/assets/55665256/4d809fc7-7a1b-4561-a2d4-f7432dee32ab)
+
+Upon booting you are pressented with the console credentials :
+
+![Pasted image 20240515165032](https://github.com/lm3nitro/Projects/assets/55665256/ceb90c66-a255-427c-8b5b-c466bfb4abb7)
+
+I then tested the login credentials both via SSH and the Web interface
+
+SSH:
 
 User: root
 Password: zabbix
 
-![Pasted image 20240515165032](https://github.com/lm3nitro/Projects/assets/55665256/ceb90c66-a255-427c-8b5b-c466bfb4abb7)
-
-
-
-login in via SSH:
-
 ![Pasted image 20240515165413](https://github.com/lm3nitro/Projects/assets/55665256/b3f31524-6515-4045-8716-bdd16ddfef32)
 
-
-
-
 Login in WebUI:
-
 
 User: Admin
 Password: zabbix
@@ -85,60 +63,43 @@ Password: zabbix
 ![Pasted image 20240515165313](https://github.com/lm3nitro/Projects/assets/55665256/e8236635-adb9-4187-b458-5b7e46f88fa4)
 
 
-Main Dashboard:
+Once I logged in, I went to the main dashboard. Here I could see that it had the vm istelf listed:
 
 
 ![Pasted image 20240515165627](https://github.com/lm3nitro/Projects/assets/55665256/52be766c-7ac6-4cd7-9d96-9ce0585d15f5)
 
 
+## Installing Zabbix agent in Pfsense:
 
-
-Installing a Zabbix agent in Pfsense:
-
-
-
+Now that I have Zabbix installed and running, I will need to install the agent on my pfSense. To get started, I navigated to *System > Packet Manager*:
 
 ![Pasted image 20240515220813](https://github.com/lm3nitro/Projects/assets/55665256/821fd723-02ac-4f63-8d80-86d8cf9a93eb)
 
+I then searched for the Zabbix agent package, chose it and select *Install*: 
 
 ![Pasted image 20240515220743](https://github.com/lm3nitro/Projects/assets/55665256/5c5cfb87-6e47-43f7-af6a-16e0a42d3158)
-
-
-
 
 Installation completed:
 
 ![Pasted image 20240515220848](https://github.com/lm3nitro/Projects/assets/55665256/7186fa20-5058-41ed-aac9-2092e57a1208)
 
-
-
-
-Configuring Zabbix agent:
+Now that I have Zabbix installed, I needed to get it configured. I needed to navigate to the Zabbix agent, edirt the configuration and enter the Zabbix server IP and hostname:
 
 ![Pasted image 20240515221022](https://github.com/lm3nitro/Projects/assets/55665256/044abfeb-33ce-40ff-bce7-da5615264f59)
 
-
-
-
+I then selected *Save*:
 
 ![Pasted image 20240515221059](https://github.com/lm3nitro/Projects/assets/55665256/5f8f1022-3ace-4a5b-8071-ceee53c2fe7f)
 
-
-
-
-
-
-Creating a custom rule for the Zabbix server to pull data from the Pfsense firewall:
+Next I needed to allow the traffic. To do this I created a custom rule for the Zabbix server to pull data from the Pfsense firewall. To do this I went to *Firewall > Rules > Add*:
 
 ![Pasted image 20240515221154](https://github.com/lm3nitro/Projects/assets/55665256/d79424dc-1db8-4d5d-97fe-d06ec96f5569)
 
-Creating the rule:
+These are the parameters I used for the rule:
 
 ![Pasted image 20240515221221](https://github.com/lm3nitro/Projects/assets/55665256/e81d70c5-e208-44b4-ae80-b78aee970013)
 
-
-
-reviewing the rule:
+Verified rule was created:
 
 ![Pasted image 20240515221257](https://github.com/lm3nitro/Projects/assets/55665256/02b428dc-277c-447a-9514-e0e947d4695f)
 
