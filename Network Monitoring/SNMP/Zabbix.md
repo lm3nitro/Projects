@@ -1,47 +1,24 @@
-
 # Zabbix:
 
 ![Pasted image 20240515164306](https://github.com/lm3nitro/Projects/assets/55665256/e87e6653-8c3e-4c87-929a-e23fd78f601c)
 
+Zabbix is an open source monitoring tool designed to track the health of your IT infrastructure. Zabbix collects and analyzes data from network devices, servers, and applications and provides real-time insights and alerts. It supports a wide range of monitoring methods, including SNMP, agent-based monitoring, and web monitoring. 
 
-Zabbix is an enterprise-class open source distributed monitoring solution. Zabbix is software that monitors numerous parameters of a network and the health and integrity of servers. Zabbix uses a flexible notification mechanism that allows users to configure e-mail based alerts for virtually any event.
+Features:
++ Scalability
++ Data collection and storage
++ Real-time monitoring
++ Customizable dashboards
 
-
-Some of the Features :
-
-# Overview:
-
-Zabbix is a highly integrated network monitoring solution, offering a multiplicity of features in a single package.
-
-# Data gathering:
-
-availability and performance checks
-
-support for SNMP (both trapping and polling), IPMI, JMX, VMware monitoring
-custom checks
-
-gathering desired data at custom intervals
-
-performed by server/proxy and by agents
-
-# Flexible threshold definitions:
-
-you can define very flexible problem thresholds, called triggers, referencing values from the backend database
-
-# Highly configurable alerting:
-
-sending notifications can be customized for the escalation schedule, recipient, media type
-notifications can be made meaningful and helpful using macro variables
-automatic actions include remote commands
-
-# Real-time graphing:
+### Scope:
 
 
-monitored items are immediately graphed using the built-in graphing functionality
+### Tools and Technology:
 
 
+## Installation
 
-main page:
+Main page:
 
 ![Pasted image 20240515164420](https://github.com/lm3nitro/Projects/assets/55665256/7de60618-caf5-44a3-bcfb-f52581d018fa)
 
