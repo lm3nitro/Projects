@@ -1,8 +1,9 @@
 # Sysmon
 
+Sysmon is  Windoes system service that monitors and logs system activity. It provides detailed information about process creations, network connections, and changes to file creation and modification times. Sysmon enabled administrators to detect and investigate malicious activities by providing comprehensive event logs. 
 
 ### Scope:
-In this project I will be installing and configuring Sysmon on a Win 10 OS. The second part of the project will be installing the Splunk Forwarder in order to send Sysmon logs and events to Splunk for further monitoring. 
+Sysmon specifically focuses on the domain of endpoint security. In this project I will be installing and configuring Sysmon on a Win 10 OS. The second part of the project will be installing the Splunk Forwarder in order to send Sysmon logs and events to Splunk for further monitoring. 
 
 ### Tools and Technology:
 Windows OS, Powershell, Sysmon, and Splunk
