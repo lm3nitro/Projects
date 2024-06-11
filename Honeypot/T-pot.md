@@ -1,73 +1,71 @@
+# T-Pot
 
 ![Pasted image 20240512155316](https://github.com/lm3nitro/Projects/assets/55665256/905c1e26-7020-4389-a3c4-7a483917bb2f)
 
+T-Pot is an open-source honeypot framework designed to simplify the deployment and management of honeypots for capturing and analyzing cyber threats. It integrates several honeypot technologies, tools, and services into a sing, comprehensive system to attract, detect, and analyze cyber threats.
 
+### Scope: 
+I will be installing T-Pot on a server in my internal network. I will then use another host on the network to simulate a scan and identify open ports and services on T-Pot. The adversary will often scan their targets to gather information on potential attack vectors and weak points to gain authorized access or disrupt services. Once complete, I will then take a look at the events collected from the scan in T-Pot. 
 
-T-POT is **an open-source honeypot framework designed to simplify the deployment and management of honeypots for capturing and analyzing cyber threats**. It offers easy deployment, supports multiple honeypot technologies, provides security and monitoring features, and allows centralized management.
+>#### Note: Honeypots are usually deployed inside production networks alongside production servers; the honeypot acts as a decoy, drawing intruders away from the production network as part of the intrusion detection system (IDS). 
 
+### Tools and Technology:
 
-In this scenario, we will installing a honeypot on the internal network. Honeypots are usually deployed **inside production networks alongside production servers**; the honeypot acts as a decoy, drawing intruders away from the production network as part of the intrusion detection system (IDS).
+Linux OS, Nmap, and T-Pot
 
-
-Network Diagram:
+This is a look at the network diagram:
 
 ![Pasted image 20240513170453](https://github.com/lm3nitro/Projects/assets/55665256/3d132f4d-ef4d-45d5-96c4-7ec154011d9c)
 
 
-Installing:
-
-
-
+## Installing T-Pot:
+To get started, I used the git clone command below. This will allow me to download the entire repository, branches, files, etc, for T-Pot. 
+```
 git clone https://github.com/telekom-security/tpotce.git
-
+```
 
 ![Pasted image 20240512144341](https://github.com/lm3nitro/Projects/assets/55665256/72e404b9-debe-4edb-a17c-56a29c7f697a)
 
-
-
-Verify the IP address of the server
+I also verified the IP address of the server:
 
 ![Pasted image 20240512144403](https://github.com/lm3nitro/Projects/assets/55665256/2a6f43f2-d190-4258-b933-36c71b6b4835)
 
 
-Listing the file downloaded
+I was able to see that the file was downloaded:
 
 ![Pasted image 20240512144446](https://github.com/lm3nitro/Projects/assets/55665256/2417e464-b6d6-4f8d-9ad0-349e43016c06)
 
 
-Change to tpotce  directory and locate the install.sh script and execute it with non root privilege 
+I then changed into the tpotce directory and located the install.sh script and executed it with non root privilege.
 
+>#### Note: It is important to run the script with a non-root user becuase it minimizes the potential damage an attacker can cause is they manage to compromise the honeypot. This will help in containing the impact and preventing the attacker from gaining full control of the system.
 
 ![Pasted image 20240512144513](https://github.com/lm3nitro/Projects/assets/55665256/c5e193f7-2ce2-4a18-9306-cfbebee4960d)
 
-
-
-Select (H)ive
+Once the I executed the script, I was given the option to choose the type of install, I chose *(H)ive*. I was also prompted to enter a username and passsword:
 
 ![Pasted image 20240512144542](https://github.com/lm3nitro/Projects/assets/55665256/b087cfc5-c97d-48ea-9839-abec3b160d9d)
 
+After, I was able to see all the pulling being done:
 
 ![Pasted image 20240512144615](https://github.com/lm3nitro/Projects/assets/55665256/7438d262-00eb-4fea-8f32-023326f84cee)
 
+When the T-Pot Installer successfully finished, I then had to reboot the system. I was prompted to login via SSH on port 64295. 
 
 ![Pasted image 20240512144641](https://github.com/lm3nitro/Projects/assets/55665256/78e28dab-d882-4e50-947d-b9ba660f6d21)
-
+```
 sudo reboot
+```
 
-
-
-Once the T-Pot Installer successfully finishes, the system needs to be rebooted (`sudo reboot`). Once rebooted you can log into the system using the user you setup during the installation of the system.
-
-
-Login from your browser and access the T-Pot WebUI and tools: `https://<your.ip>:64297`
-
-
-
+After the system had rebooted, I was able to login from my browser and access the T-Pot WebUI and tools: 
+```
+https://<your.ip>:64297
+```
 
 ![Pasted image 20240512145510](https://github.com/lm3nitro/Projects/assets/55665256/375f3767-335d-47a6-8d5d-7724c493f309)
 
 
-
+## Scan Simulation
 Runnnig a scan to generate some data:
 
 ![Pasted image 20240512153853](https://github.com/lm3nitro/Projects/assets/55665256/62043537-55d6-421b-84c9-25e40885e827)
