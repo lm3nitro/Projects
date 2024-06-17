@@ -1,13 +1,6 @@
-
-
+# Pi-hole
 
 ![Pasted image 20240601171802](https://github.com/lm3nitro/Projects/assets/55665256/b37821c9-fad7-44ed-9a62-e39e84e0d7f4)
-
-
-
-
-
-
 
 Pi-hole is a network-wide ad blocker that functions as a Domain Name System (DNS) sinkhole. It effectively filters out unwanted content, such as ads, trackers, and malicious domains, at the DNS level, without installing any client-side software. 
 
