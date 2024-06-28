@@ -101,7 +101,7 @@ This is another look into the raw data from the attacker IP:
 
 ### Summary:
 
-T-Pot allows you to be able to 
+Having a host out in the wild that is public facinf is very risky. T-Pot allows you to be able to 
 
 
 
