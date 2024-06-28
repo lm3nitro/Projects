@@ -65,7 +65,7 @@ https://<your.ip>:64297
 ![Pasted image 20240512145510](https://github.com/lm3nitro/Projects/assets/55665256/375f3767-335d-47a6-8d5d-7724c493f309)
 
 
-## Scan Simulation
+## Scan Emulation
 Runnnig a scan to generate some data:
 
 ![Pasted image 20240512153853](https://github.com/lm3nitro/Projects/assets/55665256/62043537-55d6-421b-84c9-25e40885e827)
@@ -101,7 +101,4 @@ This is another look into the raw data from the attacker IP:
 
 ### Summary:
 
-Having a host out in the wild that is public facinf is very risky. T-Pot allows you to be able to 
-
-
-
+Having a host out in the wild that is public facing is very risky. T-Pot allows you to be able to detect and analyze numerous threats by simulating  various services and sysemss. Having T-Pot can allows you to gain insight and indormation into the techniques used by actors. Having the tactics being used allows us to better proctect ourselves, reduce the impact of an attack, and fine tune our current Security in order to bolster the cybersecurity posture. T-pot can also be used to identify weak spots and vulneralbilities, highly recommend. 
