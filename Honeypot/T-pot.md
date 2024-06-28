@@ -70,47 +70,37 @@ Runnnig a scan to generate some data:
 
 ![Pasted image 20240512153853](https://github.com/lm3nitro/Projects/assets/55665256/62043537-55d6-421b-84c9-25e40885e827)
 
-
 As you can see the the honeypot seems to have all of these ports opened
 
 ![Pasted image 20240512153744](https://github.com/lm3nitro/Projects/assets/55665256/46334f59-7e40-40fc-9875-0364fa7031b4)
 
+## Scan Analysus
 
-Informatimation from the scan: 
+After performing the scan against the host, I logged into T-Pot to see what information it was able to gather about the scan. 
 
-Selecting Kibana on the main Tpot main page:
+To get started, I selected Kibana from the T-Pot main page:
 
 ![Pasted image 20240512155012](https://github.com/lm3nitro/Projects/assets/55665256/646b4964-91ca-42d8-80c8-d1cecfd268ba)
 
-
-
-Search for Tpot dashboard:
-
-
+T-Pot comes with a series of dashboards that are pre-built. From the menu, I search for the T-pot dashboard:
 
 ![Pasted image 20240512154827](https://github.com/lm3nitro/Projects/assets/55665256/352f7398-d83d-424c-b8e1-c879a0edb35b)
 
-
-
 Looking at the attacks:
-
 
 ![Pasted image 20240512151418](https://github.com/lm3nitro/Projects/assets/55665256/93804c50-4f0c-4efe-9690-3e1ab86cf61d)
 
-
 Attacker IP:
-
 
 ![Pasted image 20240512151626](https://github.com/lm3nitro/Projects/assets/55665256/fddf9833-6433-49ca-9dd5-014df59b187c)
 
-
-
- Raw data from the attacker IP:
+Raw data from the attacker IP:
  
 ![Pasted image 20240512152156](https://github.com/lm3nitro/Projects/assets/55665256/42bcc2a3-3c7d-4113-8ce2-e170099e7274)
 
 
+### Summary:
 
-summary:
+
 
 
