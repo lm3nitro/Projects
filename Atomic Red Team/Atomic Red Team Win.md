@@ -110,7 +110,7 @@ When we expand and see the details, we can see that this event was generated fro
 
 ### Summary and Analysis: 
 
-I continued to run a series of other test and analyzed the logs provided by Wazuh. Although it is always best practice to have a series of security measures and not just one, I could see that Wazuh was able to capture all the security events I tested again the host. For being an Open Source Tool, I beleive that Wazuh provided great insight and details about the test and the triggers. 
+I continued to run a series of other test and analyzed the logs provided by Wazuh. Although it is always best practice to have a series of security measures and not just one, I could see that Wazuh was able to capture all the security events I tested against the host. For being an Open Source Tool, I beleive that Wazuh provided great insight and details about the test and the triggers. Overall, Atomic Red Team provides a way to simulate a series of different attacks in a controlled environment. The Atomic Red Team helps indentify gaps between TTPs/threat actors and the security tools we have in place. 
 
 
 
