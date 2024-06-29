@@ -12,6 +12,7 @@ Pi-hole provides a few key benefits:
 + Network Performance: With fewer ads and tracking requests, your network's performance can improve, especially if you have multiple devices connected.
 
 ### Scope:
+
 ### Tools and Technology:
 
 ### Network Diagram:
@@ -21,48 +22,12 @@ Pi-hole provides a few key benefits:
 Information:
 https://www.wundertech.net/use-unbound-to-enhance-the-privacy-of-pi-hole-on-a-raspberry-pi/
 
-### Scope:
-
-
-### Tools and Technology:
-Linux OS
-
 ## Installation:  
+To get started, I first verified the IP address and Netplan configuration. This is important information to know prior to installing and getting Pi-hole steup. 
 
-
-
-Clone our repository and run:
-
-
-git clone --depth 1 https://github.com/pi-hole/pi-hole.git Pi-hole
-cd "Pi-hole/automated install/"
-sudo bash basic-install.sh
-
-
-
-
-![Pasted image 20240602112549](https://github.com/lm3nitro/Projects/assets/55665256/ece21b67-a5d7-4a84-8f71-c0a0eacc47e9)
-
-
-
-![Pasted image 20240602112742](https://github.com/lm3nitro/Projects/assets/55665256/ed22f987-f511-49b5-8e67-f2ab4b37bd79)
-
-
-
-
-
-![Pasted image 20240602112804](https://github.com/lm3nitro/Projects/assets/55665256/ccec05cd-1ac8-45f5-9ce9-e33fa44b580e)
-
-
-
-Verity the IP address:
-
-
+Verify the IP address:
 
 ![Pasted image 20240602113850](https://github.com/lm3nitro/Projects/assets/55665256/5f67a965-a21c-4a0e-97c7-d1e9b04233d5)
-
-
-
 
 Netplan network configuration:
 
@@ -87,20 +52,37 @@ Screenshot of Netplan network configuration:
 
 ![Pasted image 20240602114005](https://github.com/lm3nitro/Projects/assets/55665256/6c65cd85-2d2a-4163-8b80-fe297cd838ce)
 
+Once I had the information needed, I was raeady to install Pi-hole. I will be installing it on a Linux VM. First, I cloned the repository and ran the installer script:
+
+```
+git clone --depth 1 https://github.com/pi-hole/pi-hole.git Pi-hole
+cd "Pi-hole/automated install/"
+sudo bash basic-install.sh
+```
+
+![Pasted image 20240602112549](https://github.com/lm3nitro/Projects/assets/55665256/ece21b67-a5d7-4a84-8f71-c0a0eacc47e9)
+
+Once I ran the install script, I was then taken to this blue screen for the setup and configuration on Pi-hole:
+
+![Pasted image 20240602112742](https://github.com/lm3nitro/Projects/assets/55665256/ed22f987-f511-49b5-8e67-f2ab4b37bd79)
+
+The first 2 slides were informational and provided details about Pi-hole and the donations that help this initiative
+
+![Pasted image 20240602112804](https://github.com/lm3nitro/Projects/assets/55665256/ccec05cd-1ac8-45f5-9ce9-e33fa44b580e)
+
+This next slide is about the needs for a static IP on the OS where Pi-hole will be installed. Prior to starting this install, I verified the IP address (10.10.100.35) and ensured that it statically assigned. 
 
 ![Pasted image 20240602112914](https://github.com/lm3nitro/Projects/assets/55665256/a8c0436a-c4fc-42df-a44d-89d757fe768e)
 
-
+I was them prompted to select a DNS provider. I chose Cloudflare:
 
 ![Pasted image 20240602113004](https://github.com/lm3nitro/Projects/assets/55665256/0a98546f-15b3-4548-b9e1-4bb5b6338f93)
 
-
-
+I then agreed to using the third-party domain list:
 
 ![Pasted image 20240602113036](https://github.com/lm3nitro/Projects/assets/55665256/e604419e-61fb-4fe7-98e8-880bf35a1905)
 
-
-
+After I was asked if I wanted to install the web interface:
 
 ![Pasted image 20240602113057](https://github.com/lm3nitro/Projects/assets/55665256/e638d7d6-fb09-495d-a12e-183c62636d14)
 
