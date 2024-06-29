@@ -2,17 +2,17 @@
 
 ![Pasted image 20240601171802](https://github.com/lm3nitro/Projects/assets/55665256/b37821c9-fad7-44ed-9a62-e39e84e0d7f4)
 
-Pi-hole is a network-wide ad blocker that functions as a Domain Name System (DNS) sinkhole, intercepting and blocking domains at the DNA level. This results in ads being blocked across all devices on your network performance by reducing unnecessary data load, and providing a cleaner browsing experience.
+Pi-hole is a network-wide ad blocker that functions as a Domain Name System (DNS) sinkhole, which intercepts and blocks ads and trackers at the network level. It helps to improve network performance by preventing unwanted traffic and enhances privacy by blocking domains. 
 
 Pi-hole provides a few key benefits:
 
-Network-Wide Ad Blocking: Pi-hole prevents ads from loading on websites, which not only speeds up page loading times but also enhances the overall browsing experience.
++ Network-Wide Ad Blocking: Pi-hole prevents ads from loading on websites, which not only speeds up page loading times but also enhances the overall browsing experience.
++ Enhanced Privacy: It blocks trackers and third-party analytics, reducing the amount of data collection by various online services and improving your privacy.
++ Security: Pi-hole blocks access to known malicious domains, thereby protecting your network from potentially harmful content.
++ Network Performance: With fewer ads and tracking requests, your network's performance can improve, especially if you have multiple devices connected.
 
-Enhanced Privacy: It blocks trackers and third-party analytics, reducing the amount of data collection by various online services and improving your privacy.
-
-Security: Pi-hole blocks access to known malicious domains, thereby protecting your network from potentially harmful content.
-
-Network Performance: With fewer ads and tracking requests, your network's performance can improve, especially if you have multiple devices connected.
+### Scope:
+### Tools and Technology:
 
 ### Network Diagram:
 
