@@ -96,8 +96,7 @@ Query logging allows Pi-hole to keep a detailed log of all the DNS requests. I e
 
 FTL privacy allows you to limit the amount of logging and data storage when it comes to the DNS queries. For this instance, I chose to go with everything
 
-[![Pasted image 20240602113247](https://github.com/lm3nitro/Projects/assets/556652a0e32e8-e2cf-4786-a030-035150741ce7)](https://github.com/lm3nitro/Projects/assets/556652a0e32e8-e2cf-4786-a030-035150741ce7)
-
+[![Pasted image 20240602113247](https://github.com/lm3nitro/Projects/assets/556652a0e32e8-e2cf-4786-a030-035150741ce7)]
 
 ![Pasted image 20240602113645](https://github.com/lm3nitro/Projects/assets/55665256/339f15cd-53a3-4b78-8716-c6c0d988006f)
 
