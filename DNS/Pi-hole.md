@@ -94,30 +94,27 @@ Query logging allows Pi-hole to keep a detailed log of all the DNS requests. I e
 
 ![Pasted image 20240602113213](https://github.com/lm3nitro/Projects/assets/55665256/c92f7fa1-bd80-4dd9-8fa8-6af646c93ad1)
 
-FTL privacy allows you to limit the amount of logging and data storage when it comes to the DNS queries. For this instance, I chose to go with everything
+FTL privacy allows you to limit the amount of logging and data storage when it comes to the DNS queries. For this instance, I chose to go with **Show everything**
 
-https://github.com/lm3nitro/Projects/assets/556652a0e32e8-e2cf-4786-a030-035150741ce7
+![image](https://github.com/lm3nitro/Projects/assets/55665256/9a5b2b04-c8c6-4a71-997e-bc234d4945a2)
 
-![Pasted image 20240602113247](https://github.com/lm3nitro/Projects/assets/556652a0e32e8-e2cf-4786-a030-035150741ce7)
+This is the final slide to confirm the configuration:
 
 ![Pasted image 20240602113645](https://github.com/lm3nitro/Projects/assets/55665256/339f15cd-53a3-4b78-8716-c6c0d988006f)
 
 
 
+## Setting up Unbound
 
+Unbound is a recursive caching DNS resolver that is commonly used with Pi-hole to enhance DNS security and performance. I will be using it with Pi-hole to have it serve as the backend resolver for the DNS queries. 
 
-
-# Setting up Unbound:
-
-
-Installing Unbound:
-
-
-
+To get started, I need to install unbound:
+```
 sudo apt install unbound
-
-
+```
 ![Pasted image 20240602114230](https://github.com/lm3nitro/Projects/assets/55665256/ad781f37-2a96-4fdb-bc58-ed80d4ee1ec1)
+
+These are the commands used to stop, restart, start, and check the service status:
 
 ```
 systemctl start unbound.service
@@ -126,24 +123,19 @@ systemctl restart unbound.service
 systemctl enable unbound.service
 ```
 
+Becuase unbound will be the recursive DNS resolver, I needed to download the root.hints file. This file contains the names and IP addresses of the authoritive name servers for the root zone. 
 
-
-
-Downloading the root.hints file:
-
+```
 wget https://www.internic.net/domain/named.root -qO- | sudo tee /var/lib/unbound/root.hints
-
+```
 
 ![Pasted image 20240602114448](https://github.com/lm3nitro/Projects/assets/55665256/120b1fab-9a3d-48e3-b39f-cb886108aa26)
 
+Next, I created a file that will force Unbound to only listen for queries from Pi-hole:
 
-Create a file that will force Unbound to only listen for queries from Pi-hole:
-
-
+```
 nano /etc/unbound/unbound.conf.d/pi-hole.conf
-
-
-
+```
 ![Pasted image 20240602114832](https://github.com/lm3nitro/Projects/assets/55665256/86913d8e-ca79-4883-af09-eddf1be7c43e)
 
 
@@ -192,41 +184,29 @@ server:
     private-address: fd00::/8
     private-address: fe80::/10
 ```
+Once the file was created, I restarted the Unbound server and checked the status of the service: 
 
-
-
-
-Restart the Unbound server and check the status of the service: 
 ```
 sudo service unbound restart
-
 sudo service unbound status
 ```
 
-
 ![Pasted image 20240602115022](https://github.com/lm3nitro/Projects/assets/55665256/a3cd851f-54c9-44e4-b98b-dcf388c58003)
 
+After checking that stagtus I then Tested the DNS resolution:
 
-Testing the resolution of the DNS:
-
-
+```
 dig pi-hole.net @127.0.0.1 -p 5335
 
-
+```
 
 ![Pasted image 20240602115221](https://github.com/lm3nitro/Projects/assets/55665256/2f69c24a-1ee9-46ec-937b-a12b7152af4f)
 
-
-
-
-Verify the Unbound and Pi-hole port  are listening :
+I also verified that Unbound and Pi-hole ports were listening:
 
 ![Pasted image 20240602123258](https://github.com/lm3nitro/Projects/assets/55665256/b3bc00e9-89be-416b-bf1d-bda62ffa3344)
 
-
-
-
-# Login to WebUI:
+## Login to WebUI:
 
 
 ![Pasted image 20240602115808](https://github.com/lm3nitro/Projects/assets/55665256/8d209133-d732-4095-8b5c-6c58f7b279eb)
