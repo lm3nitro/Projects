@@ -229,7 +229,7 @@ This is the network traffic on the Pi-hole server that it received from the Wind
 
 ![Pasted image 20240602122855](https://github.com/lm3nitro/Projects/assets/55665256/ed4b2099-68b6-474a-a6a9-81bd04873085)
 
-DNS traffic going to the Local DNS Pi-Hole server from Windows PC:
+In Wireshark I could also see DNS traffic going to the Local DNS Pi-Hole server from the Windows 10 PC:
 
 ![Pasted image 20240602122206](https://github.com/lm3nitro/Projects/assets/55665256/6d03a22f-1043-4f11-82a6-b360413ab4ea)
 
