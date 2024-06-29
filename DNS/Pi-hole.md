@@ -82,23 +82,21 @@ I then agreed to using the third-party domain list:
 
 ![Pasted image 20240602113036](https://github.com/lm3nitro/Projects/assets/55665256/e604419e-61fb-4fe7-98e8-880bf35a1905)
 
-After I was asked if I wanted to install the web interface:
+I also agreed to installing the Admin Web Interface:
 
 ![Pasted image 20240602113057](https://github.com/lm3nitro/Projects/assets/55665256/e638d7d6-fb09-495d-a12e-183c62636d14)
 
-
-
+The next slide is about the prequisites required for the Admin Web Interface:
 
 ![Pasted image 20240602113129](https://github.com/lm3nitro/Projects/assets/55665256/bd491ed8-a1a1-40f9-aa0d-2ed3cfdfb830)
 
-
+Query logging allows Pi-hole to keep a detailed log of all the DNS requests. I enabled it when getting it set-up:
 
 ![Pasted image 20240602113213](https://github.com/lm3nitro/Projects/assets/55665256/c92f7fa1-bd80-4dd9-8fa8-6af646c93ad1)
 
+FTL privacy allows you to limit the amount of logging and data storage when it comes to the DNS queries. For this instance, I chose to go with everything
 
-
-
-![Pasted image 20240602113247](https://github.com/lm3nitro/Projects/assets/55665256/9a0e32e8-e2cf-4786-a030-035150741ce7)
+[![Pasted image 20240602113247](https://github.com/lm3nitro/Projects/assets/556652a0e32e8-e2cf-4786-a030-035150741ce7)](https://github.com/lm3nitro/Projects/assets/556652a0e32e8-e2cf-4786-a030-035150741ce7)
 
 
 ![Pasted image 20240602113645](https://github.com/lm3nitro/Projects/assets/55665256/339f15cd-53a3-4b78-8716-c6c0d988006f)
