@@ -102,8 +102,6 @@ This is the final slide to confirm the configuration:
 
 ![Pasted image 20240602113645](https://github.com/lm3nitro/Projects/assets/55665256/339f15cd-53a3-4b78-8716-c6c0d988006f)
 
-
-
 ## Setting up Unbound
 
 Unbound is a recursive caching DNS resolver that is commonly used with Pi-hole to enhance DNS security and performance. I will be using it with Pi-hole to have it serve as the backend resolver for the DNS queries. 
@@ -137,7 +135,6 @@ Next, I created a file that will force Unbound to only listen for queries from P
 nano /etc/unbound/unbound.conf.d/pi-hole.conf
 ```
 ![Pasted image 20240602114832](https://github.com/lm3nitro/Projects/assets/55665256/86913d8e-ca79-4883-af09-eddf1be7c43e)
-
 
 File:
 
@@ -208,98 +205,59 @@ I also verified that Unbound and Pi-hole ports were listening:
 
 ## Login to WebUI:
 
+Once Pi-hole was installed and configured and Unbound was also installed, I then went to the Pi-hole Admin Web Interface:
 
 ![Pasted image 20240602115808](https://github.com/lm3nitro/Projects/assets/55665256/8d209133-d732-4095-8b5c-6c58f7b279eb)
 
-
-
-
-Setting up the unbound local IP and port:
-
+First thing was setting up the unbound local IP and port:
 
 ![Pasted image 20240602120115](https://github.com/lm3nitro/Projects/assets/55665256/3e0379c5-f45d-488b-8f55-0b9068afabd5)
 
-
-
-
 Click Save
 
+## Testing and Analysis
 
-
-Configure Static DNS on Windows 10 PC:
-
+For this project, I will be testing on a Windows 10 PC. In order to test I had to configure the static DNS:
 
 ![Pasted image 20240602120330](https://github.com/lm3nitro/Projects/assets/55665256/7b02d80a-5f4e-4d9c-bfc1-9ef0b23d4f10)
 
-
-
-
-Let's go to chess.com website to test the blocking adds:
+Time to test! I went to the chess.com website to test and see if it was truly blocking ads:
 
 ![Pasted image 20240602120739](https://github.com/lm3nitro/Projects/assets/55665256/e598122a-98a4-49ea-90dc-458a88a21037)
 
-
-
-
-Network traffic on the Pi-hole server received from Windows PC:
+This is the network traffic on the Pi-hole server that it received from the Windows 10 PC:
 
 ![Pasted image 20240602122855](https://github.com/lm3nitro/Projects/assets/55665256/ed4b2099-68b6-474a-a6a9-81bd04873085)
 
-
-
 DNS traffic going to the Local DNS Pi-Hole server from Windows PC:
 
-
 ![Pasted image 20240602122206](https://github.com/lm3nitro/Projects/assets/55665256/6d03a22f-1043-4f11-82a6-b360413ab4ea)
-
-
 
 Click on Dashboard:
 
 ![Pasted image 20240602120845](https://github.com/lm3nitro/Projects/assets/55665256/494259e6-4e93-4ef2-93f3-f0cffe3a71c2)
 
-
-
 Click on Query logs:
-
 
 ![Pasted image 20240602120821](https://github.com/lm3nitro/Projects/assets/55665256/bf7e73a6-ed78-4a98-abd8-76c236619973)
 
-
-
 # Check the efficiency of the Pi-hole ad blocker:
-
-
 
 https://d3ward.github.io/toolz/adblock
 
-
 ![Pasted image 20240602121056](https://github.com/lm3nitro/Projects/assets/55665256/5fa08427-aa7b-43ca-b94a-72cf14462468)
-
 
 We have generated more traffic:
 
-
-
 ![Pasted image 20240602121148](https://github.com/lm3nitro/Projects/assets/55665256/0256be17-7d2b-43d0-a90d-647926d58cf7)
-
 
 ![Pasted image 20240602121238](https://github.com/lm3nitro/Projects/assets/55665256/f5198fd6-3dad-4973-b738-0b5bc226cf91)
 
-
-
-
 Looking DNS at statistics:
-
 
 ![Pasted image 20240602121943](https://github.com/lm3nitro/Projects/assets/55665256/8db98278-faf0-4d4b-b6c8-d76a16e2da6a)
 
-
-
-
-
-
-# Add custom Blocklist to Pi-Hole:
+## Adding a custom Blocklist to Pi-Hole:
 
 Note:
 
