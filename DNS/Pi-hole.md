@@ -13,7 +13,10 @@ Pi-hole provides a few key benefits:
 
 ### Scope:
 
+
 ### Tools and Technology:
+
+Linux OS, Windows OS, Pi-hole and Wireshark
 
 ### Network Diagram:
 
@@ -233,63 +236,59 @@ In Wireshark I could also see DNS traffic going to the Local DNS Pi-Hole server 
 
 ![Pasted image 20240602122206](https://github.com/lm3nitro/Projects/assets/55665256/6d03a22f-1043-4f11-82a6-b360413ab4ea)
 
-Click on Dashboard:
+Going back to Pi-hole, I clicked on the dashboard and was able to see blocks:
 
 ![Pasted image 20240602120845](https://github.com/lm3nitro/Projects/assets/55665256/494259e6-4e93-4ef2-93f3-f0cffe3a71c2)
 
-Click on Query logs:
+By clicking on Query logs, I was able to see where the ads were being blocked:
 
 ![Pasted image 20240602120821](https://github.com/lm3nitro/Projects/assets/55665256/bf7e73a6-ed78-4a98-abd8-76c236619973)
 
-# Check the efficiency of the Pi-hole ad blocker:
+# Pi-hole Efficiency
+
+The following website can be used to test the efficiency Pi-hole has on blocking ads:
 
 https://d3ward.github.io/toolz/adblock
 
+When using the website, I could see that there were ads getting blocked:
+
 ![Pasted image 20240602121056](https://github.com/lm3nitro/Projects/assets/55665256/5fa08427-aa7b-43ca-b94a-72cf14462468)
 
-We have generated more traffic:
+Upon checking Pi-hole, the testing using the wensite above indeed generated more traffic:
 
 ![Pasted image 20240602121148](https://github.com/lm3nitro/Projects/assets/55665256/0256be17-7d2b-43d0-a90d-647926d58cf7)
 
 ![Pasted image 20240602121238](https://github.com/lm3nitro/Projects/assets/55665256/f5198fd6-3dad-4973-b738-0b5bc226cf91)
 
-Looking DNS at statistics:
+Pi-hole also allows you to look at the DNS statistics. Here we can see the top domains that are getting blocked and also the hosts that are generating the most traffic:
 
 ![Pasted image 20240602121943](https://github.com/lm3nitro/Projects/assets/55665256/8db98278-faf0-4d4b-b6c8-d76a16e2da6a)
 
-## Adding a custom Blocklist to Pi-Hole:
+## Adding a Custom Blocklist to Pi-Hole:
 
-Note:
+>#### Note: The StevenBlacklist was added by the Pi-hole installer during the installation:
+>https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
 
-The StebenBlacklist was added by the Pi-hole installer during the installation:
-
-
-https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
-
-
-
-
-Let's add the tracking list:
-
+Since the StevenBlackLidt was already added during the installation, I will be adding the tracking list:
+```
 https://blocklistproject.github.io/Lists/tracking.txt
-
+```
+In order to add it, go to Add File, and from there select the downloaded files and select Add:
 
 ![Pasted image 20240602132330](https://github.com/lm3nitro/Projects/assets/55665256/266b925f-f78d-4069-8479-734e2dcb7ffb)
 
+Here is a view at the list:
+
 ![Pasted image 20240602132541](https://github.com/lm3nitro/Projects/assets/55665256/39567e29-3b77-4e3c-90c5-20e6ba7d056b)
 
-
-
-
-# Downlofing a Big blocklist:
-
-
+Aside from the above, I also downlaoded other blocklists. You can find a group of blocklists by going to the following website:
+```
 https://firebog.net/
+```
 
 ![Pasted image 20240602133658](https://github.com/lm3nitro/Projects/assets/55665256/fe7d9117-17dd-4ef9-a465-845b873c5d62)
 
-
-
+These are the URLs for the blocklists:
 
 + https://blocklistproject.github.io/Lists/scam.txt
 + https://blocklistproject.github.io/Lists/malware.txt
@@ -297,28 +296,19 @@ https://firebog.net/
 + https://raw.githubusercontent.com/kboghdady/youTube_ads_4_pi-hole/master/youtubelist.txt
 + https://raw.githubusercontent.com/danhorton7/pihole-block-tiktok/main/tiktok.txt
 
-
-
-
-# Activating the blacklist to Pi-hole:
-
+The following command can be used to update the gravity list to include the newly added domains in the donwloaded lists:
 
 ![Pasted image 20240602134018](https://github.com/lm3nitro/Projects/assets/55665256/97fd7390-1f9f-4a89-9468-8c73707e0011)
 
-
-
-
-
+```
 pihole -g
+```
 
 ![Pasted image 20240602134104](https://github.com/lm3nitro/Projects/assets/55665256/38d9d4f6-9529-497b-a801-0a9491a55412)
 
-
-Now our lists vas a green checkmark:
+Now that the gravity list was updated, when I checked Pi-hole,  the newly downloaded lists are now showing with a green checkmark:
 
 Malware blocklist:
-
-
 + https://osint.digitalside.it/Threat-Intel/lists/latestdomains.txt
 + https://v.firebog.net/hosts/RPiList-Malware.txt
 + https://v.firebog.net/hosts/RPiList-Phishing.txt
@@ -326,89 +316,89 @@ Malware blocklist:
 ![Pasted image 20240602134605](https://github.com/lm3nitro/Projects/assets/55665256/b64741db-cb44-485f-ac7a-d5282c93041c)
 
 
+## Blocking a Domain:
 
-# Blocking a ramdom domain:
-
-Let's block youtube.com
-
+This will be just an example. For this example, I will be using youtube.com. To do this, I went to Domains, and added youtube.com including subdomains:
 
 ![Pasted image 20240602135024](https://github.com/lm3nitro/Projects/assets/55665256/507dc31b-0d5c-4817-9131-dc3da51417e9)
 
-
-
-
-Verify if youtube.com is really blocked:
-
-We can see the DNS traffic, the DNS server (Pi-hole) 10.10.100.35  is responding with 0.0.0.0, we also can see the DNS queries from the Pi-hole on the right side:
-
-
+I then verified to see if youtube.com was really blocked. We can see the DNS traffic, the DNS server (Pi-hole) 10.10.100.35 is responding with 0.0.0.0, we also can see the DNS queries from the Pi-hole on the right side:
 
 ![Pasted image 20240602135447](https://github.com/lm3nitro/Projects/assets/55665256/521a4fb3-63df-4e34-8d2b-967c8a2c8748)
 
+## Logs analysis:
 
-
-# Logs analysis:
+I also wanted to see the logs and what information they provide. 
 
 ![Pasted image 20240602150946](https://github.com/lm3nitro/Projects/assets/55665256/04bf4347-a5be-4198-b73a-23e0164ab3fb)
 
+To generate traffic, I made a DNS query to chess.com. I was able to validate that DNS query and the IP address associated with the FQDN
 
-
-Making a DNS query to chess.com:
-
-
-Looking at real-time DNS queries with tail -f  pihole.log
+Real-time DNS queries with tail -f  pihole.log:
 
 ![Pasted image 20240602150922](https://github.com/lm3nitro/Projects/assets/55665256/00b8d3dd-7e13-4082-b755-caa51bb21bd6)
 
 
+## Data filtering with grep:
 
+When looking at the logs, I decided to comb through and filter for quries:
 
-# Data filtering with grep:
-
-Looking the last 10 DNS queries to chess.com
-
+1. Looking the last 10 DNS queries to chess.com
+   
+```
 sudo cat pihole.log | grep chess.com | tail -n 10
-
+```
 
 ![Pasted image 20240602165119](https://github.com/lm3nitro/Projects/assets/55665256/0fea8470-3fa5-408e-8479-27ef54640fe2)
 
 
-Looking the first 10 queries to chess.com domain:
-
+2. Looking the first 10 queries to chess.com domain:
+   
+```
 sudo cat pihole.log | grep chess.com | head -n 10
+```
 
 ![Pasted image 20240602165211](https://github.com/lm3nitro/Projects/assets/55665256/7b4634ec-0829-44dc-8927-9f338a684f88)
 
+3. Counting the DNS calls that contains the domain chess.com:
 
-
-Counting the DNS calls that contains the domain chess.com:
-
+```
 sudo cat pihole.log | grep chess.com | wc -l
+```
 
 ![Pasted image 20240602165539](https://github.com/lm3nitro/Projects/assets/55665256/ed6d433a-af6d-4fc0-bb55-eaaa5f0edebf)
 
+4. Showing the count of the different fields that contain the domain chess.com
 
-showing the count of the different fields that contain the domain chess.com
+```
+sudo cat pihole.log | grep -e chess.com |grep -o repy | wc -l
+```
 
 ![Pasted image 20240602171644](https://github.com/lm3nitro/Projects/assets/55665256/91fe78c1-6917-4cc4-aedb-593f3514ed15)
 
+5. Total Queries made to chess.com:
 
-
-Total Queries made to chess.com:
+```
+sudo cat pihole.log | grep -e chess.com |grep -e query
+```
 
 ![Pasted image 20240602171239](https://github.com/lm3nitro/Projects/assets/55665256/6241ee50-33fa-4190-a26e-62780fdf8378)
 
+6. Count for all dns calls that start with lh and is followed by any digit and a period and other words at the tail end
 
-
-count for all dns calls that start with lh and is followed by any digit and a period and other words at the tail end
+```
 sudo cat pihole.log | grep -Po 'lh\d\.\w+' | wc -l
+```
 
-Same as above, but without the count, this shows that actual results. We can see that all start with lh and is followed by either a 5,4, or 3.
+7. Same as above, but without the count, this shows that actual results. We can see that all start with lh and is followed by either a 5,4, or 3.
 
+```
 sudo cat pihole.log | grep -Po 'lh\d\.\w+'
-
+```
 
 ![Pasted image 20240602172727](https://github.com/lm3nitro/Projects/assets/55665256/08cc0ae9-6910-402e-b369-a2cd6bfef404)
 
-Summary:
+### Summary:
+
+
 
