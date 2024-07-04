@@ -13,10 +13,11 @@ Pi-hole provides a few key benefits:
 
 ### Scope:
 
+I will be installing Pi-hole on a Linux OS host and will be testing both the ad-blocking and domain blocking capabilities that Pi-hole has to offer. To do this, I will be using a Win 10 OS that will be configured to use the Pi-hole and where I will generate traffic. I will also be testing its efficiency and analyzing the genereated traffic on the Pi-hole web interface, Wireshark, and Pi-hole logs themselves. 
 
 ### Tools and Technology:
 
-Linux OS, Windows OS, Pi-hole and Wireshark
+Linux OS, Windows OS, Pi-hole, Unbound and Wireshark
 
 ### Network Diagram:
 
@@ -400,5 +401,7 @@ sudo cat pihole.log | grep -Po 'lh\d\.\w+'
 
 ### Summary:
 
+Pi-hole is a valuable tool for enhancing network and user experience by blocking ads and trackrs at the DNS level. This allowed me to get hand-on experience with DNS. While getting PI-hole setup and configured, it allowed me to better understand how DNS queries and resolution works. This project allowed me to me learn about DNS-level ad and tracker blocking. This also enhanced my awareness of network security and privacy practices . Analyzing the query logs offered insights into data privacy and exposure. 
 
+Its important to have tools such as Pi-hole to help protect networks againsts threats and maintain privacy. Complementing Pi-hole with tools such as Unbound (as seen in this project), Suricata, and other technologies such as VPNs for additional privacy, helps to provide a more robust solution. 
 
