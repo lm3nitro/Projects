@@ -5,10 +5,11 @@
 Snort is a powerful open-source tool used for network security. It works like a digital watchdog, constantly monitoring network traffic for signs of suspicious or malicious activity. When it detects something fishy, it creates an alert. This is the initial installation of Snort. 
 
 ### Scope:
+I will be installing and configuring Snort 3 on a Linux OS. I will then create a basic detection rule for ICMP and will be generating matching traffic from another PC and verifying that Snort triggers expected alerts. I will also be using a PCAP file containing matching traffic to further validate that alerts are being triggered as expected. 
 
 ### Tools and Technology:
 
-Linux OS and Snort
+Linux OS and Snort 3
 
 ## Prerequisites
 
@@ -237,30 +238,34 @@ ________________________________________________________________________________
 
 Again, the above mentioned is optional and not needed, but wanted to share. Now that I have snort installed and working, I then proceeded to create some custom rules. 
 
-### Creating a custom rule in Snort 3:
+## Custom Rule:
 
->#### Note: We need to create a directory call rules under /usr/local/etc/ and create a file call local.rules under /usr/local/etc/rules/. This is where we are going create our custom rules. 
+Before I can got started, I needed to create a directory called rules under /usr/local/etc/ and create a file called local.rules under /usr/local/etc/rules/. This is where we are I will create custom rules.
+
 ```
 mkdir /usr/local/etc/rules
 nano /usr/local/etc/rules/local.rules
 ```
+
 ![Pasted image 20240402183512](https://github.com/lm3nitro/Projects/assets/55665256/0caec5a0-848c-4490-8704-2d6f199cdb32)
 
 To verify that the rule I created was done correctly, I tested the rules against the configuration file:
+
 ```
 snort -c /usr/local/etc/snort/snort.lua -R /usr/local/etc/rules/local.rules
 ```
+
 ![Pasted image 20240402183701](https://github.com/lm3nitro/Projects/assets/55665256/310e4699-f28a-4392-85a9-36fa0a106e5a)
 
 I then ran Snort on the interface for rule testing. Since the rule that I created was for ICMP, I tested against it with a ping:
 
 ![Pasted image 20240402184234](https://github.com/lm3nitro/Projects/assets/55665256/4a3747fe-9cd6-4099-b12f-d0e17c376986)
+
 ```
 snort -c /usr/local/etc/snort/snort.lua -R /usr/local/etc/rules/local.rules -i ens32 -A alert_fast
 ```
-![Pasted image 20240402184126](https://github.com/lm3nitro/Projects/assets/55665256/e6d712d4-08d5-49d9-83e4-63b4781a1f2b)
 
-### Configure Snort 3 configuration file to make the local.rules persistent 
+![Pasted image 20240402184126](https://github.com/lm3nitro/Projects/assets/55665256/e6d712d4-08d5-49d9-83e4-63b4781a1f2b) 
 
 Making the local.rules persistent makes it so that you don't have to specify the location of our local rules.
 
@@ -279,18 +284,31 @@ Save the configuration file and test:
 Now we can run the run the configuration file again without specifying the location of the local.rules:
 
 ![Pasted image 20240402185426](https://github.com/lm3nitro/Projects/assets/55665256/e5d0e28c-5b4c-4b43-8598-299a980857bb)
+
 ```
 snort -c /usr/local/etc/snort/snort.lua -i ens32 -A alert_fast
 ```
+
 ![Pasted image 20240402185237](https://github.com/lm3nitro/Projects/assets/55665256/4fc959cb-e7ca-4ed1-9a4e-07d012722b93)
 
-### Running Snort against a pcap file:
+## Running Snort 3 against a pcap file:
+
+Running pcaps against Snort can help with several things:
+
++ Testing and Tuning
++ Incident Analysis
++ Rule Development
++ Benchmarking and Performance Testing
++ And so much more...
+
 ```
 snort -c /usr/local/etc/snort/snort.lua -r icmp.pcap -A alert_fast -q
 ```
+
 ![Pasted image 20240402185922](https://github.com/lm3nitro/Projects/assets/55665256/e2cc0fd8-aa72-439f-b3d6-637571c3dcf5)
 
-### Permanently disable interface offload:
+Next, I wanted to permanently disable interface offloading. This can significantly impact Snort's performance and accuracy. When offloading is disabled, Snort can analyze apckets in their tru state, leading to better detection.
+
 ```
 Disable LRO & GRO using a service
 ```
@@ -313,7 +331,11 @@ ExecStart=/sbin/ethtool -K <network adapter> lro off
 [Install] 
 WantedBy=multi-user.target
 ```
-The following is also optional and not needed. PulledPork is an opensource perl script that can automatically updates Snort rules. This can be done wtih the following commands:
+
+## PulledPork
+
+The following is also optional and not needed. PulledPork is an opensource perl script that can automates the process od downloading, processing, and organizing Snort rules. It also ensures that Snort stays up-to-date with the latest threat intelligence. 
+
 ```
 git clone https://github.com/shirkdog/pulledpork3.git 
 cd ~/snort/pulledpork3 
@@ -325,4 +347,10 @@ sudo mkdir /usr/local/etc/pulledpork3
 sudo cp etc/pulledpork.conf /usr/local/etc/pulledpork3/
 ```
 
+Summary:
+
 Overall, I have enjoed having snort running on my network. Again, this is an excellent tool to have in your network, or atleast installed in a lab environment. Having this in my network has allowed me to learn more and dive deeper into threat detection, attack patterns, and network anomalies in a practical way. 
+
+Configuring and analyzing alerts generated from Snort allowed me to gain deep insights into the structure and behavior of network traffic, inclusing and not lmited to protocols, packet structures, and common communication patterns. With time, having Snort in my network helped me to better identify normal and anomalous traffic patterns and ultimately enhanced my ability to spot irregularities that may indicate malicious activity. 
+
+I highly recommend having Snort 3 installed and running due to its advanced performance, comprehensive threat detection, and ease of use. This is a great tool to have added to the arsenal to strengthen network security. 
