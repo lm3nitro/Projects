@@ -2,18 +2,27 @@
 
 <img width="489" alt="Screenshot 2024-04-27 at 10 54 06 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/31607c9b-9639-470a-8998-d78b77631d4f">
 
-
 Snort is a powerful open-source tool used for network security. It works like a digital watchdog, constantly monitoring network traffic for signs of suspicious or malicious activity. When it detects something fishy, it creates an alert. This is the initial installation of Snort. 
+
+### Scope:
+
+### Tools and Technology:
+
+Linux OS and Snort
+
+## Prerequisites
 
 Before I install Snort, I need to ensure that I had the needed prerequisites. There are several that are essential prior to installing Snort.
 
-### Prerequisites
+1. General Prerequisites:
+   
 ```
 sudo apt-get install -y build-essential autotools-dev libdumbnet-dev libluajit-5.1-dev libpcap-dev \ zlib1g-dev pkg-config libhwloc-dev cmake liblzma-dev openssl libssl-dev cpputest libsqlite3-dev \ libtool uuid-dev git autoconf bison flex libcmocka-dev libnetfilter-queue-dev libunwind-dev \ libmnl-dev ethtool libjemalloc-dev
 ```
 ![Pasted image 20240402161505](https://github.com/lm3nitro/Projects/assets/55665256/f8ec5aee-0ecc-4968-8095-f67ce10e5ec2)
 
-#### Prerequisite: pcre
+2. Prerequisite: pcre
+
 ```
 cd ~/snort 
 wget https://sourceforge.net/projects/pcre/files/pcre/8.45/pcre-8.45.tar.gz 
@@ -38,7 +47,8 @@ sudo make install
 
 ![Pasted image 20240402162004](https://github.com/lm3nitro/Projects/assets/55665256/b0ffddb9-5c6b-4545-9e33-75d9eac433f7)
 
-#### Prerequisite: gperftools
+3. Prerequisite: gperftools
+   
 ```
 cd ~/snort 
 wget https://github.com/gperftools/gperftools/releases/download/gperftools-2.9.1/gperftools-2.9.1.tar.gz 
@@ -50,7 +60,7 @@ sudo make install
 ```
 ![Pasted image 20240402162602](https://github.com/lm3nitro/Projects/assets/55665256/8249d562-7979-4f5c-a0d2-75ceff5cea22)
 
-#### Prerequisite: Ragel
+4. Prerequisite: Ragel
 ```
 cd ~/snort 
 wget http://www.colm.net/files/ragel/ragel-6.10.tar.gz 
@@ -63,13 +73,15 @@ sudo make install
 
 ![Pasted image 20240402162848](https://github.com/lm3nitro/Projects/assets/55665256/07e9b55e-22cd-4e0e-8d75-c28150b04a21)
 
-#### Prerequisite: Download (but don’t install) the Boost C++ Libraries:
+5. Prerequisite: Download (but DO NOT install) the Boost C++ Libraries:
+   
 ```
 cd ~/snort 
 wget https://boostorg.jfrog.io/artifactory/main/release/1.77.0/source/boost_1_77_0.tar.gz 
 tar -xvzf boost_1_77_0.tar.gz
 ```
-#### Prerequisite: Hyperscan
+6. Prerequisite: Hyperscan
+   
 ```
 cd ~/snort 
 wget https://github.com/intel/hyperscan/archive/refs/tags/v5.4.2.tar.gz 
@@ -94,7 +106,8 @@ sudo make install
 ```
 ![Pasted image 20240402165345](https://github.com/lm3nitro/Projects/assets/55665256/414b5aa5-e7c5-42b8-ab1e-d00d05c84bc4)
 
-#### Prerequisite: flatbuffers
+7. Prerequisite: flatbuffers
+   
 ```
 cd ~/snort 
 wget https://github.com/google/flatbuffers/archive/refs/tags/v2.0.0.tar.gz -O flatbuffers-v2.0.0.tar.gz 
@@ -103,14 +116,17 @@ mkdir flatbuffers-build
 cd flatbuffers-build 
 cmake ../flatbuffers-2.0.0 
 ```
+
 ![Pasted image 20240402165605](https://github.com/lm3nitro/Projects/assets/55665256/7beb708d-b5fc-4efd-8946-c4baea66e39f)
+
 ```
 make 
 sudo make install
 ```
 ![Pasted image 20240402165624](https://github.com/lm3nitro/Projects/assets/55665256/56161d1f-c370-4734-88bb-ea93c238bcc2)
 
-#### Prerequisite: Install Data Acquistion (DAQ) from Snort
+8. Prerequisite: Install Data Acquistion (DAQ) from Snort
+   
 ```
 cd ~/snort 
 wget https://github.com/snort3/libdaq/archive/refs/tags/v3.0.13.tar.gz -O libdaq-3.0.13.tar.gz
@@ -121,19 +137,26 @@ cd libdaq-3.0.13
 make 
 sudo make install
 ```
+
 ![Pasted image 20240402165754](https://github.com/lm3nitro/Projects/assets/55665256/e09460d8-68cc-443a-a302-a85ba32b9a62)
+
 
 ![Pasted image 20240402165840](https://github.com/lm3nitro/Projects/assets/55665256/d0cd33be-3a41-48b2-aaf2-a7c3d6dc640e)
 
+
 ![Pasted image 20240402165927](https://github.com/lm3nitro/Projects/assets/55665256/0876f3fe-149f-483e-af6b-bdd8008786a4)
-#### Prerequisite: Update shared libraries
+
+9. Prerequisite: Update shared libraries
+    
 ```
 sudo ldconfig
 ```
 
-Once everything that is needed was downloaded and installed, I then proceeded to install Snort. 
 
-#### Download latest version of Snort 3
+## Download Snort 3
+
+Once all the prerequisutes have been downloaded and installed, I then proceeded to install Snort: 
+
 ```
 cd ~/snort 
 wget https://github.com/snort3/snort3/archive/refs/tags/3.1.74.0.tar.gz -O snort3-3.1.74.0.tar.gz 
@@ -144,13 +167,18 @@ cd build
 make 
 sudo make install
 ```
+
 ![Pasted image 20240402170115](https://github.com/lm3nitro/Projects/assets/55665256/cb9b28ef-6203-4f0f-ac17-d6b58419a1e4)
+
 ![Pasted image 20240402170138](https://github.com/lm3nitro/Projects/assets/55665256/fcf89b37-623c-4aa9-a9b3-29697945392f)
+
 ![Pasted image 20240402170208](https://github.com/lm3nitro/Projects/assets/55665256/8ebeb2aa-40fe-4171-a07c-d02cc6227db9)
+
 ![Pasted image 20240402171429](https://github.com/lm3nitro/Projects/assets/55665256/054fcfb0-9332-490e-8f9a-d91d21332f33)
+
 ![Pasted image 20240402171652](https://github.com/lm3nitro/Projects/assets/55665256/6afff320-5c53-4cd4-9980-98b38d3ac6a5)
 
-### Verify Snort 3 is up and running
+Once Snort was installed, I verified that it was up and running:
 
 >#### Note: Snort 3 binary is on /usr/local/bin
 
@@ -160,16 +188,19 @@ Here we can see that it is installed and working:
 
 ![Pasted image 20240402175104](https://github.com/lm3nitro/Projects/assets/55665256/2fe6afaf-c2ec-4ac1-a959-3bf594f2d261)
 
-### Testing the Snort 3 configuration file:
+I also tested the Snort 3 configuration file:
 
 >#### Note: The configuration file is located at /usr/local/etc/snort/snort.lua
+
 ```
 snort -c /usr/local/etc/snort/snort.lua
 ```
 ![Pasted image 20240402175506](https://github.com/lm3nitro/Projects/assets/55665256/d7b09f9c-a4da-482d-a29b-6b7cdc80f8b2)
 
+___________________________________________________________________________________________________________________________________________________
+
 ### Optional
-This next section is optional. If want to run snort to sniff traffic live on the interface, so it can generate alert in real time, there are a few things that need to be setup before hand.
+This next section is optional. If want to run snort to sniff traffic live on the interface, so it can generate alerts in real time, there are a few things that need to be setup before hand.
 
 Verify the name of the interface:
 
@@ -181,7 +212,8 @@ Verify the name of the interface:
 
 ![Pasted image 20240402175935](https://github.com/lm3nitro/Projects/assets/55665256/10a51022-9b49-4b81-bb3e-c747f1b7ffb8)
 
-#### Temporary disable interface offload:
+Temporarily disable interface offload:
+
 >#### Note: You can set multiple options in one "ethtool" command, but this can be problematic if your card doesn't support all of the settings. To avoid this, you could invoke ethtool for each option like this:
 ```
 ethtool -K ens32 rx off  
@@ -201,6 +233,7 @@ for i in rx tx sg tso ufo gso gro lro; do ethtool -K ens32 $i off; done
 ![Pasted image 20240402180832](https://github.com/lm3nitro/Projects/assets/55665256/847b1ccd-dba7-4cc5-acdb-a684537594c6)
 
 >#### Note: These settings will remain in effect only while the OS is booted, so this needs to be applied at every boot. This can be done by adding the above for-loop as a "post-up" command for each of the interfaces in /etc/network/interfaces.
+____________________________________________________________________________________________________________________________________________________
 
 Again, the above mentioned is optional and not needed, but wanted to share. Now that I have snort installed and working, I then proceeded to create some custom rules. 
 
