@@ -1,6 +1,19 @@
+# MSFvenom
 
 ![Pasted image 20240502094200](https://github.com/lm3nitro/Projects/assets/55665256/92706414-50e2-4614-85b6-e2b7560e74d7)
 
+MSFvenom is a versitile tool in the Metaspolit Framwork  used for generated varios types of payloads and shellcode. It allows penetration tested and security researcherd to create custom payloads for exploitation., bypassing defenses, and gaining remote access to target systems. 
+
+Key Features:
++ Payload Generation
++ Payload Format
++ Customization
+
+### Scope:
+
+
+### Tools and Technology:
+Linux OS, Win 10 OS, Wireshark and MSFvenom
 
 ![Pasted image 20240501131915](https://github.com/lm3nitro/Projects/assets/55665256/ac798fe5-2b2b-445f-903c-54aeec52edc1)
 
