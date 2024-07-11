@@ -1,15 +1,14 @@
-
-
 # NTOPng
 
 ![Pasted image 20240518165048](https://github.com/lm3nitro/Projects/assets/55665256/468e6695-e262-453d-a570-c5b13634c626)
 
-
-
-ntopng is a network traffic probe that provides 360° Network visibility, with its ability to gather traffic information from traffic mirrors, NetFlow exporters, SNMP devices, Firewall logs, Intrusion Detection systems.
+Ntopng is a network traffic probe that provides 360° Network visibility, with its ability to gather traffic information from traffic mirrors, NetFlow exporters, SNMP devices, Firewall logs, Intrusion Detection systems.
 
 ![Pasted image 20240519152201](https://github.com/lm3nitro/Projects/assets/55665256/995cae09-65e0-46bd-98f0-a6a8aca87166)
 
+### Scope:
+
+### Tools and Technology:
 
 
 ![Pasted image 20240518172238](https://github.com/lm3nitro/Projects/assets/55665256/3aacf6fc-fa8e-4f2d-8b46-627b160d826a)
