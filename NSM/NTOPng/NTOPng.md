@@ -13,20 +13,27 @@ Ntopng is a network traffic monitoring tool that provides real-time visibility i
 ## Getting started/Prerequisites
 
 Before installing anything, I started off by first ensuring the everything is up to date.
+
+```
+sudo apt update && upgrade -y
+```
+
 ![Pasted image 20240518172238](https://github.com/lm3nitro/Projects/assets/55665256/3aacf6fc-fa8e-4f2d-8b46-627b160d826a)
 
+Following the command, I was presented with an error stating that the upgrade command had not been installed on the host. I went ahead and installed it:
+
+```
+apt updade -y
+```
 
 ![Pasted image 20240518172309](https://github.com/lm3nitro/Projects/assets/55665256/7736267e-5631-481c-9e87-9463b1fcfd43)
 
-
-
-Enabling universe repository :
-
+Once the OS was compelty up to date, I then needed to enable theuniverse repository :
+```
 sudo add-apt-repository universe
+```
 
 ![Pasted image 20240518173605](https://github.com/lm3nitro/Projects/assets/55665256/a3524f70-df10-43bf-b7c3-0b0936416086)
-
-
 
 Download the latest stable version of ntopng on Ubuntu 20.04.
 
