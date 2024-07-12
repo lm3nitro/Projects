@@ -1,4 +1,4 @@
-# NTOPng
+# Ntopng
 
 ![Pasted image 20240518165048](https://github.com/lm3nitro/Projects/assets/55665256/468e6695-e262-453d-a570-c5b13634c626)
 
@@ -21,69 +21,45 @@ sudo apt update && upgrade -y
 ![Pasted image 20240518172238](https://github.com/lm3nitro/Projects/assets/55665256/3aacf6fc-fa8e-4f2d-8b46-627b160d826a)
 
 Following the command, I was presented with an error stating that the upgrade command had not been installed on the host. I went ahead and installed it:
-
 ```
 apt updade -y
 ```
-
 ![Pasted image 20240518172309](https://github.com/lm3nitro/Projects/assets/55665256/7736267e-5631-481c-9e87-9463b1fcfd43)
 
-Once the OS was compelty up to date, I then needed to enable theuniverse repository :
+Once the OS was compelty up to date, I then needed to enable the universe repository :
 ```
 sudo add-apt-repository universe
 ```
-
 ![Pasted image 20240518173605](https://github.com/lm3nitro/Projects/assets/55665256/a3524f70-df10-43bf-b7c3-0b0936416086)
 
-Download the latest stable version of ntopng on Ubuntu 20.04.
+## Installation 
 
-
+After the prerequisites were compelted, I then donwloaded the latest stable version of ntopng on Ubuntu 20.04.
+```
 wget https://packages.ntop.org/apt-stable/20.04/all/apt-ntop-stable.deb
-
+```
 ![Pasted image 20240518173505](https://github.com/lm3nitro/Projects/assets/55665256/e1bbd80e-a3d8-4b03-8df5-70a57b359bf7)
-
-
-
-
-
 
 Installing the package:
 
 Note: It automatically add the ntopng repository.
 
-
-
 ![Pasted image 20240518173716](https://github.com/lm3nitro/Projects/assets/55665256/be15ac57-d1dd-4e62-bcbf-a6c0fc0a078e)
 
-
-
-
-Update package again:
-
+Update the package again:
 
 ![Pasted image 20240518173836](https://github.com/lm3nitro/Projects/assets/55665256/61694731-9dd1-4141-8e29-3d328bceb8ce)
 
-
-
-
-
 Install ntopng:
-
-
-
+```
 sudo apt install pfring-dkms ndpi nprobe ntopng n2disk cento
-
-
+```
 ![Pasted image 20240518173909](https://github.com/lm3nitro/Projects/assets/55665256/586e4d29-a9ff-4da2-9853-c68bcd2ad79c)
 
-
-
-Verify  Ntopng version:
-
-
-
+Verify the Ntopng version running:
+```
 ntopng --version
-
+```
 ![Pasted image 20240518174042](https://github.com/lm3nitro/Projects/assets/55665256/a62d8a3d-5af3-4d3b-9a15-ed3717369649)
 
 
