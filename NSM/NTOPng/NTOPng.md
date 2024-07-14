@@ -34,7 +34,7 @@ sudo add-apt-repository universe
 
 ## Installation 
 
-After the prerequisites were compelted, I then donwloaded the latest stable version of ntopng on Ubuntu 20.04.
+After the prerequisites were compelted, I then downloaded the latest stable version of ntopng on Ubuntu 20.04.
 ```
 wget https://packages.ntop.org/apt-stable/20.04/all/apt-ntop-stable.deb
 ```
