@@ -154,7 +154,7 @@ After 30 minutes we can see more traffic:
 
 ![Pasted image 20240518193336](https://github.com/lm3nitro/Projects/assets/55665256/02f0cf9a-dd78-4df6-96a5-c989318e17a9)
 
-Taking a look at the live traffic:
+For this project, I will be simulating traffic on a host that is connected to the ntopng sniffing interface. Taking a look at the live traffic:
 
 ![Pasted image 20240518193657](https://github.com/lm3nitro/Projects/assets/55665256/c5feea47-9326-4e29-b738-014443340d0c)
 
@@ -168,12 +168,7 @@ I took one as an example as shown above. When checking with VirusTotal, I was ab
 
 ![Pasted image 20240518193915](https://github.com/lm3nitro/Projects/assets/55665256/d568b1a8-1953-48a0-a19a-8acea28da626)
 
-Detecting active network scans:
-
-
-Beacuse the ntopng server is on the DMZ (internet facing) I can see all the scans ongoing on live:
-
-
+Ntopng also allows you to detect active network scans. Beacuse the ntopng server is on the DMZ (internet facing) it can see all the scans ongoing on live:
 
 ![Pasted image 20240518194736](https://github.com/lm3nitro/Projects/assets/55665256/db5938dd-704c-4d2b-a690-b5669d2d9c56)
 
