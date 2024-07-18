@@ -62,103 +62,65 @@ ntopng --version
 ```
 ![Pasted image 20240518174042](https://github.com/lm3nitro/Projects/assets/55665256/a62d8a3d-5af3-4d3b-9a15-ed3717369649)
 
-
-
-Check status:
-
-
+To check the staus, the following command can be used:
+```
 sudo systemctl status nprobe cento ntopng pf_ring
-
-
-
+```
 
 ![Pasted image 20240518174159](https://github.com/lm3nitro/Projects/assets/55665256/802dc199-a371-4913-b5ec-a35cfc76d5e4)
 
 
 ![Pasted image 20240518174336](https://github.com/lm3nitro/Projects/assets/55665256/4d64e168-f6cc-4a40-80b1-8de15e80baf1)
 
-
-
-
-Note: 
-
-If a service isn’t running, start it with systemctl. For example, the centos service is inactive (dead), I need to restart it with:
-
-sudo systemctl restart cento
-sudo systemctl status cento
+>#### Note: If a service isn’t running, start it with systemctl. For example, the centos service is inactive (dead), I need to restart it with:
+>```
+>sudo systemctl restart cento
+>sudo systemctl status cento
+>```
 
 ![Pasted image 20240518174435](https://github.com/lm3nitro/Projects/assets/55665256/5e27bb23-894c-433e-a4ad-22a9947eacd3)
 
-
-Verify the port is listening :
-
-
-Note: By default, ntopng listens on port 3000.
-
-
+Next, I verified that the port was listening. By default, ntopng listens on port 3000.
+```
 sudo ss -lnpt | grep 3000
-
+```
 ![Pasted image 20240518174553](https://github.com/lm3nitro/Projects/assets/55665256/65f244c3-d494-4432-8f9d-9872a44d564c)
 
-
-
-Verify the IP address:
-
-The web user interface is available at the http://10.10.100.113:3000
-
+In order to navigate to the interface, I needed to verify the IP address. Based on the output, the web user interface is available at the http://10.10.100.113:3000
 
 ![Pasted image 20240518192114](https://github.com/lm3nitro/Projects/assets/55665256/bfb7c7c6-0d35-4435-b72c-1e482b86fa23)
 
+## Adding and Configuring sniffing interface ens33
 
-
-
-
-Adding and Configuring sniffing interface ens33:
-
-
-Editing the file located uder /etc/netplan/
+I then needed to ass and configure the sniffing interface. To do this, I edited the file located uder /etc/netplan/
 
 ![Pasted image 20240518191820](https://github.com/lm3nitro/Projects/assets/55665256/46854a9d-dc80-4e25-b133-c2aaff8939df)
 
-
-
-
-Disable dhcp client:
-
+I disabled dhcp client:
 
 ![Pasted image 20240518191720](https://github.com/lm3nitro/Projects/assets/55665256/a0b0be91-6b59-4baf-b874-9243c991af75)
 
-
-
-
-Apply the changes and verify the interface:
+I then saved and applied the changes and verified the interface:
 
 ![Pasted image 20240518192013](https://github.com/lm3nitro/Projects/assets/55665256/8a7454df-45ae-4191-912c-ea0f4cb3a85d)
 
-
 ![Pasted image 20240518192205](https://github.com/lm3nitro/Projects/assets/55665256/376416d6-499f-4adf-befa-acd1c4c74ddf)
 
-
-
-To configure the interface in promiscuous mode use:
-
-
+To configure the interface in promiscuous mode use, I used the following:
+```
 ip link set ens33 off
 ip link set ens33 promisc on
 ip link set ens33 up
+```
 
-Persistence after reboot configuration:
-
-
-Adding the following lines to the /etc/rc.local file:
-
+I also wanted it to be persistent even after rebooting. To do this, I added the following lines to the /etc/rc.local file:
+```
 ifconfig ens33 up
 ifconfig ens33 promisc
+```
 
-
-
-Disabling offloading:
-
+You can also disable offloading by adding the following:
+```
 ethtool -K eth0 rx off
 ethtool -K eth0 tx off
 ethtool -K eth0 sg off
@@ -167,78 +129,44 @@ ethtool -K eth0 ufo off
 ethtool -K eth0 gso off
 ethtool -K eth0 gro off
 ethtool -K eth0 lro off 
+```
 
+Or just one line:
+```
+for i in rx tx sg tso ufo gso gro lro; do ethtool -K ens33 $i off; done
+```
 
-or just on line:
-
-
- for i in rx tx sg tso ufo gso gro lro; do ethtool -K ens33 $i off; done
-
-
-verify the interface :
-
+I then verified the interface:
 
 ![Pasted image 20240518193143](https://github.com/lm3nitro/Projects/assets/55665256/49d3ccfb-5852-4012-895f-718b68f9d724)
 
+## Accessing Ntopng
 
-
-Login WebUI:
-
-
+Once verified, I went to access the web interface:
 
 ![Pasted image 20240518174838](https://github.com/lm3nitro/Projects/assets/55665256/0e420a71-21d6-41f1-90b7-8f344fcb08ec)
 
-
-
-
-
-
-Selecting the interface ens33  on left side conner :
-
+Once logged in, it will allow you to see the sniffing interface, in my case interface ens33 on left side conner:
 
 ![Pasted image 20240518193355](https://github.com/lm3nitro/Projects/assets/55665256/8f0c373c-10fa-4834-9800-f363d3647e6e)
 
-
-
-
 After 30 minutes we can see more traffic:
-
 
 ![Pasted image 20240518193336](https://github.com/lm3nitro/Projects/assets/55665256/02f0cf9a-dd78-4df6-96a5-c989318e17a9)
 
-
-
-
-
-
-
-Analysing Live traffic:
+Taking a look at the live traffic:
 
 ![Pasted image 20240518193657](https://github.com/lm3nitro/Projects/assets/55665256/c5feea47-9326-4e29-b738-014443340d0c)
 
+## Ntopng Features
 
-
-
-
-Ntopng provide a blacklisted feature IPs:
-
-In this example we can see the IP that has been blacklisted and it give us the link to verofy the IP to virustotal and AbuseIP DB:
-
-
+One of the many features on Ntopng, is that it provides an IP blacklistIn this example we can see the IP that has been blacklisted and it provided us with the link to verify the IP in virustotal and AbuseIP DB:
 
 ![Pasted image 20240518194957](https://github.com/lm3nitro/Projects/assets/55665256/142129ea-c455-40c6-9e53-9414414ee044)
 
-
-
-Virustotal:
-
+I took one as an example as shown above. When checking with VirusTotal, I was able to see the following:
 
 ![Pasted image 20240518193915](https://github.com/lm3nitro/Projects/assets/55665256/d568b1a8-1953-48a0-a19a-8acea28da626)
-
-
-
-
-
 
 Detecting active network scans:
 
