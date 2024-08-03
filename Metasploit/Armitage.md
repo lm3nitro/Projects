@@ -14,7 +14,7 @@ Armitage is a graphical user interface (GUI) for the Metasploit Framemwork, whic
 
 ### Scope:
 ### Tools and Technology:
-Armitage, Linux OS, 
+Armitage, Linux OS, and Wireshark
 
 ## Installation:
 
@@ -123,7 +123,9 @@ Looking at Wireshark which is still running, I can see in clear text everything 
 
 ![Pasted image 20240425142940](https://github.com/lm3nitro/Projects/assets/55665256/4481bf98-2e84-4ada-bbec-fe608631e386)
 
-### Conclusion
+### Summary and Analysis
+
+Using Armitage allowed me to gain some valuable experience 
 
 
 
