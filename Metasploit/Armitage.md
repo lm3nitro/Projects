@@ -111,11 +111,19 @@ Analyzing the FTP service logs we can see that the authentication was successful
 
 ![Pasted image 20240425141756](https://github.com/lm3nitro/Projects/assets/55665256/c783e3a8-aaee-4870-9b47-ebfde8df4f0c)
 
-After launching the attack and creating the backdoor, I also wanted to explore some of the features that armitage has. In this case, becuase I created thr backdoor and was connected to the host, I deccided to open a shell command and type in some 
+After launching the attack and creating the backdoor, I also wanted to explore some of the features that armitage has. In this case, becuase I had created thr backdoor and was connected to the host, I deccided to open a shell command and type in some inputs. To do this, I right-clicked on the host, selected Shell1 > Interact:
+
 ![Pasted image 20240425142047](https://github.com/lm3nitro/Projects/assets/55665256/0d06704c-ab3b-483c-b7f5-f7b8e8f6baee)
+
+These are the inputs provided:
 
 ![Pasted image 20240425142358](https://github.com/lm3nitro/Projects/assets/55665256/5e7758e2-8960-46fc-9f4b-2530a2b7ef5b)
 
+Looking at Wireshark which is still running, I can see in clear text everything that was being done:
+
 ![Pasted image 20240425142940](https://github.com/lm3nitro/Projects/assets/55665256/4481bf98-2e84-4ada-bbec-fe608631e386)
+
+### Conclusion
+
 
 
