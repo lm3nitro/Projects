@@ -125,7 +125,6 @@ Looking at Wireshark which is still running, I can see in clear text everything 
 
 ### Summary and Analysis
 
-Using Armitage allowed me to gain some valuable experience 
+Initially, I performed a network discovery scan to identify hosts, running services and open ports. I then identified the vsftpd was open and was running a vulnerable verison 2.3.4. I then used this to exploit the vulnerability and used a backdoor provided by Armitage. I then anlyzed the attack from the the victim perspective in both the ftp logs, connection logs, and Wireshark. 
 
-
-
+I was able to perform network discovery, vulnerability identification, exploit deployment, and session management. This allowed my to apply theoritical knowledge and turn it into hands on experience. Also, the visual interface helped to see the attack progress clearly. Armitage allowed me to enhance understanding and efficiency, and I can definitely see how this is a valuable tool for learning and practicing cybersecurity. 
