@@ -14,11 +14,7 @@ Here are some of the key features:
 
 ### Scope:
 
-I will install Fail2Ban on a target host and will simulate an attack using Hydra to perform a SSH brute force attack against the target host and will evaluate the effectivness of Fail2Ban. 
-
-### Objective:
-
-Evaluate the effectiveness and Fail2Ban in preventing unauthorized access on a single host using Hydra to simulate malicious activity and monitoring Fail2Ban's ability to detect and block those malicious activities.
+I will install Fail2Ban on a target host and will simulate an attack using Hydra to perform a SSH brute force attack against the target host and will evaluate the effectivness of Fail2Ban in preventing unauthorized access on a single host. I will be using Hydra to simulate malicious activity and monitoring Fail2Ban's ability to detect and block those malicious activities.
 
 ### Tools and Technology:
 
