@@ -1,39 +1,28 @@
 
-# *****MITM ****
-
-
 # Bettercap
-
 
 ![Pasted image 20240517142357](https://github.com/lm3nitro/Projects/assets/55665256/8a88a4bd-94aa-4b31-8bc5-a702b1bef769)
 
+Bettercap is a powerful, flixible, and easy-to use network security tool designed for security assesments, including network monitoring, analysis, and attacks. It is particularly popular and used for tasks related to man-in-the-middle (MITM) attacks, packet sniffing, and protocol manipulation. 
 
-bettercap is a powerful, easily extensible and portable framework written in Go which aims to offer to security researchers, red teamers and reverse engineers an easy to use, all-in-one solution with all the features they might possibly need for performing reconnaissance and attacking WiFi networks, Bluetooth Low Energy devices, wireless HID devices and Ethernet networks.
-
-
-
+### Scope:
 
 
-Network Diagram:
+### Tools and Technology:
+
+### Network Diagram:
 
 ![Pasted image 20240517211750](https://github.com/lm3nitro/Projects/assets/55665256/51f63d6e-5599-48bf-a67a-5b8bc239fbbb)
 
 
-
-
-
 Searching for bettercap:
-
-
 
 ![Pasted image 20240517142617](https://github.com/lm3nitro/Projects/assets/55665256/0ddcc118-2dfe-4e2e-99b5-b64bef0c2077)
 
+## Installing bettercap
 
-Installing bettercap
 
 ![Pasted image 20240517142653](https://github.com/lm3nitro/Projects/assets/55665256/44207384-19c5-49cd-b75a-928f3b3c5b9d)
-
-
 
 
 Getting help with bettercap:
