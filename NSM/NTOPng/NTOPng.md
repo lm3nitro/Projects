@@ -10,6 +10,7 @@ Ntopng is a network traffic monitoring tool that provides real-time visibility i
 
 ### Tools and Technology:
 
+Linux, Ntopng, 
 ## Getting started/Prerequisites
 
 Before installing anything, I started off by first ensuring the everything is up to date.
@@ -172,140 +173,73 @@ Ntopng also allows you to detect active network scans. Beacuse the ntopng server
 
 ![Pasted image 20240518194736](https://github.com/lm3nitro/Projects/assets/55665256/db5938dd-704c-4d2b-a690-b5669d2d9c56)
 
-
 Detecting abnormal  live outbound traffic on strange port number :
 
-
 ![Pasted image 20240518194633](https://github.com/lm3nitro/Projects/assets/55665256/76753887-c709-4230-b99e-80dd330962cd)
-
-
-
-
-
 
 Detecting top talkers destination server:
 
 ![Pasted image 20240518202204](https://github.com/lm3nitro/Projects/assets/55665256/4fddcd0c-71ea-471f-ac4a-4ee7ddf56bfc)
 
-
-
-
-
 Destination by country:
 
 ![Pasted image 20240518205434](https://github.com/lm3nitro/Projects/assets/55665256/066ba0a6-20d9-43fc-b778-85b1c604f1df)
 
-
-
-
 Autonomous Systems information:
-
-
 
 ![Pasted image 20240518202449](https://github.com/lm3nitro/Projects/assets/55665256/1ce50dc3-c1ce-4a1b-aacf-96544e76af3c)
 
-
-
-
-
-
 GeoMAP:
-
 
 ![Pasted image 20240518211214](https://github.com/lm3nitro/Projects/assets/55665256/baf0333a-39fb-4219-9114-b5037c6c46e7)
 
-
-
 Vulnerability Scan:
 
-
-
 ![Pasted image 20240518203909](https://github.com/lm3nitro/Projects/assets/55665256/b879bdc7-4641-4172-a2ad-c72230b5242d)
-
-
-
-
 
 Alerts vuln has been found:
 
 ![Pasted image 20240518204149](https://github.com/lm3nitro/Projects/assets/55665256/fe92a4c1-530f-49b0-bb2b-eaaf46f88114)
 
-
-
-
 Downloading the report:
 
-
-
 ![Pasted image 20240518205219](https://github.com/lm3nitro/Projects/assets/55665256/03058558-5e90-41cb-8a17-1c911b2d53aa)
-
-
-
 
 Report:
 
 ![Pasted image 20240518204543](https://github.com/lm3nitro/Projects/assets/55665256/50c8435c-8628-439c-b987-ee4f845b704e)
 
-
-
 Researching CVE-1999-0661 from a report:
 
-
-
 ![Pasted image 20240518204648](https://github.com/lm3nitro/Projects/assets/55665256/6d9ae2c2-1828-47c7-ba03-b1b1a8c64e7f)
-
-
 
 Looking at interface ens33 telemetric
 
 ![Pasted image 20240518205141](https://github.com/lm3nitro/Projects/assets/55665256/ac07ca9f-3764-4655-8e2c-b2bca87bf27d)
 
-
-
-
-
 Filtering traffic per IP:
 
-
-
 ![Pasted image 20240518210644](https://github.com/lm3nitro/Projects/assets/55665256/c4a4df4e-c505-4c15-97cb-1c16d5feb993)
-
 
 More information about the filtered ip:
 
 ![Pasted image 20240518210743](https://github.com/lm3nitro/Projects/assets/55665256/da543f7a-3e2a-4228-96fd-4859ea1802f5)
 
-
-
-
 Taking packet capture from a live traffic:
 
-
-
 ![Pasted image 20240518205941](https://github.com/lm3nitro/Projects/assets/55665256/d949415b-b21a-4c65-b4b4-3dcdf050eaee)
-
-
 
 Looking at the ongoing packet capture:
 
 ![Pasted image 20240518210859](https://github.com/lm3nitro/Projects/assets/55665256/d1f839c6-d88e-407a-aa9b-67138b2f3c7a)
 
-
-
 Opening one of the packet capture:
 
-
 ![Pasted image 20240518210337](https://github.com/lm3nitro/Projects/assets/55665256/6c8fcbb9-fb8e-44fd-9272-5c3b72168d0f)
-
-
-
-
 
 Summary:
 
 
-
-information about Ntopng project:
 
 
 
