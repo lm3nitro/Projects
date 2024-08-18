@@ -145,7 +145,7 @@ This provides a view at the CPU load, CPU utilization, and memory:
 
 ![Pasted image 20240515215837](https://github.com/lm3nitro/Projects/assets/55665256/ee3b11f2-952b-465b-9628-65769f0ca54e)
 
-###Summary:
+### Summary:
 
 This project allowed me to get hands on experience in installing Zabbix, its agent, and allowed me to have visibility into the performance of the pfSense firewall. Zabbix enhanced my ability to maintain optimal system performance and enure network reliability. This project reinforced the principles of the CIA triad:
 
