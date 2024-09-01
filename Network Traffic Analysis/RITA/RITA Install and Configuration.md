@@ -6,7 +6,13 @@ Real Intelligence Threat Analytics (RITA) is an open-source framework designed f
 
 There are different components needed to install RITA properly. Here is the process that I used to get it installed. 
 
-### Getting Started
+### Scope:
+I will be combinging RITA, Zeek, and Suricata on a single server to create a robust threat hunting platform where Suricata acts as an IDS/IPS, Zeek conducts in-depth packet analysis and generates comprehensive network logs, and RITA correlates and analyzes network flow data to detect patterns indicative of malicious behavior. I will then use this combination to perform threathunting in the next section. 
+
+### Tools and Technology:
+Rita, Linux OS, MongoDB, Suricata, and Zeek
+
+## Getting Started
 
 1. Import the public key 
 First, I will need to install the public key used by the management system:
