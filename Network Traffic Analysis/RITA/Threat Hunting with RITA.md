@@ -159,6 +159,8 @@ This now provided us with very useful information such as IOCs, Alerts, file nam
 
 ![Pasted image 20240417141057](https://github.com/lm3nitro/Projects/assets/55665256/e00488c5-2467-4fd2-a680-cc8b5486ab3d)
 
+### Summary: 
+
 In summary, after conducting a thorough threat hunting investigation utilizing Zeek, Suricata, RITA, and Wireshark, suspicious HTTP GET traffic originating from the 67.207.93.135 IP address was identified. Upon analyzing further, I was able to see that this IP was associated with malicious activity related to malware. To prevent incidents in the future, it is crucial to incorporate IOCs into the security infrastructure and regularly update threat intelligence feeds. I also beleive that if an EDR is not yet being used in the environment, implementing and deploying an EDR solution for real-time monitoring would be highly beneficial.
 
 There are also steps needed to be taken since we were able to confirm the the internal host was communicating with this malicious IP. Some of the steps that can be taken are:
