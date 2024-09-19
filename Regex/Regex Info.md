@@ -1,3 +1,6 @@
+# Regex
+<img width="249" alt="Screenshot 2024-09-19 at 1 08 20 AM" src="https://github.com/user-attachments/assets/9548b360-4e47-494f-ae5e-7fad4f4e9562">
+
 ## Charsets
 
 You can specify a range of characters by using a charset. range of characters that you want to match. A charset is defined by using square brackets []. 
