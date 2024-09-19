@@ -1,10 +1,10 @@
 ## Charsets
 
-You can specify a range of characters by using a charset. range of characters that you want to match. A charset is defined by using square brackets ==[]==. 
+You can specify a range of characters by using a charset. range of characters that you want to match. A charset is defined by using square brackets []. 
 
 When using charsets, you have to be specific which includes specifying uppercase and lowercase. 
 
-Within a charset, you can also use a dash ==-== to signify a range or letters or numbers. You can also exclude a character within a charset using the ==^== symbol. 
+Within a charset, you can also use a dash ==-== to signify a range or letters or numbers. You can also exclude a character within a charset using the ^ symbol. 
 
 **Examples:** 
 
@@ -21,9 +21,9 @@ Range:
 
 ## Wildcards and Optional Characters
 
-In regex, a ==.== is used as a wildcard to match any single character, except line breaks (spaces). 
+In regex, a .is used as a wildcard to match any single character, except line breaks (spaces). 
 
-If there is an optional character that may or not be needed, than a ==?== can be used. 
+If there is an optional character that may or not be needed, than a ? can be used. 
 
 Note, if you want to search for a literal dot, then you will need to escape it with a reverse slash. 
 
