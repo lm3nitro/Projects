@@ -1,4 +1,4 @@
-# Install Zeek on Ubuntu 18.04
+# Zeek Install on Ubuntu 18.04
 
 ![Screenshot 2024-04-27 at 10 49 02 PM](https://github.com/lm3nitro/Projects/assets/55665256/ebae0b29-7a8f-4f23-86dc-409805c65628)
 
