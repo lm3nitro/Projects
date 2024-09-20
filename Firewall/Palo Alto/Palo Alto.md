@@ -1,7 +1,9 @@
-## Palo Alto
+# Palo Alto
 
 The Palo Alto Networks PA-220 is a next-generation firewall designed for small to medium-sized businesses, this is the version that I currently have in my home. What I like the most about this firewall is its URL filtering, application visibility, and user-based policies. 
-This is when I purchased the firewall and it was delivered. Very excited to incorporate this into my home network.
+This was the first Firewall I had purchased.
+
+Unboxing:
 
 ![image](https://github.com/lm3nitro/Projects/assets/55665256/cf1fd83b-ca7d-4838-92dd-b2556d4c29bc)
 
