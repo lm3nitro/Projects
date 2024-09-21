@@ -77,4 +77,29 @@ Upon logging in, we can also see that not only did the interface appearance chan
 
 <img width="1497" alt="Screenshot 2024-04-22 at 2 03 36 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/dcd17c5b-3d94-48a2-b688-337f3e143ec5">
 
+# Post Remediation ESXi Vulnerability Scan
 
+During the scan, I was able to go to the ESXi server and monitor the traffic. Here we see some anomolies and a high volume that is espected due to the scan that we are performing:
+
+![Pasted image 20240422141913](https://github.com/lm3nitro/Projects/assets/55665256/15dc49b0-3439-438a-bbfb-3aa832da72e5)
+
+Once the scan completed, these were the results:
+
+![Pasted image 20240422150130](https://github.com/lm3nitro/Projects/assets/55665256/7e6e359f-ec1e-43e0-a660-399ad4cbb68d)
+
+The patch worked. As we can see, we no longer have any vulnerabilities. The Medium rated vulnerabilities are related to the certificate on the ESXi server: 
+
+![Pasted image 20240422150211](https://github.com/lm3nitro/Projects/assets/55665256/d8d793f9-a11c-427d-bef7-60510db27cb2)
+
+Here are the details of the Medium vulnerability related to the certificate:
+
+![Pasted image 20240422150511](https://github.com/lm3nitro/Projects/assets/55665256/b3cc7b40-8751-43e9-8687-89b1b9465832)
+
+I also navigated to the certificate itself and can see the following:
+
+![Pasted image 20240422150422](https://github.com/lm3nitro/Projects/assets/55665256/76bb2a1a-3e1c-496a-89f4-78fdacec453e)
+
+![Pasted image 20240422150539](https://github.com/lm3nitro/Projects/assets/55665256/d4e3ed86-bbbf-4a77-b289-70b02917b9f4)
+
+
+The resilution for this is to have a proper SSL certificate. For the reasons I am using the ESXi server, this is not something that warrants immediate attention, but something that will be addressed later. 
