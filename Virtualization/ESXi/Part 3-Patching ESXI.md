@@ -2,9 +2,13 @@
 
 <img width="450" alt="Screenshot 2024-04-27 at 2 16 43 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/8f091f17-b283-4730-b8ab-b0354b543b95">
 
-In my home network, I currently have a server with VMWare ESXi installed on it. However, the version that it is currently on has a few vulnerailities and bugs. Here I will go through the process of getting it patched to the latest version available. Its important to note that I do not have any VMs running in my ESXi instance. If VMs are running, ensuring that they are turned off is critical prior to starting the patching process. 
+### Scope:
+This is Part 3. In Part 2 I installed and configured VMWare ESXi 7 on my server. In Part 2 I performed a vulnerability scan and found that there were some vulnerabilities that needed to be addresses. Here I will go through the process of pathing those vulnerabilities. Its important to note that I do not have any VMs running in my ESXi instance at this point. If VMs are running, ensuring that they are turned off is critical prior to starting the patching process. Upon applying the remediation, I will perfomring another scan to validate that the patch was applied and the CVEs remediated. 
 
-### Downloading Patch
+### Tools and Technology:
+VMWare ESXi and Tenable 
+
+## Downloading Patch
 
 My VMWare is currently running version 7.0 Update 2. This is where I went to verify the version that was currently installed and running:
 
@@ -14,9 +18,11 @@ To start, I needed to go to the VMWare patch downloads page, sign-in, and locate
 
 <img width="669" alt="Screenshot 2024-04-22 at 11 36 53 AM" src="https://github.com/lm3nitro/Projects/assets/55665256/3d870e41-1ade-400e-8b0d-83587a19515a">
 
-In the downloads page, I am filtering for that version (7) and locating the last released patch. I selected the highled patch below and downloaded it.
+In the downloads page, I am filtering for that version (7) and locating the last released patch. I selected the highled patch below and downloaded it. This is also the same patch that was referneced in the vulernability scan under the CVE as a remediation solution. 
 
 <img width="1397" alt="Screenshot 2024-04-22 at 11 39 51 AM" src="https://github.com/lm3nitro/Projects/assets/55665256/dcf17391-365f-4e3f-ada2-229ee8569bf8">
+
+## Applying Patch
 
 Once I had the downlaoded patch, I then went back to my ESXi server and navigated to **Storage > datastore1**:
 
@@ -30,7 +36,7 @@ Once I had the location copied, I then selected **Datastore browser** which then
 
 <img width="1337" alt="Screenshot 2024-04-22 at 1 05 20 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/f2b8b78f-1c10-42fd-a85d-3d95a10476e8">
 
-Here we will want to select **upload**, and select the newly downloaded patch that we previosly downloaded from the vendor:
+Here I selected **upload**, and selected the newly downloaded patch that I had previosly downloaded from the vendor:
 
 <img width="1350" alt="Screenshot 2024-04-22 at 1 07 57 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/a25b3972-fae7-4e75-8946-1aba487c3b28">
 
@@ -50,22 +56,25 @@ We will need to enable SSH on our server so that we can SSH into it and perform 
 
 <img width="1254" alt="Screenshot 2024-04-22 at 1 14 28 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/1bfd0849-8b69-4da0-8bee-eacafa7b1957">
 
-Once I enabled SSH, I SSH'd into ther server:
+Once I enabled SSH, I SSH'd into the server:
 
 <img width="574" alt="Screenshot 2024-04-22 at 1 17 17 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/b01875d3-d41b-421a-831e-40b654d15942">
 
-Here is the command used install the patch. Root is needed to perform this step. Please keep in my that this command will change depending on the name of the patch that is being installed. Once the command is entered, it does take a couple of minutes to get nay response/output, this is normal and expected. Once it completes, we can see that it was successfully installed:
+Here is the command used install the patch. Root is needed to perform this step. Please keep in my that this command will change depending on the name of the patch that is being installed. Once the command is entered, it does take a couple of minutes to get nay response/output, this is normal and expected. 
 
 ```
 esxcli software profile update -p ESXi-7.0U3p-23307199-standard -d /vmfs/volumes/66267610-5a7f0187-51c5-246e966417b8/VMware-ESXi-7.0U3p-23307199-depot.zip --no-hardware-warning 
 ```
+
+Once it completes, we can see that it was successfully installed:
+
 <img width="927" alt="Screenshot 2024-04-22 at 1 29 14 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/1181f576-9576-4f38-b6a5-ff13d9fe1a12">
 
 Once we have the patch installed, we need to reboot the server to ensure that everything is applied. Its also important to note that once the server reboots, SSH will automatically be disabled again by default.
 
 <img width="1472" alt="Screenshot 2024-04-22 at 1 55 18 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/7484e6be-bc8a-4d2c-96b5-d668f6dc2ea9">
 
-Again, I do not have any VM's here at the moment of this patch installation, so I can reboot without going into maintenance mode: 
+Again, I do not have any VM's here at the time of this patch installation, so I can reboot without going into maintenance mode: 
 
 <img width="1472" alt="Screenshot 2024-04-22 at 1 55 56 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/55fe1801-85d5-4096-a95d-a39546699717">
 
@@ -77,9 +86,9 @@ Upon logging in, we can also see that not only did the interface appearance chan
 
 <img width="1497" alt="Screenshot 2024-04-22 at 2 03 36 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/dcd17c5b-3d94-48a2-b688-337f3e143ec5">
 
-# Post Remediation ESXi Vulnerability Scan
+## Post Remediation Vulnerability Scan
 
-During the scan, I was able to go to the ESXi server and monitor the traffic. Here we see some anomolies and a high volume that is espected due to the scan that we are performing:
+Now that the patch has been applied, I wanted to run another scan to ensure that the vulnerability was indeed remediated. While performing the scan, I was able to go to the ESXi server and monitor the traffic. Here we see some anomolies and a high volume that is espected due to the scan that we are performing:
 
 ![Pasted image 20240422141913](https://github.com/lm3nitro/Projects/assets/55665256/15dc49b0-3439-438a-bbfb-3aa832da72e5)
 
@@ -87,7 +96,7 @@ Once the scan completed, these were the results:
 
 ![Pasted image 20240422150130](https://github.com/lm3nitro/Projects/assets/55665256/7e6e359f-ec1e-43e0-a660-399ad4cbb68d)
 
-The patch worked. As we can see, we no longer have any vulnerabilities. The Medium rated vulnerabilities are related to the certificate on the ESXi server: 
+The patch was applied and the vulnerabilities remediated. I am no longer seeing the Critical and High vulnerabilities. The Medium rated vulnerabilities are related to the certificate on the ESXi server: 
 
 ![Pasted image 20240422150211](https://github.com/lm3nitro/Projects/assets/55665256/d8d793f9-a11c-427d-bef7-60510db27cb2)
 
@@ -101,5 +110,10 @@ I also navigated to the certificate itself and can see the following:
 
 ![Pasted image 20240422150539](https://github.com/lm3nitro/Projects/assets/55665256/d4e3ed86-bbbf-4a77-b289-70b02917b9f4)
 
-
 The resilution for this is to have a proper SSL certificate. For the reasons I am using the ESXi server, this is not something that warrants immediate attention, but something that will be addressed later. 
+
+### Summary:
+
+In part 3 I was able to download, install and apply the needed patch in order to remediate the vulnerabilities previously discovered in Part 2. I then was able to validate that the server was no longer vulenrable to those CVEs and that it was indeed patched. Unpatched vulnerabilities can be exploited, which can lead to system compromises and other security incidents. Aside from the the CVEs, patching can often fix critical bugs that can affect the stability and integrity of the system. Its important to continually monitor and scan for vulnerabilities in order to maintain the overal health of the environment. 
+
+Simply applying the patch is not enough. There also needs to verification to ensure thatt the patch was installed correctly and that it effectively addresses the vulnerabilities. Regualar vulnerability scanning and patch management promotes a proactive security posture. 
