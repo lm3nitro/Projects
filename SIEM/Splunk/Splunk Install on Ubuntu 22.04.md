@@ -2,11 +2,17 @@
 
 <img width="486" alt="Screenshot 2024-04-27 at 2 10 57 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/962f67af-e61d-4ee9-98e2-cad078e3debb">
 
-Splunk is utilized for conducting business and web analytics, managing applications, ensuring compliance, and enhancing security measures. It gathers data from logs, sensors, applications, and more, and organizes it so that users can perform searches to uncover insights, trends, and potential problems. It allows you to investigate and solve issues, monitor performance, and improve security across your IT infrastructure. 
+Splunk is utilized for conducting business and web analytics, managing applications, ensuring compliance, and enhancing security measures. Splunk is a SIEM (security information and event management) solution. It gathers data from logs, sensors, applications, and more, and organizes it so that users can perform searches to uncover insights, trends, and potential problems. It allows you to investigate and solve issues, monitor performance, and improve security across your IT infrastructure. 
 
-## Install Ubuntu 22.04
+### Scope:
+I will be installing Splunk on my Ubuntu 22.04 VM in my home environment. I will also cover hot to install additional Add-Ons. Having add-ons will simplify the process of ingesting data from various sources (applications, servers, firewalls. etc). I will then be sending a veriety of logs to my Splunk instance, however, this will be covered as part of a seperate project. I will start with the creation of my VM that will host Splunk and then take a deep dive into the isntallation of Splunk itself. 
 
-For my lab, I decided to use Ubuntu 22.04 to install Splunk, Zeek, and Suricata. To begin, I will set-up my VM and install Splunk. I am using VMWare Workstation 16 Pro and set the VM to the following perameters:
+### Tools and Technology:
+Ubuntu and Splunk
+
+## Create VM
+
+For my environment, I decided to use Ubuntu 22.04 to install Splunk. To begin, I will set-up my VM and install Splunk. I am using VMWare Workstation 16 Pro and set the VM to the following perameters:
 
 ![Pasted image 20240328164129](https://github.com/lm3nitro/Projects/assets/55665256/774bffde-b410-41df-9cd9-b49beb1a3fc1)
 
@@ -18,22 +24,31 @@ Here is the set-up for the hostname and configuring SSH during the initial insta
 
 ![Pasted image 20240328170651](https://github.com/lm3nitro/Projects/assets/55665256/fb8ccf56-4dea-4e21-8d67-56af9ac31421)
 
-## SSH via SecureCRT
+##SSH via SecureCRT
+
 Now that my Ubuntu VM is up and running, I then used SecureCRT to SSH into the server:
 
 ![Pasted image 20240328172017](https://github.com/lm3nitro/Projects/assets/55665256/4180bddb-898c-4a31-99f3-b20c3791a5ac)
 
 ## Install Splunk
 
-To start of with my lab, I will install Splunk To begin the install, I went to verify the latest version:
+To start of with my lab, I will install Splunk To begin the install, I went to verify the latest version. At the time of this writing it is version 9.2.1
 
 ![Pasted image 20240328164010](https://github.com/lm3nitro/Projects/assets/55665256/cfb65c66-c85c-4bb1-a35a-85b11e02bd5f)
+
+I used the following command to download the latest version:
 
 ```
 wget -O splunk-9.2.1-78803f08aabb-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/9.2.1/linux/splunk-9.2.1-78803f08aabb-linux-2.6-amd64.deb"
 ```
-Here we see that Splunk has been installed:
+Here we see that Splunk has been downlaoded. Once downloaded, I proceed to run the following command:
+```
+dpkg -i splunk-9.2.1-78803f08aabb-linux-2.6-amd64.deb
+```
+
 ![Pasted image 20240328172216](https://github.com/lm3nitro/Projects/assets/55665256/6d18b3bb-75a0-4170-8d5f-fefc87bca6da)
+
+I then accepted the terms presented:
 
 ![Pasted image 20240328172414](https://github.com/lm3nitro/Projects/assets/55665256/6acafe66-49ad-4152-9c7e-25e8adb4c524)
 
@@ -49,15 +64,16 @@ I also verified that all the logs were generated for Splunk:
 
 ![Pasted image 20240328172334](https://github.com/lm3nitro/Projects/assets/55665256/4de4e42a-517e-467b-bbf4-2fc6821a3f0d)
 
+## Accessing Splunk
+
 I then navigated to my Splunk via the web browser on port 8000 and was presented with the login screen:
 
 ![Pasted image 20240331163727](https://github.com/lm3nitro/Projects/assets/55665256/c00077b2-1112-4d8c-bd2e-20150db8941d)
 
 I will go ahead and check the CPU and verify that everything is working properly.
 
-## Splunk CPU
+Here is the the CPU when I initially installed Splunk. Everything look good.
 
-Here is the the CPU when I initially installed Splunk. Everything is good.
 ![Pasted image 20240331163921](https://github.com/lm3nitro/Projects/assets/55665256/6336f681-7a6f-4847-b96d-f29559a28753)
 
 ![Pasted image 20240331163943](https://github.com/lm3nitro/Projects/assets/55665256/d9db6d4d-e406-4534-806c-873a7ca71f57)
@@ -86,3 +102,13 @@ I checked and verified the CPU as well to ensure efficient system performance:
 I can also see the amount of events that had been sent to Splunk from the various sources:
 
 ![Pasted image 20240331153221](https://github.com/lm3nitro/Projects/assets/55665256/6f5a0928-7471-4ca2-840b-f3ed33af272f)
+
+### Summary:
+
+In this project I was able to install Splunk and also installed additional add-ons in order to better intergrate data from various sources. Sending this data from various sources will be included as part of other projects. Installing Splunk also allowed me to gain hands on experience with its funcctionalities, including data ingestion, search, and visualization. I also want to create variousdashboards and and use the different features to better viausalize the inforamtion that is important to me and pertinent to my enviornment. I highly recommend having a SIEM as part of your network to. The following benefits can be gained from it:
++ Threat detection
++ Centralized Monitoring
++ Incident response
++ Visibility into Network Activity
++ Learning Environment
+
