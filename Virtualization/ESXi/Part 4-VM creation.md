@@ -1,10 +1,17 @@
 # Win 10 VM in ESXi
 
-This is a continuation of the previous installation, configuration, and patching of the ESXi. As a summarym, upon installing the ESXi, I ran a vulnerability scan against the ESXi using Tenable and applied the patch to remediate what was found. Now that the ESXi server is fully patched, I can now get started wtih creating my VMs. To start, I will create a Windows 10 VM. 
+### Scope: 
+This is a continuation of the previous installation, configuration, and patching of the ESXi. As a summary, upon installing the ESXi, I ran a vulnerability scan against the ESXi using Tenable and applied the patch to remediate what was found. Now that the ESXi server is fully patched, I can now get started wtih creating my VMs. Here I will go cover the process of creating a Win10 VM. 
 
-### Uploading a Windows 10 VMDK files:
+### Tools and Technology:
+VMWare ESXi and Windows
+
+## Getting started
+
+First, I needed to upload the Windows 10 VMDK files:
 
 Select **Create/Register VM**
+
 In the dialog box, select the following for the VM creation type:
 
 ![Pasted image 20240422194635](https://github.com/lm3nitro/Projects/assets/55665256/11482c39-5455-42ff-b519-f5dc306b34bc)
@@ -33,4 +40,6 @@ I also wanted to create a VM running Ubuntu so I followed the same steps as abov
 
 ![Pasted image 20240422195220](https://github.com/lm3nitro/Projects/assets/55665256/8be826bb-71b9-4efe-9668-4efd8fba59be)
 
+##  Summary:
 
+I was able to successfully create both a Win10 and Ubuntu VM on my VMWare ESXi server. Its important to have several operating systems to test with. There are different applications and software that I will be using for my projects that require specific OS environments. Many organizations use a mix of both linux and Windows systems. Having both in my environment will allow me to see the interactionand integration between applications running on both platforms. 
