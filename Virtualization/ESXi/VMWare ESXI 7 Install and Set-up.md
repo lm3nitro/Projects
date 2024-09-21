@@ -1,10 +1,18 @@
 # Installing VMWare ESXi:
 
+<img width="283" alt="Screenshot 2024-09-21 at 12 41 47 PM" src="https://github.com/user-attachments/assets/c2b9600c-6ae1-4b0e-947d-8d7386c21e1b">
+
 VMware ESXi is a powerful hypervisor. It serves as the foundation for virtualization in data centers, allowing multiple virtual machines to run on a single physical server. It offers features such as live migration of VMs, high availability, resource allocation controls, and centralized management through tools like VMware vCenter Server.
 
-I currently have a PowerEdge R720 server racked in my home networK. There are several VMs that I want to create for several mprojects that I have in mind, and will be installing VMWare ESXi on this server in order to get my virtual enviornmen tset-up. 
+### Scope:
 
-First thing I needed to do is go to VMWare to download ESXi:
+I currently have a PowerEdge R720 server racked in my home network. I will be installing VMWare ESXi to host several VMs that I will be using for my projects. This portion will only be convering the installation of VMWare ESXi while other sections will inlcude running a vulnerability scan, patching and creating a VM in VMWare ESXi. 
+
+### Tools and Technology:
+VMWare ESXi and a PowerEdge R720 server
+
+## Getting started
+First thing is to go to VMWare to download ESXi:
 
 ![Pasted image 20240422100434](https://github.com/lm3nitro/Projects/assets/55665256/a5d6212b-56ef-49f8-b3da-e7d3dbbe34a8)
 
