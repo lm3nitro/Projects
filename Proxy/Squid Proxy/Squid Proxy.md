@@ -1,10 +1,24 @@
-# $${\color{lightblue}Squid \space Proxy}$$
+# Squid Proxy
 
 <img width="401" alt="Screenshot 2024-04-27 at 10 56 45 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/c1a8bcc3-1078-402d-88f2-84849ebf4ed9">
 
-Squid Proxyis a caching and forwarding HTTP web proxy. It has a wide variety of uses, including speeding up a web server by caching repeated requests, caching World Wide Web, Domain Name System, and other network lookups for a group of people sharing network resources, and aiding security by filtering traffic.
+Squid Proxy is an open-source caching and forwarding HTTP proxy server. It is widely used for improving web performance, enhancing security, and controlling access to the internet. Squid supports HTTP, HTTPS, FTP, and other protocols, and is often deployed in enterprise environments, educational institutions, or as part of network appliances. 
 
- 
+Features:
++ Web Caching
++ Access Control and Filtering
++ Bandwidth Optimization
++ Bandwidth Optimization
++ Authentication and Logging
++ Reverse Proxy
++ Forward and Transparent Proxy and more
+
+### Scope:
+
+### Tools and Technology:
+
+
+
 ## Installing Squid Proxy
 
 
