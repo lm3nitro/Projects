@@ -6,11 +6,19 @@ Ntopng is a network traffic monitoring tool that provides real-time visibility i
 
 ### Scope:
 
+I have added a topology to better demonstrate what my set up will be for this scenario. I will have a network tap that will be listening to all traffic going north and south. I will then install and configure Ntopng. Ntopng will have a sniffing interface set that will be connected to network tap. In the network I will also have a vulnerable PC that we will be monitoring and performing vulnerability scans. I will also be using one of the features that Ntopng offers to capture live traffic and download the pcap to view it in Wireshark.
+
+Objectives: 
++ Monitor and analyze network traffic to and from a vulnerable PC
++ Identify unusual traffic patterns that could indicate a security issue
++ Understand how attackers might exploit services and how network monitoring can help in the early detection of such attempts
+  
 ![Pasted image 20240519152201](https://github.com/lm3nitro/Projects/assets/55665256/995cae09-65e0-46bd-98f0-a6a8aca87166)
 
 ### Tools and Technology:
 
-Linux, Ntopng, 
+Ubuntu, Ntopng, VMWare ESXi,and Wireshark 
+
 ## Getting started/Prerequisites
 
 Before installing anything, I started off by first ensuring the everything is up to date.
@@ -27,7 +35,7 @@ apt updade -y
 ```
 ![Pasted image 20240518172309](https://github.com/lm3nitro/Projects/assets/55665256/7736267e-5631-481c-9e87-9463b1fcfd43)
 
-Once the OS was compelty up to date, I then needed to enable the universe repository :
+Once the OS was compelty up to date, I then needed to enable the universe repository:
 ```
 sudo add-apt-repository universe
 ```
@@ -43,7 +51,7 @@ wget https://packages.ntop.org/apt-stable/20.04/all/apt-ntop-stable.deb
 
 Installing the package:
 
-Note: It automatically add the ntopng repository.
+Note: It automatically added the ntopng repository.
 
 ![Pasted image 20240518173716](https://github.com/lm3nitro/Projects/assets/55665256/be15ac57-d1dd-4e62-bcbf-a6c0fc0a078e)
 
@@ -69,7 +77,6 @@ sudo systemctl status nprobe cento ntopng pf_ring
 ```
 
 ![Pasted image 20240518174159](https://github.com/lm3nitro/Projects/assets/55665256/802dc199-a371-4913-b5ec-a35cfc76d5e4)
-
 
 ![Pasted image 20240518174336](https://github.com/lm3nitro/Projects/assets/55665256/4d64e168-f6cc-4a40-80b1-8de15e80baf1)
 
@@ -155,13 +162,13 @@ After 30 minutes we can see more traffic:
 
 ![Pasted image 20240518193336](https://github.com/lm3nitro/Projects/assets/55665256/02f0cf9a-dd78-4df6-96a5-c989318e17a9)
 
-For this project, I will be simulating traffic on a host that is connected to the ntopng sniffing interface. Taking a look at the live traffic:
+For this project, I will be simulating traffic from a vulnerable host that is in my network. Taking a look at the live traffic:
 
 ![Pasted image 20240518193657](https://github.com/lm3nitro/Projects/assets/55665256/c5feea47-9326-4e29-b738-014443340d0c)
 
 ## Ntopng Features
 
-One of the many features on Ntopng, is that it provides an IP blacklistIn this example we can see the IP that has been blacklisted and it provided us with the link to verify the IP in virustotal and AbuseIP DB:
+One of the many features on Ntopng, is that it provides an IP blacklist. In this example we can see the IP that has been blacklisted and provided the link to verify the IP in virustotal and AbuseIP DB:
 
 ![Pasted image 20240518194957](https://github.com/lm3nitro/Projects/assets/55665256/142129ea-c455-40c6-9e53-9414414ee044)
 
@@ -169,11 +176,17 @@ I took one as an example as shown above. When checking with VirusTotal, I was ab
 
 ![Pasted image 20240518193915](https://github.com/lm3nitro/Projects/assets/55665256/d568b1a8-1953-48a0-a19a-8acea28da626)
 
-Ntopng also allows you to detect active network scans. Beacuse the ntopng server is on the DMZ (internet facing) it can see all the scans ongoing on live:
+## Visibility
+
+Ntopng offers extensive network visibility. The visibility features include detailed views of network hosts, protocols, traffic flows, and geographic informationabout where network traffic originates and terminates. Below is a view at some of these features:
+
+>#### Note: Ntopng also allows you to detect active network scans. Beacuse the ntopng server is connected to the network tap that is directly connected to my Firewall, it can also see all the scans as they happen live:
+
+Example view of the traffic that is being monitored:
 
 ![Pasted image 20240518194736](https://github.com/lm3nitro/Projects/assets/55665256/db5938dd-704c-4d2b-a690-b5669d2d9c56)
 
-Detecting abnormal  live outbound traffic on strange port number :
+Detecting abnormal live outbound traffic on strange port number :
 
 ![Pasted image 20240518194633](https://github.com/lm3nitro/Projects/assets/55665256/76753887-c709-4230-b99e-80dd330962cd)
 
@@ -193,51 +206,65 @@ GeoMAP:
 
 ![Pasted image 20240518211214](https://github.com/lm3nitro/Projects/assets/55665256/baf0333a-39fb-4219-9114-b5037c6c46e7)
 
-Vulnerability Scan:
+## Vulnerability Scan
+
+Once I explored some of the visibility features that Ntopng offers, I continued to perform the scan again my vulnerable host in the network. To do this I navigated Vulnerability Scan on the console and inititated a new scan against the host on 192.168.91.129.
 
 ![Pasted image 20240518203909](https://github.com/lm3nitro/Projects/assets/55665256/b879bdc7-4641-4172-a2ad-c72230b5242d)
 
-Alerts vuln has been found:
+Once the scan started, I started to see that it had already started to detect vulnerabilities:
 
 ![Pasted image 20240518204149](https://github.com/lm3nitro/Projects/assets/55665256/fe92a4c1-530f-49b0-bb2b-eaaf46f88114)
 
-Downloading the report:
+## Vulnerability Scan Analysis
+
+Once the scan was completed, I downloaded the report to extract the details on what it was able to find from the vulenrable host. 
 
 ![Pasted image 20240518205219](https://github.com/lm3nitro/Projects/assets/55665256/03058558-5e90-41cb-8a17-1c911b2d53aa)
 
-Report:
+Here is the report. As seen, it was able to find several CVEs and also provided insights into that they are:
 
 ![Pasted image 20240518204543](https://github.com/lm3nitro/Projects/assets/55665256/50c8435c-8628-439c-b987-ee4f845b704e)
 
-Researching CVE-1999-0661 from a report:
+I wanted to dig a bit deeper and research CVE-1999-0661 from the report. Looking at the CVE, this is a crtical CVE with a base score of 10.
 
 ![Pasted image 20240518204648](https://github.com/lm3nitro/Projects/assets/55665256/6d9ae2c2-1828-47c7-ba03-b1b1a8c64e7f)
 
-Looking at interface ens33 telemetric
+I then took a look at the telemety informaiton for interface ens33 (sniffing interface) to see the traffic that was generated from the scan:
 
 ![Pasted image 20240518205141](https://github.com/lm3nitro/Projects/assets/55665256/ac07ca9f-3764-4655-8e2c-b2bca87bf27d)
 
-Filtering traffic per IP:
+## Traffic Analysis
+
+Next, I took a look at the network traffic and was able to see the top talkers, hosts, applications, and traffic classifaction. 
 
 ![Pasted image 20240518210644](https://github.com/lm3nitro/Projects/assets/55665256/c4a4df4e-c505-4c15-97cb-1c16d5feb993)
 
-More information about the filtered ip:
+When you filter down to a specific IP, Ntopng offers a lot of information such as ASN, links to external sources for IP lookup (VirusTotal & AboutIP DB), traffic sent/received, CVEs, etc...
 
 ![Pasted image 20240518210743](https://github.com/lm3nitro/Projects/assets/55665256/da543f7a-3e2a-4228-96fd-4859ea1802f5)
 
-Taking packet capture from a live traffic:
+Another great feature that Ntopng offers is that it allows you to capture traffic of live traffic. Here I selected another IP address and downloaded the pcap:
 
 ![Pasted image 20240518205941](https://github.com/lm3nitro/Projects/assets/55665256/d949415b-b21a-4c65-b4b4-3dcdf050eaee)
 
-Looking at the ongoing packet capture:
+As the capture was running, I was able to the live traffic associated with these IPs:
 
 ![Pasted image 20240518210859](https://github.com/lm3nitro/Projects/assets/55665256/d1f839c6-d88e-407a-aa9b-67138b2f3c7a)
 
-Opening one of the packet capture:
+I then took a look at one of the pcaps in wireshark to see the traffic:
 
 ![Pasted image 20240518210337](https://github.com/lm3nitro/Projects/assets/55665256/6c8fcbb9-fb8e-44fd-9272-5c3b72168d0f)
 
-Summary:
+### Summary:
+
+I really enjoed using and exploring the features that Ntopng has to offer. In doing this project, I was able to familiarize myself with real-time network traffic monitoring and analysis and better understand how network monitoring can be an effective part of network defense. By monitoring this vulernable host, I was able to run a vulenrabilty scan, export the report on the scan and gain visibility into the CVEs. Ntopng also allowed me to gain a closer look at the incoming and outgoing traffic from the network. This visibility provided information on the communicating hosts and any potential scans that might occur from the outside. I was also able to learn the following:
+
++ Learned how normal network traffic behaves and how deviations from this norm (such as sudden spikes in traffic or unusual protocols) might indicate a potential security incident.
++ By using the geo map feature, I was able to track traffic back to its geographical origin, gaining insight into whether traffic is coming from legitimate or suspicious locations.
++ I was able to monitor bandwidth usage, whoch helped identify inefficient use of network resources, which could improve overall network performance.
+
+Overall, I highly recommend Ntopng for those who want an easy-to-use, powerful tool for monitoring, securing, and optimizing their network infrastructure.
 
 
 
