@@ -15,7 +15,7 @@ Features:
 
 ### Scope:
 
-I will be installing and configuring Squid Proxy in a lab environment. I will then have another node running Win10 where I will configure it to use the newly installed Squid Proxy. This project focuses on exploring features like access control lists (ACLs), understanding how to control and manage internet access in a network, and observe web traffic in real time. By configuring domain blocking, the goal is to enforce policies that restrict access to certain websites (e.g., social media, malware sites) to improve security.
+I will be installing and configuring Squid Proxy in a lab environment. I will then have another node running Win10 where I will configure it to use the newly installed Squid Proxy. This project focuses on exploring features like access control lists (ACLs), understanding how to control and manage internet access in a network, and observe web traffic in real time. By configuring domain blocking, the goal is to enforce policies that restrict access to certain websites (e.g., social media, malware sites) to improve security. I will then be sending the the Squid proxy logs to splunk for better visualization. 
 
 ### Tools and Technology:
 Linux, Win10, Squid Proxy, Splunk and Wireshark
@@ -208,5 +208,12 @@ High overview fo the available fields and information available from the Squid l
 ![Pasted image 20240403161630](https://github.com/lm3nitro/Projects/assets/55665256/42ba6d89-bc4a-47af-a38e-5839c8b716b0)
 
 ### Summary:
+
+By installing Squid Proxy in my lab, I was able to learn how to configure and fine-tune the proxy settings to manage network traffic and domain blacklisting. The was able to gain experience with the mechanics of HTTP/HTTPS proxying and domain blocking, as well as practical skills in traffic monitoring. Additionally, I gained insight into network performance optimization techniques and the real-world application of proxy servers in both security and performance contexts. 
+
+Testing domain blocking is important because it allowed me to simulate real-world scenarios where controlling access to certain online content is crucial. This is particularly valuable for improving network security, compliance, and productivity in environments like businesses, schools, or public networks. Domain blocking helps protect users from harmful websites, reduce distractions in work or study environments, and enforce organizational policies. 
+
+In conclusion, Squid Proxy is a powerful tool for optimizing network performance, enhancing security, and managing internet access. Furthermore, its support for traffic monitoring and SSL inspection provides deep visibility into network activity, helping detect potential security threats and ensuring efficient use of resources. Whether in a corporate, educational, or home environment, Squid enhances the overall network experience, making it a valuable tool for IT professionals and network administrators. I highly recommend it. 
+
 
 
