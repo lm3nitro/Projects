@@ -18,7 +18,7 @@ Features:
 I will be installing and configuring Squid Proxy in a lab environment. I will then have another node running Win10 where I will configure it to use the newly installed Squid Proxy. This project focuses on exploring features like access control lists (ACLs), understanding how to control and manage internet access in a network, and observe web traffic in real time. By configuring domain blocking, the goal is to enforce policies that restrict access to certain websites (e.g., social media, malware sites) to improve security.
 
 ### Tools and Technology:
-Linux, Win10, Squid Proxy, and Wireshark
+Linux, Win10, Squid Proxy, Splunk and Wireshark
 
 ## Installing Squid Proxy
 
@@ -179,23 +179,34 @@ I can see that it is blocking. I also checked Wireshark to verify and can also s
 
 ![Pasted image 20240403145119](https://github.com/lm3nitro/Projects/assets/55665256/b8a97a11-67f0-46a6-aac0-ab03754057d7)
 
-I followed the stream 
+I followed the stream, and that provided details including information about Squid:
 
 ![Pasted image 20240403145218](https://github.com/lm3nitro/Projects/assets/55665256/fd0b5cc2-b4ed-43f9-8c36-4218c02a53c7)
 
-# Browser client :
+On the host, the browser showed the following when visiting Youtube:
 
 ![Pasted image 20240403144710](https://github.com/lm3nitro/Projects/assets/55665256/91be24a1-5228-4cce-bd32-93c53f2c31d2)
 
+## Splunk
 
-SPLUNK ONLY PROJECT 
+After doing some more testing, I also sent the the Squid log traffic to the Splunk instance that I have in my lab. 
 
-##### Sending squid log traffic to Splunk
-
+Here is the Squid index showing the logs that have been sent to Splunk:
 
 ![Pasted image 20240403161733](https://github.com/lm3nitro/Projects/assets/55665256/1dff81be-08cb-47e7-bc49-469e5350863a)
 
+To filter for the traffic, I used the following query:
+
+```
+index="squid" src_ip=* dst_ip=* facebook | table src_ip dst_ip url method
+```
+
 ![Pasted image 20240403161425](https://github.com/lm3nitro/Projects/assets/55665256/920e3811-2b97-476a-9d9d-e60880b064e2)
 
+High overview fo the available fields and information available from the Squid logs:
 
 ![Pasted image 20240403161630](https://github.com/lm3nitro/Projects/assets/55665256/42ba6d89-bc4a-47af-a38e-5839c8b716b0)
+
+### Summary:
+
+
