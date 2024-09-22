@@ -1,3 +1,7 @@
+![Screenshot 2024-09-22 at 12 57 20 AM](https://github.com/user-attachments/assets/a2c94d49-ac6b-4749-a0ab-b272e9d90a57)
+
+
+
 # Installing VMWare ESXi:
 
 <img width="283" alt="Screenshot 2024-09-21 at 12 41 47 PM" src="https://github.com/user-attachments/assets/c2b9600c-6ae1-4b0e-947d-8d7386c21e1b">
