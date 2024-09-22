@@ -169,14 +169,17 @@ systemctl restart squid
 
 ![Pasted image 20240403144353](https://github.com/lm3nitro/Projects/assets/55665256/198e7a47-8d02-423f-892c-867c8f44f484)
 
-## Squid logs:
+## Traffic Analysis
+
+Now that the domains have been blocked, I tested with the Win10 host again going to both Facebook and Youtube. I checked the Squid Proxy logs ater to monitor:
 
 ![Pasted image 20240403144543](https://github.com/lm3nitro/Projects/assets/55665256/a3fde7d1-0980-4511-ad08-16b93739229e)
 
-# Traffic logs:
+I can see that it is blocking. I also checked Wireshark to verify and can also see that I was getting a `403 Forbidden` :
 
 ![Pasted image 20240403145119](https://github.com/lm3nitro/Projects/assets/55665256/b8a97a11-67f0-46a6-aac0-ab03754057d7)
 
+I followed the stream 
 
 ![Pasted image 20240403145218](https://github.com/lm3nitro/Projects/assets/55665256/fd0b5cc2-b4ed-43f9-8c36-4218c02a53c7)
 
