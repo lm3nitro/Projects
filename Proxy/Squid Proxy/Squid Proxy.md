@@ -134,7 +134,7 @@ While going to Facebook, I also captured the traffic on Wireshark on the Win10 h
 
 ## Domain Blacklist in Squid Proxy:
 
-Now that I have tested Squid Proxy and can see all the traffic generated from the win10 host, I also wanted to test the domain blocking funcitonlity that the Squid Proxy offers:
+Now that I have tested Squid Proxy and can see all the traffic generated from the win10 host, I also wanted to test the domain blocking funcitonlity that Squid offers:
 
 To do this, I created a file in `/etc/squid/black_list.txt` 
 ![Pasted image 20240403143701](https://github.com/lm3nitro/Projects/assets/55665256/99923f88-8ebc-425d-b444-a5fecdb64c46)
@@ -171,7 +171,7 @@ systemctl restart squid
 
 ## Traffic Analysis
 
-Now that the domains have been blocked, I tested with the Win10 host again going to both Facebook and Youtube. I checked the Squid Proxy logs ater to monitor:
+Now that the domains have been blocked, I tested with the Win10 host again going to both Facebook and Youtube. I checked the Squid logs after to monitor:
 
 ![Pasted image 20240403144543](https://github.com/lm3nitro/Projects/assets/55665256/a3fde7d1-0980-4511-ad08-16b93739229e)
 
@@ -211,7 +211,7 @@ High overview fo the available fields and information available from the Squid l
 
 By installing Squid Proxy in my lab, I was able to learn how to configure and fine-tune the proxy settings to manage network traffic and domain blacklisting. The was able to gain experience with the mechanics of HTTP/HTTPS proxying and domain blocking, as well as practical skills in traffic monitoring. Additionally, I gained insight into network performance optimization techniques and the real-world application of proxy servers in both security and performance contexts. 
 
-Testing domain blocking is important because it allowed me to simulate real-world scenarios where controlling access to certain online content is crucial. This is particularly valuable for improving network security, compliance, and productivity in environments like businesses, schools, or public networks. Domain blocking helps protect users from harmful websites, reduce distractions in work or study environments, and enforce organizational policies. 
+Testing domain blocking is important because it allowed me to simulate real-world scenarios where controlling access to certain online content is crucial. This is particularly valuable for improving network security, compliance, and productivity in environments like businesses, schools, or public networks. Domain blocking helps protect users from harmful websites, reduce distractions in work or study environments, and enforce organizational policies. I also liked the amount of information that the Squid logs offered when visualing them using Splunk. By utilizing both Squid Proxy and Splunk, it allows users to quickly identify patterns, security incidents, or user behavior, which can be critical for troubleshooting and forensics.
 
 In conclusion, Squid Proxy is a powerful tool for optimizing network performance, enhancing security, and managing internet access. Furthermore, its support for traffic monitoring and SSL inspection provides deep visibility into network activity, helping detect potential security threats and ensuring efficient use of resources. Whether in a corporate, educational, or home environment, Squid enhances the overall network experience, making it a valuable tool for IT professionals and network administrators. I highly recommend it. 
 
