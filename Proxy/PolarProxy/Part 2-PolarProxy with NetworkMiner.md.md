@@ -1,4 +1,9 @@
-# PolarProxy and NetworkMiner
+# PolarProxy with NetworkMiner
+
+### Scope:
+
+### Tools and Technology:
+Ubuntu, PolarProxy, NetworkMiner and Wireshark
 
 While using polarProxy, I wanted to continue to view the traffic and better see the capabilities that it offers. In this scenario I went to Google and searched for a random picture of a tree.
 
