@@ -2,14 +2,26 @@
 
 ![Pasted image 20240605001736](https://github.com/lm3nitro/Projects/assets/55665256/c8be1c54-5f9c-44ea-bc83-74d7b5fcde2a)
 
+mitmproxy is an open-source tool that serves as a Man-in-the-Middle (MITM) proxy specifically designed for intercepting, inspecting, modifying, and replaying web traffic. It is your swiss-army knife for debugging, testing, privacy measurements, and penetration testing. It can be used to intercept, inspect, modify and replay web traffic such as HTTP/1, HTTP/2, WebSockets, or any other SSL/TLS-protected protocols. Below are some of its key features:
 
++ Traffic Interception
++ Decryption
++ Web Interface
++ Support for WebSockets and HTTP/2
++ Replay and Testing
 
-mitmproxy is your swiss-army knife for debugging, testing, privacy measurements, and penetration testing. It can be used to intercept, inspect, modify and replay web traffic such as HTTP/1, HTTP/2, WebSockets, or any other SSL/TLS-protected protocols.
+### Scope:
 
+### Tools and Technology:
+mitmproxy, Win10, PowerShell and Wireshark
 
+## Downloading mitmproxy
+
+In order to use mitmproxy, I needed to download. I will be using it on my Win10 VM, so that is the installer I chose:
 
 ![Pasted image 20240604220241](https://github.com/lm3nitro/Projects/assets/55665256/177b1031-420c-4cb7-be0d-6952a42d623f)
 
+Once downloaded, I initialized the installation and needed to go through the setup. 
 
 ![Pasted image 20240604220323](https://github.com/lm3nitro/Projects/assets/55665256/beac9a3d-eb9c-4978-a85c-af56d202f770)
 
@@ -20,103 +32,55 @@ mitmproxy is your swiss-army knife for debugging, testing, privacy measurements,
 ![Pasted image 20240604220425](https://github.com/lm3nitro/Projects/assets/55665256/5d07e47a-05d2-4e94-b056-829465e71810)
 
 
-
-
-
-
-Note:
-
- After installation, mitmproxy, mitmdump and mitmweb are also added to your PATH and can be invoked from the command line.
+After installation, mitmproxy, mitmdump and mitmweb are also added to your path and can be invoked from the command line.
  
-mitmproxy gives you an interactive command-line interface
-mitmweb gives you a browser-based GUI
-mitmdump gives you non-interactive terminal output
++ mitmproxy: Gives you an interactive command-line interface
++ mitmweb: Gives you a browser-based GUI
++ mitmdump: Gives you non-interactive terminal output
 
- 
-After the installation, open windows store and download windows terminal. Once installed open it and run mitmproxy
-
-
-
+After the installation, I opened windows store and downloaded Windows Terminal.
 
 ![Pasted image 20240604221456](https://github.com/lm3nitro/Projects/assets/55665256/5af3330a-ffff-4acc-94c3-9a81ef573f6f)
-
-
-
 
 It should look like this:
 
 ![Pasted image 20240604221625](https://github.com/lm3nitro/Projects/assets/55665256/15bce69f-41ae-4828-a725-47118d7ef55e)
 
+## mitmproxy Configuraiton
 
+The first thing I did was verify that the port is listening and cross verified with the the information seen in Task Manager:
 
-
-Verify if the port is listening:
 ![Pasted image 20240604222301](https://github.com/lm3nitro/Projects/assets/55665256/e4d7b705-1c76-4978-b89d-ef0ab59f8339)
 
-
-
-
-
-
-# Configuring the proxy:
-
-
-
+Next, I need to configure the proxy settings on my Win10 host. I navigated to the Start Menu and went to Proxy settings. Here I filled out the information and port detials for the proxy:
 
 ![Pasted image 20240604223043](https://github.com/lm3nitro/Projects/assets/55665256/d2d61c24-4d0d-4337-b6a4-77f91aadffad)
 
+## Proxy Certificate
 
-
-
-# Downloading the certificate:
-
-
-Browes to http://mitm.it/
-
-
+Once the proxy information was configured, I browsed to `http://mitm.it/` in order to obtain the mitmproxy certificate:
 
 ![Pasted image 20240604223415](https://github.com/lm3nitro/Projects/assets/55665256/36d24988-8056-4a0d-8a5b-4815546816ff)
 
+After downloading the cert, I imported the certificate to the root store:
 
-
-
-
-# Installing the certificate:
 ![Pasted image 20240604223548](https://github.com/lm3nitro/Projects/assets/55665256/2d7a2598-f5e5-43d0-82e6-6f8c391a0ed1)
-
-
-
 
 ![Pasted image 20240604223621](https://github.com/lm3nitro/Projects/assets/55665256/452f2729-1e14-41b0-8ec5-59828bc34e94)
 
-
-
 ![Pasted image 20240604223710](https://github.com/lm3nitro/Projects/assets/55665256/31847580-956b-469b-8dd7-9f39deca492f)
-
-
 
 ![Pasted image 20240604223822](https://github.com/lm3nitro/Projects/assets/55665256/c7c0b38c-1ae9-4766-864a-4ebe86c95cc6)
 
-
-
-
 ![Pasted image 20240604223848](https://github.com/lm3nitro/Projects/assets/55665256/d4aab844-cfcc-4ab1-9cdc-2010aade23dd)
 
+## Traffic analysis with mitmproxy:
 
+The mitmproxy configuration is complete, it was time to test. I started by navigating to `chess.com`. I was able to see all the details 
 
-
-
-
-# Web traffic analysis with mitmproxy:
-
-
-
-Let's go to chess.com
 ![Pasted image 20240604224229](https://github.com/lm3nitro/Projects/assets/55665256/8d45b525-f19f-4be9-a5a2-0cfd9baa790c)
 
-
-
-# Sniffing traffic on the loopback interface:
+Sniffing traffic on the loopback interface:
 
 
  Traffic is Passing Through mitmproxy
