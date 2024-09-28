@@ -143,24 +143,19 @@ Configuring Wireshark to use an SSLKEYLOGFILE allows you to decrypt TLS (SSL) tr
 
 ## Start capturing traffic:
 
-Now that I had that set, 
+Now that I had that set, I started to capture traffic:
+
 ![Pasted image 20240605001059](https://github.com/lm3nitro/Projects/assets/55665256/d80f0f2d-beb6-4c1c-a903-b5cb5472ebcf)
 
-
-Type f and filter for Linux.org
+While Wireshark was running, I searched within the mitmproxy and filtered for `Linux.org`
 
 ![Pasted image 20240605000051](https://github.com/lm3nitro/Projects/assets/55665256/c3be4c95-2522-441b-9011-dc3146f89e2d)
 
-
- Decrypted Traffic:
+In Wireshark I could also see the Decrypted Traffic:
 ![Pasted image 20240605000850](https://github.com/lm3nitro/Projects/assets/55665256/ace1abb9-d51e-49a8-9de4-9cdc4957d0cb)
 
+In the bottom right corner, I was also able to see a pane named Decrypted TLS which indicates that Wireshark has successfully decrypted this traffic with the SSLKEYLOGFILE. 
 
+### Summary:
 
-
-On the bottom right you should  see a pane named Decrypted TLS which indicates that Wireshark has successfully decrypted this traffic with our SSLKEYLOGFILE. 
-
-Summary:
-
-
-Mitmproxy is a powerful transparent proxy that allows us to decrypt and manipulate encrypted web traffic. When utilized with Wireshark we are able to decrypt a plethora of web traffic for analysis and research.
+In this project, I was able to install mitmproxy and configure my Win10 to use it. Once installed, I was able to test traffic analysus by navigating to various Mitmproxy is a powerful transparent proxy that allows us to decrypt and manipulate encrypted web traffic. When utilized with Wireshark we are able to decrypt a plethora of web traffic for analysis and research.
