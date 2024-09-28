@@ -4,7 +4,7 @@ SiLK (System for Internet-Level Knowledge) suite, is a collection of open-source
 
 ### Scope:
 
-This is a standalone sensor configuration where the server will have both YAF and SILK installed and configured. The server interface will be connected to a tap that is listening to all the traffic incoming and outgoing.
+I will be configuringa standalone sensor configuration, where the server will have both YAF and SILK installed and configured. The server interface will be connected to a tap that is listening to all the traffic incoming and outgoing from the network. 
 
 Note for the writer: Public IP
 
