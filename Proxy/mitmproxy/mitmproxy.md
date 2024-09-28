@@ -158,4 +158,4 @@ In the bottom right corner, I was also able to see a pane named Decrypted TLS wh
 
 ### Summary:
 
-In this project, I was able to install mitmproxy and configure my Win10 to use it. Once installed, I was able to test traffic analysus by navigating to various Mitmproxy is a powerful transparent proxy that allows us to decrypt and manipulate encrypted web traffic. When utilized with Wireshark we are able to decrypt a plethora of web traffic for analysis and research.
+I was able to install and configure mitmproxy to analyze web traffic. I gained hands-on experience in setting up proxy tools, configuring network settings, and understanding how traffic flows through a system. By intercepting and inspecting the traffic, I learned how queries are structured, saw the difference between plaintext and encrypted traffic, and identified potential security risks. This process also deepened my knowledge of SSL/TLS certificates, troubleshooting network issues, and spotting anomalies in traffic that could indicate an attack. 
