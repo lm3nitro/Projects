@@ -1,12 +1,12 @@
 # Standalone SiLK and TAP
 
+SiLK (System for Internet-Level Knowledge) suite, is a collection of open-source tools designed to help network security professionals collect, store, and analyze large-scale network flow data in an efficient and flexible way.SiLK is particularly useful for monitoring network traffic, detecting anomalies, and identifying malicious activity such as distributed denial-of-service (DDoS) attacks, scanning attempts, or data exfiltration. 
 
+### Scope:
 
 This is a standalone sensor configuration where the server will have both YAF and SILK installed and configured. The server interface will be connected to a tap that is listening to all the traffic incoming and outgoing.
 
-
 Note for the writer: Public IP
-
 
 
 ![Pasted image 20240526140924](https://github.com/lm3nitro/Projects/assets/55665256/e1c080da-41ea-45d7-9779-c22beca64c26)
