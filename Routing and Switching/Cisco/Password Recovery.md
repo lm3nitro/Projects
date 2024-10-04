@@ -1,6 +1,6 @@
 # Cisco Password Recovery
 
-I will be perfomring a password reset on the Cisco 3750G switch. The **Cisco password recovery procedure** involves interrupting the switch’s normal boot procedure, renaming the **flash:config.text** (that’s the startup-config file for switches) to something else e.g **flash:config.text.old**, this way the configuration file is skipped during bootup.
+I will be performing a password reset on the Cisco 3750G switch. The **Cisco password recovery procedure** involves interrupting the switch’s normal boot procedure, renaming the **flash:config.text** (that’s the startup-config file for switches) to something else e.g **flash:config.text.old**, this way the configuration file is skipped during bootup.
 
 Once the switch has loaded its operating system we can enter **privileged-exec mode**, rename back the **flash:config.text.old** to **flash:config.text** (**startup-config**), copy the **startup-config** file to memory (DRAM), make the necessary password changes and save the configuration.
 
@@ -59,4 +59,4 @@ Factory Reset :
 
 ![Pasted image 20240415211405](https://github.com/lm3nitro/Projects/assets/55665256/18218cab-edff-4562-9be4-a2a303f2149e)
 
-Now that this has been completed, you can rsume to re-configure the switch to meet your needs. 
+Now that this has been completed, you can resume to re-configure the switch to meet your needs. 
