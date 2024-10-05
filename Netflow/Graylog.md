@@ -22,33 +22,37 @@ Network Diagram for this project:
 
 ![Pasted image 20240529171625](https://github.com/lm3nitro/Projects/assets/55665256/24bb3003-962e-4f3c-b09e-f610b34207ac)
 
-# Update the System:
+## Getting Started:
 
-updating the system packages to their latest versions available.
+Before installing anything, I wanted to ensure that all the system packages are up to date and on their latest available versions:
+
+```
+sudo apt-get update -y && sudo apt-get upgrade -y
+```
 
 ![Pasted image 20240529120802](https://github.com/lm3nitro/Projects/assets/55665256/53b6bedb-05f8-479e-833d-3771be7e4daa)
 
-
-# Install Nginx:
-
+## Installing Nginx:
 
 ![Pasted image 20240529174757](https://github.com/lm3nitro/Projects/assets/55665256/1ac24c7f-bbdb-4385-b5b9-b46acfe513c7)
 
+Now that everything has been updated and upgraded, I moved on to installing Nginx:
 
-
+```
 sudo apt-get install nginx -y
+```
 
 ![Pasted image 20240529120941](https://github.com/lm3nitro/Projects/assets/55665256/2a2c577e-7913-4de8-bc81-12f70e8b3a4e)
 
-
 After successful installation, the Nginx service will be automatically started. To check the status of Nginx, execute the following command:
 
+```
 sudo systemctl status nginx
+```
 
 ![Pasted image 20240529121035](https://github.com/lm3nitro/Projects/assets/55665256/451a612b-95ff-4700-a2fb-55d01e4073a3)
 
-
-# Install MongoDB Database Server:
+## Installing MongoDB:
 
 ![Pasted image 20240529174041](https://github.com/lm3nitro/Projects/assets/55665256/c731c168-6333-4177-8a6b-ea4651c6e1d8)
 
