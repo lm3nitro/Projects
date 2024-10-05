@@ -20,7 +20,7 @@ Network Tap, SiLK, Cisco Router & Switch, and Ubuntu
 
 ![Pasted image 20240526142532](https://github.com/lm3nitro/Projects/assets/55665256/76397c66-1cee-4b64-81c8-40665dacb770)
 
-## Install Prerequisites:
+## Installing Prerequisites
 
 To get started I began by installing the needed prerequisites:
 
@@ -30,7 +30,7 @@ apt install libmaxminddb-dev
 apt install apt-get install build-essential
 apt install gcc
 ```
-## Download Software:
+## Downloading Software
 
 Next, I downloaded SiLK:
 
@@ -41,7 +41,7 @@ wget https://tools.netsa.cert.org/releases/silk-3.19.1.tar.gz
 
 ![Pasted image 20240526104427](https://github.com/lm3nitro/Projects/assets/55665256/6b5983ce-df2b-4eb1-b3d2-2213e6c237e4)
 
-I also downloaded libfixbuf and YAF:
+I also downloaded libfixbuf and YAF
 
 ```
 wget https://tools.netsa.cert.org/releases/libfixbuf-2.4.1.tar.gz
@@ -57,7 +57,7 @@ wget https://tools.netsa.cert.org/releases/yaf-2.12.2.tar.gz
 
 ![Pasted image 20240526104552](https://github.com/lm3nitro/Projects/assets/55665256/a4e0f212-7ccd-41ff-a57f-9687704a1f44)
 
-## Installing libfixbuf :
+## Installing libfixbuf
 
 libfixbuf is designed for handling the collection, processing, and analysis of network flow data. Once downlaoded, I proceed to install it:
 
@@ -70,7 +70,7 @@ make
 make install
 ```
 
-## Installin SiLK :
+## Installing SiLK
 
 I then installed SiLK:
 
@@ -88,7 +88,7 @@ make
 make install
 ```
 
-## Installin YAF:
+## Installing YAF
 
 Previously I downloaded YAF, now I needed to install it:
 
@@ -108,7 +108,7 @@ cp /tmp/yaf-2.12.2/etc/init.d/yaf /etc/init.d/yaf
 chmod a+x /etc/init.d/yaf
 ```
 
-## Update Dynamic Linker:
+## Update Dynamic Linker
 
 Once everything was downlaoded and installed, I updated the cache of the dynamic linker. If you do not, it may be necessary to set the LD_LIBRARY_PATH environment variable to /usr/local/lib when you use SiLK or YAF. Typically an entry for /usr/local/lib will already exist in the /etc/ld.so.conf.d/ directory. To confirm, I used the following command: 
 
@@ -122,7 +122,7 @@ You should see something like this : /etc/ld.so.conf.d/libc.conf:/usr/local/lib
 
 To update the cache in this case, I ran the ldconfig program. 
 
-## Configure SiLK:
+## Configuring SiLK:
 
 I then moved on to configuring SiLK:
 
