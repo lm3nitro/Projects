@@ -72,6 +72,10 @@ airmon-ng start wlan0
 
 ![Pasted image 20240506144923](https://github.com/lm3nitro/Projects/assets/55665256/e77a0995-de1c-472d-af9d-eec3bc2f08cd)
 
+Configuring the interface in monitor mode:
+
+![Pasted image 20240506153617](https://github.com/lm3nitro/Projects/assets/55665256/64168ca7-1678-4883-91ca-1eb5c8d667fb)
+
 ```
 iwconfig
 ```
@@ -86,11 +90,15 @@ airmon-ng check kill
 
 ![Pasted image 20240506170052](https://github.com/lm3nitro/Projects/assets/55665256/f000995c-3999-4ab0-81e2-151a8183e98d)
 
+Optional: Finding WPS enabled devices:
+
+![Pasted image 20240506152325](https://github.com/lm3nitro/Projects/assets/55665256/882bdaf1-22be-427d-885e-0cc8a769f9d5)
+
 ## Airodump-ng
 
 ![Pasted image 20240506151337](https://github.com/lm3nitro/Projects/assets/55665256/a4fe54b5-1e41-4efe-adb1-cea922ded267)
 
-Airodump-ng is used for packet capturing of raw 802.11 frames for the intent of using them with aircrack-ng. If you have a GPS receiver connected to the computer, airodump-ng is capable of logging the coordinates of the found access points. Additionally, airodump-ng writes  out  a  text  file containing the details of all access points and clients seen
+Airodump-ng is used for packet capturing of raw 802.11 frames for the intent of using them with aircrack-ng. If you have a GPS receiver connected to the computer, airodump-ng is capable of logging the coordinates of the found access points. Additionally, airodump-ng writes  out  a  text  file containing the details of all access points and clients seen.
 
 ```
 airodump-ng --band abg wlan0mon
@@ -153,12 +161,6 @@ Here a few things that you can do with wireless traffic analysis:
  + Observing the difference between different types of security schemes
  + Identify evil twins and impersonating client from traffic captures
 
-Finding WPS enable devices:
 
-![Pasted image 20240506152325](https://github.com/lm3nitro/Projects/assets/55665256/882bdaf1-22be-427d-885e-0cc8a769f9d5)
-
-Configuring the interface in monitor mode:
-
-![Pasted image 20240506153617](https://github.com/lm3nitro/Projects/assets/55665256/64168ca7-1678-4883-91ca-1eb5c8d667fb)
 
 
