@@ -16,7 +16,7 @@ Is an open-source log management and analysis tool designed to help organization
 In this project, I will be deploying Graylog alongside Elasticsearch, MongoDB, and Nginx to create a robust log management and analysis platform focused on analyzing NetFlow traffic. This integration will enable the collection, storage, and real-time processing of NetFlow data from various network devices, providing detailed insights into network performance and traffic patterns. Elasticsearch serves as the backend search engine for efficient indexing and querying, while MongoDB offers a flexible storage solution for configuration and metadata. 
 
 ### Tools and Technology
-Win10, Linux, Java, Nginx, Elasticsearch, MongoDB, and Graylog
+Wireshark, Win10, Linux, Java, Nginx, Elasticsearch, MongoDB, and Graylog
 
 Network Diagram for this project:
 
