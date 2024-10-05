@@ -1,15 +1,24 @@
 # Graylog
 
-
 ![Pasted image 20240529170413](https://github.com/lm3nitro/Projects/assets/55665256/94243234-7b1d-4815-b502-7f179611b63b)
 
+Is an open-source log management and analysis tool designed to help organizations collect, index, and analyze log data from various sources. It provides a centralized platform for managing log data, which can be critical for monitoring, troubleshooting, and security analysis. The software uses a three-tier architecture and scalable storage based on Elasticsearch and MongoDB. Some of the features include:
 
-The Graylog software centrally captures, stores, and enables real-time search and log analysis against terabytes of machine data from any component in the IT infrastructure and applications. The software uses a three-tier architecture and scalable storage based on Elasticsearch and MongoDB.
++ Log Collection
++ Indexing and Searching
++ Dashboards
++ Alerts and Notifications
++ User Management and Security
++ Plugins and Extensibility
 
+### Scope:
 
-Network Diagram:
+In this project, I will be deploying Graylog alongside Elasticsearch, MongoDB, and Nginx to create a robust log management and analysis platform focused on analyzing NetFlow traffic. This integration will enable the collection, storage, and real-time processing of NetFlow data from various network devices, providing detailed insights into network performance and traffic patterns. Elasticsearch serves as the backend search engine for efficient indexing and querying, while MongoDB offers a flexible storage solution for configuration and metadata. 
 
+### Tools and Technology
+Linux, Nginx, Elasticsearch, MongoDB, and Graylog
 
+Network Diagram for this project:
 
 ![Pasted image 20240529171625](https://github.com/lm3nitro/Projects/assets/55665256/24bb3003-962e-4f3c-b09e-f610b34207ac)
 
