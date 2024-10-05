@@ -108,60 +108,57 @@ I was also able to capture the handshake traffic:
 
 ![Pasted image 20240506171923](https://github.com/lm3nitro/Projects/assets/55665256/920e6385-5802-440f-b8bd-d29226ac36c9)
 
+## Deauthentication Attack
 
-deauth attack 
+This attack exploits the IEEE 802.11 Wi-Fi standard, specifically the management frame called the deauthentication frame, which is used by the network to notify devices about their disconnection from the network. 
+
 ![Pasted image 20240506171759](https://github.com/lm3nitro/Projects/assets/55665256/37d1fd5f-aed5-4a3a-ae09-5a6a4366881c)
 
-getting the hanshake:
+Getting the hanshake:
 
 ![Pasted image 20240506203706](https://github.com/lm3nitro/Projects/assets/55665256/b24f592b-21af-4382-aa52-e6985de8ca51)
 
-looking at the pcap capture
+Looking at the pcap capture:
 
 ![Pasted image 20240506172047](https://github.com/lm3nitro/Projects/assets/55665256/dba870bc-bd1f-445e-8fcf-78566322240e)
 
+## Cracking the passowrd:
 
-cracking the passowrd:
+> [!TIP]
+> Use a good wordlist: The success of this method depends heavily on the quality of your password list. The more comprehensive it is, the higher your chances of success.
+> Optimize your wordlist: If you know the potential patterns of the password (e.g., common words, numbers), you can create a custom wordlist tailored to those expectations.
+> Time-consuming: Cracking can take a considerable amount of time, especially with longer and more complex passwords.
 
-![Pasted image 20240506172828](https://github.com/lm3nitro/Projects/assets/55665256/ccbeb01b-ec58-46ad-891d-23a13d899a7b)
+I used aircrack-ng along with the pcap and the rockyou wordlist:
 
+```
+aircrack-ng handshake.pcap-01.cap -w rockyou.txt
+```
 
 ![Pasted image 20240506172412](https://github.com/lm3nitro/Projects/assets/55665256/eaa7f11d-fc65-44f1-8c2c-15468ca6a3f9)
 
+## Wireless Traffic Analysis:
 
 ![Pasted image 20240506152027](https://github.com/lm3nitro/Projects/assets/55665256/256f8589-1fdb-4f6e-bc44-dbad54b89594)
-
-
-Wireless traffic analysis:
 
 Traffic analysis refers to inspecting the captured/stored WiFi traffic to gather information regarding clients, access points and their activities.
 
 ![Pasted image 20240506151730](https://github.com/lm3nitro/Projects/assets/55665256/39fb9ff8-519b-484c-8257-dd920724dce0)
 
-
 Here a few things that you can do with wireless traffic analysis:
 
-Analyzing WiFi traffic to identify WiFi networks and clients
-
-Different WiFi frames and frame structure
-
-Checking client AP connection/disconnection, WPA handshake and SAE handshake
-
-Observing the difference between different types of security schemes
-
-Identifying evil twins and impersonating client from traffic captures
-
-
-
+ + Analyzing WiFi traffic to identify WiFi networks and clients
+ + Different WiFi frames and frame structure
+ + Checking client AP connection/disconnection, WPA handshake and SAE handshake
+ + Observing the difference between different types of security schemes
+ + Identify evil twins and impersonating client from traffic captures
 
 Finding WPS enable devices:
 
 ![Pasted image 20240506152325](https://github.com/lm3nitro/Projects/assets/55665256/882bdaf1-22be-427d-885e-0cc8a769f9d5)
 
-
 Configuring the interface in monitor mode:
 
 ![Pasted image 20240506153617](https://github.com/lm3nitro/Projects/assets/55665256/64168ca7-1678-4883-91ca-1eb5c8d667fb)
-
 
 
