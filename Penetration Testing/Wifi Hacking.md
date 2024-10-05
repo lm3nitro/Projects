@@ -145,6 +145,8 @@ aircrack-ng handshake.pcap-01.cap -w rockyou.txt
 
 ![Pasted image 20240506172412](https://github.com/lm3nitro/Projects/assets/55665256/eaa7f11d-fc65-44f1-8c2c-15468ca6a3f9)
 
+As seen in the screenshot, I was successful in cracking and obtaining the password: `hackme-lm3nitro`
+
 ## Wireless Traffic Analysis:
 
 ![Pasted image 20240506152027](https://github.com/lm3nitro/Projects/assets/55665256/256f8589-1fdb-4f6e-bc44-dbad54b89594)
@@ -161,6 +163,6 @@ Here a few things that you can do with wireless traffic analysis:
  + Observing the difference between different types of security schemes
  + Identify evil twins and impersonating client from traffic captures
 
+### Summary
 
-
-
+By going through the process of capturing the handshake and attempting to crack the password, I was able to gain a deeper understanding of how Wi-Fi security protocols (like WEP, WPA, and WPA2) function, as well as their vulnerabilities. Attempting to crack my own Wi-Fi password also helped me to understand the importance of using strong, complex passwords. 
