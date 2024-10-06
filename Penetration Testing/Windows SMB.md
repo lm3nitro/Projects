@@ -1,78 +1,94 @@
+# Windows SMB
 
+<img width="300" alt="Screenshot 2024-10-06 at 1 56 51 PM" src="https://github.com/user-attachments/assets/8e9b8914-9dd1-4b36-9e95-fc864cbba124">
 
+SMB (Server Message Block) is a network file sharing protocol that allows applications, users, or devices to access and manage files on remote servers. In Windows, SMB is primarily used to share files, printers, and serial ports, and it enables seamless access to network resources, making it a core component of Windows networking.
+
+### Scope:
+
+In this exercise, I will scan a Windows host using Nmap to identify open ports and vulnerable services. I will then verify the vulnerability using Tenable, and then exploit it with Metasploit to gain access. Once inside, I will extract password hashes and use John the Ripper to crack them, allowing me to log in as an authenticated user. This simulates a full penetration test, from discovery to exploitation and password cracking.
+
+### Tools and Technology:
+
+Windows, SMB, Wireshark, John the Ripper, Linux, Metasploit, and Tenable
+
+## Getting Started
+
+To get started, I used my Linux VM and ran an nmap scan against a Windows 7 VM in my network on 192.168.91.137:
 
 ![Pasted image 20240430150728](https://github.com/lm3nitro/Projects/assets/55665256/4c844034-1d00-45f5-aece-fc84dd32fecc)
 
-
-Ports 135, 139, 445 are open Let's run all the SMB scripts to see if we can find something then later we can check 3389
-
-![Pasted image 20240430130929](https://github.com/lm3nitro/Projects/assets/55665256/7a02251b-f8e6-4ddb-8755-b90fca42c2fb)
-
-
-Lets zoom in to see the vulnerability better:
-
-
-![Pasted image 20240430131124](https://github.com/lm3nitro/Projects/assets/55665256/2394fd85-53da-4d6c-a2f1-3fc45a1272fd)
-
-
-
-Let's look for all the NSE scripts related to SMB:
+I can see that ports 135, 139, 445 are open. Knowing that these are open, I then ran all the SMB scripts to see if I could find something. Below are all the NSE scripts related to SMB:
 
 ![Pasted image 20240430131406](https://github.com/lm3nitro/Projects/assets/55665256/dcd0c45d-f649-4dc7-9529-23ff29195fa4)
-
-
 
 Example of using specify NSE script:
 
 ![Pasted image 20240430131631](https://github.com/lm3nitro/Projects/assets/55665256/e45b47fa-8ac3-40f4-857c-a636e8a8c1e0)
 
+Running all the scripts against the host:
 
-Using Nessus :
+![Pasted image 20240430130929](https://github.com/lm3nitro/Projects/assets/55665256/7a02251b-f8e6-4ddb-8755-b90fca42c2fb)
+
+Zoomed in to see the vulnerability better:
+
+![Pasted image 20240430131124](https://github.com/lm3nitro/Projects/assets/55665256/2394fd85-53da-4d6c-a2f1-3fc45a1272fd)
+
+## Nessus
+
+Using namp above, I was able to see that the host was vulernable to CVE-2017-0143. Knowing this, I wanted to further confirm and used tenable to run a scan against the host and see what it could find. Tenable was able to find 2 critical vulenrabilities and 1 high:
 
 ![Pasted image 20240430125818](https://github.com/lm3nitro/Projects/assets/55665256/d8eb4157-fced-4087-a586-b6e431edcc02)
 
+Lookign further into the vulnerability using tenable, this matches what we found above wiht nmap:
+
 ![Pasted image 20240430125946](https://github.com/lm3nitro/Projects/assets/55665256/4d24cee6-82ae-4b9f-98d0-1ce40afaf672)
 
+## Metasploit:
 
-
-# Running Metasploit:
+Now that I know that this host is vulernable to SMB, I will use Metasploit to execute the exploit against this vulnerability:
 
 ![Pasted image 20240430132250](https://github.com/lm3nitro/Projects/assets/55665256/85d94b75-c48b-4b44-86a4-4ffb72892a54)
 
-
-Searching for a Xploit:
+Searching for the exploit:
 
 ![Pasted image 20240430132540](https://github.com/lm3nitro/Projects/assets/55665256/9f23abb8-0ccb-4f2c-8f7d-13f31408e29b)
 
-
-Using a auxiliary scanner:
-
+Using an auxiliary scanner:
 
 ![Pasted image 20240430133026](https://github.com/lm3nitro/Projects/assets/55665256/9156e165-f04d-465a-ab12-29ded9b478e6)
 
+Executing the exploit:
+
 ![Pasted image 20240430133353](https://github.com/lm3nitro/Projects/assets/55665256/a3893b46-0d83-4071-ac52-b7643cd28f40)
 
+HOST and LHOST are parameters that define network targets and your own system's settings. RHOST is the target system and LHOST is my linux machine (attacking system):
 
 set RHOST 192.168.91.137
 set LHOST 192.168.91.134
 
-
 ![Pasted image 20240430140159](https://github.com/lm3nitro/Projects/assets/55665256/1f0c4455-65d3-4bc3-9aa3-1e08199137c3)
 
+As seen in the screenshot above, the exploit was successful. 
 
-Looking at the exploit on the Network traffic:
+## Wireshark
+
+Using Wireshark while the exploit was running, allowed me to capture and analyze the network traffic, helping to visualize how the exploit behaves behind the scenes. It showed details like packet exchanges, payload delivery, and vulnerabilities being targeted. This helped me to better understand the exploit's impact. 
+
+Below is the traffic capture using Wireshark during the exploit:
 
 ![Pasted image 20240430145719](https://github.com/lm3nitro/Projects/assets/55665256/7fea045a-b95f-4977-81d7-9109ec58315a)
 
+Looking further into the traffic related to the exploit:
+
 ![Pasted image 20240430145921](https://github.com/lm3nitro/Projects/assets/55665256/c981eb3c-ef69-474d-a44b-4eda2925c46b)
 
+## Session
 
+As seen 
 Upgrading Meterpreter shell (if needed/optional)
 
-
 ![Pasted image 20240430141151](https://github.com/lm3nitro/Projects/assets/55665256/7da1055c-2225-4b7e-a998-a2129f24fdd6)
-
-
 
 Getting into the back to the Session:
 
