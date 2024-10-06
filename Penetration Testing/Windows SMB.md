@@ -10,7 +10,7 @@ In this exercise, I will scan a Windows host using Nmap to identify open ports a
 
 ### Tools and Technology:
 
-Windows, SMB, Wireshark, John the Ripper, Linux, Metasploit, and Tenable
+Windows 7, SMB, Wireshark, John the Ripper, Mimikatz, Hashcat, Linux, Metasploit, Remote Desktop, and Tenable
 
 ## Getting Started
 
@@ -83,99 +83,91 @@ Looking further into the traffic related to the exploit:
 
 ![Pasted image 20240430145921](https://github.com/lm3nitro/Projects/assets/55665256/c981eb3c-ef69-474d-a44b-4eda2925c46b)
 
-## Session
+## Remote Session
 
-As seen 
-Upgrading Meterpreter shell (if needed/optional)
+The exploit successfully compromised the target which created a reverse shell. In the screenshot below, I was given the option to upgrade Meterpreter shell, this is optional nad not needed. 
 
 ![Pasted image 20240430141151](https://github.com/lm3nitro/Projects/assets/55665256/7da1055c-2225-4b7e-a998-a2129f24fdd6)
 
-Getting into the back to the Session:
+I went back into the running session:
 
 ![Pasted image 20240430141305](https://github.com/lm3nitro/Projects/assets/55665256/0660bea4-2b41-42e8-917c-9c40fbbd00a7)
 
+Taking a look at the directories on the Win 7 host:
+
 ![Pasted image 20240430141716](https://github.com/lm3nitro/Projects/assets/55665256/f527d86a-2b9a-4dae-9334-cc0327e423d3)
 
-
-Let's go to the user directory:
+I decided to go into the user directory and can see a user by the name lm3nitro:
 
 ![Pasted image 20240430142147](https://github.com/lm3nitro/Projects/assets/55665256/6fe119f1-e1fb-4311-91ca-acb673fbffa2)
 
-
-Creating a directory :
+I then created a directory with this sanme users name under Desktop:
 
 ![Pasted image 20240430142553](https://github.com/lm3nitro/Projects/assets/55665256/86326d78-c2cb-4386-be07-6af2699bf3a3)
 
-
-On the windows 7 box , we have created a directory called lm3nitro:
+On the windows 7 box, I was able to se that the directory called lm3nitro was indeed created:
 
 ![Pasted image 20240430142453](https://github.com/lm3nitro/Projects/assets/55665256/b3a48d82-9cee-40f1-b65e-eaf8b5024d02)
 
+I was also able to see the reverse shell connection that had been established. 
 
-We can the se reverse meterperter Shell: 
+## Dumping the hash and Cracking it
 
-#  Dumping the hash and Cracking it :
-
-
-Let's crack user m3nitro password:
-
+Now that I know that there is a user by the name lm3nitro, I wanted to crack the users password. To do this, I first used hashdump:
 
 ![Pasted image 20240430145228](https://github.com/lm3nitro/Projects/assets/55665256/2649f103-281e-49e6-a44a-7be91ddba771)
 
-
-Creating a file to crack it with john the repaper
+With the provided information from hashdump, I creating a file to crack it with John the Ripper:
 
 ![Pasted image 20240430145322](https://github.com/lm3nitro/Projects/assets/55665256/dfab06df-d70f-4b52-b697-7cd559552dd7)
 
-
-
-using john to crack the hash:
+## John the Ripper
 
 ![Pasted image 20240502094456](https://github.com/lm3nitro/Projects/assets/55665256/50b529a5-68e1-4a2f-8487-dfdacd256f62)
 
+Once I had the file saved, I then used John the Ripper along with a wordlist and the previos found hash:
 
 ![Pasted image 20240430145055](https://github.com/lm3nitro/Projects/assets/55665256/9e1d6c18-17b8-47aa-bdcb-55de62f518d9)
 
+## Hashcat
 
-Hascat:
-
-Selecting  NTLM mode:
+Another way to do this is by using Hashcat:
 
 ![Pasted image 20240506102724](https://github.com/lm3nitro/Projects/assets/55665256/1027efb9-96a0-44a8-8483-719bb9c9319f)
-
 
 Cracking the password:
 
 ![Pasted image 20240506104207](https://github.com/lm3nitro/Projects/assets/55665256/3b8659c0-2377-45a8-a40f-00cfa3b7c248)
 
+## Mimikatz
 
-Mimikatz:
-
+Mimikatz can also be used:
 ![Pasted image 20240506105845](https://github.com/lm3nitro/Projects/assets/55665256/5d1c8c7a-5e20-4e13-b8e0-c4a6debed536)
+
+Now we can go to see all the credentials:
 
 ![Pasted image 20240506111530](https://github.com/lm3nitro/Projects/assets/55665256/8f6cf77c-991d-4594-9efb-ea7d2242d4ce)
 
-
-All the creds:
+All the credentials, including the username and password for lm3nitro:
 
 ![Pasted image 20240506111623](https://github.com/lm3nitro/Projects/assets/55665256/b959c579-700e-482a-beb8-5ae3f6ff927c)
 
-Remote desktop:
+## Remote Desktop
+
+Now that I have the credentails, I use Remote Desktop to login:
 
 ![Pasted image 20240430151932](https://github.com/lm3nitro/Projects/assets/55665256/199e2404-476d-4db3-b72d-1063a559af6a)
 
-
-logged in:
-
+I successfully logged in as lm3nitro:
 
 ![Pasted image 20240430151350](https://github.com/lm3nitro/Projects/assets/55665256/3739ff7a-8c28-4ddc-9661-8e45c71d2d87)
 
-
-LIsting the established connection:
+Listing the established connections:
 
 ![Pasted image 20240430152107](https://github.com/lm3nitro/Projects/assets/55665256/b098f300-75ec-42e5-84e2-98f6717b1049)
 
+### Summary:
 
+In this exercise, I was able to identify a vulenrability, exploit it, and understand the implications of a successful attack, as well as techniques for credential extraction and network traffic analysis. This allowed me to to better understand the entire penetration testing process, from reconnaissance to exploitation and post-exploitation. 
 
-
-
+This exercise also demontrated the necessity of maintaining systems that are patched and up-to-date as a way to mitigate vulnerabilities and reduce the risk and attack surface of exploitation by adversaries.
