@@ -8,7 +8,7 @@ DPI is a technology that allows for the inspection and analysis of the contents 
 
 ### Scope: 
 
-I currently have a Fortinet 60F firewall in my home network. This is the process that I followed in order to enable DPI on my firewall and the test that I ran to verify it's functionality. Fortinet's DPI is a crucial component of their security solutions, providing advanced visibility and control over network traffic at a granular level. I was excited to get this implemented in my network. 
+I currently have a Fortinet 60F firewall in my home network. The exercise involves enabling Deep Packet Inspection (DPI) on a FortiGate Firewall and installing the firewall's SSL certificate on a host to test the functionality of traffic monitoring and control.  Fortinet's DPI is a crucial component of their security solutions, providing advanced visibility and control over network traffic at a granular level. I will then test to confirm that the firewall accurately monitors and controls traffic, enhancing network security and performance.
 
 ### Tools and Technology:
 
