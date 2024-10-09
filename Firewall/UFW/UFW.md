@@ -224,7 +224,7 @@ ufw show added
 
 This project was more of a walkthrough to demonstrate the configuration of the UFW. By implementing a default deny policy and allowing only specific services, UFW contributes to device hardening, minimizing the attack surface and protecting against unauthorized access. Implementing device harding measure ensures that only necessary services and ports are active, minimizing vulnerabilities that attackers could exploit. This proactive approach helps safeguard sensitive data, maintain system integrity, and enhance overall cybersecurity posture.
 
-Additionally, becuase UFW is open source and lightweight, it ensures minimal impact on system performance, making it a practical choice for budget-conscious users. Overall, a great firewall solution. 
+Additionally, becuase UFW is open source and lightweight, it ensures minimal impact on system performance, making it a practical choice if you are a budget-conscious user. Overall, a great firewall solution. 
 
 
 
