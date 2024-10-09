@@ -1,6 +1,6 @@
 # Sending Fortinet Logs to Splunk
 
-Splunk is a SIEM (Security Information and Event Management). It is used to collect, analyze, and visualize data from various sources, such as servers, applications, etc. This makes it great for event correlation. By correlating events, you can identify suspicious activities and incidents.It can also help trace the timeline of events which in turn aids in root cause analysis.  
+Splunk is a SIEM (Security Information and Event Management). It is used to collect, analyze, and visualize data from various sources, such as servers, applications, etc. This makes it great for event correlation. By correlating events, you can identify suspicious activities and incidents. It can also help trace the timeline of events which in turn aids in root cause analysis.  
 
 ## Scope:
 Since integrating the new 60F Fortigate Firewall into my network, I wanted to ensure that I was also sending all my traffic logs to Splunk. Here are the steps taken to have the firewall logs sent to Splunk.  
@@ -53,5 +53,4 @@ I then went back to Splunk to verify thst I was getting the logs, and the logs w
 
 ### Summary:
 
-This was just the initial configuration. I hope to go into deeper detail in the future and take a closer look into the information that is being sent and create greater visibility by creating dashboards on the most important events and data. 
-
+This initial configuration marks just the beginning of my journey. I aim to delve deeper into the data being collected, enhancing visibility by creating dashboards that highlight the most critical events and metrics. This integration will not only improve threat detection capabilities but also facilitate compliance reporting and support forensic investigations by offering a comprehensive historical record of network activity. By focusing on these key areas, I can better understand network behavior and strengthen our overall security posture.
