@@ -81,5 +81,5 @@ During this test, I also had a capture running. Below is what I was able to see 
 
 ### Summary:
 
-Overall, Fortinet's DPI is a very valuable technology. I really liked the content filtering and granular visibility. The granular visibility provided detailed insights into the network traffic. This helped me to understand and better control the traffic on my host and at the same time explore the features and functionalities that come integrated with the FortiGate Firewall. DPI also helps to optimize network performance by prioritizing critical applications and provides detailed insights into network traffic. This feature also helps to adhere to regulatory requirements regarding data protection and privacy. 
+Overall, Enabling Deep Packet Inspection (DPI) enhances security by allowing detailed analysis of packet contents and facilitates application layer filtering, enabling granular control over traffic and effective bandwidth management by prioritizing critical applications. This experience allowed me to gain a deeper understanding of traffic management on my host system, enabling me to effectively monitor and control the flow of data in real-time. Additionally, I learned how to configure and utilize tools like Deep Packet Inspection (DPI) and logging for enhanced threat detection and analysis. 
 
