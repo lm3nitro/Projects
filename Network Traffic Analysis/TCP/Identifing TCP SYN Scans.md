@@ -19,67 +19,8 @@ Below, I will demonstrate the following:
 + TCP SYN flood with Port Sweep
 + TCP Hijacking
 
-### Tools and Technology:
 
-Linux and Wireshark
 
-## Scenario 1: TCP SYN Scan
-
-A TCP SYN scan is a common and efficient network scanning technique used to detect open ports on a target system. This method is also called a half-open scan because it doesn't complete the full TCP handshake, reducing the likelihood of detection.
-
-Let's take a look at the folowing pcap and the abnormal TCP behavior. To start, we will Filter for tcp syn flags and ports (1-1024):
-
-```
-tcpdump -nr threat_actor.pcap tcp[tcpflags] == tcp-syn and portrange 1-1024
-```
-
-![Pasted image 20240325120655](https://github.com/lm3nitro/Projects/assets/55665256/5faa423d-3c40-4433-b7e0-9b5b151f057c)
-
-It appears that the threat actor located at 192.168.11.62 is actively scanning the node 192.168.11.46 in search of open ports. We have observed a significant number of SYN (synchronize) requests being sent to 192.168.11.46 across multiple ports within a fraction of a second.
-
-To pinpoint the extent of the synchronization requests sent by the threat actor, we need to narrow down our analysis to determine the exact number of SYN requests received by 192.168.11.46.
-
-```
-tcpdump -nr threat_actor.pcap src host 192.168.11.62 and dst host 192.168.11.62 and dst host 192.168.11.46 and tcp[tcpflags] == tcp-syn | wc -l
-```
-
-![Pasted image 20240325122547](https://github.com/lm3nitro/Projects/assets/55665256/0454d367-56d4-49c1-bd12-5f51240e92fa)
-
-## Scenario 2: TCP ACK Scan
-
-A TCP ACK scan is a network scanning technique used primarily to determine the state of a firewall or packet filtering device. Unlike other scans, the ACK scan doesn't check whether ports are open but instead checks whether packets are filtered (blocked) or unfiltered (allowed through) by firewalls or other security mechanisms.
-
-In the following pcap, we see the host 192.168.10.5 sending a large amount of ACK packets to our host 192.168.10.1. These packets have some unusual traffic as they are all originating from the same source port and going to the same IP address but in different ports. We can also see the the sequence number remains the same throughout all of the packets. 
-
-```
-tcpdump -nr threat_actor.pcap tcp[tcpflags] == tcp-ack and portrange 1-65365
-```
-
-![Pasted image 20240327153755](https://github.com/lm3nitro/Projects/assets/55665256/443bb5d8-effc-44b1-9ced-dbbe2fc9ab57)
-
-When analyzing a TCP ACK scan using tcpdump, look for packets with the ACK flag set, targeting specific port ranges commonly used by the scanning device, and observe timing patterns, and response behaviors.
-
-## Scenario 3: TCP FIN Scan
-
-A TCP FIN scan is a port scanning technique where the attacker sends TCP packets with the FIN (finish) flag set to closed ports on a target system. The goal of a FIN scan is to determine whether a port is open, closed, or filtered by examining the responses received from the target.
-
-Threat actors might use a TCP FIN scan for several reasons:
-
-+ Stealthy Scanning
-+ Port State Identification
-+ Firewall Evasion
-+ Operating System Fingerprinting
-+ Anomaly Detection Testing
-
-Lets look at an example of this type of scan in the pcap below:
-
-```
-tcpdump -nr threat_actor.pcap tcp[tcpflags] == tcp-fin -c 20
-```
-
-![Pasted image 20240327154309](https://github.com/lm3nitro/Projects/assets/55665256/1895a7b0-0a00-432a-badb-3eae4205eecf)
-
-Overall, TCP FIN scans are a reconnaissance tool used by threat actors to gather information about a target system's port states, network configuration, and potential vulnerabilities while attempting to remain undetected and evade security measures.
 
 ## Scenario 4: TCP Xmas Scan
 
