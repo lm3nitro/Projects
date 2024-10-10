@@ -1,9 +1,31 @@
-# TCP Attacks and Anomalous Behavior
+# TCP Anomolies
 
 TCP (Transmission Control Protocol) is a fundamental protocol used for reliable data transmission between devices. However, TCP is also a common target for various attacks aimed at disrupting communication, exploiting vulnerabilities, or gaining unauthorized access. When analyzing network anomalies, starting with the IP layer is crucial as it facilitates packet transfer using source and destination IP addresses. While the IP layer doesn't manage packet loss or tampering, higher layers like transport and application layers handle these issues.
 
-Here we take a look at the most common TCP attacks, highlighting the importance of effective network security practices. Implementing firewalls, intrusion detection systems (IDS), access control lists (ACLs), and regular security audits are crucial in mitigating the risks associated with TCP attacks and maintaining a secure network environment.
+### Scope:
+
+Here we take a look at the most common TCP attacks and anomolies, highlighting the importance of effective network security practices. Implementing firewalls, intrusion detection systems (IDS), access control lists (ACLs), and regular security audits are crucial in mitigating the risks associated with TCP attacks and maintaining a secure network environment.
+
+Below, I will demonstrate the following:
+
++ TCP SYN Scan
++ TCP ACK Scan
++ TCP FIN Scan
++ TCP Xmas Scan
++ TCP Null Scan
++ TCP Fragmentation Scan
++ TCP Reset Scans
++ LAN-DoS Attack
++ TCP SYN flood with Port Sweep
++ TCP Hijacking
+
+### Tools and Technology:
+
+Linux and Wireshark
+
 ## Scenario 1: TCP SYN Scan
+
+A TCP SYN scan is a common and efficient network scanning technique used to detect open ports on a target system. This method is also called a half-open scan because it doesn't complete the full TCP handshake, reducing the likelihood of detection.
 
 Let's take a look at the folowing pcap and the abnormal TCP behavior. To start, we will Filter for tcp syn flags and ports (1-1024):
 
@@ -24,6 +46,8 @@ tcpdump -nr threat_actor.pcap src host 192.168.11.62 and dst host 192.168.11.62 
 ![Pasted image 20240325122547](https://github.com/lm3nitro/Projects/assets/55665256/0454d367-56d4-49c1-bd12-5f51240e92fa)
 
 ## Scenario 2: TCP ACK Scan
+
+A TCP ACK scan is a network scanning technique used primarily to determine the state of a firewall or packet filtering device. Unlike other scans, the ACK scan doesn't check whether ports are open but instead checks whether packets are filtered (blocked) or unfiltered (allowed through) by firewalls or other security mechanisms.
 
 In the following pcap, we see the host 192.168.10.5 sending a large amount of ACK packets to our host 192.168.10.1. These packets have some unusual traffic as they are all originating from the same source port and going to the same IP address but in different ports. We can also see the the sequence number remains the same throughout all of the packets. 
 
