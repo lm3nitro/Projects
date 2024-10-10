@@ -6,7 +6,7 @@ A TCP SYN scan is a common and efficient network scanning technique used to dete
 
 ### How it works:
 
-SYN Packet: The scanning tool sends a TCP packet with the SYN flag set to a specific port on the target host, indicating an attempt to start a connection.
+The scanning tool sends a TCP packet with the SYN flag set to a specific port on the target host, indicating an attempt to start a connection.
 Response from Target:
 
 + If the port is open, the target host replies with a SYN-ACK packet, indicating it is ready to complete the connection.
