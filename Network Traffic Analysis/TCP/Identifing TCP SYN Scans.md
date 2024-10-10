@@ -21,72 +21,8 @@ Below, I will demonstrate the following:
 
 
 
-
-## Scenario 4: TCP Xmas Scan
-
-A TCP Xmas scan is a port scanning technique where the attacker sends TCP packets with specific flags set to closed ports on a target system. The flags typically include the FIN (finish), PSH (push), and URG (urgent) flags, creating a packet with all flags "lit up" like a Christmas tree. 
-
-In the example below, we can take a look and see the behavior described above.
-
-```
-tcpdump -nr threat_actor.pcap 'tcp[13] & 32!=0' or tcp[13] & 1!=0' -c 20
-```
-
-![Pasted image 20240327155225](https://github.com/lm3nitro/Projects/assets/55665256/a6434005-6b76-438c-b3a1-a6c7435cf034)
-
-
-## Scenario 5: TCP Null Scan
-
-Null scans with flags set to none are often used by attackers for reconnaissance purposes to gather information about a target system's port states and network configuration. They are considered stealthy because they do not initiate a full TCP connection or include any specific flag information that may trigger detection by intrusion detection systems (IDS) or firewall rules.
-
-Lets take a look to see what this looks like in a pcap and how we can identify it. 
-
-```
-tcpdump -nr threat_actor.pcap ! 'tcp[13] & 32!=0' or 'tcp[13] & 1!=0' -c 10
-```
-
-![Pasted image 20240327155836](https://github.com/lm3nitro/Projects/assets/55665256/87b22a4a-5311-48c2-b4ce-18f3005eba0c)
-
-Unlike other port scanning techniques that may set specific flags to elicit responses from the target system, a null scan with flags set to none deliberately omits any flag information, creating a "null" or empty TCP packet.
-
-## Scenario 6: TCP Fragmentation Scan
-
-A TCP fragmentation scan is a port scanning technique that exploits vulnerabilities in the TCP/IP packet fragmentation and reassembly process. In this type of scan, the attacker sends specially crafted fragmented packets to a target system, aiming to bypass firewall rules, evade intrusion detection systems (IDS), or identify open ports.
-
-Below is an example of this type of scan.
-
-```
-tcpdump -nr threat_actor.pcap and 'ip[6] = 32' -c 20
-```
-
-![Pasted image 20240327160923](https://github.com/lm3nitro/Projects/assets/55665256/289bd943-eaba-4d52-8982-b7a1c1e31ffa)
-
-Now lets take a look at the following fields: Flags, TTL, and Length
-
-```
-tcpdump -nr threat_actor.pcap and 'ip[6] = 32' -c 3 -vvvA
-```
-
-![Pasted image 20240327161124](https://github.com/lm3nitro/Projects/assets/55665256/82fa873b-031b-4f54-bfca-64be7e1a99fa)
-
-In a TCP fragmentation scan, it's crucial to consider the Flags field in the TCP header for identifying packet purpose and nature. Analyzing the TTL (Time to Live) field in the IP header provides insights into network path anomalies, while monitoring packet Length helps detect manipulation attempts and potential vulnerabilities in packet reassembly. These three aspects—Flags, TTL, and Length—are key factors to consider for effective analysis and mitigation of TCP fragmentation scan attacks.
-
 ## Scenario 7: TCP Reset Scans
 
-If an adversary aims to disrupt our network with a denial-of-service attack, they might use a TCP RST Packet injection attack, also known as TCP connection termination. This attack involves spoofing the source address to the affected machine's IP, modifying TCP packets with the RST flag to terminate connections, and targeting ports currently in use by our machines.
-
-```
-tcpdump -nr 'tcp[13] & 4!=0' && ! net 10.0.0.0/8
-```
-![Pasted image 20240327161657](https://github.com/lm3nitro/Projects/assets/55665256/404ceed5-b5a4-4de2-8c07-833817cddf31)
-
-This attack involves several components:
-
-+ The attacker spoofs the source address to match the affected machine's.
-+ The attacker alters the TCP packet to include the RST flag, ending the connection.
-+ The attacker designates the destination port to match one currently utilized by one of our machines.
-
-One way to identify a TCP RST attack is by comparing the physical address of the transmitter with our network device list; a mismatch, such as a different MAC address, indicates potential malicious activity. However, attackers can spoof MAC addresses to evade detection, leading to retransmissions and other anomalies similar to those seen in ARP poisoning incidents.
 
 ## Scenario 8: LAN-DoS Attack
 
