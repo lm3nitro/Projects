@@ -1,5 +1,7 @@
 # LAN-DoS Attack
 
+<img width="673" alt="Screenshot 2024-10-10 at 10 05 23 PM" src="https://github.com/user-attachments/assets/3fb7583c-1b23-4e4a-b288-09a456e0e5e9">
+
 In a LAND attack, the attacker sends specially crafted packets with the same source and destination IP addresses as well as the same source and destination port numbers. This can confuse the target device's TCP/IP stack, causing it to enter a loop where it keeps processing the malicious packets, consuming CPU resources and potentially leading to a denial of service.
 
 ### How it works:
