@@ -1,12 +1,25 @@
-Using High Orbit Ion Cannon:
+# DDOS Attack
 
+A DDoS (Distributed Denial of Service) attack is a malicious attempt to disrupt the normal functioning of a targeted server, service, or network by overwhelming it with a flood of internet traffic. In a DDoS attack, multiple compromised computers (often part of a botnet) are used to send an enormous volume of requests or data to the target, making it unable to respond to legitimate traffic. This can result in slow performance, outages, or complete service disruption for users. DDoS attacks can target various types of services, including websites, online games, and APIs.
+
+### Scope:
+
+This scenario involves setting up a Windows 7 host as the target for a simulated DDoS attack using High Orbit Ion Cannon (HOIC), Low Orbit Ion Cannon (LOIC) and hping. The objective is to emulate a realistic DDoS attack to understand its effects on system performance and service availability. HOIC and Hping will be used to generate HTTP flood requests targeting the Windows 7 host. After executing the attack, I will analyze the traffic patterns and system response to identify vulnerabilities and the extent of disruption. Following this analysis, I will deploy Anti-DDoS Guardian to implement mitigation strategies to restore service and improve the resilience of the Windows host against future attacks. 
+
+### Tools and Technologies:
+Win7, Linux, High Orbit Ion Cannon, Low Orbit Ion Cannon, Hping, Wireshark, and Anti-DDOS Guardian
+
+### Getting Started:
+
+To Similate the DDOS attack I will start with using the High Orbit Ion Cannon. Here I have entered the information for the target host which is a Windows 7 VM:
 
 ![Pasted image 20240503091455](https://github.com/lm3nitro/Projects/assets/55665256/781de2ba-c065-4472-a897-5c3e69b1b667)
 
-
-setting up the HOIC
+Once the target host information is inserted, I fired the lazer:
 
 ![Pasted image 20240503091544](https://github.com/lm3nitro/Projects/assets/55665256/dc09773e-1713-4ff3-bfda-82cbe60c8506)
+
+I ensured that the parameters were set to high and selected a booster:
 
 ![Pasted image 20240503092545](https://github.com/lm3nitro/Projects/assets/55665256/86222d24-c8b6-4e6b-82c3-47142158b3b8)
 
@@ -116,4 +129,7 @@ More details
 Much better:
 ![Pasted image 20240505175809](https://github.com/lm3nitro/Projects/assets/55665256/ec12c831-57d8-4839-a27a-7f5f741f3036)
 
+### Summary:
+
+This exercise covers attack detection, traffic analysis, and mitigation techniques, ultimately enhancing our understanding of DDoS vulnerabilities and defenses in network security.
 
