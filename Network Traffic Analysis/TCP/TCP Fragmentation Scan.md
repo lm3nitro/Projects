@@ -2,7 +2,7 @@
 
 A TCP fragmentation scan is a port scanning technique that exploits vulnerabilities in the TCP/IP packet fragmentation and reassembly process. In this type of scan, the attacker sends specially crafted fragmented packets to a target system, aiming to bypass firewall rules, evade intrusion detection systems (IDS), or identify open ports.
 
-How It Works
+### How It Works
 
 In this technique, the attacker crafts TCP packets that are fragmented into smaller pieces. This can be done using tools that allow for the manipulation of TCP/IP headers. The attacker then sends these fragmented packets to various ports on the target system.
    
@@ -42,3 +42,7 @@ In a TCP fragmentation scan, it's crucial to consider the Flags field in the TCP
 + Attackers may employ this technique as part of their reconnaissance efforts to identify vulnerabilities in a target network.
 
 ### Defense:
+
++ Create custom IPS rules that specifically identify and block traffic patterns associated with fragmentation scans, such as multiple fragmented packets targeting different ports.
++  Set up alerts that trigger when the number of fragmented packets from a single IP address exceeds a defined threshold within a short time frame.
++  Integrate threat intelligence feeds into your security tools to stay informed about the latest scanning techniques, including fragmentation scans, and adjust your defenses accordingly.
