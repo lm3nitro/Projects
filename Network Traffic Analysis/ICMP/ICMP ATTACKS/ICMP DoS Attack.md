@@ -57,7 +57,7 @@ Based on the output, we see that the receiving node is being bombarded with a si
 To address this issue and mitigate similar threats in the future, the following steps can be taken:
 
 + Implement access control lists (ACLs) on routers and firewalls to limit ICMP traffic, allowing only legitimate sources and types of ICMP packets.
-+ onfigure rate limiting for ICMP requests to prevent excessive traffic from overwhelming any single node.
++ Configure rate limiting for ICMP requests to prevent excessive traffic from overwhelming any single node.
 + Deploy IDS solutions that can identify and alert on anomalous ICMP traffic patterns, enabling prompt investigation and response.
 + Isolate sensitive nodes within their own network segments to limit the impact of potential DoS attacks originating from internal sources.
 + Continuously monitor network traffic for unusual spikes in ICMP activity and conduct regular audits to detect and remediate potential vulnerabilities.
