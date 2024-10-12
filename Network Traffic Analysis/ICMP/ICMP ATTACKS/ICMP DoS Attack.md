@@ -48,7 +48,7 @@ tcpdump -nnr icmp_threat_actor.pcap host 111.43.91.100 -vv
 
 ![Pasted image 20240325224948](https://github.com/lm3nitro/Projects/assets/55665256/21865b21-ddea-4b62-8927-f3d32e126100)
 
-## Conclusion
+Conclusion:
 
 Based on the output, we see that the receiving node is being bombarded with a significant volume of fragmented ICMP random spoof requests from an internal source. This activity has the potential to cause a denial of service (DoS) on node 192.168.10.5.
 
