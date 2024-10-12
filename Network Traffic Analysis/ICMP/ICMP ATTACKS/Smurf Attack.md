@@ -4,7 +4,7 @@
 You are a network security analyst at a medium-sized enterprise. Recently, the organization experienced significant downtime and intermittent connectivity issues. You suspect a potential Distributed Denial of Service (DDoS) attack, specifically a Smurf attack, which exploits ICMP traffic to overwhelm network resources. Your task is to analyze the network traffic to confirm whether a Smurf attack is occurring.
 
 > [!NOTE]  
-> A Smurf Attack is a type of DDoS attack that capitalizes on Internet Protocol (IP) broadcast addresses for broadcasting numerous requests to a target IP address, originating from various sources. In this attack, the assailant dispatches a substantial quantity of Internet Control Message Protocol (ICMP) echo requests (commonly known as "pings") to the broadcast address of a network. This action is orchestrated to give the impression that these requests stem from the target's IP address. Subsequently, these requests are disseminated to every device within the network, generating a substantial volume of traffic that has the potential to overwhelm the target's resources, leading to system overload and potential crashes.
+> A Smurf Attack is a type of DDoS attack that capitalizes on Internet Protocol (IP) broadcast addresses for broadcasting numerous requests to a target IP address, originating from various sources. In this attack, the attacker dispatches a substantial quantity of ICMP echo requests to the broadcast address of a network. This action is orchestrated to give the impression that these requests stem from the target's IP address. Subsequently, these requests are disseminated to every device within the network, generating a substantial volume of traffic that has the potential to overwhelm the target's resources, leading to system overload and potential crashes.
 
 ## Analysis
 
@@ -34,7 +34,7 @@ Based on the information identified in above, we can confirm that this was a SMU
 
 ### Mitigation
 
-1. Disable IP Directed Broadcasts: On routers and switches, disable IP directed broadcasts to prevent attackers from sending packets to a broadcast address, which amplifies the attack.
-2. Implement Rate Limiting: Set rate limits on ICMP traffic to control the volume of incoming requests. This helps to ensure that no single source can overwhelm the network with excessive traffic.
-3. Firewall: Set up firewall rules to block ICMP packets from unknown or untrusted sources, particularly those targeting broadcast addresses.
-4. Regular Security Assessments: Conduct regular security assessments and penetration testing to identify vulnerabilities that could be exploited in a Smurf attack or other DDoS attacks.
+1. On routers and switches, disable IP directed broadcasts to prevent attackers from sending packets to a broadcast address, which amplifies the attack.
+2. Set rate limits on ICMP traffic to control the volume of incoming requests. This helps to ensure that no single source can overwhelm the network with excessive traffic.
+3. Set up firewall rules to block ICMP packets from unknown or untrusted sources, particularly those targeting broadcast addresses.
+4. Conduct regular security assessments and penetration testing to identify vulnerabilities that could be exploited in a Smurf attack or other DDoS attacks.
