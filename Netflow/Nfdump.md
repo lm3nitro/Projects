@@ -167,5 +167,5 @@ nfdump -r /var/flows/nfcapd.2024052949 -o csv > /var/log/netflow/mycsvfile.csv
 
 ### Summary:
 
-This hands-on experience will deepen my understanding of network monitoring and analysis, equipping me with practical skills to effectively manage and secure network environments.
+In this lab, I was able to configure use nfdump and nfcapd to analyze netflow data being received from my Cisco router. This configuration provides deep insights into network traffic patterns, usage behaviors, and potential security threats, which are crucial for effective network management and security. This project allowed me to gain hands-on experience with flow data analysis, helping to strengthen my practical skills in traffic monitoring. Through the analysis of NetFlow data, I was able to learn how to identify high-traffic sources, detect anomalies, and assess the performance of network services. The queries used above presents details and information that can be used to investigate specific traffic characteristics, such as source and destination IPs, ports, and protocols, helping to spot trends, detect possible security issues, and ensure best practices are followed.
 
