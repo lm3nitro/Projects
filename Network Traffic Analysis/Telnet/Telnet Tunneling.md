@@ -1,6 +1,12 @@
 # Identifying Telnet Tunneling
 
-Telnet tunneling refes to the encapsulating or tunneling of other protocols/data through a Telnet session. Here are some ways to identify this type of traffic in a network.
+Telnet tunneling is a method of encapsulating Telnet traffic within another protocol, usually to enhance security or to bypass firewalls. Telnet itself is an unencrypted protocol that allows users to connect to remote devices. Because it transmits data in plain text, it can be vulnerable to eavesdropping and other security threats.
+
+### Scope:
+
+
+### Tools and Technologies:
+
 
 1. For this first example/scenario, we will be looking at a pcap where we notice a high amount of TCP PSH flags sent to a host in the network:
 
