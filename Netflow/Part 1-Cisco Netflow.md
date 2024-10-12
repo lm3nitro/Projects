@@ -8,7 +8,7 @@ NetFlow tracks key metrics for each flow, including the number of packets sent, 
 
 ### Scope:
 
-In this lab, I will demonstrate the process of configuring NetFlow on a Cisco IOS router, detailing how to enable and monitor network flows to gain insights into traffic patterns. This includes configuring the router to export flow data, setting up a NetFlow collector, and analyzing flow metrics to interpret traffic trends, which is critical for network monitoring and security.
+In this lab, I will demonstrate the process of configuring NetFlow v9 on a Cisco IOS router, detailing how to enable and monitor network flows to gain insights into traffic patterns. This will be Part 1 of this lab where I will configuring the router to collect and exportnetflow data. In part 2, I will setting up a NetFlow collector (SiLK), and analyzing flow metrics to interpret traffic trends, which is critical for network monitoring and security.
 
 ### Tools and Technology
 
