@@ -1,7 +1,7 @@
 # Smurf Attack
 
 ### Scenario
-You are a network security analyst at a medium-sized enterprise. Recently, the organization experienced significant downtime and intermittent connectivity issues. You suspect a potential Distributed Denial of Service (DDoS) attack, specifically a Smurf attack, which exploits ICMP traffic to overwhelm network resources. Your task is to analyze the network traffic to confirm whether a Smurf attack is occurring.
+You are a network security analyst at a medium-sized enterprise. Recently, the organization experienced significant downtime and intermittent connectivity issues. You suspect a potential Distributed Denial of Service attack, specifically a Smurf attack, which exploits ICMP traffic to overwhelm network resources. Your task is to analyze the network traffic to confirm whether a Smurf attack is occurring.
 
 > [!NOTE]  
 > A Smurf Attack is a type of DDoS attack that capitalizes on Internet Protocol (IP) broadcast addresses for broadcasting numerous requests to a target IP address, originating from various sources. In this attack, the attacker dispatches a substantial quantity of ICMP echo requests to the broadcast address of a network. This action is orchestrated to give the impression that these requests stem from the target's IP address. Subsequently, these requests are disseminated to every device within the network, generating a substantial volume of traffic that has the potential to overwhelm the target's resources, leading to system overload and potential crashes.
