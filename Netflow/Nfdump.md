@@ -1,4 +1,10 @@
-# NFDump
+# Nfdump
+
+nfdump is a suite of command-line tools designed for processing and analyzing NetFlow and IPFIX flow data. It is commonly used to analyze network traffic captured by flow collectors like nfcapd in the SiLK suite or other NetFlow-compatible devices.
+
+### Scope:
+
+### Tools and Technology:
 
 
 
