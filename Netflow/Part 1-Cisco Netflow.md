@@ -212,8 +212,10 @@ interface Gi0/0
 
 ### Summary:
 
-From this lab, I learned how to effectively configure and utilize NetFlow on a Cisco IOS router, gaining practical experience in network monitoring and traffic analysis. This reinforced the importance of understanding network behavior for effective troubleshooting and performance optimization, as well as the value of centralized data collection for informed decision-making.
+From this lab, I learned how to effectively configure and utilize NetFlow v9on a Cisco router, gaining practical experience in network monitoring and traffic analysis. This reinforced the importance of understanding network behavior for effective troubleshooting and performance optimization, as well as the value of centralized data collection for informed decision-making.
 
 Having a router configured with netflow provides deep visibility into network performance which allows us to track and analyze traffic patterns in real time. This visibility is essential for identifying bandwidth hogs, understanding application usage, and detecting anomalies or security threats, which can help mitigate risks before they escalate into significant issues.
+
+This lab is continue in part 2 **Cisco Netflow to SiLK**
 
 
