@@ -12,7 +12,7 @@ Features:
 
 ### Scope:
 
-I will installing Zabbix in a VM on WMWare Workstation. I will then install the agent on my pfSense firewall. By doing so I aim to monitor the performance and health of the pfSense firewall, including network traffic, CPU usage, memory utilization, and other metrics. This is a diagram to show the infrastructure of this project:
+I will installing Zabbix in a VM on WMWare Workstation. I will then install the agent on my pfSense firewall. By doing so, I aim to monitor the performance and health of the pfSense firewall, including network traffic, CPU usage, memory utilization, and other metrics. This is a diagram to show the infrastructure of this project:
 
 ![Pasted image 20240519155020](https://github.com/lm3nitro/Projects/assets/55665256/6bc83c4a-6735-4a8a-905c-289c6c35e694)
 
@@ -42,7 +42,7 @@ After selecting to create the vm, I added the resources needed:
 
 ![Pasted image 20240515164743](https://github.com/lm3nitro/Projects/assets/55665256/4d809fc7-7a1b-4561-a2d4-f7432dee32ab)
 
-Upon booting you are pressented with the console credentials :
+Upon booting you are presented with the console credentials :
 
 ![Pasted image 20240515165032](https://github.com/lm3nitro/Projects/assets/55665256/ceb90c66-a255-427c-8b5b-c466bfb4abb7)
 
@@ -103,7 +103,7 @@ Verified rule was created:
 
 ![Pasted image 20240515221257](https://github.com/lm3nitro/Projects/assets/55665256/02b428dc-277c-447a-9514-e0e947d4695f)
 
-After adding the agent on the pfSense firewall, I went back to Zabbix to add the Pfsense firewall as a host. I navigated to *Data Collection > Hosts*, I then selected *Create Host*, entered the needed details for the pfSense firwall. I the selected *Add*:
+After adding the agent on the pfSense firewall, I went back to Zabbix to add the Pfsense firewall as a host. I navigated to *Data Collection > Hosts*, I then selected *Create Host*, entered the needed details for the pfSense firwall. I then selected *Add*:
 
 ![Pasted image 20240515214938](https://github.com/lm3nitro/Projects/assets/55665256/b87d1773-fcf9-4511-ac45-8ec10a26c2c5)
 
