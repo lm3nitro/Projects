@@ -2,7 +2,7 @@
 
 ![Pasted image 20240518165048](https://github.com/lm3nitro/Projects/assets/55665256/468e6695-e262-453d-a570-c5b13634c626)
 
-Ntopng is a network traffic monitoring tool that provides real-time visibility into network usage and performance. It captures and analyzes traffic to help identify bandwidth usage, detect network anomolies, and monitor the behaior of network devices. It supports various protocols and intergrates with other tools, making it a valuable asset for network management and security. 
+Ntopng is a network traffic monitoring tool that provides real-time visibility into network usage and performance. It captures and analyzes traffic to help identify bandwidth usage, detect network anomolies, and monitor the behavior of network devices. It supports various protocols and intergrates with other tools, making it a valuable asset for network management and security. 
 
 ### Scope:
 
@@ -35,7 +35,7 @@ apt updade -y
 ```
 ![Pasted image 20240518172309](https://github.com/lm3nitro/Projects/assets/55665256/7736267e-5631-481c-9e87-9463b1fcfd43)
 
-Once the OS was compelty up to date, I then needed to enable the universe repository:
+Once the OS was completly up to date, I then needed to enable the universe repository:
 ```
 sudo add-apt-repository universe
 ```
@@ -43,7 +43,7 @@ sudo add-apt-repository universe
 
 ## Installation 
 
-After the prerequisites were compelted, I then downloaded the latest stable version of ntopng on Ubuntu 20.04.
+After the prerequisites were completed, I then downloaded the latest stable version of ntopng on Ubuntu 20.04.
 ```
 wget https://packages.ntop.org/apt-stable/20.04/all/apt-ntop-stable.deb
 ```
@@ -230,7 +230,7 @@ I wanted to dig a bit deeper and research CVE-1999-0661 from the report. Looking
 
 ![Pasted image 20240518204648](https://github.com/lm3nitro/Projects/assets/55665256/6d9ae2c2-1828-47c7-ba03-b1b1a8c64e7f)
 
-I then took a look at the telemety informaiton for interface ens33 (sniffing interface) to see the traffic that was generated from the scan:
+I then took a look at the telemety information for interface ens33 (sniffing interface) to see the traffic that was generated from the scan:
 
 ![Pasted image 20240518205141](https://github.com/lm3nitro/Projects/assets/55665256/ac07ca9f-3764-4655-8e2c-b2bca87bf27d)
 
