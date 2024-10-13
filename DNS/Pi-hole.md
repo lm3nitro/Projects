@@ -56,7 +56,7 @@ Screenshot of Netplan network configuration:
 
 ![Pasted image 20240602114005](https://github.com/lm3nitro/Projects/assets/55665256/6c65cd85-2d2a-4163-8b80-fe297cd838ce)
 
-Once I had the information needed, I was raeady to install Pi-hole. I will be installing it on a Linux VM. First, I cloned the repository and ran the installer script:
+Once I had the information needed, I was ready to install Pi-hole. I will be installing it on a Linux VM. First, I cloned the repository and ran the installer script:
 
 ```
 git clone --depth 1 https://github.com/pi-hole/pi-hole.git Pi-hole
@@ -194,7 +194,7 @@ sudo service unbound status
 
 ![Pasted image 20240602115022](https://github.com/lm3nitro/Projects/assets/55665256/a3cd851f-54c9-44e4-b98b-dcf388c58003)
 
-After checking that stagtus I then Tested the DNS resolution:
+After checking that stagtus I then tested the DNS resolution:
 
 ```
 dig pi-hole.net @127.0.0.1 -p 5335
@@ -282,7 +282,7 @@ Here is a view at the list:
 
 ![Pasted image 20240602132541](https://github.com/lm3nitro/Projects/assets/55665256/39567e29-3b77-4e3c-90c5-20e6ba7d056b)
 
-Aside from the above, I also downlaoded other blocklists. You can find a group of blocklists by going to the following website:
+Aside from the above, I also downloaded other blocklists. You can find a group of blocklists by going to the following website:
 ```
 https://firebog.net/
 ```
@@ -297,7 +297,7 @@ These are the URLs for the blocklists:
 + https://raw.githubusercontent.com/kboghdady/youTube_ads_4_pi-hole/master/youtubelist.txt
 + https://raw.githubusercontent.com/danhorton7/pihole-block-tiktok/main/tiktok.txt
 
-The following command can be used to update the gravity list to include the newly added domains in the donwloaded lists:
+The following command can be used to update the gravity list to include the newly added domains in the downloaded lists:
 
 ![Pasted image 20240602134018](https://github.com/lm3nitro/Projects/assets/55665256/97fd7390-1f9f-4a89-9468-8c73707e0011)
 
@@ -307,7 +307,7 @@ pihole -g
 
 ![Pasted image 20240602134104](https://github.com/lm3nitro/Projects/assets/55665256/38d9d4f6-9529-497b-a801-0a9491a55412)
 
-Now that the gravity list was updated, when I checked Pi-hole,  the newly downloaded lists are now showing with a green checkmark:
+Now that the gravity list was updated, when I checked Pi-hole, the newly downloaded lists are now showing with a green checkmark:
 
 Malware blocklist:
 + https://osint.digitalside.it/Threat-Intel/lists/latestdomains.txt
