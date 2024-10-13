@@ -12,12 +12,14 @@ mitmproxy is an open-source tool that serves as a Man-in-the-Middle (MITM) proxy
 
 ### Scope:
 
+In this lab, I will be installing and configuring mitmproxy to serve as an effective man-in-the-middle proxy for intercepting and analyzing network traffic. After setting up mitmproxy, I will configure a Windows 10 VM to route its web traffic through the proxy, ensuring that the necessary proxy settings are applied to facilitate this connection. To analyze the decrypted traffic, I will utilize Wireshark in conjunction with the SSLKEYLOGFILE  which allows for the logging of SSL session keys used during the HTTPS connections. 
+
 ### Tools and Technology:
 mitmproxy, Win10, PowerShell and Wireshark
 
 ## Downloading mitmproxy
 
-In order to use mitmproxy, I needed to download. I will be using it on my Win10 VM, so that is the installer I chose:
+In order to use mitmproxy, I needed to download it. I will be using it on my Win10 VM, so that is the installer I chose:
 
 ![Pasted image 20240604220241](https://github.com/lm3nitro/Projects/assets/55665256/177b1031-420c-4cb7-be0d-6952a42d623f)
 
@@ -160,4 +162,4 @@ In the bottom right corner, I was also able to see a pane named Decrypted TLS wh
 
 I was able to install and configure mitmproxy to analyze web traffic. I gained hands-on experience in setting up proxy tools, configuring network settings, and understanding how traffic flows through a system. By intercepting and inspecting the traffic, I learned how queries are structured, saw the difference between plaintext and encrypted traffic, and identified potential security risks. This process also deepened my knowledge of SSL/TLS certificates, troubleshooting network issues, and spotting anomalies in traffic that could indicate an attack. 
 
-It's important to install and configure mitmproxy for traffic analysis because it provides practical, hands-on experience with network traffic interception and manipulation, which is essential for understanding how communication protocols like DNS work and can be exploited. This process helped me see firsthand how attackers might intercept or manipulate traffic, enhancing my ability to secure the network.
+Installing and configuing mitmproxy for traffic analysis is important because it provides practical, hands-on experience with network traffic interception and manipulation, which is essential for understanding how communication protocols like DNS work and can be exploited. This process helped me see firsthand how attackers might intercept or manipulate traffic, enhancing my ability to secure the network.
