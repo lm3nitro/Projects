@@ -16,7 +16,7 @@ Fortinet Firewall and Wireshark
 
 ## Getting Started
 
-To start, I wanted to perform this on 1 particular host (10.10.100.104). When FortiGate encrypts the content again, it will use a certificate. Since Fortinet's Certificate isn't in the browser's list of trusted certificates, the browser will show a warning about an untrusted certificate when it gets a re-signed certificate from Fortinet. To avoid these warnings, I added the certificate to my trusted certificates.
+To start, I wanted to perform this on one particular host (10.10.100.104). When FortiGate encrypts the content again, it will use a certificate. Since Fortinet's Certificate isn't in the browser's list of trusted certificates, the browser will show a warning about an untrusted certificate when it gets a re-signed certificate from Fortinet. To avoid these warnings, I added the certificate to my trusted certificates.
 
 Here is a view of the certificate where it displays that it was issued by the Firewall:
 
@@ -53,7 +53,7 @@ I then tested by downloading the Eicar test file on the host where the certifica
 
 ![Pasted image 20240408203757](https://github.com/lm3nitro/Projects/assets/55665256/5403cb29-8582-4552-8d8a-067dffb57b37)
 
-Here is the warning message recevied once the Eicar test file attempted to download:
+Here is the warning message received once the Eicar test file attempted to download:
 
 ![Pasted image 20240408203715](https://github.com/lm3nitro/Projects/assets/55665256/537f0304-b0f0-4f53-bf73-03bd524c67f0)
 
