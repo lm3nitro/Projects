@@ -347,9 +347,9 @@ sudo mkdir /usr/local/etc/pulledpork3
 sudo cp etc/pulledpork.conf /usr/local/etc/pulledpork3/
 ```
 
-Summary:
+### Summary:
 
-Overall, I have enjoed having snort running on my network. Again, this is an excellent tool to have in your network, or atleast installed in a lab environment. Having this in my network has allowed me to learn more and dive deeper into threat detection, attack patterns, and network anomalies in a practical way. 
+Overall, I have enjoYed having snort running on my network. Again, this is an excellent tool to have in your network, or atleast installed in a lab environment. Having this in my network has allowed me to learn more and dive deeper into threat detection, attack patterns, and network anomalies in a practical way. 
 
 Configuring and analyzing alerts generated from Snort allowed me to gain deep insights into the structure and behavior of network traffic, inclusing and not lmited to protocols, packet structures, and common communication patterns. With time, having Snort in my network helped me to better identify normal and anomalous traffic patterns and ultimately enhanced my ability to spot irregularities that may indicate malicious activity. 
 
