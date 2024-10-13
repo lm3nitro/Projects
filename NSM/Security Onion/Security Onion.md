@@ -10,7 +10,7 @@ Security Onion is a free and open source Linux distribution for intrusion detect
 
 ### Scope: 
 
-I will be installing the Security Onion ISO in VMWare workstation. This will be connected to the SPAN port of the switch that is mirroring all the traffic comining and going to and from the network. I purposefully have a Metasploitabel VM in my network. I will perform a scan against the targeted Metaspolitable VM and will be analyzing the scan in Security Onion. Below is a view at the architecture: 
+I will be installing the Security Onion ISO in VMWare workstation. This will be connected to the SPAN port of the switch that is mirroring all the traffic coming and going to and from the network. I purposefully have a Metasploitable VM in my network. I will perform a scan against the targeted Metaspolitable VM and will be analyzing the scan in Security Onion. Below is a view at the architecture: 
 
 ![Pasted image 20240513165051](https://github.com/lm3nitro/Projects/assets/55665256/965552da-376a-447c-ac66-59a9b4a57e03)
 
