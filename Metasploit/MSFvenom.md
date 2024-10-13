@@ -2,7 +2,7 @@
 
 ![Pasted image 20240502094200](https://github.com/lm3nitro/Projects/assets/55665256/92706414-50e2-4614-85b6-e2b7560e74d7)
 
-MSFvenom is a versitile tool in the Metaspolit Framwork  used for generated varios types of payloads and shellcode. It allows penetration tested and security researcherd to create custom payloads for exploitation., bypassing defenses, and gaining remote access to target systems. 
+MSFvenom is a versitile tool in the Metaspolit Framwork  used for generated varios types of payloads and shellcode. It allows penetration tested and security researcherd to create custom payloads for exploitation, bypassing defenses, and gaining remote access to target systems. 
 
 Key Features:
 + Payload Generation
@@ -118,7 +118,7 @@ I also used TCPView (utility within Sysinternals) which lists all active network
 
 I was able to install and configure MSFvenom and use it to create a rever tcp shell payload which was then downloaded by the victim (Windows 10 PC) to create a remote connection to it. While this was being downloaded and executed by the victim I had Wireshark running in the background to capture the traffic and have a look at how this malicious traffic looks at the packet level.  
 
-Having done this allowed me to get a better understanding on attackers and a view into the malicious payloads that are readily available on tools such as MSFvenom. I was able to see how these payloads can be used to exploit vulnerable targets. I was able to further explore attack vectors and defense evasion techniques all in a safe a nd controlled enviornemnt. 
+Having done this allowed me to get a better understanding on attackers and a view into the malicious payloads that are readily available on tools such as MSFvenom. I was able to see how these payloads can be used to exploit vulnerable targets. I was able to further explore attack vectors and defense evasion techniques all in a safe and controlled environment. 
 
 Overall, MSFvenom is a great tool becuase it really simplifies the creation of custom payloads for penetration testing and security assessments. I was ablen to generate malicious code tailored to my specific target. MSFvenom allows security professionals and ethical hackers to simulate real-world attacks and scenarions. One thing that I like is that it can be integrated with tools sucks as Metasploit to make it even more powerful. 
 
