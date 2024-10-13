@@ -14,7 +14,7 @@ Armitage is a graphical user interface (GUI) for the Metasploit Framemwork, whic
 
 ### Scope:
 
-I will be installing Armitage on a linux OS host, and will be performing a scan against the target host to identify any vulnerabilities present, exploiting them, and then anylyzing the traffic and logs generated from the attack. 
+I will be installing Armitage on a linux OS host, and will be performing a scan against the target host to identify any vulnerabilities present, exploiting them, and then analyzing the traffic and logs generated from the attack. 
 
 ### Tools and Technology:
 Armitage, Linux OS, and Wireshark
@@ -102,7 +102,7 @@ The console view at the bottom also shows that the attck has been successful. It
 
 ## Analysis
 
-I ran Wireshark while performing the attack as well so that I could see what this attack would look like in the network traffic. Here we can see the source and desitination IP and port along with the information on the attack. It looks like the attack was able to give the adversary root privledges:
+I ran Wireshark while performing the attack as well so that I could see what this attack would look like in the network traffic. Here we can see the source and desitination IP and port along with the information on the attack. It looks like the attack was able to give the adversary root privileges:
 
 ![Pasted image 20240425140600](https://github.com/lm3nitro/Projects/assets/55665256/79f8bcf9-7ac4-4d51-923f-d475bc6deb2f)
 
@@ -128,6 +128,6 @@ Looking at Wireshark which is still running, I can see in clear text everything 
 
 ### Summary and Analysis
 
-Initially, I performed a network discovery scan to identify hosts, running services and open ports. I then identified the vsftpd was open and was running a vulnerable verison 2.3.4. I then used this to exploit the vulnerability and used a backdoor provided by Armitage. I then anlyzed the attack from the the victim perspective in both the ftp logs, connection logs, and Wireshark. 
+Initially, I performed a network discovery scan to identify hosts, running services and open ports. I then identified that vsftpd was open and was running a vulnerable verison 2.3.4. I then used this to exploit the vulnerability and used a backdoor provided by Armitage. I then anlyzed the attack from the the victim perspective in both the ftp logs, connection logs, and Wireshark. 
 
-I was able to perform network discovery, vulnerability identification, exploit deployment, and session management. This allowed my to apply theoritical knowledge and turn it into hands on experience. Also, the visual interface helped to see the attack progress clearly. Armitage allowed me to enhance understanding and efficiency, and I can definitely see how this is a valuable tool for learning and practicing cybersecurity. 
+I was able to perform network discovery, vulnerability identification, exploit deployment, and session management. This allowed my to apply theoritical knowledge and turn it into hands on experience. Also, the visual interface helped to see the attack progress clearly. Armitage allowed me to enhance understanding and efficiency, and I can definitely see how this is a valuable tool for learning and getting practical experience.  
