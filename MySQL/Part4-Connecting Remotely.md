@@ -228,3 +228,5 @@ update customer_table set age = 21 where first_name = "clare";
 Summary:
 
 In conclusion, being able to modify, view, and query a database is important becuase direct access is not always possible, this provides flexibility and convenience. MySQL servers are crucial for data management and anlysis. Because MySQL is open-source, it makes it so that it can be freely used and modified. MySQL also supports user authentication as seen above, SSL for secure connections, and data encryption. 
+
+By installing MySQL and running queries, I was able to learn how to structure and manipulate data, understand SQL syntax, and gain insights into database design. Connecting remotely allowed me to also learn about database security and network configurations. The key takeaway for me was the practical experience in managing databases, ability to write and optimize SQL queries, and exapnd my knowledge of security best practices.
