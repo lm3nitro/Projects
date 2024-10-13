@@ -24,7 +24,7 @@ These are some features that it offers:
 
 
 ### Scope:
-In this lab I will import the LibreNMS OVA into VMWare Workstation to install and configure LibreNMS and will congigure my Fortinet firewall to send its SNMP traffic to LinreNMS so that I am able to monitor it. I will then capture this traffic and analyze it in Wirehshark. 
+In this lab I will import the LibreNMS OVA into VMWare Workstation to install and configure LibreNMS and will configure my Fortinet firewall to send its SNMP traffic to LibreNMS so that I am able to monitor it. I will then capture this traffic and analyze it in Wireshark. 
 
 ### Tools and Technology
 LibreNMS, VMWare Workstation, Fortinet, and Wireshark
