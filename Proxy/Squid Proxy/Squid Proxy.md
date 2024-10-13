@@ -79,7 +79,7 @@ Let's allow some traffic. For testing purpause to allow all traffic, I added the
 
 ![Pasted image 20240402203045](https://github.com/lm3nitro/Projects/assets/55665256/300cdbc2-cb3c-476c-9c67-aac92cba8a5b)
 
-After making the change, I deloaded Squid Proxy to ensure that changes were applied:
+After making the change, I reloaded Squid Proxy to ensure that changes were applied:
 
 ```
 systemctl restart squid
@@ -213,7 +213,7 @@ By installing Squid Proxy in my lab, I was able to learn how to configure and fi
 
 Testing domain blocking is important because it allowed me to simulate real-world scenarios where controlling access to certain online content is crucial. This is particularly valuable for improving network security, compliance, and productivity in environments like businesses, schools, or public networks. Domain blocking helps protect users from harmful websites, reduce distractions in work or study environments, and enforce organizational policies. I also liked the amount of information that the Squid logs offered when visualing them using Splunk. By utilizing both Squid Proxy and Splunk, it allows users to quickly identify patterns, security incidents, or user behavior, which can be critical for troubleshooting and forensics.
 
-In conclusion, Squid Proxy is a powerful tool for optimizing network performance, enhancing security, and managing internet access. Furthermore, its support for traffic monitoring and SSL inspection provides deep visibility into network activity, helping detect potential security threats and ensuring efficient use of resources. Whether in a corporate, educational, or home environment, Squid enhances the overall network experience, making it a valuable tool for IT professionals and network administrators. I highly recommend it. 
+In conclusion, Squid Proxy is a powerful tool for optimizing network performance, enhancing security, and managing internet access. Furthermore, its support for traffic monitoring and SSL inspection provides deep visibility into network activity, helping detect potential security threats and ensuring efficient use of resources.
 
 
 
