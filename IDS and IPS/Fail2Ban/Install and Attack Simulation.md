@@ -75,7 +75,7 @@ I also check iptables and can see that an entry was added by Fail2Ban to reject/
 
 ### Summary:
 
-Doing this projecct allowed me to test the effectiveness that Fail2Ban has in detecting and preventing a SSH brute force atttack by using Hydra for a simulated attack on the target host. I was able to get experience in configuring Fail2Ban, montioring logs, and analyzing its automated responses to malicious activities. The findings offer valuable insights into enhancing server security. 
+Doing this project allowed me to test the effectiveness that Fail2Ban has in detecting and preventing a SSH brute force atttack by using Hydra for a simulated attack on the target host. I was able to get experience in configuring Fail2Ban, montioring logs, and analyzing its automated responses to malicious activities. The findings offer valuable insights into enhancing server security. 
 
 
 
