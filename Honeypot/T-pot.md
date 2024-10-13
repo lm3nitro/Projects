@@ -101,4 +101,4 @@ This is another look into the raw data from the attacker IP:
 
 ### Summary:
 
-Having a host out in the wild that is public facing is very risky. T-Pot allows you to be able to detect and analyze numerous threats by simulating  various services and sysemss. Having T-Pot can allows you to gain insight and indormation into the techniques used by actors. Having the tactics being used allows us to better proctect ourselves, reduce the impact of an attack, and fine tune our current Security in order to bolster the cybersecurity posture. T-pot can also be used to identify weak spots and vulneralbilities, highly recommend. 
+Having a host out in the wild that is public facing is very risky. T-Pot allows you to be able to detect and analyze numerous threats by simulating  various services and sysemss. Having T-Pot can allows you to gain insight and information into the techniques used by actors. Having the tactics being used allows us to better proctect ourselves, reduce the impact of an attack, and fine tune our current Security in order to bolster the cybersecurity posture. T-pot can also be used to identify weak spots and vulneralbilities.
