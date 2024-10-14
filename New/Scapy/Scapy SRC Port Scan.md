@@ -75,7 +75,7 @@ from scapy.all import *
   
   
 def test_ports(target_ip):  
-    for source_port in range(1,11):  # Start from source port 1 to 10  
+    for source_port in range(1,11):  # Start from source port 20 to 22
         for dest_port in range(20, 23):  # Start from destination port 3127 to 3128  
             # Creating a SYN packet with the current source and destination ports            syn_packet = IP(dst=target_ip) / TCP(sport=source_port, dport=dest_port, flags="S")  
   
@@ -104,7 +104,8 @@ if __name__ == "__main__":
 
 ### Pycharm IDE:
 
-![Pasted image 20241013183701](https://github.com/user-attachments/assets/bd53f6de-3e8b-4e37-badf-ce5cb9d70882)
+![Pasted image 20241013202456](https://github.com/user-attachments/assets/cabcdfd5-e170-4935-ac9c-0d3dcb51c02d)
+
 
 ### Running the script:
 
@@ -129,3 +130,28 @@ tcpdump -nr only_src_ports_allow.pcapng 'tcp[tcpflags] & (tcp-syn|tcp-ack) == (t
 
 
 The traffic is only allow if the source port is 2 , 5 and 10:
+
+
+
+### Connecting to SSH Binding to a specific source port:
+
+
+Since the server is allowing traffic on specific source port. I must proxy the traffic to another utility that allows me to bind the source port.
+
+```
+
+sudo ssh -o 'ProxyCommand nc -p 5 %h %p' elk@10.10.100.48
+```
+
+Connecting to the server using a specific source port with netcat, in this situation I picked port 5.
+
+![Pasted image 20241013195546](https://github.com/user-attachments/assets/3df12fa1-ad09-4a3d-a7ea-6e8a1c44dc6c)
+
+Connection state on the server:
+
+![Pasted image 20241013195732](https://github.com/user-attachments/assets/89ad1474-f16d-4026-a881-d6eb7cc35142)
+
+#### Network traffic:
+
+![Pasted image 20241013195649](https://github.com/user-attachments/assets/a0aca375-1a84-405e-8049-cff6d89b4860)
+
