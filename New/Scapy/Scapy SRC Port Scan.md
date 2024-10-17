@@ -1,22 +1,22 @@
+## Scenario:
 
+A target host only accepts traffic from a specific source and destination port as a security measure to restrict access to authorized services and prevent unauthorized access or attacks. This setup minimizes exposure to external threats, as it ensures that only trusted internal applications can interact with the database, effectively creating a more secure environment by reducing the attack surface and preventing unauthorized entities from probing or exploiting the system.
 
+## Script:
 
+To determine which specific source and destination ports the target host accepts, the script can systematically test various combinations by sending UDP packets with different source ports to a range of destination ports. By executing this process iteratively, the script can effectively map out which source and destination ports the target host is configured to accept, helping to understand its security posture and communication rules.
+
+An attacker might use it to identify open ports and accepted source ports on a target system, which can help in mapping the network and finding potential vulnerabilities to exploit. If an attacker discovers that certain source and destination ports are open, they could craft packets that mimic legitimate traffic to bypass firewalls or intrusion detection systems, allowing unauthorized access to sensitive services.
 
 ![Pasted image 20241013191430](https://github.com/user-attachments/assets/10e07911-89e8-4505-82c6-50d81441725f)
 
 
++ Client: 10.10.100.39
++ Server: 10.10.100.48
 
+## Allow incoming traffic on a specific source port:
 
-
-Client: 10.10.100.39
-Server: 10.10.100.48
-
-
-
-#### Allow incoming traffic on a specific source port:
-
-
-
+In order to test, I configured the server using iptables to only accept traffic from a given IP
 ```
 sudo iptables -A INPUT -p tcp -s 10.10.100.39 --sport 10 -d 10.10.100.48  --dport  22 -j ACCEPT
 
