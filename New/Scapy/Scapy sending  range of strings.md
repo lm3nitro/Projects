@@ -1,4 +1,4 @@
-In this script, I will be utilizing Scapy to craft UDP packets sent to port 1 with a string of incrementing integers in each packet. Custom UDP packets can help assess how routers, firewalls, and other network devices handle unusual or malformed packets, particularly with specific payloads. It can also serve as a valuable exercise for understanding how networking protocols work.
+In this script, I will be utilizing Scapy to craft UDP packets sent to port 1 with a string of incrementing from the number 1-10 in each packet. Custom UDP packets can help assess how routers, firewalls, and other network devices handle unusual or malformed packets, particularly with specific payloads. It can also serve as a valuable exercise for understanding how networking protocols work.
 
 Here is a copy of the script:
 ```
