@@ -1,6 +1,16 @@
-In this script, I will be utilizing Scapy to craft UDP packets sent to port 1 with a string of incrementing from the number 1-10 in each packet. Custom UDP packets can help assess how routers, firewalls, and other network devices handle unusual or malformed packets, particularly with specific payloads. It can also serve as a valuable exercise for understanding how networking protocols work.
+### Introduction:
 
-Here is a copy of the script:
+In this script, I will be utilizing Scapy to craft UDP packets sent to port 1 with a string of incrementing numbers from 1-10 in each packet. After, I will be reconstructing these packets to combine all the strings which the completes payload (12345678910). I will also be capturing and analyzing the packets as they are sent over the network in Wireshark. 
+
+### Possible Use Cases:
+
++ Custom UDP packets can help assess how routers, firewalls, and other network devices handle unusual or malformed packets, particularly with specific payloads.
++ By sending packets with sequential parts of a message, you can test how well the target application reconstructs the full message from individual packets, ensuring it handles fragmentation properly.
++ Analyzing the complete payload for sensitive or confidential information when reconstructed may reveals personally identifiable information (PII), financial records, or proprietary data, which can indicate that an exfiltration attempt is occurring.
+
+### Script
+
+Here is a copy of the script I created:
 ```
 
 from scapy.all import *  
@@ -36,11 +46,11 @@ Here the malformed packets are seen. We can also see the details of the decoded 
 
 ## Packet Analysis (payload reconstruction)
 
-We can also decode using python. In order to do this, i first located the location of the pcap that was generated:
+We can also decode using python. In order to do this, I first located the location of the pcap that was generated:
 
 ![Pasted image 20241006144408](https://github.com/user-attachments/assets/1894d96d-09ae-4b5e-98aa-2c46ae401fa0)
 
-This is the script that I will be using:
+This is the script that I will be using to read the pcap and reconstruct the payload:
 
 ```
 from scapy.all import *  
@@ -57,4 +67,7 @@ Running the script in Pycharm:
 ![Pasted image 20241006222438](https://github.com/user-attachments/assets/39177fff-8a51-418e-a027-cce91a95115a)
 
 The script decoded the pcap file successfully.
+
+
+
 
