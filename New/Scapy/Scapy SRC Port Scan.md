@@ -1,22 +1,30 @@
 ## Scenario:
 
-A target host only accepts traffic from a specific source and destination port as a security measure to restrict access to authorized services and prevent unauthorized access or attacks. This setup minimizes exposure to external threats, as it ensures that only trusted internal applications can interact with the database, effectively creating a more secure environment by reducing the attack surface and preventing unauthorized entities from probing or exploiting the system.
+A target host restricts access by only accepting traffic from specific source and destination ports, enhancing security by allowing only authorized services. This minimizes exposure to external threats, ensuring that only designated IPs and ports can interact with the server, thereby reducing the attack surface and preventing unauthorized access or probing.
 
 ## Script:
 
-To determine which specific source and destination ports the target host accepts, the script can systematically test various combinations by sending UDP packets with different source ports to a range of destination ports. By executing this process iteratively, the script can effectively map out which source and destination ports the target host is configured to accept, helping to understand its security posture and communication rules.
+To determine which specific source and destination ports the target host accepts, the script can systematically test various combinations by sending TCP packets with different source ports to a range of destination ports. By executing this process iteratively, the script can effectively map out which source and destination ports the target host is configured to accept, helping to understand its security posture and communication rules.
 
-An attacker might use it to identify open ports and accepted source ports on a target system, which can help in mapping the network and finding potential vulnerabilities to exploit. If an attacker discovers that certain source and destination ports are open, they could craft packets that mimic legitimate traffic to bypass firewalls or intrusion detection systems, allowing unauthorized access to sensitive services.
+## Use Cases:
+
++ An attacker might use it to identify open ports and accepted source ports on a target system, which can help in mapping the network and finding potential vulnerabilities to exploit. If an attacker discovers that certain source and destination ports are open, they could craft packets that mimic legitimate traffic to bypass firewalls or intrusion detection systems, allowing unauthorized access to sensitive services.
++ This also allows for monitoring how the firewall responds to legitimate traffic while blocking threats, and evaluating the IDP/IPS’s ability to detect and respond to intrusions. The results can then be used to fine-tune the configurations, ensuring robust security measures are in place.
+
+
+## Server Configuration:
 
 ![Pasted image 20241013191430](https://github.com/user-attachments/assets/10e07911-89e8-4505-82c6-50d81441725f)
 
+In the exercise below, these are the IPs that will be used:
 
 + Client: 10.10.100.39
 + Server: 10.10.100.48
 
-## Allow incoming traffic on a specific source port:
+### Allow incoming traffic on a specific source port:
 
-In order to test, I configured the server using iptables to only accept traffic from a given IP
+In order to test, I configured the server using iptables to only accept traffic from a given IP, source port, and destination port. 
+
 ```
 sudo iptables -A INPUT -p tcp -s 10.10.100.39 --sport 10 -d 10.10.100.48  --dport  22 -j ACCEPT
 
@@ -27,11 +35,7 @@ sudo iptables -A INPUT -p tcp -s 10.10.100.39 --sport 2 -d 10.10.100.48  --dport
 
 ```
 
-
-
-
-
-### Deny any other incoming source port traffic:
+I also configured the server to deny any other incoming traffic outside of the previosuly slected IP, source port and destination port combination:
 
 
 ```
@@ -42,32 +46,29 @@ sudo iptables -A INPUT -p tcp -s 10.10.100.39 -d 10.10.100.48 --dport  22 -j DRO
 ![Pasted image 20241013182339](https://github.com/user-attachments/assets/6afd356b-abd6-4e4b-9574-65b86aab0f32)
 
 
-
-
-
 ### Scanning the server with Nmap:
 
+To ensure that everything was configured as expected, I used namp:
 
-
-The port has been filtered by the IPtable rules:
+Based on the output below, the port has been filtered by the IPtable rules:
 
 ![Pasted image 20241013182741](https://github.com/user-attachments/assets/36997f92-3948-4815-a8bb-23ccd67b9b7b)
 
+### Network trafifc from the client and server:
 
-#### Network trafifc from the client and server:
-
-The server doesn't response to any prove from the client.
+The server doesn't response to any probes from the client.
 
 ![Pasted image 20241013183416](https://github.com/user-attachments/assets/92769562-5377-42ef-b724-79108f95634c)
 
 
-# Script creation:
+## Script creation:
+
+A oreviousky stated in the beginning, I will be utilizing Python and along withthe Scapy library:
 
 ![Pasted image 20241013191549](https://github.com/user-attachments/assets/0288b8c6-e0cc-426f-8204-29b82dd6a44e)
 
 
-
-### Scanning the server with specify source port  with Scapy:
+### Scanning the server with specify source ports with Scapy:
 
 ```
 
