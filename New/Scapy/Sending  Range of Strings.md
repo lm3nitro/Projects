@@ -1,6 +1,6 @@
 ### Introduction:
 
-In this script, I will be utilizing Scapy to craft UDP packets sent to port 1 with a string of incrementing numbers from 1-10 in each packet. After, I will be reconstructing these packets to combine all the strings which the completes payload (12345678910). I will also be capturing and analyzing the packets as they are sent over the network in Wireshark. 
+In this script, I will be utilizing Scapy to craft UDP packets that will be sent to port 1 with a string of incrementing numbers from 1-10 in each packet. After, I will be reconstructing these packets to combine all the strings which then completes the payload (12345678910). I will also be capturing and analyzing the packets as they are sent over the network in Wireshark. 
 
 ### Possible Use Cases:
 
