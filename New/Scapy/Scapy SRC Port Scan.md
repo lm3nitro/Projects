@@ -63,12 +63,11 @@ The server doesn't response to any probes from the client.
 
 ## Script creation:
 
-A oreviousky stated in the beginning, I will be utilizing Python and along withthe Scapy library:
+As previousky stated in the beginning, I will be utilizing Python and along with the Scapy library:
 
 ![Pasted image 20241013191549](https://github.com/user-attachments/assets/0288b8c6-e0cc-426f-8204-29b82dd6a44e)
 
-
-### Scanning the server with specify source ports with Scapy:
+This is the script I created and used to canning the server with specify source ports:
 
 ```
 
@@ -110,41 +109,32 @@ if __name__ == "__main__":
 
 ### Running the script:
 
-Scanning the server from source 1-10 and destination 20-22, the scanner was able to find open ports coming on source port 2 , 5 and 10.
+Scanning the server from source 1-10 and destination 20-22, the scanner was able to find open ports coming on source port 2, 5 and 10.
 
 ![Pasted image 20241013182212](https://github.com/user-attachments/assets/7b62164f-bc17-47d6-b261-e3e3f5e2f9a7)
 
-
-
-### Network traffic from the  Scapy scanner:
+### Network traffic from the Scapy scanner:
 
 ![Pasted image 20241013183308](https://github.com/user-attachments/assets/4afbcd18-0c88-4cf2-b814-e46e5dd70142)
 
-
 ### Filtering only the SYN-ACK flags from the server:
-
 
 ```
 tcpdump -nr only_src_ports_allow.pcapng 'tcp[tcpflags] & (tcp-syn|tcp-ack) == (tcp-syn|tcp-ack)'
 ```
 ![Pasted image 20241013183145](https://github.com/user-attachments/assets/51142b2e-fe2a-4bc1-9850-17f0132792a7)
 
+The traffic is only allowed if the source port is 2,5 or 10:
 
-The traffic is only allow if the source port is 2 , 5 and 10:
-
-
-
-### Connecting to SSH Binding to a specific source port:
-
+## Connecting to SSH Binding to a specific source port:
 
 Since the server is allowing traffic on specific source port. I must proxy the traffic to another utility that allows me to bind the source port.
 
 ```
-
 sudo ssh -o 'ProxyCommand nc -p 5 %h %p' elk@10.10.100.48
 ```
 
-Connecting to the server using a specific source port with netcat, in this situation I picked port 5.
+Connecting to the server using a specific source port with netcat, in this case I picked source port 5.
 
 ![Pasted image 20241013195546](https://github.com/user-attachments/assets/3df12fa1-ad09-4a3d-a7ea-6e8a1c44dc6c)
 
@@ -152,7 +142,10 @@ Connection state on the server:
 
 ![Pasted image 20241013195732](https://github.com/user-attachments/assets/89ad1474-f16d-4026-a881-d6eb7cc35142)
 
-#### Network traffic:
+### Network traffic:
 
 ![Pasted image 20241013195649](https://github.com/user-attachments/assets/a0aca375-1a84-405e-8049-cff6d89b4860)
 
+## Summary:
+
+This exercise allowed me to understand the importance of access control measures in minimizing exposure to threats and how they can effectively protect sensitive services. I also gained insights into how limiting communication to authorized IPs and ports reduces the attack surface, making it harder for unauthorized entities to exploit vulnerabilities. This also made me better appreciate the need for continuous monitoring and adjustment of firewall rules and security policies to adapt to evolving threats.
