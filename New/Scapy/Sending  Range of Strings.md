@@ -68,6 +68,8 @@ Running the script in Pycharm:
 
 The script decoded the pcap file successfully.
 
+### Summary:
 
+In doing this, I was able to learn how to create and send custom packets using Python along with the Scapy library and gained skills in manipulating packet fields and handling loops for sending multiple packets. Capturing packets in Wireshark allowed me to perform real-time analysis and I was able to reconstruct the payload. By reconstructing the payload from individual packets, I was able to better understand data segmentation and reassembly concepts. Ultimately, this exercise enhanced both my networking knowledge and practical programming skills in Python.
 
 
