@@ -2,6 +2,8 @@
 
 This script utilizes Scapy to send ICMP Requests to specified host, in this case, my firewall. The primary purpose of this script is to assess the availability and responsiveness of the device by analyzing the received ICMP Reply packets. This is particularly useful for network diagnostics, performance assessment, and security evaluations.
 
+<img width="381" alt="Screenshot 2024-10-19 at 10 17 33 PM" src="https://github.com/user-attachments/assets/56849d0f-e61b-4ffc-b9a2-18791b5d6fb7">
+
 ## Use Cases
 
 + ICMP requests can be used to continuously monitor the availability of critical servers and devices, ensuring they are operational and responding as expected.
