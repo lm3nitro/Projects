@@ -1,92 +1,82 @@
+# Sendmail
 
 ![Pasted image 20241017154807](https://github.com/user-attachments/assets/d778703c-e783-4692-b240-0aadd2ae876e)
 
+Sendmail is a lightweight, command line SMTP email client. If you have the need to send emails from a command line, this free program is perfect: simple to use and feature rich. It can also be used in bash scripts, batch files, Perl programs, and so much more. 
 
+## Introduction
 
+## Installing SendMail
 
-SendEmail is a lightweight, command line SMTP email client. If you have the need to send email from a command line, this free program is perfect: simple to use and feature rich. It was designed to be used in bash scripts, batch files, Perl programs and web sites, but is quite adaptable and will likely meet your requirements.
-
-## Installing  Sendmail:
-
-
+To get started, I will be installing Sendmail:
 
 ```
  sudo apt install sendmail mailutils sendmail-bin
 ```
+
 ![Pasted image 20241017155004](https://github.com/user-attachments/assets/3562f6cf-8d7b-4d17-ae63-d4d9c880742e)
 
-# Create Gmail authentication file:
+Once that is installed, I created a Gmail authentication file:
 
-### NOTE:
-
- Elevate to the root user, as most of these commands will require root access – even when changing directories where needed.
+> [!NOTE]  
+> Elevate to the root user, as most of these commands will require root access – even when changing directories where needed.
  
 ```
 sudo su
 ```
 
-### Making a new directory where we will store the Gmail configuration file, then change into it:
-
-
+After, I made a new directory where I will store the Gmail configuration file. I then navigated to it:
 
 ```
 mkdir -m 700 /etc/mail/authinfo/
 cd /etc/mail/authinfo/
 ```
 
-It should look like this at the end:
+This is what it looks like at the end:
 
 ![Pasted image 20241017142221](https://github.com/user-attachments/assets/c37ee863-13b7-4415-884d-a86d67f952d3)
 
-
-
-### Creating a new file with nano or your preferred text editor that will contain our authentication info. To keep it simple, we’ll call ours `gmail-auth`:
-
+I then created a new file that will contain the authentication info. To keep it simple, I called mine `gmail-auth`:
 
 ```
 nano gmail-auth
 ```
 
-
 ![Pasted image 20241017142512](https://github.com/user-attachments/assets/723b3910-cb71-4f99-8177-72db80877375)
 
+> [!NOTE]  
+> The gmail-auth.db file show on the screenshot above is a file that is created only after the configuration parameter has been passed to the file /etc/mail/sendmail.mc under MAILER_DEFINITIONS and then executing the make -C /etc/mail witch will rebuild the configuration using the parameter specify. 
 
-Note: The gmail-auth.db file show on the screenshot above is a file that is created only after the configuration parameter has been passed to the file /etc/mail/sendmail.mc under MAILER_DEFINITIONS and then executing the make -C /etc/mail witch will rebuild the configuration using the parameter specify. 
+Inside this file, I pasted the following template and then edited with my own information. Specifically, entering my Gmail address and app password. 
 
-#### Inside this file, paste the following template and then edit it with your own information. Specifically, enter your Gmail address and password:
+> [!IMPORTANT]  
+> I already had an app password configured in my gmail account. If you plan to do this for yourself, this will be needed. I provided information on this process under **SSMTP.md**
 
-
-
-Syntax:
+This is the syntax I used:
 
 ```
 AuthInfo: "U:root" "I:YOUR GMAIL EMAIL ADDRESS" "P:YOUR PASSWORD"
 ```
 
-
-#### Creating a hash map for the above authentication file:
-
+Next, I needed to create a hash map for the above authentication file:
 
 ```
 makemap hash gmail-auth < gmail-auth
 ```
 
- The Gmail authentication is setup, moving on to configuring Sendmail.
+Now that the Gmail authentication is setup, I needed to configure Sendmail.
 
-# Configure Sendmail: 
+## Configure SendMail: 
 
-### Next, edit the file in `/etc/mail/sendmail.mc`:
+To configure Sendmail, I edited the file in `/etc/mail/sendmail.mc`:
 
 ```
- nano /etc/mail/sendmail.mc
+nano /etc/mail/sendmail.mc
 ```
 
-
-### Pasting the following lines  down "MAILER_DEFINITIONS" line:
-
+I pasted the following lines under "MAILER_DEFINITIONS":
 
 ![Pasted image 20241017143546](https://github.com/user-attachments/assets/6f07dd8e-914a-437b-b97c-a44adaf65dfd)
-
 
 ```
 define(`SMART_HOST',`[smtp.gmail.com]')dnl
@@ -98,16 +88,13 @@ define(`confAUTH_MECHANISMS', `EXTERNAL GSSAPI DIGEST-MD5 CRAM-MD5 LOGIN PLAIN')
 FEATURE(`authinfo',`hash -o /etc/mail/authinfo/gmail-auth.db')dnl
 ```
 
-
-Save the changes to the file.
-
-### Re-build sendmail’s configuration
+Once I added the lines, I saved the files. After saving the file, I needed to re-build Sendmail’s configuration:
 
 ```
 make -C /etc/mail
 ```
 
-### Reload the Sendmail service for all of our changes to take effect:
+I reloaded the Sendmail service so that all the changes can take effect. Either option below works:
 
 ```
 systemctl restart sendmail
@@ -119,21 +106,18 @@ OR
 /etc/init.d/sendmail reload
 ```
 
+> [!NOTE]  
+> The service will try to resolve your fully qualified domain name. If it’s not configured, the process may hang for a minute, but it will eventually start. Check the status of the Sendmail service to get a report on any errors it encounters.
 
-Note that the service will try to resolve your fully qualified domain name. If it’s not configured, the process may hang for a minute, but it will eventually start. Check the status of the Sendmail service to get a report on any errors it encounters.
+## Configuration Test:
 
-
-#### ## Configuration test:
-
-Syntax:
+To test the configuration, below is the syntax and command that I used:
 
 ```
 $ echo "Just testing my sendmail gmail relay" | mail -s "Sendmail gmail Relay" my-email@my-domain.com
 ```
 
-
 ![Pasted image 20241017144757](https://github.com/user-attachments/assets/6b29f79b-6f2c-4842-9ead-07148d43df66)
-
 
 ```
 cat /var/log/mail.log | tail
@@ -141,23 +125,20 @@ cat /var/log/mail.log | tail
 
 ![Pasted image 20241017144748](https://github.com/user-attachments/assets/1426a2b2-df86-43c3-98a6-e04bd510b0c7)
 
+## Verify Gmail Inbox:
 
-### Verify Gmail inbox:
+I can see that I have received email:
+
 ![Pasted image 20241017145023](https://github.com/user-attachments/assets/4ed244fc-89bd-4878-abdb-d1e10080ddc0)
 
+Optional Troubleshooting:
 
-
-# Troubleshooting:
-
-
-The logs are stored in /var/log/
+The logs for Sendmail are stored in /var/log/
 
 ![Pasted image 20241017145744](https://github.com/user-attachments/assets/9eafae60-e27d-4f21-90f5-64285de5aa24)
 
-
 ```
 cat /var/log/mail.log 
-
 ```
 
 Or real time logs:
@@ -167,7 +148,6 @@ tail -f /var/log/mail.log
 ```
 
 ![Pasted image 20241017144927](https://github.com/user-attachments/assets/d81665de-71bf-402e-b798-fffd84142a23)
-
 
 This error output actually makes the problem quite clear. The `unqualified host name` text means exactly what it says. It means that Sendmail is **not able to resolve your fully qualified domain name**.
 
