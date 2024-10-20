@@ -131,61 +131,55 @@ I can see that I have received email:
 
 ![Pasted image 20241017145023](https://github.com/user-attachments/assets/4ed244fc-89bd-4878-abdb-d1e10080ddc0)
 
-Optional Troubleshooting:
+>### Troubleshooting:
+>The logs for Sendmail are stored in /var/log/
+>![Pasted image 20241017145744](https://github.com/user-attachments/assets/9eafae60-e27d-4f21-90f5-64285de5aa24)
+>```
+>cat /var/log/mail.log
+>```
+>
+>Or real time logs:
+>
+>```
+>tail -f /var/log/mail.log
+>```
+>
+>![Pasted image 20241017144927](https://github.com/user-attachments/assets/d81665de-71bf-402e-b798-fffd84142a23)
+>
+>This error output actually makes the problem quite clear. The `unqualified host name` text means exactly what it says. It means that Sendmail is **not able to resolve your fully qualified domain name**.
+>
+>Checking `hostname` command:
+>
+>![Pasted image 20241017145350](https://github.com/user-attachments/assets/ff514c52-ef7c-47c4-a59e-718dc83872dd)
+>
+>To begin troubleshooting, check the contents of your `/etc/hosts` file. In our case the host name is “debian” is not a FQDN. To resolve this problem change `/etc/hosts`:
+>
+>FROM:
+>```
+>127.0.0.1       localhost
+>127.0.1.1       lm3nitro-vm
+>```
+>
+>TO:
+>Adding the following lines to the /etc/hosts:
+>
+>```
+>127.0.0.1       localhost.mydomainname localhost lm3nitro-vm
+>127.0.0.1       lm3nitro-vm.mydomainname
+>```
+>
+>NOTE: Substitute `lm3nitro-vm` with the actual name of your FQDN.
+>
+>Example:
+>
+>![Pasted image 20241017141633](https://github.com/user-attachments/assets/c93d9cc0-b5d9-4d1a-b01a-eb4ae240fbf7)
+>
+>Restart the Sendmail service and try sending your email again:
+>
+>```
+>sudo systemctl restart sendmail
+>```
 
-The logs for Sendmail are stored in /var/log/
+## Summary:
 
-![Pasted image 20241017145744](https://github.com/user-attachments/assets/9eafae60-e27d-4f21-90f5-64285de5aa24)
-
-```
-cat /var/log/mail.log 
-```
-
-Or real time logs:
-
-```
-tail -f /var/log/mail.log 
-```
-
-![Pasted image 20241017144927](https://github.com/user-attachments/assets/d81665de-71bf-402e-b798-fffd84142a23)
-
-This error output actually makes the problem quite clear. The `unqualified host name` text means exactly what it says. It means that Sendmail is **not able to resolve your fully qualified domain name**.
-
-
- Checking `hostname` command:
- 
-![Pasted image 20241017145350](https://github.com/user-attachments/assets/ff514c52-ef7c-47c4-a59e-718dc83872dd)
-
-
-
-To begin troubleshooting, check the contents of your `/etc/hosts` file. In our case the host name is “debian” is not a FQDN. To resolve this problem change `/etc/hosts`:
-
-# FROM:
-
-
-```
-127.0.0.1       localhost
-127.0.1.1       lm3nitro-vm
-```
-
-# TO:
-Adding the following lines to the /etc/hosts:
-
-```
-127.0.0.1       localhost.mydomainname localhost lm3nitro-vm
-127.0.0.1       lm3nitro-vm.mydomainname
-
-```
-
-NOTE: Substitute `lm3nitro-vm` with the actual name of your FQDN.
-
-Example:
-
-![Pasted image 20241017141633](https://github.com/user-attachments/assets/c93d9cc0-b5d9-4d1a-b01a-eb4ae240fbf7)
-
-
-### Restarting the sendmail service and try sending your email again:
-
-```
-sudo systemctl restart sendmail
-```
+I included the troubleshooting section because when I originally configured Sendmail, I was getting an error and wanted to share what I was able to do to resolve the error and issue I encountered. Overall, Sendmail has a wide variety of features that make it user friendly. In installing and configuring Sendmail, I was able to send an automated email directly from the command line. Sending emails from the CLI enhances efficiency, and allows you to manage email tasks effectively within a workflow.
