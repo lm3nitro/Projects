@@ -1,8 +1,15 @@
 ## Introduction
 
+With the following script, I will be sending a TCP packet that contains a custom payload with the Push flag set. The Push flag prompts the receiving TCP stack to deliver the data to the application layer without waiting for additional packets. The primary objective is to test the rules on my Fortinet firewall and evaluate the its responsiveness. 
 
+## Use Cases
 
-**Objective**: Craft and send custom packets with payload to test firewall rules.
++ Sending a variety of bad payloads to check how the firewall logs these incidents and whether alerts are triggered appropriately.
++ Crafting payloads that deviate from standard protocol behavior  to test if the firewall can detect anomalies.
++ Sending application-layer payloads, such as those targeting web applications (e.g., SQL injection attempts), to test the firewall’s application layer filtering capabilities.
++ Crafting and sending payloads designed to match specific firewall rules (both legitimate and malicious) to evaluate whether the firewall correctly applies those rules.
+
+## Script
 
 ```
 from scapy.all import *  
@@ -19,10 +26,9 @@ send(packet, verbose=False)
 print("Sent custom packet to test firewall response.")
 ```
 
-Code in Pycharm:
+Another view of the script in Pycharm:
 
 ![Pasted image 20241006152913](https://github.com/user-attachments/assets/c8aed9b8-91fb-4543-91bc-013fc9b30d06)
-
 
 Executing the script:
 
@@ -32,43 +38,7 @@ Sniffing the packet with TCPDump:
 
 ![Pasted image 20241006154302](https://github.com/user-attachments/assets/d3929b8b-ebff-47cd-b5b2-85b37895235f)
 
+## Summary:
 
-
-### Sending SYN  packet in continually :
-
-
-
-**Objective**: Craft and send custom packets continuously  on port 22 SSH to test firewall rules.
-
-```
-
-from scapy.all import *  
-  
-target_ip = "10.10.100.1"  # Replace with the target IP  
-target_port = 22  # Port to target  
-  
-# Generate a SYN packet and send it in a loop  
-while True:  
-    syn_packet = IP(dst=target_ip) / TCP(dport=target_port, flags='S')  
-    send(syn_packet, verbose=False)
-```
-
-Code in Pycharm:
-
-![Pasted image 20241006155328](https://github.com/user-attachments/assets/ecbc51c2-bf5b-417f-b98a-0c79320e7d12)
-
-
-Executing the script and sniffing the packet with TCPDump:
-
-
-![Pasted image 20241006155917](https://github.com/user-attachments/assets/48ce550e-f633-43fb-bff4-c176ccc8980c)
-
-
-Firewall is responding on port 22:
-
-
-![Pasted image 20241006160651](https://github.com/user-attachments/assets/f9579558-713c-4e83-845c-8e5ef8e3c085)
-
-Since the script was going to loop for ever I broke the loop by Ctrl+c. 
-
+I was able to send the TCP payload with the custom payload. While the packet was being sent, I was also able to capture the traffic using TCPdump and see the custom payload that was being sent. Performing this exercise allowed me to see my firewalls response when recieving these types of packets. Of course, the payload that was sent in this case was not malicious, however, this type of test can be done to evaluate the ability to detect anomalies, and examine the effectiveness of logging and alerting mechanisms.  
 
