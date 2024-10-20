@@ -22,5 +22,5 @@ cat "$LOG_FILE" | while read LINE; do
     done
 done
 ```
+![Pasted image 20241019195410](https://github.com/user-attachments/assets/56757c3d-d161-42ea-b4c7-f254a85ca986)
 
-![[Pasted image 20241019195410.png]]
