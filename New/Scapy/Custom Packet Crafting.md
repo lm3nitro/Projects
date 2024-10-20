@@ -40,5 +40,5 @@ Sniffing the packet with TCPDump:
 
 ## Summary:
 
-I was able to send the TCP payload with the custom payload. While the packet was being sent, I was also able to capture the traffic using TCPdump and see the custom payload that was being sent. Performing this exercise allowed me to see my firewalls response when recieving these types of packets. Of course, the payload that was sent in this case was not malicious, however, this type of test can be done to evaluate the ability to detect anomalies, and examine the effectiveness of logging and alerting mechanisms.  
+I was able to send the TCP packet with the custom payload. While the packet was being sent, I was also able to capture the traffic using TCPdump and see the custom payload that was sent. Performing this exercise allowed me to see my firewalls response when recieving these types of packets. Of course, the payload that was sent in this case was not malicious, however, this type of test can be done to evaluate the ability to detect anomalies, and examine the effectiveness of logging and alerting mechanisms.  
 
