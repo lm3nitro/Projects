@@ -11,8 +11,7 @@ In this script, I will be utilizing Scapy to craft UDP packets that will be sent
 ### Script
 
 Here is a copy of the script I created:
-```
-
+```python
 from scapy.all import *  
   
 # Define the target IP and port  
