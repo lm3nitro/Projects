@@ -14,7 +14,7 @@ This script utilizes Scapy to send ICMP Requests to specified host, in this case
 
 This is the script I created and will be utlizing to send ICMP requests to my firewall on 10.10.100.1:
 
-```
+```python
 
 from scapy.all import *
 
