@@ -10,7 +10,7 @@ I created the following script that will monitor the auth.log and search for key
 
 ## Script
 
-```
+```bash
 #!/bin/bash
 
 #Creating a variable to hold auth.log file
