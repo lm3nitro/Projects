@@ -11,7 +11,7 @@ With the following script, I will be sending a TCP packet that contains a custom
 
 ## Script
 
-```
+```python
 from scapy.all import *  
   
 target_ip = "10.10.100.1"  
