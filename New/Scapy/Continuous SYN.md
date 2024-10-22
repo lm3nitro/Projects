@@ -9,8 +9,7 @@ In this script below, I will be using the scapy library to send custom TCP packe
 + Sending SYN packets can help assess how a network responds to incoming connection requests.
 
 
-```
-
+```python
 from scapy.all import *  
   
 target_ip = "10.10.100.1"  # Replace with the target IP  
