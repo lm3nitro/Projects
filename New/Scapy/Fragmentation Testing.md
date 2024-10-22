@@ -14,7 +14,7 @@ I will be using the script I created below to test the behavior of my Fortinet f
 
 Below is the python script I created using scapy:
 
-```
+```python
 from scapy.all import *
 
 target_ip = "10.10.100.1"
