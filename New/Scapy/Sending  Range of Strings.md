@@ -31,7 +31,7 @@ This is the script in pycharm:
 
 ![Pasted image 20241006141946](https://github.com/user-attachments/assets/e5fc8065-6463-4105-a3aa-9b5de7cac09a)
 
-Once the sxcript was executed, I was able to see the 10 packets that were sent including the incremental payload that each one contained:
+Once the script was executed, I was able to see the 10 packets that were sent including the incremental payload that each one contained:
 
 ![Pasted image 20241006141859](https://github.com/user-attachments/assets/8dc7bd99-fb98-4e9d-a1a6-469d80e4be38)
 
@@ -51,7 +51,7 @@ We can also decode using python. In order to do this, I first located the locati
 
 This is the script that I will be using to read the pcap and reconstruct the payload:
 
-```
+```python
 from scapy.all import *  
 pcap_file = "/home/lm3nitro/Desktop/string_from_1_to_10.pcapng"  
 print(f"[+] Reading pcap from {pcap_file=}....")  
