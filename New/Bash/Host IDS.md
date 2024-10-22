@@ -12,7 +12,7 @@ In the following bash script, I will be monitoring key system files (/etc/passwd
 
 Below is the script I created/used. As seen, the md5 when then be generated in order to be able to compare:
 
-```
+```bash
 #!/bin/bash
 
 WATCHED_FILES=("/home/lm3nitro/my_bash_scripts/etc/passwd" "/home/lm3nitro/my_bash_scripts/etc/shadow")
