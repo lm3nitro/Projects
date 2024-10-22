@@ -12,7 +12,7 @@ I will be utilizing scapy to send ARP requests to my entire network, which enabl
 
 This is the script I created and utlized using scapy:
 
-```
+```python
 
 from scapy.all import *  
   
