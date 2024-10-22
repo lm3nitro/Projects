@@ -33,7 +33,7 @@ Once the name is added, click `Create`. You will be presented with a password, m
 
 Now that gmail is configured, I created the script that I will be using:
 
-```
+```bash
 #!/usr/bin/env bash
 
 # Check the status of the Apache2 service and save the output
