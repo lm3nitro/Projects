@@ -12,8 +12,7 @@ I will be utilizing python along with the scapy library to create a script that 
 
 ## Script
 
-```
-
+```python
 from scapy.all import *
 
 target_ip = "10.10.100.1"
