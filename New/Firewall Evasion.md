@@ -1,101 +1,105 @@
+# Firewall Evasion
+
+A firewall is software or hardware that monitors the network traffic and compares it against a set of rules before passing or blocking it. One simple analogy is a guard or gatekeeper at the entrance of an event. This gatekeeper can check the ID of individuals against a list of allowed individuals before letting them enter (or leave).
 
 ![Pasted image 20240920140126](https://github.com/user-attachments/assets/e35edcc5-908a-4162-a05a-39b6ef3b888c)
 
-
-A firewall is software or hardware that monitors the network traffic and compares it against a set of rules before passing or blocking it. One simple analogy is a guard or gatekeeper at the entrance of an event. This gatekeeper can check the ID of individuals against a set of rules before letting them enter (or leave).
-
 Different types of firewalls are capable of inspecting various packet fields; however, the most basic firewall should be able to inspect at least the following fields:
 
-
-Protocol
-Source Address
-Destination Address
-
-![Pasted image 20240920140306](https://github.com/user-attachments/assets/d3494f55-000e-4af1-aec2-5cfb24f0853c)
-
++ Protocol
++ Source Address
++ Destination Address
 
 Depending on the protocol field, the data in the IP datagram can be one of many options. Three common protocols are:
 
++ TCP
++ UDP
++ ICMP
 
-TCP
-UDP
-ICMP
-
+![Pasted image 20240920140306](https://github.com/user-attachments/assets/d3494f55-000e-4af1-aec2-5cfb24f0853c)
 
 In the case of TCP or UDP, the firewall should at least be able to check the TCP and UDP headers for:
 
-Source Port Number
-Destination Port Number
++ Source Port Number
++ Destination Port Number
 
 ![Pasted image 20240920140426](https://github.com/user-attachments/assets/08e838e9-c9da-4da6-ab47-031de5b174e9)
 
+In traditional firewalls (packet-filtering firewalls), everything is allowed and blocked mainly based on the following:
 
- In traditional firewalls, i.e., packet-filtering firewalls, everything is allowed and blocked mainly based on the following:
++ Protocol, such as TCP, UDP, and ICMP
++ IP source address
++ IP destination address
++ Source TCP or UDP port number
++ Destination TCP or UDP port number
 
-Protocol, such as TCP, UDP, and ICMP
-IP source address
-IP destination address
-Source TCP or UDP port number
-Destination TCP or UDP port number
+### Scope:
 
+While firewalls are crucial for network security and provide significant protection, they aren’t foolproof.In this exercise, I will go over several ways to evade a firewall. I will cover the following:
 
-### Evasion via Controlling the Source MAC/IP/Port
+<details>
+<summary><h3>Incomplete TCP Handshake<h3></summary>
 
-
-Evasion via controlling the source MAC/IP/Port
-Evasion via fragmentation, MTU, and data length
-Evasion through modifying header fields
-
-Nmap allows you to hide or spoof the source as you can use:
-
-Decoy(s)
-Proxy
-Spoofed MAC Address
-Spoofed Source IP Address
-Fixed Source Port Number
-
-### Nmap Behaviour of  Half open scan -sS on  Windows Firewall:
-
-
-nmap  -sS -F 10.10.100.39 -nnvvv        
-
-![Pasted image 20240920145403](https://github.com/user-attachments/assets/619458cd-ce8c-4d8d-b26f-209566273074)
-
-
-![Pasted image 20240920145126](https://github.com/user-attachments/assets/33b349ad-f2df-4051-987b-edcf71e98661)
-
+The 3-way handshake is the process used to establish a TCP connection between a client and a server. It involves three steps: SYN, SYN-ACK, and ACK.  A half-open connection occurs when a connection is initiated but not fully established. 
 
 ![Pasted image 20240920150311](https://github.com/user-attachments/assets/76b0924e-ad3f-41be-91aa-b4c4a39b71e4)
 
+Here I will be utilizing nmap to send half open connections to my target IP 10.10.100.39 (Windows Firewall):
 
-This is the first step in the TCP three-way handshake that any legitimate connection attempt takes. Since the target port is open, Scanme takes the second step by sending a response with the SYN and ACK flags back. In a normal connection, Ereet's machine (named krad) would complete the three-way handshake by sending an ACK packet acknowledging the SYN/ACK. Nmap does not need to do this, since the SYN/ACK response already told it that the port is open. If Nmap completed the connection, it would then have to worry about closing it. This usually involves another handshake, using FIN packets rather than SYN. So an ACK is a bad idea, yet something still has to be done. If the SYN/ACK is ignored completely, Scanme will assume it was dropped and keep re-sending it. The proper response, since we don't want to make a full connection, is a RST packet as shown in the diagram. This tells Scanme to forget about (reset) the attempted connection. Nmap could send this RST packet easily enough, but it actually doesn't need to. The OS running on krad also receives the SYN/ACK, which it doesn't expect because Nmap crafted the SYN probe itself. So the OS responds to the unexpected SYN/ACK with a RST packet. All RST packets described in this chapter also have the ACK bit set because they are always sent in response to (and acknowledge) a received packet. So that bit is not shown explicitly for RST packets. Because the three-way handshake is never completed, SYN scan is sometimes called half-open scanning.
+```
+nmap  -sS -F 10.10.100.39 -nnvvv
+```
 
-### Network traffic Identification of a  Half open scan  -sS scan:
+Based on the output of the scan, I was able to identify that TCP port 5357 was open associated with the service WSDAPI:
 
-![Pasted image 20240920150341](https://github.com/user-attachments/assets/eafc0b47-59aa-4925-8289-8439f6a8068c)
+![Pasted image 20240920145403](https://github.com/user-attachments/assets/619458cd-ce8c-4d8d-b26f-209566273074)
 
+Looking at the nmap scan traffic in Wireshark, I was able to see the behavior of the scan in real time:
 
+![Pasted image 20240920145126](https://github.com/user-attachments/assets/33b349ad-f2df-4051-987b-edcf71e98661)
 
-Nmap will also consider a port filtered if it receives certain ICMP error messages back.
-
-![Pasted image 20240920150957](https://github.com/user-attachments/assets/e1765030-7234-439f-a99f-399779d2af0c)
-
-### How Nmap interprets responses to a SYN probe:
-
-![Pasted image 20240920151122](https://github.com/user-attachments/assets/744cf0e9-d6d7-4618-b3b3-1215258f27e0)
-
-
-IP address 10.10.100.39 has generated and sent around 200 packets. The -F option limits the scan to the top 100 common ports; moreover, each port is sent a second SYN packet if it does not reply to the first one.
-
-The source port number is chosen at random but is fixed. In the screenshot, you can see it is 63871
+Here I can see that IP address 10.10.100.104 has generated and sent around 200 packets. The -F option in the command limits the scan to the top 100 common ports; moreover, each port is sent a second SYN packet if it does not reply to the first one. The source port number is chosen at random but is fixed. In the screenshot, you can see it is 63871
 
 The total length of the IP packet is 44 bytes. There are 20 bytes for the IP header, which leaves 24 bytes for the TCP header. No data is sent via TCP.
 
-The Time to Live (TTL) is is changing in each packet.
-The IP identification is changing is each packet
-No errors are introduced in the checksum.
+Other factors observed in the traffic:
 
-\
++ The Time to Live (TTL) is is changing in each packet.
++ The IP identification is changing is each packet
++ No errors are introduced in the checksum.
+
+In this scenario, nmap sends a SYN request to the target, if the port is open, the target responds with a SYN-ACK packet, acknowledging the request to establish a connection. Normally, in a ligitimate request, the scanner would then complete the request with an ACK to complete the handshake. In this case, the target host has already shown which port is open. If nmap were to complete the connection, it would then have to worry about closing it. Instead of sending an ACK back to complete the handshake, the scanner sends an RST packet to close the connection prematurely.
+
+In the screenshot below, we see the bahavior describe above for port 5357 which was previously identified:
+
+![Pasted image 20240920150341](https://github.com/user-attachments/assets/eafc0b47-59aa-4925-8289-8439f6a8068c)
+
+Nmap will classify a port as filtered if it receives specific ICMP error messages in response as seen in the screenshot below:
+
+![Pasted image 20240920150957](https://github.com/user-attachments/assets/e1765030-7234-439f-a99f-399779d2af0c)
+
+> [!NOTE]  
+> Below is a summary of how nmap will interpret responses to a SYN probe:
+> ![Pasted image 20240920151122](https://github.com/user-attachments/assets/744cf0e9-d6d7-4618-b3b3-1215258f27e0)
+
+
+</details>
+
+
+1. Evasion via nmap you to perform decoy
+3. Evasion via incomplete TCP handshake
+4. Evasion via http proxy
+5. Evasion via mac spoofing
+6. Evasion via a fized source port
+7. Evasion via fragmentation
+8. Evasion via MTU
+9. Evasion via Data Length
+10. Evasion via Bad Checksum
+11. Evasion via port tunneling
+12. Evasion via using a non-standard port
+
+
+
 ### Nmap Behaviour of Decoy technique:
 
 Hide your scan with decoys. Using decoys makes your IP address mix with other “decoy” IP addresses. Consequently, it will be difficult for the firewall and target host to know where the port scan is coming from. Moreover, this can exhaust the blue team investigating each source IP address.re
