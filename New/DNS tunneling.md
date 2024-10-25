@@ -1,11 +1,18 @@
+# DNS Tunneling
 
+DNS tunneling is a difficult-to-detect attack that routes DNS requests to the attacker's server, providing attackers a covert command and control channel, and data exfiltration path. DNS tunneling is a technique that encapsulates data within DNS queries and responses, allowing data to be sent and received through DNS traffic. This method can be used for both legitimate purposes, such as bypassing network restrictions, and malicious activities, such as exfiltrating data or establishing command-and-control channels for malware.
 
+### Scope:
 
+While monitoring network traffic in Kibana, I noticed an unusual spike in DNS queries from a single internal IP address, which significantly exceeded the normal baseline. This anomaly raised concerns about potential DNS tunneling or unauthorized data exfiltration. To investigate further, I drilled down into the logs and network traffic, examining the specific DNS queries being made, the domains being accessed, and the timestamps of the requests. I also cross-referenced this data with user activity logs to identify any recent changes or suspicious behavior associated with that IP address, aiming to determine whether this spike was a benign issue, such as a misconfigured application, or a sign of a more serious security threat.
+
+Topology:
 ![Pasted image 20241008094034](https://github.com/user-attachments/assets/66dbf3d6-4dad-4bb3-9a34-5987dc8d3b12)
 
 
+### Tools and Technology:
 
-DNS tunneling is a difficult-to-detect attack that routes DNS requests to the attacker's server, providing attackers a covert command and control channel, and data exfiltration path.
+
 
 ### Dashboard in Kibana shows DNS spikes:
 
