@@ -248,30 +248,33 @@ Here are various red flags that may point to a MAC spoofing attack on a network.
 </details>
 
 <details>
-<summary><h3>Mac Spoofing<h3></summary>
+<summary><h3>Fixed Port Number<h3></summary>
 
-### Fixed Source Port Number:
+Scanning from a specific source port can be advantageous if you find that firewalls permit incoming packets from certain ports, such as 53 or 80. This strategy can help you navigate around firewall restrictions more effectively. 
 
-Use a specific source port number. Scanning from one particular source port number can be helpful if you discover that the firewalls allow incoming packets from particular source port numbers, such as port 53 or 80. Without inspecting the packet contents, packets from source TCP port 80 or 443 look like packets from a web server, while packets from UDP port 53 look like responses to DNS queries.
+### Firewall Rule
 
-
-### Creating a firewall rule to allow traffic to IIS server on a specific source port:
-
-
+To get started, I created a firewall rule to allow traffic on the IIS server from a specific source port. To do this, I navigated to the Windows host and created a new firewall rule:
 
 ![Pasted image 20240922150229](https://github.com/user-attachments/assets/4613d30d-882b-471d-a75f-103032a94dbc)
 
 ![Pasted image 20240922150315](https://github.com/user-attachments/assets/4a644684-06b5-457b-999d-4b53d3fa4cab)
 
+I then configured the rule do that the only allow traffic from specific source ports (8000 and 9999):
 
 ![Pasted image 20240922150726](https://github.com/user-attachments/assets/ba81035e-031a-48ea-a96d-d556854be2fa)
 
+This rule will apply to all IPs:
+
 ![Pasted image 20240922150815](https://github.com/user-attachments/assets/5251819b-ec88-428d-9c58-631921b48f5d)
 
+Allowed the connection:
 
 ![Pasted image 20240922150902](https://github.com/user-attachments/assets/7077eb7d-95b7-4ec6-8fc5-4ad6d1e62051)
 
 ![Pasted image 20240922150941](https://github.com/user-attachments/assets/eb58b0f1-ca6e-485d-9203-16436dcde6a1)
+
+Named the rule:
 
 ![Pasted image 20240922151127](https://github.com/user-attachments/assets/4a39870e-4087-449e-8325-d1aa9ca6fab4)
 
