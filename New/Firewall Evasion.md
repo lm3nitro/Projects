@@ -82,111 +82,103 @@ Nmap will classify a port as filtered if it receives specific ICMP error message
 > Below is a summary of how nmap will interpret responses to a SYN probe:
 > ![Pasted image 20240920151122](https://github.com/user-attachments/assets/744cf0e9-d6d7-4618-b3b3-1215258f27e0)
 
-
 </details>
 
+<details>
+<summary><h3>Nmap Decoy Scan<h3></summary>
 
-1. Evasion via nmap you to perform decoy
-3. Evasion via incomplete TCP handshake
-4. Evasion via http proxy
-5. Evasion via mac spoofing
-6. Evasion via a fized source port
-7. Evasion via fragmentation
-8. Evasion via MTU
-9. Evasion via Data Length
-10. Evasion via Bad Checksum
-11. Evasion via port tunneling
-12. Evasion via using a non-standard port
+You onceal the scan using decoys. In an Nmap decoy scan, multiple decoy IP addresses are used alongside the real IP address to obfuscate the source of the scan. This makes it challenging for both the firewall and the target host to identify the origin of the port scan. 
 
+Here I will use the following command with the decoy option to "hide" my real IP address:
 
+```
+nmap -sS -Pn -D 192.168.91.10,192.168.91.15,192.168.91.128 -F 192.168.91.130
+```
 
-### Nmap Behaviour of Decoy technique:
-
-Hide your scan with decoys. Using decoys makes your IP address mix with other “decoy” IP addresses. Consequently, it will be difficult for the firewall and target host to know where the port scan is coming from. Moreover, this can exhaust the blue team investigating each source IP address.re
-
- nmap -sS -Pn -D 192.168.91.10,192.168.91.15,192.168.91.128 -F 192.168.91.130
+After initiating the scan, I can see that it completes and that the target has a number of open ports:
 
 ![Pasted image 20240921123114](https://github.com/user-attachments/assets/42da0b3f-e28f-4619-992f-be24308e6307)
 
+While looking at the Wireshark capture of the scan, I can see the expected behavior. Here we see that all 3 of the IP addresses in the command are reaching out with a SYN request to the host:
 
 ![Pasted image 20240921123403](https://github.com/user-attachments/assets/5550db8d-d32b-4240-b9f6-2ac22cae96d7)
 
+However, one thing that we can note from the traffic above, although there are 3 different IP addresses sending SYN requests, only 1 sends the RST (the real IP). 
 
-You can also set Nmap to use random source IP addresses instead of explicitly specifying them.
+Another example of this is by setting Nmap to use random source IP addresses instead of explicitly specifying them:
 
-
+```
 map -sS -Pn -D RND,RND,192.168.91.128 -F 192.168.91.130
-
+```
 
 ![Pasted image 20240921124912](https://github.com/user-attachments/assets/551b29ec-e9be-40a0-ac69-6fec116d136f)
 
-
 ### Finding the real IP behind the Decoy scan:
 
-
-Resets are send to the real source IP:
-
+As noted earlier, only the real IP is linked to the RST packet. Another method for identifying the true source is that the target will send RST packets exclusively to this real IP address:
 
 ![Pasted image 20240921123604](https://github.com/user-attachments/assets/e07821b9-850d-4918-9447-6687f2277828)
 
-
-The acknowledgement are send to the real source IP:
+When the target responds to the initial SYN requests, it may send back ACK packets if the port is open, but these responses will only reach the actual source IP. 
 
 ![Pasted image 20240921124326](https://github.com/user-attachments/assets/5a732df1-4476-46ac-a1a4-1ac630870b3d)
 
-
-Single flow:
+Here is a view of this behavior wiht a sinfle IP:
 
 ![Pasted image 20240921124444](https://github.com/user-attachments/assets/4ad665af-995a-4935-9834-185bec36878f)
 
+### Summary:
 
+Firewalls often look for unusual patterns of activity. A decoy scan can generate a seemingly normal level of traffic from various sources, making it less likely for the real scan to be flagged as suspicious.
 
+In some cases, decoy scans can utilize IP spoofing techniques to make the decoy addresses appear legitimate, further complicating the firewall's ability to identify the real source.
 
-### Proxy
+</details>
 
-### Setting up a Netcat http proxy for NMAP:
+<details>
+<summary><h3>Evasion via http proxy<h3></summary>
 
+For this scenario I set up a Netcat HTTP Proxy for NMAP:
 
 ![Pasted image 20240922143053](https://github.com/user-attachments/assets/c6d5437f-9d25-45f6-b235-d8b7dd290ad4)
 
+I set it up and had it configured to listen on port 8081:
+
+```
 ncat -vv --listen 8081 --proxy-type http
+```
 
 ![Pasted image 20240921201927](https://github.com/user-attachments/assets/9072c443-7501-4949-a0fc-cb8dd0ce8b06)
 
+Verified that it was indeed listening:
 
 ![Pasted image 20240921201907](https://github.com/user-attachments/assets/297099b9-ed7a-4112-9ee0-b6a81f3b8975)
 
+Next I performed a TCP Connect Scan (-sT):
 
-#### TCP Connect Scan (-sT)
+A TCP Connect Scan is similar to that of a SYN scan. However, instead of aborting the half-open connection with a RST packet, it attempts to establish a full TCP connection with each port on the target machine. After the connection is successful, the scanner wil terminates the connection immediately with a RST packet. Below is a image to represent tis behavior:
 
-The first two steps (SYN and SYN/ACK) are exactly the same as with a SYN scan. Then, instead of aborting the half-open connection with a RST packet, krad acknowledges the SYN/ACK with its own ACK packet, completing the connection. In this case, Scanme even had time to send its SSH banner string (SSH-1.99-OpenSSH_3.1p1\n) through the now-open connection. As soon as Nmap hears from its host OS that the connection was successful, it terminates the connection. TCP connections usually end with another handshake involving the FIN flag, but Nmap asks the host OS to terminate the connection immediately with a RST packet.
+<img width="717" alt="Screenshot 2024-10-25 at 8 59 04 PM" src="https://github.com/user-attachments/assets/27ebb0e2-af9c-4930-be8f-7f762b63bf94">
 
+>#### Note: To use the --proxies option with Nmap, you need to include at least two scan techniques, such as -sT, -A, -sC, or -sV. Otherwise, Nmap will not be able to route the traffic through the proxy.
 
-![Pasted image 20240921212259](https://github.com/user-attachments/assets/40ae7b87-25f5-4bf3-81d3-35d392d076f3)
+```
+nmap  -sC -sV -Pn -p80  --proxies http://192.168.91.131:8081 192.168.91.130 --packet-trace -nnvvvv
+```
 
-
-Note: The -sT -A -sC -sV at least two scan technique need to be in used in order to use the --proxies option otherwise Nmap won't be able to route the traffic through the proxy.
-
- nmap  -sC -sV -Pn -p80  --proxies http://192.168.91.131:8081 192.168.91.130 --packet-trace -nnvvvv
- 
 ![Pasted image 20240921204322](https://github.com/user-attachments/assets/62e12b62-9912-43bf-a773-2afd073c998e)
 
-
-### Traffic from the local nmap scanner:
-
-
+Traffic from the local nmap scanner:
 
 ![Pasted image 20240921204246](https://github.com/user-attachments/assets/e0e3f004-497a-4744-9a02-1b9fc9d74cf1)
 
-
- --packet-trace option show information about the state of the connection:
+I also used the `--packet-trace` option to information about the state of the connection:
  
 ![Pasted image 20240921211331](https://github.com/user-attachments/assets/3237440f-55fc-4d97-be9c-437237eb8eca)
 
+Here I can see information on the target host such as open ports and running services:
 
 ![Pasted image 20240921211420](https://github.com/user-attachments/assets/a08cf613-21f6-4859-9304-d9cf94846c15)
-
-
 
 ### Detecting scans via proxy servers:
 
@@ -214,6 +206,30 @@ Purpose: CONNECT is the tunnel builder of HTTP methods. It’s typically used by
 
 
 I was successfully able to scan node 192.168.91.130 and detect it's operating system (Windows) and the service  running (IIS web server) via a proxy sever using Nmap:
+
+
+
+
+
+
+
+
+
+
+
+</details>
+
+5. Evasion via mac spoofing
+6. Evasion via a fized source port
+7. Evasion via fragmentation
+8. Evasion via MTU
+9. Evasion via Data Length
+10. Evasion via Bad Checksum
+11. Evasion via port tunneling
+12. Evasion via using a non-standard port
+
+
+
 
 
 
