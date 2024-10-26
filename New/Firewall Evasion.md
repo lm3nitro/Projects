@@ -136,7 +136,7 @@ In some cases, decoy scans can utilize IP spoofing techniques to make the decoy 
 </details>
 
 <details>
-<summary><h3>Evasion via http proxy<h3></summary>
+<summary><h3>Evasion via HTTP Proxy<h3></summary>
 
 For this scenario I set up a Netcat HTTP Proxy for NMAP:
 
@@ -180,101 +180,75 @@ Here I can see information on the target host such as open ports and running ser
 
 ![Pasted image 20240921211420](https://github.com/user-attachments/assets/a08cf613-21f6-4859-9304-d9cf94846c15)
 
-### Detecting scans via proxy servers:
+### Detecting Scans via Proxy Servers:
 
-There's no 100% reliable way to achieve this but the presence of any of the following headers is a strong indication that the request was routed from a proxy server:
+Although there isn't a 100% reliable way to achieve this, there are indicators that can be seen in the headers that when present, can suggest that the request was routed from a proxy server:
 
-via:
-forwarded:
-x-forwarded-for:
-client-ip: 
++ via
++ forwarded
++ x-forwarded-for
++ client-ip: 
 
-
-Traffic at the IIS (target) server: 
+In trying to see how the traffic looks on the receiving end, I went to check the Wireshark traffic on the IIS (target) server: 
 
 ![Pasted image 20240921203356](https://github.com/user-attachments/assets/21462aab-9c7d-4186-97dc-a3a7c513aca9)
 
-
-The CONNECT Method: Building Tunnels in the Web
-
-Purpose: CONNECT is the tunnel builder of HTTP methods. It’s typically used by proxy servers to establish a direct link to a target over an HTTP connection. This is particularly useful for SSL (HTTPS) traffic where the client needs a secure and direct path to the server.
+The CONNECT method is an HTTP request method used primarily to establish a tunnel to a server through an HTTP proxy. Taking a closer look into the traffic, I was able to see that here:
 
 ![Pasted image 20240921203332](https://github.com/user-attachments/assets/bb730138-3adf-44cf-ba54-ee4595caab34)
 
-
 ![Pasted image 20240921205656](https://github.com/user-attachments/assets/f58f190f-ec6f-455a-ab4f-2384592fcbc0)
 
+### Summary:
 
-I was successfully able to scan node 192.168.91.130 and detect it's operating system (Windows) and the service  running (IIS web server) via a proxy sever using Nmap:
-
-
-
-
-
-
-
-
-
-
+In this exercise, I was successfully able to scan node 192.168.91.130 and detect it's operating system (Windows) and the service running (IIS Web Server) via a proxy sever using Nmap.
 
 </details>
 
-5. Evasion via mac spoofing
-6. Evasion via a fized source port
-7. Evasion via fragmentation
-8. Evasion via MTU
-9. Evasion via Data Length
-10. Evasion via Bad Checksum
-11. Evasion via port tunneling
-12. Evasion via using a non-standard port
-
-
-
-
-
-
-### Mac spoofing :
-
+<details>
+<summary><h3>Mac Spoofing<h3></summary>
 
 ![Pasted image 20240922170340](https://github.com/user-attachments/assets/56585a8a-ff25-44c5-9cc5-52c07312abb5)
 
+MAC spoofing is a technique often used by attackers to change the MAC address of their device to match that of another device on the network. This vulnerability allows them to evade security measures like MAC filtering and MAC-based access controls. Mac Spoofing can circumvent MAC filtering, allowing them to gain unauthorized access to the network by pretending to be a trusted device.
 
-
-MAC spoofing is a commonly employed tactic by malicious actors to alter the Media Access Control (MAC) address of their device to mimic that of another device present on the network. The aforementioned vulnerability enables the assailant to surpass network security measures such as MAC filtering and MAC-based access controls.
-
-MAC spoofing is a frequently employed tactic to circumvent MAC filtering, a security protocol that confines network entry solely to devices with recognized MAC addresses. The malicious entity possesses the ability to bypass the current security measures and attain illicit entry into the network through the fabrication of the MAC address of a reliable device
-
+Below is a look at the frame and where both the destination and source MAC addresses can be found:
 
 ![Pasted image 20240921231109](https://github.com/user-attachments/assets/700bb0b7-b9d9-4682-98f3-ed9d2d3c7c5b)
 
-Spoof the source MAC address. Nmap allows you to spoof your MAC address using the option --spoof-mac MAC_ADDRESS. This technique is tricky; spoofing the MAC address works only if your system is on the same network segment as the target host. The target system is going to reply to a spoofed MAC address. If you are not on the same network segment, sharing the same Ethernet, you won’t be able to capture and read the responses. It allows you to exploit any trust relationship based on MAC addresses. Moreover, you can use this technique to hide your scanning activities on the network. For example, you can make your scans appear as if coming from a network printer.
+Nmap allows you to spoof your MAC address using the option `--spoof-mac MAC_ADDRESS`. However, there are limitations. Spoofing works effectively only if your system is on the same network segment as the target host. If you are on a different network segment the target system will not receive your packets. Spoofing your MAC address to match a trusted device can potentially allow you to exploit vulnerabilities or gain unauthorized access.
 
+In the exercise, I used the command below:
+
+```
 nmap -sS -Pn -p80 --spoof-mac deadbeef 192.168.91.130 --packet-trace --disable-arp-ping -nnvv
+```
 
+By using this command, I can see that my MAC address now includes `deadbeef`:
 
 ![Pasted image 20240921230527](https://github.com/user-attachments/assets/facb1002-5280-4bd5-89b5-732824af73ce)
 
-
-The mac address has changed:
+In the Wireshark capture, I was also able to confirm that the MAC address had changed:
 
 ![Pasted image 20240921230718](https://github.com/user-attachments/assets/a251a877-a9e8-4e85-ab34-90d28bc730be)
 
+### Warning Signs/Detection of MAC Spoofing Attacks:
 
-
-### Warning Signs of MAC Spoofing Attacks:
-
+Below is an example of how MAC spoofing looks in the network traffic. Here I analyzed traffic between the same 2 IP addresses, however, in the highlighted piece we can see that the MAC address changes:
 
 ![Pasted image 20240922171738](https://github.com/user-attachments/assets/bb17da92-de21-4b55-b473-710b8a522097)
 
+Here are various red flags that may point to a MAC spoofing attack on a network. Some of these warnings include:
 
-here are various red flags that may point to a MAC spoofing attack on a network. Some of these warnings include:
++ Duplicate MAC addresses
++ Unknown MAC addresses
++ Unusual ARP Activity
++ Unexpected network failures 
 
- Duplicate IP addresses
- Unknown MAC addresses
- Unusual network activity
- Inconsistent device behaviour 
-  Unexpected network failures 
+</details>
 
+<details>
+<summary><h3>Mac Spoofing<h3></summary>
 
 ### Fixed Source Port Number:
 
@@ -324,7 +298,16 @@ Note: The port has been filter since the traffic will be only allow on an specif
 
 ![Pasted image 20240922151741](https://github.com/user-attachments/assets/ce251585-a9d1-4647-8de4-979c3d04fe0e)
 
+</details>
 
+
+
+7. Evasion via fragmentation
+8. Evasion via MTU
+9. Evasion via Data Length
+10. Evasion via Bad Checksum
+11. Evasion via port tunneling
+12. Evasion via using a non-standard port
 
 
 ### Evasion via Forcing Fragmentation, MTU, and Data Length:
