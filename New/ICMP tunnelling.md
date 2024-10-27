@@ -1,6 +1,12 @@
+# ICMP Tunnelling
 
+ICMP tunneling is a technique that uses the Internet Control Message Protocol (ICMP) to encapsulate and transmit data packets over a network. ICMP is primarily used for sending error messages and operational information regarding network conditions, but it can be repurposed to create a tunnel for other types of traffic.
 
+### Scope:
 
+### Tools and Technology:
+
+Wireshark, Tshark, and Linux
 
 ![Pasted image 20241008105723](https://github.com/user-attachments/assets/1e8a5b49-e1d3-477c-a7dd-e9589339c833)
 
