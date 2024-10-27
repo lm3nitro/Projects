@@ -613,8 +613,6 @@ A properly configured and deployed NGFW renders many attacks useless.
 
 </details>
 
-11. Evasion via port tunneling
-12. 
 
 
 
