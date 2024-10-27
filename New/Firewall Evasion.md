@@ -85,9 +85,9 @@ Nmap will classify a port as filtered if it receives specific ICMP error message
 </details>
 
 <details>
-<summary><h3>Nmap Decoy Scan<h3></summary>
+<summary><h3>Evasion via Decoy Scan<h3></summary>
 
-You onceal the scan using decoys. In an Nmap decoy scan, multiple decoy IP addresses are used alongside the real IP address to obfuscate the source of the scan. This makes it challenging for both the firewall and the target host to identify the origin of the port scan. 
+You can conceal the scan using decoys. In an Nmap decoy scan, multiple decoy IP addresses are used alongside the real IP address to obfuscate the source of the scan. This makes it challenging for both the firewall and the target host to identify the origin of the port scan. 
 
 Here I will use the following command with the decoy option to "hide" my real IP address:
 
@@ -206,7 +206,7 @@ In this exercise, I was successfully able to scan node 192.168.91.130 and detect
 </details>
 
 <details>
-<summary><h3>Mac Spoofing<h3></summary>
+<summary><h3>Evasion via Mac Spoofing<h3></summary>
 
 ![Pasted image 20240922170340](https://github.com/user-attachments/assets/56585a8a-ff25-44c5-9cc5-52c07312abb5)
 
@@ -248,7 +248,7 @@ Here are various red flags that may point to a MAC spoofing attack on a network.
 </details>
 
 <details>
-<summary><h3>Fixed Port Number<h3></summary>
+<summary><h3>Evasion via Fixed Port Number<h3></summary>
 
 Scanning from a specific source port can be advantageous if you find that firewalls permit incoming packets from certain ports, such as 53 or 80. This strategy can help you navigate around firewall restrictions more effectively. 
 
@@ -371,7 +371,7 @@ I was also able to verify that the behavior wasjust as expected in Wireshark:
 </details>
 
 <details>
-<summary><h3>Bad Checksum<h3></summary>
+<summary><h3>Evasion via Bad Checksum<h3></summary>
 
 ###  Wrong Checksum:
 
