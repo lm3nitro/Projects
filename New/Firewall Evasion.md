@@ -570,7 +570,7 @@ The connection state at the web server indicates that the ports are bound.
 </details>
 
 <details>
-<summary><h3>Evasion via using a non-standard port<h3></summary>
+<summary><h3>Evasion via Non-Standard Port<h3></summary>
 
 Creating a backdoor via the specified port number that lets you interact with the Bash shell.
 
@@ -580,8 +580,9 @@ Creating a backdoor via the specified port number that lets you interact with th
 
 Considering the case that we have a firewall, it is not enough to use ncat to create a backdoor unless we can connect to the listening port number. Moreover, unless we run ncat as a privileged user, root, or using sudo, we cannot use port numbers below 1024.
 
+</details>
 
-### Mitigations:
+## Mitigations:
 
 Next-Generation Firewall (NGFW:
 
@@ -611,7 +612,7 @@ Ability to decrypt SSL/TLS and SSH traffic. For instance, it restricts evasive t
 
 A properly configured and deployed NGFW renders many attacks useless.
 
-</details>
+
 
 
 
