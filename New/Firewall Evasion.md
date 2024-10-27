@@ -572,13 +572,15 @@ The connection state at the web server indicates that the ports are bound.
 <details>
 <summary><h3>Evasion via Non-Standard Port<h3></summary>
 
-Creating a backdoor via the specified port number that lets you interact with the Bash shell.
+### Information 
 
--e or --exec executes the given command
+The option `-e /bin/bash: ` tells ncat to execute the specified program (in this case, /bin/bash) when a connection is made. This effectively gives the attacker a command shell over the established connection. The port number can be specified using the `PORT_NUMBER` option. However, please note, unless running ncat with the correct privlidges, port numbers below 1024 (well known/standard) cannot be used.
 
-/bin/bash location of the command we want to execute
+```
+ncat -lvnp PORT_NUMBER -e /bin/bash
+```
 
-Considering the case that we have a firewall, it is not enough to use ncat to create a backdoor unless we can connect to the listening port number. Moreover, unless we run ncat as a privileged user, root, or using sudo, we cannot use port numbers below 1024.
+When this command is ran on a machine, it sets up a listener on the specified port. If it connects to that port, you will gain a command shell (bash) on the machine where the command is running. This is commonly used to evade firewalls. Once shell access to the target host is successful, it will allow navigation of the file system and can access sensitive information.
 
 </details>
 
