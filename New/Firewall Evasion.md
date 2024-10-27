@@ -1,5 +1,5 @@
 # Firewall Evasion
-https://github.com/lm3nitro/Projects/edit/main/New/Firewall%20Evasion.md
+
 A firewall is software or hardware that monitors the network traffic and compares it against a set of rules before passing or blocking it. One simple analogy is a guard or gatekeeper at the entrance of an event. This gatekeeper can check the ID of individuals against a list of allowed individuals before letting them enter (or leave).
 
 ![Pasted image 20240920140126](https://github.com/user-attachments/assets/e35edcc5-908a-4162-a05a-39b6ef3b888c)
