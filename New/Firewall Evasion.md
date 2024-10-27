@@ -1,5 +1,5 @@
 # Firewall Evasion
-
+https://github.com/lm3nitro/Projects/edit/main/New/Firewall%20Evasion.md
 A firewall is software or hardware that monitors the network traffic and compares it against a set of rules before passing or blocking it. One simple analogy is a guard or gatekeeper at the entrance of an event. This gatekeeper can check the ID of individuals against a list of allowed individuals before letting them enter (or leave).
 
 ![Pasted image 20240920140126](https://github.com/user-attachments/assets/e35edcc5-908a-4162-a05a-39b6ef3b888c)
@@ -383,54 +383,60 @@ nmap -sS -Pn --badsum -p80,3389 192.168.91.130 -nnvvv --packet-trace
 
 ![Pasted image 20240923113056](https://github.com/user-attachments/assets/ef80ed72-d799-4e50-ab27-0dc743ad0710)
 
+Based on the output, we can see the that ports (80 and 3389) are being filtered. Overall, the results will depend significantly on the security measures in place on the target system and the nature of the network traffic. Monitoring the responses and comparing them to typical behavior can provide valuable insights into the security posture of the target environment. 
+
 </details>
 
 <details>
 <summary><h3>Evasion via Modifying Header Fields<h3></summary>
 
-### Evasion via Modifying Header Fields:
-
 Nmap allows you to control various header fields that might help evade the firewall. You can:
 
-Set IP time-to-live
-Send packets with specified IP options
-Send packets with a wrong TCP/UDP checksum
++ You can set the TTL value with the `--ttl` option.
++ Send packets with specified IP options:
++ Use `--badsum` to send packets with incorrect TCP/UDP checksums.
 
+I will go over TTL and IP options below:
 
 ### Set TTL :
 
-Nmap gives you further control over the different fields in the IP header. One of the fields you can control is the Time-to-Live (TTL). Nmap options include --ttl VALUE to set the TTL to a custom value. This option might be useful if you think the default TTL exposes your port scan activities.
+The `--ttl` option in Nmap autellows you to specify TTL value for the packets sent during a scan. TTL is a field in the IP header that specifies the maximum number of hops a packet can take before it is discarded. Each router that forwards the packet decrements the TTL value by one. This option might be useful if you think the default TTL exposes your port scan activities.
 
- nmap -sS -Pn --ttl 1 -p80,3389 192.168.91.130 -nnvvv --packet-trace
+```
+nmap -sS -Pn --ttl 1 -p80,3389 192.168.91.130 -nnvvv --packet-trace
+```
 
 ![Pasted image 20240923105624](https://github.com/user-attachments/assets/75d7f9ea-d3be-4ad6-8124-e8186a6143eb)
 
+Based on the output above, I was able to see the open ports. 
 
 ![Pasted image 20240923105749](https://github.com/user-attachments/assets/fa10c75f-ab9b-4554-a4f8-cb24a9945cd9)
 
-
+Viewing the traffic in Wireshark, I was able to confirm the TTL behavior. In this case, the TTLS is showing 1 as specified in the command above. 
 
 ### Set IP Options:
 
-One of the IP header fields is the IP Options field. Nmap lets you control the value set in the IP Options field using --ip-options HEX_STRING, where the hex string can specify the bytes you want to use to fill in the IP Options field. Each byte is written as \xHH, where HH represents two hexadecimal digits, i.e., one byte.
+The IP Options field is a flexible part of the IP header that allows for additional features or instructions to be specified for packet processing. Nmap lets you customize the IP Options field using the `--ip-options HEX_STRING` option. The 'HEX_STRING` option defines the exact bytes that will populate the IP Options field. Each byte is expressed in hexadecimal format, where HH represents two hexadecimal digits. For example, the byte 0x1A would be written as \x1A.
 
 A shortcut provided by Nmap is using the letters to make your requests:
 
-R to record-route.
++ R to record-route.
++ T to record-timestamp.
++ U to record-route and record-timestamp.
++ L for loose source routing and needs to be followed by a list of IP addresses separated by space.
++ S for strict source routing and needs to be followed by a list of IP addresses separated by space.
 
-T to record-timestamp.
+The Record Route option is one of the IP options that can be specified in the IP header. It allows the sender to keep track of the route taken by the packet through the network, recording the IP addresses of the routers that forward the packet. It can be helpful if you want to try to make your packets take a particular route to avoid a specific security system.
 
-U to record-route and record-timestamp.
+Here I used this option:
 
-L for loose source routing and needs to be followed by a list of IP addresses separated by space.
-
-S for strict source routing and needs to be followed by a list of IP addresses separated by space.
-
-The loose and strict source routing can be helpful if you want to try to make your packets take a particular route to avoid a specific security system.
-
+```
 nmap -sS -Pn --ip-options R -p80,3389 192.168.91.130 -nnvvv --packet-trace
+```
 
 ![Pasted image 20240923112809](https://github.com/user-attachments/assets/e571ab7e-9fc4-40ff-a835-65a46e6b3690)
+
+Below are is the scan related traffic where I was able to see that it did have the IP option R available:
 
 ![Pasted image 20240923112706](https://github.com/user-attachments/assets/61da2c44-109c-4251-92cb-2f5bb7a1814a)
 
