@@ -33,7 +33,7 @@ In traditional firewalls (packet-filtering firewalls), everything is allowed and
 + Source TCP or UDP port number
 + Destination TCP or UDP port number
 
-### Scope:
+## Scope:
 
 While firewalls are crucial for network security and provide significant protection, they aren’t foolproof.In this exercise, I will go over several ways to evade a firewall. I will cover the following:
 
@@ -582,42 +582,36 @@ ncat -lvnp PORT_NUMBER -e /bin/bash
 
 When this command is ran on a machine, it sets up a listener on the specified port. If it connects to that port, you will gain a command shell (bash) on the machine where the command is running. This is commonly used to evade firewalls. Once shell access to the target host is successful, it will allow navigation of the file system and can access sensitive information.
 
-</details>
-
 ## Mitigations:
 
-Next-Generation Firewall (NGFW:
-
-Traditional firewalls, such as packet-filtering firewalls, expect a port number to dictate the protocol being used and identify the application. Consequently, if you want to block an application, you need to block a port. Unfortunately, this is no longer valid as many applications camouflage themselves using ports assigned for other applications. 
-
+Traditional firewalls, like packet-filtering firewalls, rely on port numbers to determine the protocol in use and to identify the corresponding application. As a result, blocking an application typically involves blocking a specific port. However, this approach is becoming outdated, as many applications now disguise themselves by using ports designated for other services.
 
 ![Pasted image 20240924210345](https://github.com/user-attachments/assets/fcdd09d7-b8dc-4efd-813a-74e6b9305aa9)
 
-
-
-In other words, a port number is no longer enough nor reliable to identify the application being used. Add to this the pervasive use of encryption, for example, via SSL/TLS.
-
+In other words, relying solely on a port number is no longer sufficient or reliable for identifying the application in use. This challenge is further compounded by the widespread adoption of encryption technologies, such as SSL/TLS.
 
 ![Pasted image 20240924210137](https://github.com/user-attachments/assets/356b1515-1882-496a-9da8-27e824e290fa)
 
-Next-Generation Firewall (NGFW) is designed to handle the new challenges facing modern enterprises. For instance, some of NGFW capabilities include:
+Next-Generation Firewall (NGFW) is designed to handle theese types of new challenges.  Some of the fetaures/capabilities os NGFWs include:
 
-Integrate a firewall and a real-time Intrusion Prevention System (IPS). It can stop any detected threat in real-time.
++ Application Awareness: NGFWs can identify and control applications regardless of the ports they use. This allows for more precise policy enforcement and improved security.
++ Deep Packet Inspection: They perform deep packet inspection (DPI) to analyze the actual data within packets, enabling detection and blocking of threats hidden in encrypted traffic.
++ Content Inspection: NGFWs can identify the content being transmitted across the network. If any violating content is detected, they can enforce security policies to mitigate risks.
++ SSL/TLS and SSH Traffic Decryption: They have the ability to decrypt SSL/TLS and SSH traffic, which restricts evasive techniques that rely on encryption to transfer malicious files.
++ User and Device Identification: NGFWs can identify users and their traffic, allowing for security policies to be enforced on a per-user or per-group basis. This enhances visibility and control.
 
-Identify users and their traffic. It can enforce the security policy per-user or per-group basis.
+By leveraging these capabilities, a properly configured and deployed NGFW can render many attacks ineffective, providing a robust defense against modern threats.
 
-Identify the applications and protocols regardless of the port number being used.
+</details>
 
-Identify the content being transmitted. It can enforce the security policy in case any violating content is detected.
+## Conclusion
 
-Ability to decrypt SSL/TLS and SSH traffic. For instance, it restricts evasive techniques built around encryption to transfer malicious files.
+There are several ways to defend against firewall evasion techniques, however, it requores a layered approach and a comprehensive security strategy. Hre are a few ways:
 
-A properly configured and deployed NGFW renders many attacks useless.
-
-
-
-
-
-
+1. Utilize firewalls that offer application awareness and deep packet inspection (DPI) to identify and control applications regardless of the ports they use and to analyze packet contents for hidden malicious traffic.
+2. Deploy IDPS to monitor network traffic and block suspicious activities in real-time while utilizing behavioral analysis to identify anomalies indicative of evasion tactics.
+3. Conduct routine vulnerability scanning and penetration testing to identify and remediate vulnerabilities and simulate attacks to uncover weaknesses.
+4. Restrict which ports can be used for connections, limiting allowed ports, and dynamically monitoring port usage to alert on any deviations from established norms.
+5. Maintain comprehensive logs of all network traffic and set up alerts for suspicious activities, such as repeated failed login attempts or unusual traffic spikes.
 
 
