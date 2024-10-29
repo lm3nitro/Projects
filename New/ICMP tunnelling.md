@@ -2,21 +2,18 @@
 
 ICMP tunneling is a technique that uses the Internet Control Message Protocol (ICMP) to encapsulate and transmit data packets over a network. ICMP is primarily used for sending error messages and operational information regarding network conditions, but it can be repurposed to create a tunnel for other types of traffic.
 
-### Scope:
+### Scenario:
+
+In a corporate environment, Suricata is continuously monitoring traffic patterns to detect unusual activities. One day, Suricata identifies excessive ICMP traffic originating from a specific workstation and triggers an alert. The alert indicates that the workstation has sent/revceived a significantly higher amount of ICMP traffic than normal. Following this alert, a pcap file is generated to provide a detailed record of the network traffic during the incident.You are assigned to investigate this unusual behavior. The task involves analyzing the PCAP data to uncover the source of the excessive ICMP traffic and determining whether this activity poses a security threat. 
 
 ### Tools and Technology:
 
 Wireshark, Tshark, and Linux
 
-![Pasted image 20241008105723](https://github.com/user-attachments/assets/1e8a5b49-e1d3-477c-a7dd-e9589339c833)
+## PCAP Analysis:
 
-
-## Identify weird ICMP traffic:
-
+To get started, I opened the pcap using Wireshark and filtered the ICMP traffic. 
 Responds and replay have different payload.  
-
-ICMP is more than a diagnostic protocol. ICMP is also capable of shuttling data between two systems. Unfortunately, this makes ICMP an appealing vector for attacks that can secretly transport commands and exfiltrate data through ICMP tunneling.
-
 
 ![Pasted image 20240912122001](https://github.com/user-attachments/assets/bf9b27fb-db64-4867-be88-45618bc96421)
 
