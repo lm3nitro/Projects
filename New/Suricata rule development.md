@@ -285,5 +285,5 @@ Analysing the pcap file:
 
 In implementing Suricata on a VM, the project aimed to enhance network security by developing and testing custom rules against various scans. Through the simulation of network traffic, I was able to evaluate the effectiveness of these rules created, which led to a deeper understanding of Suricata’s capabilities. 
 
-This exercise highlighted the necessity of continuous rule optimization to effectively detect against threats while minimizing false positives. Testing is a crucial component, as it validates the detection capabilities of the rules, informs of adjustments neede based on actual network behavior, and enhances the overall security posture. 
+This exercise highlighted the necessity of continuous rule optimization to effectively detect against threats while minimizing false positives. Testing is a crucial component, as it validates the detection capabilities of the rules, informs of adjustments needed based on actual network behavior, and enhances the overall security posture. 
 
