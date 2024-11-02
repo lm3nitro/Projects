@@ -1,132 +1,82 @@
+# MySQL
 
-MySQL is a relational database management system (RDBMS) based on Structured Query Language (SQL)
-
-
-
+MySQL is an open-source relational database management system (RDBMS) that uses a language called SQL (Structured Query Language) to perform tasks like adding, updating, and querying data. MySQL is widely used for websites and applications, is known for being fast and reliable, and works on different operating systems.
 
 ![Pasted image 20241003122935](https://github.com/user-attachments/assets/e5d42868-e3d4-42b4-9dd1-a942e1d92bf8)
 
-
-Database: 
-
-A database is simply a persistent, organised collection of structured data
-
-RDBMS: 
-
-A software or service used to create and manage databases based on a relational model. The word "relational" just means that the data stored in the dataset is organised as tables. Every table relates in some way to each other's "primary key" or other "key" factors.
-
-SQL: 
-
-MYSQL is just a brand name for one of the most popular RDBMS software implementations. As we know, it uses a client-server model. But how do the client and server communicate? They use a language, specifically the Structured Query Language (SQL
-
-
+Below is a view at the conversation between client and server:
 
 ![Pasted image 20241003123018](https://github.com/user-attachments/assets/ff3078a3-b693-4c73-b472-87c6c452d738)
 
+The process works like this: MySQL creates a database to organize data in tables, clients send requests using SQL statements, and the server responds with the requested information.
 
-MySQL, as an RDBMS, is made up of the server and utility programs that help in the administration of MySQL databases.
-
-The server handles all database instructions like creating, editing, and accessing data. It takes and manages these requests and communicates using the MySQL protocol. This whole process can be broken down into these stages:
-
-    MySQL creates a database for storing and manipulating data, defining the relationship of each table.
-    Clients make requests by making specific statements in SQL.
-    The server will respond to the client with whatever information has been requested.
+### Scope:
 
 
-# Enumerating MySQL :
+### Tools and Technology:
+Linux, Nmap, Wireshark, MySQL, Metasploit, and John the Ripper
 
-
-### The Scenario:
-
-
-After fingerprinting the network, I was able to find some credentials: "root:password" , I conducted enumeration on subdomains of a web servers. After trying the login against SSH unsuccessfully, I decide to try it against MySQL. 
-
-Typically, in real world you will have gained some initial credentials from enumerating other services that you can then use to enumerate and exploit the MySQL service.
-
-
-# NMAP:
-
-
+## Enumerating MySQL :
 ![Pasted image 20241003124855](https://github.com/user-attachments/assets/db6e2d27-aab5-4ac6-b7d6-cebb58c8d301)
 
+Enumeration is the process of discovering and gathering information about network services, hosts, and their configurations. I used nmap to see what information I could gather from the target:
 
-## OS detection, version detection, script scanning, and traceroute:
-
+```
 nmap -A 10.10.137.40 -nvvv
-
-
-
+```
 
 ![Pasted image 20241003125145](https://github.com/user-attachments/assets/b6683923-409c-46e8-b9d9-a6598d0ed836)
 
-Note:
+Based on the output, I see that port 22 (SSH) and port 3306 (MySQL) are both open. I can also see information on the OS and the MySQL version that is running on the host. 
 
-Server version 5.x are susceptible to an user enumeration attack due to different messages during login when using old authentication mechanism from versions 4.x and earlier.
-####  Script mysql-enum:
+> [!IMPORTANT]  
+> Version 5.x is susceptible to a user enumeration attack due to different messages during login when using old authentication mechanism from versions 4.x and earlier.
 
+I then used one of the scripts included with nmap to enumerate MySQL:
 
-
+```
 nmap -p 3306 --script=mysql-enum  10.10.137.40 -nvvv
-
+```
 
 ![Pasted image 20241003125810](https://github.com/user-attachments/assets/f5b14bf4-8305-4db6-9fc8-f40164af24a6)
 
+Based on the output, I was able to see the list of valid usernames. 
 
-
-
-# Wireshark:
-
+## Wireshark:
 
 ![Pasted image 20241003132213](https://github.com/user-attachments/assets/2da4f9b4-8a19-4c67-bbad-b6378ecd38f1)
 
-### Detecting MYSQL anomalies, enumeration:
-
-
-
+While enumerating MySQL, I also had Wireshark running to view the network traffic generated with the scan:
 
 ![Pasted image 20241003130529](https://github.com/user-attachments/assets/3be37a48-f294-4ac0-9f68-55d8291deabe)
 
-
-version: 5.7.29-0ubuntu0.18.04.1
-
+Wireshark also shows version: 5.7.29, Ubuntu 18.04.1. Also, taking a closer look at one of the packets, I could see information on root and the password:
 
 ![Pasted image 20241003130425](https://github.com/user-attachments/assets/bb29feff-64f0-4ca9-9b3d-4b67aeec79fa)
 
-## Many connections that never established "short duration":
-
-
+Another observation about the traffic generated was the many connections that never established and had a short duration:
 
 ![Pasted image 20241003131447](https://github.com/user-attachments/assets/23904ef3-0b23-46f9-ab26-48f983c21771)
 
-
-
-
+Another observation was the error response 1043 as seen below:
 ![Pasted image 20241003131314](https://github.com/user-attachments/assets/89dc25a9-c835-42d8-b3f7-3b636c62149e)
 
-## Error number: 1043; Symbol: ER_HANDSHAKE_ERROR; SQLSTATE: 08S01
-
-
-
+A closer look at the error:
 
 ![Pasted image 20241003131055](https://github.com/user-attachments/assets/7f009dfa-78d7-4192-a257-22dcc20601a8)
 
+> [!IMPORTANT]  
+>There are common errors related to MySQL:
+> Error 1043: Often related to using the wrong protocol or an incompatible version.
+> Error 1045: Typically due to incorrect username or password.
+> Error 2002: Indicates that the MySQL server is not responding or cannot be found.
+> Error 1146: Usually means that the pecified table does not exist in the database.
 
-## Error 1045: Access denied
-
-Error 1045 occurs when a user is denied permission to perform operations such as SELECT, INSERT, UPDATE, and DELETE on the database. Below is a list of some reasons why MySQL denies access and possible fixes.
-
-The user doesn’t exist. Check if the user exists in the database, and if they don’t, create a new user.
-
-The password is incorrect. To fix this, reset the MySQL password.
-
-Connecting to the wrong host. Double check that the host you’re connecting to is correct.
-
-### Installing MySQL client:
-
+## Installing MySQL Client:
 
 ![Pasted image 20241003132047](https://github.com/user-attachments/assets/4fd85a84-f4dd-48c9-9078-02ea74e3be64)
 
-
+I then installed 
 sudo apt install default-mysql-client
 
 
