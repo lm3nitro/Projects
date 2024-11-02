@@ -19,7 +19,9 @@ Linux, Nmap, Wireshark, MySQL, Metasploit, and John the Ripper
 ## Enumerating MySQL :
 ![Pasted image 20241003124855](https://github.com/user-attachments/assets/db6e2d27-aab5-4ac6-b7d6-cebb58c8d301)
 
-Enumeration is the process of discovering and gathering information about network services, hosts, and their configurations. I used nmap to see what information I could gather from the target:
+Enumeration is the process of discovering and gathering information about network services, hosts, and their configurations. There are many tools that can be used to enumerate. Here I will be using nmap and Metasploit. 
+
+First, I used nmap to see what information I could gather from the target:
 
 ```
 nmap -A 10.10.137.40 -nvvv
@@ -66,29 +68,29 @@ A closer look at the error:
 ![Pasted image 20241003131055](https://github.com/user-attachments/assets/7f009dfa-78d7-4192-a257-22dcc20601a8)
 
 > [!IMPORTANT]  
->There are common errors related to MySQL:
-> Error 1043: Often related to using the wrong protocol or an incompatible version.
-> Error 1045: Typically due to incorrect username or password.
-> Error 2002: Indicates that the MySQL server is not responding or cannot be found.
-> Error 1146: Usually means that the pecified table does not exist in the database.
+> There are common errors related to MySQL:
+> + Error 1043: Often related to using the wrong protocol or an incompatible version.
+> + Error 1045: Typically due to incorrect username or password.
+> + Error 2002: Indicates that the MySQL server is not responding or cannot be found.
+> + Error 1146: Usually means that the pecified table does not exist in the database.
 
-## Installing MySQL Client:
+## MySQL Client:
 
 ![Pasted image 20241003132047](https://github.com/user-attachments/assets/4fd85a84-f4dd-48c9-9078-02ea74e3be64)
 
-I then installed 
-sudo apt install default-mysql-client
+Another tool to use is the MySQL client. Although I did not use it, these is the command needed to install MySQL client:
 
+```
+sudo apt install default-mysql-client
+```
 
 ![Pasted image 20241003130002](https://github.com/user-attachments/assets/e164d2c0-88fa-407a-9486-bece70f5b3cb)
 
+Next, I needed to connect to the MySQL server. I used the following command to specify the hostname of the MySQL server:
 
-
-mysql -h [IP] -u [username] -p"
-
+```
 mysql -h 10.10.137.40 -u root -p "password"
-
-
+```
 
 # Metasploit:
 
