@@ -12,6 +12,7 @@ The process works like this: MySQL creates a database to organize data in tables
 
 ### Scope:
 
+In this exercise, I will cover how to enumerate MySQL using nmap and metaspolit. Provided the information found through the enumeration, I will then exploit MySQL and crack a users password using John the Ripper allowing me to connect directly to the database server. 
 
 ### Tools and Technology:
 Linux, Nmap, Wireshark, MySQL, Metasploit, and John the Ripper
@@ -74,11 +75,12 @@ A closer look at the error:
 > + Error 2002: Indicates that the MySQL server is not responding or cannot be found.
 > + Error 1146: Usually means that the pecified table does not exist in the database.
 
+<!-- This is commented out.
 ## MySQL Client:
 
 ![Pasted image 20241003132047](https://github.com/user-attachments/assets/4fd85a84-f4dd-48c9-9078-02ea74e3be64)
 
-Another tool to use is the MySQL client. Although I did not use it, these is the command needed to install MySQL client:
+Another tool to use is the MySQL client. Although I did not use it, this is the command needed to install MySQL client:
 
 ```
 sudo apt install default-mysql-client
@@ -86,39 +88,27 @@ sudo apt install default-mysql-client
 
 ![Pasted image 20241003130002](https://github.com/user-attachments/assets/e164d2c0-88fa-407a-9486-bece70f5b3cb)
 
-Next, I needed to connect to the MySQL server. I used the following command to specify the hostname of the MySQL server:
+The following command can be used to specify the hostname of the MySQL server you wish to connect to:
 
 ```
 mysql -h 10.10.137.40 -u root -p "password"
 ```
-
-# Metasploit:
-
-
-
+ -->
+## Metasploit:
 
 ![Pasted image 20241003132013](https://github.com/user-attachments/assets/146172de-0367-4580-a533-618019a14fb9)
 
-
-
-# mysql_version:
-
-
-The mysql_version module, as its name implies, scans a host or range of hosts to determine the version of MySQL that is running.
+Mtasploit contains a variety of modules that can be used to enumerate MySQL databases, making it easy to gather valuable information. To start, I will be using the he mysql_version module, as its name implies, it scans a host or range of hosts to determine the version of MySQL that is running. I have previsously done this using nmap, but wanted to cover different tools that can be used. 
 
 ```
 use auxiliary/scanner/mysql/mysql_version
 show options
 set RHOSTS 192.168.1.200-254
 set THREADS 20
- run
+run
 ```
 
-
-### Scanner MySQL Auxiliary Modules:
-
-
-
+I also used the Scanner MySQL Auxiliary Module:
 
 ![Pasted image 20241003140152](https://github.com/user-attachments/assets/a29999ec-2daa-4f7a-b7aa-aee0750a4646)
 
@@ -127,92 +117,107 @@ use auxiliary/scanner/mysql/mysql_login
 show options
 set PASSWORD password
 set RHOSTS 10.10.137.40
- set USERNAME root
-  run
+set USERNAME root
+run
 
 ```
 
+The ouput:
 
 ![Pasted image 20241003140121](https://github.com/user-attachments/assets/7ad9f83d-7766-457a-809c-cd5b54d7e815)
 
-### Found remote MySQL version 5.7.29
+The same results as nmap, it was also able to identify the MySQL version, in this case version 5.7.29.
+
+While performing this enumeration, I also had Wireshark running in the back end, and I was able to capture the same informaiton as previously captured:
 
 5.7.29-0ubuntu0.18.04.1
 
-
 ![Pasted image 20241003135235](https://github.com/user-attachments/assets/f401a1bc-f174-4086-87ba-182a08fb0ffa)
 
+A closer look at one of the packets:
 
 ![Pasted image 20241003135217](https://github.com/user-attachments/assets/7e9a1046-8cdc-415c-99a3-68450304fc79)
 
+Next, I used the `show databases` command. This will list all of the available databases:
 
 ```
-
 set SQL show databases
 run
 ```
 
-
 ![Pasted image 20241003140442](https://github.com/user-attachments/assets/aac492e5-ab4b-464c-8312-ff9c76e02308)
 
-
+A view of the traffic in Wireshark:
 
 ![Pasted image 20241003140525](https://github.com/user-attachments/assets/c37587b3-c779-4405-986d-4e52d198434a)
 
+## Exploiting MySQL:
 
+At this point, I was able to gain more sensitive information than just database names. I now have the following information on the MySql server:
 
-# Exploiting MySQL:
++ MySQL server credentials
++ The running version of MySQL
++ The number of Databases, and their names.
 
- 
- At this point, I was able to gain more sensitive information than just database names:
+Given the information I know, I then loaded mysql_hashdump. The mysql_hashdump will gather any additional password hashes:
 
-I know that :
-
- MySQL server credentials
- The version of MySQL running
- The number of Databases, and their names.
-
-
-# Loading mysql_hashdump :
-
-
+```
 auxiliary/scanner/mysql/mysql_hashdump 
+```
 
+After loading the module, you are presented with options:
 
 ![Pasted image 20241003143211](https://github.com/user-attachments/assets/e0c232ad-5e27-45a8-8d1f-5a65e27c3d07)
 
-```
+I entered the following:
 
+```
 set PASSWORD password
 set USERNAME  root
 set RHOTS 10.10.137.40
-
 ```
+
+By providing the information above, below is the list of hashes that it was able to provide. Here we can see the user Carl:
 
 ![Pasted image 20241003144109](https://github.com/user-attachments/assets/b3e71609-32e2-4725-8e8d-4f0c34a87bc1)
 
-
-# John the Reaper:
-
+## John the Ripper:
 
 ![Pasted image 20241003145245](https://github.com/user-attachments/assets/b36c1cdc-2c3c-4577-8133-3451a333cda9)
 
+John the Ripper is a popular open-source password cracking software tool. It's primarily used for learning about password security and testing the strength of passwords. In this case, I will be using it to get the password using the hash that i previously found:
 
-Cracking hashes with John:
-
-
-1. Copy all the hashes to a document.
+1. First, I copied all the hashes to a document. I named the file `sql_hasdump.txt`:
 
 ![Pasted image 20241003143819](https://github.com/user-attachments/assets/21b5a4ff-fe4f-43a4-904e-f456e21e04bd)
 
+I then used the following command:
 
+```
 john sql_hasdump.txt
+```
 
+Here I was provided with the password for the user `Carl`:
 
 ![Pasted image 20241003144501](https://github.com/user-attachments/assets/351dc81e-9087-4306-b3db-88ef14a57c8a)
 
+Now that I was able to find the password, I then tested the credentials via SSH knowing that the SSH was identified as being opened earlier:
 
+```
 ssh carl@10.10.137.40
+```
 
-
+After using SSh and entering the credentials, I was able to authenticate as the user Carl. 
 ![Pasted image 20241003144429](https://github.com/user-attachments/assets/920c8bd5-4e75-4d64-88cd-ca77503f2d9b)
+
+### Summary:
+
+In conclusion, I was able to enumerate the MySQL server using both **nmap** and **metasploit** which provided me with a series of information such as the version running, ports that were opened, list of databases, and a list of password hashes. Using this information, I was then able to exploit the MySQL server by copying the hashes and using **John the Ripper** to find the password for the user Carl. Once I had the password, I was then able to SSH into the server as the user. 
+
+Overall, enumeration is critical becuase it allows you to gather detailed information about a target system, network, or application. Some key benefits are:
+
++ Identifying Vulnerabilities
++ Understanding Attack Surface
++ Mapping the Environment
++ User and Service Discovery
+
