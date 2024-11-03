@@ -63,147 +63,118 @@ Code messages that include the word "root" are anomalies or indicators of footpr
 
 ## METASPLOIT:
 
-
 ![Pasted image 20241003091852](https://github.com/user-attachments/assets/24aa3ab5-80eb-42a7-8570-8475cd523df6)
 
-
-Using scanner SMTP Auxiliary Modules:
-
-
+Metasploit is a widely used penetration testing framework that provides tools for developing and executing exploit code against remote targets. For this exercise, I used the SMTP Auxiliary Module (smtp_version module). The smtp_version module, as its name implies, will scan and determine the version of mail servers it encounters.
 
 ![Pasted image 20241003095321](https://github.com/user-attachments/assets/bb82bc66-210f-41bb-aa9d-ec18a8fd6bd7)
 
-
-
-# smtp_version:
-
-Poorly configured or vulnerable mail servers can often provide an initial foothold into a network but prior to launching an attack, we want to fingerprint the server to make our targeting as precise as possible. The smtp_version module, as its name implies, will scan a range of IP addresses and determine the version of any mail servers it encounters.
-
+```
 search smtp_version
-
+```
 
 ![Pasted image 20241003100626](https://github.com/user-attachments/assets/8166119d-54d9-47dd-952d-adb9a193d756)
 
+```
 use auxiliary/scanner/smtp/smtp_version
-
+```
+```
 show options
- set RHOSTS 10.10.246.91
-  set THREADS 254
-   run
-# smtp_enum
+set RHOSTS 10.10.246.91
+set THREADS 254
+run
+```
 
-The SMTP Enumeration module will connect to a given mail server and use a wordlist to enumerate users that are present on the remote system.
+Next, I used the SMTP Enumeration module. This attempt to connect to a given mail server and use a wordlist to enumerate users that are present on the remote system.
 
+```
 search smtp_enum
-
+```
 
 ![Pasted image 20241003095709](https://github.com/user-attachments/assets/6e5698fd-9ad1-4871-a4b8-98ba3383909c)
 
-
+```
 use auxiliary/scanner/smtp/smtp_enum
 show options
 set RHOSTS 10.10.246.91
- run
-
+run
+```
 
 ![Pasted image 20241003101932](https://github.com/user-attachments/assets/4f6fea0c-4014-4042-aafc-00460dea8627)
 
+Below is the password list I used:
 
-### Password list:
 ```
- _apt, administrator, backup, bin, daemon, dnsmasq, games, 
- gnats, irc, landscape, list, lp, lxd, mail, man, messagebus, 
- news, nobody, pollinate, postfix, postmaster, proxy, sshd, sync, 
- sys, syslog, systemd-network, systemd-resolve, systemd-timesync, 
- uucp, uuidd, www-data
+_apt, administrator, backup, bin, daemon, dnsmasq, games,gnats, irc, landscape, list, lp, lxd, mail, man, messagebus, news, nobody, pollinate, postfix, postmaster, proxy, sshd, sync, sys, syslog, systemd-network, systemd-resolve, systemd-timesync, uucp, uuidd, www-data
 ```
-
-
-### Using a world list:
-
+```
 set USER_FILE /usr/share/wordlists/SecLists/Usernames 
+```
 
- At the end of our Enumeration section we have a few vital pieces of information:
+Below is the information I was was able to gather from the enumeration:
 
-A user account name :  
++ User:  administrator
++ SMTP server/Operating System: polosmtp.home; OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
-administrator
+## Exploiting SMTP:
 
-The type of SMTP server and Operating System running:  
-
-polosmtp.home; OS: Linux; CPE: cpe:/o:linux:linux_kernel
-
-
-### Exploiting SMTP:
-
-# Hydra:
-
-
+In order to exploit the SMTP server, I will be using Hydra. Hydra, is a popular password-cracking tool that allows users to perform brute-force attacks on various services. 
 
 ![Pasted image 20241003103939](https://github.com/user-attachments/assets/bcf3a888-263e-4458-b78e-cc5c3314c47f)
 
-
-User list:
-
+Below is a list of possible usernames:
 
 ![Pasted image 20241003105302](https://github.com/user-attachments/assets/ef1880ca-05f0-406b-bf8a-82727dba0465)
 
-
-
-# SSH  password attack:
-
-
-31 users on my list against 14344391 passwords
-
+I then ran the following command to use the list of the 31 users against 14344391 passwords:
 
 ```
 hydra -t 16 -L users.txt -P /usr/share/wordlists/rockyou.txt -vV 10.10.246.91  ssh
 ```
 
-
-
 ![Pasted image 20241003105819](https://github.com/user-attachments/assets/6a0a0c37-9aa5-41bb-bb88-4a4bf5c4c202)
 
-
+Once it ran, I was able to find the username `administrator` along with the password `alejandro`. 
 
 ![Pasted image 20241003111546](https://github.com/user-attachments/assets/36c2cb35-8279-4e3b-95d8-870edb615094)
 
+## SSH
 
-### Login into the smtp server:
+Now that I had the needed credentials, I logged in to the server as the user:
 
+```
 ssh admistrator@10.10.246.91
-
+```
 
 ![Pasted image 20241003113140](https://github.com/user-attachments/assets/72e2f246-e283-45e0-a570-68963c4f2c30)
 
-# Detecting SSH password attacks, protocol anomalies :
+I was able to successfully login to the server!
 
+## Detecting 
 
+As previosuly stated, its also important to take note of the traffic that is happening while these enumeration and pasword cracking techniques are used so that these types of attacks can more easily be detected. Below are indicators of attack and enumeration that I found are important:
 
-### ERROR_SSH_KEY_EXCHANGE_FAILED
-code: 103 (0x0067)
-Key exchange failed
-
-
+1. ERROR_SSH_KEY_EXCHANGE_FAILED
++ code: 103 (0x0067)
++ Key exchange failed
 
 ![Pasted image 20241003110641](https://github.com/user-attachments/assets/70e55576-740b-4241-9319-5efcc04bcc3f)
 
-
-## ERROR_SSH_AUTHENTICATION_FAILED
-code :10 (0x000A)
-Authentication failed. There could be wrong password or something else
-
+2. ERROR_SSH_AUTHENTICATION_FAILED
++ code: 10 (0x000A)
++ Authentication failed. There could be wrong password or something else
 
 ![Pasted image 20241003110612](https://github.com/user-attachments/assets/073c816b-9906-49b1-97af-2c0ae2320cfa)
 
+3. ERROR_SSH_HOST_NOT_ALLOWED_TO_CONNECT
++ code: 101 (0x0065)
++ Connection was rejected by remote host
 
-
-## ERROR_SSH_HOST_NOT_ALLOWED_TO_CONNECT
-code :101 (0x0065)
-Connection was rejected by remote host
-
-Many connection with short duration can indicate  anomalies on the SSH server:
-
-
+I also noticed that there were many connection with a very short duration. This can also indicate an anomoly on the server:
 
 ![Pasted image 20241003110347](https://github.com/user-attachments/assets/bc73fc40-c769-4121-9211-2c7af6347ee3)
+
+### Summary:
+
+In this exercise, I was able to perform enumeration on a SMTP server. The information gathered provided information 
+
