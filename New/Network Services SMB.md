@@ -1,207 +1,165 @@
+# SMB
 
-### SMB
-
-SMB - Server Message Block Protocol - is a client-server communication protocol used for sharing access to files, printers, serial ports and other resources on a network.
-
-Servers make file systems and other resources (printers, named pipes, APIs) available to clients on the network. Client computers may have their own hard disks, but they also want access to the shared file systems and printers on the servers.
-
-The SMB protocol is known as a response-request protocol, meaning that it transmits multiple messages between the client and server to establish a connection. Clients connect to servers using TCP/IP (actually NetBIOS over TCP/IP as specified in RFC1001 and RFC1002), NetBEUI or IPX/SPX. 
-
+SMB, or Server Message Block, is a network protocol primarily used for sharing files, printers, and other resources between computers on a network. It facilitates communication between clients and servers and is commonly used in Windows environments, though it is also supported by other operating systems. Once connected to the shared resource, the client can send additional requests to read, write, or manage files within that resource. The server processes these requests and responds accordingly.
 
 ![Pasted image 20240918122330](https://github.com/user-attachments/assets/4e0401ee-d22c-49ca-ac2e-52c4f06f4b89)
 
-Once they have established a connection, clients can then send commands (SMBs) to the server that allow them to access shares, open files, read and write files, and generally do all the sort of things that you want to do with a file system. However, in the case of SMB, these things are done over the network. 
-
-### Enumeration:
-
-Enumeration is the process of gathering information on a target in order to find potential attack vectors and aid in exploitation.
-### Using Enum4Linux to enumerate SMB:
-
-Enum4linux is a tool used to enumerate SMB shares on both Windows and Linux systems. It is basically a wrapper around the tools in the Samba package and makes it easy to quickly extract information from the target pertaining to SMB.
-
-### Version: 
-enum4linux v0.8.9
+### Scope:
 
 
-![Pasted image 20240918122848](https://github.com/user-attachments/assets/349b4c5b-f424-404b-be1b-1b6a11ee7b54)
+### Tools and Technology
+Linux, Wireshark, and SMB
 
+## Enumeration:
 
+To enumerate SMB, I will be using Enum4Linux and nmap. Enum4linux is a powerful tool used for gathering information about SMB on both Windows and Linux systems. I first started by using nmap to scan the target host andsee which ports are open:
 
-### Conducting an nmap scan to see how many the ports are open:
-
+```
 nmap -sV 10.10.107.71 -vvv
-
+```
 
 ![Pasted image 20240918123301](https://github.com/user-attachments/assets/5d83727c-9990-4484-b23c-ec0daa9bd1e3)
 
+Based on the output, ports 22 (SSH) and 139/445 (SMB) are showing as open. I then used the nmap NSE script to detect misconfigurations on the SMB service:
 
-### Using Nmap NSE scripts to detect misconfigurations on the SMB service:
-
+```
 nmap -sU -sS --script smb-enum-shares.nse -p 445,139
+```
 
 ![Pasted image 20240918141635](https://github.com/user-attachments/assets/4ae32adf-7f00-4918-a81d-1b7192317bf5)
 
-### Detecting the nmap scan:
+The output above shows the misconfiguraiton. It shows that anonymous has access to read/write. 
 
-SSH
+## Wireshark:
 
+While performing these actions, I also had Wireshark running in order to analyze the traffic and see how these scans work and see how to identify this type of traffic:
+
+Scanning for SSH:
 
 ![Pasted image 20240918124957](https://github.com/user-attachments/assets/1c598dc8-d57e-4c49-906a-cc27b18e0fb7)
 
-
-SMB 
+Scanning for SMB:
 
 ![Pasted image 20240918124712](https://github.com/user-attachments/assets/b8bf4ef8-15ba-4580-846b-523712e1e985)
 
+SMB traffic:
 
 ![Pasted image 20240918141815](https://github.com/user-attachments/assets/262b3c5b-82be-4950-99f7-b87ec472fc50)
 
-
 ![Pasted image 20240918124838](https://github.com/user-attachments/assets/4ce78237-67b5-44b3-b63d-91cbffdaa3f0)
 
-
+Closer look at one of the packets:
 
 ![Pasted image 20240918124816](https://github.com/user-attachments/assets/8ace7923-82d3-4e29-bdc9-8b275bf2b927)
 
-I was able to collect the name of the host , the SMB version, OS information and the name of the group.
+Based on the traffic seen above, I was able to collect the folllowing:
 
-Host: POLOSMB
-System: Linux
-Service: Samba SMBd 3.x -4.x
-Workgroup name: workgroup
++ Host: POLOSMB
++ Operating Sytem: Linux
++ Service: Samba SMBd 3.x -4.x
++ Workgroup Name: workgroup
 
+Next, I used enum4linux. The version that I will be using is v0.8.9:
 
+![Pasted image 20240918122848](https://github.com/user-attachments/assets/349b4c5b-f424-404b-be1b-1b6a11ee7b54)
+
+```
 enum4linux -a  10.10.107.71
-
+```
 
 ![Pasted image 20240918125326](https://github.com/user-attachments/assets/0ceb4001-aeae-44b9-b429-268f0175ec44)
 
-
+More information on the target:
 
 ![Pasted image 20240918125345](https://github.com/user-attachments/assets/c6fbc759-1622-4a5c-811f-c43f4d0938db)
 
-
+Operating system information:
 
 ![Pasted image 20240918125405](https://github.com/user-attachments/assets/a10f7bec-485b-42f8-bf0e-a2acbb87cf05)
 
-
+Available sharenames:
 
 ![Pasted image 20240918125424](https://github.com/user-attachments/assets/d01175f4-b693-4006-bd04-379b03893568)
 
-
+Groups:
 
 ![Pasted image 20240918125502](https://github.com/user-attachments/assets/74a21ab1-5bb3-4596-b668-c4c99452a234)
 
+From the scan I was able to gather several things:
 
++ Operating system version: 6.1
++ Linux OS: Ubuntu
++ Shares: It has a `profiles` shrename that has user profiles
 
-### Information about the scan:
+## Detecting SMB Enumeration:
 
-Operating system version: 6.1
-Linux version: Ubuntu
-Shares: profiles
-
-
-### Detecting SMB enumeration:
-
-The client is sending many request at once, this is consider abnormal SMB traffic behaviour:
-
-The SMB2 CREATE Request packet is sent by a client to request either creation of or access to a file. In case of a named pipe or printer, the server MUST create a new file. 
+Taking another look at Wireshark, this is what I was able to see. Based on the output, the client is sending many request at once, this is considered abnormal SMB traffic behavior:
 
 ![Pasted image 20240918130154](https://github.com/user-attachments/assets/c9040af2-158f-4fcf-ac4a-b9700637894c)
 
+I also see many `Create Request File` related traffic. This type of packet is sent by a client to request either the creation of or access to a file. 
 
 ![Pasted image 20240918131227](https://github.com/user-attachments/assets/d741377b-d810-481e-932f-5bf59595c535)
 
-
-Another indicator is The LsaOpenPolicy function wich opens a handle to the Policy object on a local or remote system.
-
-You must run the process "As Administrator" so that the call doesn't fail with ERROR_ACCESS_DENIED.
-
+Another indicator is The `LsaOpenPolicy` function wich opens a handle to the policy object on a local or remote system.
 
 ![Pasted image 20240918130632](https://github.com/user-attachments/assets/c2e2b9ed-27d9-4e97-be01-6bf6c87ea09d)
 
-
-### Unique conceptions:
-
-
+I also took a look at the amount of unique connections:
 
 ![Pasted image 20240918125842](https://github.com/user-attachments/assets/6a7aa08b-21e4-4647-945b-52bb7b4453e7)
 
-### SMB traffic graph:
-
-
-
+SMB traffic graph:
 
 ![Pasted image 20240918125918](https://github.com/user-attachments/assets/11bdbf44-07de-41e4-a218-605a96a83871)
 
+## Exploiting SMB
 
+Exploits usually happen and can be caused due to misconfigurations in the system, application, or services. In this case, I will be exploiting the anonymous SMB share access- a common misconfiguration that can allow us to gain access.
 
-### Exploiting SMB
-
- The best way into a system is due to misconfigurations in the system. In this case, we're going to be exploiting anonymous SMB share access- a common misconfiguration that can allow us to gain information that will lead to a shell.
-
-
-### Using SMBclient to access the SMB shares:
-
-
+I will be using SMBclient to access the SMB shares:
 
 ![Pasted image 20240918131830](https://github.com/user-attachments/assets/7a5a7496-a5a4-4ee4-a09f-e641ced903e6)
 
+There are several ways to connect, one where you specify the user and another where you just specify the IP and share. 
 
--U [name] : to specify the user
+Option 1: smbclient //[IP]/[SHARE]
 
--p [port] : to specify the port
+Option 2: smbclient //ip_or_fqdn/share_name -U username -p port_number
++ -U: specify the user
++ -p: specify the port
 
- smbclient //[IP]/[SHARE] 
+In this case, I just used option 1:
 
-
- Verifying if the share has been configured to allow anonymous access, if it doesn't require authentication to view the files. We can do this easily by:
-
-- using the username "Anonymous"
-
-- connecting to the share we found during the enumeration stage
-
-- and not supplying a password. 
-
+```
 smbclient //10.10.107.71/profiles
+```
 
-
-smbclient //ip_or_fqdn/share_name -U username -p port_number
-
+I was prompted for a password, but hit enter as there wa no password configured:
 
 ![Pasted image 20240918132230](https://github.com/user-attachments/assets/2f7447e7-fb02-44b8-be47-e2876a3eb098)
 
-
-
+Looking at Wireshark, I can see that the connection was established:
 
 ![Pasted image 20240918132207](https://github.com/user-attachments/assets/6d1a6709-89a7-4316-85de-ea58ef58f287)
 
-
-
-Using command dir to list the files on the directory
-
+Using command `DIR` to list the files on the directory:
 
 ![Pasted image 20240918133240](https://github.com/user-attachments/assets/84ddb6d9-d6e7-4e40-8dda-01552ce61ffd)
 
+I see that there is a txt that looks like it might contain some useful information. I used the command `more` to the file on the SMB:
 
-Using command more to open files on the SMB
-
+```
 more "Working From Home Information.txt"
-
+```
 
 ![Pasted image 20240918133335](https://github.com/user-attachments/assets/3c38dea6-ffab-4556-b283-7ba802035730)
 
-
-Using "cd" command to access directories
-
-
-
+This provied me with 2 possible users, John and James. I then went back to the list of directories and navigated to the .ssh directory:
 
 ![Pasted image 20240918133857](https://github.com/user-attachments/assets/8d924766-444e-45a5-a399-ae675497b654)
 
-
-Using "get" command to down files
-
+I then used the `get` command to download files
 
 ![Pasted image 20240918133959](https://github.com/user-attachments/assets/2b09d34f-04b8-4b89-88bb-53b8a11f61a5)
 
