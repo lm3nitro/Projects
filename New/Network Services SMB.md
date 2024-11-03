@@ -6,6 +6,7 @@ SMB, or Server Message Block, is a network protocol primarily used for sharing f
 
 ### Scope:
 
+In this exercise, I will be performing enumeration on a server running the SMB service to identify any misconfigurations. Once the misconfigurations are identified, I will be exploiting them and gaining access to the target host.  
 
 ### Tools and Technology
 Linux, Wireshark, and SMB
@@ -159,30 +160,39 @@ This provied me with 2 possible users, John and James. I then went back to the l
 
 ![Pasted image 20240918133857](https://github.com/user-attachments/assets/8d924766-444e-45a5-a399-ae675497b654)
 
-I then used the `get` command to download files
+I then used the `get` command to download files:
 
 ![Pasted image 20240918133959](https://github.com/user-attachments/assets/2b09d34f-04b8-4b89-88bb-53b8a11f61a5)
 
-
 ![Pasted image 20240918134641](https://github.com/user-attachments/assets/902d71f4-af36-49ba-b5bc-70c5753623d6)
 
-Verify the public key with command "cat"
+Next, I verified the public key with command `cat`:
 
 ![Pasted image 20240918134820](https://github.com/user-attachments/assets/f5a0052f-a4c4-4ce5-bca3-0ae955bbbdf2)
 
+The public key belongs to a user called "cactus" which references "John Cactus" from the output above.
 
-The public key belongs to a user call "cactus"
+## SSH:
 
-### Connecting to the server using SSH:
+After getting information about the user "John Cactus", I tried to SSH into the server as the user. First, I changed the permissions of the public key: 
 
-I was able to get some information about the user called John, cactus and some rsa private and pub keys. 
-
-changing the permission of the public key with "chmod "command: 
-
+```
 chmod 600 id_rsa.pub
+```
 
+Next SSH:
+
+```
 ssh -i id_rsa.pub cactus@10.10.107.71
-
+```
 
 ![Pasted image 20240918135323](https://github.com/user-attachments/assets/009a2270-c983-4735-8a25-2d2027ab974c)
+
+I was able to successfully authenticate as the user1
+
+### Summary:
+
+In this exercise, I was able to scan the target host and perform enumeration of the SMB service that it was running. This then allowed me to connect to the SMB share and download SSH keys that were then used to authenticate as the user "John Cactus" and successfully SSH into the server. In doing this, I was able to learn how to exploit a SMB misconfiguration which allowed any user to access the share. I was also able to view and anlyze the traffic in Wireshark which allowed me to see how this type of attack happens and how to identify it. 
+
+As mitigation against this type of attack, it's important to limit permissions using the principle of least privilege, implement strong authentication methods, and configure firewalls to restrict SMB traffic to trusted networks. Additionally, I suggest to enable logging for monitoring access. 
 
