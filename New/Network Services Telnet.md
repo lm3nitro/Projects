@@ -4,6 +4,8 @@ Telnet is a network protocol used to provide a command-line interface for commun
 
 ### Scope:
 
+In this exercise, I will go through the steps of performing enumeration against a target host, and how to identiy unsecure protocols (Telnet) that may be enabled on a system and how to take advantage and exploit it. In this case, I will be using MSFvenm for the exploit. I will also be using Wireshark to see how the traffic generated looks like, and to also confim that the connection has been established. 
+
 ### Tools and Technology:
 Linux, MSFvenom, and Wireshark
 
