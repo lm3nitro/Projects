@@ -1,109 +1,67 @@
-
-
+# SMTP
 
 ![Pasted image 20241003085910](https://github.com/user-attachments/assets/12630579-a0bf-4a4b-93c4-9e5b9cc7fa23)
 
-
-SMTP stands for "Simple Mail Transfer Protocol". It is utilised to handle the sending of emails. In order to support email services, a protocol pair is required, comprising of SMTP and POP/IMAP. Together they allow the user to send outgoing mail and retrieve incoming mail, respectively.
-
-The SMTP server performs three basic functions:
-
-     It verifies who is sending emails through the SMTP server.
-     It sends the outgoing mail
-     If the outgoing mail can't be delivered it sends the message back to the sender
-
-
-
-We can map the journey of an email from your computer to the recipient’s like this:
-
-
-1. The mail user agent, which is either your email client or an external program. connects to the SMTP server of your domain, e.g. smtp.google.com. This initiates the SMTP handshake. This connection works over the SMTP port- which is usually 25. Once these connections have been made and validated, the SMTP session starts.
-
+SMTP, or Simple Mail Transfer Protocol, is a protocol used for sending emails across the Internet. It facilitates the transmission of email messages from a sender's mail server to a recipient's mail server. Below is the process that takes place between client and the server:
 
 ![Pasted image 20241003090610](https://github.com/user-attachments/assets/8309fba5-8b70-4747-9589-719cd4a3c934)
 
+### Scope:
 
-3. The process of sending mail can now begin. The client first submits the sender, and recipient's email address- the body of the email and any attachments, to the server.
+### Tools and Technology:
+Linux, Metasploit, Telnet, Nmap, Wireshark and SMTP
 
-4. The SMTP server then checks whether the domain name of the recipient and the sender is the same.
+## Enumeration:
 
-5. The SMTP server of the sender will make a connection to the recipient's SMTP server before relaying the email. If the recipient's server can't be accessed, or is not available- the Email gets put into an SMTP queue.
+First, I used nmap to scan against the target host and gather information on ports and services:
 
-6. Then, the recipient's SMTP server will verify the incoming email. It does this by checking if the domain and user name have been recognised. The server will then forward the email to the POP or IMAP server, as shown in the diagram above.
-
-7. The E-Mail will then show up in the recipient's inbox.
-
-
-### Enumerating SMTP:
-
-
-
-Nmap:
-
+```
 nmap -sV -sC 10.10.246.91 -nnvvv
-
+```
 
 ![Pasted image 20241003092220](https://github.com/user-attachments/assets/3fc3e53b-268e-4b5b-91ea-76d3cccf73d0)
 
+I see that both ports 22 (SSH) and port 25 (SMTP) are open. I then used the nmap NSE script for smtp:
 
+```
 nmap --script smtp* -p 25 10.10.246.91 -nnvvv 
-
+```
 
 ![Pasted image 20241003093718](https://github.com/user-attachments/assets/eaf98569-4000-4f77-9362-9e3b01f4dc3d)
 
-
-
+I can see that there is a vulnerability (CVE-2010-4344). Knowing this, I took a closer look into the vulenrability:
 
 ![Pasted image 20241003093831](https://github.com/user-attachments/assets/83a0a6b4-ef49-418e-b832-fd192341d2f1)
 
+## Telnet:
 
-PORT   STATE SERVICE REASON         VERSION
-25/tcp open  smtp  Postfix smtpd
- commonName=polosmtp
-
-
-
-
-### Enumerating with Telnet:
-
-
-The simplest techniques to query the SMTP server is telnet with VRFY, EXPN and RCPT TO commands, those commands will answer if the username entered exist or not, 252 code if the user exists, 550 code if the user is unknown.
-
-
+Another way to query the STMP service it using telnet. Using Telnet will indicate whether the specified username exists: a response code of 252 means the user exists, and a 550 code indicates the user is unknown.
 
 ![Pasted image 20241003093336](https://github.com/user-attachments/assets/0694813a-c3a7-48c1-8f9a-285d1179e49b)
 
-
-# Network traffic:
-
+While performing telnet, I also took at a look at the network traffic to see if it can provide any additional information:
 
 ![Pasted image 20241003093435](https://github.com/user-attachments/assets/d5ad241d-29c9-41a7-9ee5-3237c0a63d37)
 
-
+A look into one of the packets:
 
 ![Pasted image 20241003094343](https://github.com/user-attachments/assets/2bdac4b0-dcc5-4fcc-a1d4-86ff6b0b8e71)
 
+## Detecting SMTP Enumeration:
 
-# Detecting smtp enumeration:
+While looking at the netwrok traffic, its important to also note how this traffic looks and indicators of enumeration that might be occurring. In this case I am performing the enumeration myself, but its impotant to detect these patterns as they can help in identifying potential security threats early.
 
 Filters:
-
- smtp.req.parameter
- smtp.req.parameter
++ smtp.req.parameter
++ smtp.req.parameter
  
-
 ![Pasted image 20241003103244](https://github.com/user-attachments/assets/dfd9b2e5-2f94-4763-962b-7fe4cd7e5e10)
 
-SMTP codes link to world, codes message "root" are anomalies or indicator of foot printing
+Code messages that include the word "root" are anomalies or indicators of footprinting:
  
-
 ![Pasted image 20241003094518](https://github.com/user-attachments/assets/c991c19c-1c62-40b8-ac68-af28f44e239c)
 
-
-
-
-
-# METASPLOIT:
+## METASPLOIT:
 
 
 ![Pasted image 20241003091852](https://github.com/user-attachments/assets/24aa3ab5-80eb-42a7-8570-8475cd523df6)
