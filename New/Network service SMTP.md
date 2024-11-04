@@ -7,6 +7,7 @@ SMTP, or Simple Mail Transfer Protocol, is a protocol used for sending emails ac
 ![Pasted image 20241003090610](https://github.com/user-attachments/assets/8309fba5-8b70-4747-9589-719cd4a3c934)
 
 ### Scope:
+In this exercise, I will be perfomring enumeration on a SMTP server to verify ports and possible misconfigurations. With the provided information from the enumeration, I will use Hydra to crack the password of one of the users and use those credentials to SSH into the server. 
 
 ### Tools and Technology:
 Linux, Metasploit, Telnet, Nmap, Wireshark and SMTP
@@ -176,5 +177,4 @@ I also noticed that there were many connection with a very short duration. This 
 
 ### Summary:
 
-In this exercise, I was able to perform enumeration on a SMTP server. The information gathered provided information 
-
+In this exercise, I was able to perform enumeration on a SMTP server. The information gathered from the enumeration provided information including one of the usernames. I then used this information and used **Hydra** to find the complete user credentials. Hydra was able to crack the password and I was able to login to the server via SSH. Performing these steps also demontrated the importance of verifying server configurations are correct and to regularly review them to avoid misconfigurations that could expose vulnerabilities. In order to protect against these types of exploitation, it's important to implement strong authentication methods and use TLS encryption to secure email communications. 
