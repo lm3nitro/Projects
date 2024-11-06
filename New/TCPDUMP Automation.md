@@ -2,35 +2,34 @@
 
 ![Pasted image 20241014163054](https://github.com/user-attachments/assets/6e5b4b02-a994-4248-bce9-0631f5409575)
 
-
+tcpdump is a powerful command-line tool used for network packet analysis. It allows users to capture and inspect the data traffic that flows through a network interface on a system. It’s also lightweight and flexible, making it ideal for both simple diagnostics and advanced analysis.
 
 ### Scope:
 
 
-
 ### Tools and Technology:
+Tcpdump, Linux, and Bash
 
+## Limiting File Size and Amount
 
+Limiting the file size and number of files when using tcpdump can be crucial for several practical reasons, especially in situations where you need to continuously capture network traffic over long periods of time. 
 
+Reasons to implement:
++ Prevent Disk Space Exhaustion
++ Manageability of Capture Files
++ Easier File Transfer and Analysis
++ Efficient Analysis
++ Logging and Long-Term Monitoring
 
-# Capturing traffic base on file size with limited amount of files.
-
-
-### Creating a service file:
+In order to implement a set number of files and file size, I started by creating a service file:
 
 ```
-
- sudo nano /etc/systemd/system/tcpdump.service
-
+sudo nano /etc/systemd/system/tcpdump.service
 ```
-
 
 ![Pasted image 20241014135033](https://github.com/user-attachments/assets/6806685f-6976-4526-8359-3efde79a3b88)
 
-
-
-
-Creating 10 files at all times of 1 mb and keep rotating it.
+In the service file, I entered the following:
 
 ```                                                                   
 [Unit]
@@ -43,66 +42,50 @@ User=root
 
 [Install]
 WantedBy=multi-user.target
-
-
-
 ```
 
-### Reloading the systemd manager configuration. 
+This will create 10 files at all times of 1 mb each and keep rotating them. 
 
-
+In order for the configuraiton to be applied, I reloaded the systemd manager configuration:
 
 ```
 sudo systemctl daemon-reload
 ```
 
-
-### Enable:
+Enabled the service:
 
 ```
 sudo systemctl enable tcpdump.service
 ```
 
-
 ![Pasted image 20241014123942](https://github.com/user-attachments/assets/8ae1e58b-563f-46d9-94cf-3e86cb489470)
 
-
-
-### Status:
-
-![Pasted image 20241014124530](https://github.com/user-attachments/assets/154d7273-fb64-4dad-9e93-24753c86b2f9)
+I then verified the status:
 
 ```
 sudo systemctl status tcpdump.service
-
 ```
 
-### Stop:
+![Pasted image 20241014124530](https://github.com/user-attachments/assets/154d7273-fb64-4dad-9e93-24753c86b2f9)
 
-
-![Pasted image 20241014124209](https://github.com/user-attachments/assets/506ad85d-2188-476f-ae89-ca3f038de212)
+I then stopped the service:
 
 ```
 sudo systemctl stop tcpdump.service
-
 ```
 
+![Pasted image 20241014124209](https://github.com/user-attachments/assets/506ad85d-2188-476f-ae89-ca3f038de212)
 
-### Restart:
+
+Restarted:
 
 ```
 sudo systemctl restart  tcpdump.service
-
 ```
 
-### Trace files:
-
+Below are the trace files:
 
 ![Pasted image 20241014135123](https://github.com/user-attachments/assets/2b2ca796-3302-4276-b082-abb8ff638b23)
-
-
-
-
 
 
 # Capturing traffic base on time:
