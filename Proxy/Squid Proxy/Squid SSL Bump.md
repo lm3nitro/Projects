@@ -14,7 +14,6 @@ Network diagram:
 
 ![Pasted image 20240607185534](https://github.com/lm3nitro/Projects/assets/55665256/a3cde0e0-8eac-4f5d-a8b3-9411054d3796)
 
-
 Note:
 I'm going to be installing a feature of  squid called "Squid-in-the-middle" for  decryption and encryption of straight CONNECT and transparently redirected SSL traffic, using configurable self-signed CA certificate.
 
@@ -306,224 +305,150 @@ After compeltignthe configuration for Squid, I then procced to set-up my Windows
 
 ![Pasted image 20240606002237](https://github.com/lm3nitro/Projects/assets/55665256/99ac4719-6163-48fb-b2e6-904e6bee1fd4)
 
-## Testing Proxy
+## Test 1
 
-Check the traffic at the Windows client :
-
-Let;s go to lichess.org for testing
-
-
+To test, I generated traffic on the Windows client. I went to `lichess.org` to test:
 
 ![Pasted image 20240606004834](https://github.com/lm3nitro/Projects/assets/55665256/3d20665e-a764-410f-9df1-363f38f543ce)
 
-
-
-
-### Verify the certificate:
-
+Verifed the certificate, confirmed that everything was working as expected:
 
 ![Pasted image 20240606010804](https://github.com/lm3nitro/Projects/assets/55665256/fe40ddec-5939-47e4-a4fa-2c7fb9de8cd7)
 
-
-### Windows client connecting to the Squid proxy:
-
+While testing, I also had Wireshark running in the backgrounf and was able to confirm the Windows client was indeed using the Squid Proxy:
 
 ![Pasted image 20240606003952](https://github.com/lm3nitro/Projects/assets/55665256/f5fe00e1-c607-46e4-83f9-ec7b35654d73)
 
-
-### Decrypted Lichess.org traffic at the proxy:
+Next, I went verified the traffic on the proxy side. Decrypted `Lichess.org` traffic at the proxy:
 
 ![Pasted image 20240606004112](https://github.com/lm3nitro/Projects/assets/55665256/dbed89ea-0ca6-45b6-838b-1f6a4c8497cb)
 
-
-# Decrypting traffic lichess.org traffic at the Windows Client using Wireshark:
-
-
+I then Decrypted the traffic to `lichess.org`on the Windows Client using Wireshark:
 
 ![Pasted image 20240606003503](https://github.com/lm3nitro/Projects/assets/55665256/04375c5b-a2e6-495c-a99c-09e87571bd0f)
 
-
- After the traffic has been decrypted, It seems like lichess.org is using HTTP/1.1.
- 
-
+After the traffic has been decrypted, it seems like `lichess.org` is using HTTP/1.1:
 
 ![Pasted image 20240606003915](https://github.com/lm3nitro/Projects/assets/55665256/f3b4bfe5-f2cf-43e2-a70a-0f747b932b90)
 
-
-It matches:
+The version that Wireshark is showing also matches the version installed:
 
 ![Pasted image 20240606004627](https://github.com/lm3nitro/Projects/assets/55665256/0db23a17-b0a5-4d19-a22e-bd2cf1b35de1)
 
-
-### Exporting HTTP objects from lichess.org traffic for further analysis :
-
+In order to further test, I exported HTTP objects from the `lichess.org` traffic for further analysis :
 
 ![Pasted image 20240606005510](https://github.com/lm3nitro/Projects/assets/55665256/28c0e1b6-de2e-420d-aedb-d9721ca42503)
 
-
-
-### Exported objects:
-
+Exported objects:
 
 ![Pasted image 20240606005706](https://github.com/lm3nitro/Projects/assets/55665256/643368fd-51c4-488c-be1b-b71137b681f3)
 
+## Test 2
 
-
-# Downloading Firefox:
-
-Traffic logs:
-
-We can see the installer.exe
+As another test, I wanted to test donwloading and see how the traffic is seen when using the proxy. For this test, I downloaded Firefox:
 
 ![Pasted image 20240606011922](https://github.com/lm3nitro/Projects/assets/55665256/cd8cb294-8863-411f-8182-e8eb960e4c6c)
 
-
-Proxy logs:
-
-We can see the installer.exe at the proxy:
+In the proxy logs I was able to see the installer.exe:
 
 ![Pasted image 20240606011518](https://github.com/lm3nitro/Projects/assets/55665256/5bb9cee9-91f8-4d9e-8601-183c444df57c)
 
-
-Logs at the SIEM:
-
-All the squid traffic have been sent to Splunk. We can see the installer.exe. 
+Another part of this exercise that is not seen, is that I configured Squid Proxy logs to be sent to my Splunk instance. Below is the traffic showing the download of the installer.exe. 
 
 ![Pasted image 20240606093227](https://github.com/lm3nitro/Projects/assets/55665256/2e395fc1-a746-48cc-8113-5385d378d529)
 
-
-
-
-
-# Verify the Cache Squid is working:
-
-
-In the squid.conf under /usr/local/squid/etc/ I create a cache rule to cache any of the files listed  there 
+I also verify that the Cache Squid is working. In the `squid.conf` under `/usr/local/squid/etc/` I create a cache rule to cache any of the files listed there:
 
 ![Pasted image 20240607174629](https://github.com/lm3nitro/Projects/assets/55665256/f8f6266d-ff4b-47bd-86ff-14dc429a7005)
 
+> [!NOTE]  
+> The squid cache is under /usr/local/squid/var/cache/
+> ![Pasted image 20240607172049](https://github.com/lm3nitro/Projects/assets/55665256/a26372fa-0cfa-4dd5-b50d-75e63ccbc194)
 
+Searched all the directories and files search recursively:
 
-The squid cache is under /usr/local/squid/var/cache/
-
-![Pasted image 20240607172049](https://github.com/lm3nitro/Projects/assets/55665256/a26372fa-0cfa-4dd5-b50d-75e63ccbc194)
-
-
-searching all the directories and files search recursively:
-
-
-
+```
 find . -type f | xargs grep -E  installer
-
+```
 
 ![Pasted image 20240607172542](https://github.com/lm3nitro/Projects/assets/55665256/10638eb1-7c2a-4c80-8866-f80b866dbfb3)
 
-
 Another way to search:
 
-
+```
 find .  -type f -print0 | xargs -0 grep -l "installer"
-
+```
 
 ![Pasted image 20240607172414](https://github.com/lm3nitro/Projects/assets/55665256/007e2a88-77c0-4d1f-a1ef-98f1ffc32e75)
 
+To check, I opened the last file with the following command:
 
-Opening the last file  with nano ./squid/00/0E/00000EE4
+```
+nano ./squid/00/0E/00000EE4
+```
 
 ![Pasted image 20240607172837](https://github.com/lm3nitro/Projects/assets/55665256/e9a211a1-349a-4c7e-9566-1efa26a28160)
 
+Opened another file on the list 
 
+```
+nano squid/00/09/0000097A
+```
 
-Opening another file on the list nano squid/00/09/0000097A
-
-We got the actual installer.exe file binary!
+I was able to get the actual installer.exe file binary!
 
 ![Pasted image 20240607173631](https://github.com/lm3nitro/Projects/assets/55665256/a840a659-2332-4f55-a45a-34ac9cac4b8a)
 
-
-
-
+```
 xxd squid/00/09/0000097A | grep -iE  'installer|exe|dos'
+```
 
 ![Pasted image 20240607180003](https://github.com/lm3nitro/Projects/assets/55665256/1c0667c7-1b2d-4b02-b2c2-c8abb97611d6)
 
+> [!NOTE]  
+> Earlier, I installed `ccze` in order to colorize the logs. Below is a view at how the logs look with the color added. I find that this makes it more readable:
+> ```cat  /usr/local/squid/var/logs/access.log | ccze -A -C -o noscroll | grep -iE "installer.exe"```
+> ![Pasted image 20240606094234](https://github.com/lm3nitro/Projects/assets/55665256/b647bff2-dabf-431e-bffd-e62fe03997a3)
 
-### Logs colorized with CCZE:
+## Test 3
 
+Next, I disabeld the proxy setting on the Windows client:
 
-cat  /usr/local/squid/var/logs/access.log | ccze -A -C -o noscroll | grep -iE "installer.exe"
-
-![Pasted image 20240606094234](https://github.com/lm3nitro/Projects/assets/55665256/b647bff2-dabf-431e-bffd-e62fe03997a3)
-
-
-
-
-## Disabling proxy in system settings in Windows 10 client :
 ![Pasted image 20240606100136](https://github.com/lm3nitro/Projects/assets/55665256/e9570f58-8652-47cf-93aa-3c2b2a342903)
 
+It’s important to note that the WinAPI enables proxy access for all 'proxy-capable' applications on the operating system, allowing them to route traffic through the proxy.
 
-
-
-Note the WinAPI will allow traffic to the whole operating system "proxy capable apps " to the proxy:
-
-As you can on the logs, we are getting traffic going to Microsoft even though I didn't browse Microsoft website:
+Even though I disabled the proxy setting on the Windows client, I am still seeing traffic going to Microsoft even though I didn't browse to the Microsoft website:
 
 ![Pasted image 20240606110825](https://github.com/lm3nitro/Projects/assets/55665256/b742a48e-48a9-422d-9550-5513d79f3ce6)
 
-
-
-In order to fix that we will need install a Browser that doesn't use the WinAPI, and block all the traffic at the firewall level from this Win host. Firefox in this case a separate API for the application and does not use WinAPI
-
-
-
-# Configuring proxy in Firefox:
-
+In order to fix that, I installed a browser that doesn't use the WinAPI. I will then need to block all the traffic at the firewall level from this Windows client. Firefox has a separate API for the application and does not use WinAPI. I then configured the proxy settings in Firefox:
 
 ![Pasted image 20240606095903](https://github.com/lm3nitro/Projects/assets/55665256/7524db31-3b81-4c62-99c0-0c06e6863a93)
 
-
-
-
-
-# Rule creation on the Fortinet firewall:
-
-
-Creating a firewall rule to allow only Squid proxy traffic to internet. In this situation the proxy is already allow "ALL outbound" The only we need is to create a new entry to block the Windows Client PC on 10.10.100.101
+Once that was completed, I then created a rule in my Fortinet firewall. This firewall rule will allow only Squid proxy traffic to have access to the internet. In this situation the firewall is already allowing "All outbound". The only thing I needed to do was create a new entry to block the Windows Client PC on 10.10.100.101:
 
 ![Pasted image 20240606105235](https://github.com/lm3nitro/Projects/assets/55665256/b232cfac-ea1a-40d1-aef6-c42d7c496f27)
 
-
-
-### Looking at the hit count:
-
+Looking at the hit count for the rule:
 
 ![Pasted image 20240606104922](https://github.com/lm3nitro/Projects/assets/55665256/8502c873-3214-42ce-819f-cd006d43bdbd)
 
-
-
-### Traffic that is being block a the Windows Client:
+I was able to check and see that the traffic coming from the Windows client was being blocked:
 
 ![Pasted image 20240606105941](https://github.com/lm3nitro/Projects/assets/55665256/408cd0d7-5a54-4df2-a013-c2985fcdaea9)
 
-
-
-
-# Proxy IP information:
+I also wanted to ensure that the traffic from the proxy was being allowed. First, I needed to confirm the IP address:
 
 ![Pasted image 20240606110515](https://github.com/lm3nitro/Projects/assets/55665256/d18409a9-8580-441b-9434-443206c6cf84)
 
-Firewall logs allowing the proxy:
-
+Firewall logs allowing the Proxy traffic:
 
 ![Pasted image 20240606110439](https://github.com/lm3nitro/Projects/assets/55665256/c70d19a4-99a4-49e6-8cb8-727af352b520)
 
-
-
-Now the firewall is blocking all the traffic from Clien using WinAPI with IP 10.10.100.101 going outbound that is no passing for the proxy. We're enforcing our proxy policy to use only Firefox app to the internet.
-
+Now, the firewall is blocking all the traffic generated from the Windows client (IP 10.10.100.101) that is using WinAPI to go outbound and not passing through the proxy. By doing this, I am enforcing the proxy policy and using only the Firefox app to fo outbound to the internet.
 
 # Disable Squid Cache: (Optional)
-
 
 On the configuration file located under /usr/local/squid/etc
  remove these lines:
