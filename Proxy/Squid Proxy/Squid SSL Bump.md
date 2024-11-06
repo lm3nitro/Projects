@@ -1,195 +1,190 @@
+# Squid SSL Bump
 
 ![Pasted image 20240606094506](https://github.com/lm3nitro/Projects/assets/55665256/d218006c-7a0c-4477-8cd6-6bd6bf48a476)
 
+Squid is a caching and forwarding HTTP web proxy. Squid SSL Bump is a feature in Squid Proxy, that allows it to intercept and decrypt SSL/TLS traffic in order to inspect, log, or manipulate the data. This feature enables the inspection of encrypted traffic, providing the ability to filter, log, and analyze HTTPS communications
 
-Squid is a caching and forwarding HTTP web proxy. It has a wide variety of uses, including speeding up a web server by caching repeated requests, caching World Wide Web (WWW), Domain Name System (DNS), and other network lookups for a group of people sharing network resources, and aiding security by filtering traffic.
-
-Note:
-
-I'm going to be installing a feature of  squid called "Squid-in-the-middle" for  decryption and encryption of straight CONNECT and transparently redirected SSL traffic, using configurable self-signed CA certificate.
-
-System information:
-
-Ubuntu 22.04.4 LTS x86_64
-Squid Cache: Version 5.9
-OpenSSL 3.0.2 15
+### Scope: 
 
 
-![Pasted image 20240606154403](https://github.com/lm3nitro/Projects/assets/55665256/ec7d8d2a-0f52-4b57-90c8-4d449bb18adc)
-
+### Tools and Technology:
+Ubuntu, Squid Proxy, OpenSSL, Windows 10, Wireshark, Splunk, Fortinet, and ClamAV
 
 Network diagram:
 
 ![Pasted image 20240607185534](https://github.com/lm3nitro/Projects/assets/55665256/a3cde0e0-8eac-4f5d-a8b3-9411054d3796)
 
 
-# Downloading Squid Proxy:
+Note:
+I'm going to be installing a feature of  squid called "Squid-in-the-middle" for  decryption and encryption of straight CONNECT and transparently redirected SSL traffic, using configurable self-signed CA certificate.
 
+## Installing Squid Proxy
 
-Main website:
+To start, I will be installing Squid Proxy on my Ubuntu VM. Below is the System information:
 
++ Ubuntu 22.04.4 LTS x86_64
++ Squid Cache: Version 5.9
++ OpenSSL 3.0.2 15
+
+![Pasted image 20240606154403](https://github.com/lm3nitro/Projects/assets/55665256/ec7d8d2a-0f52-4b57-90c8-4d449bb18adc)
+
+First, I need to download Squid Proxy. I went to the main website:
 
 ![Pasted image 20240605210938](https://github.com/lm3nitro/Projects/assets/55665256/6cb214c0-b4c0-447d-991d-396b56370a3c)
 
-
-Looking for version 5.9
+At the time of this writing, version 5.9 is the latest:
 
 ![Pasted image 20240605211601](https://github.com/lm3nitro/Projects/assets/55665256/d7998bbf-acaf-4a2b-bdd7-0997719267a8)
 
+> [!NOTE]  
+> On the Ubuntu server, I created a directory where the squid files I will be working on will be placed. 
 
-
-Note:  On the ubuntu server create a directory where we're going to work with the squid files.
-
-
+```
 cd /usr/local/src/
+```
 
 ![Pasted image 20240605210812](https://github.com/lm3nitro/Projects/assets/55665256/b62718b9-8b1f-440c-a279-b011f762f486)
 
+After navigating to the directory where I wanted Squid to downloaded, I used `wget` to download it:
 
-Downloading the code:
-
+```
 wget https://www.squid-cache.org/Versions/v5/squid-5.9.tar.gz
+```
 
 ![Pasted image 20240605211743](https://github.com/lm3nitro/Projects/assets/55665256/72ebf5d7-3e51-402f-8fef-97aa411356e4)
 
+Next, I extracted the files:
 
-# Decompress the file:
-
-
+```
 tar zxvf squid-5.9.tar.gz
+```
 
-# Installing dependencies:
+## Installing Dependencies:
 
+After downloading Squid Proxy, I then began to install the needed dependencies:
 
-
+```
 apt install build-essential openssl libssl-dev pkg-config
-
+```
 
 ![Pasted image 20240605212332](https://github.com/lm3nitro/Projects/assets/55665256/8dbd13c8-ecbb-42fa-af0b-2c1a2df93cb1)
 
+Configuring Squid Proxy:
 
-
+```
 ./configure --with-default-user=proxy --with-openssl --enable-ssl-crtd
+```
 
 ![Pasted image 20240605212822](https://github.com/lm3nitro/Projects/assets/55665256/e3b9230b-993e-4021-bcca-0605b60f75c6)
 
-Once it finishes type:
+Once it completed, I used the following command to build it:
 
-
+```
 make
+```
 
 ![Pasted image 20240605213219](https://github.com/lm3nitro/Projects/assets/55665256/5e401121-e39a-4d43-91d8-7fcd183ceba3)
 
+## Configuration
 
-#### Edit the file /etc/ssl/openssl.cnf
-
-add the following line under [ v3_ca ]
-
-keyUsage =  cRLSign, keyCertSign
+After, I need to make some changes to the openssl configuration, I edited the following file `/etc/ssl/openssl.conf`
 
 ![Pasted image 20240605215335](https://github.com/lm3nitro/Projects/assets/55665256/c401b37e-723c-4b71-b5d6-dda140dac593)
 
+I added the following line under [ v3_ca ]
+
+```
+keyUsage =  cRLSign, keyCertSign
+```
+
 ![Pasted image 20240605215314](https://github.com/lm3nitro/Projects/assets/55665256/30e52bda-ebad-4576-8456-0565d21e7446)
 
+Next, I generated the needed certificates. To do this, I created a directory under `/tmp/ssl_cert`
 
-
-# Generating the certificates:
-
-First create directory under /tmp/ssl_cert
-
+```
 cd /tmp/ssl_cert
+```
 
 ![Pasted image 20240605215537](https://github.com/lm3nitro/Projects/assets/55665256/cb332fcd-673c-4603-abc5-df458ef58fdb)
 
+I then created all necessary certificates that the Squid Proxy will use to decrypt the traffic.
 
-
-# Working with certificate:
-
-
-Creating all necessary certificates so squid can decrypt the traffic.
-
-
+```
 openssl req -new -newkey rsa:2048 -days 365 -nodes -x509 -extensions v3_ca -keyout squid-self-signed.key -out squid-self-signed.crt
-
+```
 
 ![Pasted image 20240605220029](https://github.com/lm3nitro/Projects/assets/55665256/ed051ca4-b883-4237-8362-9e040928c49c)
 
-
-
-
+```
 openssl x509 -in squid-self-signed.crt -outform DER -out squid-self-signed.der
-
+```
 
 ![Pasted image 20240605220308](https://github.com/lm3nitro/Projects/assets/55665256/6ad6db04-a677-4eac-b208-c542b632d869)
 
-
-
+```
 openssl x509 -in squid-self-signed.crt -outform PEM -out squid-self-signed.pem
+```
 
 ![Pasted image 20240605220436](https://github.com/lm3nitro/Projects/assets/55665256/df8b0dbe-a33e-4cec-a85f-f3e053a74be0)
 
-
+```
 openssl dhparam -outform PEM -out squid-self-signed_dhparam.pem 2048
+```
 
 ![Pasted image 20240605220645](https://github.com/lm3nitro/Projects/assets/55665256/db76f400-3519-4d75-a083-453cb5a1d928)
 
+All the completed certificates:
+
 ![Pasted image 20240605220738](https://github.com/lm3nitro/Projects/assets/55665256/999a6752-5d47-4a65-af4e-6eb00419f37a)
 
+## Finishing Squid Proxy Install:
 
-# Finishing the install of the squid proxy:
+Once all the certificates had been created, I finished the installation of the Squid Proxy. I first needed to navigate back to the directory where it was initially downloaded to: `/usr/local/src/squid-5.9/`
 
-
-Once all the certificates has been create, it's now time for finishing the installation of the squid. Going back to  /usr/local/src/squid-5.9/
-
+```
 cd /usr/local/src/squid-5.9/
+```
 
-then type
+Typed the following to complete the installation/build:
 
+```
 make install
-
-
+```
 
 ![Pasted image 20240605221347](https://github.com/lm3nitro/Projects/assets/55665256/889acb4a-4a10-4374-8956-017aee583ba5)
 
+Once that completed, I went back to the certificates directory: `/tmp/ssl_cert`. I then copied the certificates previously created to the Squid Proxy directory:
 
-
-
-### Let's go back to /tmp/ssl_cert:
-
-
-Move: Moving the certificates to squid directory. 
-
+```
 cp -rf /tmp/ssl_cert /usr/local/squid/etc/ssl_cert
+```
 
 ![Pasted image 20240605221633](https://github.com/lm3nitro/Projects/assets/55665256/6605e950-9fcc-4d15-a714-fc2f7f0a990b)
 
-
-
+```
 cp /usr/local/squid/etc/ssl_cert/squid-self-signed.pem /usr/local/share/ca-certificates/squid-self-signed.crt
-
+```
 
 ![Pasted image 20240605222107](https://github.com/lm3nitro/Projects/assets/55665256/f5e2095f-b4cf-4ea0-915c-10c464eb597d)
 
+I then updated the CA certificates:
 
-
-# Updating the CA certificates:
-
+```
 update-ca-certificates
+```
 
 ![Pasted image 20240605222300](https://github.com/lm3nitro/Projects/assets/55665256/005a6e98-e7fc-490d-b675-52251eb70e89)
 
+## Squid Configuration:
 
-# Edit Squid.conf file 
-````
-Adding the follwing lines:
+In order to configure the Squid Proxy, I first edited the `Squid.conf` file. I added the follwing lines:
 
-
+```
 acl intermediate_fetching transaction_initiator certificate-fetching
 http_access allow intermediate_fetching
 
 acl all src all
 http_access allow all
-
 
 http_port 3128 tcpkeepalive=60,30,3 ssl-bump generate-host-certificates=on dynamic_cert_mem_cache_size=20MB tls-cert=/usr/local/squid/etc/ssl_cert/squid-self-signed.crt tls-key=/usr/local/squid/etc/ssl_cert/squid-self-signed.key cipher=HIGH:MEDIUM:!LOW:!RC4:!SEED:!IDEA:!3DES:!MD5:!EXP:!PSK:!DSS options=NO_TLSv1,NO_SSLv3,NO_SSLv2,SINGLE_DH_USE,SINGLE_ECDH_USE tls-dh=prime256v1:/usr/local/squid/etc/ssl_cert/squid-self-signed_dhparam.pem
 sslcrtd_program /usr/local/squid/libexec/security_file_certgen -s /usr/local/squid/var/logs/ssl_db -M 20MB
@@ -198,145 +193,122 @@ ssl_bump server-first all
 ssl_bump stare all
 sslproxy_cert_error deny all
 
-
-
 maximum_object_size 6 GB
 cache_mem 8192 MB
 cache_dir ufs /usr/local/squid/var/cache/squid 32000 16 256
 
-
 coredump_dir /usr/local/squid/var/cache/squid
 
 cache allow all
-
 ````
-### then  save the file and apply permissions :
 
+Saved the file and applied the needed permissions:
 
+```
 chown -R proxy:proxy /usr/local/squid
-
+```
 
 ![Pasted image 20240605231350](https://github.com/lm3nitro/Projects/assets/55665256/df7d0500-a626-4041-8acd-e393cdc95290)
 
+I then used the following command to generate the SSL certificates for Squid's SSL bumping feature:
 
+```
 sudo -u proxy -- /usr/local/squid/libexec/security_file_certgen -c -s /usr/local/squid/var/logs/ssl_db -M 20MB
-
+```
 
 ![Pasted image 20240605231651](https://github.com/lm3nitro/Projects/assets/55665256/02a30a54-d9f2-422b-a76d-6201152ba7d4)
 
-
-## Note: locating the squid binary in my case is under:
-
-
-/usr/local/squid/sbin/squid
-
+Next, I located Squid's binary, in my case it was under `/usr/local/squid/sbin/squid`
 
 ![Pasted image 20240605233247](https://github.com/lm3nitro/Projects/assets/55665256/09425b3c-b2a7-4444-b757-3c940748e2e1)
 
+> [!IMPORTANT]  
+> All of Squid's files ar elocated in `/usr/local/squid/`
+> ![Pasted image 20240606162127](https://github.com/lm3nitro/Projects/assets/55665256/b9e885c2-b408-4f3f-8c2d-2b7169dc7b9d)
 
+## Starting Squid:
 
-All squid files that we ever need will be under /usr/local/squid/
+So far, I have downloaded and installed Squid, configured it, and generated the needed certificates. Next, I procced to start Squid:
 
-![Pasted image 20240606162127](https://github.com/lm3nitro/Projects/assets/55665256/b9e885c2-b408-4f3f-8c2d-2b7169dc7b9d)
-
-
-
-# Starting Squid:
-
-
+```
 sudo -u proxy -- /usr/local/squid/sbin/squid -z 
-
 sudo -u proxy -- /usr/local/squid/sbin/squid -d 10
-
+```
 
 ![Pasted image 20240605233617](https://github.com/lm3nitro/Projects/assets/55665256/602d96cd-7af8-47fc-8201-06c4620d83a2)
 
-
-# Check squid processes status:
-
+Checked the status of Squid's processes:
 
 ![Pasted image 20240605235057](https://github.com/lm3nitro/Projects/assets/55665256/446c3662-9129-442d-ab61-f6c9b8e65e58)
 
+> [!TIP]
+> Optional: Installing colors to logs:
+> ```apt install ccze```
+> ![Pasted image 20240605233802](https://github.com/lm3nitro/Projects/assets/55665256/d40b8869-c438-4059-a9b1-854ab932bf36)
 
+Verified the cache log:
 
-# Installing colours to logs: (Optional)
-
-
-![Pasted image 20240605233802](https://github.com/lm3nitro/Projects/assets/55665256/d40b8869-c438-4059-a9b1-854ab932bf36)
-
-
-### Verify cache logs use:
-
-
+```
 tail -f /usr/local/squid/var/logs/cache.log
+```
 
 ![Pasted image 20240605234002](https://github.com/lm3nitro/Projects/assets/55665256/506e7742-47fb-48c7-b9cd-06623e685934)
 
+Verified the access log:
 
+> [!IMPORTANT]  
+> There is no log currently. This is because I have not yet configured the the Windows client with the proxy information. However, the commadn to check would be the following:
+> ```tail -f /usr/local/squid/var/logs/access.log```
 
+> [!NOTE]
+> The following is optional: Installing calamaris
+> Calamaris is a tool that works in conjunction with Squid Proxy to generate log analysis reports. It is specifically designed to analyze Squid's log files and produce reports that give insights into proxy usage, traffic patterns, performance metrics, and more.
+>```apt search calamaris```
+> ![Pasted image 20240605234421](https://github.com/lm3nitro/Projects/assets/55665256/e852737c-081b-4455-b808-da58410847be)
+> ```apt install calamaris```
+> ![Pasted image 20240605234408](https://github.com/lm3nitro/Projects/assets/55665256/84950571-000c-4427-820d-fbb5c9f3332f)
 
-### Verify access log use:
+Next, I verified that Squid is listening:
 
-Note: There is not log, I haven't configure the proxy information on the Windows client.
-
-tail -f /usr/local/squid/var/logs/access.log
-
-
-# Installing calamaris: (optional)
-
-![Pasted image 20240605234421](https://github.com/lm3nitro/Projects/assets/55665256/e852737c-081b-4455-b808-da58410847be)
-
-![Pasted image 20240605234408](https://github.com/lm3nitro/Projects/assets/55665256/84950571-000c-4427-820d-fbb5c9f3332f)
-
-
-#### Verify squid is listening:
-
-
+```
 ss -tlp
-
+```
 
 ![Pasted image 20240605234757](https://github.com/lm3nitro/Projects/assets/55665256/560d7752-6409-4ec5-84c6-51b8a9cb4549)
 
-
-
- ps -aux | grep 109564
+```
+ps -aux | grep 109564
+```
 
 ![Pasted image 20240605235300](https://github.com/lm3nitro/Projects/assets/55665256/de0931ba-97a3-4503-9527-842a441937bc)
 
+## Windows Client
 
-# Downloading certificates to Window client:
+After compeltignthe configuration for Squid, I then procced to set-up my Windows 10 VM and configure it to use the proxy:
 
-
+1. I first downloaded the certificates to the Windows client:
 
 ![Pasted image 20240605235638](https://github.com/lm3nitro/Projects/assets/55665256/84bddefe-778a-41fb-b646-6deb7cd50612)
 
-
 ![Pasted image 20240606000152](https://github.com/lm3nitro/Projects/assets/55665256/896346b5-200b-4f45-8942-d524aece9cd8)
 
-
-
-### Verify the IP of the squid proxy and getting into the Proxy Windows system settings:
-
+2. I then verified the IP address of the Squid Proxy and entered the inforamtion into the Proxy Windows system settings:
 
 ![Pasted image 20240606000533](https://github.com/lm3nitro/Projects/assets/55665256/f2c9068c-6855-45ae-85f1-d53e1c59053e)
 
-
 ![Pasted image 20240606000605](https://github.com/lm3nitro/Projects/assets/55665256/c100b96a-08f2-4e1e-bcc8-d78917462f1e)
 
-
-
-### Verify connection status at the windows client:
+3. Once the inforamtion was entered, I verified the connection status from the Windows client:
 
 ![Pasted image 20240606002736](https://github.com/lm3nitro/Projects/assets/55665256/d58af6d2-984f-4b28-8e54-3dbe2e8661fd)
 
-
-### Verify the logs at the proxy:
-
+4. I also confirmed and verified the logs at the proxy:
 
 ![Pasted image 20240606002237](https://github.com/lm3nitro/Projects/assets/55665256/99ac4719-6163-48fb-b2e6-904e6bee1fd4)
 
+## Testing Proxy
 
-### Check the traffic at the Windows client :
+Check the traffic at the Windows client :
 
 Let;s go to lichess.org for testing
 
