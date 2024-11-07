@@ -6,6 +6,7 @@ Squid is a caching and forwarding HTTP web proxy. Squid SSL Bump is a feature in
 
 ### Scope: 
 
+I will be installing and configuring Squid Proxy with SSL Bump to intercept and decrypt HTTPS traffic for content filtering and inspection. Once Squid is set up, I will test its functionality by routing traffic from a Windows 10 VM to verify SSL bumping and domain blocking features. I will also be hardening the Squid proxy server by installing ClamAV. 
 
 ### Tools and Technology:
 Ubuntu, Squid Proxy, OpenSSL, Windows 10, Wireshark, Splunk, Fortinet, and ClamAV
@@ -462,186 +463,201 @@ Now, the firewall is blocking all the traffic generated from the Windows client 
 
 ## Blocking Domain
 
-Squid can block or allow requests based on the destination domain or hostname provided in the SSL handshake. This allows network administrators to implement domain-based access controls or restrict certain types of content
+Squid can block or allow requests based on the destination domain or hostname provided in the SSL handshake. This allows you to implement domain-based access controls, enabling the restriction of specific websites, content categories, or services.
 
-Next, I wanted to test the functionality that 
-custom domain with squid:
+Next, I wanted to test this functionality. To do this, I first created a domain blacklist in `Squid.conf` file. I edited the file located in `/etc/squid/squid.conf` and added the following settings at the beginning of the file: 
 
-
-Create  domain blacklist in Squid.conf
-
-Edit the /etc/squid/squid.conf file and add the following settings at the beginning of the file: 
-
+```
 acl domain_blacklist dstdomain "/usr/local/squid/etc/domain_blacklist.txt"
 http_access deny all domain_blacklist
-
+```
 
 ![Pasted image 20240606170758](https://github.com/lm3nitro/Projects/assets/55665256/ceb80d25-8294-41a2-bc2e-925996c4b2e2)
 
+I then created the `/usr/local/squid/etcdomain_blacklist.txt` file and added the domains I wanted to block. For example, to block access to `example.com`, including subdomains, add: 
 
-
-
-
-Create the /usr/local/squid/etcdomain_blacklist.txt file and add the domains you want to block. For example, to block access to example.com including subdomains and to block example.net, add: 
-
+```
 .lm3nitro.example.com
 lm3nitro.squid.lab.example.com
+```
 
-In my case, I will be blocking lichess and chess.com
+In my case, I will be blocking `lichess` and `chess.com`:
 
 ![Pasted image 20240606171228](https://github.com/lm3nitro/Projects/assets/55665256/63017f46-1347-4dae-b765-11fa9eaa6ae3)
 
-Kill the squid process:
+I then killed the squid process:
+
 ![Pasted image 20240606171520](https://github.com/lm3nitro/Projects/assets/55665256/6ff49ebd-bc72-4174-ac81-70adfc1203ea)
 
+I then started the squid service:
 
-
-Starting the squid service by typing:
-
-
+```
 sudo -u proxy -- /usr/local/squid/sbin/squid -z
 sudo -u proxy -- /usr/local/squid/sbin/squid -d 10
+```
 
-
-Verify the service again, we can see that we got new pid numbers:
-
-
+Verified the service again, I can see that I got new pid numbers:
 
 ![Pasted image 20240606171819](https://github.com/lm3nitro/Projects/assets/55665256/b40861f5-0c49-4ab8-be42-bf2adf24c885)
 
-
-
-Let's go to lichess.org and chess.com
+Testinf time! I attempted to go to `lichess.org` and `chess.com`:
 
 ![Pasted image 20240606170337](https://github.com/lm3nitro/Projects/assets/55665256/b903cb39-4f50-4442-9f84-93b6ff164062)
 
-
 ![Pasted image 20240606171917](https://github.com/lm3nitro/Projects/assets/55665256/626a8545-21e8-4039-a369-e93967a5186c)
 
+I can asee that the access was denied and that the domains were trully being blocked. I then also looked at Squid's logs and could also see taht that the traffic was getting blocked:
 
-
-### Squid has blocked the traffic:
-
+```
 tail  -f /usr/local/squid/var/logs/access.log | grep -E  "lichess|chess"
+```
 
 ![Pasted image 20240606172048](https://github.com/lm3nitro/Projects/assets/55665256/f3839693-4594-47fc-8442-2302562672d5)
 
+I also tested trying to download the eicar file and was able to see that as well:
 
-
-
-
-
+```
 cat /usr/local/squid/var/logs/access.log | grep -E  ' eicar|zip'
+```
 
 ![Pasted image 20240607182009](https://github.com/lm3nitro/Projects/assets/55665256/28439e70-540e-4562-9768-8c12f69b0afb)
 
+## Monitor Process and Network Traffic:
 
+In order to monitor the network traffic, I will be using `nload, htop and tcptrack`. 
 
++ nload: This is a command-line tool used to monitor and display network traffic in real-time on Linux and Unix-like systems. It provides a visual representation of incoming and outgoing network bandwidth usage on a system, making it easy to track network activity, diagnose potential issues, and assess network performance.
 
++ htop: This is an interactive process viewer that is widely used for monitoring system resources, managing processes, and providing insights into the overall health and performance of a system.
 
-# Monitor process and network traffic:
++ tcptrack: This command line tool allows you to to view active TCP connections, along with detailed information about each connection, such as the source and destination IP addresses, ports, connection status, and data transfer statistics.
 
-Installing nload
+Installing nload:
+
+```
+apt isntall nload
+```
+
 ![Pasted image 20240607184651](https://github.com/lm3nitro/Projects/assets/55665256/115c0a34-8e95-4a4a-8c75-87c244f6652f)
-
 
 Installing htop
 
-![Pasted image 20240607213149](https://github.com/lm3nitro/Projects/assets/55665256/1c01293f-c817-49b8-b96a-acd0655bea92)
+```
+apt install htop
+```
 
+![Pasted image 20240607213149](https://github.com/lm3nitro/Projects/assets/55665256/1c01293f-c817-49b8-b96a-acd0655bea92)
 
 Installing tcptrack
 
+```
+apt install tcptrack
+```
+
 ![Pasted image 20240607213409](https://github.com/lm3nitro/Projects/assets/55665256/501d1ac9-fc76-4969-9ed2-e9f85a2a4b04)
 
-
+A view of all the tools being used:
 
 ![Pasted image 20240607213757](https://github.com/lm3nitro/Projects/assets/55665256/db541c0a-7765-4ea5-a04a-90536adeb053)
 
 
-# Securing the Squid Proxy :
-
+## Securing Squid Proxy:
 
 ![Pasted image 20240607211638](https://github.com/lm3nitro/Projects/assets/55665256/b4a52da8-1258-439a-84ff-a502296058b6)
 
+ClamAV is an open-source antivirus software that primarily uses signature-based detection to identify viruses, trojans, and other types of malware, and it supports scanning of files, email attachments, and archives. 
 
+In order to better secure Squid Proxy, I will be installing ClamAV:
 
-ClamAV is a popular open source anti-virus tool to detect malicious software or malware. While it calls itself an antivirus engine, used in a variety of situations including email scanning, web scanning, and end point security.
-
-# Installing ClamAV
-
+```
 apt install clamav clamav-daemon
+```
 
 ![Pasted image 20240607203552](https://github.com/lm3nitro/Projects/assets/55665256/cfbb49d9-b4d3-4102-a6da-83481032b366)
 
+Verify version:
 
-# Verify version:
-
+```
 clamscan --version
+```
 
 ![Pasted image 20240607203705](https://github.com/lm3nitro/Projects/assets/55665256/dda2a059-ce15-4596-b8fd-f6699e50b1b1)
 
+Checking the status
 
-# Checking status
-
+```
 systemctl status clamav-freshclam
+```
 
 ![Pasted image 20240607203900](https://github.com/lm3nitro/Projects/assets/55665256/301a05de-fdc7-4154-b904-5f328ca43ce5)
 
+I then stopped clamav in order to update the DB:
 
-### We need to stop to update DB:
-
+```
 systemctl stop clamav-freshclam
+```
 
 ![Pasted image 20240607204043](https://github.com/lm3nitro/Projects/assets/55665256/e7fdc4dc-8d18-42cf-ad9a-fe499791faf3)
 
+To update the DB, I ran the following command:
 
-### Updating DB
-
+```
 freshclam
+```
+
 ![Pasted image 20240607204139](https://github.com/lm3nitro/Projects/assets/55665256/7b6184b2-84a8-47e6-a896-99665682e1c4)
 
+Next, I started ClamAV now that the DB was updated. I used `enable` for persistence:
 
-Start clamav now that DB was updated, use enable for persistence
-
+```
 systemctl enable clamav-freshclam --now
+```
 
 ![Pasted image 20240607204328](https://github.com/lm3nitro/Projects/assets/55665256/dc8e349f-7be4-46a8-9cdc-ee1913c444d6)
 
+> [!NOTE]  
+> To disable ClamAV, use the following command:
+> ```
+> systemctl disable clamav-freshclam --now
+> ```
 
-Note to disable: systemctl disable clamav-freshclam --now
+I then verified the clamav files and directory:
 
-### Verify clamav files and directory:
-
-
+```
 ls -l /var/lib/clamav/
+```
 
 ![Pasted image 20240607204513](https://github.com/lm3nitro/Projects/assets/55665256/f8d8d330-2b28-48ae-99d6-63dc1411b2df)
 
+## Testing ClamAV:
 
-
-# Tesing ClamAV:
-
-
-### Downloading antivirus test files:
-
-It probably won't encounter many viruses, as they have become rare. It is more likely to find other forms of malware like worms, backdoors, and ransomware.
-
+To test, I attempted to download the antivirus test files. It probably won't encounter many viruses, as they have become rare. It is more likely to find other forms of malware like worms, backdoors, and ransomware.
 
 ![Pasted image 20240607210556](https://github.com/lm3nitro/Projects/assets/55665256/d6d4c558-fc6e-419e-8067-62cb15537baa)
 
-
-
-
 ![Pasted image 20240607210724](https://github.com/lm3nitro/Projects/assets/55665256/d265fb03-f72f-41f2-aa1a-9148c775f943)
 
+Scanning current directory:
 
-### Scanning current directory .
-
+```
 clamscan .
-
+```
 
 ![Pasted image 20240607210918](https://github.com/lm3nitro/Projects/assets/55665256/a113e7d0-37ae-4961-9279-0716b3e932a3)
+
+ClamAV was able to find the 2 infected files that were downloaded. 
+
+### Summary:
+
+This exercise provided me wtih hands-on experience with traffic interception, content filtering, and device hardening. I was able to learn how to manage and inspect encrypted traffic and block harmful domains by using a proxy. This experience also allowed me to better understand the role of proxy servers in network security, as well as learning to fine-tune configurations for optimal performance and safety. 
+
+Below are some key benefits learned from this exercise and having this set up:
+
++ Traffic Visibility: SSL Bump allows you to decrypt and inspect HTTPS traffic
++ Performance Optimization: Squid Proxy provides caching capabilities that can improve network performance by reducing latency and optimizing bandwidth usage
++ Security Hardening: Installing and using like ClamAV for hardening the proxy server, making it more resilient to attacks
+
+
 
 
 
