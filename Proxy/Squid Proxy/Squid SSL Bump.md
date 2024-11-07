@@ -446,28 +446,26 @@ Firewall logs allowing the Proxy traffic:
 
 ![Pasted image 20240606110439](https://github.com/lm3nitro/Projects/assets/55665256/c70d19a4-99a4-49e6-8cb8-727af352b520)
 
-Now, the firewall is blocking all the traffic generated from the Windows client (IP 10.10.100.101) that is using WinAPI to go outbound and not passing through the proxy. By doing this, I am enforcing the proxy policy and using only the Firefox app to fo outbound to the internet.
+Now, the firewall is blocking all the traffic generated from the Windows client (IP 10.10.100.101) that is using WinAPI to go outbound and not passing through the proxy. By doing this, I am enforcing the proxy policy and using only the Firefox app to go outbound to the internet.
 
-# Disable Squid Cache: (Optional)
+> [!NOTE]  
+> Optional: Disabling Squid Cache:
+> On the configuration file located under `/usr/local/squid/etc`, remove these lines:
+> ```
+> maximum_object_size 6 GB
+> cache_mem 8192 MB
+> cache_dir ufs /usr/local/squid/var/cache/squid 32000 16 256
+> ```
+> ![Pasted image 20240606162914](https://github.com/lm3nitro/Projects/assets/55665256/79a1786d-5844-440a-a4a7-c14f2c715ae8)
+> You can also use the cache access list to make Squid never cache any response:
+> ```cache deny all```
 
-On the configuration file located under /usr/local/squid/etc
- remove these lines:
+## Blocking Domain
 
-maximum_object_size 6 GB
-cache_mem 8192 MB
-cache_dir ufs /usr/local/squid/var/cache/squid 32000 16 256
+Squid can block or allow requests based on the destination domain or hostname provided in the SSL handshake. This allows network administrators to implement domain-based access controls or restrict certain types of content
 
-
-squid.conf 
-
-![Pasted image 20240606162914](https://github.com/lm3nitro/Projects/assets/55665256/79a1786d-5844-440a-a4a7-c14f2c715ae8)
-
-
-Note: You can use the cache access list to make Squid never cache any response.
-#### cache deny all
-
-
-# Block custom domain with squid:
+Next, I wanted to test the functionality that 
+custom domain with squid:
 
 
 Create  domain blacklist in Squid.conf
