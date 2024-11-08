@@ -23,7 +23,7 @@ The general information:
 
 ![Pasted image 20240331160743](https://github.com/lm3nitro/Projects/assets/55665256/de9cb3dd-bcb1-4778-b1cc-307d3fb2bb69)
 
-In Splunk I also have set up 2 seperate indexes for each of my Firewalls (Palo Alto and pfSense).
+In Splunk I also have set up 2 separate indexes for each of my Firewalls (Palo Alto and pfSense).
 
 ![Pasted image 20240331153812](https://github.com/lm3nitro/Projects/assets/55665256/c9c3ffb1-dadd-4f56-831e-0e5b5587d0f0)
 
