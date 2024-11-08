@@ -2,7 +2,7 @@
 
 <img width="504" alt="Screenshot 2024-06-04 at 9 45 41 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/4d38d1d3-f457-4f9c-9303-4b7303d10de2">
 
-Security Onion is a free and open source Linux distribution for intrusion detection, network security monitoring, and log management. It combines various powerful tools such as Zeek, Suricata, and the Elastic Stack, all into a single platform. It also offers other features:
+Security Onion is a free and open-source Linux distribution for intrusion detection, network security monitoring, and log management. It combines various powerful tools such as Zeek, Suricata, and the Elastic Stack, all into a single platform. It also offers other features:
 
 + Pre-configured dashboards
 + Automated data collection
@@ -45,19 +45,19 @@ For this VM I chose to create custom hardware with the following:
 
 + 16 virtual cores
 + 32 GB of ram
-+ 2 NICs card (One of the network card for administration and the other one for sniffing)
++ 2 NICs card (One of the network cards for administration and the other one for sniffing)
 
 ![Pasted image 20240513112852](https://github.com/lm3nitro/Projects/assets/55665256/f0c7f6f7-e02c-4415-bf54-5673187c576f)
 
-Now that the VM specs have been selected, its time to turn on the VM:
+Now that the VM specs have been selected, it's time to turn on the VM:
 
 ![Pasted image 20240513113012](https://github.com/lm3nitro/Projects/assets/55665256/71cd5e03-ca3c-4a01-a62d-9a484c023a76)
 
-When the VM first boots up I was presented with a wanrning. I selected *yes* to proceed
+When the VM first boots up I was presented with a warning. I selected *yes* to proceed
 
 ![Pasted image 20240513113840](https://github.com/lm3nitro/Projects/assets/55665256/99b94cb9-a841-4e9f-bbfb-4e5958b5e0b7)
 
-I was then prompted to create a username/password. Once enetered the installation begins:
+I was then prompted to create a username/password. Once entered the installation begins:
 
 ![Pasted image 20240513114033](https://github.com/lm3nitro/Projects/assets/55665256/ed1b8bef-a43b-4ea2-be0d-8120a61e8e35)
 
@@ -142,11 +142,11 @@ As previously stated, I chose to access the web interface with the IP. Here I us
 
 ![Pasted image 20240513133158](https://github.com/lm3nitro/Projects/assets/55665256/988a99ad-fcb5-4fa9-a839-f859bd6b245d)
 
-I first looked at the dashboards and was able to see that it was already receivinvg data:
+I first looked at the dashboards and was able to see that it was already receiving data:
 
 ![Pasted image 20240513133454](https://github.com/lm3nitro/Projects/assets/55665256/12989a5b-d617-44b6-8d84-a35eda97afa6)
 
-I also took a look at the grid information. This provided me with information about the system itself, the CPU, version that is installed, etc:
+I also took a look at the grid information. This provided me with information about the system itself, the CPU, version that is installed, etc.:
 
 ![Pasted image 20240513133551](https://github.com/lm3nitro/Projects/assets/55665256/717496ec-f995-441c-a2c2-f180b8735a04)
 
@@ -169,7 +169,7 @@ After logging in, I was able to take a deeper look into the different components
 
 ## Analysis
 
-After exploring the different web interfaces, I wanted to take a deeper look into the traffic and see the capability of Security Onion. To start, I performed some reconaissance to trigger some alerts using Nmap:
+After exploring the different web interfaces, I wanted to take a deeper look into the traffic and see the capability of Security Onion. To start, I performed some reconnaissance to trigger some alerts using Nmap:
 
 ![Pasted image 20240513145414](https://github.com/lm3nitro/Projects/assets/55665256/1ce13b7e-ef96-4f55-af7b-8e4ab958853c)
 
@@ -189,7 +189,7 @@ After the scan had completed, I went back to Security Onion and took a look at s
 
 ![Pasted image 20240513142749](https://github.com/lm3nitro/Projects/assets/55665256/c1cd6d2a-2fb8-4e74-96d1-fb3408188b5b)
 
-Security Onion also offers the option to Hunt for within the securoty alerts. I went with the first alert that references Nmap and is also categorized as critical. Simply right-click and select *Hunt*
+Security Onion also offers the option to Hunt for within the security alerts. I went with the first alert that references Nmap and is also categorized as critical. Simply right-click and select *Hunt*
 
 ![Pasted image 20240513144834](https://github.com/lm3nitro/Projects/assets/55665256/13565a54-5492-4d46-b222-15db54ecee6c)
 
@@ -207,6 +207,6 @@ I also queried the alerts in Elastic. Elastic provides a different view into the
 
 ### Summary:
 
-In conclusion, this project I installed and configured Security Onion. I then simulated reconaissance traffic with Nmap against a Metasploitable VM. This was used to test Security Onions detection and loggin capabilities. This was primarily aimed to assess Security Onion's effectiveness in identifying security incidents, the ease of use, and the seamless integration with the various tools. I was able to see that Security Onion offers a robust and effective platform for network security monitoring.  It is also effective in detecting and logging various range of security incidents, helping to quickly identify and respond to potential threats and attacks. I was able to hain real hands on experience in installing and configuring a network security platform. I was also able to manage, monitor, and respond to the security alerts generated within the platform.  
+In conclusion, this project I installed and configured Security Onion. I then simulated reconnaissance traffic with Nmap against a Metasploitable VM. This was used to test Security Onions detection and logging capabilities. This was primarily aimed to assess Security Onion's effectiveness in identifying security incidents, the ease of use, and the seamless integration with the various tools. I was able to see that Security Onion offers a robust and effective platform for network security monitoring.  It is also effective in detecting and logging various range of security incidents, helping to quickly identify and respond to potential threats and attacks. I was able to gain real hands-on experience in installing and configuring a network security platform. I was also able to manage, monitor, and respond to the security alerts generated within the platform.  
 
 
