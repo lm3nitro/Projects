@@ -1,10 +1,10 @@
 # MySQL
 ![Pasted image 20240504131247](https://github.com/lm3nitro/Projects/assets/55665256/d7430cd6-3c62-473e-832f-832762e18142)
 
-MySQL is an open source relational database management system. It allows us to store, manage, query and retrieve data stored in a relational database. 
+MySQL is an open-source relational database management system. It allows us to store, manage, query and retrieve data stored in a relational database. 
 
 ### Scope: 
-Here I will be installing MySQL on a Windows 10 host. Once installed I will run simple queries, intermediate queries, and will export findings. The queries are and exports will be done seperately. These are the steps I used to get MySQL installed. 
+Here I will be installing MySQL on a Windows 10 host. Once installed I will run simple queries, intermediate queries, and will export findings. The queries are and exports will be done separately. These are the steps I used to get MySQL installed. 
 
 ### Tools: 
 Windows 10, MySQL
@@ -13,7 +13,7 @@ Windows 10, MySQL
 
 To start, navigate to dev.mysql.com/downloads/installer/
 
-We want to select the latest version. A the time of this writing it is 8.0.37. I also selected to download the MSI Installer that does not include the web as seen in the screenshot below:
+We want to select the latest version. At the time of this writing it is 8.0.37. I also selected to download the MSI Installer that does not include the web as seen in the screenshot below:
 
 ![Pasted image 20240504111155](https://github.com/lm3nitro/Projects/assets/55665256/c5265906-9b8a-4858-ac15-81ebc876719c)
 
@@ -49,7 +49,7 @@ Select *Use Strong Password Encryption for Authentication* and select *Next*
 
 ![Pasted image 20240504113844](https://github.com/lm3nitro/Projects/assets/55665256/d4b092fe-7261-4c21-8516-4944d63bf0cf)
 
-Here you can enter the password of your choosing. This will be needed later on, so its important to keep notr of it:
+Here you can enter the password of your choosing. This will be needed later, so it's important to keep note of it:
 
 ![Pasted image 20240504114018](https://github.com/lm3nitro/Projects/assets/55665256/4686cb19-039f-4bca-8c7b-a64d5ce8cbbf)
 
@@ -65,7 +65,7 @@ To apply the changes made to the configuration, select *Execute*
 
 ![Pasted image 20240504114540](https://github.com/lm3nitro/Projects/assets/55665256/93201a2f-5db2-4d6a-9308-7fd0eb3e0a89)
 
-We are brought back to the configuration dialog window. However, since the first one (MySQL Server 8.0.37) was just configured we should see that the status reflects that change made. Next we will configure *MySQL Router 8.0.37*
+We are brought back to the configuration dialog window. However, since the first one (MySQL Server 8.0.37) was just configured we should see that the status reflects that change made. Next, we will configure *MySQL Router 8.0.37*
 
 ![Pasted image 20240504114644](https://github.com/lm3nitro/Projects/assets/55665256/c2bf5bdd-23e9-4bf4-8a9b-38f15c99e327)
 
@@ -73,11 +73,11 @@ This is mostly used with an InnoDB Cluster. I will not be using this, so nothing
 
 ![Pasted image 20240504114740](https://github.com/lm3nitro/Projects/assets/55665256/81846311-9e86-40d1-8251-d9bcb1a60895)
 
-Here we can see that the status for the  *MySQL Router 8.0.37* has changed. Click *Next*
+Here we can see that the status for the *MySQL Router 8.0.37* has changed. Click *Next*
 
 ![Pasted image 20240504114832](https://github.com/lm3nitro/Projects/assets/55665256/46a847d1-72bb-4f14-a7ab-40d404c02fdf)
 
-Here we will need to use the same password that we previosly configured above. Click *Check*, once the check is complete, select *Next*
+Here we will need to use the same password that we previously configured above. Click *Check*, once the check is complete, select *Next*
 
 ![Pasted image 20240504115033](https://github.com/lm3nitro/Projects/assets/55665256/81054583-0312-42a2-85e0-a5f76ec9ed50)
 
@@ -85,11 +85,11 @@ Here we will want to *Execute* and then *Finish*
 
 ![Pasted image 20240504115150](https://github.com/lm3nitro/Projects/assets/55665256/c28f47a8-bd27-44a5-b2fb-1c2829dad1f1)
 
-We can also verify the installation logs, everything here looks good and at the bottom we see that it says it was successful:
+We can also verify the installation logs; everything here looks good and at the bottom we see that it says it was successful:
 
 ![Pasted image 20240504115254](https://github.com/lm3nitro/Projects/assets/55665256/69f60592-4a10-4883-9052-6225ecf97712)
 
-Everything has been compete, click *Next*
+Everything has been complete, click *Next*
 ![Pasted image 20240504115352](https://github.com/lm3nitro/Projects/assets/55665256/b1a7b053-ff36-41b7-b83a-b0abbc48ce2d)
 
 Select to start *MySQL Workbench* and *MySQL Shell* and select *Finish*
