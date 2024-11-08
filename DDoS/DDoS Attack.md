@@ -1,4 +1,4 @@
-# DDOS Attack
+# DDoS Attack
 
 A DDoS (Distributed Denial of Service) attack is a malicious attempt to disrupt the normal functioning of a targeted server, service, or network by overwhelming it with a flood of internet traffic. In a DDoS attack, multiple compromised computers (often part of a botnet) are used to send an enormous volume of requests or data to the target, making it unable to respond to legitimate traffic. This can result in slow performance, outages, or complete service disruption for users. DDoS attacks can target various types of services, including websites, online games, and APIs.
 
