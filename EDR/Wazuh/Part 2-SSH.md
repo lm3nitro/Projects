@@ -6,7 +6,7 @@ This is part 2 of the project. In Part 1, I installed and configured the Wazuh m
 
 <img width="343" alt="Screenshot 2024-06-02 at 11 08 28 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/f2be9b40-0394-4fbf-8b0e-c6d86f3b7743">
 
-I will first begin by installing openssh on the target host with the Wazuh agent.
+I will first begin by installing OpenSSH on the target host with the Wazuh agent.
 
 ```
 sudo apt install openssh-server
@@ -40,7 +40,7 @@ sudo ss -tnlp
 
 ## Attacking
 
-Once SSH was installed on the target host, I then moved to the attacking host to perform the SSH brute-force attack. I will be using Hyrda to perform the attack along with a list of user and password wordlist:
+Once SSH was installed on the target host, I then moved to the attacking host to perform the SSH brute-force attack. I will be using Hydra to perform the attack along with a list of user and password wordlist:
 
 ![Pasted image 20240428174334](https://github.com/lm3nitro/Projects/assets/55665256/2a8b6fd7-44d9-4d20-9564-2eae56ec7f17)
 
@@ -53,7 +53,7 @@ Once SSH was installed on the target host, I then moved to the attacking host to
 
 ## Analysis
 
-While the attack is running on the target host, lets check the logs on the target server. Here we can see many login attempts. We also see the 'error: maximum authentication attempts exceeded ...'. This could be a user that has forgotten their password, or it can be seen as malicious activity. 
+While the attack is running on the target host, let's check the logs on the target server. Here we can see many login attempts. We also see the 'error: maximum authentication attempts exceeded ...'. This could be a user that has forgotten their password, or it can be seen as malicious activity. 
 
 ![Pasted image 20240428174746](https://github.com/lm3nitro/Projects/assets/55665256/5f4ae516-7dc6-4684-9060-444d360ca6b0)
 
@@ -61,7 +61,7 @@ While performing the brute force attack, I also had Wireshark running on the tar
 
 ![Pasted image 20240428180024](https://github.com/lm3nitro/Projects/assets/55665256/ec165731-3d5c-4459-bcc2-ef5eda43dd90)  
 
-Next, I took a look at the Wazuh management server to see if it was able to detect the attack/malicious activity. I was able to see 548 authentication attempts and all coming from SSH authentication login attempts. With this many login attempts in a short period of time, we can determine that this is a brute force attack and not just a forgotten password by a legitimate user:
+Next, I looked at the Wazuh management server to see if it was able to detect the attack/malicious activity. I was able to see 548 authentication attempts and all coming from SSH authentication login attempts. With this many login attempts in a short period of time, we can determine that this is a brute force attack and not just a forgotten password by a legitimate user:
 
 ![Screenshot 2024-05-06 232548](https://github.com/lm3nitro/Projects/assets/55665256/53598b4a-e2de-43ba-adec-8d34f7c0f0dd)
 
@@ -71,4 +71,4 @@ Upon analysis, I went back to the attacking host and was able to see the the att
 
 ### Summary:
 
-In this simulation attack, I installed OpenSSH on the target Linux host that had the Wazuh agent installed and was also running Wireshark throughout the duration of the attack. While the attack was running, I was able to analyze the Wireshark traffic capture and the server logs where I was able to see the failed login attempts and authentication errors. Being able to identify these attack patterns is crucial for understanding attack behaviors and identifying threats. Having the Wazuh agent also show cased the importance of having continuous traffic monitoring to help identify unauthorized access attempts promptly, and have real-time security solutions. 
+In this simulation attack, I installed OpenSSH on the target Linux host that had the Wazuh agent installed and was also running Wireshark throughout the duration of the attack. While the attack was running, I was able to analyze the Wireshark traffic capture and the server logs where I was able to see the failed login attempts and authentication errors. Being able to identify these attack patterns is crucial for understanding attack behaviors and identifying threats. Having the Wazuh agent also show cased the importance of having continuous traffic monitoring to help identify unauthorized access attempts promptly and have real-time security solutions. 
