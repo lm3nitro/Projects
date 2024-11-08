@@ -2,11 +2,11 @@
 
 <img width="355" alt="Screenshot 2024-06-02 at 11 10 18 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/d62ed72b-d3dd-4a6f-a8e8-e35d60e06867">
 
-This is part 3 of the project. In Part 1, I installed and configured the Wazuh management server and agents. In Part 2 I performed a simuated SSH brute force attack on the Linux server with the Wazuh agent installed. Here, I will be simulating a RDP brute force attack against the Win 10 host that has the Wazuh agent installed. I will be analyzing the traffic pertaining to the attack in both Wireshark and in the Wazuh management server.
+This is part 3 of the project. In Part 1, I installed and configured the Wazuh management server and agents. In Part 2 I performed a simulated SSH brute force attack on the Linux server with the Wazuh agent installed. Here, I will be simulating a RDP brute force attack against the Win 10 host that has the Wazuh agent installed. I will be analyzing the traffic pertaining to the attack in both Wireshark and in the Wazuh management server.
 
 ## Normal Traffic
 
-To start, I went ahead and tried to login to the target host 3 times, purposefully typing in the wrong password in order to see what a failed login attempt would look like from a user that mistakenly forgot or mistyped their password. 
+To start, I went ahead and tried to login to the target host 3 times, purposefully typing in the wrong password to see what a failed login attempt would look like from a user that mistakenly forgot or mistyped their password. 
 
 ![Pasted image 20240428142640](https://github.com/lm3nitro/Projects/assets/55665256/756b303f-258b-4839-9d0d-7560158c79f1)
 
@@ -18,7 +18,7 @@ Taking a deeper look at the security events related to the failed attempts, we c
 
 ![Pasted image 20240428143019](https://github.com/lm3nitro/Projects/assets/55665256/549276f5-6095-46da-9194-f2e9d878c1c6)
 
-Now that I know what a failed login attempt would look like under normal circumstances, I will start with the RDP simulation attack to see the difference in logging. Understanding what normal traffic looks like is crucial becuase it helps to establish a baseline for detecting anomolies, reduces false positives, and it enhances the accuracy of security tools. This is also very important becuase it helps to quickly identify and respond to malicious activity and distinguishing it from legitimate behavior. 
+Now that I know what a failed login attempt would look like under normal circumstances, I will start with the RDP simulation attack to see the difference in logging. Understanding what normal traffic looks like is crucial becasue it helps to establish a baseline for detecting anomalies, reduces false positives, and it enhances the accuracy of security tools. This is also very important because it helps to quickly identify and respond to malicious activity and distinguishing it from legitimate behavior. 
 
 ## RDP password attack:
 
@@ -38,7 +38,7 @@ Now that RDP is running on the target host, I can initiate the RDP brute force a
 
 ## Attacking
 
-On the attacking host, I will be using Crowbar. Crowbar is a brute-forcing tool used to autmate attacks on various services that require authentication, such as RDP. 
+On the attacking host, I will be using Crowbar. Crowbar is a brute-forcing tool used to automate attacks on various services that require authentication, such as RDP. 
 
 Installing crowbar:
 
@@ -52,17 +52,17 @@ Once Crowbar is installed, using the '-h' option can provide information on the 
 
 ![Pasted image 20240428145709](https://github.com/lm3nitro/Projects/assets/55665256/f016996a-6f49-462e-98c1-4f9fdff30280)
 
-I then used nmap to do some reconaissance to see the services and ports opened on the target host. We can see that port 3389 is open: 
+I then used Nmap to do some reconnaissance to see the services and ports opened on the target host. We can see that port 3389 is open: 
 
 ![Pasted image 20240428145631](https://github.com/lm3nitro/Projects/assets/55665256/f1235d15-b841-40e8-84cf-9f10e9defcd3)
 
-Now that I have verified that the port is open, its time to lunch the attack:
+Now that I have verified that the port is open, it's time to lunch the attack:
 
 ![Pasted image 20240428150754](https://github.com/lm3nitro/Projects/assets/55665256/ffc2758c-5c8a-403e-83d2-bddf2c6acedc)
 
 ## Analysis:
 
-Now that the attack was launched, I went back to the target host to review the Wireshark trafic captured. Taking a look at them, this looks like a brute force attack over the network. I can can see many RDP authentication attempts with different users:
+Now that the attack was launched, I went back to the target host to review the Wireshark trafic captured. Looking at them, this looks like a brute force attack over the network. I can can see many RDP authentication attempts with different users:
 
 ![Pasted image 20240428152359](https://github.com/lm3nitro/Projects/assets/55665256/6a7f54a3-411d-4f6f-9935-481250354001)
 
@@ -70,7 +70,7 @@ Following the stream allowed me to get more details and information about the at
 
 ![Pasted image 20240428152506](https://github.com/lm3nitro/Projects/assets/55665256/06466c9f-2b75-48cd-84e7-8f7fd47a043f)
 
-I also check the the Wazuh alerts and logs. I was able to see 166 authentication failures in a short amount of time. This is a huge difference based on what I was able to see earlier with could be seen as "normal" behavior for a user.
+I also checked the Wazuh alerts and logs. I was able to see 166 authentication failures in a short amount of time. This is a huge difference based on what I was able to see earlier with could be seen as "normal" behavior for a user.
 
 ![Pasted image 20240428150654](https://github.com/lm3nitro/Projects/assets/55665256/a8d533d4-4734-4f3d-8e6b-6315a6157193)
 
@@ -89,4 +89,4 @@ It also offers a breakdown into the rule and the parameters:
 
 ## Summary: 
 
-Here I was able to learn how to identify a brute force attack in Wireshark and Wazuh. This provided me with insight into what information can be gather from these different sources. Its important to disable unnecessary services to reduce the attack surface and limit vulnerabilities. If a service is needed and must be running its important to implament strong passwords, account lockout mechanisms, and 2 factor authentication where applicable. I also recommended to restrict access with firewall rules and changing the defualt RDP port. Having a securiting monitoring system and EDR such as Wazuh is essential to detecting and responding to unusual login attempts. Overall, being able to simulate these attacks was very insightful to seeing the different logs generated and being able to identify what it looks like, and what is considered an anomoly opposed to normal user behavior. 
+Here I was able to learn how to identify a brute force attack in Wireshark and Wazuh. This provided me with insight into what information can be gather from these different sources. It's important to disable unnecessary services to reduce the attack surface and limit vulnerabilities. If a service is needed and must be running it's important to implement strong passwords, account lockout mechanisms, and 2 factor authentication where applicable. I also recommended to restrict access with firewall rules and changing the default RDP port. Having a security monitoring system and EDR such as Wazuh is essential to detecting and responding to unusual login attempts. Overall, being able to simulate these attacks was very insightful to seeing the different logs generated and being able to identify what it looks like, and what is considered an anomaly opposed to normal user behavior. 
