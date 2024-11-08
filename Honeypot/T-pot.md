@@ -5,7 +5,7 @@
 T-Pot is an open-source honeypot framework designed to simplify the deployment and management of honeypots for capturing and analyzing cyber threats. It integrates several honeypot technologies, tools, and services into a sing, comprehensive system to attract, detect, and analyze cyber threats.
 
 ### Scope: 
-I will be installing T-Pot on a server in my internal network. I will then use another host on the network to simulate a scan and identify open ports and services on T-Pot. The adversary will often scan their targets to gather information on potential attack vectors and weak points to gain authorized access or disrupt services. Once complete, I will then take a look at the events collected from the scan in T-Pot. 
+I will be installing T-Pot on a server in my internal network. I will then use another host on the network to simulate a scan and identify open ports and services on T-Pot. The adversary will often scan their targets to gather information on potential attack vectors and weak points to gain authorized access or disrupt services. Once complete, I will look at the events collected from the scan in T-Pot. 
 
 >#### Note: Honeypots are usually deployed inside production networks alongside production servers; the honeypot acts as a decoy, drawing intruders away from the production network as part of the intrusion detection system (IDS). 
 
@@ -36,13 +36,14 @@ I was able to see that the file was downloaded:
 ![Pasted image 20240512144446](https://github.com/lm3nitro/Projects/assets/55665256/2417e464-b6d6-4f8d-9ad0-349e43016c06)
 
 
-I then changed into the tpotce directory and located the install.sh script and executed it with non root privilege.
+I then changed into the tpotce directory and located the install.sh script and executed it with non-root privilege.
 
->#### Note: It is important to run the script with a non-root user becuase it minimizes the potential damage an attacker can cause is they manage to compromise the honeypot. This will help in containing the impact and preventing the attacker from gaining full control of the system.
+> [!NOTE]  
+> It is important to run the script with a non-root user because it minimizes the potential damage an attacker can cause is they manage to compromise the honeypot. This will help in containing the impact and preventing the attacker from gaining full control of the system.
 
 ![Pasted image 20240512144513](https://github.com/lm3nitro/Projects/assets/55665256/c5e193f7-2ce2-4a18-9306-cfbebee4960d)
 
-Once the I executed the script, I was given the option to choose the type of install, I chose *(H)ive*. I was also prompted to enter a username and passsword:
+Once the I executed the script, I was given the option to choose the type of install, I chose *(H)ive*. I was also prompted to enter a username and password:
 
 ![Pasted image 20240512144542](https://github.com/lm3nitro/Projects/assets/55665256/b087cfc5-c97d-48ea-9839-abec3b160d9d)
 
@@ -70,11 +71,11 @@ Runnnig a scan to generate some data:
 
 ![Pasted image 20240512153853](https://github.com/lm3nitro/Projects/assets/55665256/62043537-55d6-421b-84c9-25e40885e827)
 
-As you can see the the honeypot seems to have all of these ports opened:
+As you can see the honeypot seems to have all of these ports opened:
 
 ![Pasted image 20240512153744](https://github.com/lm3nitro/Projects/assets/55665256/46334f59-7e40-40fc-9875-0364fa7031b4)
 
-## Scan Analysus
+## Scan Analysis
 
 After performing the scan against the host, I logged into T-Pot to see what information it was able to gather about the scan. 
 
@@ -90,7 +91,7 @@ Here we can see details about the simulated attack/scan. This dashboard allows u
 
 ![Pasted image 20240512151418](https://github.com/lm3nitro/Projects/assets/55665256/93804c50-4f0c-4efe-9690-3e1ab86cf61d)
 
-T-Pot also allows us to take a closer look. Here I was able to see the IP address of the attacks, CVE informtion, and the Suricata lert signatures that were matched by the attack:
+T-Pot also allows us to take a closer look. Here I was able to see the IP address of the attacks, CVE information, and the Suricata alert signatures that were matched by the attack:
 
 ![Pasted image 20240512151626](https://github.com/lm3nitro/Projects/assets/55665256/fddf9833-6433-49ca-9dd5-014df59b187c)
 
@@ -101,4 +102,5 @@ This is another look into the raw data from the attacker IP:
 
 ### Summary:
 
-Having a host out in the wild that is public facing is very risky. T-Pot allows you to be able to detect and analyze numerous threats by simulating  various services and sysemss. Having T-Pot can allows you to gain insight and information into the techniques used by actors. Having the tactics being used allows us to better proctect ourselves, reduce the impact of an attack, and fine tune our current Security in order to bolster the cybersecurity posture. T-pot can also be used to identify weak spots and vulneralbilities.
+Having a host out in the wild that is public facing is very risky. T-Pot allows you to be able to detect and analyze numerous threats by simulating various services and systems. Having T-Pot also allows you to gain insight and information into the techniques used by actors. Having the tactics being used allows us to better protect ourselves, reduce the impact of an attack, and fine tune our current Security to bolster the cybersecurity posture. T-pot can also be used to identify weak spots and vulnerabilities. 
+
