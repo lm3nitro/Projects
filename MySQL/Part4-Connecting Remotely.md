@@ -3,9 +3,9 @@
 Please note: This is a continuation of *MySQL Queries.md*.
 
 ### Scope: 
-This is a continuation of *MySQL Queries*. I will be attempting to connect to the MySQL server to run some queries from a linux host, and also add a new schemas and tables remotely via the command line. 
+This is a continuation of *MySQL Queries*. I will be attempting to connect to the MySQL server to run some queries from a Linux host, and add a new schemas and tables remotely via the command line. 
 
-### Connnecting to MySQL server
+### Connecting to MySQL server
 
 When I initially tried to remote into the server, I was getting the error below:
 
@@ -23,7 +23,7 @@ Here we can see the error related to our remote host:
 
 ![Pasted image 20240504160547](https://github.com/lm3nitro/Projects/assets/55665256/831445a0-1ae8-4067-909a-e43bf5f4f664)
 
-In order to resolve this issue and connect to MySQL remotly, we will need to create/add a user and set-up a new connection.
+To resolve this issue and connect to MySQL remotely, we will need to create/add a user and set-up a new connection.
 
 ### New User and Connection Set-up
 
@@ -35,7 +35,7 @@ In the new dialog, select *Add Account* towards the bottom, and enter the needed
 
 ![Pasted image 20240504153412](https://github.com/lm3nitro/Projects/assets/55665256/5f52aeab-a5b0-46f2-b940-957df22216a2)
 
-You will then need to select the role/privileges the new user will have. To do this, navigate to *Adminitrative Roles*. I chose to give my user complete access. Once complete, click *Apply* to save the changes. It is always recommended to apply the principle of least privilege when possible.
+You will then need to select the role/privileges the new user will have. To do this, navigate to *Administrative Roles*. I chose to give my user complete access. Once complete, click *Apply* to save the changes. It is always recommended to apply the principle of least privilege when possible.
 
 ![Pasted image 20240504153628](https://github.com/lm3nitro/Projects/assets/55665256/c80e7c92-b9e2-46d5-85ea-0b48247540b5)
 
@@ -47,7 +47,7 @@ Once we clicked OK, we can now select what the user will be able to do within th
 
 ![Pasted image 20240504154139](https://github.com/lm3nitro/Projects/assets/55665256/11597da1-56b8-454d-bb96-e0473a2afed7)
 
-Now that our user has been created, we can set up the connection. To do this, go to the main window for MySQL Workbench, and select *+* icon to add a new connection. Enter the neede information for the remote host and click *OK*
+Now that our user has been created, we can set up the connection. To do this, go to the main window for MySQL Workbench, and select *+* icon to add a new connection. Enter the needed information for the remote host and click *OK*
 
 ![Pasted image 20240504154437](https://github.com/lm3nitro/Projects/assets/55665256/1dffb7f1-c140-4d0e-a0fb-3ce646f201d8)
 
@@ -83,7 +83,7 @@ use lm3nitro_food;
 ```
 ![Pasted image 20240505143256](https://github.com/lm3nitro/Projects/assets/55665256/a7f663bc-9d11-4320-bfe3-04b8634ded9a)
 
-Now that we have our new database, lets create a table. The table I created is food_table and the collumns are (ID, Name, Color, and Type):
+Now that we have our new database, lets create a table. The table I created is food_table and the columns are (ID, Name, Color, and Type):
 
 ```
 Add table to database:
@@ -98,7 +98,7 @@ Add table to database:
 
 ![Pasted image 20240505143843](https://github.com/lm3nitro/Projects/assets/55665256/88a53fb1-43fc-4c07-b7e7-4c4e549fe067)
 
-We can verify our collumns using the following command:
+We can verify our columns using the following command:
 
 ```
 describe food_table;
@@ -129,7 +129,7 @@ select * from food_table;
 ![Pasted image 20240505152407](https://github.com/lm3nitro/Projects/assets/55665256/09167fe9-503b-44a9-87f2-ec5f1a17554a)
 
 
-In the table above, we see that spinach is under the category fruit. Lets delete the line in our table and re-add correctly:
+In the table above, we see that spinach is under the category fruit. Let's delete the line in our table and re-add correctly:
 
 ```
 delete from food_table where id=6;
@@ -140,7 +140,7 @@ insert into food_table values (6, "spinach", "green", "vegetable");
 ![Pasted image 20240505162253](https://github.com/lm3nitro/Projects/assets/55665256/c12d0f70-cc86-44c4-83c8-1af06f891da8)
 
 
-Lets create another table:
+Let's create another table:
 
 ```
  create table customer_table (
@@ -152,7 +152,7 @@ Lets create another table:
     -> state varchar (300)
     -> );
 ```
-Lets verify:
+Let's verify:
 
 ```
 describe customer_table;
@@ -162,7 +162,7 @@ We can also verify on the MySQL Workbench:
 
 ![Pasted image 20240505165528](https://github.com/lm3nitro/Projects/assets/55665256/2518842a-b7dc-4a7f-8f12-d662ad352749)
 
-linux
+Linux
 ![Pasted image 20240505162951](https://github.com/lm3nitro/Projects/assets/55665256/86e72c7e-c664-4e50-8bd8-fb37af405148)
 
 
@@ -227,6 +227,6 @@ update customer_table set age = 21 where first_name = "clare";
 
 Summary:
 
-In conclusion, being able to modify, view, and query a database is important becuase direct access is not always possible, this provides flexibility and convenience. MySQL servers are crucial for data management and anlysis. Because MySQL is open-source, it makes it so that it can be freely used and modified. MySQL also supports user authentication as seen above, SSL for secure connections, and data encryption. 
+In conclusion, being able to modify, view, and query a database is important because direct access is not always possible, this provides flexibility and convenience. MySQL servers are crucial for data management and analysis. Because MySQL is open source, it makes it so that it can be freely used and modified. MySQL also supports user authentication as seen above, SSL for secure connections, and data encryption. 
 
-By installing MySQL and running queries, I was able to learn how to structure and manipulate data, understand SQL syntax, and gain insights into database design. Connecting remotely allowed me to also learn about database security and network configurations. The key takeaway for me was the practical experience in managing databases, ability to write and optimize SQL queries, and exapnd my knowledge of security best practices.
+By installing MySQL and running queries, I was able to learn how to structure and manipulate data, understand SQL syntax, and gain insights into database design. Connecting remotely allowed me to also learn about database security and network configurations. The key takeaway for me was the practical experience in managing databases, ability to write and optimize SQL queries, and expand my knowledge of security best practices.
