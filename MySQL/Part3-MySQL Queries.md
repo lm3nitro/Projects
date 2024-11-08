@@ -199,6 +199,6 @@ You can also export the results of a query in different formats. In the example 
 ![Pasted image 20240504192907](https://github.com/lm3nitro/Projects/assets/55665256/6ca76c10-584f-4c97-a672-b337f5c8f26d)
 
 
-Summary:
+###Summary:
 
 These queries are simple but show how different functions can be used to filter, group, and sort the data we have and have it represented the way we want. Overall, MySQL is important as it allows us to access, manage, and manipulate databases. The queries presented above were ran on the actual MySQL server, but this is not normally the case. These servers normally have a DBA assigned to them, and users are only given certain rights, permissions, and least privledge access to the data. We can see an example of this remote access continued in the next part titled *Connecting Remotely.md*. 
