@@ -2,7 +2,7 @@
 
 ![Screenshot 2024-04-27 at 10 49 02 PM](https://github.com/lm3nitro/Projects/assets/55665256/e0facd98-1e90-4ba0-ac2e-6cdf16decd24)
 
-Zeek is an open source network monitoring tool used for security analysis and network traffic inspection. Some key features include:
+Zeek is an open-source network monitoring tool used for security analysis and network traffic inspection. Some key features include:
 + Traffic Analysis
 + Security Monitoring
 + Extensibility
@@ -12,14 +12,14 @@ Zeek is an open source network monitoring tool used for security analysis and ne
 Aside from the features, Zeek also has some important use cases such as incident response, network forensics, and threat hunting. 
 
 ### Scope:
-I will be installing Zeek on Ubuntu 22.04 as part of my home network. I will be covering the installation and configuration of Zeek, and will then configure Zeek  to send the its generated logs to my Splunk instance. 
+I will be installing Zeek on Ubuntu 22.04 as part of my home network. I will be covering the installation and configuration of Zeek, and will then configure Zeek to send the its generated logs to my Splunk instance. 
 
 ### Tools and Technology:
 Zeek, Linux, and Splunk
 
 ## Install 
 
-I decided to install the latest Zeek 6.2.0 on Ubuntu 22.04. These are the steps that I used to get it installed and configured. In my case, the sniffing inferface on my Ubuntu Server is enp2s0f0. 
+I decided to install the latest Zeek 6.2.0 on Ubuntu 22.04. These are the steps that I used to get it installed and configured. In my case, the sniffing interface on my Ubuntu Server is enp2s0f0. 
 
 I wanted to ensure that Zeek is able to see the full packet data and minimize packet loss. To do this, I applied network sniffing optimizations: settings max ring parameters, disabling NIC offloading, and enabling promiscuous mode.
 
@@ -85,7 +85,7 @@ Output:
 
 <img width="735" alt="Screenshot 2024-04-21 at 10 03 26 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/473f439d-eaad-4ad3-ac6f-7b1b79daff34">
 
-Next I installed the dependencies needed to install Zeek.
+Next, I installed the dependencies needed to install Zeek.
 
 ## Installing Zeek Dependencies
 
@@ -187,8 +187,9 @@ sudo systemctl enable zeek
 ```
 3. Optional: Zeek Package Manager
 
-To extend Zeek's functionality, you can take advatage of Zeek's Package Manager. AF_PACKET package is often used to to further optimize packet capture and analysis. Additional useful packages including ja3 and HASSH as well.
-To take advantage of Zeek's Packet Manager, will will need to download it To do this, ensure that that it is being done in the home directory where we installed zeek. For me it is in the /opt/:
+To extend Zeek's functionality, you can take advantage of Zeek's Package Manager. AF_PACKET package is often used to to further optimize packet capture and analysis. Additional useful packages including ja3 and HASSH as well.
+
+To take advantage of Zeek's Packet Manager, will will need to download it. To do this, ensure that that it is being done in the home directory where we installed Zeek. For me it is in the /opt/:
 
 Used the following to configure Zeek Package Manager:
 ```
@@ -252,7 +253,7 @@ As part of this project, I then wanted to configure Zeek to send the logs to my 
 
 + Configured Zeek to output logs in JSON format for consumption by Splunk.
 + Created an index in Splunk for Zeek data.
-+ Installed and configured the Corelight For Splunk app to index and parse Zeek logs in Splunk.
++ Installed and configured the `Corelight For Splunk` app to index and parse Zeek logs in Splunk.
 + Created a splunk user to run the Splunk Universal Forwarder.
 + Installed and configured a Splunk Universal Forwarder to send Zeek logs to a Splunk instance.
 
@@ -281,7 +282,7 @@ To do this, I went to my Splunk instance and navigated to Settings > Data > Inde
 
 <img width="1121" alt="Screenshot 2024-04-21 at 10 54 32 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/a99911d6-fc17-4b68-93cf-dd24a32774b8">
 
-3. Install and configure the Corelight For Splunk app
+3. Install and configure the `Corelight For Splunk` app
 To do this I first went to the Splunk Apps and downloaded the Corelight App for Zeek:
 
 <img width="1090" alt="Screenshot 2024-04-21 at 8 03 24 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/715f0184-352e-4ff8-a50e-23babb0adda3">
@@ -289,7 +290,7 @@ To do this I first went to the Splunk Apps and downloaded the Corelight App for 
 Once I had it downloaded, I then uploaded it to Splunk via the file method:
 <img width="1429" alt="Screenshot 2024-04-21 at 10 59 41 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/57fa9e8a-7789-499c-b37b-b03ffe624d50">
 
-Once the Application was installed, I needed to ensure that it was configured to the correct index, the zeek index I previosly created. I went to Settings > Knowledge > Event types:
+Once the Application was installed, I needed to ensure that it was configured to the correct index, the Zeek index I previously created. I went to Settings > Knowledge > Event types:
 
 <img width="1420" alt="Screenshot 2024-04-21 at 11 09 27 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/7e015ab4-3916-4f85-b81a-8acd04f09d08">
 
@@ -297,7 +298,7 @@ Once the Application was installed, I needed to ensure that it was configured to
 
 <img width="1292" alt="Screenshot 2024-04-21 at 11 12 54 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/354636b4-9c34-4484-94c2-c1e5c8292156">
 
-Now thatI have that setup in splunk, I then moved on to install the Splunk Fowarder in the Ubuntu Server where I installed Zeek.
+Now that I have that setup in splunk, I then moved on to install the Splunk Fowarder in the Ubuntu Server where I installed Zeek.
 
 ## Install and configure a Splunk Universal Forwarder
 
@@ -323,11 +324,11 @@ Once that was completed, I needed to make some configuration changes to the fowa
 ```
 ./splunk stop
 ```
-I then went on to configure the insputs.conf file. This file does not exit by default, so I needed to create it:
+I then went on to configure the inputs.conf file. This file does not exit by default, so I needed to create it:
 ```
 nano /opt/splunkforwarder/etc/system/local/inputs.conf
 ```
-Since I am using the corelight app, I replaceed the “zeek” sourcetype prefix with “corelight” as this is what the app is expecting (e.g. replace “zeek_conn” with “corelight_conn”). See the example below:
+Since I am using the corelight app, I replaced the “zeek” sourcetype prefix with “corelight” as this is what the app is expecting (e.g. replace “zeek_conn” with “corelight_conn”). See the example below:
 ```
 [default]
 host = sensor
@@ -400,7 +401,8 @@ defaultGroup = default-autolb-group
 server = splunkserver:9997
 [tcpout-server://splunkserver:9997]
 ```
-We then started the fowarder and confirmed that it was running and that I was receiving the data in Splunk:
+I then started the forwarder and confirmed that it was running and that I was receiving the data in Splunk:
+
 ```
 cd /opt/splunkforwarder/bin
 ./splunk start
@@ -414,7 +416,7 @@ Verification:
 
 ### Summary: 
 
-Installing Zeek and having it running in my network has big benefits. Having this installed provides deep visibility into my network traffic, helping to detect anomolies, potential intrusions, and suspicious behaviors. While working with Zeek, I have gained experience in network security monitoring which has enabled me to practice threat detection, learn how to investigate network events, and build upon my understanding of cybersecurity best practice and concepts. I was able to learn and analyze real-time network communication monitoring along with analysis of patterns and behaviors. Having Zeek has also allowed me to gain hands-on experience in reconstructing past events by examining its logs for root cause analysis. I highly recommend having Zeek installed in your home network. 
+Installing Zeek and having it running in my network has big benefits. Having this installed provides deep visibility into my network traffic, helping to detect anomalies, potential intrusions, and suspicious behaviors. While working with Zeek, I have gained experience in network security monitoring which has enabled me to practice threat detection, learn how to investigate network events, and build upon my understanding of cybersecurity best practice and concepts. I was able to learn and analyze real-time network communication monitoring along with analysis of patterns and behaviors. Having Zeek has also allowed me to gain hands-on experience in reconstructing past events by examining its logs for root cause analysis. I highly recommend having Zeek installed in your home network. 
 
 
 
