@@ -13,7 +13,7 @@ Pi-hole provides a few key benefits:
 
 ### Scope:
 
-I will be installing Pi-hole on a Linux OS host and will be testing both the ad-blocking and domain blocking capabilities that Pi-hole has to offer. To do this, I will be using a Win 10 OS that will be configured to use the Pi-hole and where I will generate traffic. I will also be testing its efficiency and analyzing the genereated traffic on the Pi-hole web interface, Wireshark, and Pi-hole logs themselves. 
+I will be installing Pi-hole on a Linux OS host and will be testing both the ad-blocking and domain blocking capabilities that Pi-hole has to offer. To do this, I will be using a Win 10 OS that will be configured to use the Pi-hole and where I will generate traffic. I will also be testing its efficiency and analyzing the generated traffic on the Pi-hole web interface, Wireshark, and Pi-hole logs themselves. 
 
 ### Tools and Technology:
 
@@ -27,7 +27,7 @@ Information:
 https://www.wundertech.net/use-unbound-to-enhance-the-privacy-of-pi-hole-on-a-raspberry-pi/
 
 ## Installation:  
-To get started, I first verified the IP address and Netplan configuration. This is important information to know prior to installing and getting Pi-hole steup. 
+To get started, I first verified the IP address and Netplan configuration. This is important information to know prior to installing and getting Pi-hole setup. 
 
 Verify the IP address:
 
@@ -90,7 +90,7 @@ I also agreed to installing the Admin Web Interface:
 
 ![Pasted image 20240602113057](https://github.com/lm3nitro/Projects/assets/55665256/e638d7d6-fb09-495d-a12e-183c62636d14)
 
-The next slide is about the prequisites required for the Admin Web Interface:
+The next slide is about the prerequisites required for the Admin Web Interface:
 
 ![Pasted image 20240602113129](https://github.com/lm3nitro/Projects/assets/55665256/bd491ed8-a1a1-40f9-aa0d-2ed3cfdfb830)
 
@@ -125,7 +125,7 @@ systemctl restart unbound.service
 systemctl enable unbound.service
 ```
 
-Becuase unbound will be the recursive DNS resolver, I needed to download the root.hints file. This file contains the names and IP addresses of the authoritive name servers for the root zone. 
+Because unbound will be the recursive DNS resolver, I needed to download the root.hints file. This file contains the names and IP addresses of the authoritive name servers for the root zone. 
 
 ```
 wget https://www.internic.net/domain/named.root -qO- | sudo tee /var/lib/unbound/root.hints
@@ -194,7 +194,7 @@ sudo service unbound status
 
 ![Pasted image 20240602115022](https://github.com/lm3nitro/Projects/assets/55665256/a3cd851f-54c9-44e4-b98b-dcf388c58003)
 
-After checking that stagtus I then tested the DNS resolution:
+After checking that status I then tested the DNS resolution:
 
 ```
 dig pi-hole.net @127.0.0.1 -p 5335
@@ -221,7 +221,7 @@ Click Save
 
 ## Testing and Analysis
 
-For this project, I will be testing on a Windows 10 PC. In order to test I had to configure the static DNS:
+For this project, I will be testing on a Windows 10 PC. To test I had to configure the static DNS:
 
 ![Pasted image 20240602120330](https://github.com/lm3nitro/Projects/assets/55665256/7b02d80a-5f4e-4d9c-bfc1-9ef0b23d4f10)
 
@@ -255,13 +255,13 @@ When using the website, I could see that there were ads getting blocked:
 
 ![Pasted image 20240602121056](https://github.com/lm3nitro/Projects/assets/55665256/5fa08427-aa7b-43ca-b94a-72cf14462468)
 
-Upon checking Pi-hole, the testing using the wensite above indeed generated more traffic:
+Upon checking Pi-hole, the testing using the website above indeed generated more traffic:
 
 ![Pasted image 20240602121148](https://github.com/lm3nitro/Projects/assets/55665256/0256be17-7d2b-43d0-a90d-647926d58cf7)
 
 ![Pasted image 20240602121238](https://github.com/lm3nitro/Projects/assets/55665256/f5198fd6-3dad-4973-b738-0b5bc226cf91)
 
-Pi-hole also allows you to look at the DNS statistics. Here we can see the top domains that are getting blocked and also the hosts that are generating the most traffic:
+Pi-hole also allows you to look at the DNS statistics. Here we can see the top domains that are getting blocked and the hosts that are generating the most traffic:
 
 ![Pasted image 20240602121943](https://github.com/lm3nitro/Projects/assets/55665256/8db98278-faf0-4d4b-b6c8-d76a16e2da6a)
 
@@ -274,7 +274,7 @@ Since the StevenBlackLidt was already added during the installation, I will be a
 ```
 https://blocklistproject.github.io/Lists/tracking.txt
 ```
-In order to add it, go to Add File, and from there select the downloaded files and select Add:
+To add it, go to Add File, and from there select the downloaded files and select Add:
 
 ![Pasted image 20240602132330](https://github.com/lm3nitro/Projects/assets/55665256/266b925f-f78d-4069-8479-734e2dcb7ffb)
 
@@ -316,7 +316,6 @@ Malware blocklist:
 
 ![Pasted image 20240602134605](https://github.com/lm3nitro/Projects/assets/55665256/b64741db-cb44-485f-ac7a-d5282c93041c)
 
-
 ## Blocking a Domain:
 
 This will be just an example. For this example, I will be using youtube.com. To do this, I went to Domains, and added youtube.com including subdomains:
@@ -333,7 +332,7 @@ I also wanted to see the logs and what information they provide.
 
 ![Pasted image 20240602150946](https://github.com/lm3nitro/Projects/assets/55665256/04bf4347-a5be-4198-b73a-23e0164ab3fb)
 
-To generate traffic, I made a DNS query to chess.com. I was able to validate that DNS query and the IP address associated with the FQDN
+To generate traffic, I made a DNS query to chess.com. I was able to validate that DNS query, and the IP address associated with the FQDN
 
 Real-time DNS queries with tail -f  pihole.log:
 
@@ -342,7 +341,7 @@ Real-time DNS queries with tail -f  pihole.log:
 
 ## Data filtering with grep:
 
-When looking at the logs, I decided to comb through and filter for quries:
+When looking at the logs, I decided to comb through and filter for queries:
 
 1. Looking the last 10 DNS queries to chess.com
    
@@ -385,7 +384,7 @@ sudo cat pihole.log | grep -e chess.com |grep -e query
 
 ![Pasted image 20240602171239](https://github.com/lm3nitro/Projects/assets/55665256/6241ee50-33fa-4190-a26e-62780fdf8378)
 
-6. Count for all dns calls that start with lh and is followed by any digit and a period and other words at the tail end
+6. Count for all DNS calls that start with lh and is followed by any digit and a period and other words at the tail end
 
 ```
 sudo cat pihole.log | grep -Po 'lh\d\.\w+' | wc -l
@@ -401,7 +400,6 @@ sudo cat pihole.log | grep -Po 'lh\d\.\w+'
 
 ### Summary:
 
-Pi-hole is a valuable tool for enhancing network and user experience by blocking ads and trackrs at the DNS level. This allowed me to get hand-on experience with DNS. While getting PI-hole setup and configured, it allowed me to better understand how DNS queries and resolution works. This project allowed me to me learn about DNS-level ad and tracker blocking. This also enhanced my awareness of network security and privacy practices . Analyzing the query logs offered insights into data privacy and exposure. 
+Pi-hole is a valuable tool for enhancing network and user experience by blocking ads and tracks at the DNS level. This allowed me to get hand-on experience with DNS. While getting PI-hole setup and configured, it allowed me to better understand how DNS queries and resolution works. This project allowed me to me learn about DNS-level ad and tracker blocking. This also enhanced my awareness of network security and privacy practices. Analyzing the query logs offered insights into data privacy and exposure. 
 
-Its important to have tools such as Pi-hole to help protect networks againsts threats and maintain privacy. Complementing Pi-hole with tools such as Unbound (as seen in this project), Suricata, and other technologies such as VPNs for additional privacy, helps to provide a more robust solution. 
-
+It's important to have tools such as Pi-hole to help protect networks against threats and maintain privacy. Complementing Pi-hole with tools such as Unbound (as seen in this project), Suricata, and other technologies such as VPNs for additional privacy, helps to provide a more robust solution. 
