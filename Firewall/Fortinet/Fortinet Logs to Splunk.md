@@ -3,12 +3,12 @@
 Splunk is a SIEM (Security Information and Event Management). It is used to collect, analyze, and visualize data from various sources, such as servers, applications, etc. This makes it great for event correlation. By correlating events, you can identify suspicious activities and incidents. It can also help trace the timeline of events which in turn aids in root cause analysis.  
 
 ## Scope:
-Since integrating the new 60F Fortigate Firewall into my network, I wanted to ensure that I was also sending all my traffic logs to Splunk. Here are the steps taken to have the firewall logs sent to Splunk.  
+Since integrating the new 60F FortiGate Firewall into my network, I wanted to ensure that I was also sending all my traffic logs to Splunk. Here are the steps taken to have the firewall logs sent to Splunk.  
 
 ## Tools and Technology:
 Splunk and Fortinet
 
-Since integrating the new 60F Fortigate Firewall into my network, I wanted to ensure that I was also sending all my traffic logs to Splunk. Here are the steps taken and a look at the logs. 
+Since integrating the new 60F FortiGate Firewall into my network, I wanted to ensure that I was also sending all my traffic logs to Splunk. Here are the steps taken and a look at the logs. 
 
 ## Splunk Configuration:
 
