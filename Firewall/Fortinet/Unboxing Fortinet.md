@@ -42,7 +42,7 @@ I then proceeded to install the latest update. As we can see, at the time, the l
 
 <img width="674" alt="Screenshot 2024-04-05 at 11 33 24 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/8c643013-db7e-4292-bdd7-1b48eaccd9e0">
 
-I went ahead and downloaded a copy of the configuration file in case anything happened during the upgrade and proceeded to upate. This was done faster than I thought and only took about 10 minutes to complete.
+I went ahead and downloaded a copy of the configuration file in case anything happened during the upgrade and proceeded to update. This was done faster than I thought and only took about 10 minutes to complete.
 
 <img width="1434" alt="Screenshot 2024-04-05 at 11 40 06 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/4c7e3077-fc10-4941-9972-bbe9aeba9aaf">
 
@@ -52,5 +52,5 @@ Now that the firewall is registered, activated, and up to date, I proceeded to g
 
 ### Summary:
 
-Installing and getting it was fairly easy, I like how user friendly the interface is. Having a firewall in your home network is crucial to protect against intrusion, network control, and for privacy and malware defense. Having a firewall is a fundamental layer of security that enhances the safety of your home network.  
+Installing and getting it was fairly easy; I like how user friendly the interface is. Having a firewall in your home network is crucial to protect against intrusion, network control, and for privacy and malware defense. Having a firewall is a fundamental layer of security that enhances the safety of your home network.  
 
