@@ -12,7 +12,7 @@ To create a new schema, click the icon highlighted, name the new schema, and cli
 
 ![Pasted image 20240504123321](https://github.com/lm3nitro/Projects/assets/55665256/89b968d6-44d9-4ddc-9692-146b802ee567)
 
-Once you click apply, a new dialogbox will open. This will refelct the change you are applying, in this case a new schema name lm3nitro. To confirm, click *Apply*
+Once you click apply, a new dialog box will open. This will reflect the change you are applying, in this case a new schema name lm3nitro. To confirm, click *Apply*
  
 ![Pasted image 20240504123420](https://github.com/lm3nitro/Projects/assets/55665256/889735f2-602f-49c5-ba75-b57ca9b29c12)
 
@@ -38,7 +38,7 @@ Once the dataset has been selected, you will be prompted to select a destination
 
 ![Pasted image 20240504124317](https://github.com/lm3nitro/Projects/assets/55665256/308d9065-79c7-43a6-a525-244b4b1540f2)
 
-In the next window, you can double check the columns that will be created using the dataset selected and verify the the type of data in each column is correct (int, text, etc)
+In the next window, you can double check the columns that will be created using the dataset selected and verify the type of data in each column is correct (int, text, etc.)
 
 ![Pasted image 20240504124358](https://github.com/lm3nitro/Projects/assets/55665256/e1518360-19df-44b0-9035-2fe46996d721)
 
@@ -46,7 +46,7 @@ Make sure all the needed tasks complete and click *Next*
 
 ![Pasted image 20240504124524](https://github.com/lm3nitro/Projects/assets/55665256/c9cf19ae-818b-4dca-92eb-d1f17e5da62e)
 
-We can confirm that 475 records were imported (This will be dependant on the data set used). Click *Finish*
+We can confirm that 475 records were imported (This will be dependent on the data set used). Click *Finish*
 
 ![Pasted image 20240504124613](https://github.com/lm3nitro/Projects/assets/55665256/b76f3af2-0f86-467f-912a-12ea46b4f5d7)
 
