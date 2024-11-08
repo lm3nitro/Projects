@@ -2,12 +2,12 @@
 
 ![Screenshot 2024-09-22 at 3 01 29 PM](https://github.com/user-attachments/assets/64724515-819f-40b7-a199-9969810b870b)
 
-The pfSense firewall is an open source firewall and router distribution based on FreeBSD. It is highly regarded for its flexibility, security, and rich feature set, making it suitable for a wide range of networking scenarios, from home networks to enterprise environments. pfSense can be installed on a physical machine or run as a virtual machine, providing advanced networking functions through an easy-to-use web interface.
+The pfSense firewall is an open-source firewall and router distribution based on FreeBSD. It is highly regarded for its flexibility, security, and rich feature set, making it suitable for a wide range of networking scenarios, from home networks to enterprise environments. pfSense can be installed on a physical machine or run as a virtual machine, providing advanced networking functions through an easy-to-use web interface.
 
 Here are some key features and capabilities of pfSense:
 + Stateful Packet Inspection
 + Granular Rule Definition
-+ Static and Dynamic Routin
++ Static and Dynamic Routing
 + Multi-WAN (Load Balancing and Failover)
 + OpenVPN
 + IPsec
@@ -26,13 +26,13 @@ In order to install pfSense, I needed to download the installer directly form th
 
 ![Pasted image 20240515202043](https://github.com/lm3nitro/Projects/assets/55665256/7badf55e-d26a-47eb-a979-62bb4bfb1d8c)
 
-I first had to add the installer to the cart and than checkout:
+I first had to add the installer to the cart and then checkout:
 
 ![Pasted image 20240515202125](https://github.com/lm3nitro/Projects/assets/55665256/ea6c3982-964c-43c6-bf12-7bf68f0c81ee)
 
 ![Pasted image 20240515202317](https://github.com/lm3nitro/Projects/assets/55665256/6653e0dd-dba5-451d-8c8b-599b5422f3e6)
 
-Once I enetered the needed information in the fields, I select complete order:
+Once I entered the needed information in the fields, I select complete order:
 
 ![Pasted image 20240515202628](https://github.com/lm3nitro/Projects/assets/55665256/dc73d68d-04b8-403b-ab93-e731874cf7cb)
 
@@ -42,7 +42,7 @@ I was then presented with the download option:
 
 ## VM Creation
 
-In my VMWare ESXi server I selected to create a new VM and selected the respective ISO:
+In my VMWare ESXi server, I selected to create a new VM and selected the respective ISO:
 
 ![Pasted image 20240515203449](https://github.com/lm3nitro/Projects/assets/55665256/2881875a-704c-420c-8c19-26f26487771a)
 
@@ -64,7 +64,7 @@ Now that the VM is created, I started the VM and proceeded with the installation
 
 ![Pasted image 20240515204005](https://github.com/lm3nitro/Projects/assets/55665256/da2798c5-bf16-4157-b9ab-ffa16a39485f)
 
-THis is a new install, so selected the following opiton:
+This is a new install, so selected the following option:
 
 ![Pasted image 20240515204032](https://github.com/lm3nitro/Projects/assets/55665256/6c26ad84-0415-413e-8f02-95308e5b6878)
 
@@ -110,7 +110,7 @@ Formatted the virtual disk:
 
 ![Pasted image 20240515205441](https://github.com/lm3nitro/Projects/assets/55665256/ac5798f9-00e5-43d6-afcd-795b0d7e2557)
 
-I chose to go wtih the stable release:
+I chose to go with the stable release:
 
 ![Pasted image 20240515205510](https://github.com/lm3nitro/Projects/assets/55665256/65d6ed71-5b7e-47af-ae6a-0cf9a9a25658)
 
@@ -138,7 +138,7 @@ Verified network reachability of the host:
 
 ## Login
 
-After the installatio had compelted and the connectivity was good, I then procceed to sign in into the  WebUI. In my case I nagivated to: https://192.168.1.1
+After the installation had completed and the connectivity was good, I then proceeded to sign in into the  Web UI. In my case I navigated to: https://192.168.1.1
 
 ![Pasted image 20240515211726](https://github.com/lm3nitro/Projects/assets/55665256/99c9b650-8556-4339-982c-821bdad69597)
 
@@ -148,7 +148,7 @@ Upon login, I checked the Dashboard page and could see that I was receiving traf
 
 ## Summary:
 
-In summary, installing pfSense helps improve networking and security skills. I was able to gain hands-on experience with the pfSense firewall. One of the great things about pfSense is how cost-effective and powerful it is.  Now that I have it up and running, I will be able to test some of its features and functionality. I also have othe firewalls (Palo Alto and Fortinet), and adding the pfsense will also serve as comparison. 
+In summary, installing pfSense helps improve networking and security skills. I was able to gain hands-on experience with the pfSense firewall. One of the great things about pfSense is how cost-effective and powerful it is.  Now that I have it up and running, I will be able to test some of its features and functionality. I also have other firewalls (Palo Alto and Fortinet), and adding the pfsense will also serve as comparison. 
 
 By having a firewall like pfSense, I will be able to:
 
