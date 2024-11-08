@@ -9,7 +9,7 @@ This scenario involves setting up a Windows 7 host as the target for a simulated
 ### Tools and Technologies:
 Win7, Linux, High Orbit Ion Cannon, Low Orbit Ion Cannon, Hping 3, Wireshark, and Anti-DDOS Guardian
 
-### Attacking:
+## Attacking:
 
 1. High Orbit Ion Cannon
    
@@ -29,7 +29,7 @@ I ensured that the parameters were set to high and selected a booster:
 
 ![Pasted image 20240503092027](https://github.com/lm3nitro/Projects/assets/55665256/cfbcfd8c-baa2-4ca8-ada1-c9ed5e22998f)
 
-3. I then used Hping 3:
+3. I then used Hping 3 as well:
 
 ![Pasted image 20240503093330](https://github.com/lm3nitro/Projects/assets/55665256/8249fed6-d648-4db3-952a-41e59e9ea3fb)
 
@@ -37,11 +37,11 @@ I ensured that the parameters were set to high and selected a booster:
 
 ## Analyzing the target host:
 
-On the Windows 7 VM, I had Wireshark running so that I could monitor and see the attack in real time. Here I can see the syn-flood that was being done with the Hoing 3 command above: 
+On the Windows 7 VM, I had Wireshark running so that I could monitor and see the attack in real time. Here I can see the syn-flood that was being done with the Hping 3 command above: 
 
 ![Pasted image 20240505173359](https://github.com/lm3nitro/Projects/assets/55665256/83141334-36d3-422e-ad3c-5e99b4fce58b)
 
-Lookign at the resources for the Win 7 VM, CPU was at 76%:
+Looking at the resources for the Win 7 VM, CPU was at 76%:
 
 ![Pasted image 20240505172038](https://github.com/lm3nitro/Projects/assets/55665256/cf830ac8-f65a-4c99-ba46-2ddd05b9ce6b)
 
@@ -55,7 +55,7 @@ I then stopped that attack and wanted to simulate another DDOS attack by creatin
 
 ![Pasted image 20240503094321](https://github.com/lm3nitro/Projects/assets/55665256/bce43e23-1785-4b3f-811f-31b06369f2f0)
 
-Taking a look at Wireshark while the attack is running:
+Taking a look at Wireshark while the attack was running:
 
 ![Pasted image 20240503094537](https://github.com/lm3nitro/Projects/assets/55665256/2ec8bcc7-7537-49b3-899d-123d30cefb5c)
 
@@ -65,7 +65,7 @@ CPU service on the target VM:
 
 ## Mitigation:
 
-In order to mitigate these attacks, I installed the Anti-DDOS Guardian on the Win 7 VM. 
+In order to mitigate these types of attacks, I installed the Anti-DDOS Guardian on the Win 7 VM. 
 
 ![Pasted image 20240505170626](https://github.com/lm3nitro/Projects/assets/55665256/2a10b2bf-8ff9-407e-aec7-6800d7a62040)
 
@@ -97,7 +97,7 @@ Installed:
 
 ![Pasted image 20240505170955](https://github.com/lm3nitro/Projects/assets/55665256/2a565ada-a63e-48e3-a251-f3af275e1e45)
 
-I then Launched upon completion:
+I then Launched it upon completion:
 
 ![Pasted image 20240505171142](https://github.com/lm3nitro/Projects/assets/55665256/7ff95fea-f927-4184-85fe-550b2c274497)
 
