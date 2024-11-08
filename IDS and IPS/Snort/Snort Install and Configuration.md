@@ -126,7 +126,7 @@ sudo make install
 ```
 ![Pasted image 20240402165624](https://github.com/lm3nitro/Projects/assets/55665256/56161d1f-c370-4734-88bb-ea93c238bcc2)
 
-8. Prerequisite: Install Data Acquistion (DAQ) from Snort
+8. Prerequisite: Install Data Acquisition (DAQ) from Snort
    
 ```
 cd ~/snort 
@@ -156,7 +156,7 @@ sudo ldconfig
 
 ## Download Snort 3
 
-Once all the prerequisutes have been downloaded and installed, I then proceeded to install Snort: 
+Once all the prerequisites have been downloaded and installed, I then proceeded to install Snort: 
 
 ```
 cd ~/snort 
@@ -181,7 +181,8 @@ sudo make install
 
 Once Snort was installed, I verified that it was up and running:
 
->#### Note: Snort 3 binary is on /usr/local/bin
+> [!NOTE]  
+> Snort 3 binary is on /usr/local/bin
 
 ![Pasted image 20240402175208](https://github.com/lm3nitro/Projects/assets/55665256/7d24a925-6d94-4145-8526-fe19ae949ed2)
 
@@ -191,7 +192,8 @@ Here we can see that it is installed and working:
 
 I also tested the Snort 3 configuration file:
 
->#### Note: The configuration file is located at /usr/local/etc/snort/snort.lua
+> [!NOTE]  
+> The configuration file is located at /usr/local/etc/snort/snort.lua
 
 ```
 snort -c /usr/local/etc/snort/snort.lua
@@ -201,7 +203,8 @@ snort -c /usr/local/etc/snort/snort.lua
 ___________________________________________________________________________________________________________________________________________________
 
 ### Optional
-This next section is optional. If want to run snort to sniff traffic live on the interface, so it can generate alerts in real time, there are a few things that need to be setup before hand.
+
+This next section is optional. If want to run snort to sniff traffic live on the interface, so it can generate alerts in real time, there are a few things that need to be setup beforehand.
 
 Verify the name of the interface:
 
@@ -209,38 +212,40 @@ Verify the name of the interface:
 
 #### Verify receive offload on the interface:
 
->#### Note: Some NIC/driver combinations may disable these offload settings by default, while others enable it by default.  You should check your sensors now before you get into a situation where you really need that full packet capture and find out that you don't actually have it. To check, run ethtool with the "-k" (lower-case k) option on the interface you'd like to check.  For example, to check ens32:
+> [!NOTE]
+> Some NIC/driver combinations may disable these offload settings by default,vwhile others enable it by default.vYou should check your sensors now before you get into a situation where you really need that full packet capture and find out that you don't actually have it. To check, run ethtool with the "-k" (lower-case k) option on the interface you'd like to check.vFor example, to check ens32:
 
 ![Pasted image 20240402175935](https://github.com/lm3nitro/Projects/assets/55665256/10a51022-9b49-4b81-bb3e-c747f1b7ffb8)
 
 Temporarily disable interface offload:
 
->#### Note: You can set multiple options in one "ethtool" command, but this can be problematic if your card doesn't support all of the settings. To avoid this, you could invoke ethtool for each option like this:
-```
-ethtool -K ens32 rx off  
-ethtool -K ens32 tx off  
-ethtool -K ens32 sg off  
-ethtool -K ens32 tso off  
-ethtool -K ens32 ufo off  
-ethtool -K ens32 gso off  
-ethtool -K ens32 gro off  
-ethtool -K ens32 lro off
-```
-Or you could simply wrap the ethtool command in a for-loop like this:
-```
-for i in rx tx sg tso ufo gso gro lro; do ethtool -K ens32 $i off; done
-```
+> [!NOTE]  
+> You can set multiple options in one "ethtool" command, but this can be problematic if your card doesn't support all of the settings. To avoid this, you could invoke ethtool for each option like this:
+> ```
+> ethtool -K ens32 rx off
+> ethtool -K ens32 tx off
+> ethtool -K ens32 sg off
+> ethtool -K ens32 tso off
+> ethtool -K ens32 ufo off
+> ethtool -K ens32 gso off
+> ethtool -K ens32 gro off
+> ethtool -K ens32 lro off
+> ```
+> Or you could simply wrap the ethtool command in a for-loop like this:
+> ```
+> for i in rx tx sg tso ufo gso gro lro; do ethtool -K ens32 $i off; done
+> ```
 
 ![Pasted image 20240402180832](https://github.com/lm3nitro/Projects/assets/55665256/847b1ccd-dba7-4cc5-acdb-a684537594c6)
 
->#### Note: These settings will remain in effect only while the OS is booted, so this needs to be applied at every boot. This can be done by adding the above for-loop as a "post-up" command for each of the interfaces in /etc/network/interfaces.
-____________________________________________________________________________________________________________________________________________________
+> [!NOTE]  
+> These settings will remain in effect only while the OS is booted, so this needs to be applied at every boot. This can be done by adding the above for-loop as a "post-up" command for each of the interfaces in /etc/network/interfaces.
 
 Again, the above mentioned is optional and not needed, but wanted to share. Now that I have snort installed and working, I then proceeded to create some custom rules. 
 
 ## Custom Rule:
 
-Before I can got started, I needed to create a directory called rules under /usr/local/etc/ and create a file called local.rules under /usr/local/etc/rules/. This is where we are I will create custom rules.
+Before I can get started, I needed to create a directory called rules under /usr/local/etc/ and create a file called local.rules under /usr/local/etc/rules/. This is where we are I will create custom rules.
 
 ```
 mkdir /usr/local/etc/rules
@@ -307,7 +312,7 @@ snort -c /usr/local/etc/snort/snort.lua -r icmp.pcap -A alert_fast -q
 
 ![Pasted image 20240402185922](https://github.com/lm3nitro/Projects/assets/55665256/e2cc0fd8-aa72-439f-b3d6-637571c3dcf5)
 
-Next, I wanted to permanently disable interface offloading. This can significantly impact Snort's performance and accuracy. When offloading is disabled, Snort can analyze apckets in their tru state, leading to better detection.
+Next, I wanted to permanently disable interface offloading. This can significantly impact Snort's performance and accuracy. When offloading is disabled, Snort can analyze packets in their true state, leading to better detection.
 
 ```
 Disable LRO & GRO using a service
@@ -334,7 +339,7 @@ WantedBy=multi-user.target
 
 ## PulledPork
 
-The following is also optional and not needed. PulledPork is an opensource perl script that can automates the process of downloading, processing, and organizing Snort rules. It also ensures that Snort stays up-to-date with the latest threat intelligence. 
+The following is also optional and not needed. PulledPork is an opensource perl script that can automate the process of downloading, processing, and organizing Snort rules. It also ensures that Snort stays up to date with the latest threat intelligence. 
 
 ```
 git clone https://github.com/shirkdog/pulledpork3.git 
@@ -349,8 +354,8 @@ sudo cp etc/pulledpork.conf /usr/local/etc/pulledpork3/
 
 ### Summary:
 
-Overall, I have enjoyed having snort running on my network. Again, this is an excellent tool to have in your network, or atleast installed in a lab environment. Having this in my network has allowed me to learn more and dive deeper into threat detection, attack patterns, and network anomalies in a practical way. 
+Overall, I have enjoyed having snort running on my network. Again, this is an excellent tool to have in your network, or at least installed in a lab environment. Having this in my network has allowed me to learn more and dive deeper into threat detection, attack patterns, and network anomalies in a practical way. 
 
-Configuring and analyzing alerts generated from Snort allowed me to gain deep insights into the structure and behavior of network traffic, inclusing and not limited to protocols, packet structures, and common communication patterns. With time, having Snort in my network helped me to better identify normal and anomalous traffic patterns and ultimately enhanced my ability to spot irregularities that may indicate malicious activity. 
+Configuring and analyzing alerts generated from Snort allowed me to gain deep insights into the structure and behavior of network traffic, including and not limited to protocols, packet structures, and common communication patterns. With time, having Snort in my network helped me to better identify normal and anomalous traffic patterns and ultimately enhanced my ability to spot irregularities that may indicate malicious activity. 
 
 I highly recommend having Snort 3 installed and running due to its advanced performance, comprehensive threat detection, and ease of use. This is a great tool to have added to the arsenal to strengthen network security. 
