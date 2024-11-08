@@ -91,7 +91,7 @@ ufw enable
 ![Pasted image 20240510210523](https://github.com/lm3nitro/Projects/assets/55665256/0ecf0a49-b747-47b1-867d-59e6b9296684)
 
 
-Cnce UFW enabled, it runs across system reboots too. We can verify that easily as follows using the systemctl command:
+Once UFW enabled, it runs across system reboots too. We can verify that easily as follows using the systemctl command:
 
 ![Pasted image 20240510210600](https://github.com/lm3nitro/Projects/assets/55665256/c374f16e-06e7-4f1a-80f2-e9c682cc2e0d)
 
@@ -124,7 +124,7 @@ ufw status
 
 ## Allowing port ranges
 
-If you do not wish to enable ports one by one, but instead a full range, you can do so by usinbg port ranges. As an example, if you want to alow tcp and udp ports 100 to 500, you would use the following syntax:
+If you do not wish to enable ports one by one, but instead a full range, you can do so by usinbg port ranges. As an example, if you want to allow tcp and udp ports 100 to 500, you would use the following syntax:
 
 ```
 ufw allow 100:500/tcp
@@ -144,7 +144,7 @@ ufw allow from 10.10.100.10
 
 ## Delete UFW Rules
 
-Next, if you wish to delete/remove a rule, you can first list out the rules with their respective number. THis wil list out the rules with the line number that can be used to reference the rule you no longer want:
+Next, if you wish to delete/remove a rule, you can first list out the rules with their respective number. This wil list out the rules with the line number that can be used to reference the rule you no longer want:
 
 ```
 ufw status numbered
@@ -152,7 +152,7 @@ ufw status numbered
 
 ![Pasted image 20240510211337](https://github.com/lm3nitro/Projects/assets/55665256/b2140e6e-5710-4eea-817c-7952794b9b0a)
 
-To delete 7th rule type the command:
+To delete 7th rule, type the command:
 
 ```
 ufw delete 7
@@ -204,7 +204,7 @@ tail -f /var/log/ufw.log
 
 ![Pasted image 20240510211827](https://github.com/lm3nitro/Projects/assets/55665256/99f69323-bab0-46fc-87bb-31384011c8df)
 
-The follwiong command be used to display a list of all the ports and services that are currently allowed through the firewall and are actively listening for incoming connections:
+The following command be used to display a list of all the ports and services that are currently allowed through the firewall and are actively listening for incoming connections:
 
 ```
 ufw show listening
@@ -222,9 +222,9 @@ ufw show added
 
 ### Summary:
 
-This project was more of a walkthrough to demonstrate the configuration of the UFW. By implementing a default deny policy and allowing only specific services, UFW contributes to device hardening, minimizing the attack surface and protecting against unauthorized access. Implementing device harding measure ensures that only necessary services and ports are active, minimizing vulnerabilities that attackers could exploit. This proactive approach helps safeguard sensitive data, maintain system integrity, and enhance overall cybersecurity posture.
+This project was more of a walkthrough to demonstrate the configuration of the UFW. By implementing a default deny policy and allowing only specific services, UFW contributes to device hardening, minimizing the attack surface and protecting against unauthorized access. Implementing device hardening measure ensures that only necessary services and ports are active, minimizing vulnerabilities that attackers could exploit. This proactive approach helps safeguard sensitive data, maintain system integrity, and enhance overall cybersecurity posture.
 
-Additionally, becuase UFW is open source and lightweight, it ensures minimal impact on system performance, making it a practical choice if you are a budget-conscious user. Overall, a great firewall solution. 
+Additionally, because UFW is open source and lightweight, it ensures minimal impact on system performance, making it a practical choice if you are a budget-conscious user. Overall, a great firewall solution. 
 
 
 
