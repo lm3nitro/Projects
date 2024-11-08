@@ -33,7 +33,7 @@ sudo apt-get update
 sudo apt-get install suricata
 ```
 
-Once it was installed, I made sure that everything was up to dater:
+Once it was installed, I made sure that everything was up to date:
 
 ```
 sudo apt-get update
@@ -42,7 +42,7 @@ sudo apt-get upgrade suricata
 
 ## Installing Splunk Fowarder:
 
-After deploying Suricata, I wanted to integrate its logs to my Splunk Instance. In order to do this, I needed to install the Splunk Fowarder in my server where Suricata was instralled. By default the listening port for the Splunk Fowarder is port 9997. I decided to use this port on my Splunk instance to listen for incoming communications from the forwarder. 
+After deploying Suricata, I wanted to integrate its logs to my Splunk Instance. To do this, I needed to install the Splunk Forwarder in my server where Suricata was installed. By default, the listening port for the Splunk Forwarder is port 9997. I decided to use this port on my Splunk instance to listen for incoming communications from the forwarder. 
 
 I used the Splunk Web GUI to configure a receiver:
 
@@ -66,11 +66,11 @@ Next, I created an index where my Suricata Logs will be stored:
 
 ![Pasted image 20240415163113](https://github.com/lm3nitro/Projects/assets/55665256/40c755e4-5815-4d9f-b85e-104190985ac2)
 
-Finally, verifed that the Index had been created:
+Finally, verified that the Index had been created:
 
 ![Pasted image 20240415163154](https://github.com/lm3nitro/Projects/assets/55665256/0e05f7ec-ebb6-4677-911a-2b5b69718d5f)
 
-## Splunk Fowarder and Suricata TA APP
+## Splunk Forwarder and Suricata TA APP
 
 Next, I downloaded both the Suricata TA App for Splunk along with the Splunk Forwarder from the Splunk website:
 
@@ -145,7 +145,7 @@ I can also see the amount of application traffic:
 
 ## Analyzing Suricata Splunk Logs
 
-I wanted to take a look at some DNS traffic. To do this, on my Win10 host, I navigated to chess.com, and was able to see my traffic being logged:
+I wanted to look at some DNS traffic. To do this, on my Win10 host, I navigated to chess.com, and was able to see my traffic being logged:
 
 ![Pasted image 20240415164717](https://github.com/lm3nitro/Projects/assets/55665256/d1b85481-7a60-4619-9540-870294139528)
 
