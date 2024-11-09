@@ -1,4 +1,4 @@
-## Scenario:
+# Scenario:
 
 A target host restricts access by only accepting traffic from specific source and destination ports, enhancing security by allowing only authorized services. This minimizes exposure to external threats, ensuring that only designated IPs and ports can interact with the server, thereby reducing the attack surface and preventing unauthorized access or probing.
 
