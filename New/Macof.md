@@ -6,7 +6,7 @@ Macof, short for “Mac Flooding", is a tool from the dsniff suite used for gene
 
 ### Scope:
 
-In my lab, I have a Cisco router and switch,and a Kali Linux host to test the behavior of the switch under stress using macof. I will utilizerun macof to generate a high volume of random MAC addresses, flooding the network with Ethernet frames. As the switch's MAC address table fills up, I will be capturing the traffic using Wireshark to analyze it and see the impact of MAC flooding on network performance. I will then implement a mitigation technique and try the test again to see if I am successful in blocking this type of attack. 
+In my lab, I have a Cisco router and switch, and a Kali Linux host to test the behavior of the switch under stress using macof. I will utilize macof to generate a high volume of random MAC addresses, flooding the network with Ethernet frames. As the switch's MAC address table fills up, I will be capturing the traffic using Wireshark to analyze it and see the impact of MAC flooding on network performance. I will then implement a mitigation technique and try the test again to see if I am successful in blocking this type of attack. 
 
 IP address information for this scenario:
 
@@ -19,7 +19,7 @@ Linux, Cisco router, Cisco switch, and Wireshark
 
 ## Kali Linux:
 
-To get started, I verified information in my Kali Linuc host, checking the IP, connectivity, and link layer information. 
+To get started, I verified information in my Kali Linux host, checking the IP, connectivity, and link layer information. 
 
 Kali Linux Host TCP/IP information:
 
@@ -29,11 +29,11 @@ Reachability test:
 
 ![Pasted image 20241011113842](https://github.com/user-attachments/assets/847cc790-cb0b-4d1d-929f-5491329c96f9)
 
-Link layer inforamation:
+Link layer information:
 
 ![Pasted image 20241011113908](https://github.com/user-attachments/assets/7c80144d-4e90-4f9c-9000-ddf9270387a0)
 
-## Switch Information :
+## Switch Information:
 
 I then checked the switch interface and verified that the interface was up:
 
@@ -49,7 +49,7 @@ show interfaces gigabitEthernet 0/1
 
 ![Pasted image 20241011111458](https://github.com/user-attachments/assets/38acfa81-0ff3-4a23-9643-43511e2b5dc0)
 
-I also checked and confirmd the MAC address table prior to using macof:
+I also checked and confirmed the MAC address table prior to using macof:
 
 ```
 show mac address-table interface gigabitEthernet 0/1
@@ -67,13 +67,13 @@ macof -i eth0 -n 50
 
 ![Pasted image 20241011115206](https://github.com/user-attachments/assets/46b20018-a3a6-4e09-9d5c-f5737f577a11)
 
-Afer perfoming the attack, I went back to check the MAC address table:
+Afer performing the attack, I went back to check the MAC address table:
 
 ![Pasted image 20241011114622](https://github.com/user-attachments/assets/c95bc533-50a3-44b7-93e2-840d2a5d6c5e)
 
 ## Traffic Analysis:
 
-Utilizing Wireshark, I also captured the traffic while performing that attack. Looking at the traffic, we can see the ARP protocol behaviour: 
+Utilizing Wireshark, I also captured the traffic while performing that attack. Looking at the traffic, we can see the ARP protocol behavior:
 
 ![Pasted image 20241011121731](https://github.com/user-attachments/assets/c6148419-96c6-4b99-ab8d-a81da1db5387)
 
@@ -93,7 +93,7 @@ Configuration:
 enable
 configure terminal
 interface GigabitEthernet0/1
- switchport mode accesss
+ switchport mode access
  switchport port-security
  switchport port-security maximum 1
  switchport port-security violation shutdown
@@ -105,7 +105,7 @@ write memory
 sh interfaces status
 ```
 
-After configuring the switch with port security, I then attempted to perform the MACA flodding again, however this time I was able to see the switchand now the interface is disabled:
+After configuring the switch with port security, I then attempted to perform the MACA flooding again, however this time I was able to see the switch and now the interface is disabled:
 
 ![Pasted image 20241011120604](https://github.com/user-attachments/assets/7104be41-9532-4472-990f-316467f74eb4)
 
@@ -128,11 +128,11 @@ sh mac address-table  interface gi0/1
 
 ![Pasted image 20241011120705](https://github.com/user-attachments/assets/8b1b2e61-8325-41d4-aaa0-a269f9be5808)
 
-The mitigation was successful and the the MAC flooding was prevented.
+The mitigation was successful, and the MAC flooding was prevented.
 
 ### Summary:
 
-In this lab, I was able to perfom a MAC flodding attack while analyzing the traffic in Wireshark. One of the behaviors observed is the significant increase in ARP traffic, particularly those with varying source MAC addresses. This helps confirm that a MAC flooding attack is occurring. I was also able to observe a high turnover rate of MAC addresses, indicating that the switch was being overwhelmed. To mitigate this, I implemented port security and simulating the attack again to ensure that the security features functioned effectively in preventing unauthorized access and protecting the network.
+In this lab, I was able to perform a MAC flooding attack while analyzing the traffic in Wireshark. One of the behaviors observed is the significant increase in ARP traffic, particularly those with varying source MAC addresses. This helps confirm that a MAC flooding attack is occurring. I was also able to observe a high turnover rate of MAC addresses, indicating that the switch was being overwhelmed. To mitigate this, I implemented port security and simulating the attack again to ensure that the security features functioned effectively in preventing unauthorized access and protecting the network.
 
 Mitigation:
 
