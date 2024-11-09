@@ -7,7 +7,7 @@ Bettercap is a powerful, open-source network security tool designed for performi
 
 ### Scope:
 
-In this scenario, the attacker and the target host are connected to the same network via a switch, which is also connected to a firewall. The switch has port mirroring enabled to monitor all network traffic. The attacker will use Bettercap to perform both an ARP spoofing and DNS spoofing attack, poisoning the ARP cache of both the target host and the gateway (firewall), tricking them into routing traffic through the attacker’s machine. With the attacker positioned as a "man-in-the-middle," the attacker will initiate the DNS spoofing attack, intercepting DNS requests from the target and redirecting them to malicious or fake websites. As the attack unfolds, the switch’s port mirroring will be connected to a PC running Wireshark capturing all network traffic for analysis, providing detailed insights into the ARP cache manipulation and DNS spoofing. THis behavior will also be captured and monitored in the pfSense firewall.
+In this scenario, the attacker and the target host are connected to the same network via a switch, which is also connected to a firewall. The switch has port mirroring enabled to monitor all network traffic. The attacker will use Bettercap to perform both an ARP spoofing and DNS spoofing attack, poisoning the ARP cache of both the target host and the gateway (firewall), tricking them into routing traffic through the attacker’s machine. With the attacker positioned as a "man-in-the-middle," the attacker will initiate the DNS spoofing attack, intercepting DNS requests from the target and redirecting them to malicious or fake websites. As the attack unfolds, the switch’s port mirroring will be connected to a PC running Wireshark capturing all network traffic for analysis, providing detailed insights into the ARP cache manipulation and DNS spoofing. This behavior will also be captured and monitored in the pfSense firewall.
 
 ### Tools and Technology:
 Bettercap, Wireshark, Wireshark, Win10, Apache 2, and pfSense
@@ -70,7 +70,7 @@ After locating the target host `LM3NITRO-PC`, I enabled ARP spoofing. ARP (Addre
 
 ![Pasted image 20240517151238](https://github.com/lm3nitro/Projects/assets/55665256/8335f958-52e2-4602-9e42-2678e36b51c2)
 
-On the target host itself, I had Wireshark running at the windows PC "Lm3nitro-PC". In the screenshot below, I was able to identify the spoof attack. At the very top I can see that originally, the attacker was assigned the IP 192.168.1.103 had the MAC address ending in 05:7d and the IP address for the pfsense firewall was 192.168.1.1 with a MAC address of 0e:17. After the attack is performed,I see that the attacker is now stating that the pfSense IP address is now its own so that traffic is routed to him rather than to the firewall. 
+On the target host itself, I had Wireshark running at the windows PC "Lm3nitro-PC". In the screenshot below, I was able to identify the spoof attack. At the very top I can see that originally, the attacker was assigned the IP 192.168.1.103 had the MAC address ending in 05:7d and the IP address for the pfSense firewall was 192.168.1.1 with a MAC address of 0e:17. After the attack is performed, I see that the attacker is now stating that the pfSense IP address is now its own so that traffic is routed to him rather than to the firewall. 
 
 ![Pasted image 20240517153137](https://github.com/lm3nitro/Projects/assets/55665256/cfc0e03a-d977-41d0-be4c-0e350673104e)
 
@@ -84,7 +84,7 @@ Looking at the arp cache of the pc, I was able to see both IP addresses and the 
 
 ## Detecting ARP Spoof Attack:
 
-In order to detect the ARP Sppof attack on the pfSense firewall, I installed Arpwatch. To do this, I went to `System > Package Manager`
+In order to detect the ARP Spoof attack on the pfSense firewall, I installed Arpwatch. To do this, I went to `System > Package Manager`
 
 ![Pasted image 20240517161852](https://github.com/lm3nitro/Projects/assets/55665256/abf38603-7b63-4844-91a7-7adaed9b0e7c)
 
@@ -134,7 +134,7 @@ Targer host (lm3nitro-PC):
 
 ![Pasted image 20240517154646](https://github.com/lm3nitro/Projects/assets/55665256/893c4f6e-7293-4c0e-b8ef-faec5eefd9d4)
 
-## DNS spfoing attack:
+## DNS Spoofing Attack:
 
 In order to perform the DNS spoof attack, I needed a webserver. I used Apache 2:
 
