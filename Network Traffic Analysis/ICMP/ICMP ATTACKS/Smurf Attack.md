@@ -16,7 +16,7 @@ tcpdump -nnr icmp_threat_actor.pcap 'ip[0]==0' or 'ip[0]==8' and ! not dst net 1
 
 ![Pasted image 20240325233000](https://github.com/lm3nitro/Projects/assets/55665256/57e3dd74-2036-4885-a751-6671d0e5a669)
 
-We need to monitor our network traffic for an unusually high number of ICMP replies originating from a single host directed towards our affected host, as attackers may utilize fragmentation and payload data in these ICMP requests to inflate the traffic volume. In the screenshot above, it is difficult to show since the output is larger. However, what I was able to see is that the attacker had impersonated the IP of a letgitimsate host (target) on the network.
+We need to monitor our network traffic for an unusually high number of ICMP replies originating from a single host directed towards our affected host, as attackers may utilize fragmentation and payload data in these ICMP requests to inflate the traffic volume. In the screenshot above, it is difficult to show since the output is larger. However, what I was able to see is that the attacker had impersonated the IP of a letgitimate host (target) on the network.
 
 ```
 tcpdump -nnr icmp_threat_actor.pcap 'ip[0]==0' or 'ip[0]==8' and ! not dst net 192.168.10.0/24 |wc -l
