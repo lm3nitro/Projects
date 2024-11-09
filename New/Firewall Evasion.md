@@ -35,7 +35,7 @@ In traditional firewalls (packet-filtering firewalls), everything is allowed and
 
 ## Scope:
 
-While firewalls are crucial for network security and provide significant protection, they aren’t foolproof.In this exercise, I will go over several ways to evade a firewall. I will cover the following:
+While firewalls are crucial for network security and provide significant protection, they aren’t foolproof. In this exercise, I will go over several ways to evade a firewall. I will cover the following:
 
 <details>
 <summary><h3>Incomplete TCP Handshake<h3></summary>
@@ -68,7 +68,7 @@ Other factors observed in the traffic:
 + The IP identification is changing is each packet
 + No errors are introduced in the checksum.
 
-In this scenario, nmap sends a SYN request to the target, if the port is open, the target responds with a SYN-ACK packet, acknowledging the request to establish a connection. Normally, in a ligitimate request, the scanner would then complete the request with an ACK to complete the handshake. In this case, the target host has already shown which port is open. If nmap were to complete the connection, it would then have to worry about closing it. Instead of sending an ACK back to complete the handshake, the scanner sends an RST packet to close the connection prematurely.
+In this scenario, Nmap sends a SYN request to the target, if the port is open, the target responds with a SYN-ACK packet, acknowledging the request to establish a connection. Normally, in a legitimate request, the scanner would then complete the request with an ACK to complete the handshake. In this case, the target host has already shown which port is open. If Nmap were to complete the connection, it would then have to worry about closing it. Instead of sending an ACK back to complete the handshake, the scanner sends an RST packet to close the connection prematurely.
 
 In the screenshot below, we see the bahavior describe above for port 5357 which was previously identified:
 
@@ -79,7 +79,7 @@ Nmap will classify a port as filtered if it receives specific ICMP error message
 ![Pasted image 20240920150957](https://github.com/user-attachments/assets/e1765030-7234-439f-a99f-399779d2af0c)
 
 > [!NOTE]  
-> Below is a summary of how nmap will interpret responses to a SYN probe:
+> Below is a summary of how Nmap will interpret responses to a SYN probe:
 > ![Pasted image 20240920151122](https://github.com/user-attachments/assets/744cf0e9-d6d7-4618-b3b3-1215258f27e0)
 
 </details>
@@ -123,7 +123,7 @@ When the target responds to the initial SYN requests, it may send back ACK packe
 
 ![Pasted image 20240921124326](https://github.com/user-attachments/assets/5a732df1-4476-46ac-a1a4-1ac630870b3d)
 
-Here is a view of this behavior wiht a sinfle IP:
+Here is a view of this behavior with a single IP:
 
 ![Pasted image 20240921124444](https://github.com/user-attachments/assets/4ad665af-995a-4935-9834-185bec36878f)
 
@@ -292,7 +292,7 @@ nmap -sS -Pn -p80 192.168.91.130 --packet-trace --disable-arp-ping -nnvvvv
 
 ![Pasted image 20240922151449](https://github.com/user-attachments/assets/c861c976-65e3-4dba-978e-793537d0725f)
 
-Based on the output from the scan, the port is showing as filtered since the traffic will be only allowed if its coming from a specific port number. I then ran another scan but, this time specifying a source port using the option `--source-port`:
+Based on the output from the scan, the port is showing as filtered since the traffic will be only allowed if it's coming from a specific port number. I then ran another scan but, this time specifying a source port using the option `--source-port`:
 
 ```
 nmap -sS -Pn --source-port 9999 -p80 192.168.91.130 --packet-trace --disable-arp-ping -nnvvvv
@@ -308,7 +308,7 @@ Based on the output, I can now see that the port is showing as open.
 <summary><h3>Evasion via Fragmentation, MTU, and Data Length<h3></summary>
 
 
-Another way that you can evade a firewall is by controlling the packet size. By fragmenting packets, if neither the firewall nor the IDS/IPS reassemble the packet, it will most likely let it pass. This will make it so taht the target system will reassemble and process it.
+Another way that you can evade a firewall is by controlling the packet size. By fragmenting packets, if neither the firewall nor the IDS/IPS reassemble the packet, it will most likely let it pass. This will make it so that the target system will reassemble and process it.
 
 ### Fragmenting (8 Bytes)
 
@@ -350,7 +350,7 @@ nmap -sS -Pn -mtu 8 -p80 192.168.91.130 --packet-trace --disable-arp-ping -nnvvv
 
 ![Pasted image 20240922155925](https://github.com/user-attachments/assets/741d5d85-2b87-415b-86a7-df01388ce58f)
 
-In Wireshark, I confirmed that the the packets were indeed fragmented, 8 bytes in size, and had the more fragments bit set:
+In Wireshark, I confirmed that the packets were indeed fragmented, 8 bytes in size, and had the more fragments bit set:
 
 ![Pasted image 20240922155907](https://github.com/user-attachments/assets/e15a7300-4130-4730-b6b1-b895178bfb02)
 
@@ -373,9 +373,9 @@ I was also able to verify that the behavior wasjust as expected in Wireshark:
 <details>
 <summary><h3>Evasion via Bad Checksum<h3></summary>
 
-###  Wrong Checksum:
+### Wrong Checksum:
 
-Another method that can be used to evade a firewall is to intentionally send a packet with a bad checksum. There are systems that will drop a packet with a bad checksum, however, there are others that won’t. To do this, nmap has the option `--badsum`:
+Another method that can be used to evade a firewall is to intentionally send a packet with a bad checksum. There are systems that will drop a packet with a bad checksum, however, there are others that won’t. To do this, Nmap has the option `--badsum`:
 
 ```
 nmap -sS -Pn --badsum -p80,3389 192.168.91.130 -nnvvv --packet-trace
@@ -400,7 +400,7 @@ I will go over TTL and IP options below:
 
 ### Set TTL :
 
-The `--ttl` option in Nmap autellows you to specify TTL value for the packets sent during a scan. TTL is a field in the IP header that specifies the maximum number of hops a packet can take before it is discarded. Each router that forwards the packet decrements the TTL value by one. This option might be useful if you think the default TTL exposes your port scan activities.
+The `--ttl` option in Nmap allows you to specify TTL value for the packets sent during a scan. TTL is a field in the IP header that specifies the maximum number of hops a packet can take before it is discarded. Each router that forwards the packet decrements the TTL value by one. This option might be useful if you think the default TTL exposes your port scan activities.
 
 ```
 nmap -sS -Pn --ttl 1 -p80,3389 192.168.91.130 -nnvvv --packet-trace
@@ -436,7 +436,7 @@ nmap -sS -Pn --ip-options R -p80,3389 192.168.91.130 -nnvvv --packet-trace
 
 ![Pasted image 20240923112809](https://github.com/user-attachments/assets/e571ab7e-9fc4-40ff-a835-65a46e6b3690)
 
-Below are is the scan related traffic where I was able to see that it did have the IP option R available:
+Below is the scan related traffic where I was able to see that it did have the IP option R available:
 
 ![Pasted image 20240923112706](https://github.com/user-attachments/assets/61da2c44-109c-4251-92cb-2f5bb7a1814a)
 
@@ -459,7 +459,7 @@ In the diagram below, the client tries different ports to reach the server until
 
 ### Getting Started
 
-First I need to set up a listening port on the client:
+First, I need to set up a listening port on the client:
 
 + -l listens for incoming connections
 + -v provides verbose details (optional)
@@ -555,7 +555,7 @@ ncat -lvnp 8008 -c "ncat 10.10.90.19 80"
 
 ![Pasted image 20240924163735](https://github.com/user-attachments/assets/be94001b-b074-49f1-9359-c598cf6e7f4b)
 
-Now I'm able to reach the server on port 8008 , I can se some 200 codes coming from the web app:
+Now I'm able to reach the server on port 8008, I can see some 200 codes coming from the web app:
 
 ![Pasted image 20240924163942](https://github.com/user-attachments/assets/ecb4a1ec-ea2f-47af-aee7-419875cccee0)
 
@@ -574,13 +574,13 @@ The connection state at the web server indicates that the ports are bound.
 
 ### Information 
 
-The option `-e /bin/bash: ` tells ncat to execute the specified program (in this case, /bin/bash) when a connection is made. This effectively gives the attacker a command shell over the established connection. The port number can be specified using the `PORT_NUMBER` option. However, please note, unless running ncat with the correct privlidges, port numbers below 1024 (well known/standard) cannot be used.
+The option `-e /bin/bash: ` tells ncat to execute the specified program (in this case, /bin/bash) when a connection is made. This effectively gives the attacker a command shell over the established connection. The port number can be specified using the `PORT_NUMBER` option. However, please note, unless running ncat with the correct privlidges, port numbers below 1024 (well-known/standard) cannot be used.
 
 ```
 ncat -lvnp PORT_NUMBER -e /bin/bash
 ```
 
-When this command is ran on a machine, it sets up a listener on the specified port. If it connects to that port, you will gain a command shell (bash) on the machine where the command is running. This is commonly used to evade firewalls. Once shell access to the target host is successful, it will allow navigation of the file system and can access sensitive information.
+When this command is run on a machine, it sets up a listener on the specified port. If it connects to that port, you will gain a command shell (bash) on the machine where the command is running. This is commonly used to evade firewalls. Once shell access to the target host is successful, it will allow navigation of the file system and can access sensitive information.
 
 ## Mitigations:
 
@@ -592,7 +592,7 @@ In other words, relying solely on a port number is no longer sufficient or relia
 
 ![Pasted image 20240924210137](https://github.com/user-attachments/assets/356b1515-1882-496a-9da8-27e824e290fa)
 
-Next-Generation Firewall (NGFW) is designed to handle theese types of new challenges.  Some of the fetaures/capabilities os NGFWs include:
+Next-Generation Firewall (NGFW) is designed to handle these types of new challenges.  Some of the features/capabilities on NGFWs include:
 
 + Application Awareness: NGFWs can identify and control applications regardless of the ports they use. This allows for more precise policy enforcement and improved security.
 + Deep Packet Inspection: They perform deep packet inspection (DPI) to analyze the actual data within packets, enabling detection and blocking of threats hidden in encrypted traffic.
@@ -606,7 +606,7 @@ By leveraging these capabilities, a properly configured and deployed NGFW can re
 
 ## Conclusion
 
-There are several ways to defend against firewall evasion techniques, however, it requores a layered approach and a comprehensive security strategy. Hre are a few ways:
+There are several ways to defend against firewall evasion techniques, however, it requires a layered approach and a comprehensive security strategy. Here are a few ways:
 
 1. Utilize firewalls that offer application awareness and deep packet inspection (DPI) to identify and control applications regardless of the ports they use and to analyze packet contents for hidden malicious traffic.
 2. Deploy IDPS to monitor network traffic and block suspicious activities in real-time while utilizing behavioral analysis to identify anomalies indicative of evasion tactics.
