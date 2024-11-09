@@ -10,7 +10,7 @@ I will be utilizing scapy to send ARP requests to my entire network, which enabl
 
 ## Getting Started:
 
-This is the script I created and utlized using scapy:
+This is the script I created and utilized using scapy:
 
 ```python
 
@@ -27,7 +27,7 @@ for sent, received in answered:
     print(f"Host Up: {received.psrc} MAC: {received.hwsrc}")
 ```
 
-This is a view of what it looks like in Pycharm:
+This is a view of what it looks like in PyCharm:
 
 ![Pasted image 20241009234740](https://github.com/user-attachments/assets/6cfd6085-34c6-4a13-8018-e62a38312e44)
 
@@ -35,7 +35,7 @@ Once executed, these were the results. I was able to see the hosts IP addresses 
 
 ![Pasted image 20241009234458](https://github.com/user-attachments/assets/bc259adf-070d-44e6-914c-36ceaf9770e1)
 
-I also ran Wireshark while the script was running so taht I could see the behavior on the network:
+I also ran Wireshark while the script was running so that I could see the behavior on the network:
 
 ![Pasted image 20241009234024](https://github.com/user-attachments/assets/ff3c1dec-89bf-4b42-8afd-757f15ed3d94)
 
