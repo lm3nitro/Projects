@@ -50,4 +50,4 @@ As seen in the screenshot above, I tested the script and observed that it succes
 
 ## Summary:
 
-Through testing the script, I learned the critical importance of continuous file monitoring. This exercise demonstrates how checksums effectively verify file integrity, allowing for quick alerts when modifications occur. Automating this process not only increases efficiency but also reduces the risk of human error, while maintaining an audit trail for compliance purposes. Overall, this type script is essentil for early threat detection, safeguarding sensitive information, and ensuring adherence to standards and best practices. 
+Through testing the script, I learned the critical importance of continuous file monitoring. This exercise demonstrates how checksums effectively verify file integrity, allowing for quick alerts when modifications occur. Automating this process not only increases efficiency but also reduces the risk of human error, while maintaining an audit trail for compliance purposes. Overall, this type script is essential for early threat detection, safeguarding sensitive information, and ensuring adherence to standards and best practices. 
