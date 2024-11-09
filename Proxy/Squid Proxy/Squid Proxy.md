@@ -15,7 +15,7 @@ Features:
 
 ### Scope:
 
-I will be installing and configuring Squid Proxy in a lab environment. I will then have another node running Win10 where I will configure it to use the newly installed Squid Proxy. This project focuses on exploring features like access control lists (ACLs), understanding how to control and manage internet access in a network, and observe web traffic in real time. By configuring domain blocking, the goal is to enforce policies that restrict access to certain websites (e.g., social media, malware sites) to improve security. I will then be sending the the Squid proxy logs to splunk for better visualization. 
+I will be installing and configuring Squid Proxy in a lab environment. I will then have another node running Win10 where I will configure it to use the newly installed Squid Proxy. This project focuses on exploring features like access control lists (ACLs), understanding how to control and manage internet access in a network, and observe web traffic in real time. By configuring domain blocking, the goal is to enforce policies that restrict access to certain websites (e.g., social media, malware sites) to improve security. I will then be sending the Squid proxy logs to Splunk for better visualization. 
 
 ### Tools and Technology:
 Linux, Win10, Squid Proxy, Splunk and Wireshark
@@ -31,7 +31,7 @@ sudo apt install squid
 
 ![Pasted image 20240402202454](https://github.com/lm3nitro/Projects/assets/55665256/f9263069-6075-43d4-b8b0-c1839cb7b224)
 
-Once the installation completed, the Squid service started automatically. To verify, I check edthe service status:
+Once the installation completed, the Squid service started automatically. To verify, I checked the service status:
 
 ```
 sudo systemctl status squid
@@ -43,7 +43,7 @@ sudo systemctl status squid
 
 The squid service can be configured by editing the `/etc/squid/squid.conf` file. The configuration file contains comments that describe what each configuration option does. You can also put your configuration settings in separate files, which can be included in the main configuration file using the “include” directive.
 
-Before making any changes, I created a back up of the original configuration file:
+Before making any changes, I created a backup of the original configuration file:
 
 ```
 sudo cp /etc/squid/squid.conf /etc/squid/squid.conf.backup
@@ -65,7 +65,7 @@ For my project and in my lab, I am allowing traffic only from the source network
 
 ![Pasted image 20240402202950](https://github.com/lm3nitro/Projects/assets/55665256/6fb4dc79-e6a7-443a-9feb-dcac4a8ea873)
 
-I saved the changes and then verifed the logs from squid using the following command
+I saved the changes and then verified the logs from squid using the following command:
 
 ```
 tail -f /var/squid/access.log
@@ -75,7 +75,7 @@ Squid is currently blocking all the connections:
 
 ![Pasted image 20240402203132](https://github.com/lm3nitro/Projects/assets/55665256/b4833a23-e778-457e-81e0-6d0980f8792f)
 
-Let's allow some traffic. For testing purpause to allow all traffic, I added the following line to the configuration file: `http_access allow all`
+Let's allow some traffic. For testing purpose to allow all traffic, I added the following line to the configuration file: `http_access allow all`
 
 ![Pasted image 20240402203045](https://github.com/lm3nitro/Projects/assets/55665256/300cdbc2-cb3c-476c-9c67-aac92cba8a5b)
 
@@ -92,7 +92,7 @@ systemctl status squid
 
 ![Pasted image 20240402203538](https://github.com/lm3nitro/Projects/assets/55665256/1b67a341-b727-4465-85a4-c20e11299e48)
 
-Taking another look at the access logs, I can  see that it is no longer blocking connections:
+Taking another look at the access logs, I can see that it is no longer blocking connections:
 
 ```
 tail -f /var/squid/access.log
@@ -134,7 +134,7 @@ While going to Facebook, I also captured the traffic on Wireshark on the Win10 h
 
 ## Domain Blacklist in Squid Proxy:
 
-Now that I have tested Squid Proxy and can see all the traffic generated from the win10 host, I also wanted to test the domain blocking funcitonlity that Squid offers:
+Now that I have tested Squid Proxy and can see all the traffic generated from the win10 host, I also wanted to test the domain blocking functionality that Squid offers:
 
 To do this, I created a file in `/etc/squid/black_list.txt` 
 ![Pasted image 20240403143701](https://github.com/lm3nitro/Projects/assets/55665256/99923f88-8ebc-425d-b444-a5fecdb64c46)
@@ -150,7 +150,7 @@ I added the domains I wanted to block in the file:
 .fbcdn.et
 ```
 
->#### Note:  The “.” before the domain name acts as a wildcard. Example:  to block *.example.com you will type  .example.com instead.  
+>#### Note:  The “.” before the domain name acts as a wildcard. Example:  to block *.example.com you will type: .example.com instead.  
 
 I saved the file. I then opened the Squid Proxy configuration file located in ` /etc/squid.conf` and added the following lines:
 
@@ -171,25 +171,25 @@ systemctl restart squid
 
 ## Traffic Analysis
 
-Now that the domains have been blocked, I tested with the Win10 host again going to both Facebook and Youtube. I checked the Squid logs after to monitor:
+Now that the domains have been blocked, I tested with the Win10 host again going to both Facebook and YouTube. I checked the Squid logs after to monitor:
 
 ![Pasted image 20240403144543](https://github.com/lm3nitro/Projects/assets/55665256/a3fde7d1-0980-4511-ad08-16b93739229e)
 
-I can see that it is blocking. I also checked Wireshark to verify and can also see that I was getting a `403 Forbidden` :
+I can see that it is blocking. I also checked Wireshark to verify and can also see that I was getting a `403 Forbidden`:
 
 ![Pasted image 20240403145119](https://github.com/lm3nitro/Projects/assets/55665256/b8a97a11-67f0-46a6-aac0-ab03754057d7)
 
-I followed the stream, and that provided details including information about Squid:
+I followed the stream, and it provided details including information about Squid:
 
 ![Pasted image 20240403145218](https://github.com/lm3nitro/Projects/assets/55665256/fd0b5cc2-b4ed-43f9-8c36-4218c02a53c7)
 
-On the host, the browser showed the following when visiting Youtube:
+On the host, the browser showed the following when visiting YouTube:
 
 ![Pasted image 20240403144710](https://github.com/lm3nitro/Projects/assets/55665256/91be24a1-5228-4cce-bd32-93c53f2c31d2)
 
 ## Splunk
 
-After doing some more testing, I also sent the the Squid log traffic to the Splunk instance that I have in my lab. 
+After doing some more testing, I also sent the Squid log traffic to the Splunk instance that I have in my lab. 
 
 Here is the Squid index showing the logs that have been sent to Splunk:
 
@@ -203,7 +203,7 @@ index="squid" src_ip=* dst_ip=* facebook | table src_ip dst_ip url method
 
 ![Pasted image 20240403161425](https://github.com/lm3nitro/Projects/assets/55665256/920e3811-2b97-476a-9d9d-e60880b064e2)
 
-High overview fo the available fields and information available from the Squid logs:
+High overview of the available fields and information available from the Squid logs:
 
 ![Pasted image 20240403161630](https://github.com/lm3nitro/Projects/assets/55665256/42ba6d89-bc4a-47af-a38e-5839c8b716b0)
 
@@ -211,7 +211,7 @@ High overview fo the available fields and information available from the Squid l
 
 By installing Squid Proxy in my lab, I was able to learn how to configure and fine-tune the proxy settings to manage network traffic and domain blacklisting. The was able to gain experience with the mechanics of HTTP/HTTPS proxying and domain blocking, as well as practical skills in traffic monitoring. Additionally, I gained insight into network performance optimization techniques and the real-world application of proxy servers in both security and performance contexts. 
 
-Testing domain blocking is important because it allowed me to simulate real-world scenarios where controlling access to certain online content is crucial. This is particularly valuable for improving network security, compliance, and productivity in environments like businesses, schools, or public networks. Domain blocking helps protect users from harmful websites, reduce distractions in work or study environments, and enforce organizational policies. I also liked the amount of information that the Squid logs offered when visualing them using Splunk. By utilizing both Squid Proxy and Splunk, it allows users to quickly identify patterns, security incidents, or user behavior, which can be critical for troubleshooting and forensics.
+Testing domain blocking is important because it allowed me to simulate real-world scenarios where controlling access to certain online content is crucial. This is particularly valuable for improving network security, compliance, and productivity in environments like businesses, schools, or public networks. Domain blocking helps protect users from harmful websites, reduce distractions in work or study environments, and enforce organizational policies. I also liked the amount of information that the Squid logs offered when visualizing them using Splunk. By utilizing both Squid Proxy and Splunk, it allows users to quickly identify patterns, security incidents, or user behavior, which can be critical for troubleshooting and forensics.
 
 In conclusion, Squid Proxy is a powerful tool for optimizing network performance, enhancing security, and managing internet access. Furthermore, its support for traffic monitoring and SSL inspection provides deep visibility into network activity, helping detect potential security threats and ensuring efficient use of resources.
 
