@@ -1,19 +1,19 @@
 # RITA
 
-RITA (Real Intelligence Threat Analytics), is a cybersecurity tool that helps organizations analyze and detect potential security threats in their networks. It uses advanced algorithms to process data and identify unusual patterns or behaviors that could indicate a security breach or attack. 
+RITA(Real Intelligence Threat Analytics), is a cybersecurity tool that helps organizations analyze and detect potential security threats in their networks. It uses advanced algorithms to process data and identify unusual patterns or behaviors that could indicate a security breach or attack. 
 
 ![Pasted image 20240914110553](https://github.com/user-attachments/assets/3c450f17-2b6d-4519-8afa-533061e903b0)
 
-Compatibility :
+Compatibility:
 
 ![Pasted image 20240914115025](https://github.com/user-attachments/assets/9e35e0f0-2fbf-43a9-b159-50c8388426d9)
 
 ### Scope:
 
-In this lab, I will be installing RITA and will be using it to anayze a pcap file containing suspicious network traffic. After RITA processes the pcap, I will be utilizing other tools such as Wireshark, VirusTotal, etc. to further analyze the malicious behavior. After completing this analysis, I will provide a summary of the findings, detailing the identified threats, their implications, and recommended actions for remediation. 
+In this lab, I will be installing RITA and will be using it to analyze a pcap file containing suspicious network traffic. After RITA processes the pcap, I will be utilizing other tools such as Wireshark, VirusTotal, etc. to further analyze the malicious behavior. After completing this analysis, I will provide a summary of the findings, detailing the identified threats, their implications, and recommended actions for remediation. 
 
 ### Tools and Technology:
-Ubuntu, Docker, Rita, Zeek, Virus Total, Wireshark, ans CyberChef
+Ubuntu, Docker, Rita, Zeek, Virus Total, Wireshark, and CyberChef
 
 ## Installation:
 
@@ -100,7 +100,7 @@ capinfos zeus_24hr.pcap
 
 ![Pasted image 20240914120933](https://github.com/user-attachments/assets/cbdc4242-aff2-442c-afd2-9bf422476cad)
 
-Based on the output, this is a 24 hour capture. I then processes the pca using Zeek:
+Based on the output, this is a 24-hour capture. I then processed the pcap using Zeek:
 
 ```
 zeek readpcap ~/Documents/pcaps/zeus_24hr.pcap ~/Documents/zeek-logs/
@@ -112,7 +112,7 @@ These were the logs that Zeek was able to generate:
 
 ## RITA
 
-After using zeek, I then imported the Zeek logs to Rita:
+After using Zeek, I then imported the Zeek logs to Rita:
 
 > [!TIP]
 > Getting help using Rita:
@@ -203,7 +203,7 @@ Based on the analysis done above and the investigation, below is the summary of 
 + Malware: Zeus
 + Connection Type: Reverse HTTP
 + C2 Platform: Cobalt Strike
-+ Host Payload Delivery Method: Powershell one-liner
++ Host Payload Delivery Method: PowerShell one-liner
 + Target Host/Victim: 192.168.99.53
 + C2 Server: 67.207.93.135
 + Beacon: 24 Hours
