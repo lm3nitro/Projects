@@ -14,7 +14,7 @@ Windows 7, SMB, Wireshark, John the Ripper, Mimikatz, Hashcat, Linux, Metasploit
 
 ## Getting Started
 
-To get started, I used my Linux VM and ran an nmap scan against a Windows 7 VM in my network on 192.168.91.137:
+To get started, I used my Linux VM and ran a nmap scan against a Windows 7 VM in my network on 192.168.91.137:
 
 ![Pasted image 20240430150728](https://github.com/lm3nitro/Projects/assets/55665256/4c844034-1d00-45f5-aece-fc84dd32fecc)
 
@@ -36,11 +36,11 @@ Zoomed in to see the vulnerability better:
 
 ## Nessus
 
-Using namp above, I was able to see that the host was vulernable to CVE-2017-0143. Knowing this, I wanted to further confirm and used tenable to run a scan against the host and see what it could find. Tenable was able to find 2 critical vulenrabilities and 1 high:
+Using Nmap above, I was able to see that the host was vulnerable to CVE-2017-0143. Knowing this, I wanted to further confirm and used tenable to run a scan against the host and see what it could find. Tenable was able to find 2 critical vulernabilities and 1 high:
 
 ![Pasted image 20240430125818](https://github.com/lm3nitro/Projects/assets/55665256/d8eb4157-fced-4087-a586-b6e431edcc02)
 
-Lookign further into the vulnerability using tenable, this matches what we found above wiht nmap:
+Looking further into the vulnerability using tenable, this matches what we found above with Nmap:
 
 ![Pasted image 20240430125946](https://github.com/lm3nitro/Projects/assets/55665256/4d24cee6-82ae-4b9f-98d0-1ce40afaf672)
 
@@ -62,7 +62,7 @@ Executing the exploit:
 
 ![Pasted image 20240430133353](https://github.com/lm3nitro/Projects/assets/55665256/a3893b46-0d83-4071-ac52-b7643cd28f40)
 
-HOST and LHOST are parameters that define network targets and your own system's settings. RHOST is the target system and LHOST is my linux machine (attacking system):
+HOST and LHOST are parameters that define network targets and your own system's settings. RHOST is the target system and LHOST is my Linux machine (attacking system):
 
 set RHOST 192.168.91.137
 set LHOST 192.168.91.134
@@ -85,7 +85,7 @@ Looking further into the traffic related to the exploit:
 
 ## Remote Session
 
-The exploit successfully compromised the target which created a reverse shell. In the screenshot below, I was given the option to upgrade Meterpreter shell, this is optional nad not needed. 
+The exploit successfully compromised the target which created a reverse shell. In the screenshot below, I was given the option to upgrade Meterpreter shell, this is optional and not needed. 
 
 ![Pasted image 20240430141151](https://github.com/lm3nitro/Projects/assets/55665256/7da1055c-2225-4b7e-a998-a2129f24fdd6)
 
@@ -105,19 +105,19 @@ I then created a directory with this sanme users name under Desktop:
 
 ![Pasted image 20240430142553](https://github.com/lm3nitro/Projects/assets/55665256/86326d78-c2cb-4386-be07-6af2699bf3a3)
 
-On the windows 7 box, I was able to se that the directory called lm3nitro was indeed created:
+On the windows 7 box, I was able to see that the directory called lm3nitro was indeed created:
 
 ![Pasted image 20240430142453](https://github.com/lm3nitro/Projects/assets/55665256/b3a48d82-9cee-40f1-b65e-eaf8b5024d02)
 
 I was also able to see the reverse shell connection that had been established. 
 
-## Dumping the hash and Cracking it
+## Dumping the hash and cracking it
 
-Now that I know that there is a user by the name lm3nitro, I wanted to crack the users password. To do this, I first used hashdump:
+Now that I know that there is a user by the name lm3nitro, I wanted to crack the user's password. To do this, I first used `hashdump`:
 
 ![Pasted image 20240430145228](https://github.com/lm3nitro/Projects/assets/55665256/2649f103-281e-49e6-a44a-7be91ddba771)
 
-With the provided information from hashdump, I creating a file to crack it with John the Ripper:
+With the provided information from `hashdump`, I created a file to crack it with John the Ripper:
 
 ![Pasted image 20240430145322](https://github.com/lm3nitro/Projects/assets/55665256/dfab06df-d70f-4b52-b697-7cd559552dd7)
 
@@ -154,7 +154,7 @@ All the credentials, including the username and password for lm3nitro:
 
 ## Remote Desktop
 
-Now that I have the credentails, I use Remote Desktop to login:
+Now that I have the credentials, I use Remote Desktop to login:
 
 ![Pasted image 20240430151932](https://github.com/lm3nitro/Projects/assets/55665256/199e2404-476d-4db3-b72d-1063a559af6a)
 
@@ -168,6 +168,6 @@ Listing the established connections:
 
 ### Summary:
 
-In this exercise, I was able to identify a vulenrability, exploit it, and understand the implications of a successful attack, as well as techniques for credential extraction and network traffic analysis. This allowed me to to better understand the entire penetration testing process, from reconnaissance to exploitation and post-exploitation. 
+In this exercise, I was able to identify a vulnerability, exploit it, and understand the implications of a successful attack, as well as techniques for credential extraction and network traffic analysis. This allowed me to better understand the entire penetration testing process, from reconnaissance to exploitation and post-exploitation. 
 
-This exercise also demontrated the necessity of maintaining systems that are patched and up-to-date as a way to mitigate vulnerabilities and reduce the risk and attack surface of exploitation by adversaries.
+This exercise also demonstrated the necessity of maintaining systems that are patched and up-to-date as a way to mitigate vulnerabilities and reduce the risk and attack surface of exploitation by adversaries.
