@@ -7,14 +7,14 @@ SMTP, or Simple Mail Transfer Protocol, is a protocol used for sending emails ac
 ![Pasted image 20241003090610](https://github.com/user-attachments/assets/8309fba5-8b70-4747-9589-719cd4a3c934)
 
 ### Scope:
-In this exercise, I will be perfomring enumeration on a SMTP server to verify ports and possible misconfigurations. With the provided information from the enumeration, I will use Hydra to crack the password of one of the users and use those credentials to SSH into the server. 
+In this exercise, I will be performing enumeration on a SMTP server to verify ports and possible misconfigurations. With the provided information from the enumeration, I will use Hydra to crack the password of one of the users and use those credentials to SSH into the server. 
 
 ### Tools and Technology:
 Linux, Metasploit, Telnet, Nmap, Wireshark and SMTP
 
 ## Enumeration:
 
-First, I used nmap to scan against the target host and gather information on ports and services:
+First, I used Nmap to scan against the target host and gather information on ports and services:
 
 ```
 nmap -sV -sC 10.10.246.91 -nnvvv
@@ -30,13 +30,13 @@ nmap --script smtp* -p 25 10.10.246.91 -nnvvv
 
 ![Pasted image 20241003093718](https://github.com/user-attachments/assets/eaf98569-4000-4f77-9362-9e3b01f4dc3d)
 
-I can see that there is a vulnerability (CVE-2010-4344). Knowing this, I took a closer look into the vulenrability:
+I can see that there is a vulnerability (CVE-2010-4344). Knowing this, I took a closer look into the vulnerability:
 
 ![Pasted image 20241003093831](https://github.com/user-attachments/assets/83a0a6b4-ef49-418e-b832-fd192341d2f1)
 
 ## Telnet:
 
-Another way to query the STMP service it using telnet. Using Telnet will indicate whether the specified username exists: a response code of 252 means the user exists, and a 550 code indicates the user is unknown.
+Another way to query the STMP service is using telnet. Using Telnet will indicate whether the specified username exists: a response code of 252 means the user exists, and a 550 code indicates the user is unknown.
 
 ![Pasted image 20241003093336](https://github.com/user-attachments/assets/0694813a-c3a7-48c1-8f9a-285d1179e49b)
 
@@ -50,7 +50,7 @@ A look into one of the packets:
 
 ## Detecting SMTP Enumeration:
 
-While looking at the netwrok traffic, its important to also note how this traffic looks and indicators of enumeration that might be occurring. In this case I am performing the enumeration myself, but its impotant to detect these patterns as they can help in identifying potential security threats early.
+While looking at the network traffic, it's important to also note how this traffic looks and indicators of enumeration that might be occurring. In this case I am performing the enumeration myself, but its important to detect these patterns as they can help in identifying potential security threats early.
 
 Filters:
 + smtp.req.parameter
@@ -119,7 +119,7 @@ Below is the information I was was able to gather from the enumeration:
 
 ## Exploiting SMTP:
 
-In order to exploit the SMTP server, I will be using Hydra. Hydra, is a popular password-cracking tool that allows users to perform brute-force attacks on various services. 
+In order to exploit the SMTP server, I will be using Hydra. Hydra is a popular password-cracking tool that allows users to perform brute-force attacks on various services. 
 
 ![Pasted image 20241003103939](https://github.com/user-attachments/assets/bcf3a888-263e-4458-b78e-cc5c3314c47f)
 
@@ -153,7 +153,7 @@ I was able to successfully login to the server!
 
 ## Detecting 
 
-As previosuly stated, its also important to take note of the traffic that is happening while these enumeration and pasword cracking techniques are used so that these types of attacks can more easily be detected. Below are indicators of attack and enumeration that I found are important:
+As previously stated, it's also important to take note of the traffic that is happening while these enumeration and password cracking techniques are used so that these types of attacks can more easily be detected. Below are indicators of attack and enumeration that I found are important:
 
 1. ERROR_SSH_KEY_EXCHANGE_FAILED
 + code: 103 (0x0067)
@@ -171,10 +171,10 @@ As previosuly stated, its also important to take note of the traffic that is hap
 + code: 101 (0x0065)
 + Connection was rejected by remote host
 
-I also noticed that there were many connection with a very short duration. This can also indicate an anomoly on the server:
+I also noticed that there were many connections with a very short duration. This can also indicate an anomaly on the server:
 
 ![Pasted image 20241003110347](https://github.com/user-attachments/assets/bc73fc40-c769-4121-9211-2c7af6347ee3)
 
 ### Summary:
 
-In this exercise, I was able to perform enumeration on a SMTP server. The information gathered from the enumeration provided information including one of the usernames. I then used this information and used **Hydra** to find the complete user credentials. Hydra was able to crack the password and I was able to login to the server via SSH. Performing these steps also demontrated the importance of verifying server configurations are correct and to regularly review them to avoid misconfigurations that could expose vulnerabilities. In order to protect against these types of exploitation, it's important to implement strong authentication methods and use TLS encryption to secure email communications. 
+In this exercise, I was able to perform enumeration on a SMTP server. The information gathered from the enumeration provided information including one of the usernames. I then used this information and used **Hydra** to find the complete user credentials. Hydra was able to crack the password, and I was able to login to the server via SSH. Performing these steps also demonstrated the importance of verifying server configurations are correct and to regularly review them to avoid misconfigurations that could expose vulnerabilities. In order to protect against these types of exploitation, it's important to implement strong authentication methods and use TLS encryption to secure email communications. 
