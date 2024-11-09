@@ -4,7 +4,7 @@
 
 ### Scenario:
 
-I set up a personal home network, but forgot the Wi-Fi password after changing it a few months ago. To get the password, I will be conducting a controlled experiment to crack my own Wi-Fi password using ethical hacking techniques. This scenario serves as an important learning experience, demonstrating the ethical implications of hacking practices, the necessity of maintaining robust security measures, and how practical exercises can enhance your knowledge and skills in cybersecurity.
+I set up a personal home network but forgot the Wi-Fi password after changing it a few months ago. To get the password, I will be conducting a controlled experiment to crack my own Wi-Fi password using ethical hacking techniques. This scenario serves as an important learning experience, demonstrating the ethical implications of hacking practices, the necessity of maintaining robust security measures, and how practical exercises can enhance your knowledge and skills in cybersecurity.
 
 ### Tools and Technologies:
 Linux VM, Airodump, Aircrack-ng, and Wireshark
@@ -34,7 +34,7 @@ Downloaded the drivers:
 Compiled and installed the drivers:
 
 ```
-make && make isntall
+make && make install
 ```
 ![Pasted image 20240506143809](https://github.com/lm3nitro/Projects/assets/55665256/76c734e3-a443-473f-8e05-a764358a024f)
 
@@ -77,7 +77,7 @@ Configuring the interface in monitor mode:
 ![Pasted image 20240506153617](https://github.com/lm3nitro/Projects/assets/55665256/64168ca7-1678-4883-91ca-1eb5c8d667fb)
 
 ```
-iwconfig
+ifconfig
 ```
 
 ![Pasted image 20240506145245](https://github.com/lm3nitro/Projects/assets/55665256/b378b673-3e01-4538-b558-fc46214d9a22)
@@ -122,7 +122,7 @@ This attack exploits the IEEE 802.11 Wi-Fi standard, specifically the management
 
 ![Pasted image 20240506171759](https://github.com/lm3nitro/Projects/assets/55665256/37d1fd5f-aed5-4a3a-ae09-5a6a4366881c)
 
-Getting the hanshake:
+Getting the handshake:
 
 ![Pasted image 20240506203706](https://github.com/lm3nitro/Projects/assets/55665256/b24f592b-21af-4382-aa52-e6985de8ca51)
 
@@ -157,8 +157,8 @@ Traffic analysis refers to inspecting the captured/stored WiFi traffic to gather
 
 Here a few things that you can do with wireless traffic analysis:
 
- + Analyzing WiFi traffic to identify WiFi networks and clients
- + Different WiFi frames and frame structure
+ + Analyzing Wi-Fi traffic to identify Wi-Fi networks and clients
+ + Different Wi-Fi frames and frame structure
  + Checking client AP connection/disconnection, WPA handshake and SAE handshake
  + Observing the difference between different types of security schemes
  + Identify evil twins and impersonating client from traffic captures
