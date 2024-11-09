@@ -8,7 +8,7 @@ In this exercise, I will install nfdump and utilize nfcapd to capture and store 
 
 ### Tools and Technology:
 
-nfdump/nfcapd, Cisco Netflow, and Linux
+nfdump/nfcapd, Cisco NetFlow, and Linux
 
 ## Getting Started
 
@@ -24,7 +24,7 @@ Next, I created a directory where all the NetFlow data will be stored, in my cas
 
 ## Capturing NetFlow Data
 
-I had previosly configured my Cisco router to capture Netflow data and send the data to my Linux instance. I used tcpdump in the command below to verify that I was receiving data from the lm3nitro-r1 router:
+I had previously configured my Cisco router to capture NetFlow data and send the data to my Linux instance. I used tcpdump in the command below to verify that I was receiving data from the lm3nitro-r1 router:
 
 ![Pasted image 20240527142135](https://github.com/lm3nitro/Projects/assets/55665256/0506a4a2-0150-4bd1-ad76-5a54bd125205)
 
@@ -46,7 +46,7 @@ systemctl status nfdump
 
 ![Pasted image 20240527185750](https://github.com/lm3nitro/Projects/assets/55665256/55342320-3783-4c9d-9116-b1fa4aad9885)
 
-After verifying the aboce, I also checked that I had data under the directory I created above (/var/flows/lm3nitro-r1):
+After verifying the above, I also checked that I had data under the directory I created above (/var/flows/lm3nitro-r1):
 
 ![Pasted image 20240527141756](https://github.com/lm3nitro/Projects/assets/55665256/f11adfed-6ff2-47e2-89a4-311907bd45d3)
 
@@ -55,9 +55,9 @@ After verifying the aboce, I also checked that I had data under the directory I 
 
 ## Analysis
 
-Once everything was set up and I was able to see that I had netflow data in my directory, I ran the following queries to analyze the information that was getting collected. Please note, some of these are included for informational puposes as well. 
+Once everything was set up and I was able to see that I had NetFlow data in my directory, I ran the following queries to analyze the information that was getting collected. Please note, some of these are included for informational purposes as well. 
 
-1. THe following can be used to read information from a specific file, note the `I` is optional. The `I` displays the flow records in a human-readable format:
+1. The following can be used to read information from a specific file, note the `I` is optional. The `I` displays the flow records in a human-readable format:
    
 ```
 nfdump -I -r nfcapd.202405271826
@@ -167,5 +167,5 @@ nfdump -r /var/flows/nfcapd.2024052949 -o csv > /var/log/netflow/mycsvfile.csv
 
 ### Summary:
 
-In this lab, I was able to configure use nfdump and nfcapd to analyze netflow data being received from my Cisco router. This configuration provides deep insights into network traffic patterns, usage behaviors, and potential security threats, which are crucial for effective network management and security. This project allowed me to gain hands-on experience with flow data analysis, helping to strengthen my practical skills in traffic monitoring. Through the analysis of NetFlow data, I was able to learn how to identify high-traffic sources, detect anomalies, and assess the performance of network services. The queries used above presents details and information that can be used to investigate specific traffic characteristics, such as source and destination IPs, ports, and protocols, helping to spot trends, detect possible security issues, and ensure best practices are followed.
+In this lab, I was able to configure use nfdump and nfcapd to analyze NetFlow data being received from my Cisco router. This configuration provides deep insights into network traffic patterns, usage behaviors, and potential security threats, which are crucial for effective network management and security. This project allowed me to gain hands-on experience with flow data analysis, helping to strengthen my practical skills in traffic monitoring. Through the analysis of NetFlow data, I was able to learn how to identify high-traffic sources, detect anomalies, and assess the performance of network services. The queries used above presents details and information that can be used to investigate specific traffic characteristics, such as source and destination IPs, ports, and protocols, helping to spot trends, detect possible security issues, and ensure best practices are followed.
 
