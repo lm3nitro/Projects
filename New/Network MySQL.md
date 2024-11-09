@@ -71,9 +71,9 @@ A closer look at the error:
 > [!IMPORTANT]  
 > There are common errors related to MySQL:
 > + Error 1043: Often related to using the wrong protocol or an incompatible version.
-> + Error 1045: Typically due to incorrect username or password.
+> + Error 1045: Typically, due to incorrect username or password.
 > + Error 2002: Indicates that the MySQL server is not responding or cannot be found.
-> + Error 1146: Usually means that the pecified table does not exist in the database.
+> + Error 1146: Usually means that the specified table does not exist in the database.
 
 <!-- This is commented out.
 ## MySQL Client:
@@ -98,7 +98,7 @@ mysql -h 10.10.137.40 -u root -p "password"
 
 ![Pasted image 20241003132013](https://github.com/user-attachments/assets/146172de-0367-4580-a533-618019a14fb9)
 
-Mtasploit contains a variety of modules that can be used to enumerate MySQL databases, making it easy to gather valuable information. To start, I will be using the he mysql_version module, as its name implies, it scans a host or range of hosts to determine the version of MySQL that is running. I have previsously done this using nmap, but wanted to cover different tools that can be used. 
+Metasploit contains a variety of modules that can be used to enumerate MySQL databases, making it easy to gather valuable information. To start, I will be using the the mysql_version module, as its name implies, it scans a host or range of hosts to determine the version of MySQL that is running. I have previously done this using Nmap but wanted to cover different tools that can be used. 
 
 ```
 use auxiliary/scanner/mysql/mysql_version
@@ -126,9 +126,9 @@ The ouput:
 
 ![Pasted image 20241003140121](https://github.com/user-attachments/assets/7ad9f83d-7766-457a-809c-cd5b54d7e815)
 
-The same results as nmap, it was also able to identify the MySQL version, in this case version 5.7.29.
+The same results as Nmap, it was also able to identify the MySQL version, in this case version 5.7.29.
 
-While performing this enumeration, I also had Wireshark running in the back end, and I was able to capture the same informaiton as previously captured:
+While performing this enumeration, I also had Wireshark running in the back end, and I was able to capture the same information as previously captured:
 
 5.7.29-0ubuntu0.18.04.1
 
@@ -207,14 +207,14 @@ Now that I was able to find the password, I then tested the credentials via SSH 
 ssh carl@10.10.137.40
 ```
 
-After using SSh and entering the credentials, I was able to authenticate as the user Carl. 
+After using SSH and entering the credentials, I was able to authenticate as the user Carl. 
 ![Pasted image 20241003144429](https://github.com/user-attachments/assets/920c8bd5-4e75-4d64-88cd-ca77503f2d9b)
 
 ### Summary:
 
 In conclusion, I was able to enumerate the MySQL server using both **nmap** and **metasploit** which provided me with a series of information such as the version running, ports that were opened, list of databases, and a list of password hashes. Using this information, I was then able to exploit the MySQL server by copying the hashes and using **John the Ripper** to find the password for the user Carl. Once I had the password, I was then able to SSH into the server as the user. 
 
-Overall, enumeration is critical becuase it allows you to gather detailed information about a target system, network, or application. Some key benefits are:
+Overall, enumeration is critical becasue it allows you to gather detailed information about a target system, network, or application. Some key benefits are:
 
 + Identifying Vulnerabilities
 + Understanding Attack Surface
