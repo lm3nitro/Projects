@@ -1,4 +1,4 @@
-# Cisco Netflow Configuration
+# Cisco NetFlow Configuration
 
 <img width="403" alt="Screenshot 2024-10-05 at 3 25 54 PM" src="https://github.com/user-attachments/assets/f681b7a5-e2e1-4965-802e-7fdb1fcaaf80">
 
@@ -8,7 +8,7 @@ NetFlow tracks key metrics for each flow, including the number of packets sent, 
 
 ### Scope:
 
-In this lab, I will demonstrate the process of configuring NetFlow v9 on a Cisco IOS router, detailing how to enable and monitor network flows to gain insights into traffic patterns. This will be Part 1 of this lab where I will configuring the router to collect and export netflow data. In part 2, I will setting up a NetFlow collector (SiLK), and analyzing flow metrics to interpret traffic trends, which is critical for network monitoring and security.
+In this lab, I will demonstrate the process of configuring NetFlow v9 on a Cisco IOS router, detailing how to enable and monitor network flows to gain insights into traffic patterns. This will be Part 1 of this lab where I will be configuring the router to collect and export Netlow data. In part 2, I will be setting up a NetFlow collector (SiLK), and analyzing flow metrics to interpret traffic trends, which is critical for network monitoring and security.
 
 ### Tools and Technology
 
@@ -32,7 +32,7 @@ First thing is to boot up the router:
 
 ![Pasted image 20240527105109](https://github.com/lm3nitro/Projects/assets/55665256/7173568f-5a92-42d8-a8a9-59c0e7ce0ee6)
 
-Informaiton on the model and license:
+Information on the model and license:
 
 ![Pasted image 20240527105321](https://github.com/lm3nitro/Projects/assets/55665256/1f494a16-2834-443d-83f7-6ca187c8307c)
 
@@ -62,7 +62,7 @@ show ip dhcp binding
 
 ## NetFlow configuration:
 
-To configure netflow, I first created a NetFlow profile to assign the IP of the NetFlow collector and the source IP of the interface I wanted to collect from as well as the port:
+To configure NetFlow, I first created a NetFlow profile to assign the IP of the NetFlow collector and the source IP of the interface I wanted to collect from as well as the port:
 
 ```
 flow exporter lm3nitro_netflow
@@ -75,11 +75,11 @@ Then I configured a monitoring interface:
 
 ```
 flow monitor lm3nitro_monitor
- exporter lm3nitro_netflow
- record netflow ipv4 original-input
+exporter lm3nitro_netflow
+record netflow ipv4 original-input
 ```
 
-This is the current output from the running configuration :
+This is the current output from the running configuration:
 
 ![Pasted image 20240527114210](https://github.com/lm3nitro/Projects/assets/55665256/180b9ced-7c5c-4004-8fc9-fdd5262647ed)
 
@@ -92,7 +92,7 @@ This is the current output from the running configuration :
 I then applied the monitoring NetFlow profile called "lm3nitro_monitor" to an interface:
 
 > [!IMPORTANT]  
-> Note: The command needs to be apply on the actual interface.
+> Note: The command needs to be applied on the actual interface.
 
 ```
 ip flow monitor lm3nitro_monitor input
@@ -165,14 +165,14 @@ sh ip nat translations
 
 ![Pasted image 20240527124225](https://github.com/lm3nitro/Projects/assets/55665256/f2b76dce-f920-4042-9c7c-e7bbd2ac084f)
 
-Let's look at the Netflow cache entries again, now we have some entries:
+Let's look at the NetFlow cache entries again, now we have some entries:
 
 ![Pasted image 20240527125355](https://github.com/lm3nitro/Projects/assets/55665256/794f47d6-b83d-4482-bbe0-0e0e21bfbdb4)
 
 Tracking flows on Gi0/0 interface:
 
 > [!NOTE]  
-> The ip route-cache flow command  will track all ingress flows on the physical interface and all sub-interfaces. You can also use the ip flow egress or ip flow ingress commands if you only want to enable it on one sub-interface or in one direction.
+> The IP route-cache flow command will track all ingress flows on the physical interface and all sub-interfaces. You can also use the IP flow egress or IP flow ingress commands if you only want to enable it on one sub-interface or in one direction.
 
 ![Pasted image 20240527132357](https://github.com/lm3nitro/Projects/assets/55665256/cd41312d-f79c-46bb-85f4-43c188dba955)
 
@@ -214,7 +214,7 @@ interface Gi0/0
 
 From this lab, I learned how to effectively configure and utilize NetFlow v9on a Cisco router, gaining practical experience in network monitoring and traffic analysis. This reinforced the importance of understanding network behavior for effective troubleshooting and performance optimization, as well as the value of centralized data collection for informed decision-making.
 
-Having a router configured with netflow provides deep visibility into network performance which allows us to track and analyze traffic patterns in real time. This visibility is essential for identifying bandwidth issues, understanding application usage, and detecting anomalies or security threats, which can help mitigate risks before they escalate into significant issues.
+Having a router configured with NetFlow provides deep visibility into network performance which allows us to track and analyze traffic patterns in real time. This visibility is essential for identifying bandwidth issues, understanding application usage, and detecting anomalies or security threats, which can help mitigate risks before they escalate into significant issues.
 
 This lab is continue in part 2 **Cisco Netflow to SiLK**
 
