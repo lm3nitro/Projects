@@ -6,7 +6,7 @@ Sendmail is a lightweight, command line SMTP email client. If you have the need 
 
 ## Introduction
 
-## Installing SendMail
+## Installing Sendmail
 
 To get started, I will be installing Sendmail:
 
@@ -45,12 +45,12 @@ nano gmail-auth
 ![Pasted image 20241017142512](https://github.com/user-attachments/assets/723b3910-cb71-4f99-8177-72db80877375)
 
 > [!NOTE]  
-> The gmail-auth.db file show on the screenshot above is a file that is created only after the configuration parameter has been passed to the file /etc/mail/sendmail.mc under MAILER_DEFINITIONS and then executing the make -C /etc/mail witch will rebuild the configuration using the parameter specify. 
+> The gmail-auth.db file show on the screenshot above is a file that is created only after the configuration parameter has been passed to the file /etc/mail/sendmail.mc under MAILER_DEFINITIONS and then executing the make -C /etc/mail which will rebuild the configuration using the parameter specify. 
 
 Inside this file, I pasted the following template and then edited with my own information. Specifically, entering my Gmail address and app password. 
 
 > [!IMPORTANT]  
-> I already had an app password configured in my gmail account. If you plan to do this for yourself, this will be needed. I provided information on this process under **SSMTP.md**
+> I already had an app password configured in my Gmail account. If you plan to do this for yourself, this will be needed. I provided information on this process under **SSMTP.md**
 
 This is the syntax I used:
 
@@ -182,4 +182,4 @@ I can see that I have received email:
 
 ## Summary:
 
-I included the troubleshooting section because when I originally configured Sendmail, I was getting an error and wanted to share what I was able to do to resolve the error and issue I encountered. Overall, Sendmail has a wide variety of features that make it user friendly. In installing and configuring Sendmail, I was able to send an automated email directly from the command line. Sending emails from the CLI enhances efficiency, and allows you to manage email tasks effectively within a workflow.
+I included the troubleshooting section because when I originally configured Sendmail, I was getting an error and wanted to share what I was able to do to resolve the error and issue I encountered. Overall, Sendmail has a wide variety of features that make it user friendly. In installing and configuring Sendmail, I was able to send an automated email directly from the command line. Sending emails from the CLI enhances efficiency and allows you to manage email tasks effectively within a workflow.
