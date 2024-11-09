@@ -15,7 +15,7 @@ Response Behavior:
 
 ### Analysis:
 
-Lets take a look to see what this looks like in a pcap and how we can identify it. 
+Let's take a look to see what this looks like in a pcap and how we can identify it. 
 
 ```
 tcpdump -nr threat_actor.pcap ! 'tcp[13] & 32!=0' or 'tcp[13] & 1!=0' -c 10
