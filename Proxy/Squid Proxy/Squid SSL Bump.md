@@ -16,7 +16,7 @@ Network diagram:
 ![Pasted image 20240607185534](https://github.com/lm3nitro/Projects/assets/55665256/a3cde0e0-8eac-4f5d-a8b3-9411054d3796)
 
 Note:
-I'm going to be installing a feature of  squid called "Squid-in-the-middle" for  decryption and encryption of straight CONNECT and transparently redirected SSL traffic, using configurable self-signed CA certificate.
+I'm going to be installing a feature of squid called "Squid-in-the-middle" for  decryption and encryption of straight CONNECT and transparently redirected SSL traffic, using configurable self-signed CA certificate.
 
 ## Installing Squid Proxy
 
@@ -153,7 +153,7 @@ make install
 
 ![Pasted image 20240605221347](https://github.com/lm3nitro/Projects/assets/55665256/889acb4a-4a10-4374-8956-017aee583ba5)
 
-Once that completed, I went back to the certificates directory: `/tmp/ssl_cert`. I then copied the certificates previously created to the Squid Proxy directory:
+Once that completed, I went back to the certificate's directory: `/tmp/ssl_cert`. I then copied the certificates previously created to the Squid Proxy directory:
 
 ```
 cp -rf /tmp/ssl_cert /usr/local/squid/etc/ssl_cert
@@ -177,7 +177,7 @@ update-ca-certificates
 
 ## Squid Configuration:
 
-In order to configure the Squid Proxy, I first edited the `Squid.conf` file. I added the follwing lines:
+In order to configure the Squid Proxy, I first edited the `Squid.conf` file. I added the following lines:
 
 ```
 acl intermediate_fetching transaction_initiator certificate-fetching
@@ -257,7 +257,7 @@ tail -f /usr/local/squid/var/logs/cache.log
 Verified the access log:
 
 > [!IMPORTANT]  
-> There is no log currently. This is because I have not yet configured the the Windows client with the proxy information. However, the commadn to check would be the following:
+> There is no log currently. This is because I have not yet configured the Windows client with the proxy information. However, the command to check would be the following:
 > ```tail -f /usr/local/squid/var/logs/access.log```
 
 > [!NOTE]
@@ -284,7 +284,7 @@ ps -aux | grep 109564
 
 ## Windows Client
 
-After compeltignthe configuration for Squid, I then procced to set-up my Windows 10 VM and configure it to use the proxy:
+After completing the configuration for Squid, I then procced to set-up my Windows 10 VM and configure it to use the proxy:
 
 1. I first downloaded the certificates to the Windows client:
 
@@ -292,13 +292,13 @@ After compeltignthe configuration for Squid, I then procced to set-up my Windows
 
 ![Pasted image 20240606000152](https://github.com/lm3nitro/Projects/assets/55665256/896346b5-200b-4f45-8942-d524aece9cd8)
 
-2. I then verified the IP address of the Squid Proxy and entered the inforamtion into the Proxy Windows system settings:
+2. I then verified the IP address of the Squid Proxy and entered the information into the Proxy Windows system settings:
 
 ![Pasted image 20240606000533](https://github.com/lm3nitro/Projects/assets/55665256/f2c9068c-6855-45ae-85f1-d53e1c59053e)
 
 ![Pasted image 20240606000605](https://github.com/lm3nitro/Projects/assets/55665256/c100b96a-08f2-4e1e-bcc8-d78917462f1e)
 
-3. Once the inforamtion was entered, I verified the connection status from the Windows client:
+3. Once the information was entered, I verified the connection status from the Windows client:
 
 ![Pasted image 20240606002736](https://github.com/lm3nitro/Projects/assets/55665256/d58af6d2-984f-4b28-8e54-3dbe2e8661fd)
 
@@ -312,11 +312,11 @@ To test, I generated traffic on the Windows client. I went to `lichess.org` to t
 
 ![Pasted image 20240606004834](https://github.com/lm3nitro/Projects/assets/55665256/3d20665e-a764-410f-9df1-363f38f543ce)
 
-Verifed the certificate, confirmed that everything was working as expected:
+Verified the certificate, confirmed that everything was working as expected:
 
 ![Pasted image 20240606010804](https://github.com/lm3nitro/Projects/assets/55665256/fe40ddec-5939-47e4-a4fa-2c7fb9de8cd7)
 
-While testing, I also had Wireshark running in the backgrounf and was able to confirm the Windows client was indeed using the Squid Proxy:
+While testing, I also had Wireshark running in the background and was able to confirm the Windows client was indeed using the Squid Proxy:
 
 ![Pasted image 20240606003952](https://github.com/lm3nitro/Projects/assets/55665256/f5fe00e1-c607-46e4-83f9-ec7b35654d73)
 
@@ -336,7 +336,7 @@ The version that Wireshark is showing also matches the version installed:
 
 ![Pasted image 20240606004627](https://github.com/lm3nitro/Projects/assets/55665256/0db23a17-b0a5-4d19-a22e-bd2cf1b35de1)
 
-In order to further test, I exported HTTP objects from the `lichess.org` traffic for further analysis :
+In order to further test, I exported HTTP objects from the `lichess.org` traffic for further analysis:
 
 ![Pasted image 20240606005510](https://github.com/lm3nitro/Projects/assets/55665256/28c0e1b6-de2e-420d-aedb-d9721ca42503)
 
@@ -346,7 +346,7 @@ Exported objects:
 
 ## Test 2
 
-As another test, I wanted to test donwloading and see how the traffic is seen when using the proxy. For this test, I downloaded Firefox:
+As another test, I wanted to test downloading and see how the traffic is seen when using the proxy. For this test, I downloaded Firefox:
 
 ![Pasted image 20240606011922](https://github.com/lm3nitro/Projects/assets/55665256/cd8cb294-8863-411f-8182-e8eb960e4c6c)
 
@@ -413,17 +413,17 @@ xxd squid/00/09/0000097A | grep -iE  'installer|exe|dos'
 
 ## Test 3
 
-Next, I disabeld the proxy setting on the Windows client:
+Next, I disabled the proxy setting on the Windows client:
 
 ![Pasted image 20240606100136](https://github.com/lm3nitro/Projects/assets/55665256/e9570f58-8652-47cf-93aa-3c2b2a342903)
 
-It’s important to note that the WinAPI enables proxy access for all 'proxy-capable' applications on the operating system, allowing them to route traffic through the proxy.
+It’s important to note that the Win API enables proxy access for all 'proxy-capable' applications on the operating system, allowing them to route traffic through the proxy.
 
 Even though I disabled the proxy setting on the Windows client, I am still seeing traffic going to Microsoft even though I didn't browse to the Microsoft website:
 
 ![Pasted image 20240606110825](https://github.com/lm3nitro/Projects/assets/55665256/b742a48e-48a9-422d-9550-5513d79f3ce6)
 
-In order to fix that, I installed a browser that doesn't use the WinAPI. I will then need to block all the traffic at the firewall level from this Windows client. Firefox has a separate API for the application and does not use WinAPI. I then configured the proxy settings in Firefox:
+In order to fix that, I installed a browser that doesn't use the Win API. I will then need to block all the traffic at the firewall level from this Windows client. Firefox has a separate API for the application and does not use Win API. I then configured the proxy settings in Firefox:
 
 ![Pasted image 20240606095903](https://github.com/lm3nitro/Projects/assets/55665256/7524db31-3b81-4c62-99c0-0c06e6863a93)
 
@@ -447,7 +447,7 @@ Firewall logs allowing the Proxy traffic:
 
 ![Pasted image 20240606110439](https://github.com/lm3nitro/Projects/assets/55665256/c70d19a4-99a4-49e6-8cb8-727af352b520)
 
-Now, the firewall is blocking all the traffic generated from the Windows client (IP 10.10.100.101) that is using WinAPI to go outbound and not passing through the proxy. By doing this, I am enforcing the proxy policy and using only the Firefox app to go outbound to the internet.
+Now, the firewall is blocking all the traffic generated from the Windows client (IP 10.10.100.101) that is using Win API to go outbound and not passing through the proxy. By doing this, I am enforcing the proxy policy and using only the Firefox app to go outbound to the internet.
 
 > [!NOTE]  
 > Optional: Disabling Squid Cache:
@@ -506,7 +506,7 @@ Testinf time! I attempted to go to `lichess.org` and `chess.com`:
 
 ![Pasted image 20240606171917](https://github.com/lm3nitro/Projects/assets/55665256/626a8545-21e8-4039-a369-e93967a5186c)
 
-I can asee that the access was denied and that the domains were trully being blocked. I then also looked at Squid's logs and could also see taht that the traffic was getting blocked:
+I can see that the access was denied and that the domains were truly being blocked. I then also looked at Squid's logs and could also see that the traffic was getting blocked:
 
 ```
 tail  -f /usr/local/squid/var/logs/access.log | grep -E  "lichess|chess"
@@ -530,7 +530,7 @@ In order to monitor the network traffic, I will be using `nload, htop and tcptra
 
 + htop: This is an interactive process viewer that is widely used for monitoring system resources, managing processes, and providing insights into the overall health and performance of a system.
 
-+ tcptrack: This command line tool allows you to to view active TCP connections, along with detailed information about each connection, such as the source and destination IP addresses, ports, connection status, and data transfer statistics.
++ tcptrack: This command line tool allows you to view active TCP connections, along with detailed information about each connection, such as the source and destination IP addresses, ports, connection status, and data transfer statistics.
 
 Installing nload:
 
@@ -649,7 +649,7 @@ ClamAV was able to find the 2 infected files that were downloaded.
 
 ### Summary:
 
-This exercise provided me wtih hands-on experience with traffic interception, content filtering, and device hardening. I was able to learn how to manage and inspect encrypted traffic and block harmful domains by using a proxy. This experience also allowed me to better understand the role of proxy servers in network security, as well as learning to fine-tune configurations for optimal performance and safety. 
+This exercise provided me with hands-on experience with traffic interception, content filtering, and device hardening. I was able to learn how to manage and inspect encrypted traffic and block harmful domains by using a proxy. This experience also allowed me to better understand the role of proxy servers in network security, as well as learning to fine-tune configurations for optimal performance and safety. 
 
 Below are some key benefits learned from this exercise and having this set up:
 
