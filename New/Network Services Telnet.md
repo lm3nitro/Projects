@@ -4,14 +4,14 @@ Telnet is a network protocol used to provide a command-line interface for commun
 
 ### Scope:
 
-In this exercise, I will go through the steps of performing enumeration against a target host, and how to identiy unsecure protocols (Telnet) that may be enabled on a system and how to take advantage and exploit it. In this case, I will be using MSFvenm for the exploit. I will also be using Wireshark to see how the traffic generated looks like, and to also confim that the connection has been established. 
+In this exercise, I will go through the steps of performing enumeration against a target host, and how to identify unsecure protocols (Telnet) that may be enabled on a system and how to take advantage and exploit it. In this case, I will be using MSFvenm for the exploit. I will also be using Wireshark to see how the traffic generated looks like, and to also confirm that the connection has been established. 
 
 ### Tools and Technology:
 Linux, MSFvenom, and Wireshark
 
 ## Enumeration:
 
-To get started, I used nmap to scan against the target host:
+To get started, I used Nmap to scan against the target host:
 
 ```
 nmap 10.10.169.221 -Pn -sS -T5 -p- -vvv
@@ -27,11 +27,11 @@ nc 10.10.169.221 8012
 
 ![Pasted image 20240918163707](https://github.com/user-attachments/assets/06e2d5ee-9349-4742-8649-26bdea9d4057)
 
-So far, based on the information gathered using nmap and Netcat, I know that following:
+So far, based on the information gathered using Nmap and Netcat, I know that following:
 
-+ It looks like the telnet service is running but on a non-defulat port (8012)
++ It looks like the telnet service is running but on a non-default port (8012)
 + The service is name "Skidy's Backdoor"
-+ Given the name above, its possible that a user exists with the name "Skidy"
++ Given the name above, it's possible that a user exists with the name "Skidy"
 
 ## Command Execution:
 
@@ -78,7 +78,7 @@ Next I needed to create a listening port:
 
 ![Pasted image 20240918163517](https://github.com/user-attachments/assets/29861630-18e5-41c6-aa39-4266f5d0da93)
 
-Looking at Wireshark, I can see taht the connection was established:
+Looking at Wireshark, I can see that the connection was established:
 
 ![Pasted image 20240918163114](https://github.com/user-attachments/assets/79363012-b260-48c8-ac5a-3bbb1dea2793)
 
@@ -86,7 +86,7 @@ This is a closer look at one of the packets:
 
 ![Pasted image 20240918163435](https://github.com/user-attachments/assets/432a3a52-8061-490d-8bea-f9f688c129b0)
 
-### Sumamry:
+### Summary:
 
-In this exercise, I was able to identify the telnet service was running on the target host and exploit it using MSFvenom. For mitigation against these types of attacks, it's important to ensure that unsecure protocols such as Telnet, are disabled. If needed, you can replace Telnet with SSH for secure encrypted communications. Its also important to conduct regular security audits and vulnerability assessments to identify and mitigate potential risks associated with Telnet and other services that may be enabled/running as part of a misconfiguration. 
+In this exercise, I was able to identify the telnet service was running on the target host and exploit it using MSFvenom. For mitigation against these types of attacks, it's important to ensure that unsecure protocols such as Telnet, are disabled. If needed, you can replace Telnet with SSH for secure encrypted communications. It's also important to conduct regular security audits and vulnerability assessments to identify and mitigate potential risks associated with Telnet and other services that may be enabled/running as part of a misconfiguration. 
 
