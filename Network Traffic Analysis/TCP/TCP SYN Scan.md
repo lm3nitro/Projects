@@ -17,7 +17,7 @@ Abort Connection: Upon receiving a SYN-ACK response from an open port, the scann
 
 ### Analysis
 
-Let's take a look at the folowing pcap and the abnormal TCP behavior. To start, we will Filter for tcp syn flags and ports (1-1024):
+Let's look at the following pcap and the abnormal TCP behavior. To start, we will Filter for tcp syn flags and ports (1-1024):
 
 ```
 tcpdump -nr threat_actor.pcap tcp[tcpflags] == tcp-syn and portrange 1-1024
