@@ -1,7 +1,7 @@
 #  ICMP DoS Attack
 
 ### Scenario:
-You are a network security analyst at a cybersecurity firm. Recently, your team received a suspicious report from a client about unusual network activity, potentially indicating a data exfiltration attempt using ICMP packets. The PCAP had been captured from a network segment that was typically quiet, used mainly for administrative purposes and internal communications.Your task is to analyze a provided PCAP (Packet Capture) file to identify and investigate what is happening. 
+You are a network security analyst at a cybersecurity firm. Recently, your team received a suspicious report from a client about unusual network activity, potentially indicating a data exfiltration attempt using ICMP packets. The PCAP had been captured from a network segment that was typically quiet, used mainly for administrative purposes and internal communications. Your task is to analyze a provided PCAP (Packet Capture) file to identify and investigate what is happening. 
 
 ## Analysis
 
@@ -33,7 +33,7 @@ tcpdump -nnr icmp_threat_actor.pcap "icmp[0]==0" and ! not src net 192.168.10.0/
 
 In this observation, we note that the threat actor is exploiting the ICMP protocol by augmenting the payload size and fragmenting the traffic, aiming to transmit a substantial amount of data to this specific node. This tactic could be utilized to inundate the server with factitious traffic, potentially leading to service disruption. Additionally, the Time-to-Live (TTL) value indicates that this traffic appears to originate from an internal node, further masking the attacker's identity and intentions.
 
-Next, lets take a look at the the amount of fragments going to and from 192.168.10.5:
+Next, let'ss take a look at the the amount of fragments going to and from 192.168.10.5:
 
 ```
 tcpdump -nnr icmp_threat_actor.pcap 'ip[6:2] > 0' and host 192.168.10.5 | wc -l
