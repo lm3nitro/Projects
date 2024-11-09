@@ -17,21 +17,21 @@ Prior to starting, I already had a gmail account set up. The only thing that we 
 Once that is enabled, you can navigate to app passwords and create a new one. 
 
 > [!NOTE]  
-> You can name it anything you want, the name is not relevent. 
+> You can name it anything you want; the name is not relevant. 
 
 ![Pasted image 20241016001640](https://github.com/user-attachments/assets/4f417094-7abb-485b-b3c3-e04cdb129de4)
 
 Once the name is added, click `Create`. You will be presented with a password, make sure to keep this password as it will be needed later in the configuration file. 
 
 > [!IMPORTANT]  
-> Once the password is presented, there is no way to go back and view it again. If you do not remeber or forgot to make note of the password, you will need to delete the app password and created a new one. 
+> Once the password is presented, there is no way to go back and view it again. If you do not remember or forgot to make note of the password, you will need to delete the app password and created a new one. 
 
 ![Pasted image 20241016001851](https://github.com/user-attachments/assets/0e040009-8438-4e74-a89a-eb8d321f5f32)
 
 
 ## Script
 
-Now that gmail is configured, I created the script that I will be using:
+Now that Gmail is configured, I created the script that I will be using:
 
 ```bash
 #!/usr/bin/env bash
@@ -59,7 +59,7 @@ Here is a view of the script in Pycharm:
 
 ## Installing SSMTP:
 
-Next, I installed SSMTP. SSMTPis a lightweight mail transfer agent designed to send emails from a local machine to a remote SMTP server. 
+Next, I installed SSMTP. SSMTP is a lightweight mail transfer agent designed to send emails from a local machine to a remote SMTP server. 
 
 ![Pasted image 20241015234243](https://github.com/user-attachments/assets/76a7f1b2-d5bc-4537-ba08-b7c7f2e9fa0c)
 
@@ -123,7 +123,7 @@ While performing this test, I also captured the traffic to verify the email bein
 
 ## Gmail Mailbox:
 
-Here I can see that I was able to receieve an email about the service being down:
+Here I can see that I was able to receive an email about the service being down:
 
 ![Pasted image 20241015233937](https://github.com/user-attachments/assets/2207acb8-adb2-4f61-8ed0-d7e548f2f4fb)
 
@@ -133,7 +133,7 @@ Here is a look inside what was sent in the email:
 
 ## Summary:
 
-In this exercise, I was able to create a script that successfully executes whenever the the Apache service is down. By automatically notifying of service outages, you can quickly react to  potential impacts, gather resources for troubleshooting, and start remediation efforts as soon as the alert is received, enhancing overall service reliability.
+In this exercise, I was able to create a script that successfully executes whenever the Apache service is down. By automatically notifying of service outages, you can quickly react to potential impacts, gather resources for troubleshooting, and start remediation efforts as soon as the alert is received, enhancing overall service reliability.
 
 This practice helps ensure that services remain accessible and reliable, an important factor in the CIA triad. 
 
