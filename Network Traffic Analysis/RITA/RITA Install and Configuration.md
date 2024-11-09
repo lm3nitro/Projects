@@ -143,12 +143,12 @@ sudo cp etc/rita.yaml /etc/rita/config.yaml && sudo chmod 666 /etc/rita/config.y
 
 >#### Note: RITA itself only puts files in a few places: `/usr/local/bin/rita`, `/etc/rita/`, and `/var/lib/rita/`.  If you want remove Rita, you can just directly delete all those.
 
-## Upgrading Between Minor or Patch Versions :
+## Upgrading Between Minor or Patch Versions:
 
 If you are upgrading within the same major version (e.g. v2.0.0 to v2.0.1, or v3.0.0 to v3.1.0) all you need to do is download the newest RITA binary and replace the one on your system.
 
 Example: 
-Replace the binary located `/usr/local/bin/rita`  with the new binary.
+Replace the binary located `/usr/local/bin/rita` with the new binary.
 
 ![Pasted image 20240419110545](https://github.com/lm3nitro/Projects/assets/55665256/1aefe3e4-495b-4209-83a4-1f9af926ec46)
 
