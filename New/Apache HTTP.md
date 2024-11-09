@@ -18,7 +18,7 @@ IIS Server, Apache HTTP, Win 10, Wireshark, and Linux
 
 ## Installation:
 
-The first thing I did was isntall Apache:
+The first thing I did was install Apache:
 
 ```
 apt install apache2
@@ -70,7 +70,7 @@ I then opened the `/etc/apache2/ports.conf` file and added the `Listen 8080` lin
 
 ![Pasted image 20240921131942](https://github.com/user-attachments/assets/13a5937e-b1c5-404e-acc7-950e047e4280)
 
-I proceeded to enable the site using the `a2ensite forward_proxy.conf`  command then reloaded with `systemctl reload apache2` command:
+I proceeded to enable the site using the `a2ensite forward_proxy.conf` command then reloaded with `systemctl reload apache2` command:
 
 ![Pasted image 20240921132045](https://github.com/user-attachments/assets/29edfa7e-a69a-4a43-bb30-055812ea5af7)
 
@@ -80,17 +80,17 @@ Verified the port is listening:
 
 ## Client Proxy Configuration:
 
-I will be using a Win 10 VM behind the proxy. I will be configuring it to use the proxy. To do this, I navigated to the `Connection Settings` and enetered the information reagarding the proxy server previosuly configured:
+I will be using a Win 10 VM behind the proxy. I will be configuring it to use the proxy. To do this, I navigated to the `Connection Settings` and entered the information regarding the proxy server previously configured:
 
 ![Pasted image 20240921142454](https://github.com/user-attachments/assets/c6c211e5-3c26-48e1-8362-aca85d50d61e)
 
-After configuring the proxy server on the Win VM, I then opened up Wireshark to capture traffic and verify that it was getting sent to the proxy on port 8080:
+After configuring the proxy server on the Win VM, I then opened Wireshark to capture traffic and verify that it was getting sent to the proxy on port 8080:
 
 ![Pasted image 20240921140558](https://github.com/user-attachments/assets/a1bbc789-cf13-4f0e-9f09-028b2f6cfb6c)
 
 ## IIS website loaded:
 
-On the other end, I also stood up a an IIS server:
+On the other end, I also stood up an IIS server:
 
 ![Pasted image 20240921144338](https://github.com/user-attachments/assets/101be7d7-3088-43ec-8948-eb54b8279693)
 
@@ -108,7 +108,7 @@ I also verified the connection state from the client and proxy:
 
 ## IIS Web Server traffic:
 
-I also took a look at the traffic on the IIS web serve and was able to see traffic coming from the Proxy Server (Apache):
+I also looked at the traffic on the IIS web server and was able to see traffic coming from the Proxy Server (Apache):
 
 ![Pasted image 20240921140915](https://github.com/user-attachments/assets/b0fe0cce-3781-4744-bb6f-12870a0cb97f)
 
