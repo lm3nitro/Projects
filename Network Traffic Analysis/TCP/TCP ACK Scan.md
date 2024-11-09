@@ -8,12 +8,12 @@ ACK Packet: The scanning tool sends a TCP packet with only the ACK flag set to a
 
 Response from Target:
 
-+ If the packet reaches the target and the port is unfiltered, the target typically responds with a RST (Reset) packet. This indicates that the ACK packet made it to the destination, but the target didn't recognize it as part of an active connection.
++ If the packet reaches the target and the port is unfiltered, the target typically responds with an RST (Reset) packet. This indicates that the ACK packet made it to the destination, but the target didn't recognize it as part of an active connection.
 + If the packet is filtered by a firewall, there will either be no response at all (the packet is silently dropped), or in some cases, an error message may be generated (depending on the firewall’s configuration).
 
 ### Analysis
 
-In the following pcap, we see the host 192.168.10.5 sending a large amount of ACK packets to our host 192.168.10.1. These packets have some unusual traffic as they are all originating from the same source port and going to the same IP address but in different ports. We can also see the the sequence number remains the same throughout all of the packets. 
+In the following pcap, we see the host 192.168.10.5 sending a large amount of ACK packets to our host 192.168.10.1. These packets have some unusual traffic as they are all originating from the same source port and going to the same IP address but in different ports. We can also see the sequence number remains the same throughout all of the packets. 
 
 ```
 tcpdump -nr threat_actor.pcap tcp[tcpflags] == tcp-ack and portrange 1-65365
