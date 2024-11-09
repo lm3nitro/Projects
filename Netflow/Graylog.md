@@ -402,7 +402,7 @@ In Graylog I went to System > Inputs and selected NetFlow UDP from the drop down
 
 In the image below, on the upper left-hand side I have traffic information about the NetFlow Data sent to the Graylog sever on 172.16.10.10 from Cisco Router "lm3nitro-r1" on 172.16.10.1. 
 
-On the upper right-hand side there is network information about the Windows 10 PC. The bottom left-hand shows shows information on the Graylog server and the lower right-hand side has shows the Cisco router Netflow cache at the moment of the screenshot :
+On the upper right-hand side there is network information about the Windows 10 PC. The bottom left-hand shows information on the Graylog server and the lower right-hand side shows the Cisco router NetFlow cache at the moment of the screenshot:
 
 ![Pasted image 20240529173507](https://github.com/lm3nitro/Projects/assets/55665256/ea9f6fd6-a2f6-4266-bd8f-3f8f6af43565)
 
@@ -410,7 +410,7 @@ I also verified in Graylog the NetFlow messages that were coming from my Cisco r
 
 ![Pasted image 20240529145622](https://github.com/lm3nitro/Projects/assets/55665256/7ff16b04-25d7-49f1-8da5-35b7f5079ac7)
 
-## Netflow Analysis
+## NetFlow Analysis
 
 1. Traffic information from our Windows 10 PC:
 
