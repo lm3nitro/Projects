@@ -24,7 +24,7 @@ tcpdump -nr threat_actor.pcap icmp | wc -l
 ```
 ![Pasted image 20240324112004](https://github.com/lm3nitro/Projects/assets/55665256/5d960c59-e605-4528-9c0f-f4a29fe5b3c2)
 
-Note: Normal ICMP packets are usually 64 bytes data in length and they have incremental ASCII characters values. 
+Note: Normal ICMP packets are usually 64 bytes data in length, and they have incremental ASCII characters values. 
 
 >###Example:
 
@@ -52,7 +52,7 @@ tcpdump --number -ttttnr threat_actor.pcap icmp and greater 100 -c 1 -X
 
 ![Pasted image 20240324123214](https://github.com/lm3nitro/Projects/assets/55665256/493a02df-75ca-4681-8f8e-c75320c14687)
 
-Anlaysis: Upon investigation of the network traffic in the Packet Capture (PCAP) file, we discovered an ICMP tunnel. This indicates that the threat actor is utilizing an encrypted SSH tunnel and leveraging the ICMP protocol to conceal their communication. This technique is commonly employed for purposes such as data exfiltration or command and control operations. An ICMP tunnel involves encapsulating data within ICMP packets, allowing the attacker to bypass traditional network security measures that may not inspect ICMP traffic thoroughly. By using an encrypted SSH tunnel, the attacker adds an additional layer of security to obfuscate the contents of the communication, making it more challenging to detect and analyze.
+Analysis: Upon investigation of the network traffic in the Packet Capture (PCAP) file, we discovered an ICMP tunnel. This indicates that the threat actor is utilizing an encrypted SSH tunnel and leveraging the ICMP protocol to conceal their communication. This technique is commonly employed for purposes such as data exfiltration or command and control operations. An ICMP tunnel involves encapsulating data within ICMP packets, allowing the attacker to bypass traditional network security measures that may not inspect ICMP traffic thoroughly. By using an encrypted SSH tunnel, the attacker adds an additional layer of security to obfuscate the contents of the communication, making it more challenging to detect and analyze.
 
 
 ## Second Scenario
@@ -87,7 +87,7 @@ ICMP echo request (ping) scans, serve the purpose of gathering reconnaissance in
 
 ## Third Scenario
 
-One evening, the network monitoring system at detected unusual activity originating from an internal server within the corporate network. The activity included a significant increase in ICMP (Internet Control Message Protocol) traffic, specifically ICMP echo (ping) requests, targeting multiple internal IP addresses. Lets analyze the pcap that was provided.  
+One evening, the network monitoring system at detected unusual activity originating from an internal server within the corporate network. The activity included a significant increase in ICMP (Internet Control Message Protocol) traffic, specifically ICMP echo (ping) requests, targeting multiple internal IP addresses. Let's analyze the pcap that was provided.  
 
 ```
 tcpdump -nr ping_sweep.pcap icmp and less 64 -c 20
@@ -95,7 +95,7 @@ tcpdump -nr ping_sweep.pcap icmp and less 64 -c 20
 
 ![Pasted image 20240324131438](https://github.com/lm3nitro/Projects/assets/55665256/3eae4d30-ef1a-43b5-8a19-9edc817d10a7)
 
-We can see here ICMP traffic that has several indicators that show that is is not normal bahvior. Lets take a look at the payload:
+We can see here ICMP traffic that has several indicators that show that is is not normal bahvior. Let's take a look at the payload:
 
 ```
 tcpdump -nr ping_sweep.pcap icmp and less 64 -c 1 -XX
@@ -107,28 +107,28 @@ Analysis: The first things that we saw was the order of sequential probes [1, 2,
 
 ## Fourth Scenario
 
-This was another generated alert in the network for ICMP traffic in our network. Lets investigate why the alert was triggered. 
+This was another generated alert in the network for ICMP traffic in our network. Let's investigate why the alert was triggered. 
 
-First, lets take a look at the echo requests:
+First, let's take a look at the echo requests:
 ```
 tcpdump -nr icmp_attacks.pcap "icmp[0]==8" and ! net 192.168.0.0/16
 ```
 ![Pasted image 20240324171440](https://github.com/lm3nitro/Projects/assets/55665256/03a3650b-8666-4ee6-b5e6-f9d0f79144be)
 
-Here we can see that again the length of the ICMP requests are only 8, and the packets are coming in very fast. Now, lets take a look at the responses.
+Here we can see that again the length of the ICMP requests is only 8, and the packets are coming in very fast. Now, let's take a look at the responses.
 
 ```
 tcpdump -nr icmp_attacks.pcap "icmp[0]==8" and ! net 192.168.0.0/16
 ``` 
 ![Pasted image 20240324172031](https://github.com/lm3nitro/Projects/assets/55665256/7807bb0b-f4d3-4bd4-a8b9-28894ac34055)
 
-Next, lets take a lookat the TTL value of the source IP address. TTL values in network packets indicate the maximum number of hops they can traverse before being discarded. Analyzing TTL values helps determine packet routes, estimate network distances, and identify anomalies or potential security issues. It can also provide information regarding the OS.  
+Next, let's take a look at the TTL value of the source IP address. TTL values in network packets indicate the maximum number of hops they can traverse before being discarded. Analyzing TTL values helps determine packet routes, estimate network distances, and identify anomalies or potential security issues. It can also provide information regarding the OS.  
 
 ![Pasted image 20240324172644](https://github.com/lm3nitro/Projects/assets/55665256/940955ad-bf56-4ff9-a18c-2af5a6049041)
 
 Analysis: The number of ICMP requests coming from different sources at the same time with the same TTL value, data length, and IP identification ID suggests that the sources are not passing through a single router. Additionally, the fact that public IP ranges are sending traffic to an internal host indicates that the host is behind NAT or that a threat actor is spoofing the source IP address to evade detection. 
 
-### Metigation:
+### Mitigation:
 To mitigate the risk of ICMP tunneling, scanning, or spoofing, consider disabling ICMP echo requests (ping) at the network perimeter to prevent external probing. Additionally, configure firewall rules to block ICMP traffic that is not essential for network operations. Regularly monitor and analyze ICMP activity to detect any unauthorized or suspicious usage.
 
 
