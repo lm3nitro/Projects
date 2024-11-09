@@ -31,11 +31,11 @@ print("Sent fragmented packets to test firewall handling.")
 
 ```
 
-Here is another view of the script in Pycharm:
+Here is another view of the script in PyCharm:
 
 ![Pasted image 20241006192639](https://github.com/user-attachments/assets/2f10aac0-9457-4ba2-8742-ea508e40c33e)
 
-I executed the script and sniffed the traffic with TCPDump in order to capture it in real time:
+I executed the script and sniffed the traffic with Tcpdump in order to capture it in real time:
 
 ![Pasted image 20241006194801](https://github.com/user-attachments/assets/517e9879-2e66-483a-b6c9-b1ace5ec534d)
 
