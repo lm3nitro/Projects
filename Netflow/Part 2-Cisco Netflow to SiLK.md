@@ -4,9 +4,9 @@ Note: This is a continuation to **Cisco Netflow**
 
 ### Scope: 
 
-This is Part 2 of this project. In part 1, I was able to effectively configure and utilize NetFlow on a Cisco router. In part 2 I will be collecting all the netflow from the Cisco router and analyzing the traffic using SiLK. SiLK is a suite of tools used for analyzing network traffic, particularly flow data. It allows users to process, analyze, and visualize large volumes of network flow information, which can help in understanding traffic patterns, identifying anomalies, and detecting potential security incidents.
+This is Part 2 of this project. In part 1, I was able to effectively configure and utilize NetFlow on a Cisco router. In part 2 I will be collecting all the NetFlow from the Cisco router and analyzing the traffic using SiLK. SiLK is a suite of tools used for analyzing network traffic, particularly flow data. It allows users to process, analyze, and visualize large volumes of network flow information, which can help in understanding traffic patterns, identifying anomalies, and detecting potential security incidents.
 
-Here is a look at the diagram a nd topology for better understand of the set-up used for this project:
+Here is a look at the diagram and topology for better understand of the set-up used for this project:
 
 ![Pasted image 20240529222403](https://github.com/lm3nitro/Projects/assets/55665256/169c6648-bc17-4040-8489-ae539a8e8e18)
 
@@ -57,7 +57,7 @@ show flow exporter
 
 ![Pasted image 20240527224056](https://github.com/lm3nitro/Projects/assets/55665256/953ec4c5-ccbc-4a34-a1ac-b6a9a5d52671)
 
-The following commad shows a detailed summary of the NetFlow accounting statistics:
+The following command shows a detailed summary of the NetFlow accounting statistics:
 
 ```
 show ip cache verbose flow
@@ -67,7 +67,7 @@ show ip cache verbose flow
 
 ## SiLK Dynamic Linker
 
-Once everything was set up on the router for netflow, I needed to update the cache of the dynamic linker. If you do not update the dynamic linker, it may be necessary to set the LD_LIBRARY_PATH environment variable to /usr/local/lib when you use SiLK or YAF.
+Once everything was set up on the router for NetFlow, I needed to update the cache of the dynamic linker. If you do not update the dynamic linker, it may be necessary to set the LD_LIBRARY_PATH environment variable to /usr/local/lib when you use SiLK or YAF.
 
 Typically an entry for /usr/local/lib will already exist in the /etc/ld.so.conf.d/ directory. To confirm:
 
@@ -145,7 +145,7 @@ systemctl status rwflowpack
 
 ![Pasted image 20240527222603](https://github.com/lm3nitro/Projects/assets/55665256/1cafd283-bd5f-48ae-b90e-6255fe45f752)
 
-I then veridied the listening port for rwflowpack:
+I then verified the listening port for rwflowpack:
 
 ![Pasted image 20240527223225](https://github.com/lm3nitro/Projects/assets/55665256/334ca804-f222-454a-aef5-e862d9c49f0e)
 
@@ -194,7 +194,7 @@ In SiLK, the types assigned to flow records within the `all` class typically dep
 
 ## Queries 
 
-`rwfilter` is a powerful command-line tool in the SiLK suite designed to filter flow records based on specified criteria. These are some of the queries that I ran in order to analyze the netflow data being received:
+`rwfilter` is a powerful command-line tool in the SiLK suite designed to filter flow records based on specified criteria. These are some of the queries that I ran in order to analyze the NetFlow data being received:
 
 
 1. Filtering for dest port 443 in outweb dir. This query helps identify all outgoing web traffic (HTTPS) from the network, allowing for monitoring of secure web communications:
