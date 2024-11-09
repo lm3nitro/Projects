@@ -4,7 +4,7 @@
 
 FTP, or File Transfer Protocol, is a standard network protocol used to transfer files between a client and a server over the internet. It allows users to upload, download, and manage files on remote servers easily. FTP can operate in two modes: active and passive, which dictate how the connection is established and how data is transferred.
 
-In active mode lets the server connect to the client, while passive mode allows the client to connect to the server, helping to navigate firewall restrictions.
+In active mode let's the server connect to the client, while passive mode allows the client to connect to the server, helping to navigate firewall restrictions.
 
 ### Scope:
 
@@ -20,11 +20,11 @@ To start, I first used namp to scan against the target host and see what informa
 nmap -Pn -sS 10.10.73.116 -p- -T5 -vvvv 
 ```
 
-While performing the nmap scan, I also used Wireshark to capture the traffic. Below is a screenshot showing port 21 and why it was identified as being opened, given the behavior seen:
+While performing the Nmap scan, I also used Wireshark to capture the traffic. Below is a screenshot showing port 21 and why it was identified as being opened, given the behavior seen:
 
 ![Pasted image 20240919134047](https://github.com/user-attachments/assets/8c887aa2-2452-4beb-ac6f-6a2ef84e9a0e)
 
-Based on the output of the scan, I see thatt port 21 is open and the target is using FTP. 
+Based on the output of the scan, I see that port 21 is open and the target is using FTP. 
 
 ![Pasted image 20240919134313](https://github.com/user-attachments/assets/62c0580c-e92a-4386-af16-1ef9bfdb154e)
 
@@ -93,7 +93,7 @@ Transfer completed:
 
 ![Pasted image 20240919142909](https://github.com/user-attachments/assets/814cf631-344e-43cf-b848-4162ab89037a)
 
-Once the transfer completed, I then wen to see rthe contents of the file:
+Once the transfer completed, I then went to see the contents of the file:
 
 ![Pasted image 20240919151001](https://github.com/user-attachments/assets/c0ba9c2a-3aff-44f5-9759-e611ec0115e3)
 
@@ -105,7 +105,7 @@ I see that this file was signed by a user named Mike. This is important for futu
 
 ![Pasted image 20240919150644](https://github.com/user-attachments/assets/371e9ac5-d187-4ff3-9d79-0d114e150b76)
 
-Hydra is a powerful and flexible password-cracking tool used for performing brute-force attacks on various protocols and services. It supports a wide range of protocols, including HTTP, FTP, SSH, and more. Given that I found the user `Mike` above, I used Hydra to crackthe users password. Below is the command used:
+Hydra is a powerful and flexible password-cracking tool used for performing brute-force attacks on various protocols and services. It supports a wide range of protocols, including HTTP, FTP, SSH, and more. Given that I found the user `Mike` above, I used Hydra to crack the users password. Below is the command used:
 
 ```
 hydra -t 4 -l mike -P /usr/share/wordlists/rockyou.txt -vV 10.10.73.116 ftp
@@ -119,6 +119,6 @@ Based on the output, I see that the login is `mike` and the password is `passwor
 
 ### Summary:
 
-In this exercise, I was able to enumerate the FTP server and login which then allowed me to find and download a file providing information into the user Mike. I was then able to utilize **Hyrda** to crack the users password. FTP servers can be targeted by attackers looking to exploit weaknesses, such as unpatched software or weak passwords, which can lead to system compromise. Its important to ensure that servers and services are secure while also being able to identify traffic that may be indicative of enumeration, brute force attacks, and other malicious activity. 
+In this exercise, I was able to enumerate the FTP server and login which then allowed me to find and download a file providing information into the user Mike. I was then able to utilize **Hyrda** to crack the users password. FTP servers can be targeted by attackers looking to exploit weaknesses, such as unpatched software or weak passwords, which can lead to system compromise. It's important to ensure that servers and services are secure while also being able to identify traffic that may be indicative of enumeration, brute force attacks, and other malicious activity. 
 
 
