@@ -23,6 +23,6 @@ Conclusion: We can confirm that the traffic analyzed above is indicative of a Fr
 ## Mitigation:
 
 + Configure IPS with specific rules to detect and block fragmented packets that exceed typical sizes or display overlapping characteristics.
-+ Use tools that analyze traffic patterns and detect anomalies based on typical behavior, allowing for the identification of unusual fragmented traffic.
++ Use tools that analyze traffic patterns and detect anomalies based on typical behavior, allowing for the identification of unusual, fragmented traffic.
 + Harden the TCP/IP stack of operating systems by applying configurations that limit the handling of fragmented packets or improve error handling.
 + Implement deep packet inspection to analyze the contents of packets beyond basic header information. DPI can help identify malformed packets or suspicious fragment patterns before they reach their destination.
