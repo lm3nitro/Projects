@@ -13,7 +13,7 @@ Linux, Wireshark, and SMB
 
 ## Enumeration:
 
-To enumerate SMB, I will be using Enum4Linux and nmap. Enum4linux is a powerful tool used for gathering information about SMB on both Windows and Linux systems. I first started by using nmap to scan the target host andsee which ports are open:
+To enumerate SMB, I will be using Enum4Linux and Nmap. Enum4linux is a powerful tool used for gathering information about SMB on both Windows and Linux systems. I first started by using Nmap to scan the target host and see which ports are open:
 
 ```
 nmap -sV 10.10.107.71 -vvv
@@ -21,7 +21,7 @@ nmap -sV 10.10.107.71 -vvv
 
 ![Pasted image 20240918123301](https://github.com/user-attachments/assets/5d83727c-9990-4484-b23c-ec0daa9bd1e3)
 
-Based on the output, ports 22 (SSH) and 139/445 (SMB) are showing as open. I then used the nmap NSE script to detect misconfigurations on the SMB service:
+Based on the output, ports 22 (SSH) and 139/445 (SMB) are showing as open. I then used the Nmap NSE script to detect misconfigurations on the SMB service:
 
 ```
 nmap -sU -sS --script smb-enum-shares.nse -p 445,139
@@ -29,7 +29,7 @@ nmap -sU -sS --script smb-enum-shares.nse -p 445,139
 
 ![Pasted image 20240918141635](https://github.com/user-attachments/assets/4ae32adf-7f00-4918-a81d-1b7192317bf5)
 
-The output above shows the misconfiguraiton. It shows that anonymous has access to read/write. 
+The output above shows the misconfiguration. It shows that anonymous has access to read/write. 
 
 ## Wireshark:
 
@@ -90,11 +90,11 @@ From the scan I was able to gather several things:
 
 + Operating system version: 6.1
 + Linux OS: Ubuntu
-+ Shares: It has a `profiles` shrename that has user profiles
++ Shares: It has a `profiles` sharename that has user profiles
 
 ## Detecting SMB Enumeration:
 
-Taking another look at Wireshark, this is what I was able to see. Based on the output, the client is sending many request at once, this is considered abnormal SMB traffic behavior:
+Taking another look at Wireshark, this is what I was able to see. Based on the output, the client is sending many requests at once, this is considered abnormal SMB traffic behavior:
 
 ![Pasted image 20240918130154](https://github.com/user-attachments/assets/c9040af2-158f-4fcf-ac4a-b9700637894c)
 
@@ -102,11 +102,11 @@ I also see many `Create Request File` related traffic. This type of packet is se
 
 ![Pasted image 20240918131227](https://github.com/user-attachments/assets/d741377b-d810-481e-932f-5bf59595c535)
 
-Another indicator is The `LsaOpenPolicy` function wich opens a handle to the policy object on a local or remote system.
+Another indicator is The `LsaOpenPolicy` function which opens a handle to the policy object on a local or remote system.
 
 ![Pasted image 20240918130632](https://github.com/user-attachments/assets/c2e2b9ed-27d9-4e97-be01-6bf6c87ea09d)
 
-I also took a look at the amount of unique connections:
+I also took a look at the number of unique connections:
 
 ![Pasted image 20240918125842](https://github.com/user-attachments/assets/6a7aa08b-21e4-4647-945b-52bb7b4453e7)
 
@@ -156,7 +156,7 @@ more "Working From Home Information.txt"
 
 ![Pasted image 20240918133335](https://github.com/user-attachments/assets/3c38dea6-ffab-4556-b283-7ba802035730)
 
-This provied me with 2 possible users, John and James. I then went back to the list of directories and navigated to the .ssh directory:
+This provided me with 2 possible users, John and James. I then went back to the list of directories and navigated to the .ssh directory:
 
 ![Pasted image 20240918133857](https://github.com/user-attachments/assets/8d924766-444e-45a5-a399-ae675497b654)
 
@@ -192,7 +192,7 @@ I was able to successfully authenticate as the user1
 
 ### Summary:
 
-In this exercise, I was able to scan the target host and perform enumeration of the SMB service that it was running. This then allowed me to connect to the SMB share and download SSH keys that were then used to authenticate as the user "John Cactus" and successfully SSH into the server. In doing this, I was able to learn how to exploit a SMB misconfiguration which allowed any user to access the share. I was also able to view and anlyze the traffic in Wireshark which allowed me to see how this type of attack happens and how to identify it. 
+In this exercise, I was able to scan the target host and perform enumeration of the SMB service that it was running. This then allowed me to connect to the SMB share and download SSH keys that were then used to authenticate as the user "John Cactus" and successfully SSH into the server. In doing this, I was able to learn how to exploit a SMB misconfiguration which allowed any user to access the share. I was also able to view and analyze the traffic in Wireshark which allowed me to see how this type of attack happens and how to identify it. 
 
-As mitigation against this type of attack, it's important to limit permissions using the principle of least privilege, implement strong authentication methods, and configure firewalls to restrict SMB traffic to trusted networks. Additionally, I suggest to enable logging for monitoring access. 
+As mitigation against this type of attack, it's important to limit permissions using the principle of least privilege, implement strong authentication methods, and configure firewalls to restrict SMB traffic to trusted networks. Additionally, I suggest enabling logging for monitoring access. 
 
