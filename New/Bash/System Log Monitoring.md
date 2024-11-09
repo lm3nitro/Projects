@@ -41,4 +41,4 @@ After creating the script, I purposefully created failed login attempts to see i
 
 ## Summary
 
-Analyzing authentication failures can reveal patterns in user behavior, for example identying legitimate forgotten passwords by users versus brute force attacks. It is especially important to monitor logs for critical assets as an extra layer of security allowing you to be proactive rather than reactive. 
+Analyzing authentication failures can reveal patterns in user behavior, for example identifying legitimate forgotten passwords by users versus brute force attacks. It is especially important to monitor logs for critical assets as an extra layer of security allowing you to be proactive rather than reactive. 
