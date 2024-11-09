@@ -36,7 +36,7 @@ One way to identify a TCP RST attack is by comparing the physical address of the
   
 ### Use Cases:
 
-+ Testing: This can be use TCP RST scans to evaluate how well firewalls or intrusion detection systems respond to non-standard scanning methods, identifying gaps in defenses.
++ Testing: TCP RST scans can be used to evaluate how well firewalls or intrusion detection systems respond to non-standard scanning methods, identifying gaps in defenses.
 + Attackers may deploy RST scans to map out open and closed ports on a target system as part of their reconnaissance phase, collecting intelligence for future exploitation.
   
 ### Defense:
