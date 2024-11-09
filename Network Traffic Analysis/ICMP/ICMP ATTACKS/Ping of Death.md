@@ -2,7 +2,7 @@
 
 ### Scenario:
 
-Recently, there have been reports of intermittent network disruptions and system crashes in one of your data centers. Suspecting a potential cyber attack, your team is tasked with investigating and identifying the source of these disruptions.
+Recently, there have been reports of intermittent network disruptions and system crashes in one of your data centers. Suspecting a potential cyber-attack, your team is tasked with investigating and identifying the source of these disruptions.
 
 ## Analysis
 
@@ -33,10 +33,10 @@ tcpdump -nr ping_threat_actor.pcap ip and net 192.168.11.0/24 -vvXX -c 1
 
 Conclusion:
 
-Based on the observe ouputs above, I was able to see that the attacker was sending malformed ICMP Echo Request packets that exceeded the maximum allowable size. Typically, ping packets are much smaller, but the attacker crafted these packets that are fragmented to bypass restrictions. When these fragments reach the target system, it attempts to reassemble them. 
+Based on the observeD ouputs above, I was able to see that the attacker was sending malformed ICMP Echo Request packets that exceeded the maximum allowable size. Typically, ping packets are much smaller, but the attacker crafted these packets that are fragmented to bypass restrictions. When these fragments reach the target system, it attempts to reassemble them. 
 However, the reassembly process may overwhelm the system’s memory or buffer, leading to crashes or instability.
 
-### Mitigiation
+### Mitigation:
 
 + Ensure that all operating systems, applications, and network devices are regularly updated to include the latest security patches. Many modern systems have already fixed vulnerabilities related to oversized ICMP packets.
 + Configure firewalls to block ICMP Echo Request packets from untrusted sources or limit the size of ICMP packets.
