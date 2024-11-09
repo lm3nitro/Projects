@@ -13,7 +13,7 @@ Here’s a simplified overview of the process when a request is made:
 
 ### Scope:
 
-In the exercise, I will be performing enumeration on a target host that has the NFS service running. Based on the information gather from the enumeration, I will attempt to mount a share from the NFS server and see what sensitive information or misconfiguraiton can be exploited. 
+In the exercise, I will be performing enumeration on a target host that has the NFS service running. Based on the information gather from the enumeration, I will attempt to mount a share from the NFS server and see what sensitive information or misconfiguration can be exploited. 
 
 ### Tools and Technology:
 
@@ -21,7 +21,7 @@ Nmap, Linux, NFS, and Wireshark
 
 ## Enumeration:
 
-Toget started, I wanted to get more information on the target host. To do this I used nmap:
+To get started, I wanted to get more information on the target host. To do this I used nmap:
 
 ```
 nmap  -A 10.10.191.163 -T5 -p- -nnvvvv
@@ -31,7 +31,7 @@ nmap  -A 10.10.191.163 -T5 -p- -nnvvvv
 
 Based on the output, I can see that both TCP/UDP port 2049 is open related to the NFS service among others. 
 
-One of the features that nmap has is the use of NSE scripts. In this case, these are the scripts available concerning NFS:
+One of the features that Nmap has is the use of NSE scripts. In this case, these are the scripts available concerning NFS:
 
 ![Pasted image 20240919163929](https://github.com/user-attachments/assets/6145205e-e2e4-43a8-898f-b8b4f65cd51e)
 
@@ -136,7 +136,7 @@ ssh -i id_rsa cappucino@10.10.191.163
 
 I was able to successfully login! 
 
-## Exploting NFS:
+## Exploiting NFS:
 
 There are certain mechanisms that NFS has enabled by default that helps mitigate risks, one of these is called **Root Squashing**. It helps prevent the root user on a client machine from having unrestricted access to the NFS server’s file system. It’s typically enabled by default for NFS exports, but it can be turned off (which is generally not recommended). 
 
@@ -168,7 +168,7 @@ chmod +s bash
 
 ![Pasted image 20240920113954](https://github.com/user-attachments/assets/cf873900-dcac-4f74-94f9-8c065c02687b)
 
-In output above I can see the I have the permissions and I am now root! 
+In output above I can see the I have the permissions,and I am now root! 
 
 ### Summary:
 
