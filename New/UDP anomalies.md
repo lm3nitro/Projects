@@ -1,13 +1,13 @@
-# UDP Anomolies
+# UDP Anomalies
 
 A UDP anomaly refers to any unusual pattern or behavior in UDP traffic that deviates from expected norms. Since UDP is a connectionless protocol, anomalies can indicate potential issues, misconfigurations, or security threats.
 
 ### Scope:
 
-In this exercise I will cover two separete scenarios that demonstrate unusual/anomalous UDP traffic. I will cover the traffic analysis behind both of these scenarios in order to demonstrate common traffic patterns that may be indicative of an attack, and will provide possible mitigations that can help to prevent these attacks. 
+In this exercise I will cover two separate scenarios that demonstrate unusual/anomalous UDP traffic. I will cover the traffic analysis behind both of these scenarios in order to demonstrate common traffic patterns that may be indicative of an attack and will provide possible mitigations that can help to prevent these attacks. 
 
 ### Tools and Technology:
-Splunk, TCPdump, Linux, and Wireshark
+Splunk, Tcpdump, Linux, and Wireshark
 
 ## Scenario 1: UDP traffic on Non-Standard Port
 
@@ -31,11 +31,11 @@ sudo tcpdump -ni ens32 udp port 12345
 
 ![Pasted image 20240411121826](https://github.com/user-attachments/assets/1b9ff9d7-fd70-4cd7-8079-fbe7f8f39e83)
 
-Based on the output, its important to note the all the traffic is coming form a single IP, targeting a single host on UDP port 12345. I can also see that the amount of bytes are mostly the same and then suddenly increase. 
+Based on the output, it's important to note the all the traffic is coming from a single IP, targeting a single host on UDP port 12345. I can also see that the number of bytes are mostly the same and then suddenly increase. 
 
 Payload analysis with Tcpdump:
 
-In order to take a closer look at those packets with a alrger length, I creating a filter to capture payload over 64 bytes in length:
+In order to take a closer look at those packets with a larger length, I creating a filter to capture payload over 64 bytes in length:
 
 ```
 sudo tcpdump -ni ens32 udp port 12345 and greater 64 -XX
@@ -59,7 +59,7 @@ Also took a look at the protocol hierarchy:
 
 ![Pasted image 20240411114359](https://github.com/user-attachments/assets/4ad1fae0-2b08-4253-8d53-9d2a8e3280b8)
 
-I was also able to see the same message seen above using tcpdump in Wireshark. Protocol spoofing and tunneling methods can circumvent network security protocols, avoid detection, and enable unauthorized data exfiltration, command and control (C2) communications, or lateral movement within the network.
+I was also able to see the same message seen above using Tcpdump in Wireshark. Protocol spoofing and tunneling methods can circumvent network security protocols, avoid detection, and enable unauthorized data exfiltration, command and control (C2) communications, or lateral movement within the network.
 
 ![Pasted image 20240411130628](https://github.com/user-attachments/assets/f3758be3-3f03-46ee-9d95-e3fa07e289eb)
 
@@ -74,11 +74,11 @@ In order to defend against these types of attacks, you can do the following:
 
 In the scenario, I will simulate a UDP flood DDoS attack that will overwhelm the server resources and disrupt essential services. The goal is to observe the traffic behavior and learn how to identify and defend against this type of attack effectively.
 
-After initiating the simulation attack on my target VM, the first inidication was the CPU utilization:
+After initiating the simulation attack on my target VM, the first indication was the CPU utilization:
 
 ![Pasted image 20241008104703](https://github.com/user-attachments/assets/5b8eda41-f52c-4a27-a67a-00f246447b00)
 
-Also the network card utilization: 
+Also, the network card utilization: 
 
 ![Pasted image 20241008105009](https://github.com/user-attachments/assets/575fd586-4c87-4579-b910-edb64f2ed889)
 
@@ -97,7 +97,7 @@ Protocol hierarchy, a majority of the traffic being UDP:
 
 ![Pasted image 20240411161413](https://github.com/user-attachments/assets/c3901459-1674-4c08-a58f-b115ba6cd569)
 
-large amoujnt of conversations all originating from a series of different IP addresses:
+Large amount of conversations all originating from a series of different IP addresses:
 
 ![Pasted image 20240411153412](https://github.com/user-attachments/assets/eb61faf0-0267-4e62-925b-be2d12fbde74)
 
