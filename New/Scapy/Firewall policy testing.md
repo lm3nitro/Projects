@@ -56,7 +56,7 @@ for port in test_ports:
 > FIN (Finish): Indicates that the sender has finished sending data.
 > Hex: 0x01
 
-Another view of the script in Pycharm:
+Another view of the script in PyCharm:
 
 ![Pasted image 20241006162717](https://github.com/user-attachments/assets/16a6a7c0-4b0a-4a8f-b7ba-7cf87c8dab37)
 
@@ -66,7 +66,7 @@ Executing the script:
 
 Port 80 is open!
 
-Sniffing traffic with TCPDump. Here we can see that the firewall only responded to the packet sent to port 80:
+Sniffing traffic with Tcpdump. Here we can see that the firewall only responded to the packet sent to port 80:
 
 ![Pasted image 20241006161411](https://github.com/user-attachments/assets/aadc0ab8-2433-478f-bce5-efa42cb2b7ae)
 
