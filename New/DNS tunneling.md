@@ -21,14 +21,14 @@ While monitoring network traffic with Kibana I was able to see a sudden spike in
 ![Pasted image 20240416141836](https://github.com/user-attachments/assets/7708a48e-4dd2-4624-bfef-d490d49bc7a7)
 
 > [!TIP]
-> There are factors that help identify and determin a DNS tunnelling attack:
+> There are factors that help identify and determine a DNS tunnelling attack:
 > + Long Domain Names: DNS queries with unusually long lengths with more than 30 characters.
 > + Frequent Queries: High frequency of requests to the same domain over a short period.
 > + Non-Standard Characters: Domains that include special characters or seem random.
 
 ## Pcap Analysis
 
-Next I took a look at the pcap that was running when the DNS spike occurred. I used capinfos to view all the capture information such as size, duration, amount of packets, etc. Here we see that the pcap ran for 24 hours:
+Next, I took a look at the pcap that was running when the DNS spike occurred. I used capinfos to view all the capture information such as size, duration, number of packets, etc. Here we see that the pcap ran for 24 hours:
 
 ![Pasted image 20241008083359](https://github.com/user-attachments/assets/35e21ed1-5491-43e4-8b0e-fc871d6f4c0e)
 
@@ -80,7 +80,7 @@ rita view hunting_2
 > [!NOTE]  
 > Rita is pointing out that  "cisco-update.com" has many unique subdomains calls.
 
-This is an abonormally high amount of traffic and something that needs to be investigated further. 
+This is an abnormally high amount of traffic and something that needs to be investigated further. 
 
 ## Tshark Manual Analysis:
 
@@ -125,7 +125,7 @@ Looking at the dns queries, we can also see the same information that was presen
 tshark -r dns_tunneling.pcap -Y "dns" -T fields -e dns.qry.name | sort | uniq -c | sort -nr | less
 ```
 
-To see exactly how many queries were made to each domain from larget to smallest amount:
+To see exactly how many queries were made to each domain from largest to smallest amount:
 
 ![Pasted image 20241008092426](https://github.com/user-attachments/assets/7056958d-91e7-464a-9ee1-b1240adce8a4)
 
@@ -145,7 +145,7 @@ I was able to see that there were 300,000+ queries:
 tshark -r dns_tunneling.pcap -Y "dns.qry.name matches \"^.{30,}\"" -T fields -e dns.qry.name
 ```
 
-This allowed me to see just how long were the subdomains and how many had consisted of more than 30 characters:
+This allowed me to see just how long the subdomains were and how many had consisted of more than 30 characters:
 
 ![Pasted image 20241008101339](https://github.com/user-attachments/assets/49f95458-23a5-49d1-89e2-4eb66e7c3b0d)
 
@@ -157,7 +157,7 @@ Looking at the I/O Graphs in Wireshark:
 
 ## Conclusion:
 
-Based on the inforamtion gathered, this looks like a DNS tunneling attack. I came to tis conclusion based on the unusual traffic patterns, such as high volumes of DNS requests to unusual domains and the queries with excessively long subdomains, which can be a sign of tunneling activity.
+Based on the information gathered, this looks like a DNS tunneling attack. I came to this conclusion based on the unusual traffic patterns, such as high volumes of DNS requests to unusual domains and the queries with excessively long subdomains, which can be a sign of tunneling activity.
 
 According to the cyber kill chain model, specifically during the "Actions on Objectives" phase, attackers often exfiltrate data using various methods, including DNS tunneling, SSL tunneling, ICMP tunneling, and SSH tunneling. In DNS tunneling, an attacker establishes a server to receive DNS queries and respond to them, while deploying a malicious program on the client to facilitate continuous DNS queries to the compromised server. Tools like Iodine and dnscat can be used to create and manage these DNS tunnels effectively.
 
