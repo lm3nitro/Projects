@@ -99,7 +99,7 @@ Now, I will filter for code responses from the FTP server in Wireshark:
 
 ![Pasted image 20240425111907](https://github.com/lm3nitro/Projects/assets/55665256/e352fe63-5655-437b-9a56-0e5a4ef7022f)
 
-Looking at the traffic we can see all the passwords attempts :
+Looking at the traffic we can see all the passwords attempts:
 
 ![Pasted image 20240425112144](https://github.com/lm3nitro/Projects/assets/55665256/a5b493a4-6b91-4c69-94cc-28d9de3947e0)
 
@@ -114,13 +114,13 @@ Going back to our attacker host, it looks like Hydra was able to find the userna
 
 ![Pasted image 20240425112822](https://github.com/lm3nitro/Projects/assets/55665256/16e25ebe-5915-40e8-a028-c644dffe7635)
 
-I also had wireshark running on the attacking host in order to view the traffic from both perspectives. Let's filter for a successfully login:  
+I also had Wireshark running on the attacking host in order to view the traffic from both perspectives. Let's filter for a successfully login:  
 
 ![Pasted image 20240425113419](https://github.com/lm3nitro/Projects/assets/55665256/bf46f1b2-0ac2-4ba7-b542-7193b5d49db8)
 
 ## Summary:
 
-Here we can see that the FTP server username and password were both found using Hydra. To help protect against dictionay attacks, there are several strategies that can be implemented:
+Here we can see that the FTP server username and password were both found using Hydra. To help protect against dictionary attacks, there are several strategies that can be implemented:
 
 + Strong Password Policy
 + Account Lockout Policy
