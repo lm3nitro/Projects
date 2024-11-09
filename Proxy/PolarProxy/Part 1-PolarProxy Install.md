@@ -11,7 +11,7 @@ PolarProxy is a transparent TLS proxy developed by Netresec, primarily used for 
 
 ### Scope:
 
-This is a 2 part project. This is part one and will cover the installation and configuraiton of PolarProxy on a VM running Ubuntu. The goal is to create a controlled environment in a lab setting where PolarProxy is used to intercept, decrypt, and analyze TLS/SSL traffic. The key focus is to understand how encrypted traffic can be inspected while maintaining the integrity of communication.
+This is a 2-part project. This is part one and will cover the installation and configuraiton of PolarProxy on a VM running Ubuntu. The goal is to create a controlled environment in a lab setting where PolarProxy is used to intercept, decrypt, and analyze TLS/SSL traffic. The key focus is to understand how encrypted traffic can be inspected while maintaining the integrity of communication.
 
 ### Tools and Technology:
 
@@ -65,7 +65,7 @@ journalctl -t PolarProxy
 
 ## Certificate Installation
 
-Next I needed to import the root CA certificate to both OS and browser. In order to use PolarProxy effectively, the root CA certificate it uses must be trusted by all clients whose TLS traffic goes through the proxy. This means your PolarProxy root CA needs to be trusted by both the operating system and any browsers or applications that have their own list of trusted root certificates. This ensures a smooth integration of the proxy with your system and applications.
+Next, I needed to import the root CA certificate to both OS and browser. In order to use PolarProxy effectively, the root CA certificate it uses must be trusted by all clients whose TLS traffic goes through the proxy. This means your PolarProxy root CA needs to be trusted by both the operating system and any browsers or applications that have their own list of trusted root certificates. This ensures a smooth integration of the proxy with your system and applications.
 
 In the command below, you will see I have used the switch --certhttp 10080, this will make the public root CA cert available on a web server running at the port 10080. Simply start a browser on the client and enter the IP address of PolarProxy, such as http://127.0.0.1:10080/polarproxy.cer (if started with --certhttp 10080), to access the certificate.
 
@@ -115,11 +115,11 @@ Tested the proxy with curl:
 curl --insecure --connect-to www.netresec.com:443:127.0.0.1:10443 https://www.netresec.com/
 ```
 
-I wantd to sniff live traffic on the lookback interface to see if the packets are going to the proxy on port 10443.
+I wanted to sniff live traffic on the lookback interface to see if the packets are going to the proxy on port 10443.
 
 ![Pasted image 20240409184100](https://github.com/lm3nitro/Projects/assets/55665256/eb18e7e0-78d7-47d4-92f1-1dda6600028b)
 
-At the same time, PolarProxy is also saving the encrypted packets for fruther analysis. I copied the pcap from the default directory: /var/log/PolarProxy/ to my home directory temporarily.
+At the same time, PolarProxy is also saving the encrypted packets for further analysis. I copied the pcap from the default directory: /var/log/PolarProxy/ to my home directory temporarily.
 
 ![Pasted image 20240409184908](https://github.com/lm3nitro/Projects/assets/55665256/68b084e2-6038-4871-8419-a5c10998b0fc)
 
