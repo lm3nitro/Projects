@@ -9,7 +9,7 @@ To determine which specific source and destination ports the target host accepts
 ## Use Cases:
 
 + An attacker might use it to identify open ports and accepted source ports on a target system, which can help in mapping the network and finding potential vulnerabilities to exploit. If an attacker discovers that certain source and destination ports are open, they could craft packets that mimic legitimate traffic to bypass firewalls or intrusion detection systems, allowing unauthorized access to sensitive services.
-+ This also allows for monitoring how the firewall responds to legitimate traffic while blocking threats, and evaluating the IDP/IPS’s ability to detect and respond to intrusions. The results can then be used to fine-tune the configurations, ensuring robust security measures are in place.
++ This also allows for monitoring how the firewall responds to legitimate traffic while blocking threats and evaluating the IDP/IPS’s ability to detect and respond to intrusions. The results can then be used to fine-tune the configurations, ensuring robust security measures are in place.
 
 
 ## Server Configuration:
@@ -48,13 +48,11 @@ sudo iptables -A INPUT -p tcp -s 10.10.100.39 -d 10.10.100.48 --dport  22 -j DRO
 
 ### Scanning the server with Nmap:
 
-To ensure that everything was configured as expected, I used namp:
-
-Based on the output below, the port has been filtered by the IPtable rules:
+To ensure that everything was configured as expected, I used Nmap. Based on the output below, the port has been filtered by the iptable rules:
 
 ![Pasted image 20241013182741](https://github.com/user-attachments/assets/36997f92-3948-4815-a8bb-23ccd67b9b7b)
 
-### Network trafifc from the client and server:
+### Network traffic from the client and server:
 
 The server doesn't response to any probes from the client.
 
@@ -63,7 +61,7 @@ The server doesn't response to any probes from the client.
 
 ## Script creation:
 
-As previousky stated in the beginning, I will be utilizing Python and along with the Scapy library:
+As previously stated in the beginning, I will be utilizing Python and along with the Scapy library:
 
 ![Pasted image 20241013191549](https://github.com/user-attachments/assets/0288b8c6-e0cc-426f-8204-29b82dd6a44e)
 
@@ -102,7 +100,7 @@ if __name__ == "__main__":
 ```
 
 
-### Pycharm IDE:
+### PyCharm IDE:
 
 ![Pasted image 20241013202456](https://github.com/user-attachments/assets/cabcdfd5-e170-4935-ac9c-0d3dcb51c02d)
 
