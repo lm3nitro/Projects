@@ -2,7 +2,7 @@
 
 ### Scope:
 
-In part 1 I was able to install and configure PolarProxy. In part 2, I will intercept and decrypt traffic using PolarProxy while downloading an image from google. The decrypted traffic will be captured and analyzed in NetworkMiner, where  I will then extract the image from the PCAP file. Successful testing confirms that PolarProxy properly decrypts the traffic, and NetworkMiner accurately displays the image. I will also be analyzing regular traffic visiting a website to see how PolarProxy is able to capture it. This process aims to ensure that PolarProxy accurately captures the network traffic, allowing for the successful extraction of files, such as images, from the decrypted data.
+In part 1 I was able to install and configure PolarProxy. In part 2, I will intercept and decrypt traffic using PolarProxy while downloading an image from google. The decrypted traffic will be captured and analyzed in NetworkMiner, where I will then extract the image from the PCAP file. Successful testing confirms that PolarProxy properly decrypts the traffic, and NetworkMiner accurately displays the image. I will also be analyzing regular traffic visiting a website to see how PolarProxy is able to capture it. This process aims to ensure that PolarProxy accurately captures the network traffic, allowing for the successful extraction of files, such as images, from the decrypted data.
 
 ### Tools and Technology:
 Ubuntu, PolarProxy, NetworkMiner and Wireshark
@@ -29,7 +29,7 @@ Here I was able to see the conversation between my host and the web server:
 
 ![Pasted image 20240409190734](https://github.com/lm3nitro/Projects/assets/55665256/605ce843-c733-4143-ada0-64c0b2020a7c)
 
-By going to files, I was able to locate the image that was previosly searched for in Google:
+By going to files, I was able to locate the image that was previously searched for in Google:
 
 ![Pasted image 20240409190418](https://github.com/lm3nitro/Projects/assets/55665256/9d5621d4-b84c-4c0e-999d-7daccc4fadec)
 
