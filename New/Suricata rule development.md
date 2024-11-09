@@ -17,7 +17,7 @@ Suricata is an open-source network threat detection engine designed for intrusio
 
 ### Scope:
 
-The scope of this project involves installing Suricata on a VM to serve as a dedicated network intrusion detection and prevention system. This setup allows for easy management and scalability in a controlled environment. After installation, I will create custom rules and will simulate various scans traffic to test the rules effectiveness. I will also monitor and analyze the rseults through Suricata's alert logs. 
+The scope of this project involves installing Suricata on a VM to serve as a dedicated network intrusion detection and prevention system. This setup allows for easy management and scalability in a controlled environment. After installation, I will create custom rules and will simulate various scans traffic to test the rules effectiveness. I will also monitor and analyze the results through Suricata's alert logs. 
 
 ### Tools and Technology:
 
@@ -25,7 +25,7 @@ Ubuntu and Suricata
 
 ## Installation
 
-These are the commands I used to install Suricata and packages needed:
+These are the commands I used to install Suricata, and packages needed:
 
 ```
 sudo apt-get install software-properties-common
@@ -34,7 +34,7 @@ sudo apt-get update
 sudo apt-get install suricata
 ```
 
-Once Suricata was isntalled, I went ahead and upgraded to ensure everything was up to date:
+Once Suricata was installed, I went ahead and upgraded to ensure everything was up to date:
 
 ```
 sudo apt-get update
@@ -55,7 +55,7 @@ suricata update
 
 ![Pasted image 20241008150324](https://github.com/user-attachments/assets/0287d822-8321-4525-8698-ed060c031355)
 
-Next, I needed to configure Suricata. In the screenshot below, I perfomed the following chnages as part of the configuration
+Next, I needed to configure Suricata. In the screenshot below, I performed the following changes as part of the configuration
 
 + Enabled pcap logging
 + Disabled suricata.rules and added the local.rule "custom" path
@@ -95,7 +95,7 @@ nmap -sn 192.168.1.0/24
 
 ![Pasted image 20241008160247](https://github.com/user-attachments/assets/f66ad021-2d7e-4922-ba8e-6c208a7617fc)
 
-Capured the traffic with TCPdump:
+Captured the traffic with TCPdump:
 
 ![Pasted image 20241008160458](https://github.com/user-attachments/assets/1c2d0b75-9cb7-4637-b85d-23fe77337942)
 
@@ -111,7 +111,7 @@ Suricata fast.log "alert logs":
 
 ![Pasted image 20241008160146](https://github.com/user-attachments/assets/b9d13a0c-4301-4617-82bd-fa0359a21257)
 
-based on the output, the rule created worked and it was able to detect the ping sweep perfomed. 
+based on the output, the rule created worked and it was able to detect the ping sweep performed. 
 
 Taking a look at the pcap file to verify the behavior of the ping sweep:
 
@@ -134,7 +134,7 @@ I then performed a SYN Scan with nmap:
 nmap -sS 10.10.100.1
 ```
 
-The scan detect 2 open ports:
+The scan detected 2 open ports:
 
 ![Pasted image 20241008164019](https://github.com/user-attachments/assets/336f5c55-01af-4afc-a127-f5dc2c6f3f55)
 
@@ -169,7 +169,7 @@ Rule created:
 alert tcp any any -> any any (msg:"Nmap TCP ACK Scan detected"; flags:A; threshold: type both, track by_src, count 10, seconds 1; sid:1000002; rev:1;)
 ```
 
-Once I created the rule, I performed an ACK San with nmap to test against it:
+Once I created the rule, I performed an ACK San with Nmap to test against it:
 
 ![Pasted image 20241009171651](https://github.com/user-attachments/assets/530501f8-a609-400a-8aae-bb4195671875)
 
@@ -185,7 +185,7 @@ Suricata fast.log "alert logs":
 
 ![Pasted image 20241009171801](https://github.com/user-attachments/assets/364dad6a-226f-4704-ba09-409d2bf240b9)
 
-Analysing the pcap file:
+Analyzing the pcap file:
 
 ![Pasted image 20241009172156](https://github.com/user-attachments/assets/94367d83-681a-4377-97f9-644b695bdd4b)
 
@@ -205,7 +205,7 @@ Suricata fast.log "alert logs":
 
 ![Pasted image 20241009173529](https://github.com/user-attachments/assets/21cd873b-23dd-4ef2-92bb-311edbab7474)
 
-Analysing the pcap file:
+Analyzing the pcap file:
 
 ![Pasted image 20241009173856](https://github.com/user-attachments/assets/c0e8946d-3209-4e24-9cfe-84e878408afc)
 
@@ -221,7 +221,7 @@ Suricata fast.log "alert logs":
 
 ![Pasted image 20241009174738](https://github.com/user-attachments/assets/8c2695e1-1cd2-485a-8c31-1bc2660693ec)
 
-Analysing the pcap file:
+Analyzing the pcap file:
 
 ![Pasted image 20241009175808](https://github.com/user-attachments/assets/33ecbd52-3d99-4aaf-8fb2-8343d225b17a)
 
@@ -245,7 +245,7 @@ Suricata fast.log "alert logs":
 
 ![Pasted image 20241009180116](https://github.com/user-attachments/assets/57149621-1464-4082-8141-d2c49b3791fa)
 
-Analysing the pcap file:
+Analyzing the pcap file:
 
 ![Pasted image 20241009175649](https://github.com/user-attachments/assets/9cadef88-76ae-4752-bec8-ccd76fd4b455)
 
@@ -261,7 +261,7 @@ Suricata fast.log "alert logs":
 
 ![Pasted image 20241009181045](https://github.com/user-attachments/assets/a09a2e9e-8799-486b-866a-5a558e68b387)
 
-Analysing the pcap file:
+Analyzing the pcap file:
 
 ![Pasted image 20241009181125](https://github.com/user-attachments/assets/10448e30-9b47-445e-9473-0e64bdcf0754)
 
@@ -277,7 +277,7 @@ Suricata fast.log "alert logs":
 
 ![Pasted image 20241009182423](https://github.com/user-attachments/assets/a87479f9-897d-49f7-a4df-c512146dda82)
 
-Analysing the pcap file:
+Analyzing the pcap file:
 
 ![Pasted image 20241009182644](https://github.com/user-attachments/assets/f6f09cde-bfb0-4080-b73a-743aa02a2489)
 
