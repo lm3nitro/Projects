@@ -9,7 +9,7 @@ I created the following script that sends an ICMP request (ping) to devices in a
 
 ## Script
 
-Below is the script I created. Here I am scanning all the devices in my network (10.10.100.0/24). I am then taking the output and modifying it to display only the relevent information I am interested seeing by using grep:
+Below is the script I created. Here I am scanning all the devices in my network (10.10.100.0/24). I am then taking the output and modifying it to display only the relevant information I am interested seeing by using grep:
 
 ```bash
 #!/bin/bash
