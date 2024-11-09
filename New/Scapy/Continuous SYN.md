@@ -1,6 +1,6 @@
 ## Introduction:
 
-In this script below, I will be using the scapy library to send custom TCP packets to port 22 with a SYN flag set in a continous loop. The primary objective is to see how the target host responds to this type of traffic being sent. For the pupose of this exercise, my target will be my Fortinet firewall. 
+In this script below, I will be using the scapy library to send custom TCP packets to port 22 with a SYN flag set in a continuous loop. The primary objective is to see how the target host responds to this type of traffic being sent. For the purpose of this exercise, my target will be my Fortinet firewall. 
 
 ## Use Cases:
 
@@ -21,11 +21,11 @@ while True:
     send(syn_packet, verbose=False)
 ```
 
-Code in Pycharm:
+Code in PyCharm:
 
 ![Pasted image 20241006155328](https://github.com/user-attachments/assets/ecbc51c2-bf5b-417f-b98a-0c79320e7d12)
 
-Executing the script and sniffing the packet with TCPDump:
+Executing the script and sniffing the packet with Tcpdump:
 
 ![Pasted image 20241006155917](https://github.com/user-attachments/assets/48ce550e-f633-43fb-bff4-c176ccc8980c)
 
@@ -33,11 +33,10 @@ Here I was able to see that the firewall is responding on port 22:
 
 ![Pasted image 20241006160651](https://github.com/user-attachments/assets/f9579558-713c-4e83-845c-8e5ef8e3c085)
 
-Since the script was going to loop for ever I broke the loop by Ctrl+c. 
 
 ## Summary:
 
-After executing the script, I was able to see the traffic in real time. I could also see that everytime the firewall received a SYN packet it responded with a RST. A firewall will usually respond in this manner for several reasons:
+After executing the script, I was able to see the traffic in real time. I could also see that every time the firewall received a SYN packet it responded with a RST packet. A firewall will usually respond in this manner for several reasons:
 
 + The destination port is closed or not open for connections
 + The traffic does not meet the firewall's security policies or rules
