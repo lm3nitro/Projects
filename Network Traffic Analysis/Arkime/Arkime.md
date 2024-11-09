@@ -5,7 +5,7 @@
 Arkime (formerly known as Moloch) is an open-source large-scale network traffic analysis tool that is designed to capture, index, and analyze network packets. It enables security analysts to conduct real-time, high-speed searches and data visualizations, aiding in the detection, diagnosis, and response to cybersecurity threats and anomalies within network environments.
 
 ### Scope:
-I will be installing and configuring Arkime and will be analyizng coming and going traffic from my internal servers.  
+I will be installing and configuring Arkime and will be analyzing coming and going traffic from my internal servers.  
 
 ### Tools and Technology:
 Arkime, Elasticsearch, Wireshark and Linux OS
@@ -23,7 +23,7 @@ https://arkime.com/
 
 ![Pasted image 20240512190635](https://github.com/lm3nitro/Projects/assets/55665256/01d8f984-7f02-4103-a7a3-72e62e53d726)
 
-Behore downloading, I needed to verify the Ubuntu version I was running:
+Before downloading, I needed to verify the Ubuntu version I was running:
 
 ```
 lsb_release -a
@@ -43,7 +43,7 @@ Right-click on the package and select *Copy Link*
 
 ![Pasted image 20240512190944](https://github.com/lm3nitro/Projects/assets/55665256/b2da40bb-61e2-46c5-85ca-6f6ba1b33c2a)
 
-Once you have the link, you can usse wget and paste it into the command as seen below:
+Once you have the link, you can use wget and paste it into the command as seen below:
 
 ![Pasted image 20240512191029](https://github.com/lm3nitro/Projects/assets/55665256/7cb1236d-8ac0-42fd-b166-03b9e135c622)
 
@@ -51,7 +51,7 @@ Now that we have the package, we will then need to install the dependencies:
 
 ![Pasted image 20240512191135](https://github.com/lm3nitro/Projects/assets/55665256/59245fe6-1554-45f8-80e6-a6ba7ad5fe06)
 
-Once we have the dependencies installed, lets depackage Arkime:
+Once we have the dependencies installed, lets unpackage Arkime:
 
 ![Pasted image 20240512191409](https://github.com/lm3nitro/Projects/assets/55665256/f4736183-4b8a-47b1-9c85-90cfaa87ac69)
 
@@ -206,6 +206,6 @@ Looking at 1 hour worth of traffic:
 
 ## Summary:
 
-WI installed and configured Arkime and tested its functionality of capturing network traffic. Arkime is especially valuable becauase it gives you a searchable database of network traffic that makes it easy to search, investigate, and analyze network events. As seen in the screenshots above, its web interface offers an excellent way to filter for traffic, see connections, and explore network connections which is crucial for troubleshooting network issues and threat hunting. 
+WI installed and configured Arkime and tested its functionality of capturing network traffic. Arkime is especially valuable becauseit gives you a searchable database of network traffic that makes it easy to search, investigate, and analyze network events. As seen in the screenshots above, its web interface offers an excellent way to filter for traffic, see connections, and explore network connections which is crucial for troubleshooting network issues and threat hunting. 
 
 
