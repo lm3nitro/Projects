@@ -2,10 +2,10 @@
 
 ![Pasted image 20241014163054](https://github.com/user-attachments/assets/6e5b4b02-a994-4248-bce9-0631f5409575)
 
-tcpdump is a powerful command-line tool used for network packet analysis. It allows users to capture and inspect the data traffic that flows through a network interface on a system. It’s also lightweight and flexible, making it ideal for both simple diagnostics and advanced analysis.
+Tcpdump is a powerful command-line tool used for network packet analysis. It allows users to capture and inspect the data traffic that flows through a network interface on a system. It’s also lightweight and flexible, making it ideal for both simple diagnostics and advanced analysis.
 
 ### Scope:
-In this exercise, I will set-up a continuous network traffic capture aimed at continously montioring the network. The focus is to ensure that only recent network activity is always available for analysis, while older, less relevant data is automatically discarded. I will cover a couple of ways in which tcpdump can be used to limit the amount and size of files that are generated when continously monitoring. I will also use a script that will monitor the directory where the files are stored and ensure that stay under a specified amount. 
+In this exercise, I will set-up a continuous network traffic capture aimed at continously monitoring the network. The focus is to ensure that only recent network activity is always available for analysis, while older, less relevant data is automatically discarded. I will cover a couple of ways in which tcpdump can be used to limit the amount and size of files that are generated when continuously monitoring. I will also use a script that will monitor the directory where the files are stored and ensure that stay under a specified amount. 
 
 ### Tools and Technology:
 Tcpdump, Linux, and Bash
@@ -46,7 +46,7 @@ WantedBy=multi-user.target
 
 This will create 10 files at all times of 1 mb each and keep rotating them. 
 
-In order for the configuraiton to be applied, I reloaded the systemd manager configuration:
+In order for the configuration to be applied, I reloaded the systemd manager configuration:
 
 ```
 sudo systemctl daemon-reload
@@ -88,7 +88,7 @@ Below are the trace files:
 
 ## Capturing Based on Time:
 
-Here, I will be creating a new trace file every 10 seconds that will invlude the timestamp. The timestamp-based filenames are especially useful for chronologically ordered logs, as they tell you exactly when the capture started and which packets are in each file. By rotating the capture files every 10 seconds (or any other time interval), you can limit the file size and keep them small and manageable, preventing overly large files and making it easier to analyze specific time slices of traffic.
+Here, I will be creating a new trace file every 10 seconds that will invlude the timestamp. The timestamp-based filenames are especially useful for chronologically ordered logs, as they tell you exactly when the capture started, and which packets are in each file. By rotating the capture files every 10 seconds (or any other time interval), you can limit the file size and keep them small and manageable, preventing overly large files and making it easier to analyze specific time slices of traffic.
 
 ```
 tcpdump -ni ens32 -w tracepcap-%Y-%m-%d-%H-%M-%S -G 10 -Z elk &  
@@ -142,11 +142,11 @@ for pcap in /home/elk/pcap/tracepcap*; do tcpdump -nr "$pcap" icmp  ; done
 
 ![Pasted image 20241014161606](https://github.com/user-attachments/assets/488c11b5-f21b-4c60-9876-67156d084894)
 
-As seen above, I am sending ICMP to two destinations (1.1.1.1 and 9.9.9.9). I am also reading all the trace files on the right side with a for loop. On the top right corner is the screenshot showig where the files are getting generated, however, the script is also running and removing odler files as new ones are created in order to ensure that only the specified number of files are retained at all times. 
+As seen above, I am sending ICMP to two destinations (1.1.1.1 and 9.9.9.9). I am also reading all the trace files on the right side with a for loop. On the top right corner is the screenshot showing where the files are getting generated, however, the script is also running and removing older files as new ones are created in order to ensure that only the specified number of files are retained at all times. 
 
 ### Summary:
 
-In this exercise, I was able to modify the tcpdump service in order to kimit the amount of capture files created based on time, date, and amount of files. Doing this has several key benefits,  especially when dealing with long-duration or high-traffic network monitoring. Limiting file sizes ensures that individual capture files remain manageable, preventing them from growing too large and becoming difficult to handle, transfer, or analyze. Rotating files based on time ensures that data is captured in smaller, more manageable chunks, which simplifies analysis and reduces the risk of losing large amounts of data in the event of a failure.
+In this exercise, I was able to modify the tcpdump service in order to limit the amount of capture files created based on time, date, and number of files. Doing this has several key benefits, especially when dealing with long-duration or high-traffic network monitoring. Limiting file sizes ensures that individual capture files remain manageable, preventing them from growing too large and becoming difficult to handle, transfer, or analyze. Rotating files based on time ensures that data is captured in smaller, more manageable chunks, which simplifies analysis and reduces the risk of losing large amounts of data in the event of a failure.
 
-I also created a script that willl continously run and monitor the file directory to ensure that the amount of files are kept under a specified amount. This approach prevents manual intervention and avoids the risk of running out of storage space, which could disrupt the monitoring process or cause the system to fail. 
+I also created a script that will continuously run and monitor the file directory to ensure that the number of files are kept under a specified amount. This approach prevents manual intervention and avoids the risk of running out of storage space, which could disrupt the monitoring process or cause the system to fail. 
 
