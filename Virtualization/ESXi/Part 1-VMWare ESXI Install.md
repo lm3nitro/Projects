@@ -1,7 +1,3 @@
-![Screenshot 2024-09-22 at 12 57 20 AM](https://github.com/user-attachments/assets/a2c94d49-ac6b-4749-a0ab-b272e9d90a57)
-
-
-
 # Installing VMWare ESXi:
 
 <img width="283" alt="Screenshot 2024-09-21 at 12 41 47 PM" src="https://github.com/user-attachments/assets/c2b9600c-6ae1-4b0e-947d-8d7386c21e1b">
@@ -10,7 +6,10 @@ VMware ESXi is a powerful hypervisor. It serves as the foundation for virtualiza
 
 ### Scope:
 
-I currently have a PowerEdge R720 server racked in my home network. I will be installing VMWare ESXi to host several VMs that I will be using for my projects. This is Part 1 out of 4. This portion will only be convering the installation of VMWare ESXi while other sections will inlcude running a vulnerability scan, patching and creating a VM in VMWare ESXi. 
+I currently have a PowerEdge R720 server racked in my home network. I will be installing VMWare ESXi to host several VMs that I will be using for my projects. This is Part 1 out of 4. This portion will only be converting the installation of VMWare ESXi while other sections will include running a vulnerability scan, patching and creating a VM in VMWare ESXi. 
+
+![Screenshot 2024-09-22 at 12 57 20 AM](https://github.com/user-attachments/assets/a2c94d49-ac6b-4749-a0ab-b272e9d90a57)
+
 
 ### Tools and Technology:
 VMWare ESXi and a PowerEdge R720 server
@@ -23,7 +22,7 @@ First thing is to go to VMWare to download ESXi. You will need to have an accoun
 Once you login, go to **Downloads** 
 ![Pasted image 20240422100529](https://github.com/lm3nitro/Projects/assets/55665256/3926921c-c91a-478e-8394-5d9a2f051407)
 
-Locate and select the product you are looking for, in my case it is ESXi:
+Locate and select the product you are looking for; in my case it is ESXi:
 
 ![Pasted image 20240422100714](https://github.com/lm3nitro/Projects/assets/55665256/12bc15ec-9b17-415d-a6f9-32b9dbf69b12)
 
@@ -94,7 +93,7 @@ Now we can see that the IP address has been applied:
 
 ![Pasted image 20240422114726](https://github.com/lm3nitro/Projects/assets/55665256/b88d52ae-a32e-4f9d-886d-2517a86ceef9)
 
-Now that ESXi has been instlalled and has a static IP address, I navigated to it and was present with the login page:
+Now that ESXi has been installed and has a static IP address, I navigated to it and was present with the login page:
 
 ![Pasted image 20240422105501](https://github.com/lm3nitro/Projects/assets/55665256/f46e0bca-3b1c-48bd-a486-d3851c73d1e2)
 
@@ -110,10 +109,10 @@ We can then see that the license was applied and a list of features.
 
 ### Summary
 
-I was able to successfully install and configure VMWare ESXi in my server and apply the license. in part 2 I will be running a vulnerability scsan on this server to see if there are any vulnerabilities that need to be address. Having a virtualized environment is important for several resasons: 
+I was able to successfully install and configure VMWare ESXi in my server and apply the license. in part 2 I will be running a vulnerability scan on this server to see if there are any vulnerabilities that need to be address. Having a virtualized environment is important for several reasons: 
 
-+ Isolation: This will allow me to create isolated environments, preventing potential threats from affecting other nodes in my network. I will be using my VMs for cybersecurity related projects and testing potentially harmful software/configurations. This will help foster a safer environment for learning and expirimentation. 
-+ Snapshots: Practice and trial has shown that you sometimes don't get it right the first time. Having the option to have snapshots is crucial when testing in case you need to rollback to a clean slate.
-+ Efficiency: By having multiple virtual macine running on a single physical machine I can maximize resources and save on cost.
++ Isolation: This will allow me to create isolated environments, preventing potential threats from affecting other nodes in my network. I will be using my VMs for cybersecurity related projects and testing potentially harmful software/configurations. This will help foster a safer environment for learning and experimentation. 
++ Snapshots: Practice and trial has shown that you sometimes don't get it right the first time. Having the option to have snapshots is crucial when testing in case you need to roll back to a clean slate.
++ Efficiency: By having multiple virtual machine running on a single physical machine I can maximize resources and save on cost.
 
 
