@@ -2,7 +2,14 @@
 
 <img width="261" alt="Screenshot 2024-04-27 at 11 31 37 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/b47f1e79-e323-4f98-8a36-5d310a6dab40">
 
-I recently purchased a Netgear GS108Ev3 switch. Here I will be configuring port mirroring on it to capture packets:
+### Scope: 
+
+In this exercise, I will be configuring port mirroring on a newly purchsed Netgear switch to capture packets, this involves setting up a mechanism that mirrors the traffic from specific ports to a designated "monitoring" or "capture" port. This will allow me to capture and analyze the network traffic that passes through the source ports without affecting the normal operation of the network.
+
+### Tools and Technology:
+Netgear GS108Ev3 switch
+
+
 
 ![Pasted image 20240416134504](https://github.com/lm3nitro/Projects/assets/55665256/c5c73a32-7099-4973-8ba3-496506054882)
 
