@@ -2,7 +2,7 @@
 
 <img width="419" alt="Screenshot 2024-04-27 at 2 05 30 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/7c35c537-0af4-45e2-be18-e6ea7998d194">
 
-ELK stands for Elasticsearch, Logstash, and Kibana. ELK is a collection of open source projects that work together as a management and analysis platform and can be used as a SIEM solution. Elasticsearch quickly searches through logs and data, Logstash collects and organizes this data, and Kibana then presents it in easy-to-understand visuals, like graphs and charts. Some of the benefits are:
+ELK stands for Elasticsearch, Logstash, and Kibana. ELK is a collection of open-source projects that work together as a management and analysis platform and can be used as a SIEM solution. Elasticsearch quickly searches through logs and data, Logstash collects and organizes this data, and Kibana then presents it in easy-to-understand visuals, like graphs and charts. Some of the benefits are:
 
 + Centralized Logging
 + Real-Time Monitoring
@@ -14,7 +14,7 @@ ELK stands for Elasticsearch, Logstash, and Kibana. ELK is a collection of open 
 This project will encompass the installation and configuration on ELK on a Linux VM. This will be used to gain hands on experience with ELK, understand the different components and will be used later on to create and test specific use cases for security monitoring and threat detection. 
 
 ### Tools and Technology:
-Linux, Nginx, Elasticsearch, Logstash, and kibana
+Linux, Nginx, Elasticsearch, Logstash, and Kibana
 
 ## Installing Dependencies
 
@@ -34,7 +34,7 @@ javac -version
 
 ## Install Nginx
 
-Next I will need to install Nginx. Nginx is a high performance web server with different functions (reverse proxy, load balance, etc). Nginx  can be installed using the following commands:
+Next, I will need to install Nginx. Nginx is a high-performance web server with different functions (reverse proxy, load balance, etc.). Nginx can be installed using the following commands:
 
 ```
 sudo apt install nginx
@@ -178,5 +178,5 @@ This command will display a randomly generated token. Enter this token in the pr
 
 ### Summary:
 
-In this project I was able to install the ELK stack along with Nginx on my Linux VM. I will be using ELK for future projects to test and perform various use cases. This will in turn allow me to assess how well the ELK stack handles the incoming information and how it parses through the logs. Having ELK isntalled in my network will also allow me to intergrate it with other tools and data sources for enhanced security and functionality. 
+In this project I was able to install the ELK stack along with Nginx on my Linux VM. I will be using ELK for future projects to test and perform various use cases. This will in turn allow me to assess how well the ELK stack handles the incoming information and how it parses through the logs. Having ELK installed in my network will also allow me to integrate it with other tools and data sources for enhanced security and functionality. 
 
