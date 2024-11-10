@@ -3,7 +3,7 @@
 <img width="450" alt="Screenshot 2024-04-27 at 2 16 43 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/8f091f17-b283-4730-b8ab-b0354b543b95">
 
 ### Scope:
-This is Part 3. In Part 2 I installed and configured VMWare ESXi 7 on my server. In Part 2 I performed a vulnerability scan and found that there were some vulnerabilities that needed to be addresses. Here I will go through the process of pathing those vulnerabilities. Its important to note that I do not have any VMs running in my ESXi instance at this point. If VMs are running, ensuring that they are turned off is critical prior to starting the patching process. Upon applying the remediation, I will perfomring another scan to validate that the patch was applied and the CVEs remediated. 
+This is Part 3. In Part 2 I installed and configured VMWare ESXi 7 on my server. In Part 2 I performed a vulnerability scan and found that there were some vulnerabilities that needed to be addresses. Here I will go through the process of pathing those vulnerabilities. It's important to note that I do not have any VMs running in my ESXi instance at this point. If VMs are running, ensuring that they are turned off is critical prior to starting the patching process. Upon applying the remediation, I will performing another scan to validate that the patch was applied and the CVEs remediated. 
 
 ### Tools and Technology:
 VMWare ESXi and Tenable 
@@ -18,13 +18,13 @@ To start, I needed to go to the VMWare patch downloads page, sign-in, and locate
 
 <img width="669" alt="Screenshot 2024-04-22 at 11 36 53 AM" src="https://github.com/lm3nitro/Projects/assets/55665256/3d870e41-1ade-400e-8b0d-83587a19515a">
 
-In the downloads page, I am filtering for that version (7) and locating the last released patch. I selected the highled patch below and downloaded it. This is also the same patch that was referneced in the vulernability scan under the CVE as a remediation solution. 
+In the downloads page, I am filtering for that version (7) and locating the last released patch. I selected the highlighted patch below and downloaded it. This is also the same patch that was references in the vulnerability scan under the CVE as a remediation solution. 
 
 <img width="1397" alt="Screenshot 2024-04-22 at 11 39 51 AM" src="https://github.com/lm3nitro/Projects/assets/55665256/dcf17391-365f-4e3f-ada2-229ee8569bf8">
 
 ## Applying Patch
 
-Once I had the downlaoded patch, I then went back to my ESXi server and navigated to **Storage > datastore1**:
+Once I had the downloaded patch, I then went back to my ESXi server and navigated to **Storage > datastore1**:
 
 <img width="1111" alt="Screenshot 2024-04-22 at 11 44 12 AM" src="https://github.com/lm3nitro/Projects/assets/55665256/bf1ffd20-576a-4440-9dff-34fac9e368e0">
 
@@ -88,7 +88,7 @@ Upon logging in, we can also see that not only did the interface appearance chan
 
 ## Post Remediation Vulnerability Scan
 
-Now that the patch has been applied, I wanted to run another scan to ensure that the vulnerability was indeed remediated. While performing the scan, I was able to go to the ESXi server and monitor the traffic. Here we see some anomolies and a high volume that is espected due to the scan that we are performing:
+Now that the patch has been applied, I wanted to run another scan to ensure that the vulnerability was indeed remediated. While performing the scan, I was able to go to the ESXi server and monitor the traffic. Here we see some anomalies and a high volume that is expected due to the scan that we are performing:
 
 ![Pasted image 20240422141913](https://github.com/lm3nitro/Projects/assets/55665256/15dc49b0-3439-438a-bbfb-3aa832da72e5)
 
@@ -100,7 +100,7 @@ The patch was applied and the vulnerabilities remediated. I am no longer seeing 
 
 ![Pasted image 20240422150211](https://github.com/lm3nitro/Projects/assets/55665256/d8d793f9-a11c-427d-bef7-60510db27cb2)
 
-Here are the details of the Medium vulnerability related to the certificate:
+Here are the details of the medium vulnerability related to the certificate:
 
 ![Pasted image 20240422150511](https://github.com/lm3nitro/Projects/assets/55665256/b3cc7b40-8751-43e9-8687-89b1b9465832)
 
@@ -110,10 +110,10 @@ I also navigated to the certificate itself and can see the following:
 
 ![Pasted image 20240422150539](https://github.com/lm3nitro/Projects/assets/55665256/d4e3ed86-bbbf-4a77-b289-70b02917b9f4)
 
-The resilution for this is to have a proper SSL certificate. For the reasons I am using the ESXi server, this is not something that warrants immediate attention, but something that will be addressed later. 
+The resolution for this is to have a proper SSL certificate. For the reasons I am using the ESXi server, this is not something that warrants immediate attention, but something that will be addressed later. 
 
 ### Summary:
 
-In part 3 I was able to download, install and apply the needed patch in order to remediate the vulnerabilities previously discovered in Part 2. I then was able to validate that the server was no longer vulenrable to those CVEs and that it was indeed patched. Unpatched vulnerabilities can be exploited, which can lead to system compromises and other security incidents. Aside from the the CVEs, patching can often fix critical bugs that can affect the stability and integrity of the system. Its important to continually monitor and scan for vulnerabilities in order to maintain the overal health of the environment. 
+In part 3 I was able to download, install and apply the needed patch in order to remediate the vulnerabilities previously discovered in Part 2. I then was able to validate that the server was no longer vulnerableto those CVEs and that it was indeed patched. Unpatched vulnerabilities can be exploited, which can lead to system compromises and other security incidents. Aside from the CVEs, patching can often fix critical bugs that can affect the stability and integrity of the system. It's important to continually monitor and scan for vulnerabilities in order to maintain the overall health of the environment. 
 
-Simply applying the patch is not enough. There also needs to verification to ensure thatt the patch was installed correctly and that it effectively addresses the vulnerabilities. Regualar vulnerability scanning and patch management promotes a proactive security posture. 
+Simply applying the patch is not enough. There also needs to verification to ensure that the patch was installed correctly and that it effectively addresses the vulnerabilities. Regular vulnerability scanning and patch management promotes a proactive security posture. 
