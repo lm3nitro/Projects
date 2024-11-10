@@ -5,14 +5,14 @@
 Splunk is utilized for conducting business and web analytics, managing applications, ensuring compliance, and enhancing security measures. Splunk is a SIEM (security information and event management) solution. It gathers data from logs, sensors, applications, and more, and organizes it so that users can perform searches to uncover insights, trends, and potential problems. It allows you to investigate and solve issues, monitor performance, and improve security across your IT infrastructure. 
 
 ### Scope:
-I will be installing Splunk on my Ubuntu 22.04 VM in my home environment. I will also cover hot to install additional Add-Ons. Having add-ons will simplify the process of ingesting data from various sources (applications, servers, firewalls. etc). I will then be sending a veriety of logs to my Splunk instance, however, this will be covered as part of a seperate project. I will start with the creation of my VM that will host Splunk and then take a deep dive into the isntallation of Splunk itself. 
+I will be installing Splunk on my Ubuntu 22.04 VM in my home environment. I will also cover hot to install additional Add-Ons. Having add-ons will simplify the process of ingesting data from various sources (applications, servers, firewalls, etc.). I will then be sending a variety of logs to my Splunk instance, however, this will be covered as part of a separate project. I will start with the creation of my VM that will host Splunk and then take a deep dive into the installation of Splunk itself. 
 
 ### Tools and Technology:
 Ubuntu and Splunk
 
 ## Create VM
 
-For my environment, I decided to use Ubuntu 22.04 to install Splunk. To begin, I will set-up my VM and install Splunk. I am using VMWare Workstation 16 Pro and set the VM to the following perameters:
+For my environment, I decided to use Ubuntu 22.04 to install Splunk. To begin, I will set-up my VM and install Splunk. I am using VMWare Workstation 16 Pro and set the VM to the following parameters:
 
 ![Pasted image 20240328164129](https://github.com/lm3nitro/Projects/assets/55665256/774bffde-b410-41df-9cd9-b49beb1a3fc1)
 
@@ -41,7 +41,7 @@ I used the following command to download the latest version:
 ```
 wget -O splunk-9.2.1-78803f08aabb-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/9.2.1/linux/splunk-9.2.1-78803f08aabb-linux-2.6-amd64.deb"
 ```
-Here we see that Splunk has been downlaoded. Once downloaded, I proceed to run the following command:
+Here we see that Splunk has been downloaded. Once downloaded, I proceed to run the following command:
 ```
 dpkg -i splunk-9.2.1-78803f08aabb-linux-2.6-amd64.deb
 ```
@@ -72,7 +72,7 @@ I then navigated to my Splunk via the web browser on port 8000 and was presented
 
 I will go ahead and check the CPU and verify that everything is working properly.
 
-Here is the the CPU when I initially installed Splunk. Everything look good.
+Here is the the CPU when I initially installed Splunk. Everything looks good.
 
 ![Pasted image 20240331163921](https://github.com/lm3nitro/Projects/assets/55665256/6336f681-7a6f-4847-b96d-f29559a28753)
 
@@ -105,7 +105,7 @@ I can also see the amount of events that had been sent to Splunk from the variou
 
 ### Summary:
 
-In this project I was able to install Splunk and also installed additional add-ons in order to better intergrate data from various sources. Sending this data from various sources will be included as part of other projects. Installing Splunk also allowed me to gain hands on experience with its funcctionalities, including data ingestion, search, and visualization. I also want to create variousdashboards and and use the different features to better viausalize the inforamtion that is important to me and pertinent to my enviornment. I highly recommend having a SIEM as part of your network to. The following benefits can be gained from it:
+In this project I was able to install Splunk and also installed additional add-ons in order to better integrate data from various sources. Sending this data from various sources will be included as part of other projects. Installing Splunk also allowed me to gain hands on experience with its functionalities, including data ingestion, search, and visualization. I also want to create various dashboards and use the different features to better viausalize the inforamtion that is important to me and pertinent to my environment. I highly recommend having a SIEM as part of your network to. The following benefits can be gained from it:
 + Threat detection
 + Centralized Monitoring
 + Incident response
