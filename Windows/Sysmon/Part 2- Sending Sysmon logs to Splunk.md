@@ -1,10 +1,10 @@
 # Sending Sysmon Logs to Splunk
 
-This is part 2 of the project. In the first part, I installed and configure Sysmon on the Win 10 OS host.The following will go through the process of sending the Sysmon logs to Splunk. I already have my Splunk instance up and running. 
+This is part 2 of the project. In the first part, I installed and configure Sysmon on the Win 10 OS host. The following will go through the process of sending the Sysmon logs to Splunk. I already have my Splunk instance up and running. 
 
 ## Splunk Universal Forwarder
 
-To start, I will need to download the Splunk Forwarder on my Windows host. At the time of this writing it is 9.2.1:
+To start, I will need to download the Splunk Forwarder on my Windows host. At the time of this writing, it is 9.2.1:
 
 <img width="1124" alt="Screenshot 2024-04-29 at 10 34 34 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/8efe8697-9e27-43aa-8cc7-90adaa53759d">
 
@@ -55,7 +55,7 @@ Installation is finished, complete the install and click *Finish*
 
 ## Inputs.conf
 
-When installing the Splunk Fowarder, In was able to choose what type of logs I wanted fowarded. These options all get placed in the *inputs.conf* file. By default, this is in the following location:
+When installing the Splunk Forwarder, In was able to choose what type of logs I wanted forwarded. These options all get placed in the *inputs.conf* file. By default, this is in the following location:
 
 **C:\ProgramFiles\SplunkUniversalFowarder\etc\apps\SplunkUniversalFowarder\local\inputs.conf**
 
@@ -65,7 +65,7 @@ When we open it up in notepad, it looks like this:
 
 <img width="633" alt="Screenshot 2024-04-30 at 9 26 32 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/03103ea2-a6ce-4c7c-a1ea-95ce0d9dc9cd">
 
-I will be modifying this file in order to tailor the logs that I want to be sent to Splunk. To do this, I copied this file and placed the copied version of it in a different location. This is important becuase we want to ensure we have a backup when changing configuration settings. I renamed the copy/backup inputs.conf.bk:
+I will be modifying this file in order to tailor the logs that I want to be sent to Splunk. To do this, I copied this file and placed the copied version of it in a different location. This is important because we want to ensure we have a backup when changing configuration settings. I renamed the copy/backup inputs.conf.bk:
 
 <img width="642" alt="Screenshot 2024-04-30 at 12 25 06 AM" src="https://github.com/lm3nitro/Projects/assets/55665256/b4ec6ff4-99eb-4b22-88ec-e4d966159f97">
 
@@ -73,19 +73,19 @@ I will be changing the contents of inputs.conf to the following example below. I
 
 <img width="1027" alt="Screenshot 2024-04-29 at 11 09 48 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/b2e13f56-9bdb-4107-ba51-76c16a85ef11">
 
-Now that the inputs.conf file is ready, I restarted the Splunk Fowarder. To do this, go to the *Start Menu* and type *Services:*
+Now that the inputs.conf file is ready, I restarted the Splunk Forwarder. To do this, go to the *Start Menu* and type *Services:*
 
 <img width="866" alt="Screenshot 2024-04-30 at 12 48 01 AM" src="https://github.com/lm3nitro/Projects/assets/55665256/d324ec4a-30c4-42ae-bfb9-285c3f229aeb">
 
-Locate the *SplunkFowarder* service and select restart. 
+Locate the *SplunkForwarder* service and select restart. 
 
 <img width="1018" alt="Screenshot 2024-04-30 at 12 48 58 AM" src="https://github.com/lm3nitro/Projects/assets/55665256/865bfd97-dff1-42ca-99a4-0ed3bc644cee">
 
-Now that the Splunk Fowarder is installed on the host, I needed configure my Splunk instance so that it can receive the logs being sent. 
+Now that the Splunk Forwarder is installed on the host, I needed configure my Splunk instance so that it can receive the logs being sent. 
 
 ## Splunk
 
-First, I need to install 2 applications on my instance. These are both Splunk add-ons for Windows and Linux. For now the Windows is the only one needed, however, I will be using the Linux one later. Once I downloaded the add-ons, I went to Splunk and navigated to *Upload from File*
+First, I need to install 2 applications on my instance. These are both Splunk add-ons for Windows and Linux. For now, the Windows is the only one needed, however, I will be using the Linux one later. Once I downloaded the add-ons, I went to Splunk and navigated to *Upload from File*
 
 <img width="1414" alt="Screenshot 2024-04-29 at 11 00 24 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/b095b1e2-36a2-49f2-81f5-4f38b2ba23e5">
 
@@ -101,7 +101,7 @@ Here I can see both files have been uploaded:
 
 <img width="1430" alt="Screenshot 2024-04-30 at 12 30 07 AM" src="https://github.com/lm3nitro/Projects/assets/55665256/9c2e5729-d67a-4ed2-b950-5bd87538c46f">
 
-Once that was isntalled,I then needed to create an index. To do this go to *Settings > Indexes*
+Once that was installed, I then needed to create an index. To do this go to *Settings > Indexes*
 
 <img width="1417" alt="Screenshot 2024-04-29 at 11 25 19 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/233a1b8a-380b-49fa-b5e8-5c4305667148">
 
@@ -119,7 +119,7 @@ Once the index was ready, I needed to set the receiving port in Splunk to 9997 t
 
 ## Verification
 
-I then ran a couple of test and verify that the logs are showing correctly. For these examples, I went back to my Windows host which has the Splunk Fowarder, opened a browser, and navigated to both *chess.com* and *lichess.org:*
+I then ran a couple of tests and verify that the logs are showing correctly. For these examples, I went back to my Windows host which has the Splunk Forwarder, opened a browser, and navigated to both *chess.com* and *lichess.org:*
 
 <img width="1302" alt="Screenshot 2024-04-30 at 12 32 03 AM" src="https://github.com/lm3nitro/Projects/assets/55665256/a315af3a-b3b3-4dbe-b6b0-64b267750e75">
 
@@ -133,4 +133,4 @@ I also can filter for these and see that this information is registering and bei
 
 ### Summary:
 
-Having Sysmon configured and sending logs to Splunk provides real-time event loggin of system activities which is important for monitoring, detecting, and responding to threats. Having this integration with Splunk enhances visibility into the system behavior. Although deep analysis was not done as part of this project, there will be more projects that will take advatage of this integration for further testing and analysis. 
+Having Sysmon configured and sending logs to Splunk provides real-time event logging of system activities which is important for monitoring, detecting, and responding to threats. Having this integration with Splunk enhances visibility into the system behavior. Although deep analysis was not done as part of this project, there will be more projects that will take advantage of this integration for further testing and analysis. 
