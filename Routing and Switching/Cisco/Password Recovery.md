@@ -4,7 +4,7 @@ I will be performing a password reset on the Cisco 3750G switch. The **Cisco pa
 
 Once the switch has loaded its operating system we can enter **privileged-exec mode**, rename back the **flash:config.text.old** to **flash:config.text** (**startup-config**), copy the **startup-config** file to memory (DRAM), make the necessary password changes and save the configuration.
 
-Here are is the process I followed:
+Here is the process I followed:
 
 ## Password Recovery – Reset Procedure
 
