@@ -29,7 +29,7 @@ The primary socket API functions and methods in this module are:
 
 # Python code:
 
-```
+```python
   
 # Importing the socket module  
 import socket  
