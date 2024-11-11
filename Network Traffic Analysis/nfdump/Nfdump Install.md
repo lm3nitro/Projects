@@ -88,7 +88,7 @@ In this exercise, I was able to download and install Nfdump. I then converted a 
 
 + Identify which devices or IP addresses are generating the most traffic (Top Talkers)
 + Find which services are active on your network
-+ Detect traffic patterns that are out of the ordinar (unexpected IP addresses or ports)
++ Detect traffic patterns that are out of the ordinary (unexpected IP addresses or ports)
 
 Overall, Nfdump can be used for performance monitoring, troubleshooting, reporting, and traffic trend analysis. 
 
