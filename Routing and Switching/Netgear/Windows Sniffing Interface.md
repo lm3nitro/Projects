@@ -59,4 +59,4 @@ frame contains "chess.com"
 
 ### Summary:
 
-In the exercise, I was able to configure a sniffing interface on my Windows host. This allows for in-depth network traffic analysis, which is crucial for diagnosing connectivity issues and identifying performance bottlenecks. By capturing and analyzing this traffic data,I will be able to monitor all the traffic from this host and gain insights into the communication between devices on the network. This will allow me to identify any potential network issues, such as slow response times, packet loss, or misconfigurations, and take corrective actions. 
+In the exercise, I was able to configure a sniffing interface on my Windows host. This allows for in-depth network traffic analysis, which is crucial for diagnosing connectivity issues and identifying performance bottlenecks. By capturing and analyzing this traffic data, I will be able to monitor all the traffic from this host and gain insights into the communication between devices on the network. This will allow me to identify any potential network issues, such as slow response times, packet loss, or misconfigurations, and take corrective actions. 
