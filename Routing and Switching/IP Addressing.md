@@ -1,16 +1,20 @@
-Basic connectivity ip routing
+# Basic Routing
+
+### Scope:
+
+In this project, I will simulate a real-world network scenario where three routers are deployed in different geographical locations (Georgia, California, and Colorado), with basic IP connectivity configured for remote communication. The goal is to establish a network topology where the routers can communicate with each other.
+
+### Topology:
 
 ![Pasted image 20240508130031](https://github.com/lm3nitro/Projects/assets/55665256/b7a55415-4394-4500-9bc9-16cf53fc7316)
 
+Subnet Information:
 
-Subnet:
+Georgia California: 10.10.10.0/30
+Georgia Colorado: 10.10.20.0/30
+Colorado California: 10.10.30.0/30
 
-Georgia California : 10.10.10.0/30
-Georgia Colorado : 10.10.20.0/30
-Colorado California : 10.10.30.0/30
-
-
-# Georgia:
+## Georgia:
 
 Listing interfaces:
 
@@ -30,7 +34,7 @@ Checking the status of the interfaces:
 
 ![Pasted image 20240508131038](https://github.com/lm3nitro/Projects/assets/55665256/53bbdf93-0b7d-41e6-88c9-76dd27442b5d)
 
-# California:
+## California:
 
 Listing interfaces:
 
@@ -42,7 +46,7 @@ Link to Georgia:
 
 ![Pasted image 20240508133318](https://github.com/lm3nitro/Projects/assets/55665256/92a00d2b-cb83-4ddb-b050-cbc8b925b1ab)
 
-Link to  Colorado:
+Link to Colorado:
 
 ![Pasted image 20240508133359](https://github.com/lm3nitro/Projects/assets/55665256/60113dde-5bcb-47d8-b123-bd3819812f69)
 
@@ -50,7 +54,7 @@ Checking the status of the interfaces:
 
 ![Pasted image 20240508133420](https://github.com/lm3nitro/Projects/assets/55665256/9e165d5a-608c-4ec9-bddb-59ba59a01c68)
 
-# Colorado:
+## Colorado:
 
 Listing interfaces:
 
@@ -70,7 +74,7 @@ Checking the status of the interfaces:
 
 ![Pasted image 20240508132700](https://github.com/lm3nitro/Projects/assets/55665256/4b28befd-63ad-4452-b32d-a806b0661573)
 
-# Testing connectivity:
+## Testing Connectivity:
 
 Georgia:
 
@@ -84,4 +88,6 @@ Colorado:
 
 ![Pasted image 20240508133536](https://github.com/lm3nitro/Projects/assets/55665256/14af2897-be54-4d61-9d4e-56de8eae1148)
 
+### Summary:
 
+This setup simulates a real-world network environment where three routers in different geographic locations are interconnected, enabling basic IP connectivity between the sites. In real-world scenarios, companies often have geographically dispersed offices—sometimes located in different cities, countries, or continents—each requiring secure and reliable communication between locations. 
