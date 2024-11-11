@@ -1,5 +1,9 @@
-# Configurating Windows 11 NIC for traffic sniffing
+# Windows Sniffing Interface
 
+### Scope: 
+The scope of this exercise is to configure a sniffing interface on a Windows host to capture and analyze network traffic. The goal is to set up a network interface in "promiscuous mode" so that it can intercept all packets. This configuration will enable the use of packet analysis tools, such as Wireshark, to inspect traffic for troubleshooting, security analysis, and performance monitoring. 
+
+## Getting Started:
 This is the hardware information for the device I will be configuring:
 
 ![Pasted image 20240416122451](https://github.com/lm3nitro/Projects/assets/55665256/fa3772e5-ae40-4631-b5f3-049edb89c591)
@@ -12,7 +16,7 @@ To get started, we will need to navigate to the ethernet interface we will be co
 
 ![Pasted image 20240416113418](https://github.com/lm3nitro/Projects/assets/55665256/2085cecb-b86a-4b3d-9ebf-3bc21a58bf44)
 
-### Disabling Checksum Offload
+Disabling Checksum Offload:
 
 1. Open the Network Connections page of the Windows Control Panel.
 2. Open the "Properties" dialog of the NIC.
@@ -41,11 +45,11 @@ TCP offloading **sends some network packets directly to the NIC for processing*
 
 Npcap is an architecture for **packet capture and network analysis for Windows operating systems**, consisting of a software library and a network driver.
 
-### Enable promiscuous mode in Wireshark:
+Enabling promiscuous mode in Wireshark:
 
 ![Pasted image 20240416121653](https://github.com/lm3nitro/Projects/assets/55665256/08f23dca-6854-41a2-b0ff-50bdc71c08d3)
 
-To test, I capturing some traffic going to chess.com:
+To test, I captured some traffic going to chess.com:
 
 ```
 frame contains "chess.com"
@@ -53,4 +57,6 @@ frame contains "chess.com"
 
 ![Pasted image 20240416122239](https://github.com/lm3nitro/Projects/assets/55665256/43deb300-4bcb-41b3-8788-fe975d6aeb56)
 
+### Summary:
 
+In the exercise, I was able to configure a sniffing interface on my Windows host. This allows for in-depth network traffic analysis, which is crucial for diagnosing connectivity issues and identifying performance bottlenecks. By capturing and analyzing this traffic data,I will be able to monitor all the traffic from this host and gain insights into the communication between devices on the network. This will allow me to identify any potential network issues, such as slow response times, packet loss, or misconfigurations, and take corrective actions. 
