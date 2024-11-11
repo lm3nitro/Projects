@@ -1,4 +1,4 @@
-#Arping
+# Arping
 
 Arping is a command-line utility used to send ARP (Address Resolution Protocol) requests to a network host to discover its MAC address or check its presence on the local network. Arping uses ARP requests to query the MAC address corresponding to an IP address.
 
