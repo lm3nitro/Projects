@@ -9,7 +9,7 @@ In this exercise, I will be configuring port mirroring on a newly purchsed Netge
 ### Tools and Technology:
 Netgear GS108Ev3 switch
 
-
+Topology:
 
 ![Pasted image 20240416134504](https://github.com/lm3nitro/Projects/assets/55665256/c5c73a32-7099-4973-8ba3-496506054882)
 
@@ -33,6 +33,15 @@ This is the Switch itself and which ports I configured as the source port and th
 
 ![Pasted image 20240416131928](https://github.com/lm3nitro/Projects/assets/55665256/1771622d-31ce-46fa-9e07-dff438489204)
 
+### Summary:
+
+In this lab, I configured port mirroring on my Netgear switch, which will allow me to capture traffic from my host. This setup helps observe network behavior, troubleshoot issues, and analyze performance without interrupting the flow of data on the network. Key takeaways include:
+
++ Learning how to set up port mirroring to monitor specific network segments
++ Understanding the importance of traffic analysis in network management
++ Recognizing the role of the monitoring port in security and performance diagnostics
+  
+The next phase of the lab, configuring a sniffing interface, will build on this by enabling real-time packet capture and analysis, providing further insight into network traffic patterns and potential vulnerabilities.
 
 
 
