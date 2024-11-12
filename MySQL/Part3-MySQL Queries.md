@@ -3,9 +3,9 @@
 Please note: This is a continuation of *Import Dabase.md*.
 
 ### Scope: 
-This is a continuation to the MySQL project. I have already installed MySQL, created a schema, and imported a data set. These are some simple queries. I will be using the dataset that was previously imported in *Import Database.md*. This is a dataset is a list of billionaires and their statistics (age, name, birthday. networth, etc.) The following queries are a simple set of queries using a mix of functions to see the data we have represented in different ways.
+This is a continuation to the MySQL project. I have already installed MySQL, created a schema, and imported a data set. These are some simple queries. I will be using the dataset that was previously imported in *Import Database.md*. This is a dataset is a list of billionaires and their statistics (age, name, birthday. networth, etc.) The following queries are a simple set of queries using a mix of functions to see the data I have represented in different ways.
 
-Before starting to create queries, we will need to ensure that we have selected our schema. You can do this by double-clicking the scheme and ensureing that it is in **bold** before running the query. As you can see in the image below, our schema is in **bold** and we can select everything in our dataset in a simple query to ensure everything is running:
+Before starting to create queries, I will need to ensure that I have selected my schema. You can do this by double-clicking the scheme and ensureing that it is in **bold** before running the query. As you can see in the image below, my schema is in **bold** and I can select everything in my dataset in a simple query to ensure everything is running:
 
 ```
 SELECT * FROM statistics_lm3nitro;
@@ -25,7 +25,7 @@ SELECT personName,country,finalWorth FROM statistics_lm3nitro;
 
 #### Query #2
 
-This will let us see the list of countries where the billioneres reside and will remove the duplicates:
+This will let me see the list of countries where the billioneres reside and will remove the duplicates:
 
 ```
 SELECT DISTINCT country FROM statistics_lm3nitro;
@@ -35,7 +35,7 @@ SELECT DISTINCT country FROM statistics_lm3nitro;
 
 #### Query #3
 
-To see the amount of distinct countries, we can use the function **COUNT**:
+To see the amount of distinct countries, I can use the function **COUNT**:
 
 ```
 SELECT COUNT(DISTINCT country) FROM statistics_lm3nitro;
@@ -54,7 +54,7 @@ SELECT COUNT(DISTINCT personName) FROM statistics_lm3nitro;
 
 #### Query #5
 
-If we want to see the average net worth from the list, we can use the "AVG" function:
+If I want to see the average net worth from the list, I can use the "AVG" function:
 
 ```
 SELECT AVG(finalWorth) FROM statistics_lm3nitro;
@@ -74,7 +74,7 @@ WHERE country = 'france';
 
 #### Query #7
 
-Here we will do the same as above, but we will also exclude the city of Paris:
+Here I will do the same as above, but I will also exclude the city of Paris:
 
 ```
 SELECT * FROM statistics_lm3nitro
@@ -108,7 +108,7 @@ WHERE country IN('france','spain','italy');
 
 #### Query #10 
 
-This query lets us count all the billionaires that are not only from France, Spain, and Italy, but that are also self made:
+This query lets me count all the billionaires that are not only from France, Spain, and Italy, but that are also self made:
 
 ```
 SELECT * FROM statistics_lm3nitro
@@ -123,7 +123,7 @@ WHERE selfmade ='true';
 
 #### Query #11
 
-We can also count the number of people based on industry type and *group* the total by their industry:
+I can also count the number of people based on industry type and *group* the total by their industry:
 
 ```
 SELECT Industries, COUNT(personName) FROM statistics_lm3nitro
@@ -135,7 +135,7 @@ GROUP BY industries;
 
 #### Query #12
 
-We can also use the query above and sort it in descending order:
+I can also use the query above and sort it in descending order:
 
 ```
 select industries, count(personname) from statistics_lm3nitro
@@ -160,7 +160,7 @@ order by count(personname) desc;
 
 #### Query #14
 
-If we are only interested in seeing the top 5, we can use the *Limit* command in conjunction with the *desc* command:
+If I am only interested in seeing the top 5, I can use the *Limit* command in conjunction with the *desc* command:
 
 ```
 select industries, count(personname) as quantity_of_rich_people from statistics_lm3nitro
@@ -174,7 +174,7 @@ limit 5;
 
 #### Query #15
 
-This is similar to the descending order, only it is the ascending order. Here we can see how many billionaires were born in each month in ascending order:
+This is similar to the descending order, only it is the ascending order. Here I can see how many billionaires were born in each month in ascending order:
 
 ```
 select birthMonth, count(personname) as Quantity from statistics_lm3nitro
@@ -201,4 +201,4 @@ You can also export the results of a query in different formats. In the example 
 
 ###Summary:
 
-These queries are simple but show how different functions can be used to filter, group, and sort the data we have and have it represented the way we want. Overall, MySQL is important as it allows us to access, manage, and manipulate databases. The queries presented above were ran on the actual MySQL server, but this is not normally the case. These servers normally have a DBA assigned to them, and users are only given certain rights, permissions, and least privledge access to the data. We can see an example of this remote access continued in the next part titled *Connecting Remotely.md*. 
+These queries are simple but show how different functions can be used to filter, group, and sort the data I have and have it represented the way I want. Overall, MySQL is important as it allows us to access, manage, and manipulate databases. The queries presented above were ran on the actual MySQL server, but this is not normally the case. These servers normally have a DBA assigned to them, and users are only given certain rights, permissions, and least privledge access to the data. An example of this remote access is demonstrated in the next part titled *Connecting Remotely.md*. 
