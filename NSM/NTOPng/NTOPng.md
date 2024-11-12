@@ -6,7 +6,7 @@ Ntopng is a network traffic monitoring tool that provides real-time visibility i
 
 ### Scope:
 
-I have added a topology to better demonstrate what my set up will be for this scenario. I will have a network tap that will be listening to all traffic going north and south. I will then install and configure Ntopng. Ntopng will have a sniffing interface set that will be connected to network tap. In the network I will also have a vulnerable PC that we will be monitoring and performing vulnerability scans. I will also be using one of the features that Ntopng offers to capture live traffic and download the pcap to view it in Wireshark.
+I have added a topology to better demonstrate what my set up will be for this scenario. I will have a network tap that will be listening to all traffic going north and south. I will then install and configure Ntopng. Ntopng will have a sniffing interface set that will be connected to network tap. In the network I will also have a vulnerable PC that I will be monitoring and performing vulnerability scans. I will also be using one of the features that Ntopng offers to capture live traffic and download the pcap to view it in Wireshark.
 
 Objectives: 
 + Monitor and analyze network traffic to and from a vulnerable PC
@@ -158,7 +158,7 @@ Once logged in, it will allow you to see the sniffing interface, in my case inte
 
 ![Pasted image 20240518193355](https://github.com/lm3nitro/Projects/assets/55665256/8f0c373c-10fa-4834-9800-f363d3647e6e)
 
-After 30 minutes we can see more traffic:
+After 30 minutes had passed, I could see more traffic:
 
 ![Pasted image 20240518193336](https://github.com/lm3nitro/Projects/assets/55665256/02f0cf9a-dd78-4df6-96a5-c989318e17a9)
 
