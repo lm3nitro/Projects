@@ -3,7 +3,7 @@
 <img width="752" alt="Screenshot 2024-10-10 at 9 43 48 PM" src="https://github.com/user-attachments/assets/114fd610-0ece-49fd-9a06-c3644866a200">
 
 TCP hijacking involves an attacker intercepting and manipulating TCP sessions to gain unauthorized access to sensitive information. The attacker exploits vulnerabilities such as predictable sequence numbers or weak authentication to impersonate legitimate parties and control the hijacked sessions, allowing for data theft or manipulation. 
-To maintain the hijacked session, the attacker must prevent ACKs from reaching the compromised machine, achieved by either delaying or blocking the ACK packets. This tactic is often used alongside ARP poisoning, leading to observable patterns in our traffic analysis.
+To maintain the hijacked session, the attacker must prevent ACKs from reaching the compromised machine, achieved by either delaying or blocking the ACK packets. This tactic is often used alongside ARP poisoning, leading to observable patterns in traffic analysis.
 
 ### How it works: 
 
@@ -15,7 +15,7 @@ To maintain the hijacked session, the attacker must prevent ACKs from reaching t
 4. Exploitation: With control over the TCP session, the attacker can perform various malicious actions, such as data manipulation, session takeover, or injection of malicious commands.
 
 ### Analysis:
-When looking at the pcap, we can identify a large number of ARP requests coming from one particular node when monitoring the ARP protocol.
+When looking at the pcap,I identified a large number of ARP requests coming from one particular node when monitoring the ARP protocol.
 
 ![Pasted image 20240327200915](https://github.com/lm3nitro/Projects/assets/55665256/de3f64f9-2f34-4363-8d51-ca27913bd238)
 
@@ -27,11 +27,11 @@ The node is flooding the network with ARP requests, seeking the MAC addresses co
 
 ![Pasted image 20240327202448](https://github.com/lm3nitro/Projects/assets/55665256/657d58ba-7fc6-4b7d-85eb-3dcd3d08c4c3)
 
-In this scenario, we observe that IP address 192.168.10.5 is generating a significant number of requests to all network nodes with MAC addresses ending in 0c:ba. Subsequently, the same IP address masquerades as 192.168.10.1 with a MAC address ending in b9:4f. This allows the attacker to impersonate any node on the network or conduct a Man-in-the-Middle (MITM) attack, directing all traffic through the attacker's system.
+In this scenario, I observed the IP address (192.168.10.5) generating a significant number of requests to all network nodes with MAC addresses ending in 0c:ba. Subsequently, the same IP address masquerades as 192.168.10.1 with a MAC address ending in b9:4f. This allows the attacker to impersonate any node on the network or conduct a Man-in-the-Middle (MITM) attack, directing all traffic through the attacker's system.
 
 ![Pasted image 20240327181139](https://github.com/lm3nitro/Projects/assets/55665256/59bdf099-e010-4eb0-a54c-a5ec4bbff16d)
 
-By actively monitoring the target connection they intend to hijack, the attacker conducts sequence number prediction to inject malicious packets in the correct order. During this injection, they spoof the source address to appear identical to our affected machine.
+By actively monitoring the target connection they intend to hijack, the attacker conducts sequence number prediction to inject malicious packets in the correct order. During this injection, they spoofed the source address to appear identical to the affected machine.
 
 ![Pasted image 20240327174332](https://github.com/lm3nitro/Projects/assets/55665256/43ccec86-983b-4465-aa93-2b2263860f25)
 
