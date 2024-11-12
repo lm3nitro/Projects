@@ -88,7 +88,7 @@ Upon logging in, I can see that not only did the interface appearance change, bu
 
 ## Post Remediation Vulnerability Scan
 
-Now that the patch has been applied, I wanted to run another scan to ensure that the vulnerability was indeed remediated. While performing the scan, I was able to go to the ESXi server and monitor the traffic. Here we see some anomalies and a high volume that is expected due to the scan that we are performing:
+Now that the patch has been applied, I wanted to run another scan to ensure that the vulnerability was indeed remediated. While performing the scan, I was able to go to the ESXi server and monitor the traffic. Here I see some anomalies and a high volume that is expected due to the scan that I am performing:
 
 ![Pasted image 20240422141913](https://github.com/lm3nitro/Projects/assets/55665256/15dc49b0-3439-438a-bbfb-3aa832da72e5)
 
