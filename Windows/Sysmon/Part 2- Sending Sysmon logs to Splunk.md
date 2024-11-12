@@ -16,15 +16,15 @@ I was presented with a new dialog box. I agreed to the license agreement and sel
 
 <img width="1024" alt="Screenshot 2024-04-29 at 10 37 22 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/5bfb65a7-2dd9-4eb4-ace7-5ee8a05e4136">
 
-You can choose where you would like it installed. I left the default location and selected *Next*
+The installation location can be changed. I left the default location and selected *Next*
 
 <img width="892" alt="Screenshot 2024-04-29 at 10 40 40 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/3617d921-34df-45bc-8adf-3e400910183f">
 
-If you wish to supply your own certificate, you can supply the needed details here. I went with the default:
+It also allows you to supply your own certificate. I went with the default:
 
 <img width="856" alt="Screenshot 2024-04-29 at 10 41 10 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/d641e79d-0860-40e3-be48-8c05dd399c81">
 
-Next, select what data you would like the SplunkForwarder to access. I chose local system:
+Next, I selected the data I wanted the SplunkForwarder to access. I chose local system:
 
 <img width="871" alt="Screenshot 2024-04-29 at 10 41 56 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/51b323a7-2473-4698-a0a6-c13c1f274097">
 
@@ -44,7 +44,7 @@ Here I entered the information for my Splunk instance where the logs will be sen
 
 <img width="866" alt="Screenshot 2024-04-29 at 10 54 43 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/ca4a66ac-4dca-4e58-b405-7f51824808c1">
 
-This is now complete. You can go back and review the information entered to ensure everything is correct. Once complete, click *Install*
+This is now complete. It provides the option to go back and review the information entered to ensure everything is correct. Once complete, I click ed *Install*
 
 <img width="865" alt="Screenshot 2024-04-29 at 10 55 13 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/6f5648ba-4b01-4627-9b25-21abe829ad8c">
 
@@ -61,11 +61,11 @@ When installing the Splunk Forwarder, In was able to choose what type of logs I 
 
 <img width="1125" alt="Screenshot 2024-04-30 at 12 22 55 AM" src="https://github.com/lm3nitro/Projects/assets/55665256/e26ecdf3-5699-4588-874f-31fe7f54d162">
 
-When we open it up in notepad, it looks like this:
+When opened using notepad, it looks like this:
 
 <img width="633" alt="Screenshot 2024-04-30 at 9 26 32 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/03103ea2-a6ce-4c7c-a1ea-95ce0d9dc9cd">
 
-I will be modifying this file in order to tailor the logs that I want to be sent to Splunk. To do this, I copied this file and placed the copied version of it in a different location. This is important because we want to ensure we have a backup when changing configuration settings. I renamed the copy/backup inputs.conf.bk:
+I will be modifying this file in order to tailor the logs that I want to be sent to Splunk. To do this, I copied this file and placed the copied version of it in a different location. This is important because I want to ensure I have a backup when changing configuration settings. I renamed the copy/backup inputs.conf.bk:
 
 <img width="642" alt="Screenshot 2024-04-30 at 12 25 06 AM" src="https://github.com/lm3nitro/Projects/assets/55665256/b4ec6ff4-99eb-4b22-88ec-e4d966159f97">
 
@@ -113,7 +113,7 @@ I named mine lm3nitro_pc
 
 <img width="1116" alt="Screenshot 2024-04-29 at 11 26 37 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/78a4a323-9459-464d-9825-66074e0ce2b6">
 
-Once the index was ready, I needed to set the receiving port in Splunk to 9997 to match the port we configured when installing the Splunk Fowarder above. As soon as the port is configured, we can see that we are receiving logs in our index:
+Once the index was ready, I needed to set the receiving port in Splunk to 9997 to match the port I configured when installing the Splunk Fowarder above. As soon as the port was configured, I was able to see that I was receiving logs in my index:
 
 <img width="1423" alt="Screenshot 2024-04-30 at 12 26 59 AM" src="https://github.com/lm3nitro/Projects/assets/55665256/9b088a07-c283-4295-86d1-d414be9ab339">
 
