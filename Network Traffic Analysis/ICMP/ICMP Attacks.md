@@ -1,6 +1,6 @@
 # Identifying IP Source & Destination Spoofing Attacks
 
-Here we will cover a series of different scenarios sorrounding ICMP attacks. Let's consider the following when analyzing these fields for our traffic analysis efforts.
+Here I will cover a series of different scenarios sorrounding ICMP attacks. Let's consider the following when analyzing these fields for our traffic analysis efforts.
 
 1. Source IP Address Validation: Incoming packets should originate from our subnet. An IP source from outside our local area network could indicate packet crafting.
 
@@ -32,11 +32,9 @@ Query:
 
 Lets take a look at the scenarios below. 
 
- 
-
 ## Scenario 4: Traceroute Anomoly
 
-In this scenario, we will take a look to see how we can identiry a suspicious host using tcproute in our network.
+In this scenario, I will take a look to see how wcan identify a suspicious host using tcproute in our network.
 
 ```
 tcpdump -nr icmp_threat_actor.pcap 'ip[8] < 5' -vv
