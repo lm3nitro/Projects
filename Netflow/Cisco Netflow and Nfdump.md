@@ -122,7 +122,7 @@ nfdump -R . -A srcip ' host 54.230.253.40'
 8. Calculate statistics for port 443 traffic and sort by bps to see bandwidth abusing hosts:
 
 > [!NOTE]  
-> We can include as many -s as needed, each statistics table will be printed independently. Statistics will be calculated for the flows located in this specific nfcapd. file, to count statistics over longer periods of time see -R & -M
+> You can include as many -s as needed, each statistics table will be printed independently. Statistics will be calculated for the flows located in this specific nfcapd. file, to count statistics over longer periods of time see -R & -M
 
 ```
 nfdump -R . -s srcip/bps -s dstip/bps  ' port 443'
@@ -133,7 +133,7 @@ nfdump -R . -s srcip/bps -s dstip/bps  ' port 443'
 9. Sort presented flows by duration, longest at the bottom:
 
 > [!NOTE]  
-> nfdump itself has no provision to sort flows by their duration, but we can easily pipe the output to any Linux sorting tool. Here I displayed the top 10 flows by duration:
+> nfdump itself has no provision to sort flows by their duration, but you can easily pipe the output to any Linux sorting tool. Here I displayed the top 10 flows by duration:
 
 ```
 nfdump -R .  | sort -n -k3,3 | tail -10
@@ -144,7 +144,7 @@ nfdump -R .  | sort -n -k3,3 | tail -10
 10. Find records in the time range of 12:19:00 - 12:20:00 matching the filter of protocol =TCP and port = 80:
 
 > [!NOTE]  
-> Using -t option we can limit the time range of the records to look into. nfdump puts 0 for any missing time part, e.g. 12:19 means 12:19:00.
+> Using -t option you can limit the time range of the records to look into. nfdump puts 0 for any missing time part, e.g. 12:19 means 12:19:00.
 
 ```
 nfdump -R .  -t 2024/05/27.17:04:09-2024/05/27.18:21:09 'port 80 and proto tcp'
@@ -152,18 +152,6 @@ nfdump -R .  -t 2024/05/27.17:04:09-2024/05/27.18:21:09 'port 80 and proto tcp'
 
 ![Pasted image 20240527151106](https://github.com/lm3nitro/Projects/assets/55665256/4bd10cf9-e301-4764-baa6-f88c6865c6b5)
 
-### Summary:
-
-
-What we learn and what we did?
-
-NetFlow is a great protocol to get an insight in your network traffic. It’s the equivalent of a “phone bill” that specifies all calls that were made, where these calls took place, the duration, etc. Only this time, we are tracking all IP packets on the network.
-
-
-# Nfdump to csv:
-
-
-nfdump -r /var/flows/nfcapd.2024052949 -o csv > /var/log/netflow/mycsvfile.csv
 
 ### Summary:
 
