@@ -34,16 +34,16 @@ javac -version
 
 ## Install Nginx
 
-Next, I will need to install Nginx. Nginx is a high-performance web server with different functions (reverse proxy, load balance, etc.). Nginx can be installed using the following commands:
+Next, I installed Nginx. Nginx is a high-performance web server with different functions (reverse proxy, load balance, etc.). Nginx can be installed using the following commands:
 
 ```
 sudo apt install nginx
 systemctl status nginx
 ```
 
-You can verify that it is up and running by putting the following in your browser
+Nginx can be verified that it is up and running by putting the following in the browser:
 
-http://your_server_ip
+http://server_ip
 
 ## Install Elasticsearch
 
@@ -56,7 +56,7 @@ sudo apt update
 sudo apt install elasticsearch
 
 ```
->### Note: During the initial installation, you will encounter the security configuration settings, which will include the default password for the elastic user. It is important to make a note of this password as it will be needed later on.
+>### Note: During the initial installation, I was presented with the security configuration settings, this included the default password for the elastic user. It is important to make a note of this password as it will be needed later on.
 
 If the installation proceeds without issues, Elasticsearch will be successfully installed on the host machine.
 
@@ -67,7 +67,7 @@ systemctl enable elasticsearch
 systemctl start elasticsearch
 ```
 
-I verified the status of Elastic search with the following command
+I verified the status of Elastic search with the following command:
 
 ```
 systemctl status elasticsearch.service
@@ -85,20 +85,20 @@ Change the 'network.host:' from 'localhost' to '127.0.0.1':
 ``
 network.host: 127.0.0.1
 ``
-Restart Elasticsearch
+Restarted Elasticsearch
 
 ```
 sudo systemctl restart elasticsearch
 ```
-You can test with the following command
+This can be tested with the following command
 
 ```
 curl -X GET "localhost:9200"
 ```
 
-# Install Logstash
+## Install Logstash
 
-Once Elasticsearch has been installed, it is time to install logstash:
+Once Elasticsearch has been installed, it was time to install logstash:
 
 ```
 sudo apt install logstash
@@ -125,17 +125,17 @@ By default, essential configuration files in a standard Logstash installation ar
 nano /etc/logstash/logstash.yml
 ```
 
-I made two updates. I Uncommented the following variables and set the value of config.reload.automatic to true, as illustrated below:
+I made two updates. I uncommented the following variables and set the value of config.reload.automatic to true, as illustrated below:
 
 ```
 config.reload.automatic: true
 config.reload.interval: 3s
 ```
-These adjustments will enable Logstash to check the configuration files every 3 seconds for any changes in the ingested log sources. Next, we wil move to installing Kibana.
+These adjustments will enable Logstash to check the configuration files every 3 seconds for any changes in the ingested log sources. Next, I will proceed to installing Kibana.
 
-# Install Kibana
+## Installing Kibana
 
-Next, I needed to isntall Kibana. 
+Next, I installed Kibana. 
 
 ```
 sudo apt install kibana
@@ -154,27 +154,27 @@ The usual location for the configuration files of Kibana, an open-source tool fo
 sudo nano /etc/kibana/kibana.yml
 ```
 
-I uncomment the following two variables and make the changes to server.host as shown below:
+I uncommented the following two variables and make the changes to server.host as shown below:
 
 ```
 server.port: 5601
 server.host: "0.0.0.0"
 ```
 
-Once the changes are made, and the config file is saved, I restarted Kibana"
+Once the changes were made, and the config file was saved, I restarted Kibana"
 
 ```
 systemctl restart kibana
 ```
 
-Next, open your web browser and navigate to YOUR_IP:5601. This will bring up the Kibana interface. Next, we will generate an enrollment token for the Kibana instance using the following command:
+Next, I open the web browser and navigated to MY_IP:5601. This will bring up the Kibana interface. I then generated an enrollment token for the Kibana instance using the following command:
 
 ```
 /usr/share/elasticsearch/bin/elasticsearch-create-enrollment-token -s kibana
 ```
 ![Screenshot 2024-09-21 at 4 16 34 PM](https://github.com/user-attachments/assets/3c0190c9-7e58-496a-bf10-2ea59af53d61)
 
-This command will display a randomly generated token. Enter this token in the provided space and press Enter. You will then be prompted to enter the elastic credentials, which are the same credentials that were created during the Elasticsearch installation process.
+This command will display a randomly generated token. Enter this token in the provided space and press Enter. I was then be prompted to enter the elastic credentials, which are the same credentials that were created during the Elasticsearch installation process.
 
 ### Summary:
 
