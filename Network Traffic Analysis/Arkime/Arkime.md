@@ -47,11 +47,11 @@ Once you have the link, you can use wget and paste it into the command as seen b
 
 ![Pasted image 20240512191029](https://github.com/lm3nitro/Projects/assets/55665256/7cb1236d-8ac0-42fd-b166-03b9e135c622)
 
-Now that we have the package, we will then need to install the dependencies:
+Next, I installed the dependencies:
 
 ![Pasted image 20240512191135](https://github.com/lm3nitro/Projects/assets/55665256/59245fe6-1554-45f8-80e6-a6ba7ad5fe06)
 
-Once we have the dependencies installed, lets unpackage Arkime:
+Once the dependencies were installed, I unpackage Arkime:
 
 ![Pasted image 20240512191409](https://github.com/lm3nitro/Projects/assets/55665256/f4736183-4b8a-47b1-9c85-90cfaa87ac69)
 
@@ -67,7 +67,7 @@ Starting Elasticsearch:
 
 ![Pasted image 20240512192439](https://github.com/lm3nitro/Projects/assets/55665256/a08f7572-4599-434f-b569-ee0666047cc6)
 
-We can also very the listening ports:
+I also verified the listening ports:
 
 ```
 sudo ss -tnlp
@@ -84,7 +84,7 @@ sudo /opt/arkime/db/db.pl http://lm3nitro.arkime.local:9200 init
 
 ![Pasted image 20240512192700](https://github.com/lm3nitro/Projects/assets/55665256/4604de42-f2b6-48e9-b7c9-7e341232c5c6)
 
-Now that we have it installed, we will need to create a user. I created the user lm3nitro:
+Now that it's installed, I created a user lm3nitro:
 
 ```
 sudo /opt/arkime/bin/arkime_add_user.sh admin "Admin User" lm3nitro --admin
@@ -115,7 +115,7 @@ systemctl status arkimecapture.service
 
 ![Pasted image 20240512194344](https://github.com/lm3nitro/Projects/assets/55665256/31017185-dfa6-49cb-a99e-85b3708b8e2b)
 
-Having the service started will generate logs. We can take a look at them below:
+Having the service started will generate logs. I took look at them below:
 
 >#### Note: All logs are located in /opt/arkime/logs/
 ![Pasted image 20240512213310](https://github.com/lm3nitro/Projects/assets/55665256/42b99320-6c23-435a-836a-c0de8774f31c)
@@ -166,13 +166,11 @@ sudo /opt/arkime/bin/arkime_update_geo.sh
 
 ## Logging into Arkime
 
-Once everything is installed and running, we can login:
+Once everything is installed and running, I logged in:
 
 ![Pasted image 20240512211851](https://github.com/lm3nitro/Projects/assets/55665256/47c65a4e-1e8f-4e34-8e92-31cfd75135ea)
 
-We can take a look around and see what Arkime offers. 
-
-This is the connections tab:
+Once logged in, I took a look aroung. This is the connections tab:
 
 ![Pasted image 20240512203419](https://github.com/lm3nitro/Projects/assets/55665256/84073b51-446f-4a49-b42e-777d40079e3b)
 
