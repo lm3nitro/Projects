@@ -95,7 +95,7 @@ Everything has been complete, click *Next*
 Select to start *MySQL Workbench* and *MySQL Shell* and select *Finish*
 ![Pasted image 20240504115626](https://github.com/lm3nitro/Projects/assets/55665256/7c94f9e7-f179-46d1-8115-9bfe45bedc62)
 
-Once I select *Finish* above, MySQL Workbench and Shell will be opened. Now I can double-click and enter our password when prompted. 
+Once I select *Finish* above, MySQL Workbench and Shell will be opened. Now I can double-click and enter my password when prompted. 
 
 ![Pasted image 20240504120228](https://github.com/lm3nitro/Projects/assets/55665256/4dbad673-fb9b-4ffa-a3ac-0a0b4d8ade0b)
 
