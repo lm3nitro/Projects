@@ -15,7 +15,7 @@ Response Behavior:
     
 ### Analysis:
 
-In the example below, we can take a look and see the behavior described above. In this scan we can see that the host performing the scan is sending packets with the flags (FPU) set and targeting the host on all the ports:
+In the example below, I will take a look and see the behavior described above. In this scan I can see that the host performing the scan is sending packets with the flags (FPU) set and targeting the host on all the ports:
 
 ```
 tcpdump -nr threat_actor.pcap 'tcp[13] & 32!=0' or tcp[13] & 1!=0' -c 20
