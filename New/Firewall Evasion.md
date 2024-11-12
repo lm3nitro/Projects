@@ -70,7 +70,7 @@ Other factors observed in the traffic:
 
 In this scenario, Nmap sends a SYN request to the target, if the port is open, the target responds with a SYN-ACK packet, acknowledging the request to establish a connection. Normally, in a legitimate request, the scanner would then complete the request with an ACK to complete the handshake. In this case, the target host has already shown which port is open. If Nmap were to complete the connection, it would then have to worry about closing it. Instead of sending an ACK back to complete the handshake, the scanner sends an RST packet to close the connection prematurely.
 
-In the screenshot below, we see the bahavior describe above for port 5357 which was previously identified:
+In the screenshot below, I see the bahavior described above for port 5357 which was previously identified:
 
 ![Pasted image 20240920150341](https://github.com/user-attachments/assets/eafc0b47-59aa-4925-8289-8439f6a8068c)
 
@@ -99,11 +99,11 @@ After initiating the scan, I can see that it completes and that the target has a
 
 ![Pasted image 20240921123114](https://github.com/user-attachments/assets/42da0b3f-e28f-4619-992f-be24308e6307)
 
-While looking at the Wireshark capture of the scan, I can see the expected behavior. Here we see that all 3 of the IP addresses in the command are reaching out with a SYN request to the host:
+While looking at the Wireshark capture of the scan, I can see the expected behavior. Here I see that all 3 of the IP addresses in the command are reaching out with a SYN request to the host:
 
 ![Pasted image 20240921123403](https://github.com/user-attachments/assets/5550db8d-d32b-4240-b9f6-2ac22cae96d7)
 
-However, one thing that we can note from the traffic above, although there are 3 different IP addresses sending SYN requests, only 1 sends the RST (the real IP). 
+However, one thing that I noted from the traffic above, although there are 3 different IP addresses sending SYN requests, only 1 sends the RST (the real IP). 
 
 Another example of this is by setting Nmap to use random source IP addresses instead of explicitly specifying them:
 
@@ -216,7 +216,7 @@ Below is a look at the frame and where both the destination and source MAC addre
 
 ![Pasted image 20240921231109](https://github.com/user-attachments/assets/700bb0b7-b9d9-4682-98f3-ed9d2d3c7c5b)
 
-Nmap allows you to spoof your MAC address using the option `--spoof-mac MAC_ADDRESS`. However, there are limitations. Spoofing works effectively only if your system is on the same network segment as the target host. If you are on a different network segment the target system will not receive your packets. Spoofing your MAC address to match a trusted device can potentially allow you to exploit vulnerabilities or gain unauthorized access.
+Nmap allows you to spoof the MAC address using the option `--spoof-mac MAC_ADDRESS`. However, there are limitations. Spoofing works effectively only if the system is on the same network segment as the target host. If you are on a different network segment the target system will not receive the packets. Spoofing the MAC address to match a trusted device can potentially allow you to exploit vulnerabilities or gain unauthorized access.
 
 In the exercise, I used the command below:
 
@@ -234,7 +234,7 @@ In the Wireshark capture, I was also able to confirm that the MAC address had ch
 
 ### Warning Signs/Detection of MAC Spoofing Attacks:
 
-Below is an example of how MAC spoofing looks in the network traffic. Here I analyzed traffic between the same 2 IP addresses, however, in the highlighted piece we can see that the MAC address changes:
+Below is an example of how MAC spoofing looks in the network traffic. Here I analyzed traffic between the same 2 IP addresses, however, in the highlighted piece I can see that the MAC address changes:
 
 ![Pasted image 20240922171738](https://github.com/user-attachments/assets/bb17da92-de21-4b55-b473-710b8a522097)
 
@@ -312,7 +312,7 @@ Another way that you can evade a firewall is by controlling the packet size. By 
 
 ### Fragmenting (8 Bytes)
 
-One easy way to fragment your packets would be to use the -f option. This option will fragment the IP packet to carry only 8 bytes of data. Normally, the IP packets sent during a Nmap TCP port scan will hold 24 bytes, the TCP header. By limiting the IP data to 8 bytes, the 24 bytes of the TCP header will be divided across 3 IP packets.
+One easy way to fragment the packets would be to use the -f option. This option will fragment the IP packet to carry only 8 bytes of data. Normally, the IP packets sent during a Nmap TCP port scan will hold 24 bytes, the TCP header. By limiting the IP data to 8 bytes, the 24 bytes of the TCP header will be divided across 3 IP packets.
 
 ```
 nmap -sS -Pn -f 8  -p80 192.168.91.130 --packet-trace --disable-arp-ping -nnvvvv
@@ -356,7 +356,7 @@ In Wireshark, I confirmed that the packets were indeed fragmented, 8 bytes in si
 
 ### Packets with Specific Length:
 
-There may be times where the firewall or IDS/IPS is able to detect and block your activities based on the size of the packets being sent. You can enhance the stealth of your port scanning by specifying a particular data length. Nmap allows you to set the length of the data carried within the IP packet using `--data-length VALUE`, the length should be a multiple of 8. As an example, I will be using a length of 64:
+There may be times where the firewall or IDS/IPS is able to detect and block the activity based on the size of the packets being sent. You can enhance the stealth of the port scanning by specifying a particular data length. Nmap allows you to set the length of the data carried within the IP packet using `--data-length VALUE`, the length should be a multiple of 8. As an example, I will be using a length of 64:
 
 ```
 nmap -sS -Pn --data-length 64  -p80 192.168.91.130 --packet-trace --disable-arp-ping -nnvvvv
@@ -383,7 +383,7 @@ nmap -sS -Pn --badsum -p80,3389 192.168.91.130 -nnvvv --packet-trace
 
 ![Pasted image 20240923113056](https://github.com/user-attachments/assets/ef80ed72-d799-4e50-ab27-0dc743ad0710)
 
-Based on the output, we can see the that ports (80 and 3389) are being filtered. Overall, the results will depend significantly on the security measures in place on the target system and the nature of the network traffic. Monitoring the responses and comparing them to typical behavior can provide valuable insights into the security posture of the target environment. 
+Based on the output, I can see the that ports (80 and 3389) are being filtered. Overall, the results will depend significantly on the security measures in place on the target system and the nature of the network traffic. Monitoring the responses and comparing them to typical behavior can provide valuable insights into the security posture of the target environment. 
 
 </details>
 
@@ -400,7 +400,7 @@ I will go over TTL and IP options below:
 
 ### Set TTL :
 
-The `--ttl` option in Nmap allows you to specify TTL value for the packets sent during a scan. TTL is a field in the IP header that specifies the maximum number of hops a packet can take before it is discarded. Each router that forwards the packet decrements the TTL value by one. This option might be useful if you think the default TTL exposes your port scan activities.
+The `--ttl` option in Nmap allows you to specify TTL value for the packets sent during a scan. TTL is a field in the IP header that specifies the maximum number of hops a packet can take before it is discarded. Each router that forwards the packet decrements the TTL value by one. This option might be useful if you think the default TTL exposes port scan activities.
 
 ```
 nmap -sS -Pn --ttl 1 -p80,3389 192.168.91.130 -nnvvv --packet-trace
@@ -418,7 +418,7 @@ Viewing the traffic in Wireshark, I was able to confirm the TTL behavior. In thi
 
 The IP Options field is a flexible part of the IP header that allows for additional features or instructions to be specified for packet processing. Nmap lets you customize the IP Options field using the `--ip-options HEX_STRING` option. The 'HEX_STRING` option defines the exact bytes that will populate the IP Options field. Each byte is expressed in hexadecimal format, where HH represents two hexadecimal digits. For example, the byte 0x1A would be written as \x1A.
 
-A shortcut provided by Nmap is using the letters to make your requests:
+A shortcut provided by Nmap is using the letters to make the requests:
 
 + R to record-route.
 + T to record-timestamp.
@@ -426,7 +426,7 @@ A shortcut provided by Nmap is using the letters to make your requests:
 + L for loose source routing and needs to be followed by a list of IP addresses separated by space.
 + S for strict source routing and needs to be followed by a list of IP addresses separated by space.
 
-The Record Route option is one of the IP options that can be specified in the IP header. It allows the sender to keep track of the route taken by the packet through the network, recording the IP addresses of the routers that forward the packet. It can be helpful if you want to try to make your packets take a particular route to avoid a specific security system.
+The Record Route option is one of the IP options that can be specified in the IP header. It allows the sender to keep track of the route taken by the packet through the network, recording the IP addresses of the routers that forward the packet. It can be helpful if you want to try to make the packets take a particular route to avoid a specific security system.
 
 Here I used this option:
 
