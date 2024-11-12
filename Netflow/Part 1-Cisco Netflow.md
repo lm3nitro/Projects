@@ -2,7 +2,7 @@
 
 <img width="403" alt="Screenshot 2024-10-05 at 3 25 54 PM" src="https://github.com/user-attachments/assets/f681b7a5-e2e1-4965-802e-7fdb1fcaaf80">
 
-Network management protocols like SNMP enable us to monitor various aspects of our network, such as CPU load, memory usage, interface status, and interface load. Tools like NBAR help identify which protocols are being used. However, these tools can't track all the individual flows within a network. A flow consists of a stream of packets that share common characteristics like source and destination ports, IP addresses, protocol, service type, and more. NetFlow fills this gap by allowing us to monitor these flows across the network. This data is invaluable for diagnosing issues like bottlenecks, identifying which applications are in use, and determining their bandwidth consumption.
+Network management protocols like SNMP provides a way to monitor various aspects of the network, such as CPU load, memory usage, interface status, and interface load. Tools like NBAR help identify which protocols are being used. However, these tools can't track all the individual flows within a network. A flow consists of a stream of packets that share common characteristics like source and destination ports, IP addresses, protocol, service type, and more. NetFlow fills this gap by allowing us to monitor these flows across the network. This data is invaluable for diagnosing issues like bottlenecks, identifying which applications are in use, and determining their bandwidth consumption.
 
 NetFlow tracks key metrics for each flow, including the number of packets sent, total bytes transferred, packet sizes, and more. You can configure your router to monitor all flows and export this data to a central server for detailed traffic analysis.
 
@@ -165,7 +165,7 @@ sh ip nat translations
 
 ![Pasted image 20240527124225](https://github.com/lm3nitro/Projects/assets/55665256/f2b76dce-f920-4042-9c7c-e7bbd2ac084f)
 
-Let's look at the NetFlow cache entries again, now we have some entries:
+Let's look at the NetFlow cache entries again, now I have some entries:
 
 ![Pasted image 20240527125355](https://github.com/lm3nitro/Projects/assets/55665256/794f47d6-b83d-4482-bbe0-0e0e21bfbdb4)
 
