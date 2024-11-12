@@ -41,7 +41,7 @@ sudo systemctl status squid
 
 ## Configuring Squid
 
-The squid service can be configured by editing the `/etc/squid/squid.conf` file. The configuration file contains comments that describe what each configuration option does. You can also put your configuration settings in separate files, which can be included in the main configuration file using the “include” directive.
+The squid service can be configured by editing the `/etc/squid/squid.conf` file. The configuration file contains comments that describe what each configuration option does. You can also put the configuration settings in separate files, which can be included in the main configuration file using the “include” directive.
 
 Before making any changes, I created a backup of the original configuration file:
 
