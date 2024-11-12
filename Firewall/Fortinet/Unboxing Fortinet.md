@@ -10,7 +10,7 @@ I successfully integrated Fortinet into my home network, enhancing its security 
 <img width="581" alt="Screenshot 2024-04-06 at 9 04 27 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/a5217ca0-04ac-4d80-9f15-c480dba680c9">
 
 ## Configuration 
-Now to set it up. First, I powered it on, went to the login page, in this case the default was 192.168.1.99. The default username is admin and there is no password. Once I was in. it was time to get the firewall registered. To get it registered, we will go to the forticloud login page and select login/register:
+Now to set it up. First, I powered it on, went to the login page, in this case the default was 192.168.1.99. The default username is admin and there is no password. Once I was in. it was time to get the firewall registered. To get it registered, I went to the forticloud login page and selected login/register:
 
 <img width="1094" alt="Screenshot 2024-04-06 at 9 09 25 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/a66a2e60-bf2b-4746-95d4-84c959ef1679">
 
@@ -36,7 +36,7 @@ After trial and error of trying to get it registered, I found out that by trying
 
 <img width="681" alt="Screenshot 2024-04-06 at 9 44 39 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/03331b2f-c876-4018-b2a5-c1b611062d28">
 
-I then proceeded to install the latest update. As we can see, at the time, the latest available was v7.2.8. 
+I then proceeded to install the latest update. At the time of this writing, the latest available was v7.2.8. 
 
 <img width="1188" alt="Screenshot 2024-04-05 at 11 32 39 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/8404b738-17ed-42e8-8a7c-61f4abe98b2d">
 
