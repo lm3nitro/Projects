@@ -1,6 +1,6 @@
 # TCP Reset Scan
 
-A TCP Reset scan is a network reconnaissance technique used to determine the state of ports on a target system by sending TCP packets with the RST (reset) flag set. This scan method helps identify open and closed ports without establishing a full TCP connection. If an adversary aims to disrupt our network with a denial-of-service attack, they might use a TCP RST Packet injection attack, also known as TCP connection termination. This attack involves spoofing the source address to the affected machine's IP, modifying TCP packets with the RST flag to terminate connections, and targeting ports currently in use by the target machines.
+A TCP Reset scan is a network reconnaissance technique used to determine the state of ports on a target system by sending TCP packets with the RST (reset) flag set. This scan method helps identify open and closed ports without establishing a full TCP connection. If an adversary aims to disrupt the network with a denial-of-service attack, they might use a TCP RST Packet injection attack, also known as TCP connection termination. This attack involves spoofing the source address to the affected machine's IP, modifying TCP packets with the RST flag to terminate connections, and targeting ports currently in use by the target machines.
 
 ### How it works:
 
@@ -25,9 +25,9 @@ This attack involves several components:
 
 + The attacker spoofs the source address to match the affected machine's.
 + The attacker alters the TCP packet to include the RST flag, ending the connection.
-+ The attacker designates the destination port to match one currently utilized by one of our machines.
++ The attacker designates the destination port to match one currently utilized by one of the machines.
 
-One way to identify a TCP RST attack is by comparing the physical address of the transmitter with our network device list; a mismatch, such as a different MAC address, indicates potential malicious activity. However, attackers can spoof MAC addresses to evade detection, leading to retransmissions and other anomalies similar to those seen in ARP poisoning incidents.
+One way to identify a TCP RST attack is by comparing the physical address of the transmitter with the network device list; a mismatch, such as a different MAC address, indicates potential malicious activity. However, attackers can spoof MAC addresses to evade detection, leading to retransmissions and other anomalies similar to those seen in ARP poisoning incidents.
 
 ### Benefits:
 
@@ -41,7 +41,7 @@ One way to identify a TCP RST attack is by comparing the physical address of the
   
 ### Defense:
 
-+ One way to identify a TCP RST attack is by comparing the physical address of the transmitter with our network device list; a mismatch, such as a different MAC address, indicates potential malicious activity. However, attackers can spoof MAC addresses to evade detection, leading to retransmissions and other anomalies similar to those seen in ARP poisoning incidents.
++ One way to identify a TCP RST attack is by comparing the physical address of the transmitter with the network device list; a mismatch, such as a different MAC address, indicates potential malicious activity. However, attackers can spoof MAC addresses to evade detection, leading to retransmissions and other anomalies similar to those seen in ARP poisoning incidents.
 + Use anomaly detection to identify unusual traffic patterns that deviate from normal behavior, such as excessive RST packets.
-+ Implement flow monitoring solutions to track the volume and types of packets passing through your network. An unusual spike in RST packets can indicate a scan.
++ Implement flow monitoring solutions to track the volume and types of packets passing through the network. An unusual spike in RST packets can indicate a scan.
 + Set up alerts for instances where a single IP address attempts to access multiple ports in a short period, especially with RST responses.
