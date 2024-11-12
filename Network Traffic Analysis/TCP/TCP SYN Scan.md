@@ -17,7 +17,7 @@ Abort Connection: Upon receiving a SYN-ACK response from an open port, the scann
 
 ### Analysis
 
-Let's look at the following pcap and the abnormal TCP behavior. To start, we will Filter for tcp syn flags and ports (1-1024):
+Let's look at the following pcap and the abnormal TCP behavior. To start, I will Filter for tcp syn flags and ports (1-1024):
 
 ```
 tcpdump -nr threat_actor.pcap tcp[tcpflags] == tcp-syn and portrange 1-1024
@@ -25,9 +25,9 @@ tcpdump -nr threat_actor.pcap tcp[tcpflags] == tcp-syn and portrange 1-1024
 
 ![Pasted image 20240325120655](https://github.com/lm3nitro/Projects/assets/55665256/5faa423d-3c40-4433-b7e0-9b5b151f057c)
 
-It appears that the threat actor located at 192.168.11.62 is actively scanning the node 192.168.11.46 in search of open ports. We have observed a significant number of SYN (synchronize) requests being sent to 192.168.11.46 across multiple ports within a fraction of a second.
+It appears that the threat actor located at 192.168.11.62 is actively scanning the node 192.168.11.46 in search of open ports. I observed a significant number of SYN (synchronize) requests being sent to 192.168.11.46 across multiple ports within a fraction of a second.
 
-To pinpoint the extent of the synchronization requests sent by the threat actor, we need to narrow down our analysis to determine the exact number of SYN requests received by 192.168.11.46.
+To pinpoint the extent of the synchronization requests sent by the threat actor, I need to narrow down my analysis to determine the exact number of SYN requests received by 192.168.11.46.
 
 ```
 tcpdump -nr threat_actor.pcap src host 192.168.11.62 and dst host 192.168.11.62 and dst host 192.168.11.46 and tcp[tcpflags] == tcp-syn | wc -l
