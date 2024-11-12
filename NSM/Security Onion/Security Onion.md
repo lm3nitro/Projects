@@ -193,7 +193,7 @@ Security Onion also offers the option to Hunt for within the security alerts. I 
 
 ![Pasted image 20240513144834](https://github.com/lm3nitro/Projects/assets/55665256/13565a54-5492-4d46-b222-15db54ecee6c)
 
-The **Hunt** option provides more insight into the alert. Here we can see information on the IPs involved in the alert (attacker and target system). It also provides the count, in this case 165, and all the ports that it scanned:
+The **Hunt** option provides more insight into the alert. Here I can see information on the IPs involved in the alert (attacker and target system). It also provides the count, in this case 165, and all the ports that it scanned:
 
 ![Pasted image 20240513145035](https://github.com/lm3nitro/Projects/assets/55665256/346a444e-242d-4a34-a00a-7fed4d1533af)
 
