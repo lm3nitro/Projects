@@ -33,7 +33,7 @@ msfvenom -l payloads
 
 ![Pasted image 20240501132226](https://github.com/lm3nitro/Projects/assets/55665256/15af3e0c-0708-439c-ac06-af170979d19c)
 
-Here we can see the total amount of payloads available at the time of this writing: 1475
+Here I can see the total amount of payloads available at the time of this writing: 1475
 
 ```
 msfvenom -l payloads | wc -l
@@ -85,7 +85,7 @@ python3 -m http.server
 
 ![Pasted image 20240501140151](https://github.com/lm3nitro/Projects/assets/55665256/60325139-29da-4ecd-935f-1b620351cd19)
 
-I also ensured that I had Wireshark running and capturing the traffic on the network. Here we can see the traffic from the download:
+I also ensured that I had Wireshark running and capturing the traffic on the network. Here I can see the traffic from the download:
 
 ![Pasted image 20240501135931](https://github.com/lm3nitro/Projects/assets/55665256/c444cd3f-6354-4126-9a99-857617248a4c)
 
