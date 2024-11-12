@@ -40,7 +40,7 @@ Here I selected **upload**, and selected the newly downloaded patch that I had p
 
 <img width="1350" alt="Screenshot 2024-04-22 at 1 07 57 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/a25b3972-fae7-4e75-8946-1aba487c3b28">
 
-Once that has been completed, we can ensure that we see the patch there, and click **Close** :
+Once that was completed, I verified the patch was there, and clicked **Close** :
 
 <img width="1329" alt="Screenshot 2024-04-22 at 1 09 53 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/9767760e-3189-4250-afae-ea812fed4f1e">
 
@@ -52,7 +52,7 @@ Under **Host** click on **Actions**
 
 <img width="1094" alt="Screenshot 2024-04-22 at 1 13 14 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/3a9fe331-8c41-4df5-b3a6-1555096a9988">
 
-We will need to enable SSH on our server so that we can SSH into it and perform the command to get the patch that we just uploaded installed:
+I then enabled SSH on the server so that I can SSH into it and perform the command to get the patch that I just uploaded installed:
 
 <img width="1254" alt="Screenshot 2024-04-22 at 1 14 28 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/1bfd0849-8b69-4da0-8bee-eacafa7b1957">
 
@@ -66,11 +66,11 @@ Here is the command used install the patch. Root is needed to perform this step.
 esxcli software profile update -p ESXi-7.0U3p-23307199-standard -d /vmfs/volumes/66267610-5a7f0187-51c5-246e966417b8/VMware-ESXi-7.0U3p-23307199-depot.zip --no-hardware-warning 
 ```
 
-Once it completes, we can see that it was successfully installed:
+Once it completed, I could see that it was successfully installed:
 
 <img width="927" alt="Screenshot 2024-04-22 at 1 29 14 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/1181f576-9576-4f38-b6a5-ff13d9fe1a12">
 
-Once we have the patch installed, we need to reboot the server to ensure that everything is applied. Its also important to note that once the server reboots, SSH will automatically be disabled again by default.
+Once the patch was installed, I reboot the server to ensure that everything got applied. Its also important to note that once the server reboots, SSH will automatically be disabled again by default.
 
 <img width="1472" alt="Screenshot 2024-04-22 at 1 55 18 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/7484e6be-bc8a-4d2c-96b5-d668f6dc2ea9">
 
@@ -82,7 +82,7 @@ Once the server rebooted, I was able to see that the interface had changed which
 
 <img width="993" alt="Screenshot 2024-04-22 at 2 02 51 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/e22d5685-1613-42af-9d03-19d2f2241fa9">
 
-Upon logging in, we can also see that not only did the interface appearance change, but it now says version 7.0 update 3, which means that the patch got installed. 
+Upon logging in, I can see that not only did the interface appearance change, but it now says version 7.0 update 3, which means that the patch got installed. 
 
 <img width="1497" alt="Screenshot 2024-04-22 at 2 03 36 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/dcd17c5b-3d94-48a2-b688-337f3e143ec5">
 
