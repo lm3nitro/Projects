@@ -78,7 +78,7 @@ To begin I wanted to perform a Nmap scan against the target. I went to Hosts > N
 
 ![Pasted image 20240425135614](https://github.com/lm3nitro/Projects/assets/55665256/91ad237f-83dd-4d34-b4f5-e78d6e4b21aa)
 
-After choosing the type of scan, I could see the full command that is being ran against the host in the command line window below. The Nmap scan provides us with the list of all the ports that are open on the hosts and versions of services that are running:
+After choosing the type of scan, I could see the full command that is being ran against the host in the command line window below. The Nmap scan provided me with the list of all the ports that are open on the hosts and versions of services that are running:
 
 ![Pasted image 20240425135540](https://github.com/lm3nitro/Projects/assets/55665256/8c656b30-52e6-45c2-9f27-fb99cf007092)
 
@@ -92,7 +92,7 @@ These are the details of the exploit. I then proceeded to launch the attack:
 
 ![Pasted image 20240425140017](https://github.com/lm3nitro/Projects/assets/55665256/c28d8173-afd6-4b73-8e76-5ae65012ba8e)
 
-Once the attack is successful, we can see that the image of the computer pc changes to show that it has been compromised. 
+Once the attack is successful, I could see that the image of the computer pc changed to show that it had been compromised. 
 
 ![Pasted image 20240425140151](https://github.com/lm3nitro/Projects/assets/55665256/33634aa2-40e3-4e4d-bdf4-39d75346a67a)
 
@@ -102,7 +102,7 @@ The console view at the bottom also shows that the attack has been successful. I
 
 ## Analysis
 
-I ran Wireshark while performing the attack as well so that I could see what this attack would look like in the network traffic. Here we can see the source and destination IP and port along with the information on the attack. It looks like the attack was able to give the adversary root privileges:
+I ran Wireshark while performing the attack as well so that I could see what this attack would look like in the network traffic. Here I could see the source and destination IP and port along with the information on the attack. It looks like the attack was able to give the adversary root privileges:
 
 ![Pasted image 20240425140600](https://github.com/lm3nitro/Projects/assets/55665256/79f8bcf9-7ac4-4d51-923f-d475bc6deb2f)
 
@@ -110,7 +110,7 @@ I then went to the target host and was also able to see the connection logs:
 
 ![Pasted image 20240425141001](https://github.com/lm3nitro/Projects/assets/55665256/f4229242-6fa9-47c9-82cc-a97c8bb59165)
 
-Analyzing the FTP service logs we can see that the authentication was successful:
+Analyzing the FTP service logs I can see that the authentication was successful:
 
 ![Pasted image 20240425141756](https://github.com/lm3nitro/Projects/assets/55665256/c783e3a8-aaee-4870-9b47-ebfde8df4f0c)
 
