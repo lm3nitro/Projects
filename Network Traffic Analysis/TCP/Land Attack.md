@@ -19,7 +19,7 @@ tcpdump -nr threat_actor.pcap 'tcp[13] $ 2!=0' and net 192.168.10.0/24 -c 20
 
 ![Pasted image 20240327163548](https://github.com/lm3nitro/Projects/assets/55665256/7bbb6ac9-69b5-4084-b351-0b4c04b54a0d)
 
-Here we see traffic originating from the same IP address as the destination with incremental source ports. This makes it seem like the attack is coming from the target itself. When the target device receives these packets, it attempts to respond to itself. Since the device tries to establish a connection or respond to the packet it "received" from itself, it can create a feedback loop. This can lead to resource exhaustion as the device becomes overwhelmed trying to process these requests.
+Here I see traffic originating from the same IP address as the destination with incremental source ports. This makes it seem like the attack is coming from the target itself. When the target device receives these packets, it attempts to respond to itself. Since the device tries to establish a connection or respond to the packet it "received" from itself, it can create a feedback loop. This can lead to resource exhaustion as the device becomes overwhelmed trying to process these requests.
 
 ### Effects:
 
