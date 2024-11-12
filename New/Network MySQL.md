@@ -177,7 +177,7 @@ set USERNAME  root
 set RHOTS 10.10.137.40
 ```
 
-By providing the information above, below is the list of hashes that it was able to provide. Here we can see the user Carl:
+By providing the information above, below is the list of hashes that it was able to provide. Here I can see the user Carl:
 
 ![Pasted image 20241003144109](https://github.com/user-attachments/assets/b3e71609-32e2-4725-8e8d-4f0c34a87bc1)
 
@@ -214,7 +214,7 @@ After using SSH and entering the credentials, I was able to authenticate as the 
 
 In conclusion, I was able to enumerate the MySQL server using both **nmap** and **metasploit** which provided me with a series of information such as the version running, ports that were opened, list of databases, and a list of password hashes. Using this information, I was then able to exploit the MySQL server by copying the hashes and using **John the Ripper** to find the password for the user Carl. Once I had the password, I was then able to SSH into the server as the user. 
 
-Overall, enumeration is critical becasue it allows you to gather detailed information about a target system, network, or application. Some key benefits are:
+Overall, enumeration is critical because it allows you to gather detailed information about a target system, network, or application. Some key benefits are:
 
 + Identifying Vulnerabilities
 + Understanding Attack Surface
