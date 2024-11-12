@@ -65,9 +65,9 @@ journalctl -t PolarProxy
 
 ## Certificate Installation
 
-Next, I needed to import the root CA certificate to both OS and browser. In order to use PolarProxy effectively, the root CA certificate it uses must be trusted by all clients whose TLS traffic goes through the proxy. This means your PolarProxy root CA needs to be trusted by both the operating system and any browsers or applications that have their own list of trusted root certificates. This ensures a smooth integration of the proxy with your system and applications.
+Next, I needed to import the root CA certificate to both OS and browser. In order to use PolarProxy effectively, the root CA certificate it uses must be trusted by all clients whose TLS traffic goes through the proxy. This means the PolarProxy root CA needs to be trusted by both the operating system and any browsers or applications that have their own list of trusted root certificates. This ensures a smooth integration of the proxy with both the system and applications.
 
-In the command below, you will see I have used the switch --certhttp 10080, this will make the public root CA cert available on a web server running at the port 10080. Simply start a browser on the client and enter the IP address of PolarProxy, such as http://127.0.0.1:10080/polarproxy.cer (if started with --certhttp 10080), to access the certificate.
+In the command below, I have used the switch --certhttp 10080, this will make the public root CA cert available on a web server running at the port 10080. Simply start a browser on the client and enter the IP address of PolarProxy, such as http://127.0.0.1:10080/polarproxy.cer (if started with --certhttp 10080), to access the certificate.
 
 _Replace "192.168.242.132" below with the IP of PolarProxy._
 
@@ -123,11 +123,11 @@ At the same time, PolarProxy is also saving the encrypted packets for further an
 
 ![Pasted image 20240409184908](https://github.com/lm3nitro/Projects/assets/55665256/68b084e2-6038-4871-8419-a5c10998b0fc)
 
-After, I wanted to take a look at the unencrypted pcap after the TLS headers had been removed. Here we see the traffic is coming from the 127.0.0.1 loopback interface to www.netresec.com:
+After, I wanted to take a look at the unencrypted pcap after the TLS headers had been removed. Here I see the traffic is coming from the 127.0.0.1 loopback interface to www.netresec.com:
 
 ![Pasted image 20240409184751](https://github.com/lm3nitro/Projects/assets/55665256/534ef2bd-ce5b-4ca3-8a27-f4e702a468ad)
 
-Lets verify that the Polar proxy Root certificate is indeed in our Firefox browser:
+I then verified that the Polar proxy root certificate was indeed in my Firefox browser:
 
 ![Pasted image 20240409185332](https://github.com/lm3nitro/Projects/assets/55665256/bc313936-e861-48a6-bdb4-41f450120831)
 
