@@ -2,7 +2,7 @@
 
 <img width="310" alt="Screenshot 2024-05-18 at 12 20 46 AM" src="https://github.com/lm3nitro/Projects/assets/55665256/b03da507-1696-40ca-b410-d604e5783e8b">
 
-Nessus is a security scanning tool, which scans a computer and raises an alert if it discovers any vulnerabilities that malicious hackers could use to gain access to any computer you have connected to a network.
+Nessus is a security scanning tool, which scans a computer and raises an alert if it discovers any vulnerabilities that malicious hackers could use to gain access to any computer connected to the network.
 
 Vulnerability Scanning is the process of detecting, assessing, and reporting on security defects and vulnerabilities. Automated vulnerability scanning technologies are used to access the attack surface, identify potential risk exposures and attack vectors throughout an organization’s networks, hardware, software, and systems. The scanning and assessment of vulnerabilities is a critical phase in the vulnerability management lifecycle.
 
@@ -13,7 +13,7 @@ I will download and install Nessus and will run vulnerability assessment on a ta
 Nessus, Wireshark, Nmap, Linux OS, Metasploitable
 
 ## Installation
-You can download direct from the browser or from the CLI via curl:
+This can downloaded directly from the browser or from the CLI via curl:
 
 Downloading via web browser:
 
@@ -47,13 +47,13 @@ Now that it is installed, lets launch it:
 
 ![Pasted image 20240419152225](https://github.com/lm3nitro/Projects/assets/55665256/84a9fa7c-46b0-49fc-a978-fecd8cda6237)
 
-Upon logging in, we are presented with plugin, license, and component updates:
+Upon logging in, I was presented with plugin, license, and component updates:
 
 ![Pasted image 20240419152543](https://github.com/lm3nitro/Projects/assets/55665256/892e425f-0aed-4b9e-bb59-9dc06988d2f1)
 
 ## Basic Network Scan:
 
-Once we have set up Nessus, we can create and perform a basic network scan. A Basic Network Scan will perform similarly to an Advanced Network Scan. The only difference being that Advanced Network Scans have the following features/attributes:
+Once Nessus was set up, I was able to create and perform a basic network scan. A Basic Network Scan will perform similarly to an Advanced Network Scan. The only difference being that Advanced Network Scans have the following features/attributes:
 
 - Allows the fine-tuning of the plugins included in the scan
 - Has some different default settings
@@ -68,7 +68,7 @@ Here are the different scanning options:
 
 ![Pasted image 20240419153859](https://github.com/lm3nitro/Projects/assets/55665256/d40c7a45-6ac2-461c-b319-97539a36e630)
 
-I selected Basic Network Scan. Upon choosing, you are presented with a dialog box to enter the details. I will be scanning against 1 target host:
+I selected Basic Network Scan. Upon choosing, I was presented with a dialog box to enter the details. I will be scanning against 1 target host:
 
 ![Pasted image 20240419154030](https://github.com/lm3nitro/Projects/assets/55665256/82fdbc15-731a-4268-8f07-12c545c9c187)
 
@@ -88,9 +88,9 @@ The Common Vulnerability Scoring System (CVSS) is a method used to supply a qual
 
 Based on the results, the scanner was able to find a Bind shell on the host: 
 
->#### Simply a Bash shell that is _bind_ to port `1524/tcp` will run everything sent to that port on Bash and reply with the output. You don't need tools like Metasploit for that; a simple Netcat or Telnet will do.
+>#### Simply a Bash shell that is _bind_ to port `1524/tcp` will run everything sent to that port on Bash and reply with the output. Tools like Metasploit are not need for that; a simple Netcat or Telnet will do.
 
-We can see that within the details of the findings, it also provides a solution if the host has been compromised:
+I can see that within the details of the findings, it also provides a solution if the host has been compromised:
 
 ![Pasted image 20240419161439](https://github.com/lm3nitro/Projects/assets/55665256/27af5c6e-7fc5-40f6-adc3-055b9a5dee09)
 
@@ -100,11 +100,11 @@ I then went to the target host and wanted to dive deeper with Nmap into this hid
 
 ![Pasted image 20240419164019](https://github.com/lm3nitro/Projects/assets/55665256/f702d761-c5e5-421b-bfc7-92bbd12bedf8)
 
-Based on the output, it looks like the vulnerability is a True Positive and it does exist on our host:
+Based on the output, it looks like the vulnerability is a True Positive and it does exist on the host:
 
 ![Pasted image 20240419164118](https://github.com/lm3nitro/Projects/assets/55665256/7e6d5170-68a7-457b-b557-ce3741203ea0)
 
-Looking at the traffic on the host with Wireshark, we can see that it is indeed open:
+Looking at the traffic on the host with Wireshark, I can see that it is indeed open:
 
 ![Pasted image 20240419164615](https://github.com/lm3nitro/Projects/assets/55665256/92ff8a12-53ae-453d-8474-f08f0c67027a)
 
@@ -126,7 +126,7 @@ Vulnerability remediation is the process of finding, addressing, and neutralizin
 
 ### Summary: 
 
-Nessus is a great tool for running series of vulnerability scans and test against devices. I liked the granularity that it provided when it came to the details of the vulnerabilities it was able to find. In this scan, we were able to see the backdoor that was present on the host, we also tested to see if we could exploit it and were successful. We also analyzed the traffic in Wireshark to see what the exploit looks like when executed against the vulnerability. 
+Nessus is a great tool for running series of vulnerability scans and test against devices. I liked the granularity that it provided when it came to the details of the vulnerabilities it was able to find. In this scan, I was able to see the backdoor that was present on the host, I also tested to see if I could exploit it and was successful. I also analyzed the traffic in Wireshark to see what the exploit looks like when executed against the vulnerability. 
 
 Overall, there are a few things that can be done to help in minimizing vulnerabilities, these include the following:
 + Regular Software Upgrades
