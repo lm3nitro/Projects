@@ -1,4 +1,3 @@
-
 # Linux NIC Sniff
 
 ### Scope:
@@ -10,7 +9,7 @@ This will follow similar scope to Part 2 on my Windows host. In this scenario, I
 This is the Linux interface configuration I used to set the sniffing interface to capture packets.
 
 > [!NOTE]  
-> Various NIC/driver combinations may have different default settings for these offload features. It's important to verify your interface settings sooner rather than later to avoid a situation where you require a full packet capture but find out later that it's not available. You can check this by using the 'ethtool' command with the '-k' option (lowercase 'k') on the specific interface. For instance, to check 'eth0':
+> Various NIC/driver combinations may have different default settings for these offload features. It's important to verify the interface settings sooner rather than later to avoid a situation where a full packet capture is required but find out later that it's not available. This can be checked by using the 'ethtool' command with the '-k' option (lowercase 'k') on the specific interface. For instance, to check 'eth0':
 > ```
 > ethtool -k eth0  
 > Offload parameters for eth0:  
@@ -23,7 +22,7 @@ This is the Linux interface configuration I used to set the sniffing interface t
 > generic-receive-offload: on  
 > large-receive-offload: off
 > ```
-> You should repeat this for every interface in your system, as you may have NICs from different manufacturers with different defaults.
+> This should be repeated for every interface on the system, as there may be NICs from different manufacturers with different defaults.
 
 *Offloading* refers to delegating certain networking tasks, such as checksum calculation or segmentation, to the NIC itself, which can significantly reduce the CPU overhead and improve network throughput.
 
@@ -34,7 +33,7 @@ ethtool -K eth0 tso off
 ```
 
 > [!NOTE]  
-> You can set multiple options in one "ethtool" command, but this can be problematic if your card doesn't support all of the settings. To avoid this, you could invoke ethtool for each option like this:
+> Multiple options can be set in one "ethtool" command, but this can be problematic if the card doesn't support all of the settings. To avoid this, the invoke ethtool can be used for each option like this:
 > ```
 > ethtool -K eth0 rx off  
 > ethtool -K eth0 tx off  
@@ -45,7 +44,7 @@ ethtool -K eth0 tso off
 > ethtool -K eth0 gro off  
 > ethtool -K eth0 lro off
 > ```
-> Or we could simply wrap the ethtool command in a for-loop like this:
+> Another option is to simply wrap the ethtool command in a for-loop like this:
 > ```
 > for i in rx tx sg tso ufo gso gro lro; do ethtool -K eth0 $i off; done
 > ```
