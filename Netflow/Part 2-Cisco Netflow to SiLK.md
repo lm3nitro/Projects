@@ -86,7 +86,7 @@ sudo ldconfig
 
 ## Configuring SiLK:
 
-The first step to configuring SiLK is to create the data repository directory (/var/silk/data) and adding the silk.conf file, which defines how your data is stored. Use the default silk.conf file for the twoway site, which is installed at /usr/local/share/silk/twoway-silk.conf. You may edit the sensor descriptions if desired. The default settings cause the SiLK analysis program rwfilter to consider only incoming data unless the user provides the --type or --flowtypes switch. If you want rwfilter to look at both incoming and outgoing data by default, modify the default-types line to include in inweb out outweb. If desired, also add int2int ext2ext.
+The first step to configuring SiLK is to create the data repository directory (/var/silk/data) and adding the silk.conf file, which defines how the data is stored. Use the default silk.conf file for the twoway site, which is installed at /usr/local/share/silk/twoway-silk.conf. You may edit the sensor descriptions if desired. The default settings cause the SiLK analysis program rwfilter to consider only incoming data unless the user provides the --type or --flowtypes switch. If you want rwfilter to look at both incoming and outgoing data by default, modify the default-types line to include in inweb out outweb. If desired, also add int2int ext2ext.
 
 ```
 mkdir -p /var/silk/data
