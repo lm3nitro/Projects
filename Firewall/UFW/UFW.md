@@ -91,7 +91,7 @@ ufw enable
 ![Pasted image 20240510210523](https://github.com/lm3nitro/Projects/assets/55665256/0ecf0a49-b747-47b1-867d-59e6b9296684)
 
 
-Once UFW enabled, it runs across system reboots too. We can verify that easily as follows using the systemctl command:
+Once UFW is enabled, it runs across system reboots too. I was able to verify that using the systemctl command:
 
 ![Pasted image 20240510210600](https://github.com/lm3nitro/Projects/assets/55665256/c374f16e-06e7-4f1a-80f2-e9c682cc2e0d)
 
@@ -212,7 +212,7 @@ ufw show listening
 
 ![Pasted image 20240510211855](https://github.com/lm3nitro/Projects/assets/55665256/f26503e2-8f41-4722-a8ce-bd2706bcd201)
 
-This command below shows the list currently added UFW rules. Since we removed everything and reloaded, this is currently showing as empty:
+This command below shows the list currently added UFW rules. Since I removed everything and reloaded, this is currently showing as empty:
 
 ```
 ufw show added
