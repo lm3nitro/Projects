@@ -13,7 +13,7 @@ Pi-hole provides a few key benefits:
 
 ### Scope:
 
-I will be installing Pi-hole on a Linux OS host and will be testing both the ad-blocking and domain blocking capabilities that Pi-hole has to offer. To do this, I will be using a Win 10 OS that will be configured to use the Pi-hole and where I will generate traffic. I will also be testing its efficiency and analyzing the generated traffic on the Pi-hole web interface, Wireshark, and Pi-hole logs themselves. 
+I will be installing Pi-hole on a Linux OS host and will be testing both the ad-blocking and domain blocking capabilities that Pi-hole has to offer. To do this, I will be using a Win 10 OS that will be configured to use the Pi-hole and where I will generate traffic. I will also be testing its efficiency and analyzing the generated traffic on the Pi-hole b interface, Wireshark, and Pi-hole logs themselves. 
 
 ### Tools and Technology:
 
@@ -261,7 +261,7 @@ Upon checking Pi-hole, the testing using the website above indeed generated more
 
 ![Pasted image 20240602121238](https://github.com/lm3nitro/Projects/assets/55665256/f5198fd6-3dad-4973-b738-0b5bc226cf91)
 
-Pi-hole also allows you to look at the DNS statistics. Here we can see the top domains that are getting blocked and the hosts that are generating the most traffic:
+Pi-hole also allows you to look at the DNS statistics. Here I can see the top domains that are getting blocked and the hosts that are generating the most traffic:
 
 ![Pasted image 20240602121943](https://github.com/lm3nitro/Projects/assets/55665256/8db98278-faf0-4d4b-b6c8-d76a16e2da6a)
 
@@ -322,7 +322,7 @@ This will be just an example. For this example, I will be using youtube.com. To 
 
 ![Pasted image 20240602135024](https://github.com/lm3nitro/Projects/assets/55665256/507dc31b-0d5c-4817-9131-dc3da51417e9)
 
-I then verified to see if youtube.com was really blocked. We can see the DNS traffic, the DNS server (Pi-hole) 10.10.100.35 is responding with 0.0.0.0, we also can see the DNS queries from the Pi-hole on the right side:
+I then verified to see if youtube.com was really blocked. I can see the DNS traffic, the DNS server (Pi-hole) 10.10.100.35 is responding with 0.0.0.0, I can also see the DNS queries from the Pi-hole on the right side:
 
 ![Pasted image 20240602135447](https://github.com/lm3nitro/Projects/assets/55665256/521a4fb3-63df-4e34-8d2b-967c8a2c8748)
 
@@ -390,7 +390,7 @@ sudo cat pihole.log | grep -e chess.com |grep -e query
 sudo cat pihole.log | grep -Po 'lh\d\.\w+' | wc -l
 ```
 
-7. Same as above, but without the count, this shows that actual results. We can see that all start with lh and is followed by either a 5,4, or 3.
+7. Same as above, but without the count, this shows that actual results. I can see that all start with lh and is followed by either a 5,4, or 3.
 
 ```
 sudo cat pihole.log | grep -Po 'lh\d\.\w+'
