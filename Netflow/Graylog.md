@@ -110,7 +110,7 @@ You should receive the following output:
 ![Pasted image 20240529174125](https://github.com/lm3nitro/Projects/assets/55665256/dd9d532e-0bf4-43c2-95d8-90e31227911c)
 
 > [!NOTE]  
-> To install the latest Java version, we need to install first some Java dependencies:
+> To install the latest Java version, I first neede to install some Java dependencies:
 
 ```
 apt install apt-transport-https gnupg2 uuid-runtime pwgen curl dirmngr -y
@@ -412,7 +412,7 @@ I also verified in Graylog the NetFlow messages that were coming from my Cisco r
 
 ## NetFlow Analysis
 
-1. Traffic information from our Windows 10 PC:
+1. Traffic information from my Windows 10 PC:
 
 ![Pasted image 20240529145719](https://github.com/lm3nitro/Projects/assets/55665256/012e29bd-1dce-4d72-a4c7-17320ae4c1ca)
 
