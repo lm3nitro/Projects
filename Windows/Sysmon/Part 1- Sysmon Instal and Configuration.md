@@ -14,11 +14,11 @@ These are the steps I used to get Sysmon installed and running on my system. Fir
 
 <img width="940" alt="Screenshot 2024-04-29 at 9 21 07 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/cd59df2f-8ba1-48b9-802a-f3314d5e9050">
 
-Once I have downloaded the configuration file, I will need to navigate to where we downloaded Sysmon, right-click on the zip file, and select *Extract File*. 
+Once I downloaded the configuration file, I navigated to where Sysmon was downloaded, right-clicked on the zip file, and selected *Extract File*. 
 
 <img width="1121" alt="Screenshot 2024-04-29 at 9 22 43 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/973cef41-07e8-4c47-893a-d2523cb22133">
 
-Once that is extracted, I need to ensure that our extracted files along with our configuration file is all in the same location as seen below:
+Once that was extracted, I needed to ensure that the extracted files along with my configuration file were all in the same location as seen below:
 
 <img width="891" alt="Screenshot 2024-04-29 at 9 33 55 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/b81601c9-d52e-41c3-bcd6-c1763772155e">
 
