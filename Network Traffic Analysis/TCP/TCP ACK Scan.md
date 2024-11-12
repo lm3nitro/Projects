@@ -13,7 +13,7 @@ Response from Target:
 
 ### Analysis
 
-In the following pcap, I see the host 192.168.10.5 sending a large amount of ACK packets to our host 192.168.10.1. These packets have some unusual traffic as they are all originating from the same source port and going to the same IP address but in different ports. I can also see the sequence number remains the same throughout all of the packets. 
+In the following pcap, I see the host 192.168.10.5 sending a large amount of ACK packets to my host 192.168.10.1. These packets have some unusual traffic as they are all originating from the same source port and going to the same IP address but in different ports. I can also see the sequence number remains the same throughout all of the packets. 
 
 ```
 tcpdump -nr threat_actor.pcap tcp[tcpflags] == tcp-ack and portrange 1-65365
