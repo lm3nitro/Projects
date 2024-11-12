@@ -40,7 +40,7 @@ Using Nmap above, I was able to see that the host was vulnerable to CVE-2017-014
 
 ![Pasted image 20240430125818](https://github.com/lm3nitro/Projects/assets/55665256/d8eb4157-fced-4087-a586-b6e431edcc02)
 
-Looking further into the vulnerability using tenable, this matches what we found above with Nmap:
+Looking further into the vulnerability using tenable, this matches what I found above with Nmap:
 
 ![Pasted image 20240430125946](https://github.com/lm3nitro/Projects/assets/55665256/4d24cee6-82ae-4b9f-98d0-1ce40afaf672)
 
@@ -62,7 +62,7 @@ Executing the exploit:
 
 ![Pasted image 20240430133353](https://github.com/lm3nitro/Projects/assets/55665256/a3893b46-0d83-4071-ac52-b7643cd28f40)
 
-HOST and LHOST are parameters that define network targets and your own system's settings. RHOST is the target system and LHOST is my Linux machine (attacking system):
+HOST and LHOST are parameters that define network targets and the system's settings. RHOST is the target system and LHOST is my Linux machine (attacking system):
 
 set RHOST 192.168.91.137
 set LHOST 192.168.91.134
@@ -144,7 +144,7 @@ Cracking the password:
 Mimikatz can also be used:
 ![Pasted image 20240506105845](https://github.com/lm3nitro/Projects/assets/55665256/5d1c8c7a-5e20-4e13-b8e0-c4a6debed536)
 
-Now we can go to see all the credentials:
+Now I can go to see all the credentials:
 
 ![Pasted image 20240506111530](https://github.com/lm3nitro/Projects/assets/55665256/8f6cf77c-991d-4594-9efb-ea7d2242d4ce)
 
