@@ -36,7 +36,7 @@ tar -xzvf pcre-8.45.tar.gz
 cd pcre-8.45
 ./configure 
 ```
-Here we can see the configuration summary:
+Here I can see the configuration summary:
 
 ![Pasted image 20240402161907](https://github.com/lm3nitro/Projects/assets/55665256/7b4125ba-801a-4241-b795-348047822037)
 
@@ -186,7 +186,7 @@ Once Snort was installed, I verified that it was up and running:
 
 ![Pasted image 20240402175208](https://github.com/lm3nitro/Projects/assets/55665256/7d24a925-6d94-4145-8526-fe19ae949ed2)
 
-Here we can see that it is installed and working:
+Here I can see that it is installed and working:
 
 ![Pasted image 20240402175104](https://github.com/lm3nitro/Projects/assets/55665256/2fe6afaf-c2ec-4ac1-a959-3bf594f2d261)
 
@@ -245,7 +245,7 @@ Again, the above mentioned is optional and not needed, but wanted to share. Now 
 
 ## Custom Rule:
 
-Before I can get started, I needed to create a directory called rules under /usr/local/etc/ and create a file called local.rules under /usr/local/etc/rules/. This is where we are I will create custom rules.
+Before I can get started, I needed to create a directory called rules under /usr/local/etc/ and create a file called local.rules under /usr/local/etc/rules/. This is where I will create custom rules.
 
 ```
 mkdir /usr/local/etc/rules
@@ -272,7 +272,7 @@ snort -c /usr/local/etc/snort/snort.lua -R /usr/local/etc/rules/local.rules -i e
 
 ![Pasted image 20240402184126](https://github.com/lm3nitro/Projects/assets/55665256/e6d712d4-08d5-49d9-83e4-63b4781a1f2b) 
 
-Making the local.rules persistent makes it so that you don't have to specify the location of our local rules.
+Making the local.rules persistent makes it so that I don't have to specify the location of my local rules.
 
 Remove -- to enable the option:
 ```
@@ -286,7 +286,7 @@ Save the configuration file and test:
 
 ![Pasted image 20240402184804](https://github.com/lm3nitro/Projects/assets/55665256/1b8e391e-25a6-4972-b88c-a3bacb753c7b)
 
-Now we can run the run the configuration file again without specifying the location of the local.rules:
+Now I can run the configuration file again without specifying the location of the local.rules:
 
 ![Pasted image 20240402185426](https://github.com/lm3nitro/Projects/assets/55665256/e5d0e28c-5b4c-4b43-8598-299a980857bb)
 
