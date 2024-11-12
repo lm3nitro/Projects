@@ -14,13 +14,13 @@ I start off by analyzing the pcap with Suricata. Suricata will inspect the traff
 
 ![Pasted image 20240417141729](https://github.com/lm3nitro/Projects/assets/55665256/39e3b253-c90f-45a1-93f5-a6fbc2003e61)
 
-Upon the analysis with Suricata we see the following alerts from the IP 67.207.93.135. The "Invalid Checksum: Generic Protocol Command Decode" normally means that Suricata decoded and interpreted a command within the generic protocol. This could include commands related to various network protocols like HTTP, FTP, DNS, or other application-layer protocols. 
+Upon the analysis with Suricata I see the following alerts from the IP 67.207.93.135. The "Invalid Checksum: Generic Protocol Command Decode" normally means that Suricata decoded and interpreted a command within the generic protocol. This could include commands related to various network protocols like HTTP, FTP, DNS, or other application-layer protocols. 
 
 Also, its important to note the Invalid Checksum. Checksums are used to verify the integrity of data packets. An "Invalid Checksum" message suggests that the checksum value doesn't match the expected value, which could mean a potential data integrity issue.
 
 ![Pasted image 20240417142306](https://github.com/lm3nitro/Projects/assets/55665256/cd6548be-378f-4999-91ed-4f9ccaa49975)
 
-Although Suricata doesn't look to have a specific rule or signature for this type of traffic, there is an abnormal amount of alerts which warrants for further analysis. Let's filter for this IP only and see how many hits we get in the fast.log:
+Although Suricata doesn't look to have a specific rule or signature for this type of traffic, there is an abnormal amount of alerts which warrants for further analysis. Let's filter for this IP only and see how many hits I get in the fast.log:
 
 ```
 cat fast.log | grep 67.207.93.135 | WC -l
@@ -49,15 +49,15 @@ This will allow me to see more information about the traffic and conversation, t
 
 ### Wireshark
 
-Now that I have more information on what we are looking for, we can take a look at the pcap with Wireshark. Here I took a look at the protocol hierarchy to get a high level overview of the traffic and protocols seen in the pcap. 
+Now that I have more information on what I am looking for, I can take a look at the pcap with Wireshark. Here I took a look at the protocol hierarchy to get a high level overview of the traffic and protocols seen in the pcap. 
 
 ![Pasted image 20240417160509](https://github.com/lm3nitro/Projects/assets/55665256/7c80cc70-611a-477f-bab0-94e94a7345c3)
 
-I then wanted to narrow in on that specific IP address we saw above (67.207.93.135) and see the traffic, bytes transferred, IPs communicating with is, etc. Here I can see that there was 677MB sent to our internal host from this IP address:
+I then wanted to narrow in on that specific IP address I saw above (67.207.93.135) and see the traffic, bytes transferred, IPs communicating with is, etc. Here I can see that there was 677MB sent to my internal host from this IP address:
 
 ![Pasted image 20240417174216](https://github.com/lm3nitro/Projects/assets/55665256/fbb15dda-8ca0-45c6-8b52-c6aa66907fab)
 
-Next I filtered in on the conversation between our internal host and this IP address and see some HTTP traffic that gives us more details regarding the host, URI, and the http method used:
+Next, I filtered in on the conversation between my internal host and this IP address and see some HTTP traffic that gives us more details regarding the host, URI, and the http method used:
 
 ![Pasted image 20240417155611](https://github.com/lm3nitro/Projects/assets/55665256/0e4b9d13-9539-4176-8e53-a80900e7f733)
 
@@ -73,7 +73,7 @@ With this information I went to take another look at the pcap. Here I am seeing 
 
 ![Pasted image 20240417162733](https://github.com/lm3nitro/Projects/assets/55665256/e30511fc-6381-4503-bc7a-b722417cbec2)
 
-I wanted to take a closer look into Microsoft's Delivery Optimization and the client it utilizes. Based in this information, we can see that it only references Windows 10 and Windows 11. This further emphasizes that the internal host is not a XP windows agents. 
+I wanted to take a closer look into Microsoft's Delivery Optimization and the client it utilizes. Based in this information, I can see that it only references Windows 10 and Windows 11. This further emphasizes that the internal host is not a XP windows agents. 
 
 ![Pasted image 20240417175130](https://github.com/lm3nitro/Projects/assets/55665256/21e399cd-5653-43d3-8011-f46bf11475c6)
 
@@ -163,7 +163,7 @@ This now provided us with very useful information such as IOCs, Alerts, file nam
 
 In summary, after conducting a thorough threat hunting investigation utilizing Zeek, Suricata, RITA, and Wireshark, suspicious HTTP GET traffic originating from the 67.207.93.135 IP address was identified. Upon analyzing further, I was able to see that this IP was associated with malicious activity related to malware. To prevent incidents in the future, it is crucial to incorporate IOCs into the security infrastructure and regularly update threat intelligence feeds. I also believe that if an EDR is not yet being used in the environment, implementing and deploying an EDR solution for real-time monitoring would be highly beneficial.
 
-There are also steps needed to be taken since we were able to confirm the internal host was communicating with this malicious IP. Some of the steps that can be taken are:
+There are additional steps that need to be taken since I was able to confirm the internal host was communicating with this malicious IP. Some of the steps that can be taken are:
 
 + Isolate the host
 + Perform forensic analysis on the host
