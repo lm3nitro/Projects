@@ -15,7 +15,7 @@ Response Behavior:
 
 ### Analysis:
 
-Let's take a look to see what this looks like in a pcap and how we can identify it. 
+Let's take a look to see what this looks like in a pcap and how it can be identified. 
 
 ```
 tcpdump -nr threat_actor.pcap ! 'tcp[13] & 32!=0' or 'tcp[13] & 1!=0' -c 10
@@ -41,4 +41,4 @@ Below are some options to defend against TCP Null Scans:
 
 + Set up firewalls to block incoming TCP packets with no flags set. This helps prevent Null scan packets from reaching their targets.
 + Deploy IDS/IPS systems to detect unusual traffic patterns associated with Null scans.
-+ Implement rate limiting on your network to restrict the number of connection attempts from a single IP address. This can help mitigate the impact of scanning activities.
++ Implement rate limiting in the network to restrict the number of connection attempts from a single IP address. This can help mitigate the impact of scanning activities.
