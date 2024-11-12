@@ -93,13 +93,13 @@ In order to compile RITA manually I needed to install Golang (v1.13 or greater).
 ```
 sudo apt install -y golang
 ```
-Then add the following to your .bashrc
+Then added the following to .bashrc
 ```
 export GOROOT=/usr/lib/go
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 ```
-Reload your .bashrc
+Reload .bashrc
 ```
 source .bashrc
 ```
@@ -116,7 +116,7 @@ git clone https://github.com/activecm/rita.git
 cd rita
 make 
 ```
->#### You will need to have make installed. You can use your system's package manager to install it if needed.
+>#### `make` needs to be installed. The system package manager can be used to install if needed.
 
 ![Pasted image 20240417113130](https://github.com/lm3nitro/Projects/assets/55665256/f1f27727-cde3-46bb-ba57-366c67128b8c)
 ![Pasted image 20240417113206](https://github.com/lm3nitro/Projects/assets/55665256/f8fbbe0c-1ed8-4510-bdd1-775dc1367d35)
@@ -129,7 +129,8 @@ sudo mkdir -p /var/lib/rita/logs && sudo chmod -R 755 /var/lib/rita
 sudo chmod 777 /var/lib/rita/logs
 ```
 
-3. Copy the config file from your local RITA source code.
+3. Copy the config file from the local RITA source code.
+   
 ```
 sudo cp etc/rita.yaml /etc/rita/config.yaml && sudo chmod 666 /etc/rita/config.yaml
 ```
@@ -145,7 +146,7 @@ sudo cp etc/rita.yaml /etc/rita/config.yaml && sudo chmod 666 /etc/rita/config.y
 
 ## Upgrading Between Minor or Patch Versions:
 
-If you are upgrading within the same major version (e.g. v2.0.0 to v2.0.1, or v3.0.0 to v3.1.0) all you need to do is download the newest RITA binary and replace the one on your system.
+If upgrading within the same major version (e.g. v2.0.0 to v2.0.1, or v3.0.0 to v3.1.0) all that is needed is to download the newest RITA binary and replace the one on the system.
 
 Example: 
 Replace the binary located `/usr/local/bin/rita` with the new binary.
