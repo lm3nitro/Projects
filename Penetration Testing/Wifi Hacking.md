@@ -1,10 +1,10 @@
-# WIFI HACKING
+# WiFi Hacking
 
 ![Pasted image 20240506172950](https://github.com/lm3nitro/Projects/assets/55665256/a685d2f4-61f2-4d69-b8ba-9736550094fd)
 
 ### Scenario:
 
-I set up a personal home network but forgot the Wi-Fi password after changing it a few months ago. To get the password, I will be conducting a controlled experiment to crack my own Wi-Fi password using ethical hacking techniques. This scenario serves as an important learning experience, demonstrating the ethical implications of hacking practices, the necessity of maintaining robust security measures, and how practical exercises can enhance your knowledge and skills in cybersecurity.
+I set up a personal home network but forgot the Wi-Fi password after changing it a few months ago. To get the password, I will be conducting a controlled experiment to crack my own Wi-Fi password using ethical hacking techniques. This scenario serves as an important learning experience, demonstrating the ethical implications of hacking practices and the necessity of maintaining robust security measures.
 
 ### Tools and Technologies:
 Linux VM, Airodump, Aircrack-ng, and Wireshark
