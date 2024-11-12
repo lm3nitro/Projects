@@ -5,7 +5,7 @@ If the source ports in a TCP SYN flood attack with random spoofed addresses are 
 
 ### How it works:
 
-There can be some variations on how this is carried out. In the example below, we will see the following:
+There can be some variations on how this is carried out. In the example below, the following will be seen:
 
 1. SYN Flood Component:
 
