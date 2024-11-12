@@ -127,7 +127,7 @@ Interfaces information:
 
 ![Pasted image 20240515133242](https://github.com/lm3nitro/Projects/assets/55665256/f881f272-b33a-43ff-b5c6-cdc1e017cdb6)
 
-Being able to monitor the LibreNMS system itself is important becuase it ensures the health and performance of the monitoring infrastructure. Keepiong track of the servers resources such as CPU, Memory,and Disk Space allows us identify and address potential issues affecting the systems reliability. 
+Being able to monitor the LibreNMS system itself is important becuase it ensures the health and performance of the monitoring infrastructure. Keeping track of the servers resources such as CPU, Memory,and Disk Space allows us identify and address potential issues affecting the systems reliability. 
 
 ## Adding Fortinet Firewall:
 
@@ -161,7 +161,7 @@ Added the Fortinet Firewall information:
 
 ![Pasted image 20240515140948](https://github.com/lm3nitro/Projects/assets/55665256/b7a59f8d-c7ac-4500-b987-910704aaa643)
 
-We can see that it was successfully added:
+I can see that it was successfully added:
 
 ![Pasted image 20240515141026](https://github.com/lm3nitro/Projects/assets/55665256/b20fd542-45d0-4a3a-9890-9eab339e0f19)
 
@@ -173,17 +173,15 @@ I opened the pcap in Wireshark and verified the SNMP traffic:
 
 ![Pasted image 20240515141357](https://github.com/lm3nitro/Projects/assets/55665256/a274d505-ba87-4428-8552-687f6546f19f)
 
-The Fortinet Management Interface was configured to send SNMP traffic to the LibreNMS server we added Fortinet to LibreNMS. We can now monitor Ftortinet in LibreNMS.
+The Fortinet Management Interface was configured to send SNMP traffic to the LibreNMS server, I also added Fortinet to LibreNMS. I can now monitor Fortinet in LibreNMS.
 
 ## Fortinet SNMP Traffic
 
-He we can see the Fortinet we added previosly:
+Here I can see the Fortinet I added previosly:
 
 ![Pasted image 20240515142952](https://github.com/lm3nitro/Projects/assets/55665256/d8b48a0c-76e3-4653-a42b-17ca8f536754)
 
-We can check the different information it provides us with:
-
-Here we can see the the Overview tab:
+Here I can see the the overview tab:
 
 ![Pasted image 20240515145024](https://github.com/lm3nitro/Projects/assets/55665256/5194f601-3d5b-4101-bdf3-28fc17e3cc1b)
 
@@ -203,7 +201,7 @@ Event logs information:
 
 ![Pasted image 20240515145837](https://github.com/lm3nitro/Projects/assets/55665256/9156c386-163a-4fce-9b2c-ad1a9a90ee65)
 
-We can also see all the ARP information from Fortinet:
+I can also see all the ARP information from Fortinet:
 
 ![Pasted image 20240515150818](https://github.com/lm3nitro/Projects/assets/55665256/b11229ec-e60f-41c1-bcca-8743c3e1d784)
 
@@ -250,11 +248,11 @@ Convert existing RRD files:
 
 ![Pasted image 20240515160017](https://github.com/lm3nitro/Projects/assets/55665256/4297dce0-ef60-4f18-a58d-4eefe781bd9b)
 
-Once complete, we can see the Poller information:
+Once complete, I can see the Poller information:
 
 ![Pasted image 20240515160130](https://github.com/lm3nitro/Projects/assets/55665256/c9181006-2175-4c71-aa45-31437cefa450)
 
-We can also see the performance:
+I can also see the performance:
 
 ![Pasted image 20240515160206](https://github.com/lm3nitro/Projects/assets/55665256/9f704c2c-d923-412d-8e30-d5e410d4a2a0)
 
