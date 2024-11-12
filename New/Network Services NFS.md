@@ -76,7 +76,7 @@ sudo mount -t nfs 10.10.191.163:home /tmp/mount/ -nolock
 Breaking this down: 
 + mount : Execute the mount command
 + -t nfs : Type of device to mount, then specifying that it's NFS
-+ IP:share :  	The IP Address of the NFS server, and the name of the share we wish to mount
++ IP:share : The IP Address of the NFS server, and the name of the share that will be mounted
 + -nolock: Spcifies not to use NLM locking
 
 <!--![Pasted image 20240920100041](https://github.com/user-attachments/assets/28ff5c7b-5a64-478a-a225-b1fa4ad3a013)-->
