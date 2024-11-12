@@ -1,4 +1,4 @@
-# Netgear
+# Netgear Span Port
 
 <img width="261" alt="Screenshot 2024-04-27 at 11 31 37 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/b47f1e79-e323-4f98-8a36-5d310a6dab40">
 
