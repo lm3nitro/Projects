@@ -45,4 +45,4 @@ In a TCP fragmentation scan, it's crucial to consider the Flags field in the TCP
 
 + Create custom IPS rules that specifically identify, and block traffic patterns associated with fragmentation scans, such as multiple fragmented packets targeting different ports.
 +  Set up alerts that trigger when the number of fragmented packets from a single IP address exceeds a defined threshold within a short time frame.
-+  Integrate threat intelligence feeds into your security tools to stay informed about the latest scanning techniques, including fragmentation scans, and adjust your defenses accordingly.
++  Integrate threat intelligence feeds into security tools to stay informed about the latest scanning techniques, including fragmentation scans, and adjust defenses accordingly.
