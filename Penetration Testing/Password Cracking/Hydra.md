@@ -16,7 +16,7 @@ Hydra, Linux OS, and Wireshark
 
 ## Installation:
 
-Toget started, we will need to install Hydra. This can be done through Default Repository:
+To get started, I will install Hydra. This can be done through default repository:
 
 ```
 sudo apt install hydra-gtk
@@ -84,7 +84,6 @@ sudo Hydra -L userlist.txt -P rockyou.txt 192.168.91.129 ftp
 ```
 ![Pasted image 20240425113729](https://github.com/lm3nitro/Projects/assets/55665256/6636406e-5606-41d9-b5e5-d258b0f132d3)
 
-
 ## Victim FTP Server
 
 I wanted to jump on the victim ftp server and see how the dictionary attack can be identified. When analyzing, I looked at the auth.log on the FTP server to identify password attacks: 
@@ -99,14 +98,13 @@ Now, I will filter for code responses from the FTP server in Wireshark:
 
 ![Pasted image 20240425111907](https://github.com/lm3nitro/Projects/assets/55665256/e352fe63-5655-437b-9a56-0e5a4ef7022f)
 
-Looking at the traffic we can see all the passwords attempts:
+Looking at the traffic, I can see all the password attempts:
 
 ![Pasted image 20240425112144](https://github.com/lm3nitro/Projects/assets/55665256/a5b493a4-6b91-4c69-94cc-28d9de3947e0)
 
-When follow the stream, we can get more details:
+When following the stream, I can get more details:
 
 ![Pasted image 20240425112047](https://github.com/lm3nitro/Projects/assets/55665256/62fcfb08-c01a-4a9a-98d0-9234d0551f5e)
-
 
 ## Attacker:
 
@@ -120,7 +118,7 @@ I also had Wireshark running on the attacking host in order to view the traffic 
 
 ## Summary:
 
-Here we can see that the FTP server username and password were both found using Hydra. To help protect against dictionary attacks, there are several strategies that can be implemented:
+Here I can see that the FTP server username and password were both found using Hydra. To help protect against dictionary attacks, there are several strategies that can be implemented:
 
 + Strong Password Policy
 + Account Lockout Policy
