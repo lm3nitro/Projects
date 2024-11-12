@@ -53,7 +53,7 @@ Once SSH was installed on the target host, I then moved to the attacking host to
 
 ## Analysis
 
-While the attack is running on the target host, let's check the logs on the target server. Here we can see many login attempts. We also see the 'error: maximum authentication attempts exceeded ...'. This could be a user that has forgotten their password, or it can be seen as malicious activity. 
+While the attack is running on the target host, let's check the logs on the target server. Here I can see many login attempts. I also see the 'error: maximum authentication attempts exceeded ...'. This could be a user that has forgotten their password, or it can be seen as malicious activity. 
 
 ![Pasted image 20240428174746](https://github.com/lm3nitro/Projects/assets/55665256/5f4ae516-7dc6-4684-9060-444d360ca6b0)
 
@@ -61,7 +61,7 @@ While performing the brute force attack, I also had Wireshark running on the tar
 
 ![Pasted image 20240428180024](https://github.com/lm3nitro/Projects/assets/55665256/ec165731-3d5c-4459-bcc2-ef5eda43dd90)  
 
-Next, I looked at the Wazuh management server to see if it was able to detect the attack/malicious activity. I was able to see 548 authentication attempts and all coming from SSH authentication login attempts. With this many login attempts in a short period of time, we can determine that this is a brute force attack and not just a forgotten password by a legitimate user:
+Next, I looked at the Wazuh management server to see if it was able to detect the attack/malicious activity. I was able to see 548 authentication attempts and all coming from SSH authentication login attempts. With this many login attempts in a short period of time, this signals a brute force attack and not just a forgotten password by a legitimate user:
 
 ![Screenshot 2024-05-06 232548](https://github.com/lm3nitro/Projects/assets/55665256/53598b4a-e2de-43ba-adec-8d34f7c0f0dd)
 
