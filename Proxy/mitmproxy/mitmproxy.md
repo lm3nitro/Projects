@@ -2,7 +2,7 @@
 
 ![Pasted image 20240605001736](https://github.com/lm3nitro/Projects/assets/55665256/c8be1c54-5f9c-44ea-bc83-74d7b5fcde2a)
 
-mitmproxy is an open-source tool that serves as a Man-in-the-Middle (MITM) proxy specifically designed for intercepting, inspecting, modifying, and replaying web traffic. It is your swiss-army knife for debugging, testing, privacy measurements, and penetration testing. It can be used to intercept, inspect, modify and replay web traffic such as HTTP/1, HTTP/2, WebSockets, or any other SSL/TLS-protected protocols. Below are some of its key features:
+mitmproxy is an open-source tool that serves as a Man-in-the-Middle (MITM) proxy specifically designed for intercepting, inspecting, modifying, and replaying web traffic. This is a swiss-army knife for debugging, testing, privacy measurements, and penetration testing. It can be used to intercept, inspect, modify and replay web traffic such as HTTP/1, HTTP/2, WebSockets, or any other SSL/TLS-protected protocols. Below are some of its key features:
 
 + Traffic Interception
 + Decryption
@@ -34,7 +34,7 @@ Once downloaded, I initialized the installation and needed to go through the set
 ![Pasted image 20240604220425](https://github.com/lm3nitro/Projects/assets/55665256/5d07e47a-05d2-4e94-b056-829465e71810)
 
 
-After installation, mitmproxy, mitmdump and mitmweb are also added to your path and can be invoked from the command line.
+After installating mitmproxy, mitmdump and mitmweb are also added to the path and can be invoked from the command line.
  
 + mitmproxy: Gives you an interactive command-line interface
 + mitmweb: Gives you a browser-based GUI
@@ -90,7 +90,7 @@ Next I went to `lichess.org`:
 
 ![Pasted image 20240604224419](https://github.com/lm3nitro/Projects/assets/55665256/9424ea5c-9b45-45a6-a191-d37a920e82ba)
 
-By clicking on a particular flow, we I was presented with more information:
+By clicking on a particular flow, I was presented with more information:
 
 ![Pasted image 20240604225332](https://github.com/lm3nitro/Projects/assets/55665256/0a752085-63f7-4aaa-9126-9764462b6f41)
 
