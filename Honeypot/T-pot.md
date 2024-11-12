@@ -87,11 +87,11 @@ T-Pot comes with a series of dashboards that are pre-built. From the menu, I sea
 
 ![Pasted image 20240512154827](https://github.com/lm3nitro/Projects/assets/55665256/352f7398-d83d-424c-b8e1-c879a0edb35b)
 
-Here we can see details about the simulated attack/scan. This dashboard allows us to see the number of attacks detected, its origin, usernames targets, OS from the attacker, etc.:
+Here I can see details about the simulated attack/scan. This dashboard shows the number of attacks detected, its origin, usernames targets, OS from the attacker, etc.:
 
 ![Pasted image 20240512151418](https://github.com/lm3nitro/Projects/assets/55665256/93804c50-4f0c-4efe-9690-3e1ab86cf61d)
 
-T-Pot also allows us to take a closer look. Here I was able to see the IP address of the attacks, CVE information, and the Suricata alert signatures that were matched by the attack:
+T-Pot also allows provides a closer look. Here I was able to see the IP address of the attacks, CVE information, and the Suricata alert signatures that were matched by the attack:
 
 ![Pasted image 20240512151626](https://github.com/lm3nitro/Projects/assets/55665256/fddf9833-6433-49ca-9dd5-014df59b187c)
 
@@ -102,5 +102,5 @@ This is another look into the raw data from the attacker IP:
 
 ### Summary:
 
-Having a host out in the wild that is public facing is very risky. T-Pot allows you to be able to detect and analyze numerous threats by simulating various services and systems. Having T-Pot also allows you to gain insight and information into the techniques used by actors. Having the tactics being used allows us to better protect ourselves, reduce the impact of an attack, and fine tune our current Security to bolster the cybersecurity posture. T-pot can also be used to identify weak spots and vulnerabilities. 
+Having a host out in the wild that is public facing is very risky. T-Pot allows you to be able to detect and analyze numerous threats by simulating various services and systems. Having T-Pot also allows you to gain insight and information into the techniques used by actors. Having the tactics being used allows for better protection, reduced impact of an attack, and fine tuning of current security measures to bolster the cybersecurity posture. T-pot can also be used to identify weak spots and vulnerabilities. 
 
