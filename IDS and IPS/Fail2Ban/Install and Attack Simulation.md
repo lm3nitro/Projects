@@ -50,7 +50,7 @@ cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
 
 >#### Note: The jail.conf file contains a basic configuration that you can use as a starting point, but it may be overwritten during updates. Fail2ban uses the separate jail.local file to actually read your configuration settings.
 
-After making any changes, we will need to restart Fail2Ban:
+After making any changes, I needed to restart Fail2Ban:
 
 ```
 service fail2ban restart
@@ -58,7 +58,7 @@ service fail2ban restart
 
 ## Attacking host
 
-I then jumped over to the attacking host and used Hydra and the rockyou wordlist to simulate a SSH Brute Force attack on the target host where Fail2Ban was just installed. As we can see in the screenshot below, the connection was refused:
+I then jumped over to the attacking host and used Hydra and the rockyou wordlist to simulate a SSH Brute Force attack on the target host where Fail2Ban was just installed. As seen in the screenshot below, the connection was refused:
 
 ![Pasted image 20240428183041](https://github.com/lm3nitro/Projects/assets/55665256/bbe6d98e-a10f-4b43-9715-425813b4eca4)
 
