@@ -14,7 +14,7 @@ When checking the Wazuh management server, I can see that there are only 3 attem
 
 ![Pasted image 20240428142840](https://github.com/lm3nitro/Projects/assets/55665256/7e849890-8afe-4a05-8615-a7e379fab602)
 
-Taking a deeper look at the security events related to the failed attempts, we can see the details:
+Taking a deeper look at the security events related to the failed attempts, I can see the details:
 
 ![Pasted image 20240428143019](https://github.com/lm3nitro/Projects/assets/55665256/549276f5-6095-46da-9194-f2e9d878c1c6)
 
@@ -52,7 +52,7 @@ Once Crowbar is installed, using the '-h' option can provide information on the 
 
 ![Pasted image 20240428145709](https://github.com/lm3nitro/Projects/assets/55665256/f016996a-6f49-462e-98c1-4f9fdff30280)
 
-I then used Nmap to do some reconnaissance to see the services and ports opened on the target host. We can see that port 3389 is open: 
+I then used Nmap to do some reconnaissance to see the services and ports opened on the target host. I can see that port 3389 is open: 
 
 ![Pasted image 20240428145631](https://github.com/lm3nitro/Projects/assets/55665256/f1235d15-b841-40e8-84cf-9f10e9defcd3)
 
