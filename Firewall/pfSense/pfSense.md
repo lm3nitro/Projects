@@ -4,7 +4,7 @@ I also have a pfSense Firewall in my home network. I highly recommend taking a l
 
 ![Pasted image 20240331162214](https://github.com/lm3nitro/Projects/assets/55665256/8a3abddc-3d87-4557-aa06-f43a30f10a11)
 
-Here we can see the system information. I installed this firewall back in December and it is currently running version 23.09.1:
+Here I can see the system information. I installed this firewall back in December and it is currently running version 23.09.1:
 
 ![Pasted image 20240331161939](https://github.com/lm3nitro/Projects/assets/55665256/649aa069-e0a3-4928-a6d2-353c5a7da1d6)
 
