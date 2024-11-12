@@ -111,7 +111,7 @@ I can see that it was successfully added:
 
 ![Pasted image 20240515215235](https://github.com/lm3nitro/Projects/assets/55665256/5e85c6c8-d30b-49a0-8c65-9be5bef1758a)
 
-Looking at the pfSense firewall, I can see traffic on port 10050 from our pfSense firewall to Zabbix:
+Looking at the pfSense firewall, I can see traffic on port 10050 from my pfSense firewall to Zabbix:
 
 ![Pasted image 20240515221525](https://github.com/lm3nitro/Projects/assets/55665256/bb1e103c-a747-47d6-bb34-1603d0774369)
 
