@@ -20,13 +20,13 @@ Select *Execute SQL Statements* and after click on *Finish*
 
 ![Pasted image 20240504123532](https://github.com/lm3nitro/Projects/assets/55665256/15f4424d-c3a8-4540-bf1b-a61c1374ebfc)
 
-Once the dialog closes, we should see that the new schema has been created, if not you can refresh
+Once the dialog closes, I should see that the new schema has been created, if not you can refresh
 
 ![Pasted image 20240504123653](https://github.com/lm3nitro/Projects/assets/55665256/b192e5da-2d1a-4e3a-a0fe-ace1fe8eaec0)
 
 ### Import Data
 
-Now that we have created the Schema, we will need to import our data. To do this, expand the schema and select *Table Data Import Wizard*
+Now that I have created the Schema, I need to import my data. To do this, I expanded the schema and select *Table Data Import Wizard*
 
 ![Pasted image 20240504123855](https://github.com/lm3nitro/Projects/assets/55665256/a9091241-436a-444b-9aa4-6826eae2c987)
 
@@ -46,12 +46,12 @@ Make sure all the needed tasks complete and click *Next*
 
 ![Pasted image 20240504124524](https://github.com/lm3nitro/Projects/assets/55665256/c9cf19ae-818b-4dca-92eb-d1f17e5da62e)
 
-We can confirm that 475 records were imported (This will be dependent on the data set used). Click *Finish*
+I can confirm that 475 records were imported (This will be dependent on the data set used). Click *Finish*
 
 ![Pasted image 20240504124613](https://github.com/lm3nitro/Projects/assets/55665256/b76f3af2-0f86-467f-912a-12ea46b4f5d7)
 
-Once that completes, we can refresh and ensure that our table/dataset was imported properly:
+Once that completes, I refreshed and ensured that the table/dataset was imported properly:
 
 ![Pasted image 20240504124750](https://github.com/lm3nitro/Projects/assets/55665256/9381bbfd-f633-4707-9b92-52098d142fba)
 
-Now that we have our schema and dataset ready, we can now do some queries and see what information we are able to filter for. This is continued in the *MySQL Queries.md* page.
+Now that I have my schema and dataset ready, I can now do some queries and see what information I am able to filter for. This is continued in the *MySQL Queries.md* page.
