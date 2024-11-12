@@ -12,7 +12,7 @@ This is the NIC that the device has, it is an Intel Ethernet Server Adapter I350
 
 ![Pasted image 20240416120704](https://github.com/lm3nitro/Projects/assets/55665256/f09093dd-75d3-4a08-8b44-057d1aea4036)
 
-To get started, we will need to navigate to the ethernet interface we will be configuring. In my case it is ethernet 3:
+To get started, I navigated to the ethernet interface I will be configuring. In my case it is ethernet 3:
 
 ![Pasted image 20240416113418](https://github.com/lm3nitro/Projects/assets/55665256/2085cecb-b86a-4b3d-9ebf-3bc21a58bf44)
 
