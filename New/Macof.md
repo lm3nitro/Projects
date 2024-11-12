@@ -73,7 +73,7 @@ Afer performing the attack, I went back to check the MAC address table:
 
 ## Traffic Analysis:
 
-Utilizing Wireshark, I also captured the traffic while performing that attack. Looking at the traffic, we can see the ARP protocol behavior:
+Utilizing Wireshark, I also captured the traffic while performing that attack. Looking at the traffic, I can see the ARP protocol behavior:
 
 ![Pasted image 20241011121731](https://github.com/user-attachments/assets/c6148419-96c6-4b99-ab8d-a81da1db5387)
 
