@@ -19,11 +19,11 @@ I also wanted to see the error in MySQL regarding the remote attempt. You can bi
 
 ![Pasted image 20240504160434](https://github.com/lm3nitro/Projects/assets/55665256/e0cc0c8d-6a66-49b6-a10a-276c959bcc63)
 
-Here we can see the error related to our remote host:
+Here I can see the error related to my remote host:
 
 ![Pasted image 20240504160547](https://github.com/lm3nitro/Projects/assets/55665256/831445a0-1ae8-4067-909a-e43bf5f4f664)
 
-To resolve this issue and connect to MySQL remotely, we will need to create/add a user and set-up a new connection.
+To resolve this issue and connect to MySQL remotely, I will need to create/add a user and set-up a new connection.
 
 ### New User and Connection Set-up
 
@@ -39,30 +39,30 @@ You will then need to select the role/privileges the new user will have. To do t
 
 ![Pasted image 20240504153628](https://github.com/lm3nitro/Projects/assets/55665256/c80e7c92-b9e2-46d5-85ea-0b48247540b5)
 
-Next, we will need to select which schema our user will have access to. Then select *OK*.
+Next, I will need to select which schema my user will have access to. Then select *OK*.
 
 ![Pasted image 20240504153938](https://github.com/lm3nitro/Projects/assets/55665256/7f5ba7a2-eea3-4998-bbdb-1d89e1b1b001)
 
-Once we clicked OK, we can now select what the user will be able to do within the schema (add, delete, etc.). Click *Apply*
+Once I clicked OK, I can now select what the user will be able to do within the schema (add, delete, etc.). Click *Apply*
 
 ![Pasted image 20240504154139](https://github.com/lm3nitro/Projects/assets/55665256/11597da1-56b8-454d-bb96-e0473a2afed7)
 
-Now that our user has been created, we can set up the connection. To do this, go to the main window for MySQL Workbench, and select *+* icon to add a new connection. Enter the needed information for the remote host and click *OK*
+Now that my user has been created, I can set up the connection. To do this, go to the main window for MySQL Workbench, and select *+* icon to add a new connection. Enter the needed information for the remote host and click *OK*
 
 ![Pasted image 20240504154437](https://github.com/lm3nitro/Projects/assets/55665256/1dffb7f1-c140-4d0e-a0fb-3ce646f201d8)
 
 
 ### Testing connection
 
-Our user has been created, and our connection is set up. We can now resume and attempt to connect remotely again. Here we can see that it was successful and that our user can see the databases:
+My user has been created, and the connection is set up. I can now resume and attempt to connect remotely again. Here I can see that it was successful and that my user can see the databases:
 
 ![Pasted image 20240504155622](https://github.com/lm3nitro/Projects/assets/55665256/b3aa5d07-8006-4b04-92bf-cfd89e003aee)
 
-On the MySQL server, we can also verify and see the remote connection:
+On the MySQL server, I can also verify and see the remote connection:
 
 ![Pasted image 20240504161258](https://github.com/lm3nitro/Projects/assets/55665256/7c68edb3-6ff5-45ab-8387-915549347aab)
 
-We can also see the successful connection via Wireshark:
+I can also see the successful connection via Wireshark:
 
 ![Pasted image 20240504161516](https://github.com/lm3nitro/Projects/assets/55665256/632ad97a-1ee3-41e1-a93f-e59a668d3687)
 
@@ -83,7 +83,7 @@ use lm3nitro_food;
 ```
 ![Pasted image 20240505143256](https://github.com/lm3nitro/Projects/assets/55665256/a7f663bc-9d11-4320-bfe3-04b8634ded9a)
 
-Now that we have our new database, lets create a table. The table I created is food_table and the columns are (ID, Name, Color, and Type):
+Now that I have my new database, I created a table. The table I created is food_table and the columns are (ID, Name, Color, and Type):
 
 ```
 Add table to database:
@@ -98,7 +98,7 @@ Add table to database:
 
 ![Pasted image 20240505143843](https://github.com/lm3nitro/Projects/assets/55665256/88a53fb1-43fc-4c07-b7e7-4c4e549fe067)
 
-We can verify our columns using the following command:
+I can verify my columns using the following command:
 
 ```
 describe food_table;
@@ -106,7 +106,7 @@ describe food_table;
 
 ![Pasted image 20240505144043](https://github.com/lm3nitro/Projects/assets/55665256/a42a82c5-29d3-4247-9af3-59fa08b7e6c2)
 
-Now we need to add data into our table:
+Now I needed to add data into my table:
 
 insert into food_table values (1, "apple", "red", "fruit"),
     -> (2, "banana", "yellow", "fruit"),
@@ -129,7 +129,7 @@ select * from food_table;
 ![Pasted image 20240505152407](https://github.com/lm3nitro/Projects/assets/55665256/09167fe9-503b-44a9-87f2-ec5f1a17554a)
 
 
-In the table above, we see that spinach is under the category fruit. Let's delete the line in our table and re-add correctly:
+In the table above, I see that spinach is under the category fruit. Let's delete the line in my table and re-add correctly:
 
 ```
 delete from food_table where id=6;
@@ -158,7 +158,7 @@ Let's verify:
 describe customer_table;
 ```
 
-We can also verify on the MySQL Workbench:
+I can also verify on the MySQL Workbench:
 
 ![Pasted image 20240505165528](https://github.com/lm3nitro/Projects/assets/55665256/2518842a-b7dc-4a7f-8f12-d662ad352749)
 
@@ -181,7 +181,7 @@ Information added to table:
 
 ### Queries
 
-Now that we have created a couple of schemas and have added tables and data,its time to run some queries. 
+Now that I have created a couple of schemas and have added tables and data, it's time to run some queries. 
 
 #### Query #1
 
@@ -217,7 +217,7 @@ select * from customer_table where age< "30";
 
 #### Query #4
 
-To update information in a table we use the *update* command
+To update information in a table I used the *update* command
 
 ```
 update customer_table set age = 21 where first_name = "clare";
