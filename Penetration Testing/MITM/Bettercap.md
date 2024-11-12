@@ -1,4 +1,3 @@
-
 # Bettercap
 
 ![Pasted image 20240517142357](https://github.com/lm3nitro/Projects/assets/55665256/8a88a4bd-94aa-4b31-8bc5-a702b1bef769)
@@ -106,7 +105,7 @@ This is what the normal ARP table looks like:
 
 ![Pasted image 20240517162815](https://github.com/lm3nitro/Projects/assets/55665256/447d185a-000a-4d04-9fe9-c7e223feeca7)
 
-After performing the ARP spoof, we can see that the table now shows duplicate addresses for the 192.168.1.1 IP:
+After performing the ARP spoof, I can see that the table now shows duplicate addresses for the 192.168.1.1 IP:
 
 ![Pasted image 20240517162843](https://github.com/lm3nitro/Projects/assets/55665256/6898b8c6-bd43-4d3a-a024-6e500ed74f50)
 
