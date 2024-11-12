@@ -69,7 +69,7 @@ Once that was completed, I went to the host where I will install the agent and o
 
 ![Pasted image 20240428134509](https://github.com/lm3nitro/Projects/assets/55665256/3a0608f2-7f9a-4c45-84bb-16f89635e78d)
 
-I pasted the Wazuh generated command in Powershell:
+I pasted the Wazuh generated command in PowerShell:
 
 ![Pasted image 20240428134550](https://github.com/lm3nitro/Projects/assets/55665256/11383642-9b2e-45d4-a447-4e82e5383fd1)
 
@@ -155,7 +155,7 @@ The Vulnerability Module is a component of the Wazuh security platform designed 
 
 The files that are needed to modify Wazuh are oin /var/ossec/
 
-Lets navigate there:
+Let's navigate there:
 
 ```
 cd /var/ossec/
