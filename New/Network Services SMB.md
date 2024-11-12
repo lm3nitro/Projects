@@ -116,7 +116,7 @@ SMB traffic graph:
 
 ## Exploiting SMB
 
-Exploits usually happen and can be caused due to misconfigurations in the system, application, or services. In this case, I will be exploiting the anonymous SMB share access- a common misconfiguration that can allow us to gain access.
+Exploits usually happen and can be caused due to misconfigurations in the system, application, or services. In this case, I will be exploiting the anonymous SMB share access- a common misconfiguration that can allow access.
 
 I will be using SMBclient to access the SMB shares:
 
