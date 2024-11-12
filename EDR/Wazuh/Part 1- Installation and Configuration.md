@@ -103,7 +103,7 @@ Now that I installed the agent, I went back to Wazuh manager server to verify:
 
 ![Pasted image 20240428135201](https://github.com/lm3nitro/Projects/assets/55665256/f7638f52-9ac0-433c-abb0-aef4ce5efe2a)
 
-I can also see security events being generated from our Win 10 agent:
+I can also see security events being generated from my Win 10 agent:
 
 ![Pasted image 20240428141534](https://github.com/lm3nitro/Projects/assets/55665256/11fee0ee-8a86-4977-8d9c-df4e5cbb4a93)
 
@@ -151,7 +151,7 @@ A look at the raw logs:
 
 ## Activating Vulnerability Module
 
-The Vulnerability Module is a component of the Wazuh security platform designed to identify and manage vulnerabilities within a network. By leveraging the Wazuh vulnerability module, I was able to gain deeper insights into the security state of our agents and enhance our threat detection and response. 
+The Vulnerability Module is a component of the Wazuh security platform designed to identify and manage vulnerabilities within a network. By leveraging the Wazuh vulnerability module, I was able to gain deeper insights into the security state of my agents and enhance the threat detection and response. 
 
 The files that are needed to modify Wazuh are oin /var/ossec/
 
