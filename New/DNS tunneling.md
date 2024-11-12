@@ -28,7 +28,7 @@ While monitoring network traffic with Kibana I was able to see a sudden spike in
 
 ## Pcap Analysis
 
-Next, I took a look at the pcap that was running when the DNS spike occurred. I used capinfos to view all the capture information such as size, duration, number of packets, etc. Here we see that the pcap ran for 24 hours:
+Next, I took a look at the pcap that was running when the DNS spike occurred. I used capinfos to view all the capture information such as size, duration, number of packets, etc. Here I see that the pcap ran for 24 hours:
 
 ![Pasted image 20241008083359](https://github.com/user-attachments/assets/35e21ed1-5491-43e4-8b0e-fc871d6f4c0e)
 
@@ -114,7 +114,7 @@ I was able to see the statistics related to DNS in the pcap:
 ```
 tshark -r dns_tunneling.pcap -T fields -e dns.qry.name | head
 ```
-Looking at the dns queries, we can also see the same information that was presented by Rita above pointing to the many subdomains:
+Looking at the dns queries, I can also see the same information that was presented by Rita above pointing to the many subdomains:
 
 ![Pasted image 20241008091104](https://github.com/user-attachments/assets/47fe52b3-be81-4454-9ab4-e47752ba3b9f)
 
