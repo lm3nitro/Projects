@@ -64,7 +64,7 @@ nfdump -v
 
 ## Pcap Analysis
 
-Now that we have nfdump installed, I can use it. Here I will be using nfcapd to convert a pcap to nfcapd:
+Now that I have nfdump installed, I can use it. Here I will be using nfcapd to convert a pcap to nfcapd:
 
 ```
 nfcapd -r ICMP_attack_DoS_attack.pcap -l.
@@ -87,7 +87,7 @@ Nfdump's filter syntax is similar to tcpdump, but it's designed for NetFlow data
 In this exercise, I was able to download and install Nfdump. I then converted a pcap file into a nfcapd and used Nfdump to read the information provided in the file. This information provided insights into the protocols and traffic captured. The flow data that Nfdump offers has several benefits:
 
 + Identify which devices or IP addresses are generating the most traffic (Top Talkers)
-+ Find which services are active on your network
++ Find which services are active on the network
 + Detect traffic patterns that are out of the ordinary (unexpected IP addresses or ports)
 
 Overall, Nfdump can be used for performance monitoring, troubleshooting, reporting, and traffic trend analysis. 
