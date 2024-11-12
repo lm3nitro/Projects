@@ -120,7 +120,7 @@ This host does have a Wazuh agent installed. I wanted to see the details that th
 
 <img width="1427" alt="Screenshot 2024-04-28 at 9 38 41 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/b31f6cea-d459-4788-a468-3b2d52802f05">
 
-When we expand and see the details, we can see that this event was generated from our test:
+When I expand and see the details, I can see that this event was generated from the test:
 
 <img width="1396" alt="Screenshot 2024-04-28 at 9 39 14 PM" src="https://github.com/lm3nitro/Projects/assets/55665256/c20b8d6e-c688-4581-95db-b723dcbc43a2">
 
