@@ -66,7 +66,7 @@ Executing the script:
 
 Port 80 is open!
 
-Sniffing traffic with Tcpdump. Here we can see that the firewall only responded to the packet sent to port 80:
+Sniffing traffic with Tcpdump. Here I can see that the firewall only responded to the packet sent to port 80:
 
 ![Pasted image 20241006161411](https://github.com/user-attachments/assets/aadc0ab8-2433-478f-bce5-efa42cb2b7ae)
 
