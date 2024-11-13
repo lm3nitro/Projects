@@ -10,7 +10,7 @@ For this exercise, I have an Apache server that is up and running. I created a b
 
 ## Google Configuration
 
-Prior to starting, I already had a gmail account set up. The only thing that we will need to configure is an App Password. However, in order for the option to be enabled, the gmail account will first need to have 2-step authentication configured. To get this set up sign-in to gmail, go to account settings > security. Ensure that 2-step verification is enabled:
+Prior to starting, I already had a gmail account set up. The only thing that I will need to configure is an App Password. However, in order for the option to be enabled, the gmail account will first need to have 2-step authentication configured. To get this set up sign-in to gmail, go to account settings > security. Ensure that 2-step verification is enabled:
 
 ![Pasted image 20241016001208](https://github.com/user-attachments/assets/2513d4ce-53ac-4ada-ab8d-ed256354b16b)
 
