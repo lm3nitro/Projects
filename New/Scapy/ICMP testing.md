@@ -35,7 +35,7 @@ else:
 
 ```
 
-After executing the script, we can see that it was successful, and it is reachable:
+After executing the script, I can see that it was successful, and it is reachable:
 
 ![Pasted image 20241006194551](https://github.com/user-attachments/assets/6c41b891-9251-47bc-9b50-7e34aa394a96)
 
