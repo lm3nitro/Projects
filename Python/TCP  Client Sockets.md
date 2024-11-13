@@ -1,3 +1,29 @@
+## Client and Server Sockets
+
+In networking, server and client sockets are the endpoints used by programs to communicate over a network. They are essential for establishing a network connection and exchanging data between two endpoints (or processes) over a network.
+
+### Scope:
+
+I have created 3 python scripts where I will be creating 3 sockets:
+
++ TCP Client Socket
++ TCP Server Socket
++ UDP Client Socket
+
+A server socket waits for incoming connections, while a client socket connects to a server to request data or services. Creating and understanding how sockets work is important because network communication-based attacks are at the heart of many types of attacks.
+
+Understanding and creating sockets has the following benefits:
+
++ Attack Detection and Prevention: Knowing how server and client sockets work can help to detect and mitigate attacks like DDoS, MITM, botnets, and remote access threats.
++ Secure Communication: Ensuring data is securely transmitted over sockets, with encryption and authentication, is key to protecting sensitive information.
++ Incident Response: In post-breach analysis, understanding socket connections helps trace attackers' actions and block future intrusions.
++ Penetration Testing: Creating sockets can be used as a way to simulate attacks, find vulnerabilities, and fix them before attackers exploit them.
++ Traffic Monitoring and Firewall Configuration: Knowledge of how sockets work helps configure network defenses like firewalls and IDS systems to spot malicious activities.
+
+### Tools and Technology:
+Python, Linux, and Apache2
+
+<details><summary>TCP Client Socket</summary>
 Downloading the Apache server:
 
 ![Pasted image 20240927111934](https://github.com/user-attachments/assets/796862c6-f1ba-4d8f-b8a5-36e8b3398f93)
@@ -66,3 +92,115 @@ client.close()
 # Server logs:
 
 ![Pasted image 20240927133708](https://github.com/user-attachments/assets/a217d08e-1977-4538-a066-046178955386)
+
+
+</details>
+
+<details><summary>TCP Server Socket</summary>
+
+### Python code:
+
+```
+import socket  
+import threading  
+  
+IP = "127.0.0.1"  
+PORT = 9999  
+def main():  
+    server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  
+    server.bind((IP,PORT))  
+    server.listen(5)  
+    print(f'[*] Listening on {IP}:{PORT}')  
+  
+    while True:  
+        client, address = server.accept()  
+        print(f'[*] Accepted connection from {address[0]}:{address[1]}')  
+        client_handler = threading.Thread(target=handle_client, args=(client,))  
+        client_handler.start()  
+  
+def handle_client(client_socket):  
+    with client_socket as sock:  
+        request = sock.recv(4096)  
+        print(f"[*] Received: {request.decode('utf-8')}")  
+        sock.send(b'lm3nitro server over TCP is working')  
+  
+if __name__ == '__main__':  
+    main()
+```
+
+# IDE:
+
+![Pasted image 20240927162425](https://github.com/user-attachments/assets/b5cbd745-6184-4a46-8174-93fdb2bf7db2)
+
+
+### Running the client and server script:
+
+
+![Pasted image 20240927162545](https://github.com/user-attachments/assets/41c35a8c-36f1-4f6c-9282-49f1d0575df6)
+
+
+# Network traffic from client to server:
+
+![Pasted image 20240927162349](https://github.com/user-attachments/assets/f63e843c-9a9a-4009-bc32-2381fd36d80e)
+
+
+![Pasted image 20240927162647](https://github.com/user-attachments/assets/b025888d-8f0f-4780-9255-9f7ef6e7044c)
+
+</details>
+
+<details><summary>UDP Client Socket</summary>
+# Installing ncat:
+
+![Pasted image 20240927111652](https://github.com/user-attachments/assets/19654836-31c0-49b3-ad71-3ef8d8fd4d88)
+
+### Python code:
+
+```
+# Importing the socket module  
+import socket  
+# Creating two variables to server and port information  
+server = "lm3nitro.com"  
+port = 8080  
+# Groping variables  
+server_info = (server, port)  
+# Creating client socket object to communicate with server  
+client = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)  
+# Client sending some data to server  
+client.sendto(b"Hello udp lm3nitro.com server",(server_info))  
+# Client receive 65635 bytes of data from server  
+data, addr = client.recvfrom(4096)  
+# Show the responses from the server in human readable  
+print(data.decode())  
+#Closing the connection for the client  
+client.close()
+```
+# IDE:
+![Pasted image 20240927140645](https://github.com/user-attachments/assets/7f9b4be4-8a96-4152-97c8-3de93ff281c8)
+
+# Creating a Netcat listener:
+
+![Pasted image 20240927141740](https://github.com/user-attachments/assets/44870f52-d437-42f3-9e66-546fe6a0d1ff)
+
+### Verify the listening port:
+
+![Pasted image 20240927140828](https://github.com/user-attachments/assets/e8ccbab2-8ced-4feb-9a5e-ea7a4e728dae)
+
+
+# Network traffic from client and server over UDP:
+
+![Pasted image 20240927140423](https://github.com/user-attachments/assets/ca262138-f641-44eb-bcfd-c07da758e9ad)
+
+Sever responses in red:
+
+![Pasted image 20240927141817](https://github.com/user-attachments/assets/1b5bb46d-c68b-4afe-8ac9-2e1a98028b08)
+
+# Ouput from Netcat listener:
+
+![Pasted image 20240927140508](https://github.com/user-attachments/assets/f7b51f0e-adcb-4862-b9a3-89ebea9ef275)
+
+</details>
+
+### Summary:
+
+
+
