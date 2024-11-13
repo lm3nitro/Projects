@@ -4,6 +4,12 @@ Nfdump is a network flow data collector and analyzer that captures and stores in
 
 ### Scope:
 
+I will be installing Nfdump and utilizing it to convert a pcap file into a nfcapd file, which is the format required for analyzing flow data. I will then use nfdump to analyze the resulting flow data. Doing this offers several benefits:
+
++ By using nfdump to analyze flow data, you can quickly identify performance issues, network bottlenecks, or anomalies like unexpected traffic spikes or security threats.
++ Flow-based data is more compact than raw packet captures, enabling easier handling and storage of large volumes of network traffic over time.
++ Allows for more efficient analysis of network traffic, focusing on high-level flow statistics rather than raw packet data.
+
 ### Tools and Technology:
 Linux and Nfdump
 
