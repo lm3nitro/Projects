@@ -1,5 +1,4 @@
-
-![[Pasted image 20241113150326.png]]
+![Pasted image 20241113150326](https://github.com/user-attachments/assets/e88053d0-39a4-4e90-8b1d-cf92f111307d)
 
 Webhooks **let you post messages to a specific channel automatically**. When you create a webhook, you get a dedicated URL that third-party applications can send messages to in order to post a message.
 
@@ -7,7 +6,7 @@ Webhooks **let you post messages to a specific channel automatically**. When yo
 
 1. First, open Discord and pick the server where you want to create your webhook.
 
-![[Pasted image 20241113150825.png]]
+![Pasted image 20241113150825](https://github.com/user-attachments/assets/069b0973-a214-43d1-98f1-e149b68fa571)
 
 2. Click the arrow next to your server name in the upper left corner and choose **Server Settings** from the drop down menu.
 3. In the side bar, choose **Integrations,** then click on **Create Webhook**.
@@ -17,7 +16,8 @@ Webhooks **let you post messages to a specific channel automatically**. When yo
 
 ##  Bash Script:
 
-![[Pasted image 20241113151945.png]]
+![Pasted image 20241113151945](https://github.com/user-attachments/assets/26a5668c-75d0-4f23-a9fd-0bd85a62467e)
+
 
 
 
@@ -33,7 +33,8 @@ Webhooks **let you post messages to a specific channel automatically**. When yo
 
 I stored the web-hook URL in a text file to secure it.
 
-![[Pasted image 20241113153246.png]]
+![Pasted image 20241113153246](https://github.com/user-attachments/assets/ff5b466c-0715-4512-8a3d-54300e1abfeb)
+
 
 ```bash
 #!/usr/bin/env bash
@@ -139,23 +140,25 @@ web_check
 
 ### Installing Apache HTTP Server:
 
-![[Pasted image 20241113151806.png]]
+![Pasted image 20241113151806](https://github.com/user-attachments/assets/ce7185df-7f7a-4c06-9bef-837feb581261)
 
 
 ``` 
 sudo apt install apache2
 ```
-![[Pasted image 20241113152004.png]]
+![Pasted image 20241113152004](https://github.com/user-attachments/assets/5685f5a8-f43d-4757-913c-b25a3ce8d8f3)
+
 
 
 ### Running the script in VScode:
 
 
-![[Pasted image 20241113152054.png]]
+![Pasted image 20241113152054](https://github.com/user-attachments/assets/6c272588-0f11-40b7-b360-3f6f2d3801fb)
 
 
 
-![[Pasted image 20241113142610.png]]
+![Pasted image 20241113142610](https://github.com/user-attachments/assets/59974cb0-a187-4cb7-a127-1f47b6b58bbe)
+
 
 
 
@@ -169,23 +172,23 @@ sudo apt install apache2
 notify-send : is  a program to send desktop notifications
 
 
-
-![[Pasted image 20241113152601.png]]
+![Pasted image 20241113152601](https://github.com/user-attachments/assets/9a2d0c7a-d979-4527-9545-c1299e4024cd)
 
 
 Notification 1:
-![[Pasted image 20241113142330.png]]
+![Pasted image 20241113142330](https://github.com/user-attachments/assets/ac1485bc-d297-4c17-8448-cdc1e09fd939)
+
 
 
 Notification 2:
 
-![[Pasted image 20241113142524.png]]
+![Pasted image 20241113142524](https://github.com/user-attachments/assets/6c796019-6723-4256-85f1-894b4a51254b)
+
 
 
 ### Server logs:
+![Pasted image 20241113142929](https://github.com/user-attachments/assets/a7149271-550f-4c03-bca5-efec1ba70ef5)
 
-
-![[Pasted image 20241113142929.png]]
 
 
 
@@ -195,9 +198,11 @@ Notification 2:
 
 
 
-![[Pasted image 20241113150945.png]]
+![Pasted image 20241113150945](https://github.com/user-attachments/assets/6c7b43c6-2eac-420b-b07b-8e949f1f1ed4)
+
 #  Restore Server Status:
 
 #### Once the server is started the script will stop sending messages to the discrod channel:
 
- ![[Pasted image 20241113145753.png]]
+![Pasted image 20241113145753](https://github.com/user-attachments/assets/34f21b1e-5b26-4d22-be20-ab069cf6a3cd)
+
