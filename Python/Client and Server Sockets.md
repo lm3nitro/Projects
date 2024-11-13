@@ -1,4 +1,4 @@
-## Client and Server Sockets
+# Client and Server Sockets
 
 In networking, server and client sockets are the endpoints used by programs to communicate over a network. They are essential for establishing a network connection and exchanging data between two endpoints (or processes) over a network.
 
