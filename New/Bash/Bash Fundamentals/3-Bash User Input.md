@@ -1,7 +1,6 @@
+# Bash User Input
 
-
-In Bash, you can prompt users for input using the `read` command. Here’s a basic example:
-
+In Bash, users can be prompted for input using the `read` command. Here’s a basic example:
 
 ```bash
 #!/bin/bash
@@ -12,7 +11,6 @@ read name
 
 # Output the input
 echo "Hello, $name!"
-
 ```
 
 Example:
@@ -21,37 +19,29 @@ Example:
 
 ### Additional Options:
 
-You can also use `-p` with `read` to combine the prompt and input into one line:
+1. It's also possible to use `-p` with `read` to combine the prompt and input into one line:
 
-```
+```bash
 read -p "Please enter your name: " name
-
 ```
 
 Example:
 
 ![Pasted image 20241018222921](https://github.com/user-attachments/assets/32abc919-264b-4ada-8cd6-63c7b86bfbe5)
 
-
-### Handling Multiple Inputs:
+2. Handling Multiple Inputs:
 
 To read multiple values in one line, you can do:
 
-```
+```bash
 read -p "Enter your first and last name: " first last
 echo "First: $first, Last: $last"
-
 ```
-
-
 
 Example:
 
-Once you've typed your name, just hit enter, and you will get the
-following output:
-
+Once I typed my name, I hit enter, and got the following output:
 
 ![Pasted image 20241018223255](https://github.com/user-attachments/assets/8b13263a-ec98-4f10-9aec-2119cd6addf2)
 
-Once you've typed your name, just hit enter, and you will get the
-following output:
+
