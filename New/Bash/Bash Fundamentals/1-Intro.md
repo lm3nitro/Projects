@@ -10,13 +10,13 @@ To run a bash script using the bash shell interpreter, the first line of the scr
 
 To make the script executable, run the following command:
 
-```shell
+```bash
 chmod +x intro.sh
 ```
 
 After that, the file can be executed using the following:
 
-```shell
+```bash
 ./intro.sh
 ```
 
