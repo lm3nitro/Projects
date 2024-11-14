@@ -4,6 +4,7 @@ SiLK is a suite of network traffic analysis tools designed for collecting, stori
 
 ### Scope:
 
+In this project I will be installing and configuring SiLK. Once installed, I will be analyzing a pcap file. I will employ rwp2yaf2silk to convert the pcap file into NetFlow-compatible data, which is then ingested by Silk for further processing. I will then use rwfilter to filter specific traffic based on criteria such as IP addresses, protocols, etc.
 
 ### Tools and Technology:
 Linux, YAF, and SiLK
@@ -11,7 +12,7 @@ Linux, YAF, and SiLK
 Network Topology:
 ![Pasted image 20240529215556](https://github.com/lm3nitro/Projects/assets/55665256/68d5c662-b838-48f1-b950-066d406b246b)
 
-In this diagram we can see that Silk is placed in the out-of-band network collecting NetFlow records from the fireall and router on the network. From there the Silk server can be accessed and queries can be made.
+In this diagram, SiLK is placed in the out-of-band network collecting NetFlow records from the fireall and router on the network. From there the Silk server can be accessed and queries can be made.
 
 ## Prerequisites:
 
@@ -64,7 +65,7 @@ apt install libmaxminddb-dev
 
 ## Downloading
 
-Now that the the prerequisites were installed, I tcould install Silk. I downloaded it into the /tmp directory:
+Now that the the prerequisites were installed, I tcould install SiLK. I downloaded it into the /tmp directory:
 
 ```
 wget https://tools.netsa.cert.org/releases/silk-3.19.1.tar.gz
@@ -133,7 +134,7 @@ cd silk-3.19.1
 
 ![Pasted image 20240509161229](https://github.com/lm3nitro/Projects/assets/55665256/7302079e-6dd2-4c55-b27b-f1d8bcd35135)
 
-At the time of this writing the latest version was Silk 3.19.1
+At the time of this writing the latest version was SiLK 3.19.1
 
 ![Pasted image 20240509161336](https://github.com/lm3nitro/Projects/assets/55665256/c989c7ee-6e40-4ffb-9eb8-cb120fe36dca)
 
@@ -234,6 +235,8 @@ rwfilter lm3nitro_flow_to_silk.silk --proto=0-255 --pass=stdout --max-pass=2 | r
 
 ![Pasted image 20240510134411](https://github.com/lm3nitro/Projects/assets/55665256/ad2318f0-06c1-468c-8a83-5469c92dcb86)
 
+Below are some of the queries I used to analyze the traffic:
+
 1. Taking a look at top 20 talkers using rwstats:
 
 ```
@@ -250,8 +253,7 @@ rwfilter --dcidr=151.101.1.140 --pass=stdout lm3nitro_flow_to_silk.silk | rwcut 
 
 ![Pasted image 20240510135651](https://github.com/lm3nitro/Projects/assets/55665256/8052ff31-8a82-441e-ab2f-476551dc01e0)
 
-3. Many records were returned. Let's count how many are there:
-
+3. Many records were returned. I used the following to count just how many:
 ```
 Adding | wc -l 
 ```
@@ -266,59 +268,37 @@ rwfilter --dcidr=151.101.1.140 --pass=stdout lm3nitro_flow_to_silk.silk | rwuniq
 
 ![Pasted image 20240510140129](https://github.com/lm3nitro/Projects/assets/55665256/311c6869-8e41-4fe7-a97c-ff671d1d531a)
 
-5. Extract all TCP flows and display top 5 destination ports by number of flows:
+5. Extracted all TCP flows and displayed top 5 destination ports by number of flows:
 
 ```
 rwfilter lm3nitro_flow_to_silk.silk  --proto=6 --pass=stdout | rwstats --fields dport --count=5 --flows
 ```
-======================= continue here
 
 ![Pasted image 20240510141124](https://github.com/lm3nitro/Projects/assets/55665256/fe1df959-30c8-4457-99b2-0845240449c8)
 
-# Silk information:
+> [!TIP]
+> #### Additional SiLK Information
+> 
+> Silk Flow Fields:
+> 
+> ![Pasted image 20240510155349](https://github.com/lm3nitro/Projects/assets/55665256/e8b085dd-d681-4aba-96d4-8617f0cd2694)
+>
+> rwfilter format:
+> 
+> ![Pasted image 20240510155652](https://github.com/lm3nitro/Projects/assets/55665256/96dc9bfb-fb2d-4add-9f8b-fab8145624cf)
+>
+> Partition Parameters: At least one partitioning parameter required for every rwfilter:
+> 
+> ![Pasted image 20240510155814](https://github.com/lm3nitro/Projects/assets/55665256/a470d466-e1b3-4106-9f92-5a2533a2a061)
+>
+> Ouput:
+> 
+> ![Pasted image 20240510160034](https://github.com/lm3nitro/Projects/assets/55665256/93017d46-78e8-4264-b586-249613d8a1ed)
+>
+> SiLK commands to process output, rwfilter:
+> 
+> ![Pasted image 20240510161140](https://github.com/lm3nitro/Projects/assets/55665256/8a828cf4-44b4-4db9-8651-47c0c3e35a1f)
 
-Silk Flow Fields:
+### Summary
 
-![Pasted image 20240510155349](https://github.com/lm3nitro/Projects/assets/55665256/e8b085dd-d681-4aba-96d4-8617f0cd2694)
-
-# rwfilter format:
-
-![Pasted image 20240510155652](https://github.com/lm3nitro/Projects/assets/55665256/96dc9bfb-fb2d-4add-9f8b-fab8145624cf)
-
-# Partition Parameters:
-
-Note: 
-
-At least one partitioning parameter required for every rwfilter:
-
-
-
-![Pasted image 20240510155814](https://github.com/lm3nitro/Projects/assets/55665256/a470d466-e1b3-4106-9f92-5a2533a2a061)
-
-
-
-
-
-# Ouput:
-
-
-
-![Pasted image 20240510160034](https://github.com/lm3nitro/Projects/assets/55665256/93017d46-78e8-4264-b586-249613d8a1ed)
-
-
-
-
-# Silk commands to process output, rwfilter:
-
-
-
-![Pasted image 20240510161140](https://github.com/lm3nitro/Projects/assets/55665256/8a828cf4-44b4-4db9-8651-47c0c3e35a1f)
-
-
-
-
-
-
-
-
-
+In this project, I successfully installed and configured SiLK to transform pcap data into flow-based insights, allowing for more efficient network monitoring and analysis. The primary goal was to streamline the process of analyzing network traffic by converting detailed packet data into NetFlow records, making it easier to assess network performance, identify trends, and detect potential security threats. Through this project, I gained hands-on experience in configuring SiLK for traffic collection, filtering specific flows, and visualizing network behavior.
