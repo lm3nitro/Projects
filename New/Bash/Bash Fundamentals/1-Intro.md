@@ -67,4 +67,5 @@ echo -e "Hello lm3nitro\nAre you ready to learn bash scripting?"
 ```
 
 Example:
+
 ![Pasted image 20241018192254](https://github.com/user-attachments/assets/cc72981f-c441-4fe0-b7be-37eb85762a13)
