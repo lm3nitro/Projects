@@ -1,21 +1,20 @@
+# Introduction
 
-# Running a script:
+### Running a script:
 
-In order to execute/run a bash script ﬁle with the bash shell interpreter, the ﬁrst line of a script ﬁle must indicate the absolute path to the bash executable:
+To run a bash script using the bash shell interpreter, the first line of the script must specify the absolute path to the bash executable:
 
 ```bash
 #!/bin/bash
 ```
 
-
-After that make the script executable by running:
-
+To make the script executable, run the following command:
 
 ```shell
 chmod +x intro.sh
 ```
 
-After that execute the ﬁle:
+After that, the file can be executed using the following:
 
 ```shell
 ./intro.sh
@@ -23,58 +22,48 @@ After that execute the ﬁle:
 
 Example:
 
-
 ![Pasted image 20241018193132](https://github.com/user-attachments/assets/1dd740de-4968-410b-ab01-4e33eee66b70)
 
+The only thing that the shebang does is to instruct the operating system to run the script with the /bin/bash executable.
 
-All that the shebang does is to instruct the operating system to run the
-script with the /bin/bash executable.
+### Echo Command:
 
-
-# echo command:
-
-##### Displaying Messages:
-
+1. Displaying Messages:
 
 It outputs text or variables to the terminal, which is useful for providing feedback to users or indicating the progress of a script.
 
 ```bash
 echo "Starting the backup process..."
-
 ```
 
-####**Outputting Variable Values**:
+2. Outputting Variable Values:
 
 Printing the values of variables.
 
 ```bash
 name="lm3nitro"
 echo "Hello, $name!"
-
 ```
 
-#### **Creating Files**:
+3. Creating Files:
 
 Writing to  text to a file.
 
 ```bash
 echo "This is a new file." > my_file.txt
-
 ```
 
-#### Appending to Files:
+4. Appending to Files:
 
 ```bash
 echo "This will be added to the file." >> my_existing_file.txt
-
 ```
 
-#### **Formatting Output**:
+5. Formatting Output:
 It supports escape sequences (with the `-e` flag), which can be used for formatting. It also handle multi-line output with proper formatting.
 
 ```bash
 echo -e "Hello lm3nitro\nAre you ready to learn bash scripting?"
-
 ```
 
 Example:
