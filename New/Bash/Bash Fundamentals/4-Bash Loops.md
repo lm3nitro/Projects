@@ -1,18 +1,16 @@
+# Bash Loops
 
 In Bash, loops are used to repeatedly execute a block of code. There are several types of loops available in Bash: `for`, `while`, and `until`.
 
+### For Loops
 
-### For loops:
+1. Iterate over Array of Strings
 
-##### Iterate over Array of Strings:
-
-
-The `for` loop iterates over a list of items and executes the block of code for each item.
+The `for` loop iterates over a list of items and executes the block of code for each item:
 
 ```bash
 
 #!/bin/bash
-
 
 # Creating an array:
 # 
@@ -22,15 +20,11 @@ fruits=("apple" "banana" "cherry")
 for fruit in "${fruits[@]}"; do
    echo $fruit
 done
-
 ```
 
 ![Pasted image 20241022133708](https://github.com/user-attachments/assets/1efd343c-3284-49a7-9795-07329c316bad)
 
-
-### **Looping Over words in a string**:
-
-
+2. Looping Over words in a string**:
 
 ```bash
 #!/bin/bash
@@ -41,35 +35,29 @@ sentence="Cybersecurity is fun"
 for s in $sentence; do
    printf "%s\n" "$s"
 done
-
 ```
 
 ![Pasted image 20241022135710](https://github.com/user-attachments/assets/3c091510-5b03-432d-8d6e-36e5b3e41bfd)
 
-
-### Looping  over characters:
+3. Looping Over Characters:
 
 C-style:
 
 ```bash
-
-
 #!/bin/bash
 
 #Looping over words in a string
 name="lm3nitro"
 
-
 for ((i=0; i<${#name}; i++)); do
   echo "${name:i:1}"
 done
-
 ```
-
 
 ![Pasted image 20241022140536](https://github.com/user-attachments/assets/bae46a29-8bae-40fe-9810-6f7794fd8a8c)
 
-### You can also use for to process a series of numbers. For example here is one way to loop through from 1 to 10:
+> [!TIP]
+>  `for` can also be used to process a series of numbers. For example here is one way to loop through from 1 to 10:
 
 ```bash
 
@@ -82,12 +70,11 @@ done
 ![Pasted image 20241022140912](https://github.com/user-attachments/assets/ebe8ccbd-eebb-44df-8d4b-a02340e4040b)
 
 
-###  While loops:
+### While loops:
 
-#### The `while` loop continues executing as long as the condition is true.
+The `while` loop continues executing as long as the condition is true.
 
 ```bash
-
 #!/bin/bash
 counter=1
 while [[ $counter -le 10 ]]; do
@@ -96,14 +83,11 @@ while [[ $counter -le 10 ]]; do
 done
 ```
 
-
 ![Pasted image 20241022142251](https://github.com/user-attachments/assets/e1fd11ea-e1cf-43ff-aa63-185ca425593e)
-
 
 Explanation:
 
 I speciﬁed a counter variable and set it to 1, then inside the loop, I added counter by using this statement here: ((counter++)). That way, I make sure that the loop will run 10 times only and would not run forever. The loop will complete as soon as the counter becomes 10, as this is what we've set as the condition: while [[ $counter -le 10 ]].
-
 
 ```bash
 
@@ -122,34 +106,25 @@ while [[ -z ${name} ]]; do
 done
 
 echo "Hi there ${name}"
-
 ```
 
-
 ![Pasted image 20241022143157](https://github.com/user-attachments/assets/7cf2fc09-6328-4a53-b991-64b0ea37ce9c)
-
 
 In this example I test if the value of variable `i` is less than `5`. The body of the loop increments the value with "`i=$((i+1))`" so it executes the echo statement 0-4 times.
 
 ![Pasted image 20241022153618](https://github.com/user-attachments/assets/325fb9c8-9634-471f-99da-5ab303b9d053)
 
-
 ### Until Loops:
 
-
-The diﬀerence between until and while loops is that the until loop
-will run the commands within the loop until the condition becomes true.
-
+The diﬀerence between until and while loops is that the until loop will run the commands within the loop until the condition becomes true.
 
 Structure:
-
 
 ```bash
 until [[ your_condition ]]; do
      your_commands
 done
 ```
-
 
 ```bash
 #!/bin/bash
@@ -166,14 +141,9 @@ Example:
 
 ![Pasted image 20241022153330](https://github.com/user-attachments/assets/c2bad6b9-ac83-4bd1-8ebd-884cf604e652)
 
+### `while` vs `until`
 
-
-## `while vs until:`
-
-
-##### `In Bash scripting, `while` and `until` are both looping constructs, but they have opposite behaviors:`
-
-
+In Bash scripting, `while` and `until` are both looping constructs, but they have opposite behaviors:`
 
 ```bash
 
