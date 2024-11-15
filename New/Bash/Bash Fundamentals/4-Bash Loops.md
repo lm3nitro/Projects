@@ -166,17 +166,13 @@ count_2=6
 
 ```
 
-### Example 1:
+1. Example 1:
 
 ![Pasted image 20241022150615](https://github.com/user-attachments/assets/b6fd3206-9713-4b26-81e4-ba51ac545f61)
 
+2. Example 2:
 
-
-
-### Example 2:
-
-#### `Using while loop:`
-
+Using while loop:
 
 ```bash
 #!/bin/bash
@@ -189,12 +185,11 @@ done
 
 ```
 
-
 ![Pasted image 20241022152455](https://github.com/user-attachments/assets/28c03826-1e5d-4969-8e0c-7ba99b324973)
 
-Here in the output you can see the exit code of the while loop is 0 which means the control expression is true
+Here in the output I can see the exit code of the `while loop` is 0, which means the control expression is true.
 
-### `Using until loop`
+3. Using until loop:
 
 ```bash
 
@@ -207,18 +202,11 @@ until ((0)); do
 done
 ```
 
-
-
 ![Pasted image 20241022152656](https://github.com/user-attachments/assets/73283603-d49f-461d-87d1-139b2c020ace)
 
+Here in the output I see the exit code is non-zero so our code will continue to execute until the condition is **false**.
 
-Here in the output as you see the exit code is non-zero so our code will continue to execute until the condition is **false**.
-
-
-
-### `Wait for apache2 to start (until):`
-
-
+4. Wait for apache2 to start (until):
 
 ```bash
 #!/bin/bash
@@ -236,8 +224,7 @@ With the "-z" option nc will return 0 if it sees that the port is open and will 
 ![Pasted image 20241022155131](https://github.com/user-attachments/assets/0ed5022a-a8de-4edf-99fd-8a1c95300b13)
 
 
-## `Wait for apache2 to start (while):`
-
+5. `Wait for apache2 to start (while):`
 
 ```bash
 #!/bin/bash
@@ -252,21 +239,81 @@ echo "webserver is running"
 
 Here's the equivalent with while. The only difference is how the condition was negated. The output will be the same.
 
-
 ![Pasted image 20241022155657](https://github.com/user-attachments/assets/bb0218c6-aa3b-4d6b-b815-cb92b70e6ca1)
 
+6. Tells bash script to stop the current iteration of the loop and start the next iteration.
+
+```bash
+#!/bin/bash
+
+for i in {1..10}; do
+    if [[ $i -eq 2 ]]; then
+        echo "skipping number 2"
+        continue
+    fi
+    echo "i is equal to $i"
+done
+```
+
+![Pasted image 20241022194609](https://github.com/user-attachments/assets/5ca16bf6-4ec3-4e69-9188-b7f6a364c09b)
+
+7. `Break` :
+
+Tells bash script to end the loop straight away.
+
+```bash
+
+#!/bin/bash
+
+num=1
+
+while [[ $num -lt 10 ]]; do
+    if [[ $num -eq 5 ]]; then
+       echo "$num"
+       break
+    fi
+    ((num++))
+done
+echo "Loop completed"
+```
+
+![Pasted image 20241022195525](https://github.com/user-attachments/assets/e2854ecc-7a96-4c6c-95a2-72b6fa4155ea)
+
+8. `Break command with multiple loops`
+
+If want to exit out of current working loop whether inner or outer loop, I simply use break but if I' am  in an inner loop and I want to exit out of outer loop, I can use break 2.
+
+```bash
+
+#!/bin/bash
+
+for (( a = 1; a < 10; a++ )); do
+    echo "outer loop: $a"
+    for (( b = 1; b < 100; b++ )); do
+        if [[ $b -gt 5 ]]; then
+        break 2
+        fi
+    echo "Inner loop: $b "
+    done
+done
+
+```
+
+The bash script will begin with `a=1 &` will move to inner loop and when it reaches `b=5`, it will break the outer loop. I can use break only instead of break 2, to break inner loop & see how it aﬀects the output.
+
+Example:
+
+![Pasted image 20241022200538](https://github.com/user-attachments/assets/f153f5c8-2f83-40f0-956d-07a401f3a4f5)
 
 ### Key Differences:
 
-- **Condition Logic**: 
-- 
-- `while` checks if the condition is true to continue,.
-- `until` checks if the condition is false.
-- 
-- **Usage**: 
-- 
-- Use `while` when you want to repeat actions as long as a condition is met,.
-- Use`until` when you want to repeat actions until a condition is met.
+Condition Logic: 
++ `while` checks if the condition is true to continue,.
++ `until` checks if the condition is false.
+
+Usage: 
++ Use `while` when you want to repeat actions as long as a condition is met,.
++ Use`until` when you want to repeat actions until a condition is met.
 
 ### Summary:
 
