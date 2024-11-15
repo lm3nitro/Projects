@@ -9,7 +9,7 @@ Webhooks allow messages to be posted to a specific channel automatically. When a
 I will set up a Discord server to create a webhook, and will then deploy an Apache web server. The script I create will monitor the web server's status, incorporating the Discord webhook to send notifications to my desktop and alert a specified Discord channel. In the event of any issues with the web server, the script will automatically trigger a notification, allowing for quick troubleshooting. 
 
 ### Tools and Technology:
-Discord Server, Apache2, Linux, and Bash
+Discord Server, Apache2, Linux, send-notify, and Bash
 
 ## Discord
 
