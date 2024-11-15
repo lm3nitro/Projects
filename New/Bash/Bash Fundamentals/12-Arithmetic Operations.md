@@ -1,4 +1,4 @@
-# Arithmetic Operation
+# Arithmetic Operations
 
 Bash provides several ways to perform arithmetic operations. Here are some common methods:
 
