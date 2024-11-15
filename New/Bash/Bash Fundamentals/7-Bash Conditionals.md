@@ -1,39 +1,35 @@
-
+# Bash Conditionals
 
 In Bash, conditionals are used to perform different actions based on whether a specified condition is true or false. The main types of conditionals are `if`, `elif`, `else`, and `case`. 
-
 
 ### Comparison Operators
 
 When using `[` (test), common comparison operators include:
 
-- `-eq`: equal
-- `-ne`: not equal
-- `-lt`: less than
-- `-le`: less than or equal
-- `-gt`: greater than
-- `-ge`: greater than or equal
++ `-eq`: equal
++ `-ne`: not equal
++ `-lt`: less than
++ `-le`: less than or equal
++  `-gt`: greater than
++  `-ge`: greater than or equal
 
 For string comparisons, use:
 
-- `=`: equal
-- `!=`: not equal
-- `<`: less than (requires double brackets `[[ ]]`)
-- `>`: greater than (requires double brackets `[[ ]]`)
++ `=`: equal
++ `!=`: not equal
++ `<`: less than (requires double brackets `[[ ]]`)
++ `>`: greater than (requires double brackets `[[ ]]`)
 
 ### Boolean Operators
 
-You can also combine conditions using:
+Conditions can also be combined:
 
-- `&&`: logical AND
-- `||`: logical OR
++ `&&`: logical AND
++ `||`: logical OR
 
-
-
-### If statement:
+### If Statements:
 
 Example 1:
-
 
 ```bash
 
@@ -56,15 +52,9 @@ if ${OS_COMMAND}; then
 fi
 ```
 
-
 ![Pasted image 20241021154556](https://github.com/user-attachments/assets/a0ceb4d7-ed92-4673-b6ed-f402b55c8297)
 
-
-
-
-
 Example 2:
-
 
 ```bash
 
@@ -89,7 +79,6 @@ fi
 ![Pasted image 20241021155256](https://github.com/user-attachments/assets/33d54cde-324d-4091-beba-e8310c4b5665)
 
 
-
 Example 3:
 
 ```bash
@@ -105,17 +94,14 @@ echo "Number is between 1 and 9."
 fi
 ```
 
-
-
 ![Pasted image 20241021153033](https://github.com/user-attachments/assets/2ecd8621-deee-497c-a21c-1feda360dcf2)
 
 
-### If Else statement:
+### If Else Statement:
 
+With an if-else statement, an action can be specified in case the condition in the if statement does not match. This can be combined with the conditional expressions from the previous section as follows:
 
-With an if-else statement, you can specify an action in case that the condition in the if statement does not match. We can combine this with the conditional expressions from the previous section as follows:
-
-Example 4:
+Example 1:
 
 
 ```bash
@@ -146,7 +132,7 @@ fi
 ![Pasted image 20241021155728](https://github.com/user-attachments/assets/fd2e16d4-f298-456f-befd-96fb6bf615da)
 
 
-Example 5:
+Example 2:
 
 ```bash
 
@@ -174,8 +160,7 @@ fi
 ![Pasted image 20241021160609](https://github.com/user-attachments/assets/8ddb1982-8e22-42ce-a02c-9001c45718f3)
 
 
-Example 6:
-
+Example 3:
 
 ```bash
 
@@ -194,14 +179,9 @@ fi
 ![Pasted image 20241021161344](https://github.com/user-attachments/assets/d309bf66-4a14-4130-9f1a-c6fd0c998e37)
 
 
+Example 4:
 
-
-Example 7:
-
-
-Testing  multiple conditions with an if statement. In this example we want to make sure that the user is neither the admin user nor the root user to ensure the script is incapable of causing too much damage. We'll use the or operator in this example, noted by ||. This
-means that either of the conditions needs to be true. If we used the and operator of && then both conditions would need to be true.
-
+Testing multiple conditions with an if statement. In this example I want to make sure that the user is neither the admin user nor the root user to ensure the script is incapable of causing too much damage. I'll use the or operator in this example, noted by `||`. This means that either of the conditions needs to be true. If the and operator of &&  is used, then both conditions would need to be true.
 
 ```bash
 
@@ -229,11 +209,11 @@ fi
 ![Pasted image 20241021162022](https://github.com/user-attachments/assets/ca2a5a06-4f75-4493-97ca-9b24a25d6d4a)
 
 
-###  Elif statement:
+###  Elif Statement:
 
 If you have multiple conditions and scenarios, then can use elif statement with if and else statements.
 
-Example:
+Example 1:
 
 ```bash 
 #!/bin/bash
@@ -253,7 +233,7 @@ fi
 ![Pasted image 20241021220555](https://github.com/user-attachments/assets/7e842dbf-07a6-4d41-80ce-2e5e11b61d86)
 
 
-### Switch case statements:
+### Switch Case Statements:
 
 You can use a case statement to simplify complex conditionals when there are multiple diﬀerent choices. So rather than using a few if, and if-else statements, you could use a
 single case statement.
@@ -281,16 +261,6 @@ esac
 
 ```
 
-#### Structure of a `case` Statement:
-
-1. **Start with `case`**: Use the `case` keyword followed by a variable or expression.
-2. **Use `in`**: Follow the variable with the `in` keyword.
-3. **Define Patterns**: List your patterns, ending each with `)`. You can use `|` to specify multiple patterns.
-4. **Commands**: After each pattern, write the commands that should be executed if the pattern matches.
-5. **Terminate Clauses**: End each pattern with `;;`.
-6. **Default Case**: Use `*` for a default pattern.
-7. **Close with `esac`**: Conclude the `case` statement with `esac`.
-
 Example 2:
 
 ```bash
@@ -315,3 +285,13 @@ esac
 ```
 
 ![Pasted image 20241021222900](https://github.com/user-attachments/assets/efa551e6-f47e-4890-b308-8fcde2d5f898)
+
+### Structure of a `case` Statement:
+
+1. **Start with `case`**: Use the `case` keyword followed by a variable or expression.
+2. **Use `in`**: Follow the variable with the `in` keyword.
+3. **Define Patterns**: List your patterns, ending each with `)`. You can use `|` to specify multiple patterns.
+4. **Commands**: After each pattern, write the commands that should be executed if the pattern matches.
+5. **Terminate Clauses**: End each pattern with `;;`.
+6. **Default Case**: Use `*` for a default pattern.
+7. **Close with `esac`**: Conclude the `case` statement with `esac`.
