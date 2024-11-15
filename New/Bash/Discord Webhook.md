@@ -185,3 +185,5 @@ Once the server was started, the script stopped sending messages to the discord 
 ### Summary: 
 
 This setup is useful because it automates the monitoring of a web server and provides real-time notifications of its status, ensuring quick detection of issues and minimizing downtime. By integrating a Discord webhook, the script sends alerts directly to a specified channel, offering a convenient and efficient way to track server performance from anywhere. 
+
+Overall, availability is crucial because it ensures users can access a website or service whenever needed, directly impacting business operations. Monitoring the status of web servers is essential for detecting issues early, minimizing downtime, and ensuring business continuity.
