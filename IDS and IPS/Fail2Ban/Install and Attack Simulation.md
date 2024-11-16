@@ -69,13 +69,13 @@ I went back to my target host to evaluate the logs from the SSH server:
 
 ![Pasted image 20240428182854](https://github.com/lm3nitro/Projects/assets/55665256/015efbff-b8bd-468c-9a69-26ed31ecb9e4)
 
-I also check iptables and can see that an entry was added by Fail2Ban to reject/block the IP address from the attacking host:
+I also checked iptable and could see that an entry was added by Fail2Ban to reject/block the IP address from the attacking host:
 
 ![Pasted image 20240428182719](https://github.com/lm3nitro/Projects/assets/55665256/a2c1f2df-5d7e-4a7d-bb1e-3849fa5e4097)
 
 ### Summary:
 
-Doing this project allowed me to test the effectiveness that Fail2Ban has in detecting and preventing a SSH brute force attack by using Hydra for a simulated attack on the target host. I was able to get experience in configuring Fail2Ban, monitoring logs, and analyzing its automated responses to malicious activities. The findings offer valuable insights into enhancing server security. 
+This project allowed me to test the effectiveness of Fail2Ban in detecting and blocking SSH brute-force attacks by using Hydra to simulate the attack on a target host. I gained experience in configuring Fail2Ban, monitoring logs, and analyzing its automated responses to malicious activities. The findings demonstrated how Fail2Ban could effectively prevent brute-force attacks by automatically blocking attacking IPs after a defined number of failed login attempts. It also highlighted areas where additional tuning could improve detection accuracy and response time. 
 
 
 
