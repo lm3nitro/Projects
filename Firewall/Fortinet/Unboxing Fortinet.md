@@ -52,5 +52,4 @@ Now that the firewall is registered, activated, and up to date, I proceeded to g
 
 ### Summary:
 
-Installing and getting it was fairly easy; I like how user friendly the interface is. Having a firewall in your home network is crucial to protect against intrusion, network control, and for privacy and malware defense. Having a firewall is a fundamental layer of security that enhances the safety of your home network.  
-
+Installing and getting it was fairly easy; I like how user friendly the interface is. Having a firewall in your home network is crucial to protect against intrusion, network control, and for privacy and malware defense. Having a firewall is a fundamental layer of security that enhances the safety of your home network. Additionally, it offers granular control over network traffic, allowing me to set rules and permissions for specific devices or applications. In short, having a Fortinet firewall gives me peace of mind by securing my home network from a wide range of cyber threats, while providing control, monitoring, and flexibility.
