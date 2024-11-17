@@ -64,7 +64,7 @@ eth.addr == 50:eb:f6:ec:0e:7f or eth.addr == 08:00:27:53:0c:ba
 
 ![Pasted image 20240404124206](https://github.com/lm3nitro/Projects/assets/55665256/362f3364-89dd-4610-8353-3a7cf2babf69)
 
-Right a way I see some inconsistencies with the TCP connections. If TCP connections are consistently dropping, it's an indication that the attacker is not forwarding traffic between the victim and the router. If the attacker is, in fact, forwarding the traffic and is operating as a man-in-the-middle, we might observe identical or nearly symmetrical transmissions from the victim to the attacker and from the attacker to the router.
+This filter allowed me to see some inconsistencies with the TCP connections. If TCP connections are consistently dropping, it's an indication that the attacker is not forwarding traffic between the victim and the router. If the attacker is, in fact, forwarding the traffic and is operating as a man-in-the-middle, we might observe identical or nearly symmetrical transmissions from the victim to the attacker and from the attacker to the router.
 
 ### Summary
 
