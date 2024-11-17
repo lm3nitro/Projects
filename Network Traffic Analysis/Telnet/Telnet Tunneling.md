@@ -32,8 +32,6 @@ Attackers can use the PSH flag to transmit malicious data to the receiving end w
 
 ![Pasted image 20240408112524](https://github.com/lm3nitro/Projects/assets/55665256/7e73f6e1-13f7-495b-86f9-8e39e6456732)
 
-# Identify application layer data with Wireshark: 
-
 I also noticed that the host was using Telnet protocol to transfer data:
 
 ![Pasted image 20240408115444](https://github.com/lm3nitro/Projects/assets/55665256/0b10bb7b-29d2-4aef-82c4-0465b42a24d0)
@@ -100,38 +98,27 @@ sudo iptables -A INPUT -s 192.168.10.0/24 -j LOG --log-prefix '** ALERT **'
 
 ## Example 2
 
-Identify abnormal traffic with no application layer: 
-
-
-
-
-Looking at the protocol Hierarchy, it seems like there is not application protocol:  
+In this next example, I am analyzing a pcap where there is an high amount of traffic but with no associated application layer. Looking at the protocol Hierarchy, there is no application protocol, all I see is mainly TCP related traffic:
 
 ![Pasted image 20240408121115](https://github.com/lm3nitro/Projects/assets/55665256/cb0fe3f8-c11b-4a16-abf3-567802556a52)
 
+> [!NOTE]  
+> If Wireshark is unable to identify the TCP-based application layer protocol, it will display the protocol as 'TCP' along with Layer 7 (Data) information. This could indicate that someone on the network is using an application with a non-standard port, potentially to avoid detection.
+> There are instances when applications can be manually decoded, typically when the user is familiar with the application in use and can specify it within Wireshark.
 
-Note:
-
-If Wireshark doesn't know TCP based application layer protocol, it will simply display protocol as "TCP" with layer 7 (Data) info: witch could be a indicator that there is someone in the network using a an application  with non standard port and  doesn't want to be detected.
-
-
-There are time where you able to decode applications manually. It usually when the user know the application in use and can specify in Wireshark. 
-###Decode the traffic using the manual decode feature in Wireshark:
+Here I will be using the manual decode feature in Wireshark in order to decode the traffic:
 
 ![Pasted image 20240408144217](https://github.com/lm3nitro/Projects/assets/55665256/e2a433e1-d135-4cef-a33b-7bb1b5fe7631)
 
-
+Here I am decoding the traffic as Telnet:
 
 ![Pasted image 20240408144426](https://github.com/lm3nitro/Projects/assets/55665256/774fea91-6c9b-4c95-9b50-ec6f965e1b09)
 
-
-
-Wireshark was able to decode the application:
+Looking at the traffic, Wireshark was able to decode the application:
 
 ![Pasted image 20240408144939](https://github.com/lm3nitro/Projects/assets/55665256/097cdc9b-b90c-46df-932b-cf8f84df8044)
 
-
-
+================ Continue here ==================
 
 ##### One example of  application no identify by Wireshark is Netcat:
 
