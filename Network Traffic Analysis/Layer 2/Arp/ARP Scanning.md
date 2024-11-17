@@ -4,27 +4,21 @@ ARP scanning is a method used to map IP addresses to MAC addresses on a local ne
 
 ### Scope:
 
-In the following examples I will go over several signs that can indicate ARP scanning activity within the network. It's widely known that ARP attacks like apr poisoning and spoofing are often used in DoS and MITM attacks. Yet, attackers might also use ARP to gather information. Fortunately, we have the ability to detect and assess these tactics using familiar methods. 
+I will reviewing a pcap related to ARP traffic and will go over several signs that can indicate ARP scanning activity within the network. It's widely known that ARP attacks like ARP poisoning and spoofing are often used in DoS and MITM attacks. Yet, attackers might also use ARP to gather information. Fortunately, we have the ability to detect and assess these tactics using familiar methods. 
 
-## Signs of ARP Scanning
-
-#### Example 1:
+## ARP Traffic Analysis
 
 In the example below, I see broadcast ARP requests sent to sequential IP addresses (.1,.2,.3,...). This suggests a systematic attempt to discover active hosts within a network:
 
 ![Pasted image 20240404141016](https://github.com/lm3nitro/Projects/assets/55665256/ed12c5c4-6cd8-4db4-a633-89387214f4ef)
 
-#### Example 2:
-
-Here, broadcast ARP requests were sent to non-existent hosts. By observing responses or lack thereof to these broadcast ARP requests, attackers can gather information about the network and its hosts.
+By observing responses or lack thereof to these broadcast ARP requests, attackers can gather information about the network and its hosts.
 
 ![Pasted image 20240404141737](https://github.com/lm3nitro/Projects/assets/55665256/fd71f047-15ed-478a-9c90-7498eac6bff5)
 
 These are the hosts that actually replied to the host 192.168.10.5:
    
 ![Pasted image 20240404141620](https://github.com/lm3nitro/Projects/assets/55665256/d0b7f3ec-fa99-47e4-af50-23e1a39c4824)
-
-#### Example 3:
 
 Another indication is seeing an unusual volume of ARP traffic originating from a malicious or compromised host. In the table below, this is seen:
 
