@@ -118,63 +118,46 @@ Looking at the traffic, Wireshark was able to decode the application:
 
 ![Pasted image 20240408144939](https://github.com/lm3nitro/Projects/assets/55665256/097cdc9b-b90c-46df-932b-cf8f84df8044)
 
-================ Continue here ==================
-
-##### One example of  application no identify by Wireshark is Netcat:
-
-Launching Reverse (Backdoor) Shells:
-
-A reverse shell is a remote access approach where you run administrative commands from one terminal while connecting to another server on the network.
-
-**To get started, you need to enable the shell tool over a Netcat command by using Netcat reverse shell:
-
-**nc -n -v -l -p 9999 -e /bin/bash**
-
-Then from any other system on the network, you can test how to run commands on host after successful
-
-nc -nv 127.0.0.1 9999
-
-Wireshark:
-
-
-![Pasted image 20240408153823](https://github.com/lm3nitro/Projects/assets/55665256/39f27b5f-5969-4592-974c-e3fe8a2f9290)
-
-
-![Pasted image 20240408153737](https://github.com/lm3nitro/Projects/assets/55665256/c9fd0bae-3839-4e9b-84a5-d5145b502481)
-
-
-# Identify abnormal destination port number: 
-
-Therre high amount of traffic going to a destination server on port 9999. Sometines attackers wants to user non standard port or high port to avoid detection. 
-
-internal note: not part of baseline. put this first, not port 23. no transport layer
-Analysing TCP conversion: 
-
-
-### Summary
+There is a high amount of traffic going to a destination server on port 9999. As mentioned above, sometimees attackers use non-standard ports or to avoid detection. 
 
 ![Pasted image 20240408115702](https://github.com/lm3nitro/Projects/assets/55665256/05188266-f754-4a9f-b8b8-4d923496cee1)
 
 ![Pasted image 20240408122105](https://github.com/lm3nitro/Projects/assets/55665256/9b3bd981-daa4-40cb-bfc7-fcfe63cb61ac)
 
-
-# Visualizing TCP PSH flag and port in used in the trace file:
-
+I see that in the traffic highlighted above it is showing that the Push flag is set. Taking a look at the Push flags used in the pcap, below is the statistical overview:
 
 ![Pasted image 20240408160310](https://github.com/lm3nitro/Projects/assets/55665256/fee02444-ba3d-40cd-a88d-b3911a770d86)
 
-
-# Analazing Packet Lengths:
+Taking a look at the packet length:
 
 ![Pasted image 20240408121906](https://github.com/lm3nitro/Projects/assets/55665256/25e527aa-8fbb-4f66-8f39-c82dc45c8749)
 
+> [!NOTE]  
+> Another example of an application with no identity in Wireshark is Netcat. Here is an example:
+>
+> Launching Reverse (Backdoor) Shells: A reverse shell is a remote access approach where you run administrative commands from one terminal while connecting to another server on the network.
+>
+> To better demontrate, I enabled the shell tool using a Netcat reverse shell command:
+>
+> ```
+> nc -n -v -l -p 9999 -e /bin/bash
+> ```
+> 
+> Then from another host on my network, I tested:
+>
+> ```
+> nc -nv 127.0.0.1 9999
+> ```
+> Here is the traffic generated in Wireshark:
+>
+> ![Pasted image 20240408153823](https://github.com/lm3nitro/Projects/assets/55665256/39f27b5f-5969-4592-974c-e3fe8a2f9290)
+>
+> As seen in the screenshot above, the traffic is only showing TCP and nothing related with Netcat:
+> 
+> ![Pasted image 20240408153737](https://github.com/lm3nitro/Projects/assets/55665256/c9fd0bae-3839-4e9b-84a5-d5145b502481)
 
-## PSH flag best practices:
+### Summary:
 
-The PSH flag is a useful feature of TCP that can enhance the performance and functionality of some applications, but it can also pose some security risks if not used properly or maliciously. Thus, it is advisable to adhere to best practices when using or dealing with the PSH flag in network security. 
+Here I analyzed 2 different pcap files that both suggested Telnet Tunneling activity. In both I saw a observed a high amount of PSH flags being sent. While the PSH flag itself is not something specific to Telnet tunneling, it can be used in Telnet sessions to influence the behavior of TCP connections. Another observation was that in the second pcap, Wireshark was not able to identify the application. This highlights how tools like Wireshark may struggle to recognize certain protocols if they are not standard or are deliberately disguised. 
 
-For example, you should only use the PSH flag when necessary and avoid sending too many small packets with the PSH flag set. Additionally, you should configure the firewall and intrusion detection system rules to allow or block the PSH flag based on the application and protocol context, as well as update them regularly to match the changing network environment and threat landscape. 
-
-Moreover, it is important to monitor and analyze the network traffic and flags regularly for any anomalies or patterns that may indicate a potential attack or misuse of the PSH flag. Finally, educate and train the network users and administrators about the function and security implications of the PSH flag, and encourage them to report any suspicious or abnormal behavior or activity in the network.
-
-
+Through this analysis, I gained insights into the use of PSH flags in Telnet tunneling and how they can influence TCP behavior. Additionally, I learned that Wireshark may not always identify applications when non-standard or obfuscated protocols are in use, emphasizing the need for advanced detection techniques. 
