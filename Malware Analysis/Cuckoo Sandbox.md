@@ -685,16 +685,8 @@ This project took longer than originally anticipated, but definitely worth it. I
 Going through the complete installation and configuration provided critical hands-on experience. I was able to gain an understanding of how a sandbox environment works to analyze malware behavior in isolation. This includes learning how to run and analyze various types of files in a controlled manner. By completing this project, I was also able to do the following:
 
 + Gained practical understand of malware analysis
-  - Detecting and analyzing malware is a fundamental skill. Many cyber incidents involve malicious software, so understanding how to safely analyze malware is important and crucial
-+ Built a virtualized and isolated environment
-  - Virtualization and isolation are essential techniques in order to experiment and test without endangering live systems
-+ Troubleshooting and problem solving
-  - I will be honest; the installation did not go 100% smoothly on the first try. I had to learn how to research and troubleshoot the issues I encountered
-+ Learned to read and interpret detailed Cuckoo reports
-  - Understanding this data helps identify indicators of compromise (IOCs) and malware behavior patterns
-+ Security configurations and hardening
-  - I was able to better understand why network isolation are essential to prevent malware from escaping the sandbox
-+ Understanding Sandbox Evasion Techniques
-  - Going through this project also allowed me to learn about anti-sandbox techniques and how to mitigate or bypass them
++ Built a virtualized and isolated environment: This is essential in order to experiment and test without affecting live systems
++ Troubleshooting and problem solving: I will be honest; the installation did not go 100% smoothly on the first try. I had to learn how to research and troubleshoot the issues I encountered
++ Security configurations and hardening: I was able to better understand why network isolation is essential to prevent malware from escaping the sandbox.
  
 Overall, this helped me to cultivate a defensive mindset and understand the attacker's mindset. The challenges encountered during the installation and configuration also helped with my critical thing and problem-solving skills. This was a great hands-on experience in malware analysis, virtualization, networking, and system security. I would recommend anyone who wants to dive into cybersecurity to have their own sandbox. 
