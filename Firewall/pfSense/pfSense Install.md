@@ -148,12 +148,6 @@ Upon login, I checked the Dashboard page and could see that I was receiving traf
 
 ## Summary:
 
-In summary, installing pfSense helps improve networking and security skills. I was able to gain hands-on experience with the pfSense firewall. One of the great things about pfSense is how cost-effective and powerful it is.  Now that I have it up and running, I will be able to test some of its features and functionality. I also have other firewalls (Palo Alto and Fortinet), and adding the pfsense will also serve as comparison. 
+I was able to gain hands-on experience with the pfSense firewall. One of the great things about pfSense is how cost-effective and powerful it is.  Now that I have it up and running, I will be able to test some of its features and functionality. I also have other firewalls (Palo Alto and Fortinet), and adding the pfsense will also serve as comparison. 
 
-By having a firewall like pfSense, I will be able to:
-
-+ Reinforce my understand how firewalls enforce rules, block or allow traffic based on criteria like IP addresses, ports, and protocols.
-+ Create secure networks by configuring inbound and outbound rules for different devices or network segments.
-+ Learn more about network congestion, throttling, and how to balance network resources.
-+ Create complex network topologies similar to what you would find in businesses, allowing me to gain practical experience in network design, configuration, and troubleshooting.
 
