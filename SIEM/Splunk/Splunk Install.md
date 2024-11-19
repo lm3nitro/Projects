@@ -106,7 +106,7 @@ I can also see the amount of events that had been sent to Splunk from the variou
 
 ### Summary:
 
-In this project I was able to install Splunk and also installed additional add-ons in order to better integrate data from various sources. Sending this data from various sources will be included as part of other projects. Installing Splunk also allowed me to gain hands on experience with its functionalities, including data ingestion, search, and visualization. I also want to create various dashboards and use the different features to better viausalize the inforamtion that is important to me and pertinent to my environment. I highly recommend having a SIEM as part of your network. 
+In this project I was able to install Splunk and also installed additional add-ons in order to better integrate data from various sources. Sending this data from various sources will be included as part of other projects. Installing Splunk also allowed me to gain hands on experience with its functionalities, including data ingestion, search, and visualization. I also want to create various dashboards and use the different features to better viausalize the inforamtion/data that is important to me and pertinent to my environment. I highly recommend having a SIEM as part of your network. 
 
 The following benefits can be gained from it:
 + Threat detection
