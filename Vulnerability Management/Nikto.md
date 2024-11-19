@@ -99,5 +99,4 @@ I was also able to Identify the application being used within Wireshark and its 
 
 ## Summary:
 
-I liked that Nikto was very simplistic and easy to use. Often times, web servers are first in the line of attack. Having a tool like Nikto that can provide insights into the security posture of the server is very beneficial. Nikto can be installed both in Win and Linux OS. It's important to note that Nikto is not the best tool for stealth procedures. As seen in the Wireshark traffic analysis, it does many GET requests that can be seen and not to mention what can be found in ther server logs. I can see the many benefits it can offer think that this is great to have as part of your tool set. 
-
+I liked that Nikto was very simplistic and easy to use. Often times, web servers are first in the line of attack. Having a tool like Nikto that can provide insights into the security posture of the server is very beneficial. Nikto can be installed both in Win and Linux OS. It's important to note that Nikto is not the best tool for stealth procedures. As seen in the Wireshark traffic analysis, it does many GET requests that can be seen and not to mention what can be found in ther server logs. Despite this,it can provide a wide array of valuable information for improving the security of a web server, even though it may not be the most discreet option.
