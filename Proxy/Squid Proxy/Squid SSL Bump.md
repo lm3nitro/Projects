@@ -654,12 +654,7 @@ This exercise provided me with hands-on experience with traffic interception, co
 Below are some key benefits learned from this exercise and having this set up:
 
 + Traffic Visibility: SSL Bump allows you to decrypt and inspect HTTPS traffic
-+ Performance Optimization: Squid Proxy provides caching capabilities that can improve network performance by reducing latency and optimizing bandwidth usage
++ Performance Optimization: Squid Proxy provides caching capabilities that improves network performance
 + Security Hardening: Installing and using like ClamAV for hardening the proxy server, making it more resilient to attacks
-
-
-
-
-
 
 
