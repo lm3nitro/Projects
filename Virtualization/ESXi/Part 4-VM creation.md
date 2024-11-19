@@ -42,4 +42,4 @@ I also wanted to create a VM running Ubuntu so I followed the same steps as abov
 
 ##  Summary:
 
-I was able to successfully create both a Win10 and Ubuntu VM on my VMWare ESXi server. Its important to have several operating systems to test with. There are different applications and software that I will be using for my projects that require specific OS environments. Many organizations use a mix of both linux and Windows systems. Having both in my environment will allow me to see the interactionand integration between applications running on both platforms. 
+I was able to successfully create both a Win10 and Ubuntu VM on my VMWare ESXi server. Its important to have several operating systems to test with. There are different applications and software that I will be using for my projects that require specific OS environments. Many organizations use a mix of both linux and Windows systems. Having both in my environment will allow me to see the interaction between applications running on both platforms. 
