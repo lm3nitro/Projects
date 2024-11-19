@@ -133,4 +133,11 @@ I also can filter for these and see that this information is registering and bei
 
 ### Summary:
 
-Having Sysmon configured and sending logs to Splunk provides real-time event logging of system activities which is important for monitoring, detecting, and responding to threats. Having this integration with Splunk enhances visibility into the system behavior. Although deep analysis was not done as part of this project, there will be more projects that will take advantage of this integration for further testing and analysis. 
+Having Sysmon configured and sending logs to Splunk provides real-time event logging of system activities which is important for monitoring, detecting, and responding to threats. By centralizing Sysmon logs in Splunk, it offers a range of benefits:
+
++ Analysis and alerting features to detect anomalies
++ Investigation of potential breaches
++ Comprehensive view of environment
++ This approach also helps improve threat detection, accelerates response times, and strengthens overall security posture
+
+
