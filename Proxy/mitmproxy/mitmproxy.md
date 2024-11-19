@@ -162,7 +162,7 @@ In the bottom right corner, I was also able to see a pane named Decrypted TLS wh
 
 I was able to install and configure mitmproxy to analyze web traffic. I gained hands-on experience in setting up proxy tools, configuring network settings, and understanding how traffic flows through a system. By intercepting and inspecting the traffic, I learned how queries are structured, saw the difference between plaintext and encrypted traffic, and identified potential security risks. This process also deepened my knowledge of SSL/TLS certificates, troubleshooting network issues, and spotting anomalies in traffic that could indicate an attack. 
 
-Installing and configuring mitmproxy for traffic analysis is important because it provides practical, hands-on experience with network traffic interception and manipulation, which is essential for understanding how communication protocols like HTTPS/DNS work and can be exploited. This process helped me see firsthand how attackers might intercept or manipulate traffic, enhancing my ability to secure the network.
+This also provided hands-on experience with network traffic interception and manipulation, which allowed me to better understand how communication protocols like HTTPS/DNS work and can be exploited. This process helped me see firsthand how attackers might intercept or manipulate traffic, enhancing my ability to secure the network.
 
 Possible use cases:
 
