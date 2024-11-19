@@ -89,9 +89,8 @@ I really liked using Argus and exploring the different options it has to better 
 
 Lessons Learned:
 
-+ Understanding Attack Patterns: Analyzing the pcap file provided practical experience in recognizing SYN flood patterns and amplification techniques, essential for early detection in future scenarios.
-+ Importance of Flow Monitoring: The flow analysis offered a high-level view of network behavior, allowing efficient analysis without delving into individual packets, which is particularly useful during large-scale attacks.
-+ Need for Continuous Monitoring: The analysis reinforces the necessity of continuous network monitoring to detect anomalies and respond quickly to potential threats, enhancing incident response preparedness.
-+ Value of Post-Incident Analysis: Understanding the attack's characteristics and impact prepares teams for better incident response and resource allocation for mitigating future attacks.
++ Analyzing the pcap file provided practical experience in recognizing SYN flood patterns and amplification techniques, essential for early detection in future scenarios.
++ The flow analysis offered a high-level view of network behavior, allowing efficient analysis without delving into individual packets, which is particularly useful during large-scale attacks.
++ The analysis reinforced the necessity of continuous network monitoring to detect anomalies and respond quickly to potential threats, enhancing incident response preparedness.
 
 Using Argus to analyze this amplification SYN flood pcap offered valuable insights into the nature of this type of attack and the impact on network resources. This is crucial for developing effective detection, mitigation strategies, and enhancing overall network security posture.
