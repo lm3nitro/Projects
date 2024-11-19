@@ -249,4 +249,4 @@ rwfilter ow-S0_20240528.00 --all=stdout | rwuniq --field=sip,dip,proto | head -1
 
 In this part 2 of the project, I was able to configure SiLK to receive the NetFlow data from my Cisco router which enabled comprehensive monitoring and analysis of network traffic, providing insights into usage patterns, performance metrics, and potential security threats. I then analyzed the data being ingested into SiLK by using various queries. In addition to supporting the CIA triad, SiLK and NetFlow data also facilitates compliance with regulatory requirements and industry standards, as it provides an audit trail of network activity. 
 
-Ultimately, the purpose of this configuration was to deepen the understanding of network behavior, enhance knowledge of traffic analysis using NetFlow data through hands-on practice, and strengthen overall network security. 
+Ultimately, this configuration allowed me to deepen my understanding of network behavior and enhanced my knowledge of traffic analysis using NetFlow data through hands-on practice. 
