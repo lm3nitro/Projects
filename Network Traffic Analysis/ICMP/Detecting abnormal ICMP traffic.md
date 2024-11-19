@@ -129,7 +129,8 @@ Next, let's take a look at the TTL value of the source IP address. TTL values in
 Analysis: The number of ICMP requests coming from different sources at the same time with the same TTL value, data length, and IP identification ID suggests that the sources are not passing through a single router. Additionally, the fact that public IP ranges are sending traffic to an internal host indicates that the host is behind NAT or that a threat actor is spoofing the source IP address to evade detection. 
 
 ### Mitigation:
-To mitigate the risk of ICMP tunneling, scanning, or spoofing, consider disabling ICMP echo requests (ping) at the network perimeter to prevent external probing. Additionally, configure firewall rules to block ICMP traffic that is not essential for network operations. Regularly monitor and analyze ICMP activity to detect any unauthorized or suspicious usage.
+
+To reduce the risk of ICMP tunneling, scanning, or spoofing, ICMP echo requests (ping) should be disabled at the network perimeter to prevent external probing. Firewalls should alos be configured to block ICMP traffic that is not essential for network operations. Lastly, regular monitoring is needed in order to detect any unauthorized or suspicious usage of ICMP.
 
 
 
