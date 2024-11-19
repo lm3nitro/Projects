@@ -150,5 +150,5 @@ Here I am able to see that VNC was detected on the host.
 
 ## Summary:
 
-Inconclusion, namp is a great tool that can be enhanced with other options such as scripts. Administrators and adversaries alike can use Nmap for both network discovery and security auditing. Administrators utilize Nmap to identify open ports, detect services, and uncover vulnerabilities that can be exploited. On the other hand, the adversary can use nmap to do reconaissance and identify weak points or flaws so that they can exploit it. Using Wireshark also provided another level or visibility and allowed me to understand how this type of scan can be identified via traffic analysis. 
+In conclusion, namp is a great tool that can be enhanced with other options such as scripts. Nmap can be used for both network discovery and security auditing. It is often used to identify open ports, detect services, and uncover vulnerabilities that can be exploited. On the other hand, the adversary can use nmap to do reconaissance and identify weak points or flaws so that they can exploit it. Using Wireshark also provided another level or visibility and allowed me to understand how this type of scan can be identified via traffic analysis. 
 
