@@ -133,7 +133,6 @@ Overall, there are a few things that can be done to help in minimizing vulnerabi
 + Strong Access Controls
 + Network Segmentation
 + Regular Vulnerability Scanning and Penetration Testing
-+ Employee Training
 
 These are just a few, there are many more. 
 
