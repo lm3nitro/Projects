@@ -178,5 +178,5 @@ This command will display a randomly generated token. Enter this token in the pr
 
 ### Summary:
 
-In this project I was able to install the ELK stack along with Nginx on my Linux VM. I will be using ELK for future projects to test and perform various use cases. This will in turn allow me to assess how well the ELK stack handles the incoming information and how it parses through the logs. Having ELK installed in my network will also allow me to integrate it with other tools and data sources for enhanced security and functionality. 
+In this project I was able to install the ELK stack along with Nginx on my Linux VM. I will be using ELK for future projects to test and perform various use cases. This will in turn allow me to assess how well the ELK stack handles the incoming information and how it parses through the logs. Having ELK installed in my network will also allow me to see how it works with other tools and data sources for enhanced security and functionality. 
 
