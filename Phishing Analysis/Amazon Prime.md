@@ -75,4 +75,5 @@ As a result, this email has been determined to be malicious.
 
 ## Defense Actions
 After performing a check in the email gateway, no other users received an email from this sender or with this subject line. To prevent the malicious sender from sending any other emails, I have blocked the "cafepress@mail.cafepress.com" email address and blocked the URL on the Fortinet firewall.
-
+![Screenshot 2025-01-01 at 11 08 04 AM](https://github.com/user-attachments/assets/49b4a1ce-0adc-4053-8e4e-3fb23518f8ea)
+![Screenshot 2025-01-01 at 11 14 46 AM](https://github.com/user-attachments/assets/785c8cf2-4fe1-4a15-8cd5-ee4a4fa92f79)
