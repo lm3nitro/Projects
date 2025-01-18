@@ -15,7 +15,7 @@ Topology:
 
 This is the interface I was presented with upon logging into the switch. First, I disabled DHCP:
 
-![Pasted image 20240416111426](https://github.com/lm3nitro/Projects/assets/55665256/81bb09f0-587c-4563-a716-f25ea5643ed0)
+<img width="1501" alt="Screenshot 2025-01-18 at 4 09 25 PM" src="https://github.com/user-attachments/assets/be872b2c-4377-4ce7-83f6-f17565597130" />
 
 I then navigated to System > Monitoring> Mirroring. Here I can choose the port I want for port mirroring: 
 
